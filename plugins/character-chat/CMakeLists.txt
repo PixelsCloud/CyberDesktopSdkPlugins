@@ -22,6 +22,7 @@ set_target_properties(cd_character_chat_plugin PROPERTIES PREFIX "" OUTPUT_NAME 
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.character-chat"
   LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.character-chat"
   ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/link"
+  PDB_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/symbols"
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 cd_asset_target(cd_character_chat_package
   COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:cd_character_chat_plugin>/licenses"
@@ -70,6 +71,7 @@ target_link_libraries(cd_character_chat_plugin PRIVATE cd_live2d_presentation)
 
 target_include_directories(cd_character_chat_plugin PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 cd_asset_target(cd_character_chat_archive_package
+    COMMAND ${CMAKE_COMMAND} -E rm -f "$<TARGET_FILE_DIR:cd_character_chat_plugin>/plugin.pdb"
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/character-chat-packages"
     COMMAND $<TARGET_FILE:cd_character_sdk_tool> pack "$<TARGET_FILE_DIR:cd_character_chat_plugin>"
         "${CMAKE_BINARY_DIR}/character-chat-packages/com.cyberdesktop.character-chat.cdpkg"
