@@ -1,10 +1,14 @@
 #include "plugins/pixel-desk/MarbleClock.h"
 
+#include <CyberCanvas/Native.h>
+
 #include <algorithm>
 #include <cmath>
 #include <numbers>
+#include <stdexcept>
 #include <tuple>
 
+#include "plugins/marble-clock/Clock.h"
 #include "plugins/mechanical-pixels/Pixels.h"
 #include "plugins/pixel-desk/PixelImages.h"
 #include "plugins/pixel-desk/PixelLayout.h"
@@ -330,7 +334,7 @@ void MarbleRenderer::draw(Canvas& canvas, const marbleclock::Model& model, const
 
 MarbleInstance::MarbleInstance(const CdCreateContext& context)
     : settings(marbleDefaults()),
-      model_(marbleSpec(context.plugin_id).compact),
+      model_(marbleSpec(context.plugin_id).compact, marbleclock::GeometryStyle::Pixels),
       renderer_(context, marbleSpec(context.plugin_id)) {
     canvas_.bindGpu(context);
     environment_.bind(context);

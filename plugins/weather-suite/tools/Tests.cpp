@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-#include "Weather.h"
+#include "plugins/weather-suite/Weather.h"
 
 using namespace weatherplugin;
 using Json = nlohmann::json;

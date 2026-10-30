@@ -4,21 +4,21 @@
 
 #include <string_view>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/beat/Machine.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/marble/Clock.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/toys/Toys.h"
-#include "controllers/weather/Weather.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/redline-desk/Kinetics.h"
+#include "plugins/redline-desk/controllers/air/AirQuality.h"
+#include "plugins/redline-desk/controllers/beat/Machine.h"
+#include "plugins/redline-desk/controllers/calendar/Calendar.h"
+#include "plugins/redline-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/redline-desk/controllers/lunar/Lunar.h"
+#include "plugins/redline-desk/controllers/marble/Clock.h"
+#include "plugins/redline-desk/controllers/matrix/Pixels.h"
+#include "plugins/redline-desk/controllers/monitor/Monitor.h"
+#include "plugins/redline-desk/controllers/precision/Clock.h"
+#include "plugins/redline-desk/controllers/productivity/Productivity.h"
+#include "plugins/redline-desk/controllers/sign/Sign.h"
+#include "plugins/redline-desk/controllers/toys/Toys.h"
+#include "plugins/redline-desk/controllers/weather/Weather.h"
+#include "plugins/redline-desk/controllers/widget/Widget.h"
 
 namespace {
 template <class Instance>

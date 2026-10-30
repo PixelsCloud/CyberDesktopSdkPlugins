@@ -3,7 +3,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Clock.h"
+#include "plugins/marble-clock/Clock.h"
 #include "plugins/mechanical-instruments/PhysicsMaterials.h"
 
 int wmain(int argc, wchar_t** argv) try {

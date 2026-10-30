@@ -1,4 +1,5 @@
 #pragma once
+
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
@@ -6,6 +7,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+
+#include "plugins/system-info-suite/ThemedController.h"
 
 namespace monitorplugin {
 struct Spec {
@@ -35,13 +38,13 @@ struct Position {
 std::vector<Position> arrange(Spec, double width, double height, const Options&);
 Values decode(const CdSystemInfo&);
 
-class Renderer {
+class Renderer final : public monitorplugin::themed::View {
 public:
     Renderer();
-    ~Renderer();
-    void bind(const CdCreateContext&, std::function<void()> changed);
-    void pause(bool paused);
-    bool render(Spec, const Options&, Values, const CdFrame&, CdRect safe = {});
+    ~Renderer() override;
+    void bind(const CdCreateContext&, std::function<void()> changed) override;
+    void pause(bool paused) override;
+    bool render(Spec, const Options&, Values, const CdFrame&, CdRect safe = {}) override;
     bool savePng(const std::wstring&, const CdFrame&, CdColor background);
 
 private:

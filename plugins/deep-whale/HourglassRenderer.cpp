@@ -1,8 +1,8 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/hourglass/MechanicalHourglass.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/hourglass/MechanicalHourglass.h"
 using whaleskin::Canvas;
 using whaleskin::Skin;
 

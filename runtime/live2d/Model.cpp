@@ -1,6 +1,6 @@
-#include "Model.h"
+#include "runtime/live2d/Model.h"
 
-#include "ShaderCache.h"
+#include "runtime/live2d/ShaderCache.h"
 #undef D3DCompile
 
 #include <CubismDefaultParameterId.hpp>

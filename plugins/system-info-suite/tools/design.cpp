@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "Monitor.h"
+#include "plugins/system-info-suite/Monitor.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc < 2 || argc > 3)

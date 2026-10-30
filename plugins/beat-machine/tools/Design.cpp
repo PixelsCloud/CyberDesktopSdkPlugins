@@ -6,7 +6,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Machine.h"
+#include "plugins/beat-machine/Machine.h"
 #include "plugins/mechanical-instruments/PhysicsMaterials.h"
 
 int wmain(int argc, wchar_t** argv) try {

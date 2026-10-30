@@ -4,9 +4,9 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/calendar/Calendar.h"
-#include "controllers/lunar/Lunar.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/calendar/Calendar.h"
+#include "plugins/mecha-desk/controllers/lunar/Lunar.h"
 
 namespace {
 using aerisskin::Canvas;

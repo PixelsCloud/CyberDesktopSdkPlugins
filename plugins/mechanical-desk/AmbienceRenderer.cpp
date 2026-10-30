@@ -4,7 +4,8 @@
 #include <algorithm>
 #include <cmath>
 
-#include "controllers/ambience/Atmosphere.h"
+#include "plugins/mechanical-desk/Skin.h"
+#include "plugins/mechanical-desk/controllers/ambience/Atmosphere.h"
 
 namespace mechanicaldesk_ambience {
 using namespace mechanicaldesk;

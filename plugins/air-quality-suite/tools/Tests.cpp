@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-#include "AirQuality.h"
+#include "plugins/air-quality-suite/AirQuality.h"
 
 using namespace airplugin;
 using Json = nlohmann::json;

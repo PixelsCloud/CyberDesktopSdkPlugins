@@ -1,7 +1,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Toys.h"
+#include "plugins/physics-toys/Toys.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc < 3) {

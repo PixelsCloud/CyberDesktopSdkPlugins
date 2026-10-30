@@ -75,13 +75,15 @@ Point digitOrigin(size_t index) {
     return {154 + (double(index) * 74 + double(index / 2) * 32) * kGlyphScale, 46};
 }
 
-Model::Model(uint32_t seed) : random_(seed) {
+Model::Model(uint32_t seed) : Model(EnclosureGeometry{}, seed) {}
+
+Model::Model(EnclosureGeometry enclosure, uint32_t seed) : random_(seed) {
     const auto ground = world_.createBody({.type = physics::BodyType::Static});
     const physics::Material stone{.friction = .7, .restitution = .18};
-    world_.box(ground, {5.1, .05}, {5, kFloor / 100 + .05}, 0, stone);
-    world_.box(ground, {.05, 1.3}, {-.05, 1.25}, 0, stone);
-    world_.box(ground, {.05, 1.3}, {10.05, 1.25}, 0, stone);
-    world_.box(ground, {5.1, .05}, {5, -.05}, 0, stone);
+    world_.box(ground, {enclosure.halfWidth, .05}, {5, kFloor / 100 + .05}, 0, stone);
+    world_.box(ground, {.05, 1.3}, {enclosure.left, 1.25}, 0, stone);
+    world_.box(ground, {.05, 1.3}, {enclosure.right, 1.25}, 0, stone);
+    world_.box(ground, {enclosure.halfWidth, .05}, {5, -.05}, 0, stone);
     chips_.reserve(kMaximumChips);
 }
 

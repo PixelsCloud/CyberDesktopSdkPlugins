@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include("${CMAKE_CURRENT_SOURCE_DIR}/../common/SdkTool.cmake")
 cd_plugin_sdk_tool(cd_toys_sdk_tool TOYS_LICENSE)
 cd_plugin_canvas_license(box2d TOYS_BOX_LICENSE)
+cd_plugin_json_license(TOYS_JSON_LICENSE)
 cd_plugin_canvas_license(fastnoiselite TOYS_NOISE_LICENSE)
 set(TOYS_TOOL cd_toys_sdk_tool)
 add_library(cd_physics_toys_core STATIC Model.cpp Renderer.cpp MechanicalRenderer.cpp Instance.cpp)
@@ -61,11 +62,12 @@ foreach(variant chime-2x2 chime-3x2 clock-2x4 clock-1x4 mechanical-chime-2x2 mec
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/README.txt" "${input}/README.txt"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${TOYS_LICENSE}" "${input}/licenses/CyberDesktopSDK-MIT.txt"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${TOYS_BOX_LICENSE}" "${input}/licenses/Box2D-MIT.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${TOYS_JSON_LICENSE}" "${input}/licenses/nlohmann-json-MIT.txt"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${TOYS_NOISE_LICENSE}" "${input}/licenses/FastNoiseLite-MIT.txt"
     ${extra}
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${input}" "$<TARGET_FILE_DIR:${target}>"
     COMMAND $<TARGET_FILE:${TOYS_TOOL}> pack "${input}" "${CMAKE_BINARY_DIR}/physics-toys-packages/${id}.cdpkg"
-    DEPENDS ${target} ${TOYS_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${variant}/plugin.textproto" VERBATIM)
+    DEPENDS "${TOYS_JSON_LICENSE}" ${target} ${TOYS_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${variant}/plugin.textproto" VERBATIM)
   list(APPEND packages ${target}_package)
 endforeach()
 add_custom_target(cd_physics_toys_packages DEPENDS ${packages})
@@ -80,3 +82,5 @@ endforeach()
 
 include("${CMAKE_CURRENT_LIST_DIR}/../common/Artwork.cmake")
 target_link_libraries(cd_physics_toys_core PUBLIC cd_mechanical_art)
+
+target_link_libraries(cd_physics_toys_core PRIVATE nlohmann_json::nlohmann_json)

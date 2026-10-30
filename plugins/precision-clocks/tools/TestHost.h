@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 
-#include "Clock.h"
+#include "plugins/precision-clocks/Clock.h"
 
 struct Host {
     struct Subscription {

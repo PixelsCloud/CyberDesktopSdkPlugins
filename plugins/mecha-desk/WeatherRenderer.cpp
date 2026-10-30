@@ -1,8 +1,8 @@
 #include <cmath>
 #include <format>
 
-#include "controllers/weather/Weather.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/weather/Weather.h"
 
 namespace {
 using aerisskin::Canvas;

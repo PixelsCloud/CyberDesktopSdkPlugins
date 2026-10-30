@@ -2,6 +2,7 @@
 #include <numbers>
 
 #include "plugins/pixel-desk/PixelChime.h"
+#include "plugins/pixel-desk/PixelToysModel.h"
 
 namespace toys {
 Instance::Instance(const CdCreateContext& context, Kind kind, bool mechanical)
@@ -12,8 +13,8 @@ Instance::Instance(const CdCreateContext& context, Kind kind, bool mechanical)
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"twelve_hour", CD_SETTING_TOGGLE, 0},
                {"palette", CD_SETTING_CHOICE, 0, 0, "pastel", 0, 0, {"pastel", "ocean"}}},
-      model_(kind, mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".2x3"),
-             mechanical) {
+      model_(kind, mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".2x3"), mechanical,
+             pixeldesk::pixelToysOptions()) {
     compact_ = mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".2x3");
     canvas_.bindGpu(context);
     environment_.bind(context);

@@ -1,27 +1,27 @@
 #if CD_MECHANICAL_CORE == 0
-#include "Monitor.h"
+#include "plugins/system-info-suite/Monitor.h"
 namespace implementation = monitorplugin;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, CD_MECHANICAL_ROWS, CD_MECHANICAL_COLUMNS, true};
 #elif CD_MECHANICAL_CORE == 1
-#include "Productivity.h"
+#include "plugins/productivity-suite/Productivity.h"
 namespace implementation = productivity;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, implementation::Kind(CD_MECHANICAL_KIND), CD_MECHANICAL_ROWS,
                                      CD_MECHANICAL_COLUMNS, true};
 #elif CD_MECHANICAL_CORE == 2
-#include "Weather.h"
+#include "plugins/weather-suite/Weather.h"
 namespace implementation = weatherplugin;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, CD_MECHANICAL_ROWS, CD_MECHANICAL_COLUMNS, true};
 #elif CD_MECHANICAL_CORE == 3
-#include "Widget.h"
+#include "plugins/widget-suite/Widget.h"
 namespace implementation = widgetplugin;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, implementation::Kind(CD_MECHANICAL_KIND), CD_MECHANICAL_ROWS,
                                      CD_MECHANICAL_COLUMNS, true};
 #elif CD_MECHANICAL_CORE == 4
-#include "AirQuality.h"
+#include "plugins/air-quality-suite/AirQuality.h"
 namespace implementation = airplugin;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, CD_MECHANICAL_ROWS, CD_MECHANICAL_COLUMNS, true};
 #elif CD_MECHANICAL_CORE == 5
-#include "Lunar.h"
+#include "plugins/lunar-suite/Lunar.h"
 namespace implementation = lunarplugin;
 constexpr implementation::Spec kSpec{CD_MECHANICAL_ID, CD_MECHANICAL_ROWS, CD_MECHANICAL_COLUMNS, true};
 #else

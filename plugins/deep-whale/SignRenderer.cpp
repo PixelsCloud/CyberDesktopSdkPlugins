@@ -1,8 +1,8 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/sign/Sign.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/sign/Sign.h"
 using whaleskin::Canvas;
 using whaleskin::Skin;
 

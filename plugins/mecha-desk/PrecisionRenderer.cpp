@@ -2,7 +2,7 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/precision/Clock.h"
+#include "plugins/mecha-desk/controllers/precision/Clock.h"
 
 namespace aeris_precision {
 using aerisskin::Canvas;

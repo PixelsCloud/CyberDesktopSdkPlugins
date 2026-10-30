@@ -2,7 +2,8 @@
 #include <cmath>
 #include <format>
 
-#include "controllers/productivity/Productivity.h"
+#include "plugins/mechanical-desk/Skin.h"
+#include "plugins/mechanical-desk/controllers/productivity/Productivity.h"
 
 namespace mechanicaldesk_productivity {
 using mechanicaldesk::Rect;

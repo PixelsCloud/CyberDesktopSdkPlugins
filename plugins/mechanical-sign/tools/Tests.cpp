@@ -5,7 +5,7 @@
 #include <numbers>
 #include <thread>
 
-#include "Sign.h"
+#include "plugins/mechanical-sign/Sign.h"
 #include "plugins/mechanical-sign/tools/TestHost.h"
 #include "sdk/support/Package.h"
 

@@ -1,6 +1,7 @@
 #include <algorithm>
 
-#include "controllers/widget/Widget.h"
+#include "plugins/mechanical-desk/Skin.h"
+#include "plugins/mechanical-desk/controllers/widget/Widget.h"
 
 namespace mechanicaldesk_widget {
 using mechanicaldesk::Skin;

@@ -5,7 +5,7 @@
 #include <limits>
 #include <thread>
 
-#include "Clock.h"
+#include "plugins/precision-clocks/Clock.h"
 #include "plugins/precision-clocks/tools/TestHost.h"
 
 namespace {

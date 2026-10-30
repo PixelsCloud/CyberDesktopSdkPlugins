@@ -5,8 +5,8 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
+#include "plugins/widget-suite/Widget.h"
 #include "sdk/tools/Runtime.h"
 
 #ifdef CD_PLAYER_DESIGN_GLASS_ICONS

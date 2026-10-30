@@ -102,10 +102,18 @@
                 "sdk",
                 "plugins"
             ]
+        },
+        {
+            "path": "tests/architecture",
+            "consumers": [
+                "sdk",
+                "plugins"
+            ]
         }
     ],
     "rootFiles": [
-        ".clang-format"
+        ".clang-format",
+        "public-source-files.json"
     ],
     "externalDependencies": [
         {

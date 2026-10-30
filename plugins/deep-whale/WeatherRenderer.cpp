@@ -1,8 +1,8 @@
 #include <cmath>
 #include <format>
 
-#include "controllers/weather/Weather.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/weather/Weather.h"
 
 namespace {
 using whaleskin::Canvas;

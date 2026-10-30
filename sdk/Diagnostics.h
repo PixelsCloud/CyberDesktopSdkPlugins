@@ -5,7 +5,7 @@
 
 #include "sdk/Images.h"
 #include "sdk/Update.h"
-#include "services/Diagnostics.h"
+#include "sdk/services/Diagnostics.h"
 
 namespace cdsdk {
 struct InstanceStats {

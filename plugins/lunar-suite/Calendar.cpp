@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sxtwl.h>
 
 #include <chrono>
 #include <map>
@@ -6,7 +7,6 @@
 #include <stdexcept>
 
 #include "plugins/lunar-suite/Lunar.h"
-#include "sxtwl.h"
 
 namespace lunarplugin {
 namespace {

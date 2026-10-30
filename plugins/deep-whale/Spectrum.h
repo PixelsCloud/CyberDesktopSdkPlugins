@@ -4,8 +4,8 @@
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
 
-#include "controllers/matrix/Pixels.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/matrix/Pixels.h"
 
 namespace deep_spectrum {
 enum class MatrixForm { Dots, Rods, Radial };

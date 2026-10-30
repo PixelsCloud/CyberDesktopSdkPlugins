@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "Pond.h"
+#include "plugins/koi-suite/Pond.h"
 
 int wmain(int argc, wchar_t** argv) {
     using namespace koiplugin;

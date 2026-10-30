@@ -3,15 +3,15 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/songyun-desk/Skin.h"
+#include "plugins/songyun-desk/controllers/air/AirQuality.h"
+#include "plugins/songyun-desk/controllers/calendar/Calendar.h"
+#include "plugins/songyun-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/songyun-desk/controllers/lunar/Lunar.h"
+#include "plugins/songyun-desk/controllers/matrix/Pixels.h"
+#include "plugins/songyun-desk/controllers/monitor/Monitor.h"
+#include "plugins/songyun-desk/controllers/productivity/Productivity.h"
+#include "plugins/songyun-desk/controllers/widget/Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/InputCounter.h"
 

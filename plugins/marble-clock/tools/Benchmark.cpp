@@ -5,7 +5,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Clock.h"
+#include "plugins/marble-clock/Clock.h"
 
 int wmain(int argc, wchar_t** argv) try {
     if (argc != 2) {

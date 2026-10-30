@@ -6,17 +6,6 @@
 #include <nlohmann/json.hpp>
 #include <string_view>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/weather/Weather.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/deep-whale/Ambience.h"
 #include "plugins/deep-whale/BasicClock.h"
 #include "plugins/deep-whale/BrickClock.h"
@@ -24,6 +13,17 @@
 #include "plugins/deep-whale/Player.h"
 #include "plugins/deep-whale/Pond.h"
 #include "plugins/deep-whale/Spectrum.h"
+#include "plugins/deep-whale/controllers/air/AirQuality.h"
+#include "plugins/deep-whale/controllers/calendar/Calendar.h"
+#include "plugins/deep-whale/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/deep-whale/controllers/lunar/Lunar.h"
+#include "plugins/deep-whale/controllers/matrix/Pixels.h"
+#include "plugins/deep-whale/controllers/monitor/Monitor.h"
+#include "plugins/deep-whale/controllers/precision/Clock.h"
+#include "plugins/deep-whale/controllers/productivity/Productivity.h"
+#include "plugins/deep-whale/controllers/sign/Sign.h"
+#include "plugins/deep-whale/controllers/weather/Weather.h"
+#include "plugins/deep-whale/controllers/widget/Widget.h"
 
 namespace {
 template <class Instance>

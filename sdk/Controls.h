@@ -6,7 +6,7 @@
 
 #include "sdk/Icons.h"
 #include "sdk/Interaction.h"
-#include "services/Keyboard.h"
+#include "sdk/services/Keyboard.h"
 
 namespace cdsdk {
 // Immediate-mode controls share their exact paint rectangles with pointer and

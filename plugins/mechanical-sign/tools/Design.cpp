@@ -4,7 +4,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Sign.h"
+#include "plugins/mechanical-sign/Sign.h"
 
 int wmain(int argc, wchar_t** argv) try {
     using namespace mechanicalsign;

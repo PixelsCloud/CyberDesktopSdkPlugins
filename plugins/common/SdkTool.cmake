@@ -43,3 +43,15 @@ function(cd_plugin_canvas_license component output)
     endif()
     set(${output} "${license}" PARENT_SCOPE)
 endfunction()
+
+# Geometry loaders are shared by classic and illustrated physics plugins.
+# Use the notice distributed with this source dependency inventory; some local
+# vcpkg caches contain only package config files, without a share copyright file.
+function(cd_plugin_json_license output)
+    find_package(nlohmann_json 3.12 CONFIG REQUIRED)
+    set(license "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/licenses/nlohmann-json-MIT.txt")
+    if(NOT EXISTS "${license}")
+        message(FATAL_ERROR "Missing nlohmann_json notice: ${license}")
+    endif()
+    set(${output} "${license}" PARENT_SCOPE)
+endfunction()

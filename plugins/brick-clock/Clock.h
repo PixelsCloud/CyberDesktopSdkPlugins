@@ -40,9 +40,16 @@ struct Chip {
     double born = 0;
 };
 
+struct EnclosureGeometry {
+    double halfWidth = 5.1, left = -.05, right = 10.05;
+};
+
+inline constexpr uint32_t kDefaultSeed = 0x42524943;
+
 class Model {
 public:
-    explicit Model(uint32_t seed = 0x42524943);
+    explicit Model(uint32_t seed = kDefaultSeed);
+    explicit Model(EnclosureGeometry enclosure, uint32_t seed = kDefaultSeed);
     bool setTime(int hour, int minute, int second, bool animate = true);
     bool advance(double seconds);
     void settle();

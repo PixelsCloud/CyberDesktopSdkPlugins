@@ -1,6 +1,11 @@
 #include <CyberCanvas/PanelLayout.h>
+#include <sdk/Controls.h>
+#include <sdk/Environment.h>
+#include <sdk/Images.h>
 #include <sdk/Language.h>
+#include <sdk/Update.h>
 #include <sdk/WindowsFonts.h>
+#include <sdk/cpp/Services.h>
 
 #include <algorithm>
 #include <cmath>

@@ -1,6 +1,6 @@
 #include <numbers>
 
-#include "controllers/toys/Toys.h"
+#include "plugins/mechanical-desk/controllers/toys/Toys.h"
 
 namespace mechanicaldesk_toys {
 MechanicalRenderer::MechanicalRenderer() : skin_(std::make_unique<mechanicaldesk::Skin>()) {}

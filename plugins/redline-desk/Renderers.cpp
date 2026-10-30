@@ -3,15 +3,15 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/redline-desk/Skin.h"
+#include "plugins/redline-desk/controllers/air/AirQuality.h"
+#include "plugins/redline-desk/controllers/calendar/Calendar.h"
+#include "plugins/redline-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/redline-desk/controllers/lunar/Lunar.h"
+#include "plugins/redline-desk/controllers/matrix/Pixels.h"
+#include "plugins/redline-desk/controllers/monitor/Monitor.h"
+#include "plugins/redline-desk/controllers/productivity/Productivity.h"
+#include "plugins/redline-desk/controllers/widget/Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/InputCounter.h"
 

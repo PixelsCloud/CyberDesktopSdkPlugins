@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include("${CMAKE_CURRENT_SOURCE_DIR}/../common/SdkTool.cmake")
 cd_plugin_sdk_tool(cd_marble_sdk_tool MARBLE_LICENSE)
 cd_plugin_canvas_license(box2d MARBLE_BOX_LICENSE)
+cd_plugin_json_license(MARBLE_JSON_LICENSE)
 set(MARBLE_TOOL cd_marble_sdk_tool)
 
 add_library(cd_marble_clock_core STATIC Model.cpp Renderer.cpp Instance.cpp)
@@ -44,12 +45,13 @@ foreach(layout 6x2 4x2)
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/README.txt" "${input}/README.txt"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${MARBLE_LICENSE}" "${input}/licenses/CyberDesktopSDK-MIT.txt"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${MARBLE_BOX_LICENSE}" "${input}/licenses/Box2D-MIT.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${MARBLE_JSON_LICENSE}" "${input}/licenses/nlohmann-json-MIT.txt"
     COMMAND ${CMAKE_COMMAND} "-DSOURCE_DIRECTORY=${CMAKE_CURRENT_SOURCE_DIR}/assets"
       "-DASSET_DIRECTORY=${input}/assets" "-DBUILD_ROOT=${CMAKE_BINARY_DIR}" "-DLAYOUT=${layout}" "-DKIND=clock"
       -P "${CMAKE_CURRENT_SOURCE_DIR}/../mechanical-instruments/StagePhysicsAssets.cmake"
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${input}" "$<TARGET_FILE_DIR:${target}>"
     COMMAND $<TARGET_FILE:${MARBLE_TOOL}> pack "${input}" "${CMAKE_BINARY_DIR}/marble-clock-packages/${id}.cdpkg"
-    DEPENDS ${target} ${MARBLE_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${layout}/plugin.textproto" VERBATIM)
+    DEPENDS "${MARBLE_JSON_LICENSE}" ${target} ${MARBLE_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${layout}/plugin.textproto" VERBATIM)
   add_dependencies(cd_marble_clock_package cd_marble_clock_package_${layout})
 endforeach()
 
@@ -77,3 +79,5 @@ endforeach()
 
 include("${CMAKE_CURRENT_LIST_DIR}/../common/Artwork.cmake")
 target_link_libraries(cd_marble_clock_core PUBLIC cd_mechanical_art)
+
+target_link_libraries(cd_marble_clock_core PRIVATE nlohmann_json::nlohmann_json)

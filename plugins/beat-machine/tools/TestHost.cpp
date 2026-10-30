@@ -1,5 +1,10 @@
 #include "plugins/beat-machine/tools/TestHost.h"
 
+#include <array>
+
+#include "sdk/services/DataServices.h"
+#include "sdk/services/Interaction.h"
+
 Host::Host() {
     auto& base = api.input.media.base;
     base.struct_size = sizeof(api);

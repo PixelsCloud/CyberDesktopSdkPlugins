@@ -1,8 +1,8 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/hourglass/MechanicalHourglass.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/hourglass/MechanicalHourglass.h"
 using aerisskin::Canvas;
 using aerisskin::Skin;
 

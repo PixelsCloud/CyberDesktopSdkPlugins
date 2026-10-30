@@ -1,9 +1,11 @@
-// Controller binding reused from plugins/vampire-alice/controllers/productivity/Productivity.h.
 #pragma once
 
+#include <filesystem>
+#include <functional>
 #include <memory>
 
 #include "plugins/productivity-suite/Productivity.h"
+#include "plugins/productivity-suite/ThemedController.h"
 
 namespace whaleskin {
 class Skin;
@@ -12,16 +14,16 @@ class Skin;
 namespace deep_productivity {
 using namespace productivity;
 
-class Renderer {
+class Renderer final : public productivity::themed::View {
 public:
     Renderer();
-    ~Renderer();
-    void bind(const CdCreateContext&, std::function<void(uint32_t)>);
-    void input(const CdInput&);
-    void cancelInput();
-    void pause(bool paused);
-    void syncInput(Spec spec, const cdsdk::Settings& settings, const Data& data, CdRect safe);
-    bool render(Spec, const cdsdk::Settings&, const Data&, const CdFrame&, CdRect);
+    ~Renderer() override;
+    void bind(const CdCreateContext&, std::function<void(uint32_t)>) override;
+    void input(const CdInput&) override;
+    void cancelInput() override;
+    void pause(bool paused) override;
+    void syncInput(Spec spec, const cdsdk::Settings& settings, const Data& data, CdRect safe) override;
+    bool render(Spec, const cdsdk::Settings&, const Data&, const CdFrame&, CdRect) override;
     bool savePng(const std::filesystem::path&, const CdFrame&);
 
 private:

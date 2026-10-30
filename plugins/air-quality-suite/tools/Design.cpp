@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "AirQuality.h"
+#include "plugins/air-quality-suite/AirQuality.h"
 using namespace airplugin;
 
 int wmain(int argc, wchar_t** argv) {

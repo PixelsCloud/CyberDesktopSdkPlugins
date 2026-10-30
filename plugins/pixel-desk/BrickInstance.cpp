@@ -10,6 +10,7 @@ BrickInstance::BrickInstance(const CdCreateContext& context)
                {"animate", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"debris_count", CD_SETTING_INTEGER, 12, 0, {}, 8, 20}},
+      model_(brickclock::EnclosureGeometry{8.85, -3.85, 13.85}),
       renderer_(context, kPixelBrick) {
     environment_.bind(context);
     redraw_.bind(context);

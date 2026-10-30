@@ -1,3 +1,9 @@
+#include <sdk/Controls.h>
+#include <sdk/Environment.h>
+#include <sdk/Images.h>
+#include <sdk/Update.h>
+#include <sdk/cpp/Services.h>
+
 #include <algorithm>
 #include <cmath>
 #include <format>

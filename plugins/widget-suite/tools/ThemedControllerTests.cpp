@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <cstdint>
 #include <functional>
 #include <iostream>
@@ -9,6 +10,7 @@
 #include <string>
 #include <vector>
 
+#include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/ThemedController.h"
 #include "plugins/widget-suite/Widget.h"
 
@@ -67,12 +69,12 @@ cybercanvas::Rect View::photoRegion(CdRect) const {
     return {0, 0, 64, 64};
 }
 
-std::unique_ptr<themed::View> makeView() {
+std::unique_ptr<themed::View> makeView(Spec) {
     ++factories;
     return std::make_unique<View>();
 }
 
-std::unique_ptr<themed::View> emptyView() {
+std::unique_ptr<themed::View> emptyView(Spec) {
     return {};
 }
 
@@ -138,7 +140,35 @@ CdResult CD_CALL Host::command(void*, uint64_t, uint32_t, double) {
     return CD_OK;
 }
 
-void lifecycle(Kind kind, bool mechanical) {
+void hitRegions() {
+    View view;
+    const CdRect safe{100, 50, 480, 320};
+    cdsdk::Settings settings{{}};
+    CdInput input{};
+    input.x = 105;
+    input.y = 55;
+    check(view.photoHit(safe, settings, input), "photo hit lost safe-area offset");
+    input.x = 99;
+    check(!view.photoHit(safe, settings, input), "photo hit accepted outside safe area");
+    const auto album = arrangeAlbum(safe.width, safe.height);
+    input.x = safe.x + album.dock.x + album.dock.width / 2;
+    input.y = safe.y + album.dock.y + album.dock.height / 2;
+    check(!themed::albumPhotoHit(safe, false, input), "album controls opened image viewer");
+    input.x = safe.x + album.counter.x + album.counter.width / 2;
+    input.y = safe.y + album.counter.y + album.counter.height / 2;
+    check(!themed::albumPhotoHit(safe, true, input), "album counter opened image viewer");
+    const Spec spec{"test", Kind::Player, 2, 2, false};
+    const auto player = arrangePlayer(spec, float(safe.width), float(safe.height));
+    Media media;
+    media.controls = CD_MEDIA_CAN_SEEK;
+    media.duration = 100;
+    input.x = safe.x + player.timeline.x + player.timeline.width / 2;
+    input.y = safe.y + player.timeline.y + player.timeline.height / 2;
+    const auto hit = view.playerPointer(spec, safe, settings, media, input);
+    check(hit.control == 4 && std::abs(hit.seekSeconds - 50) < .001, "player seek lost safe-area offset");
+}
+
+void lifecycle(Kind kind, bool mechanical, themed::Defaults presentation) {
     Host host;
     const Spec spec{"test", kind, 1, 4, mechanical};
     CdCreateContext context{
@@ -150,7 +180,17 @@ void lifecycle(Kind kind, bool mechanical) {
           "missing view factory");
     check(themed::create(spec, &context, &instance, sizeof(instance), emptyView) == CD_ERROR_INTERNAL,
           "empty view factory result");
-    check(themed::create(spec, &context, &instance, sizeof(instance), makeView) == CD_OK, "create themed controller");
+    check(themed::create(spec, &context, &instance, sizeof(instance), makeView, presentation) == CD_OK,
+          "create themed controller");
+    if (isMusic(kind) && !isMatrix(kind)) {
+        CdSettingValue value{};
+        check(instance.get_setting(instance.instance, "color", &value, sizeof(value)) == CD_OK &&
+                  value.integer == presentation.spectrumColor,
+              "theme spectrum color was lost");
+        check(instance.get_setting(instance.instance, "show_background", &value, sizeof(value)) == CD_OK &&
+                  bool(value.integer) == presentation.spectrumBackground,
+              "theme background default was lost");
+    }
     check(liveViews == 1, "controller must exclusively own one view");
     instance.set_paused(instance.instance, 1);
     check(host.subscriptions.empty(), "pause retained a subscription");
@@ -193,14 +233,17 @@ void lifecycle(Kind kind, bool mechanical) {
 }  // namespace
 
 int main() try {
-    for (bool mechanical : {false, true}) {
-        for (auto kind : {Kind::Bars, Kind::Radial, Kind::Wide, Kind::Album, Kind::Calendar, Kind::RoundMatrix,
-                          Kind::SquareMatrix, Kind::Player, Kind::InputStats}) {
-            lifecycle(kind, mechanical);
+    hitRegions();
+    for (const auto presentation : {themed::Defaults{}, themed::Defaults{0x11CADFFF, 0x46E9B1FF, false}}) {
+        for (bool mechanical : {false, true}) {
+            for (auto kind : {Kind::Bars, Kind::Radial, Kind::Wide, Kind::Album, Kind::Calendar, Kind::RoundMatrix,
+                              Kind::SquareMatrix, Kind::Player, Kind::InputStats}) {
+                lifecycle(kind, mechanical, presentation);
+            }
         }
     }
-    check(paints == 180, "view frame dispatch count");
-    std::cout << "PASS: 18 themed controller lifecycle scenarios, 180 frame dispatches\n";
+    check(paints == 360, "view frame dispatch count");
+    std::cout << "PASS: 36 themed controller lifecycle scenarios, 360 frame dispatches\n";
     return 0;
 } catch (const std::exception& error) {
     std::cerr << error.what() << '\n';

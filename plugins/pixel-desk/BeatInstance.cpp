@@ -16,7 +16,7 @@ Instance::Instance(const CdCreateContext& context)
                {"running", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0}},
       context_(context),
-      model_(36, context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2")),
+      model_(36, context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2"), GeometryStyle::Pixels),
       renderer_(std::filesystem::path(std::u8string_view(reinterpret_cast<const char8_t*>(context.plugin_directory))) /
                     "assets",
                 model_.compact()) {

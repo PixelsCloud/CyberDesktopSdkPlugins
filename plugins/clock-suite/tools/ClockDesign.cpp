@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "Clock.h"
+#include "plugins/clock-suite/Clock.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc != 2) {

@@ -2,7 +2,7 @@
 
 #include <CyberCanvas/Interaction.h>
 
-#include "services/Interaction.h"
+#include "sdk/services/Interaction.h"
 
 namespace cdsdk {
 // Optional host binding. The router itself remains independent of this SDK.

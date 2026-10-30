@@ -2,11 +2,11 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/weather/Weather.h"
 #include "plugins/songyun-desk/Skin.h"
+#include "plugins/songyun-desk/controllers/calendar/Calendar.h"
+#include "plugins/songyun-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/songyun-desk/controllers/lunar/Lunar.h"
+#include "plugins/songyun-desk/controllers/weather/Weather.h"
 
 namespace {
 using songyun::Canvas;

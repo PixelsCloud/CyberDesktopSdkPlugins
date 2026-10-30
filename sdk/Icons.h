@@ -6,7 +6,7 @@
 #include <map>
 #include <tuple>
 
-#include "services/Icons.h"
+#include "sdk/services/Icons.h"
 
 namespace cdsdk {
 // The plugin never links Qt. Rasterization comes from the optional host entry.

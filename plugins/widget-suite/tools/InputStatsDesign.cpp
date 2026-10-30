@@ -1,7 +1,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Widget.h"
+#include "plugins/widget-suite/Widget.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc != 2)

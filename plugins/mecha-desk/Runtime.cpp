@@ -6,24 +6,24 @@
 #include <nlohmann/json.hpp>
 #include <string_view>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/toys/Toys.h"
-#include "controllers/weather/Weather.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/mecha-desk/Ambience.h"
 #include "plugins/mecha-desk/BasicClock.h"
 #include "plugins/mecha-desk/BrickClock.h"
 #include "plugins/mecha-desk/Player.h"
 #include "plugins/mecha-desk/Pond.h"
 #include "plugins/mecha-desk/Spectrum.h"
+#include "plugins/mecha-desk/controllers/air/AirQuality.h"
+#include "plugins/mecha-desk/controllers/calendar/Calendar.h"
+#include "plugins/mecha-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/mecha-desk/controllers/lunar/Lunar.h"
+#include "plugins/mecha-desk/controllers/matrix/Pixels.h"
+#include "plugins/mecha-desk/controllers/monitor/Monitor.h"
+#include "plugins/mecha-desk/controllers/precision/Clock.h"
+#include "plugins/mecha-desk/controllers/productivity/Productivity.h"
+#include "plugins/mecha-desk/controllers/sign/Sign.h"
+#include "plugins/mecha-desk/controllers/toys/Toys.h"
+#include "plugins/mecha-desk/controllers/weather/Weather.h"
+#include "plugins/mecha-desk/controllers/widget/Widget.h"
 
 namespace {
 template <class Instance>

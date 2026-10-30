@@ -3,15 +3,15 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/vampire-alice/Skin.h"
+#include "plugins/vampire-alice/controllers/air/AirQuality.h"
+#include "plugins/vampire-alice/controllers/calendar/Calendar.h"
+#include "plugins/vampire-alice/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/vampire-alice/controllers/lunar/Lunar.h"
+#include "plugins/vampire-alice/controllers/matrix/Pixels.h"
+#include "plugins/vampire-alice/controllers/monitor/Monitor.h"
+#include "plugins/vampire-alice/controllers/productivity/Productivity.h"
+#include "plugins/vampire-alice/controllers/widget/Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/InputCounter.h"
 

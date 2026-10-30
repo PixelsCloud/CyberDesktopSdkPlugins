@@ -1,12 +1,12 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/beat/Machine.h"
-#include "controllers/marble/Clock.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/toys/Toys.h"
 #include "plugins/songyun-desk/Skin.h"
+#include "plugins/songyun-desk/controllers/beat/Machine.h"
+#include "plugins/songyun-desk/controllers/marble/Clock.h"
+#include "plugins/songyun-desk/controllers/precision/Clock.h"
+#include "plugins/songyun-desk/controllers/sign/Sign.h"
+#include "plugins/songyun-desk/controllers/toys/Toys.h"
 
 namespace {
 using songyun::Canvas;

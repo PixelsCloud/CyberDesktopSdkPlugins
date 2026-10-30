@@ -7,7 +7,7 @@
 #include <limits>
 #include <thread>
 
-#include "Machine.h"
+#include "plugins/beat-machine/Machine.h"
 #include "plugins/beat-machine/tools/TestHost.h"
 #include "plugins/mechanical-instruments/PhysicsMaterials.h"
 

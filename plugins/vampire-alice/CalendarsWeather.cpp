@@ -2,11 +2,11 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/weather/Weather.h"
 #include "plugins/vampire-alice/Skin.h"
+#include "plugins/vampire-alice/controllers/calendar/Calendar.h"
+#include "plugins/vampire-alice/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/vampire-alice/controllers/lunar/Lunar.h"
+#include "plugins/vampire-alice/controllers/weather/Weather.h"
 
 namespace {
 using alice::Canvas;

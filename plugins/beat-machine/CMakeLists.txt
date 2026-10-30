@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include("${CMAKE_CURRENT_SOURCE_DIR}/../common/SdkTool.cmake")
 cd_plugin_sdk_tool(cd_beat_sdk_tool BEAT_LICENSE)
 cd_plugin_canvas_license(box2d BEAT_BOX_LICENSE)
+cd_plugin_json_license(BEAT_JSON_LICENSE)
 set(BEAT_TOOL cd_beat_sdk_tool)
 
 add_library(cd_beat_machine_core STATIC AudioMotion.cpp Model.cpp Renderer.cpp Instance.cpp)
@@ -41,12 +42,13 @@ foreach(layout 6x2 4x2)
   COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/README.txt" "${input}/README.txt"
   COMMAND ${CMAKE_COMMAND} -E copy_if_different "${BEAT_LICENSE}" "${input}/licenses/CyberDesktopSDK-MIT.txt"
   COMMAND ${CMAKE_COMMAND} -E copy_if_different "${BEAT_BOX_LICENSE}" "${input}/licenses/Box2D-MIT.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${BEAT_JSON_LICENSE}" "${input}/licenses/nlohmann-json-MIT.txt"
   COMMAND ${CMAKE_COMMAND} "-DSOURCE_DIRECTORY=${CMAKE_CURRENT_SOURCE_DIR}/assets"
       "-DASSET_DIRECTORY=${input}/assets" "-DBUILD_ROOT=${CMAKE_BINARY_DIR}" "-DLAYOUT=${layout}" "-DKIND=beat"
       -P "${CMAKE_CURRENT_SOURCE_DIR}/../mechanical-instruments/StagePhysicsAssets.cmake"
   COMMAND ${CMAKE_COMMAND} -E copy_directory "${input}" "$<TARGET_FILE_DIR:${module}>"
   COMMAND $<TARGET_FILE:${BEAT_TOOL}> pack "${input}" "${CMAKE_BINARY_DIR}/beat-machine-packages/${beat_id}.cdpkg"
-  DEPENDS ${module} ${BEAT_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${layout}/plugin.textproto" VERBATIM)
+  DEPENDS "${BEAT_JSON_LICENSE}" ${module} ${BEAT_TOOL} "${CMAKE_CURRENT_SOURCE_DIR}/packages/${layout}/plugin.textproto" VERBATIM)
 endforeach()
 add_custom_target(cd_beat_machine DEPENDS cd_beat_machine_6x2 cd_beat_machine_4x2)
 add_custom_target(cd_beat_machine_package DEPENDS cd_beat_machine_package_6x2 cd_beat_machine_package_4x2)
@@ -81,3 +83,5 @@ set_target_properties(cd_beat_machine_testhost_test_support PROPERTIES MSVC_RUNT
 target_link_libraries(cd_beat_machine_tests PRIVATE cd_beat_machine_testhost_test_support)
 
 target_compile_definitions(cd_beat_machine_testhost_test_support PRIVATE CD_BEAT_TEST_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
+
+target_link_libraries(cd_beat_machine_core PRIVATE nlohmann_json::nlohmann_json)

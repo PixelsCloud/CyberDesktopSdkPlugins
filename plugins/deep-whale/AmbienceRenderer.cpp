@@ -5,6 +5,7 @@
 #include <format>
 
 #include "plugins/deep-whale/Ambience.h"
+#include "plugins/deep-whale/Skin.h"
 #include "sdk/services/AmbientAudio.h"
 
 namespace deep_ambience {

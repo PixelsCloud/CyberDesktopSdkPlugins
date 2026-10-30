@@ -3,7 +3,7 @@
 #include <map>
 #include <string_view>
 
-#include "Sign.h"
+#include "plugins/mechanical-sign/Sign.h"
 
 struct Host {
     struct Timer {

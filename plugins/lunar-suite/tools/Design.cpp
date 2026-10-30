@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Lunar.h"
+#include "plugins/lunar-suite/Lunar.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc != 3) {

@@ -1,6 +1,11 @@
 #pragma once
 
+#include <sdk/Canvas.h>
+#include <sdk/Environment.h>
 #include <sdk/Images.h>
+#include <sdk/Interaction.h>
+#include <sdk/Settings.h>
+#include <sdk/Update.h>
 
 #include <array>
 #include <filesystem>
@@ -9,10 +14,10 @@
 #include <optional>
 #include <string_view>
 
-#include "plugins/marble-clock/Clock.h"
+#include "plugins/marble-clock/Model.h"
 
 namespace pixeldesk {
-inline constexpr double kMarbleRadius = 11.5;
+inline constexpr double kMarbleRadius = marbleclock::kPixelRadius;
 
 struct MarbleSpec {
     const char* id;

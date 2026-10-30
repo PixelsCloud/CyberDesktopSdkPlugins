@@ -2,7 +2,7 @@
 
 #include <CyberCanvas/Scene.h>
 
-#include "services/Keyboard.h"
+#include "sdk/services/Keyboard.h"
 
 namespace cdsdk {
 // Owns the optional host registration. No keyboard hooks or worker callbacks.

@@ -1,9 +1,10 @@
+#include <eph.h>
+
 #include <algorithm>
 #include <cmath>
 #include <numbers>
 #include <tuple>
 
-#include "eph.h"
 #include "plugins/precision-clocks/Clock.h"
 
 namespace precisionclock {

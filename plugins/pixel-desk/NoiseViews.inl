@@ -7,7 +7,7 @@ Canvas* activeNoiseCanvas = nullptr;
 void buildNoise(bool compact) {
     using namespace cybercanvas;
     const auto add = [&](Scene::Node parent, ViewKind kind, uint32_t key = 0) {
-        View v;
+        cybercanvas::View v;
         v.kind = kind;
         v.key = key;
         v.inheritGap = false;
@@ -155,7 +155,7 @@ cdsdk::Scene& prepareNoise(Spec spec, const cdsdk::Settings& settings, const Mod
             // keeps the slider capture, keyboard values and painting geometry shared.
             if (!noiseSliders[i]) {
                 const auto parent = noiseGroups[i];
-                View slider;
+                cybercanvas::View slider;
                 slider.kind = ViewKind::Slider;
                 slider.key = 20 + order[i];
                 slider.inheritGap = false;

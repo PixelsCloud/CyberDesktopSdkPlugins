@@ -1,7 +1,9 @@
 // Controller binding reused from plugins/vampire-alice/controllers/widget/Widget.h.
 #pragma once
 
+#include <functional>
 #include <memory>
+#include <string>
 
 #include "plugins/widget-suite/ThemedController.h"
 #include "plugins/widget-suite/Widget.h"

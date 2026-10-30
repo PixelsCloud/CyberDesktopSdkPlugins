@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "Weather.h"
+#include "plugins/weather-suite/Weather.h"
 using namespace weatherplugin;
 
 int wmain(int argc, wchar_t** argv) {

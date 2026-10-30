@@ -1,4 +1,4 @@
-#include "Assets.h"
+#include "runtime/live2d/Assets.h"
 
 #include <Windows.h>
 

@@ -10,10 +10,10 @@
 #include <limits>
 #include <thread>
 
-#include "Widget.h"
 #include "WidgetCatalog.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/PlayerArtwork.h"
+#include "plugins/widget-suite/Widget.h"
 
 namespace {
 void check(bool value, const char* label) {

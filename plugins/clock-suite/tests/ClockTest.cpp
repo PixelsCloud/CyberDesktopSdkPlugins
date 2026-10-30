@@ -7,7 +7,7 @@
 #include <limits>
 #include <map>
 
-#include "Clock.h"
+#include "plugins/clock-suite/Clock.h"
 #include "sdk/services/Environment.h"
 
 namespace {

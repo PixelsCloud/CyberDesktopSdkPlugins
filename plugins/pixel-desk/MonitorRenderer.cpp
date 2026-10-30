@@ -5,6 +5,7 @@
 #include <cmath>
 #include <numbers>
 #include <optional>
+#include <utility>
 
 #include "plugins/pixel-desk/PixelDigits.h"
 #include "plugins/pixel-desk/PixelImages.h"
@@ -13,6 +14,10 @@
 #include "plugins/pixel-desk/PixelParts.h"
 
 namespace pixeldesk {
+namespace {
+std::unique_ptr<monitorplugin::themed::View> makeMonitorView();
+}
+
 using cybercanvas::Canvas;
 using cybercanvas::Point;
 using cybercanvas::Rect;
@@ -33,18 +38,8 @@ CdResult createMonitor(const CdCreateContext* context, CdInstanceApi* output, ui
     }
     try {
         const auto& spec = monitorSpec(context->plugin_id);
-        const auto result =
-            monitorplugin::create({spec.id, int(spec.rows), int(spec.columns), true}, context, output, size);
-        if (result != CD_OK || spec.columns != 1) {
-            return result;
-        }
-        const CdSettingValue primary{sizeof(CdSettingValue), CD_SETTING_CHOICE, "primary", 0, 0, "ram"};
-        const auto applied = output->apply_settings(output->instance, &primary, 1);
-        if (applied != CD_OK) {
-            output->destroy(output->instance);
-            *output = {};
-        }
-        return applied;
+        return monitorplugin::themed::create({spec.id, int(spec.rows), int(spec.columns), true}, context, output, size,
+                                             makeMonitorView, true);
     } catch (...) {
         return CD_ERROR_ARGUMENT;
     }
@@ -263,28 +258,34 @@ uint64_t MonitorFace::cacheBuilds() const {
 }
 }  // namespace pixeldesk
 
-namespace monitorplugin {
-struct Renderer::Impl {
-    pixeldesk::MonitorFace face;
+namespace pixeldesk {
+namespace {
+class MonitorView final : public monitorplugin::themed::View {
+public:
+    void bind(const CdCreateContext&, std::function<void()>) override;
+    void pause(bool) override;
+    bool render(monitorplugin::Spec, const monitorplugin::Options&, monitorplugin::Values, const CdFrame&,
+                CdRect) override;
+
+private:
+    MonitorFace face_;
 };
 
-Renderer::Renderer() : m_impl(std::make_unique<Impl>()) {}
-
-Renderer::~Renderer() = default;
-
-void Renderer::bind(const CdCreateContext& context, std::function<void()> changed) {
-    m_impl->face.bind(context, std::move(changed));
+void MonitorView::bind(const CdCreateContext& context, std::function<void()> changed) {
+    face_.bind(context, std::move(changed));
 }
 
-void Renderer::pause(bool paused) {
-    m_impl->face.pause(paused);
+void MonitorView::pause(bool paused) {
+    face_.pause(paused);
 }
 
-bool Renderer::render(Spec spec, const Options& options, Values values, const CdFrame& frame, CdRect safe) {
-    return m_impl->face.render(spec, options, values, frame, safe);
+bool MonitorView::render(monitorplugin::Spec spec, const monitorplugin::Options& options, monitorplugin::Values values,
+                         const CdFrame& frame, CdRect safe) {
+    return face_.render(spec, options, values, frame, safe);
 }
 
-bool Renderer::savePng(const std::wstring& path, const CdFrame& frame, CdColor) {
-    return m_impl->face.save(path, frame);
+std::unique_ptr<monitorplugin::themed::View> makeMonitorView() {
+    return std::make_unique<MonitorView>();
 }
-}  // namespace monitorplugin
+}  // namespace
+}  // namespace pixeldesk

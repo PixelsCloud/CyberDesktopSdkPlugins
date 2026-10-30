@@ -6,7 +6,7 @@
 #include <iostream>
 #include <map>
 
-#include "Monitor.h"
+#include "plugins/system-info-suite/Monitor.h"
 
 namespace {
 void check(bool ok, const char* label) {

@@ -4,7 +4,7 @@
 #include <limits>
 #include <map>
 
-#include "Toys.h"
+#include "plugins/physics-toys/Toys.h"
 
 namespace {
 void check(bool condition, const char* message) {

@@ -1,19 +1,27 @@
 #pragma once
 
-#include "plugins/songyun-desk/Skin.h"
+#include <functional>
+#include <memory>
+#include <string>
+
+namespace songyun {
+class Skin;
+}
+
 #include "plugins/system-info-suite/Monitor.h"
+#include "plugins/system-info-suite/ThemedController.h"
 
 namespace songyun_monitor {
 using namespace monitorplugin;
 
-class Renderer {
+class Renderer final : public monitorplugin::themed::View {
 public:
     Renderer();
-    ~Renderer();
-    void bind(const CdCreateContext&, std::function<void()> changed);
-    void pause(bool paused);
-    bool poll();
-    bool render(Spec, const Options&, Values, const CdFrame&, CdRect safe = {});
+    ~Renderer() override;
+    void bind(const CdCreateContext&, std::function<void()> changed) override;
+    void pause(bool paused) override;
+    bool poll() override;
+    bool render(Spec, const Options&, Values, const CdFrame&, CdRect safe = {}) override;
     bool savePng(const std::wstring&, const CdFrame&, CdColor background);
 
 private:

@@ -103,6 +103,7 @@ set(CD_PLUGIN_DEPENDENCIES_mechanical-pixels
     widget-suite)
 set(CD_PLUGIN_DEPENDENCIES_pixel-desk
     air-quality-suite
+    ambience-suite
     brick-clock
     clock-suite
     hourglass-suite
@@ -113,7 +114,10 @@ set(CD_PLUGIN_DEPENDENCIES_pixel-desk
     mechanical-pixels
     physics-toys
     precision-clocks
-    weather-suite)
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
 set(CD_PLUGIN_DEPENDENCIES_precision-clocks
     lunar-suite)
 set(CD_PLUGIN_DEPENDENCIES_redline-desk

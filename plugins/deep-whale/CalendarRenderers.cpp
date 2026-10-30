@@ -4,9 +4,9 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/calendar/Calendar.h"
-#include "controllers/lunar/Lunar.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/calendar/Calendar.h"
+#include "plugins/deep-whale/controllers/lunar/Lunar.h"
 
 namespace {
 using whaleskin::Canvas;

@@ -1,12 +1,12 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/beat/Machine.h"
-#include "controllers/marble/Clock.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/toys/Toys.h"
 #include "plugins/redline-desk/Skin.h"
+#include "plugins/redline-desk/controllers/beat/Machine.h"
+#include "plugins/redline-desk/controllers/marble/Clock.h"
+#include "plugins/redline-desk/controllers/precision/Clock.h"
+#include "plugins/redline-desk/controllers/sign/Sign.h"
+#include "plugins/redline-desk/controllers/toys/Toys.h"
 
 namespace {
 using redline::Canvas;

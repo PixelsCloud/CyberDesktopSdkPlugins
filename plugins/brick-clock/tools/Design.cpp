@@ -1,7 +1,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Clock.h"
+#include "plugins/brick-clock/Clock.h"
 
 int wmain(int argc, wchar_t** argv) try {
     if (argc < 2) {

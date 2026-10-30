@@ -17,7 +17,7 @@ cd_plugin_sdk_tool(cd_monitor_sdk_tool CD_MONITOR_LICENSE)
 cd_plugin_canvas_license(tweeny CD_MONITOR_TWEENY_LICENSE)
 cd_plugin_canvas_license(yoga CD_MONITOR_YOGA_LICENSE)
 
-add_library(cd_monitor_core STATIC Monitor.cpp MonitorRenderer.cpp)
+add_library(cd_monitor_core STATIC Monitor.cpp MonitorModel.cpp ThemedController.cpp MonitorRenderer.cpp)
 target_link_libraries(cd_monitor_core PUBLIC CyberDesktopSDK::SDK PRIVATE CyberCanvas::Motion d2d1 dwrite windowscodecs ole32 user32)
 target_include_directories(cd_monitor_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_compile_definitions(cd_monitor_core PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)
@@ -70,3 +70,12 @@ endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/../common/Artwork.cmake")
 target_link_libraries(cd_monitor_core PUBLIC cd_mechanical_art)
+
+add_executable(cd_themed_monitor_tests EXCLUDE_FROM_ALL tools/ThemedControllerTests.cpp)
+target_link_libraries(cd_themed_monitor_tests PRIVATE cd_monitor_core)
+target_compile_options(cd_themed_monitor_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_themed_monitor_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+enable_testing()
+add_test(NAME themed_monitor_controller COMMAND cd_themed_monitor_tests)
+set_tests_properties(themed_monitor_controller PROPERTIES TIMEOUT 30)

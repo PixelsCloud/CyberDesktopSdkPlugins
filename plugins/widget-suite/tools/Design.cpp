@@ -7,8 +7,8 @@
 #include <iostream>
 #include <thread>
 
-#include "Widget.h"
 #include "WidgetCatalog.h"
+#include "plugins/widget-suite/Widget.h"
 
 int wmain(int argc, wchar_t** argv) {
     using namespace widgetplugin;

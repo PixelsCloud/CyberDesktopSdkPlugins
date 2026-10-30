@@ -2,7 +2,7 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/precision/Clock.h"
+#include "plugins/deep-whale/controllers/precision/Clock.h"
 
 namespace deep_precision {
 using whaleskin::Canvas;

@@ -89,3 +89,5 @@ target_compile_options(cd_redline_percussion PRIVATE /utf-8 /W4)
 set_target_properties(cd_redline_percussion PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
   AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 target_link_libraries(cd_redline_runtime PRIVATE cd_redline_percussion)
+
+include("${CMAKE_CURRENT_LIST_DIR}/../common/ThemedPhysicsTests.cmake")

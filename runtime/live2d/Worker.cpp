@@ -13,9 +13,9 @@
 #include <array>
 #include <memory>
 
-#include "Model.h"
-#include "Protocol.h"
-#include "ShaderCache.h"
+#include "runtime/live2d/Model.h"
+#include "runtime/live2d/Protocol.h"
+#include "runtime/live2d/ShaderCache.h"
 #undef D3DCompile
 #include <Rendering/D3D11/CubismDeviceInfo_D3D11.hpp>
 

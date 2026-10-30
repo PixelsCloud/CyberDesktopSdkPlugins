@@ -2,11 +2,11 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/calendar/Calendar.h"
-#include "controllers/hourglass/MechanicalHourglass.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/weather/Weather.h"
 #include "plugins/redline-desk/Skin.h"
+#include "plugins/redline-desk/controllers/calendar/Calendar.h"
+#include "plugins/redline-desk/controllers/hourglass/MechanicalHourglass.h"
+#include "plugins/redline-desk/controllers/lunar/Lunar.h"
+#include "plugins/redline-desk/controllers/weather/Weather.h"
 
 namespace {
 using redline::Canvas;

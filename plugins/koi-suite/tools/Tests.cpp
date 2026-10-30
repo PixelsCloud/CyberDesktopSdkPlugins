@@ -15,7 +15,7 @@
 #include <string_view>
 #include <vector>
 
-#include "Pond.h"
+#include "plugins/koi-suite/Pond.h"
 
 namespace {
 void check(bool passed, const char* message) {

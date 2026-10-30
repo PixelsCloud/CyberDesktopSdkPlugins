@@ -2,7 +2,7 @@
 
 namespace deep_widget {
 namespace {
-std::unique_ptr<widgetplugin::themed::View> makeView() {
+std::unique_ptr<widgetplugin::themed::View> makeView(Spec) {
     return std::make_unique<Canvas>();
 }
 }  // namespace

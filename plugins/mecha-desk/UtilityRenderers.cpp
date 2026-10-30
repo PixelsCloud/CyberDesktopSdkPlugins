@@ -3,14 +3,14 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/air/AirQuality.h"
+#include "plugins/mecha-desk/controllers/calendar/Calendar.h"
+#include "plugins/mecha-desk/controllers/lunar/Lunar.h"
+#include "plugins/mecha-desk/controllers/matrix/Pixels.h"
+#include "plugins/mecha-desk/controllers/monitor/Monitor.h"
+#include "plugins/mecha-desk/controllers/productivity/Productivity.h"
+#include "plugins/mecha-desk/controllers/widget/Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/InputCounter.h"
 

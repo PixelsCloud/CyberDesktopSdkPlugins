@@ -3,14 +3,14 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/air/AirQuality.h"
-#include "controllers/calendar/Calendar.h"
-#include "controllers/lunar/Lunar.h"
-#include "controllers/matrix/Pixels.h"
-#include "controllers/monitor/Monitor.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/deep-whale/Skin.h"
+#include "plugins/deep-whale/controllers/air/AirQuality.h"
+#include "plugins/deep-whale/controllers/calendar/Calendar.h"
+#include "plugins/deep-whale/controllers/lunar/Lunar.h"
+#include "plugins/deep-whale/controllers/matrix/Pixels.h"
+#include "plugins/deep-whale/controllers/monitor/Monitor.h"
+#include "plugins/deep-whale/controllers/productivity/Productivity.h"
+#include "plugins/deep-whale/controllers/widget/Widget.h"
 #include "plugins/widget-suite/AlbumArtwork.h"
 #include "plugins/widget-suite/InputCounter.h"
 

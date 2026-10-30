@@ -7,7 +7,7 @@
 #include <map>
 #include <stdexcept>
 
-#include "Clock.h"
+#include "plugins/brick-clock/Clock.h"
 
 namespace {
 using namespace brickclock;

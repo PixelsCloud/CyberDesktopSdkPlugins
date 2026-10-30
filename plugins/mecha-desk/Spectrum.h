@@ -4,8 +4,8 @@
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
 
-#include "controllers/matrix/Pixels.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/matrix/Pixels.h"
 
 namespace aeris_spectrum {
 enum class MatrixForm { Dots, Rods, Radial, Armour };

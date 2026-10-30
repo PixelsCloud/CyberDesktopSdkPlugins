@@ -84,7 +84,12 @@ atmosphere::Spec ambienceSpec(const BasicSpec& plate) {
 }
 }  // namespace pixeldesk
 
-namespace atmosphere {
+namespace pixeldesk {
+using atmosphere::Kind;
+using atmosphere::Model;
+using atmosphere::Spec;
+using atmosphere::wallSeconds;
+
 namespace {
 using cybercanvas::Canvas;
 using cybercanvas::Point;
@@ -116,7 +121,7 @@ void label(Canvas& canvas, std::wstring text, Rect area, double size, uint32_t c
 }
 }  // namespace
 
-struct Renderer::Impl {
+struct AmbienceRenderer::Impl {
     CdCreateContext context{};
     std::string directory;
     std::unique_ptr<pixeldesk::BasicFace> face;
@@ -221,11 +226,11 @@ struct Renderer::Impl {
     }
 };
 
-Renderer::Renderer(std::wstring) : impl_(std::make_unique<Impl>()) {}
+AmbienceRenderer::AmbienceRenderer(std::wstring) : impl_(std::make_unique<Impl>()) {}
 
-Renderer::~Renderer() = default;
+AmbienceRenderer::~AmbienceRenderer() = default;
 
-void Renderer::bindHost(const CdCreateContext& context) {
+void AmbienceRenderer::bindHost(const CdCreateContext& context) {
     impl_->context = context;
     impl_->directory = context.plugin_directory ? context.plugin_directory : "";
     impl_->context.plugin_directory = impl_->directory.c_str();
@@ -234,11 +239,11 @@ void Renderer::bindHost(const CdCreateContext& context) {
     impl_->scene.bind(context);
 }
 
-void Renderer::bindPlant(const CdCreateContext& context, std::function<void(uint32_t)> action) {
+void AmbienceRenderer::bindPlant(const CdCreateContext& context, std::function<void(uint32_t)> action) {
     impl_->controls.bind(context, std::move(action));
 }
 
-void Renderer::onInvalidate(std::function<void()> callback) {
+void AmbienceRenderer::onInvalidate(std::function<void()> callback) {
     impl_->invalidate = std::move(callback);
     impl_->foliage.onChange([this] {
         if (impl_->invalidate) {
@@ -247,12 +252,12 @@ void Renderer::onInvalidate(std::function<void()> callback) {
     });
 }
 
-void Renderer::onAction(std::function<void(cybercanvas::SceneEvent)> callback) {
+void AmbienceRenderer::onAction(std::function<void(cybercanvas::SceneEvent)> callback) {
     impl_->action = std::move(callback);
     impl_->scene.onAction(impl_->action);
 }
 
-void Renderer::onDiagnostics(std::function<void(cdsdk::InstanceStats&)> callback) {
+void AmbienceRenderer::onDiagnostics(std::function<void(cdsdk::InstanceStats&)> callback) {
     impl_->scene.diagnostics().onSample([callback = std::move(callback)] {
         cdsdk::InstanceStats stats;
         callback(stats);
@@ -260,12 +265,12 @@ void Renderer::onDiagnostics(std::function<void(cdsdk::InstanceStats&)> callback
     });
 }
 
-cdsdk::Scene& Renderer::noiseScene(Spec spec, const cdsdk::Settings& settings, const Model& model, double width,
-                                   double height, double dpi) {
+cdsdk::Scene& AmbienceRenderer::noiseScene(Spec spec, const cdsdk::Settings& settings, const Model& model, double width,
+                                           double height, double dpi) {
     return impl_->prepareNoise(spec, settings, model, width, height, dpi);
 }
 
-bool Renderer::plantInput(Spec spec, const cdsdk::Settings&, CdRect safe, const CdInput& event) {
+bool AmbienceRenderer::plantInput(Spec spec, const cdsdk::Settings&, CdRect safe, const CdInput& event) {
     const auto& plate = pixeldesk::ambiencePlate(spec.id);
     const auto bounds = pixeldesk::fitBody(safe.width, safe.height, plate.visible.width, plate.visible.height);
     const double scale = bounds.width / plate.visible.width;
@@ -281,37 +286,37 @@ bool Renderer::plantInput(Spec spec, const cdsdk::Settings&, CdRect safe, const 
     return true;
 }
 
-void Renderer::cancelInput() {
+void AmbienceRenderer::cancelInput() {
     impl_->controls.cancel();
     impl_->scene.cancel();
 }
 
-bool Renderer::advanceFeedback(double seconds) {
+bool AmbienceRenderer::advanceFeedback(double seconds) {
     return impl_->scene.advance(seconds);
 }
 
-bool Renderer::feedbackActive() const {
+bool AmbienceRenderer::feedbackActive() const {
     return impl_->scene.active();
 }
 
-bool Renderer::imagesPending() const {
+bool AmbienceRenderer::imagesPending() const {
     return !impl_->face || !impl_->face->ready() || impl_->foliage.pending() || impl_->foliage.stats().failed ||
            impl_->foliage.stats().ready < impl_->sampled.size();
 }
 
-bool Renderer::pollImages() {
+bool AmbienceRenderer::pollImages() {
     return impl_->foliage.poll();
 }
 
-void Renderer::pauseImages(bool paused) {
+void AmbienceRenderer::pauseImages(bool paused) {
     if (impl_->face) {
         impl_->face->pause(paused);
     }
     impl_->foliage.pause(paused);
 }
 
-bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Model& model, const CdFrame& frame,
-                      CdRect safe) try {
+bool AmbienceRenderer::render(Spec spec, const cdsdk::Settings& settings, const Model& model, const CdFrame& frame,
+                              CdRect safe) try {
     impl_->pixelDpi = frame.device_pixel_ratio;
     impl_->ensure(spec);
     if (spec.kind == Kind::Noise) {
@@ -338,7 +343,32 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Model& m
     return false;
 }
 
-bool Renderer::save(const std::wstring& filename, const CdFrame& frame) {
+bool AmbienceRenderer::save(const std::wstring& filename, const CdFrame& frame) {
     return impl_->face && impl_->face->save(filename, frame);
 }
-}  // namespace atmosphere
+
+namespace {
+constexpr atmosphere::themed::Defaults presentation{
+    .plantBackground = false, .plantInfo = false, .compactSucculent = true, .indicateMissingAudio = true};
+
+std::unique_ptr<atmosphere::themed::View> makeAmbienceView(const CdCreateContext&) {
+    return std::make_unique<AmbienceRenderer>();
+}
+}  // namespace
+
+cybercanvas::SceneEvent AmbienceRenderer::noiseInput(Spec spec, const cdsdk::Settings& settings, const Model& model,
+                                                     CdRect safe, const CdInput& input, double dpr, bool& needsPaint) {
+    auto& scene = noiseScene(spec, settings, model, safe.width, safe.height, dpr);
+    auto result = scene.input(input, {safe.x, safe.y});
+    needsPaint = scene.needsPaint();
+    return result;
+}
+
+cdsdk::Settings ambienceDefaults(Spec spec) {
+    return atmosphere::themed::defaults(spec, presentation);
+}
+
+CdResult createAmbience(Spec spec, const CdCreateContext* context, CdInstanceApi* out, uint32_t size) {
+    return atmosphere::themed::create(spec, context, out, size, makeAmbienceView, presentation);
+}
+}  // namespace pixeldesk

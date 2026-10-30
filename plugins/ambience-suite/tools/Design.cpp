@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "AmbienceCatalog.h"
-#include "Atmosphere.h"
+#include "plugins/ambience-suite/Atmosphere.h"
 
 int wmain(int argc, wchar_t** argv) {
     if (argc < 3 || argc > 4) {

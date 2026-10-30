@@ -1,12 +1,12 @@
 #include <cmath>
 #include <numbers>
 
-#include "controllers/beat/Machine.h"
-#include "controllers/marble/Clock.h"
-#include "controllers/precision/Clock.h"
-#include "controllers/sign/Sign.h"
-#include "controllers/toys/Toys.h"
 #include "plugins/vampire-alice/Skin.h"
+#include "plugins/vampire-alice/controllers/beat/Machine.h"
+#include "plugins/vampire-alice/controllers/marble/Clock.h"
+#include "plugins/vampire-alice/controllers/precision/Clock.h"
+#include "plugins/vampire-alice/controllers/sign/Sign.h"
+#include "plugins/vampire-alice/controllers/toys/Toys.h"
 
 namespace {
 using alice::Canvas;

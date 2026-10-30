@@ -20,6 +20,33 @@
 namespace widgetplugin::themed {
 
 View::~View() = default;
+
+namespace {
+bool contains(cybercanvas::Rect area, double x, double y) {
+    return x >= area.x && y >= area.y && x < area.x + area.width && y < area.y + area.height;
+}
+}  // namespace
+
+bool albumPhotoHit(CdRect safe, bool counter, const CdInput& input) {
+    const auto geometry = arrangeAlbum(safe.width, safe.height);
+    const double x = input.x - safe.x, y = input.y - safe.y;
+    return contains({0, 0, safe.width, safe.height}, x, y) && !contains(geometry.dock, x, y) &&
+           (!counter || !contains(geometry.counter, x, y));
+}
+
+bool View::photoHit(CdRect safe, const cdsdk::Settings&, const CdInput& input) const {
+    return contains(photoRegion(safe), input.x - safe.x, input.y - safe.y);
+}
+
+PlayerPointer View::playerPointer(Spec spec, CdRect safe, const cdsdk::Settings&, const Media& media,
+                                  const CdInput& input) const {
+    const auto layout = arrangePlayer(spec, float(safe.width), float(safe.height));
+    const int hit = playerHit(layout, input.x - safe.x, input.y - safe.y, media.controls);
+    return {hit, hit == 4 ? std::clamp((input.x - safe.x - layout.timeline.x) / layout.timeline.width, 0.0, 1.0) *
+                                media.duration
+                          : 0};
+}
+
 #define PRESENTATION                                                                                   \
     {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},                                 \
         {"font_family", CD_SETTING_FONT, 0, 0, mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy"}, { \
@@ -28,7 +55,7 @@ View::~View() = default;
         }                                                                                              \
     }
 
-cdsdk::Settings defaults(Kind kind, bool mechanical) {
+cdsdk::Settings defaults(Kind kind, bool mechanical, Defaults presentation) {
     if (kind == Kind::InputStats && mechanical) {
         return {{{"show_total", CD_SETTING_TOGGLE, 0}, {"reduced_motion", CD_SETTING_TOGGLE, 0}, PRESENTATION}};
     }
@@ -102,9 +129,9 @@ cdsdk::Settings defaults(Kind kind, bool mechanical) {
     return {{{"gain", CD_SETTING_NUMBER, 0, 3.5, "", .2, 5},
              {"release", CD_SETTING_INTEGER, 160, 0, "", 40, 600},
              {"peaks", CD_SETTING_TOGGLE, 1},
-             {"color", CD_SETTING_COLOR, 0xadd7efff},
-             {"color_top", CD_SETTING_COLOR, 0xf0d9adff},
-             {"show_background", CD_SETTING_TOGGLE, 1},
+             {"color", CD_SETTING_COLOR, presentation.spectrumColor},
+             {"color_top", CD_SETTING_COLOR, presentation.spectrumTop},
+             {"show_background", CD_SETTING_TOGGLE, presentation.spectrumBackground},
              {"background", CD_SETTING_COLOR, 0x17222CDD},
              PRESENTATION}};
 }
@@ -142,8 +169,10 @@ struct Instance {
     float fade = 1;
     CdRect safe{};
 
-    explicit Instance(Spec value, std::unique_ptr<View> view)
-        : spec(value), settings(widgetplugin::themed::defaults(value.kind, value.mechanical)), canvas(std::move(view)) {
+    explicit Instance(Spec value, std::unique_ptr<View> view, Defaults presentation)
+        : spec(value),
+          settings(widgetplugin::themed::defaults(value.kind, value.mechanical, presentation)),
+          canvas(std::move(view)) {
         if (spec.kind == Kind::Album) {
             album = std::make_unique<Album>();
         }
@@ -546,8 +575,8 @@ void CD_CALL input(void* pointer, const CdInput* event) noexcept {
         self.canvas->syncInput(self.spec, self.media, self.safe, self.photo, {self.slideshowPaused, self.photoPending});
         self.canvas->input(*event);
         if (self.spec.kind == Kind::Player) {
-            const auto layout = arrangePlayer(self.spec, float(self.safe.width), float(self.safe.height));
-            const int hit = playerHit(layout, event->x - self.safe.x, event->y - self.safe.y, self.media.controls);
+            const auto pointer = self.canvas->playerPointer(self.spec, self.safe, self.settings, self.media, *event);
+            const int hit = pointer.control;
             if (event->kind == CD_INPUT_PRESS && (event->buttons & CD_BUTTON_LEFT)) {
                 self.pressedPlayer = self.media.commandResult == CD_ERROR_BUSY || hit != 4 ? 0 : hit;
                 if (self.pressedPlayer) {
@@ -563,11 +592,7 @@ void CD_CALL input(void* pointer, const CdInput* event) noexcept {
                 self.pressedPlayer = 0;
                 if (pressed && hit == pressed) {
                     constexpr uint32_t commands[]{0, CD_MEDIA_PREVIOUS, CD_MEDIA_TOGGLE, CD_MEDIA_NEXT, CD_MEDIA_SEEK};
-                    const double value =
-                        hit == 4 ? std::clamp((event->x - self.safe.x - layout.timeline.x) / layout.timeline.width, 0.0,
-                                              1.0) *
-                                       self.media.duration
-                                 : 0;
+                    const double value = hit == 4 ? pointer.seekSeconds : 0;
                     const auto result =
                         self.mediaHost.media_command(self.context, self.mediaToken, commands[hit], value);
                     if (result != CD_OK) {
@@ -588,12 +613,7 @@ void CD_CALL input(void* pointer, const CdInput* event) noexcept {
                 self.requestPhoto(1);
             } else if (self.spec.mechanical && (event->buttons & CD_BUTTON_LEFT) && self.photo.bitmap &&
                        !self.photo.filepath.empty() && self.imageViewer.open) {
-                const auto photo = self.canvas->photoRegion(self.safe);
-                const double x = event->x - self.safe.x, y = event->y - self.safe.y;
-                const auto contains = [&](cybercanvas::Rect r) {
-                    return x >= r.x && y >= r.y && x < r.x + r.width && y < r.y + r.height;
-                };
-                if (contains(photo)) {
+                if (self.canvas->photoHit(self.safe, self.settings, *event)) {
                     const auto utf8 = std::filesystem::path(self.photo.filepath).u8string();
                     const auto result = self.imageViewer.open(self.context, reinterpret_cast<const char*>(utf8.data()),
                                                               uint32_t(utf8.size()));
@@ -755,7 +775,8 @@ CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
 }
 }  // namespace
 
-CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* out, uint32_t size, ViewFactory factory) {
+CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* out, uint32_t size, ViewFactory factory,
+                Defaults presentation) {
     try {
         if (!factory || !context || context->struct_size < sizeof(CdCreateContext) ||
             context->abi_version != CD_PLUGIN_ABI_VERSION || !context->host ||
@@ -770,11 +791,11 @@ CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* out, u
         if (spec.kind == Kind::InputStats && context->host->struct_size < sizeof(CdInputStatsHostApi)) {
             return CD_ERROR_UNSUPPORTED;
         }
-        auto view = factory();
+        auto view = factory(spec);
         if (!view) {
             return CD_ERROR_INTERNAL;
         }
-        auto self = std::make_unique<Instance>(spec, std::move(view));
+        auto self = std::make_unique<Instance>(spec, std::move(view), presentation);
         self->environment.bind(*context);
         self->host = *context->host;
         self->context = context->host_context;

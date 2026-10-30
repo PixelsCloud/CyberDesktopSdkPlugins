@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <thread>
 
-#include "Clock.h"
+#include "plugins/marble-clock/Clock.h"
 #include "plugins/mechanical-instruments/PhysicsMaterials.h"
 
 namespace {

@@ -11,6 +11,7 @@
 #include "plugins/pixel-desk/PixelImages.h"
 #include "plugins/pixel-desk/PixelLayout.h"
 #include "plugins/pixel-desk/PixelParts.h"
+#include "plugins/pixel-desk/PixelToysModel.h"
 
 namespace pixeldesk {
 using cybercanvas::Canvas;
@@ -266,7 +267,8 @@ uint64_t SpringRenderer::cacheBuilds() const {
 }
 
 SpringInstance::SpringInstance(const CdCreateContext& context)
-    : settings(springDefaults()), model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true) {
+    : settings(springDefaults()),
+      model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true, pixelToysOptions()) {
     canvas_.bindGpu(context);
     environment_.bind(context);
     interaction_.bind(context);

@@ -4,7 +4,9 @@
 #include <map>
 #include <string_view>
 
-#include "Machine.h"
+#include "sdk/PluginApi.h"
+#include "sdk/services/DataServices.h"
+#include "sdk/services/Environment.h"
 
 struct Host {
     struct Timer {

@@ -2,13 +2,13 @@
 
 #include <sdk/cpp/Plugin.h>
 
-#include "controllers/ambience/Atmosphere.h"
-#include "controllers/productivity/Productivity.h"
-#include "controllers/toys/Toys.h"
-#include "controllers/widget/Widget.h"
 #include "plugins/mechanical-desk/BasicClock.h"
 #include "plugins/mechanical-desk/Brick.h"
 #include "plugins/mechanical-desk/Pond.h"
+#include "plugins/mechanical-desk/controllers/ambience/Atmosphere.h"
+#include "plugins/mechanical-desk/controllers/productivity/Productivity.h"
+#include "plugins/mechanical-desk/controllers/toys/Toys.h"
+#include "plugins/mechanical-desk/controllers/widget/Widget.h"
 
 namespace {
 template <class Instance>

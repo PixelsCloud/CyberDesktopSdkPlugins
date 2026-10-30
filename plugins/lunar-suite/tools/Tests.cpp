@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "Lunar.h"
+#include "plugins/lunar-suite/Lunar.h"
 
 namespace {
 void check(bool value, const char* message) {

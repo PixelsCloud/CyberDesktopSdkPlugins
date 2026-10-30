@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "AmbienceCatalog.h"
-#include "Atmosphere.h"
+#include "plugins/ambience-suite/Atmosphere.h"
 #include "plugins/ambience-suite/NoiseScene.h"
 #include "sdk/services/AmbientAudio.h"
 

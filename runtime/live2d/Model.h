@@ -13,7 +13,7 @@
 #include <memory>
 #include <vector>
 
-#include "Assets.h"
+#include "runtime/live2d/Assets.h"
 
 namespace cd::live2d {
 void initializeCubism();

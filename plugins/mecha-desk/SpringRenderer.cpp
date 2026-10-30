@@ -2,8 +2,8 @@
 #include <format>
 #include <numbers>
 
-#include "controllers/toys/Toys.h"
 #include "plugins/mecha-desk/Skin.h"
+#include "plugins/mecha-desk/controllers/toys/Toys.h"
 
 namespace {
 using aerisskin::Canvas;

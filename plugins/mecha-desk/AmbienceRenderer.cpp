@@ -5,6 +5,7 @@
 #include <format>
 
 #include "plugins/mecha-desk/Ambience.h"
+#include "plugins/mecha-desk/Skin.h"
 #include "sdk/services/AmbientAudio.h"
 
 namespace aeris_ambience {

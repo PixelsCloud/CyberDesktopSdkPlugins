@@ -8,6 +8,7 @@
 #include <format>
 #include <numbers>
 #include <optional>
+#include <utility>
 
 #include "plugins/pixel-desk/PixelDigits.h"
 #include "plugins/pixel-desk/PixelImages.h"
@@ -17,6 +18,10 @@
 #include "plugins/pixel-desk/PixelProductivity.h"
 
 namespace pixeldesk {
+namespace {
+std::unique_ptr<productivity::themed::View> makeProductivityView();
+}
+
 using cybercanvas::Canvas;
 using cybercanvas::Rect;
 using Microsoft::WRL::ComPtr;
@@ -36,8 +41,8 @@ CdResult createProductivity(const CdCreateContext* context, CdInstanceApi* outpu
     }
     try {
         const auto& spec = productivitySpec(context->plugin_id);
-        return productivity::create({spec.id, spec.kind, int(spec.rows), int(spec.columns), true}, context, output,
-                                    size);
+        return productivity::themed::create({spec.id, spec.kind, int(spec.rows), int(spec.columns), true}, context,
+                                            output, size, makeProductivityView);
     } catch (...) {
         return CD_ERROR_ARGUMENT;
     }
@@ -296,83 +301,93 @@ uint64_t NetworkFace::cacheBuilds() const {
 }
 }  // namespace pixeldesk
 
-namespace productivity {
-struct Renderer::Impl {
+namespace pixeldesk {
+namespace {
+using productivity::Data;
+using productivity::Kind;
+using productivity::Spec;
+
+class ProductivityView final : public productivity::themed::View {
+public:
+    ProductivityView();
+    void bind(const CdCreateContext&, std::function<void(uint32_t)>) override;
+    void input(const CdInput&) override;
+    void cancelInput() override;
+    void pause(bool) override;
+    void syncInput(Spec, const cdsdk::Settings&, const Data&, CdRect) override;
+    bool render(Spec, const cdsdk::Settings&, const Data&, const CdFrame&, CdRect) override;
+
+private:
     std::unique_ptr<pixeldesk::NetworkFace> network;
     std::unique_ptr<pixeldesk::DiskFace> disk;
     std::unique_ptr<pixeldesk::TimerFace> timer;
     std::unique_ptr<pixeldesk::CountdownFace> countdown;
 };
 
-Renderer::Renderer() : impl(std::make_unique<Impl>()) {}
+ProductivityView::ProductivityView() = default;
 
-Renderer::~Renderer() = default;
-
-void Renderer::bind(const CdCreateContext& context, std::function<void(uint32_t)> action) {
+void ProductivityView::bind(const CdCreateContext& context, std::function<void(uint32_t)> action) {
     if (pixeldesk::productivitySpec(context.plugin_id).kind == Kind::Timer) {
-        impl->timer = std::make_unique<pixeldesk::TimerFace>();
-        impl->timer->bind(context, std::move(action));
+        timer = std::make_unique<pixeldesk::TimerFace>();
+        timer->bind(context, std::move(action));
     } else if (pixeldesk::productivitySpec(context.plugin_id).kind == Kind::Countdown) {
-        impl->countdown = std::make_unique<pixeldesk::CountdownFace>();
-        impl->countdown->bind(context);
+        countdown = std::make_unique<pixeldesk::CountdownFace>();
+        countdown->bind(context);
     } else if (pixeldesk::productivitySpec(context.plugin_id).kind == Kind::Disk) {
-        impl->disk = std::make_unique<pixeldesk::DiskFace>();
-        impl->disk->bind(context);
+        disk = std::make_unique<pixeldesk::DiskFace>();
+        disk->bind(context);
     } else {
-        impl->network = std::make_unique<pixeldesk::NetworkFace>();
-        impl->network->bind(context);
+        network = std::make_unique<pixeldesk::NetworkFace>();
+        network->bind(context);
     }
 }
 
-void Renderer::pause(bool paused) {
-    if (impl->countdown) {
-        impl->countdown->pause(paused);
+void ProductivityView::pause(bool paused) {
+    if (countdown) {
+        countdown->pause(paused);
     }
-    if (impl->network) {
-        impl->network->pause(paused);
+    if (network) {
+        network->pause(paused);
     }
-    if (impl->disk) {
-        impl->disk->pause(paused);
+    if (disk) {
+        disk->pause(paused);
     }
-    if (impl->timer) {
-        impl->timer->pause(paused);
-    }
-}
-
-void Renderer::input(const CdInput& event) {
-    if (impl->timer) {
-        impl->timer->input(event);
+    if (timer) {
+        timer->pause(paused);
     }
 }
 
-void Renderer::cancelInput() {
-    if (impl->timer) {
-        impl->timer->cancelInput();
+void ProductivityView::input(const CdInput& event) {
+    if (timer) {
+        timer->input(event);
     }
 }
 
-void Renderer::syncInput(Spec, const cdsdk::Settings& settings, const Data& data, CdRect safe) {
-    if (impl->timer) {
-        impl->timer->syncInput(settings, data, safe);
+void ProductivityView::cancelInput() {
+    if (timer) {
+        timer->cancelInput();
     }
 }
 
-bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Data& data, const CdFrame& frame, CdRect safe) {
-    if (spec.kind == Kind::Countdown && impl->countdown) {
-        return impl->countdown->render(settings, data, frame, safe);
+void ProductivityView::syncInput(Spec, const cdsdk::Settings& settings, const Data& data, CdRect safe) {
+    if (timer) {
+        timer->syncInput(settings, data, safe);
     }
-    return spec.kind == Kind::Network && impl->network ? impl->network->render(settings, data, frame, safe)
-           : spec.kind == Kind::Disk && impl->disk     ? impl->disk->render(settings, data, frame, safe)
-           : spec.kind == Kind::Timer && impl->timer   ? impl->timer->render(settings, data, frame, safe)
-                                                       : false;
 }
 
-bool Renderer::savePng(const std::filesystem::path& path, const CdFrame& frame) {
-    if (impl->countdown) {
-        return impl->countdown->save(path, frame);
+bool ProductivityView::render(Spec spec, const cdsdk::Settings& settings, const Data& data, const CdFrame& frame,
+                              CdRect safe) {
+    if (spec.kind == Kind::Countdown && countdown) {
+        return countdown->render(settings, data, frame, safe);
     }
-    return impl->network ? impl->network->save(path, frame)
-           : impl->disk  ? impl->disk->save(path, frame)
-                         : impl->timer && impl->timer->save(path, frame);
+    return spec.kind == Kind::Network && network ? network->render(settings, data, frame, safe)
+           : spec.kind == Kind::Disk && disk     ? disk->render(settings, data, frame, safe)
+           : spec.kind == Kind::Timer && timer   ? timer->render(settings, data, frame, safe)
+                                                 : false;
 }
-}  // namespace productivity
+
+std::unique_ptr<productivity::themed::View> makeProductivityView() {
+    return std::make_unique<ProductivityView>();
+}
+}  // namespace
+}  // namespace pixeldesk

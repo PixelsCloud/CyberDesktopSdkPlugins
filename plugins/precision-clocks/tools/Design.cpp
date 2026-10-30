@@ -4,7 +4,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Clock.h"
+#include "plugins/precision-clocks/Clock.h"
 
 int wmain(int argc, wchar_t** argv) try {
     using namespace precisionclock;

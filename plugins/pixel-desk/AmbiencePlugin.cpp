@@ -2,7 +2,8 @@
 
 namespace {
 CdResult CD_CALL create(const CdCreateContext* context, CdInstanceApi* out, uint32_t size) {
-    return atmosphere::create(pixeldesk::ambienceSpec(pixeldesk::ambiencePlate(CD_PIXEL_DESK_ID)), context, out, size);
+    return pixeldesk::createAmbience(pixeldesk::ambienceSpec(pixeldesk::ambiencePlate(CD_PIXEL_DESK_ID)), context, out,
+                                     size);
 }
 }  // namespace
 
