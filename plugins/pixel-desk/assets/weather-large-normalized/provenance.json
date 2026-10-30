@@ -1,0 +1,21 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "reference": "design/pixel-desk-suite/normalized-weather.art.png",
+  "sha256": "7d8e21ac7463e389a6d4146899312b6458e8b72feba752ca0e7a06e14877d8eb",
+  "imageSize": [
+    1608,
+    978
+  ],
+  "visibleBounds": [
+    37,
+    85,
+    1536,
+    836
+  ],
+  "aperture": [],
+  "purpose": "Clean normalized artwork; live contents drawn separately",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "visibleAlphaThreshold": 16
+}

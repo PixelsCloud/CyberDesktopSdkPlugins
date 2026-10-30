@@ -1,0 +1,79 @@
+{
+  "id": "com.cyberdesktop.redline.marble.clock.4x2",
+  "folder": "marble-clock-4x2",
+  "sourceId": "com.cyberdesktop.clock.marble.4x2",
+  "source": "plugins/marble-clock/packages/4x2/plugin.textproto",
+  "family": "kinetic",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 1,
+  "slot": 5,
+  "imageSize": [
+    1706,
+    922
+  ],
+  "crop": [
+    46,
+    30,
+    1615,
+    825
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 擒纵摆锤时钟 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "readout": [
+      0.55,
+      0.16,
+      0.41,
+      0.26
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-escapement-4x2.art.png",
+  "art": "plugins/redline-desk/assets/marble-clock-4x2/body.png",
+  "artSha256": "ee79870f97dfce1fc05cbac72ae8e97ad7b5d592f8cb58cc980da09f7d3f65bd",
+  "runtimeFixedLayer": true,
+  "fixedLayerSource": "exec-37754485-419b-47da-9203-35ca9250e38d.png",
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    47,
+    32,
+    1613,
+    820
+  ],
+  "hardware": {
+    "pendulum": [
+      190,
+      14,
+      81,
+      380
+    ],
+    "gear": [
+      772,
+      70,
+      325,
+      318
+    ]
+  },
+  "reviewText": [
+    "readout"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

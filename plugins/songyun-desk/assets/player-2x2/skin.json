@@ -1,0 +1,90 @@
+{
+  "id": "com.cyberdesktop.songyun.player.2x2",
+  "folder": "player-2x2",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/player-2x2/plugin.textproto",
+  "family": "widget",
+  "kind": 7,
+  "rows": 2,
+  "columns": 2,
+  "board": 5,
+  "slot": 5,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    604,
+    558,
+    303,
+    368
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 音乐控制 2×2",
+  "regions": {
+    "cover": [
+      0.31353135313531355,
+      0.2608695652173913,
+      0.3465346534653465,
+      0.28532608695652173
+    ],
+    "title": [
+      0.3234323432343234,
+      0.7092391304347826,
+      0.34983498349834985,
+      0.057065217391304345
+    ],
+    "previous": [
+      0.20462046204620463,
+      0.782608695652174,
+      0.15841584158415842,
+      0.13043478260869565
+    ],
+    "toggle": [
+      0.39933993399339934,
+      0.7771739130434783,
+      0.17491749174917492,
+      0.14402173913043478
+    ],
+    "next": [
+      0.6204620462046204,
+      0.782608695652174,
+      0.15841584158415842,
+      0.13043478260869565
+    ],
+    "surface0": [
+      0.29372937293729373,
+      0.6956521739130435,
+      0.40264026402640263,
+      0.06793478260869565
+    ],
+    "surface1Circle": [
+      0.20462046204620463,
+      0.782608695652174,
+      0.15841584158415842,
+      0.13043478260869565
+    ],
+    "surface2Circle": [
+      0.39933993399339934,
+      0.7771739130434783,
+      0.17491749174917492,
+      0.14402173913043478
+    ],
+    "surface3Circle": [
+      0.6204620462046204,
+      0.782608695652174,
+      0.15841584158415842,
+      0.13043478260869565
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+  "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+  "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+  "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+  "renderInset": 7
+}

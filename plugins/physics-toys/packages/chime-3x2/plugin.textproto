@@ -1,0 +1,112 @@
+id: "com.cyberdesktop.physics.windchime.3x2"
+name: "悬挂风铃 2×3"
+version: "1.2.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "拖动挂件，松手自然回摆；双击轻拨。支持昼夜主题、透明背景、暂停和减少动态。"
+layouts {
+    id: "3x2"
+    name: "2×3（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 6 max_cells: 6 max_columns: 2 max_rows: 3 }
+settings_page {
+    title: "悬挂风铃 2×3"
+    description: "拖动挂件，松手自然回摆；双击轻拨。支持昼夜主题、透明背景、暂停和减少动态。"
+    fields {
+        id: "speed"
+        label: "运动速度"
+        type: NUMBER
+        minimum: 0.25
+        maximum: 2
+        step: 0.05
+        number_default: 0.75
+        localized {
+            key: "en"
+            value { label: "Motion speed" }
+        }
+    }
+    fields {
+        id: "wind"
+        label: "微风强度"
+        type: NUMBER
+        minimum: 0
+        maximum: 1
+        step: 0.05
+        number_default: 0.35
+        localized {
+            key: "en"
+            value { label: "Breeze strength" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用摆动"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    fields {
+        id: "palette"
+        label: "配色"
+        type: CHOICE
+        text_default: "pastel"
+        choices {
+            value: "pastel"
+            label: "柔和卡通"
+            localized_labels { key: "en" value: "Soft pastels" }
+        }
+        choices {
+            value: "ocean"
+            label: "海盐薄荷"
+            localized_labels { key: "en" value: "Ocean mint" }
+        }
+        localized {
+            key: "en"
+            value { label: "Palette" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Wind Chime 3x2"
+            description: "Drag and release. Double-click to pluck. Motion pauses while hidden."
+        }
+    }
+}
+content_padding: 0
+preview: "preview.png"
+tags: "卡通"
+tags: "物理"
+tags: "互动"

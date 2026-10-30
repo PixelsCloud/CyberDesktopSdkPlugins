@@ -1,0 +1,4 @@
+CyberDesktop original mechanical instrument artwork.
+Generated using the built-in OpenAI image_gen from the approved project concept.
+Source: exec-97874ce4-d5fe-4a54-b023-983f1a7c7578.png
+Only this static transparent backplate is baked into the PNG. Functional readouts and needles are live.

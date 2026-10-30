@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.redline.spectrum.4x1",
+  "folder": "spectrum-4x1",
+  "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 7,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    22,
+    225,
+    501,
+    122
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械柱状频谱 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "plot": [
+      0.055,
+      0.3,
+      0.89,
+      0.49
+    ],
+    "motion": [
+      0.055,
+      0.3,
+      0.89,
+      0.49
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+  "art": "plugins/redline-desk/assets/spectrum-4x1/body.png",
+  "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+  "approvedCrop": [
+    22,
+    225,
+    501,
+    122
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

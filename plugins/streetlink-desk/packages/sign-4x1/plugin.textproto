@@ -1,0 +1,99 @@
+id: "com.cyberdesktop.streetlink.sign.4x1"
+name: "STREETLINK · 街区信息牌"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "4x1"
+    name: "4×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+description: "逐格翻牌、黄铜齿轮和同步凸轮，支持自定义中英文、分页与点击触发。"
+settings_page {
+    title: "机械翻牌招牌"
+    description: "点击可翻牌。长文字每十二个完整字符分页；每行也可单独成页。静置期间不连续刷新。"
+    fields {
+        id: "text"
+        label: "招牌文字"
+        type: TEXT
+        max_length: 512
+        text_default: "CYBERDESKTOP"
+        localized {
+            key: "en"
+            value { label: "Sign text" }
+        }
+        text_editor: MULTILINE
+    }
+    fields {
+        id: "interval"
+        label: "静置秒数（0 为仅点击翻牌）"
+        type: INTEGER
+        maximum: 60.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value { label: "Rest seconds (0 for manual only)" }
+        }
+    }
+    fields {
+        id: "speed"
+        label: "翻牌速度"
+        type: NUMBER
+        minimum: 0.35
+        maximum: 2.0
+        step: 0.05
+        number_default: 1.0
+        localized {
+            key: "en"
+            value { label: "Flip speed" }
+        }
+    }
+    fields {
+        id: "animation"
+        label: "启用机械动画"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable mechanical animation" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态效果"
+        type: TOGGLE
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "显示金属机框"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show metal casing" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Mechanical Split-flap Sign"
+            description: "Click to flip. Text pages use twelve complete characters; line breaks start another page."
+        }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "赛博朋克"
+tags: "STREETLINK"

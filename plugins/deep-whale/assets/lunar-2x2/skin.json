@@ -1,0 +1,65 @@
+{
+  "id": "com.cyberdesktop.deepwhale.lunar.2x2",
+  "folder": "lunar-2x2",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "title": [
+      47,
+      87,
+      67,
+      14
+    ],
+    "day": [
+      47.48206896551724,
+      102.89903448275862,
+      66.96000000000001,
+      31.812413793103453
+    ],
+    "weekday": [
+      45,
+      137,
+      72,
+      13
+    ],
+    "lunar": [
+      45,
+      152,
+      72,
+      14
+    ],
+    "festival": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        20,
+        44,
+        985,
+        1450
+      ],
+      "destination": [
+        16.8125,
+        7,
+        126.34375,
+        186
+      ]
+    }
+  ],
+  "designUid": "b02-6"
+}

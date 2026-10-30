@@ -1,0 +1,11 @@
+{
+  "tool": "built-in imagegen",
+  "nativePixelsUnmodified": true,
+  "designSource": "design/mechanical-desk-suite/supplement-disk-readable.art.png",
+  "materials": [
+    {
+      "file": "body.png",
+      "sha256": "ec9c25ff544b63ea35ee35859e438bea01647ae2a511a18dec4a6d2379d6b3d3"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "folder": "moon-clock-2x2",
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "world": [
+      33.28,
+      39.04672658467361,
+      93.44,
+      90.74929044465468
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        31,
+        164,
+        1057,
+        1095
+      ],
+      "destination": [
+        7.0,
+        24.3755912961211,
+        146.0,
+        151.2488174077578
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {},
+  "palette": "terminal",
+  "screens": [],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "roundScreens": [
+    [
+      33.28,
+      39.04672658467361,
+      93.44,
+      90.74929044465468
+    ]
+  ]
+}

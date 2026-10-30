@@ -1,0 +1,48 @@
+{
+  "folder": "timer-2x1",
+  "kind": "timer",
+  "columns": 2,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    43,
+    118,
+    494,
+    213
+  ],
+  "inset": 6.25,
+  "regions": {
+    "time": [
+      221,
+      166,
+      244,
+      88
+    ],
+    "start": [
+      321,
+      269,
+      43,
+      43
+    ],
+    "reset": [
+      393,
+      269,
+      43,
+      43
+    ],
+    "dial": [
+      60,
+      144,
+      145,
+      145
+    ]
+  },
+  "originalArtwork": "supplement-09.art.png",
+  "originalSha256": "7566af9a0837362fe2a206a3ad39c878e09cac24553cccd541892c77d8d89789",
+  "board": 9,
+  "slot": 1,
+  "nativePixelsUnmodified": true
+}

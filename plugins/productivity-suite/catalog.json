@@ -1,0 +1,114 @@
+[
+  {
+    "id": "com.cyberdesktop.timer.1x2",
+    "folder": "timer-1x2",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "name": "番茄钟 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.timer.2x2",
+    "folder": "timer-2x2",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "name": "番茄钟 2×2"
+  },
+  {
+    "id": "com.cyberdesktop.todo.1x4",
+    "folder": "todo-1x4",
+    "kind": 1,
+    "rows": 1,
+    "columns": 4,
+    "name": "待办清单 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.todo.2x4",
+    "folder": "todo-2x4",
+    "kind": 1,
+    "rows": 2,
+    "columns": 4,
+    "name": "待办清单 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.countdown.1x2",
+    "folder": "countdown-1x2",
+    "kind": 2,
+    "rows": 1,
+    "columns": 2,
+    "name": "倒数日 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.countdown.1x4",
+    "folder": "countdown-1x4",
+    "kind": 2,
+    "rows": 1,
+    "columns": 4,
+    "name": "倒数日 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.network.1x2",
+    "folder": "network-1x2",
+    "kind": 3,
+    "rows": 1,
+    "columns": 2,
+    "name": "网速仪表 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.network.1x4",
+    "folder": "network-1x4",
+    "kind": 3,
+    "rows": 1,
+    "columns": 4,
+    "name": "网速仪表 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.disk.1x2",
+    "folder": "disk-1x2",
+    "kind": 4,
+    "rows": 1,
+    "columns": 2,
+    "name": "磁盘空间 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.disk.2x2",
+    "folder": "disk-2x2",
+    "kind": 4,
+    "rows": 2,
+    "columns": 2,
+    "name": "磁盘空间 2×2"
+  },
+  {
+    "id": "com.cyberdesktop.notes.1x4",
+    "folder": "notes-1x4",
+    "kind": 5,
+    "rows": 1,
+    "columns": 4,
+    "name": "便签 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.notes.2x4",
+    "folder": "notes-2x4",
+    "kind": 5,
+    "rows": 2,
+    "columns": 4,
+    "name": "便签 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.rss.1x4",
+    "folder": "rss-1x4",
+    "kind": 6,
+    "rows": 1,
+    "columns": 4,
+    "name": "RSS 资讯 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.rss.2x4",
+    "folder": "rss-2x4",
+    "kind": 6,
+    "rows": 2,
+    "columns": 4,
+    "name": "RSS 资讯 4×2"
+  }
+]

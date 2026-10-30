@@ -1,0 +1,137 @@
+id: "com.cyberdesktop.streetlink.music.matrix.round.6x1"
+name: "STREETLINK · 光子采样总线"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "6x1"
+    name: "6×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { a: 5 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 6 max_cells: 6 max_columns: 6 max_rows: 1 }
+capabilities: AUDIO_FFT
+description: "独立机械外观，拉丝钢机框与实时点阵；设置仅影响当前实例。"
+settings_page {
+    title: "机械频谱设置"
+    fields {
+        id: "gain"
+        label: "灵敏度"
+        type: NUMBER
+        section: "频谱"
+        minimum: 0.2
+        maximum: 5.0
+        step: 0.1
+        number_default: 3.5
+        localized {
+            key: "en"
+            value { label: "Sensitivity" }
+        }
+    }
+    fields {
+        id: "release"
+        label: "衰减速度（毫秒）"
+        type: INTEGER
+        section: "频谱"
+        minimum: 40.0
+        maximum: 600.0
+        step: 1.0
+        integer_default: 160
+        localized {
+            key: "en"
+            value { label: "Release (milliseconds)" }
+        }
+    }
+    fields {
+        id: "peaks"
+        label: "峰值保持"
+        type: TOGGLE
+        section: "频谱"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Peak hold" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        section: "频谱"
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    fields {
+        id: "brightness"
+        label: "亮度"
+        type: NUMBER
+        section: "显示"
+        minimum: 30.0
+        maximum: 100.0
+        step: 1.0
+        number_default: 100.0
+        localized {
+            key: "en"
+            value { label: "Brightness" }
+        }
+    }
+    fields {
+        id: "glow"
+        label: "柔和辉光"
+        type: NUMBER
+        section: "显示"
+        maximum: 40.0
+        step: 1.0
+        number_default: 18.0
+        localized {
+            key: "en"
+            value { label: "Soft glow" }
+        }
+    }
+    fields {
+        id: "color"
+        label: "底部颜色"
+        type: COLOR
+        section: "配色"
+        color_default: 3287081471
+        localized {
+            key: "en"
+            value { label: "Bottom color" section: "Colors" }
+        }
+    }
+    fields {
+        id: "color_top"
+        label: "顶部颜色"
+        type: COLOR
+        section: "配色"
+        color_default: 2446844671
+        localized {
+            key: "en"
+            value { label: "Top color" section: "Colors" }
+        }
+    }
+    fields {
+        id: "peak_color"
+        label: "峰值颜色"
+        type: COLOR
+        section: "配色"
+        color_default: 2446844671
+        localized {
+            key: "en"
+            value { label: "Peak color" section: "Colors" }
+        }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "赛博朋克"
+tags: "STREETLINK"

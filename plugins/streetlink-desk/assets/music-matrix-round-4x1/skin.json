@@ -1,0 +1,63 @@
+{
+  "folder": "music-round-4x1",
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      52.9,
+      36.66626506024097,
+      229.5,
+      28.667530120481928
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        98,
+        140,
+        1992,
+        434
+      ],
+      "destination": [
+        7.0,
+        16.665662650602414,
+        306.0,
+        66.66867469879517
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "color": 15200255,
+    "color_top": 15200255,
+    "peak_color": 4107155711,
+    "color_middle": 15200255
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      52.9,
+      35.99957831325301,
+      229.5,
+      30.000903614457833
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 313.0,
+    "cuts": [
+      160.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

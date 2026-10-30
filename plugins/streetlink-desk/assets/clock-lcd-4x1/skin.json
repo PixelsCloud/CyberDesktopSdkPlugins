@@ -1,0 +1,63 @@
+{
+  "folder": "lcd-4x1",
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      62.080000000000005,
+      41.08755778894472,
+      198.9,
+      32.67895477386935
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        92,
+        111,
+        1990,
+        483
+      ],
+      "destination": [
+        7.0,
+        12.86482412060301,
+        306.0,
+        74.27035175879398
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "text_color": 4093180671,
+    "secondary_color": 15200255,
+    "seconds_color": 15200255,
+    "font_family": "Chakra Petch"
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      62.080000000000005,
+      41.08755778894472,
+      198.9,
+      32.67895477386935
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 313.0,
+    "cuts": [
+      160.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

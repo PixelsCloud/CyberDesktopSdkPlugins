@@ -1,0 +1,195 @@
+id: "com.cyberdesktop.deepwhale.plant.1x1"
+name: "Deep鲸 · 盆栽"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+description: "卡通植物、浇水反馈、观赏与轻养成、昼夜主题。"
+settings_page {
+    title: "卡通盆栽设置"
+
+    fields {
+        id: "language"
+        label: "设置语言"
+        type: CHOICE
+        section: "外观与行为"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Set Language" section: "Appearance and Behavior" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "設定語言" section: "外觀與行為" }
+        }
+    }
+    fields {
+        id: "species"
+        label: "植物品种"
+        type: CHOICE
+        section: "外观与行为"
+        choices {
+            value: "pothos"
+            label: "绿萝"
+            localized_labels { key: "zh-TW" value: "綠蘿" }
+        }
+        choices {
+            value: "succulent"
+            label: "多肉"
+            localized_labels { key: "zh-TW" value: "多肉" }
+        }
+        choices {
+            value: "daisy"
+            label: "小雏菊"
+            localized_labels { key: "zh-TW" value: "小雛菊" }
+        }
+        text_default: "succulent"
+        localized {
+            key: "en"
+            value { label: "Plant Variety" section: "Appearance and Behavior" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "植物品種" section: "外觀與行為" }
+        }
+    }
+    fields {
+        id: "mode"
+        label: "养成方式"
+        type: CHOICE
+        description: "观赏模式直接显示成株；轻养成约七天长成，浇水可促进成长。"
+        section: "外观与行为"
+        choices {
+            value: "ornamental"
+            label: "观赏模式"
+            localized_labels { key: "zh-TW" value: "觀賞模式" }
+        }
+        choices {
+            value: "grow"
+            label: "轻养成"
+            localized_labels { key: "zh-TW" value: "輕養成" }
+        }
+        text_default: "ornamental"
+        localized {
+            key: "en"
+            value {
+                label: "Cultivation Method"
+                description: "Viewing mode shows the mature plant directly; light cultivation takes about seven days to grow, watering can promote growth."
+                section: "Appearance and Behavior"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "養成方式"
+                description: "觀賞模式直接顯示成株；輕養成約七天長成，澆水可促進成長。"
+                section: "外觀與行為"
+            }
+        }
+    }
+    fields {
+        id: "animation"
+        label: "启用动画"
+        type: TOGGLE
+        section: "外观与行为"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable animation" section: "Appearance and Behavior" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "啟用動畫" section: "外觀與行為" }
+        }
+    }
+    fields {
+        id: "speed"
+        label: "动效速度"
+        type: NUMBER
+        description: "默认 0.75 倍；调整速度保持动作连续。"
+        section: "外观与行为"
+        minimum: 0.25
+        maximum: 2.0
+        step: 0.25
+        number_default: 0.75
+        localized {
+            key: "en"
+            value {
+                label: "Animation Speed"
+                description: "Default 0.75×; adjusting speed keeps actions continuous."
+                section: "Appearance and Behavior"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "動效速度" description: "預設 0.75 倍；調整速度保持動作連續。" section: "外觀與行為" }
+        }
+    }
+    fields {
+        id: "frame_rate"
+        label: "动画帧率"
+        type: CHOICE
+        section: "外观与行为"
+        choices {
+            value: "15"
+            label: "15 FPS"
+            localized_labels { key: "zh-TW" value: "15 FPS" }
+        }
+        choices {
+            value: "20"
+            label: "20 FPS"
+            localized_labels { key: "zh-TW" value: "20 FPS" }
+        }
+        choices {
+            value: "30"
+            label: "30 FPS"
+            localized_labels { key: "zh-TW" value: "30 FPS" }
+        }
+        text_default: "20"
+        localized {
+            key: "en"
+            value { label: "Animation frame rate" section: "Appearance and Behavior" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "動畫幀率" section: "外觀與行為" }
+        }
+    }
+
+    localized {
+        key: "en"
+        value { title: "Cartoon Potted Plant Settings" }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "卡通盆栽設定" }
+    }
+}
+preview: "preview.png"
+
+tags: "Deep鲸"
+layouts {
+    id: "1x1"
+    name: "1×1（宽×高）"
+    cells { a: 0 b: 0 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 1 max_cells: 1 max_columns: 1 max_rows: 1 }

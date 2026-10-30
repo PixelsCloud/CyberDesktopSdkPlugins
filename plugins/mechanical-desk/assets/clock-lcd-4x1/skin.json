@@ -1,0 +1,23 @@
+{
+  "folder": "clock-lcd-4x1",
+  "kind": "lcd",
+  "columns": 4,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    18,
+    250,
+    558,
+    160
+  ],
+  "inset": 6.25,
+  "regions": {},
+  "originalArtwork": "supplement-12.art.png",
+  "originalSha256": "192e66749fa094775a2079f59002092c212d847e34c9e2b516992cb811f990c4",
+  "board": 12,
+  "slot": 1,
+  "nativePixelsUnmodified": true
+}

@@ -1,0 +1,127 @@
+id: "com.cyberdesktop.mechanicaldesk.spectrum.8x1"
+name: "机械柱状频谱 8×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "1x8"
+    name: "8×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { a: 5 }
+    cells { a: 6 }
+    cells { a: 7 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 8 max_rows: 1 }
+capabilities: AUDIO_FFT
+description: "精密机械独立组件；拉丝钢与黄铜结构，设置仅影响当前实例。"
+settings_page {
+    title: "音乐频谱 8×1设置"
+    description: "每个实例独立保存。选择字体、语言和显示参数。"
+    fields {
+        id: "gain"
+        label: "灵敏度"
+        type: NUMBER
+        description: "只修改当前实例。"
+        section: "设置"
+        minimum: 0.2
+        maximum: 5.0
+        step: 0.1
+        number_default: 3.5
+        localized {
+            key: "en"
+            value { label: "Sensitivity" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "靈敏度" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "release"
+        label: "回落时间（ms）"
+        type: INTEGER
+        description: "只修改当前实例。"
+        section: "设置"
+        minimum: 40.0
+        maximum: 600.0
+        step: 10.0
+        integer_default: 160
+        localized {
+            key: "en"
+            value { label: "Release (ms)" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "回落時間（ms）" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "peaks"
+        label: "显示峰值"
+        type: TOGGLE
+        description: "只修改当前实例。"
+        section: "设置"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Peak indicators" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示峰值" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        description: "只修改当前实例。"
+        section: "设置"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    localized {
+        key: "en"
+        value { title: "Widget settings" description: "Settings are saved separately for each instance." }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "音樂頻譜 1×8設定" description: "每個例項獨立儲存。選擇字型、語言和顯示引數。" }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "机械"
+tags: "精密机械"

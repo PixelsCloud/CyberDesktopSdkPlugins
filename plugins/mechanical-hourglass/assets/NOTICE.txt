@@ -1,0 +1,4 @@
+Mechanical Hourglass artwork
+Generated for CyberDesktop from the approved mechanical hourglass concept with the built-in image generation tool.
+Only transparent material sprites are included. Sand particles, countdown and progress are live code rendering.
+No external fonts, brand marks or third-party photographs are included.

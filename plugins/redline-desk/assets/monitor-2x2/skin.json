@@ -1,0 +1,131 @@
+{
+  "id": "com.cyberdesktop.redline.monitor.2x2",
+  "folder": "monitor-2x2",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 4,
+  "slot": 5,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    629,
+    502,
+    310,
+    413
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械系统监控 2×2",
+  "runtimePlate": true,
+  "regions": {
+    "gauge0": [
+      0.14,
+      0.1,
+      0.73,
+      0.44
+    ],
+    "gauge1": [
+      0.14,
+      0.61,
+      0.23,
+      0.23
+    ],
+    "gauge2": [
+      0.4,
+      0.61,
+      0.23,
+      0.23
+    ],
+    "gauge3": [
+      0.66,
+      0.61,
+      0.23,
+      0.23
+    ],
+    "surface0": [
+      0.12,
+      0.055,
+      0.81,
+      0.865
+    ],
+    "gauge0Title": [
+      0.15460000000000002,
+      0.1,
+      0.5985999999999999,
+      0.0968
+    ],
+    "gauge0Value": [
+      0.15460000000000002,
+      0.2012,
+      0.5985999999999999,
+      0.2552
+    ],
+    "gauge1Title": [
+      0.1446,
+      0.61,
+      0.1886,
+      0.0506
+    ],
+    "gauge1Value": [
+      0.1446,
+      0.6629,
+      0.1886,
+      0.1334
+    ],
+    "gauge2Title": [
+      0.4046,
+      0.61,
+      0.1886,
+      0.0506
+    ],
+    "gauge2Value": [
+      0.4046,
+      0.6629,
+      0.1886,
+      0.1334
+    ],
+    "gauge3Title": [
+      0.6646000000000001,
+      0.61,
+      0.1886,
+      0.0506
+    ],
+    "gauge3Value": [
+      0.6646000000000001,
+      0.6629,
+      0.1886,
+      0.1334
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+  "art": "plugins/redline-desk/assets/monitor-2x2/body.png",
+  "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+  "approvedCrop": [
+    629,
+    502,
+    310,
+    413
+  ],
+  "reviewText": [
+    "gauge0Title",
+    "gauge0Value",
+    "gauge1Title",
+    "gauge1Value",
+    "gauge2Title",
+    "gauge2Value",
+    "gauge3Title",
+    "gauge3Value"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

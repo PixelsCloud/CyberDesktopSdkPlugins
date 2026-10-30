@@ -1,0 +1,23 @@
+{
+  "folder": "clock-flip-2x2",
+  "kind": "flip",
+  "columns": 2,
+  "rows": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    25,
+    506,
+    346,
+    391
+  ],
+  "inset": 6.25,
+  "regions": {},
+  "originalArtwork": "supplement-11.art.png",
+  "originalSha256": "e16ae4840ce7b05b3136ef89d498ab8247e54748b446278acc7fa1e33e132621",
+  "board": 11,
+  "slot": 4,
+  "nativePixelsUnmodified": true
+}

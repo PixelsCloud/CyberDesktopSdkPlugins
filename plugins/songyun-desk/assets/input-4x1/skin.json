@@ -1,0 +1,72 @@
+{
+  "id": "com.cyberdesktop.songyun.input.4x1",
+  "folder": "input-4x1",
+  "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 8,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 2,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    22,
+    356,
+    982,
+    163
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 键鼠计数 4×1",
+  "regions": {
+    "keyboard": [
+      0.18839103869653767,
+      0.27607361963190186,
+      0.29429735234215887,
+      0.44171779141104295
+    ],
+    "mouse": [
+      0.6262729124236253,
+      0.27607361963190186,
+      0.2892057026476578,
+      0.44171779141104295
+    ],
+    "keyboardIcon": [
+      0.09775967413441955,
+      0.36809815950920244,
+      0.06415478615071284,
+      0.26380368098159507
+    ],
+    "mouseIcon": [
+      0.5692464358452138,
+      0.3496932515337423,
+      0.035641547861507125,
+      0.3006134969325153
+    ],
+    "surface0": [
+      0.09164969450101833,
+      0.25153374233128833,
+      0.39307535641547864,
+      0.49079754601226994
+    ],
+    "surface1": [
+      0.5631364562118126,
+      0.25153374233128833,
+      0.3533604887983707,
+      0.49079754601226994
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-02-controls.art.png",
+  "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+  "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+  "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+  "renderInset": 7
+}

@@ -1,0 +1,102 @@
+id: "com.cyberdesktop.pixeldesk.clock.marble.6x2"
+name: "像素滚珠轨道时钟 6×2"
+version: "1.1.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "独立像素风外观，奶油白与薄荷绿机框；设置仅影响当前组件。"
+layouts {
+    id: "6x2"
+    name: "6×2（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 12 max_cells: 12 max_columns: 6 max_rows: 2 }
+settings_page {
+    title: "滚珠轨道时钟"
+    description: "点击投珠器补球；点击金色转轴开仓；拖动滚珠并松手。隐藏和校时后直接同步，不补播离线动画。"
+    fields {
+        id: "theme"
+        label: "外观"
+        type: CHOICE
+        text_default: "dark"
+        choices {
+            value: "dark"
+            label: "深色像素"
+            localized_labels { key: "en" value: "Dark" }
+        }
+        choices {
+            value: "light"
+            label: "浅色像素"
+            localized_labels { key: "en" value: "Light" }
+        }
+        choices {
+            value: "system"
+            label: "跟随系统"
+            localized_labels { key: "en" value: "System" }
+        }
+        localized {
+            key: "en"
+            value { label: "Appearance" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示底板"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show backplate" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用滚珠动画"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable physical motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Rolling Marble Clock"
+            description: "Release a marble every second and empty the bin each minute. Click the dispenser or hinge; drag a marble to play."
+        }
+    }
+
+    fields { id: "text_color" label: "数字颜色" type: COLOR section: "配色" color_default: 337915647 }
+    fields { id: "ball_color" label: "滚珠颜色" type: COLOR section: "配色" color_default: 3891130879 }
+}
+content_padding: 0
+preview: "preview.png"
+tags: "像素"
+tags: "时钟"
+tags: "互动"
+
+capabilities: IMAGE_SKINS

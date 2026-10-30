@@ -1,0 +1,39 @@
+id: "org.cyberdesktop.sdk.physics-sandbox"
+name: "Gravity Sandbox"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "Drag, drop and stack colorful balls, or suspend one from a spring. Fixed-step Box2D physics, pause, reduced motion and debugging."
+footprint_rules { topology: RECT min_cells: 16 max_cells: 36 max_columns: 6 max_rows: 6 }
+layouts {
+    id: "rect-4x4"
+    name: "4 × 4"
+    topology: RECT
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+settings_page {
+    title: "Physics"
+    fields { id: "count" label: "Ball count" type: INTEGER minimum: 1 maximum: 48 step: 1 integer_default: 12 }
+    fields { id: "speed" label: "Simulation speed" type: NUMBER minimum: 0 maximum: 2 step: 0.05 number_default: 1 }
+    fields { id: "spring" label: "Suspend the first ball from a spring" type: TOGGLE bool_default: false }
+    fields { id: "debug" label: "Show physics geometry" type: TOGGLE bool_default: false }
+    fields { id: "reduced_motion" label: "Reduced motion (freeze simulation)" type: TOGGLE bool_default: false }
+}

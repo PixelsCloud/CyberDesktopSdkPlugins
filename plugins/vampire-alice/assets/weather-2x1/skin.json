@@ -1,0 +1,58 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.weather.2x1",
+  "folder": "weather-2x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 2,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    561,
+    228,
+    343,
+    258
+  ],
+  "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+  "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 天气 2×1",
+  "regions": {
+    "icon": [
+      0.09912536443148688,
+      0.3372093023255814,
+      0.39941690962099125,
+      0.4496124031007752
+    ],
+    "city": [
+      0.5160349854227405,
+      0.35271317829457366,
+      0.40816326530612246,
+      0.14728682170542637
+    ],
+    "temperature": [
+      0.4897959183673469,
+      0.5155038759689923,
+      0.44314868804664725,
+      0.2713178294573643
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+  "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+  "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+}

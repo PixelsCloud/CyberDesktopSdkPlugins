@@ -1,0 +1,67 @@
+id: "com.cyberdesktop.steamdesk.hourglass.2x1"
+name: "蒸汽朋克沙漏 2×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "2x1"
+    name: "2×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+description: "CyberDesktop 蒸汽工坊；做旧黄铜、铜管、铸铁与搪瓷，保留实时服务和原有物理交互。"
+settings_page {
+    title: "蒸汽朋克沙漏设置"
+    description: "点击沙漏重置，点击右侧倒计时暂停或继续。拖动不会触发点击。"
+    fields {
+        id: "duration"
+        label: "每轮时长（秒）"
+        type: INTEGER
+        section: "沙漏"
+        minimum: 5
+        maximum: 3600
+        step: 1
+        integer_default: 30
+    }
+    fields {
+        id: "physics"
+        label: "物理沙粒"
+        type: TOGGLE
+        section: "沙漏"
+        bool_default: true
+        description: "开启碰撞和堆积；切换后重新开始。"
+    }
+    fields { id: "repeat" label: "自动翻转循环" type: TOGGLE section: "沙漏" bool_default: true }
+    fields { id: "running" label: "启用流动" type: TOGGLE section: "沙漏" bool_default: true }
+    fields { id: "sand_color" label: "沙粒颜色" type: COLOR section: "配色" color_default: 4089007615 }
+    fields { id: "text_color" label: "倒计时颜色" type: COLOR section: "配色" color_default: 2613949695 }
+    fields {
+        id: "glow"
+        label: "柔和辉光"
+        type: INTEGER
+        section: "显示"
+        minimum: 0
+        maximum: 40
+        step: 1
+        integer_default: 0
+    }
+    fields {
+        id: "frame_rate"
+        label: "动画流畅度"
+        type: CHOICE
+        section: "动画"
+        text_default: "20"
+        choices { value: "15" label: "15 帧" }
+        choices { value: "20" label: "20 帧" }
+        choices { value: "30" label: "30 帧" }
+    }
+}
+preview: "preview.png"
+tags: "蒸汽朋克"
+tags: "沙漏"
+tags: "计时"

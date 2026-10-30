@@ -1,0 +1,13 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "role": "Static material layers; moving hands, gears, date and moon rendered in native code",
+  "files": [
+    {
+      "file": "face.png",
+      "bytes": 1733928,
+      "sha256": "10CA56FA67B951A778B3392B1009E0B63E9D66764CBCEF6BF005585A01742170",
+      "source": "OpenAI image_gen; exec-6eca41b4-bb8a-4787-a0cc-0a5cbf4da0b8.png; approved design/precision-clocks-redesign.png converted to a handless transparent production layer"
+    }
+  ],
+  "kind": "green"
+}

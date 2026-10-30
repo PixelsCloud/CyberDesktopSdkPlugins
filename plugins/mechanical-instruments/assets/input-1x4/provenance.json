@@ -1,0 +1,21 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-input-counter-concept.png",
+  "prompts": "design/mechanical-input-counter-assets.prompt.txt",
+  "files": [
+    {
+      "file": "body.png",
+      "width": 2137,
+      "height": 736,
+      "bounds": [
+        7,
+        172,
+        2123,
+        575
+      ],
+      "bytes": 1204971,
+      "sha256": "8c78caf37f155bfdcf451e40630e1d0dc9ee484b6b27773171750a903cff1a08",
+      "source": "exec-3e9d84c2-eba9-47fc-9035-4cada18e383d.png"
+    }
+  ]
+}

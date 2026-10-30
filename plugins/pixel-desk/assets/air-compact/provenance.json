@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-948a9b08-ac4d-475f-a16f-4590d87bc232.png",
+  "reference": "design/pixel-desk-suite/03-calendar-weather-air.png",
+  "imageSize": [
+    1825,
+    862
+  ],
+  "visibleBounds": [
+    104,
+    189,
+    1617,
+    481
+  ],
+  "purpose": "Empty mint/cream air-quality case. Native calibrated pixel gauge, actual AQI, existing quality classification and location are separate runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "aa0be30a8b99933ad740f5e18b5e563f961adbe0d763991e816c3496dd0b3b55"
+}

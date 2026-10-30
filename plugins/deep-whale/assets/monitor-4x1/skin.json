@@ -1,0 +1,67 @@
+{
+  "id": "com.cyberdesktop.deepwhale.monitor.4x1",
+  "folder": "monitor-4x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "gauge0": [
+      22.81291390728476,
+      25.367549668874172,
+      48.12582781456954,
+      48.12582781456954
+    ],
+    "gauge1": [
+      96.85264900662251,
+      25.367549668874172,
+      48.12582781456954,
+      48.12582781456954
+    ],
+    "gauge2": [
+      174.73675496688742,
+      25.367549668874172,
+      48.12582781456954,
+      48.12582781456954
+    ],
+    "gauge3": [
+      249.0612582781457,
+      25.367549668874172,
+      48.12582781456954,
+      48.12582781456954
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        11,
+        56,
+        2149,
+        604
+      ],
+      "destination": [
+        7,
+        7,
+        305.96875,
+        86
+      ]
+    }
+  ],
+  "designUid": "b04-4",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    83,
+    160,
+    236
+  ]
+}

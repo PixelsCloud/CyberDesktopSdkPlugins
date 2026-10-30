@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.deepwhale.skeleton.clock.2x2",
+  "folder": "skeleton-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+  "source": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "world": [
+      40.529837251356234,
+      95.05063291139243,
+      77.35623869801084,
+      77.35623869801084
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        13,
+        7,
+        1106,
+        1335
+      ],
+      "destination": [
+        7,
+        16.76563,
+        146,
+        176.21875
+      ]
+    }
+  ],
+  "designUid": "b02-3",
+  "parts": {
+    "gear": {
+      "file": "gear.png",
+      "source": [
+        44,
+        55,
+        1166,
+        1132
+      ]
+    }
+  },
+  "defaults": {
+    "hand_color": 3285638399,
+    "seconds_color": 3853688319
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.clock.round.4x1",
+  "folder": "clock-round-4x1",
+  "sourceId": "com.cyberdesktop.clock.mechanical.pixel.round.4x1",
+  "source": "plugins/mechanical-pixels/packages/clock-round/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 1,
+  "slot": 2,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    8,
+    365,
+    1008,
+    190
+  ],
+  "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+  "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 圆点阵时钟 4×1",
+  "regions": {
+    "plot": [
+      0.205,
+      0.19,
+      0.59,
+      0.59
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+  "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

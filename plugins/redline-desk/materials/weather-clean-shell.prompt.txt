@@ -1,0 +1,10 @@
+Built-in imagegen, precise-object-edit. Input: assets/weather-4x2/body.png.
+Request: remove all baked clouds, rain streaks, droplets, example readouts and icons.
+Preserve the black scratched-metal outer housing, red LED bars, bolts, left circular chamber,
+three forecast panels, original composition and transparent exterior. Restore the left weather
+chamber as an empty recessed dark circular well for a separately rendered live illustration.
+No new objects, dial or needle. No text or weather baked into the output.
+The generated transparent PNG is assets/weather-4x2/body.png; its actual 1605x980 dimensions
+and crop are registered in catalog.json. Weather illustrations reuse existing Meteocons assets.
+Exact built-in imagegen prompt:
+Use case: precise-object-edit. Edit target: the attached RedLine weather widget body, 1606x979 transparent PNG. Produce a CLEAN STATIC FRAME skin for a live weather widget. Preserve EXACT original canvas dimensions, silhouette, composition, positions and scale of all outer black scratched-metal framing, red LED bars, bolts, left large arched circular mechanical frame and lower three forecast panels. Remove ALL clouds, ALL rain streaks and ALL water droplets everywhere. Remove all text, numbers, icons inside panels. Restore the obscured LEFT circular weather chamber as an empty dark charcoal smooth recessed circular well inside the original red/silver arched frame; this must be empty so live weather illustrations will be drawn later. Keep original red/black realistic mechanical materials, no extra objects. Transparent exterior background, straight-on orthographic flat sprite. No text, no weather, no dial, no needle. Critical: do not move or resize any structural elements, preserve original dimensions and transparent exterior.

@@ -1,0 +1,60 @@
+{
+  "id": "com.cyberdesktop.songyun.dive.clock.2x2",
+  "folder": "dive-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+  "source": "plugins/precision-clocks/packages/green/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    556,
+    84,
+    444,
+    422
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 翡翠绿潜水表 2×2",
+  "regions": {
+    "world": [
+      0.13963963963963963,
+      0.13981042654028436,
+      0.6666666666666666,
+      0.7014218009478673
+    ],
+    "surface0Circle": [
+      0.1373873873873874,
+      0.13744075829383887,
+      0.6711711711711712,
+      0.7061611374407583
+    ],
+    "date": [
+      0.6531531531531531,
+      0.46445497630331756,
+      0.06306306306306306,
+      0.06872037914691943
+    ],
+    "pin": [
+      0.44594594594594594,
+      0.46208530805687204,
+      0.05630630630630631,
+      0.05924170616113744
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+  "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+  "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+  "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+  "renderInset": 7
+}

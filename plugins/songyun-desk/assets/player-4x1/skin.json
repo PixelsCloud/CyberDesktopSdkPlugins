@@ -1,0 +1,96 @@
+{
+  "id": "com.cyberdesktop.songyun.player.4x1",
+  "folder": "player-4x1",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 7,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 4,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    24,
+    569,
+    978,
+    175
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 音乐控制 4×1",
+  "regions": {
+    "cover": [
+      0.07259713701431493,
+      0.18857142857142858,
+      0.12372188139059305,
+      0.6914285714285714
+    ],
+    "title": [
+      0.6012269938650306,
+      0.2914285714285714,
+      0.3006134969325153,
+      0.22285714285714286
+    ],
+    "progress": [
+      0.6063394683026585,
+      0.6,
+      0.29141104294478526,
+      0.08571428571428572
+    ],
+    "previous": [
+      0.25869120654396727,
+      0.2914285714285714,
+      0.081799591002045,
+      0.45714285714285713
+    ],
+    "toggle": [
+      0.3619631901840491,
+      0.2914285714285714,
+      0.081799591002045,
+      0.45714285714285713
+    ],
+    "next": [
+      0.46421267893660534,
+      0.2914285714285714,
+      0.081799591002045,
+      0.45714285714285713
+    ],
+    "surface0": [
+      0.5961145194274029,
+      0.24,
+      0.30879345603271985,
+      0.5257142857142857
+    ],
+    "surface1Circle": [
+      0.25971370143149286,
+      0.2914285714285714,
+      0.08077709611451943,
+      0.4514285714285714
+    ],
+    "surface2Circle": [
+      0.3619631901840491,
+      0.2914285714285714,
+      0.08077709611451943,
+      0.4514285714285714
+    ],
+    "surface3Circle": [
+      0.4652351738241309,
+      0.2914285714285714,
+      0.08077709611451943,
+      0.4514285714285714
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-02-controls.art.png",
+  "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+  "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+  "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+  "renderInset": 7
+}

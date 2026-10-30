@@ -1,0 +1,42 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.music.round.6x1",
+  "folder": "music-round-6x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+  "source": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 6,
+  "board": 6,
+  "slot": 4,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    52,
+    793,
+    921,
+    144
+  ],
+  "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+  "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 圆点阵频谱 6×1",
+  "regions": {
+    "plot": [
+      0.05863192182410423,
+      0.2569444444444444,
+      0.8849077090119435,
+      0.5277777777777778
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+  "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+}

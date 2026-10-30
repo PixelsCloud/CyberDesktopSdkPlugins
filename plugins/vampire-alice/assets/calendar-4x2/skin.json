@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.calendar.4x2",
+  "folder": "calendar-4x2",
+  "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+  "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+  "family": "calendar",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 2,
+  "slot": 4,
+  "character": true,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    9,
+    538,
+    754,
+    460
+  ],
+  "art": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+  "artSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 月历 4×2",
+  "regions": {
+    "title": [
+      0.5411140583554377,
+      0.1391304347826087,
+      0.23607427055702918,
+      0.10652173913043478
+    ],
+    "grid": [
+      0.42,
+      0.28,
+      0.52,
+      0.54
+    ],
+    "previous": [
+      0.41644562334217505,
+      0.1391304347826087,
+      0.0649867374005305,
+      0.10652173913043478
+    ],
+    "next": [
+      0.8381962864721485,
+      0.1391304347826087,
+      0.0649867374005305,
+      0.10652173913043478
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+  "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

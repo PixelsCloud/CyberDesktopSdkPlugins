@@ -1,0 +1,34 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:/Users/chess/.codex/generated_images/01a13908-b313-7e50-9e54-5024f7f83857/exec-f277f887-569a-41bd-98b2-2aa0f694c0cd.png",
+  "reference": "design/pixel-desk-suite/grid-07-audio-interactive.art.png",
+  "sha256": "18bdb594dc47437cbedf623bfbc3711f6836e474f6ade459076e449eefb0e4da",
+  "imageSize": [
+    312,
+    90
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    308,
+    86
+  ],
+  "sourceCrop": [
+    615,
+    536,
+    927,
+    626
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ],
+  "runtimeEnvelope": {
+    "width": 380,
+    "height": 462,
+    "artworkOffset": [40, 32],
+    "minimumVisibleSize": [308, 350]
+  }
+}

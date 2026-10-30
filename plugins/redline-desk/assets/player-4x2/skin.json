@@ -1,0 +1,123 @@
+{
+  "id": "com.cyberdesktop.redline.player.4x2",
+  "folder": "player-4x2",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+  "family": "widget",
+  "kind": 7,
+  "rows": 2,
+  "columns": 4,
+  "board": 5,
+  "slot": 6,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    51,
+    1032,
+    921,
+    463
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械音乐控制 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "cover": [
+      0.45,
+      0.25,
+      0.17,
+      0.37
+    ],
+    "title": [
+      0.65,
+      0.32,
+      0.28,
+      0.13
+    ],
+    "progress": [
+      0.45,
+      0.64,
+      0.48,
+      0.035
+    ],
+    "previous": [
+      0.47,
+      0.76,
+      0.14,
+      0.14
+    ],
+    "toggle": [
+      0.62,
+      0.76,
+      0.14,
+      0.14
+    ],
+    "next": [
+      0.77,
+      0.76,
+      0.14,
+      0.14
+    ],
+    "surface0": [
+      0.415,
+      0.275,
+      0.55,
+      0.645
+    ],
+    "artist": [
+      0.65,
+      0.49,
+      0.28,
+      0.09
+    ],
+    "recordCircle": [
+      0.04125950054288816,
+      0.0755939524838013,
+      0.3474484256243214,
+      0.755939524838013
+    ],
+    "cutoutRecordCircle": [
+      0.04125950054288816,
+      0.0755939524838013,
+      0.3474484256243214,
+      0.755939524838013
+    ],
+    "recordLabel": [
+      0.14115092290988057,
+      0.2958963282937365,
+      0.1769815418023887,
+      0.37365010799136067
+    ],
+    "tonearmCover": [
+      0.23235613463626492,
+      0,
+      0.14115092290988057,
+      0.326133909287257
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-details.art.png",
+  "art": "plugins/redline-desk/assets/player-4x2/body.png",
+  "artSha256": "d067e053ac91a0a0366fae46ea5de89e3b3c1755814652e558a1e3db1cb14c85",
+  "approvedCrop": [
+    51,
+    1032,
+    921,
+    463
+  ],
+  "reviewText": [
+    "title",
+    "artist"
+  ],
+  "reviewButtons": [
+    "previous",
+    "toggle",
+    "next"
+  ],
+  "reviewIcons": []
+}

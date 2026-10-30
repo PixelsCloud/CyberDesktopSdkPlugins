@@ -1,0 +1,39 @@
+id: "com.example.components"
+name: "Component starter"
+version: "1.0.0"
+author: "Your Name"
+abi_version: 1
+entry: "plugin.dll"
+capabilities: SYSTEM_INFO
+required_services { id: "system.telemetry" version: 1 }
+description: "Shared controls with host telemetry/media services and optional offline demo mode."
+content_padding: 8
+footprint_rules { topology: RECT min_cells: 1 max_cells: 64 max_columns: 16 max_rows: 16 }
+layouts {
+    id: "2x4"
+    name: "2 × 4"
+    topology: RECT
+    is_default: true
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+}
+settings_page {
+    title: "Component example"
+    fields { id: "language" label: "Language (auto or BCP47)" type: TEXT max_length: 31 text_default: "auto" }
+    fields { id: "show_background" label: "Show background" type: TOGGLE bool_default: true }
+    fields {
+        id: "data_source"
+        label: "Data source / 数据来源"
+        type: CHOICE
+        text_default: "host"
+        choices { value: "host" label: "Host service / 宿主服务" }
+        choices { value: "demo" label: "Offline demo / 离线演示" }
+    }
+}

@@ -1,0 +1,115 @@
+{
+  "method": "imagegen built-in",
+  "sourceRoot": "C:/Users/chess/.codex/generated_images/01a1523f-618b-7431-9a27-e09dea18b70c",
+  "fixedLayers": [
+    {
+      "folder": "marble-clock-4x2",
+      "file": "exec-37754485-419b-47da-9203-35ca9250e38d.png",
+      "prompt": "Use case: precise-object-edit. Production native transparent PNG layer for a C++ animated desktop widget. Input is the edit target. Keep the complete outer graphite-silver-red structural frame, fixed pivot bearing, stepped upper clock housing, blank six-digit readout housing, and all lower structural feet. Remove the pendulum rod and bob, all toothed wheels, anchor linkage, internal spiral springs, and every numeral and colon. All vacated mechanical cavities must be truly transparent, not painted black. The readout cavity should remain dark blank metal. This is the empty FIXED CHASSIS layer of the SAME widget, not a redesign. CRITICAL keep source camera, exact placement, material finish, red lights, silver bevels, full composition, relative positions and proportions unchanged. Native same-as-source canvas aspect and generous transparent border. No new objects or labels. Remove only the listed moving pieces. No background rectangle, no residual ghost outlines, no cropping. Clean anti-aliased transparency."
+    },
+    {
+      "folder": "marble-clock-6x2",
+      "file": "exec-446c5cf1-1178-417f-bddf-674cff8cf780.png",
+      "prompt": "Use case: precise-object-edit. The input is an empty fixed clock chassis layer, but its TOP edge is accidentally cut off by the canvas. Reframe it by zooming the camera OUT enough to provide at least 6% truly transparent margin on ALL four sides. Restore the complete uppermost arch crest silhouette where it touches the edge. Keep the exact internal arrangement, proportions, palette, silver bridges, blank right time housing, red lights and empty transparent wheel cavities. The entire fixed chassis must be complete, with all top protrusions and base feet visible, no cropping. Output native transparent PNG, no labels or added parts. This is padding/reframing only, not redesign."
+    },
+    {
+      "folder": "beat-machine-4x2",
+      "file": "exec-1be4bcfb-61eb-4248-8426-f08ef30fec35.png",
+      "prompt": "Use case: precise-object-edit. Input is the edit target. Produce the fixed backplate of this animated musical percussion machine. Keep the complete two drums, their circular dark membrane faces, layered silver/red fixed rims, all angled outer support arms and top bearing housings, connecting low base and all feet. Remove ONLY the two square mallet heads and the thin movable chrome slide rods between the upper bearing housings and these heads. These spaces should become true transparent air. No extra change. Preserve source geometry, dimensions, front view, positions, cold steel / graphite / red materials. Output one complete widget with at least 4% native transparent safety padding all sides, no cropping. Do not enlarge, stretch, introduce labels or fill transparent openings with black. Keep crisp alpha."
+    },
+    {
+      "folder": "beat-machine-6x2",
+      "file": "exec-736ea809-93f7-4946-baf9-a41c7b32d80a.png",
+      "prompt": "Use case: precise-object-edit. Input is the edit target. Produce the fixed backplate of this animated musical percussion machine. Keep the entire base, complete fixed left bass drum and center snare drum including dark membranes, chrome rims and support braces, and the right hi-hat stand with LOWER cymbal plate. Remove ONLY the three hanging rectangular mallet heads and their movable chrome slide rods, plus the UPPER hi-hat cymbal plate. Preserve the overhead fixed brackets, supports, feet and uncut outer silhouette. Vacated air regions must be truly transparent. No extra change. Preserve source geometry, dimensions, front view, positions, cold steel / graphite / red materials. Output one complete widget with at least 4% native transparent safety padding all sides, no cropping. Do not enlarge, stretch, introduce labels or fill transparent openings with black. Keep crisp alpha."
+    }
+  ],
+  "sprites": {
+    "file": "exec-087112b5-5026-4dd5-94ad-5e22a83ccd0e.png",
+    "prompt": "Use case: game-assets. Production native RGBA sprite atlas on true transparent background. EXACTLY TWELVE separate isolated metal parts, strict FOUR columns by THREE rows in ordinary reading order. Canvas landscape 4:3 aspect. Each cell holds one object centered with at least 18% completely transparent empty border on all sides, objects never touch adjacent cells. NO labels, NO cell frames, NO text, NO numerals, NO guides, NO backdrop.\nAll parts match REDLINE industrial instrument materials: layered graphite near-black metal, bright cold satin-silver machined edges, tiny restrained vermilion red light insets, no brass or gold, no rusty grunge. Front orthographic view, clean bold forms, good readability at small sprite sizes.\nROW ONE:\n1. A complete narrow vertical pendulum assembly, long thin silver rigid rod extending from a small round TOP pivot down to one heavy dark chamfered oblong bob with one fine vertical red inset. Rod and bob one connected object, straight vertical, no frame.\n2. A perfectly circular balance wheel, thin silver ring, SIX silver spokes, tiny centered red bearing, empty transparent sectors between spokes. NO surrounding housing, NO bridge across the face, NO external support, NO text.\n3. A single circular precision silver escape gear with clean large triangular teeth and thin graphite inner ring, three metal spokes, red center pin, transparent gaps.\n4. One short wide rectangular percussion mallet HEAD ONLY, dark chamfered block with cold silver edges and a fine horizontal red inset, front view, no hanging rod or frame.\nROW TWO:\n5. One extremely flat elliptical chrome hi-hat cymbal upper plate, front side view, broad metal shallow cone and tiny red central hub, one plate only, no stand or second plate.\n6. One blank tall narrow black mechanical clock card, softly chamfered polygonal corners, thin dark silver edge, small TOP central circular hanging hole and absolutely NO DIGITS or letters.\n7. One vertical long narrow silver compression coil spring, continuous helical wire with clear transparent spaces between each turn, no blocks attached.\n8. One vertical long narrow metal hanging chain, continuous connected oval silver links, no other pieces.\nROW THREE:\n9. One round dark metal wind-chime medallion with a tiny geometric red three-blade center emblem and top hanging ring, outer circle silver.\n10. One small hanging bell with dark graphite skirt, cold silver edge, thin red seam at bottom and top hanging ring.\n11. One four-pointed angular silver-black star wind-chime ornament, a small red central circle, top hanging ring.\n12. One narrow vertical graphite wind-chime tail plate with chamfered corners, fine vertical red inset and small top hanging hole.\nMaintain separated coherent sprite silhouettes and transparent gaps. Every object completely uncut. High quality rendered game UI prop sprites with clean anti-aliased alpha, not a blueprint, no shadows outside each silhouette.",
+    "regions": {
+      "pendulum": [
+        175,
+        8,
+        110,
+        391
+      ],
+      "wheel": [
+        414,
+        59,
+        326,
+        327
+      ],
+      "gear": [
+        768,
+        60,
+        340,
+        339
+      ],
+      "mallet": [
+        1158,
+        155,
+        269,
+        170
+      ],
+      "hat": [
+        20,
+        493,
+        427,
+        147
+      ],
+      "card": [
+        538,
+        397,
+        142,
+        336
+      ],
+      "spring": [
+        879,
+        406,
+        124,
+        327
+      ],
+      "chain": [
+        1245,
+        394,
+        89,
+        340
+      ],
+      "charm0": [
+        77,
+        731,
+        282,
+        323
+      ],
+      "charm1": [
+        461,
+        749,
+        257,
+        306
+      ],
+      "charm2": [
+        802,
+        732,
+        278,
+        323
+      ],
+      "tail": [
+        1225,
+        737,
+        125,
+        320
+      ]
+    }
+  },
+  "sheetLayers": [
+    {
+      "file": "exec-9052ec10-8896-4b0f-8640-14760816e3a7.png",
+      "folders": [
+        "moon-clock-2x2",
+        "dive-clock-2x2",
+        "skeleton-clock-2x2"
+      ],
+      "prompt": "Use case: precise-object-edit / transparent production game asset. Edit target: the first sheet with hands already removed. Supporting reference: second original RGBA sheet supplies the exact silhouette and alpha. Return the FIRST sheet unchanged in RGB artwork with REAL TRANSPARENT background outside all six widget silhouettes, matching the alpha of the second reference. Keep dial interiors, gear interiors, calendar faces and red/metal frames fully opaque; only exterior backdrop becomes true alpha 0. No halo, no black rectangular corners. Preserve EXACT 1536x1024 canvas, positions, scale and padding. Preserve the top three clock dials WITHOUT any hour/minute/second hands or central pins. Keep all dial markers, gears, moon artwork, date windows, text and lower three panels unchanged. Do not add hands, crop, zoom, reorganize or change any material.\n"
+    }
+  ]
+}

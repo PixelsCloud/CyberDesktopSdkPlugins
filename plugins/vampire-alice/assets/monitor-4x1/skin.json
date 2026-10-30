@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.monitor.4x1",
+  "folder": "monitor-4x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 4,
+  "slot": 4,
+  "character": false,
+  "imageSize": [
+    1145,
+    1374
+  ],
+  "crop": [
+    6,
+    545,
+    1134,
+    168
+  ],
+  "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+  "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 系统监控 4×1",
+  "regions": {
+    "gauge0": [
+      0.10846560846560846,
+      0.10714285714285714,
+      0.12345679012345678,
+      0.8333333333333334
+    ],
+    "gauge1": [
+      0.328042328042328,
+      0.10714285714285714,
+      0.12345679012345678,
+      0.8333333333333334
+    ],
+    "gauge2": [
+      0.54673721340388,
+      0.10714285714285714,
+      0.12345679012345678,
+      0.8333333333333334
+    ],
+    "gauge3": [
+      0.7627865961199295,
+      0.10119047619047619,
+      0.12345679012345678,
+      0.8333333333333334
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+  "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

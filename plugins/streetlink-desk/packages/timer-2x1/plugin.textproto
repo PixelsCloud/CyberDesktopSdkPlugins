@@ -1,0 +1,184 @@
+id: "com.cyberdesktop.streetlink.timer.2x1"
+name: "STREETLINK · 专注锁定条"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "1x2"
+    name: "2×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+description: "Focus timer; independent settings and partial content updates."
+icon: "preview.png"
+settings_page {
+    title: "番茄钟设置"
+    description: "单击控件操作；拖动移位不触发点击。每块砖独立保存配置。"
+    fields {
+        id: "mode"
+        label: "计时模式"
+        type: CHOICE
+        section: "内容"
+        choices {
+            value: "focus"
+            label: "番茄钟"
+            localized_labels { key: "en" value: "Pomodoro" }
+            localized_labels { key: "zh-TW" value: "番茄鍾" }
+        }
+        choices {
+            value: "countdown"
+            label: "倒计时"
+            localized_labels { key: "en" value: "Countdown" }
+            localized_labels { key: "zh-TW" value: "倒計時" }
+        }
+        text_default: "focus"
+        localized {
+            key: "en"
+            value { label: "Timer mode" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "計時模式" section: "內容" }
+        }
+    }
+    fields {
+        id: "focus_minutes"
+        label: "专注时长（分钟）"
+        type: INTEGER
+        section: "内容"
+        minimum: 1.0
+        maximum: 180.0
+        step: 1.0
+        integer_default: 25
+        localized {
+            key: "en"
+            value { label: "Focus minutes" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "專注時長（分鐘）" section: "內容" }
+        }
+    }
+    fields {
+        id: "break_minutes"
+        label: "休息时长（分钟）"
+        type: INTEGER
+        section: "内容"
+        minimum: 1.0
+        maximum: 60.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value { label: "Break minutes" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "休息時長（分鐘）" section: "內容" }
+        }
+    }
+    fields {
+        id: "auto_break"
+        label: "自动开始休息"
+        type: TOGGLE
+        section: "内容"
+        localized {
+            key: "en"
+            value { label: "Automatically start break" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "自動開始休息" section: "內容" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角（px）"
+        type: INTEGER
+        description: "桌面控件背景的圆角，0 为直角。"
+        section: "背景"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius (px)"
+                description: "Corner radius of the desktop widget background; 0 gives square corners."
+                section: "Background"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角（px）" description: "桌面小工具背景的圓角，0 為直角。" section: "背景" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "内容"
+        max_length: 128
+        text_default: "Chakra Petch"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" section: "內容" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        section: "内容"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" section: "內容" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Focus timer settings"
+            description: "Click controls to interact. Dragging does not activate a click. Settings are saved per instance."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "番茄鍾設定" description: "單擊控制元件操作；拖動移位不觸發點選。每塊磚獨立儲存配置。" }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "赛博朋克"
+tags: "STREETLINK"

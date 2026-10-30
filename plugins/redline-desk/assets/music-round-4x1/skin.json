@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.redline.music.round.4x1",
+  "folder": "music-round-4x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+  "source": "plugins/mechanical-pixels/packages/music-round-4x1/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 6,
+  "slot": 2,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    256,
+    335,
+    510,
+    126
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械圆点阵频谱 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "plot": [
+      0.055,
+      0.25,
+      0.89,
+      0.64
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-06-dot-matrix-spectra.art.png",
+  "art": "plugins/redline-desk/assets/music-round-4x1/body.png",
+  "artSha256": "aca3cb98b89021611845866e7fb3f87cfae76ee6fba02748b0a1584aa854d2eb",
+  "approvedCrop": [
+    256,
+    335,
+    510,
+    126
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

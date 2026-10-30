@@ -1,0 +1,304 @@
+id: "com.cyberdesktop.vampire.alice.weather.4x2"
+name: "吸血鬼.Alice · 天气 4×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "2x4"
+    name: "4×2（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+capabilities: WEATHER
+description: "吸血鬼.Alice 系列，支持当前实例独立设置。"
+icon: "preview.png"
+settings_page {
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        section: "外观"
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduced motion" section: "Appearance" }
+        }
+    }
+    title: "吸血鬼.Alice · 天气 4×2设置"
+    description: "默认自动定位城市，可关闭自动定位后手动指定。IP 定位可能受代理 / VPN 影响。Weather data by Open-Meteo.com（CC BY 4.0）；免费天气接口仅限非商业使用。"
+    fields {
+        id: "auto_location"
+        label: "自动定位"
+        type: TOGGLE
+        description: "根据网络出口 IP 获取近似城市（ipwho.is），无需 Key。失败时提示手动设置，不回退到北京。关闭后使用下方城市或经纬度。"
+        section: "位置"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Automatic location"
+                description: "Uses your network IP\'s approximate city (ipwho.is), without a key. Turn off to use a city or coordinates below. Failure asks you to set a location; no default-city fallback."
+                section: "Location"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "自動定位"
+                description: "根據網路出口 IP 獲取近似城市（ipwho.is），無需 Key。失敗時提示手動設定，不回退到北京。關閉後使用下方城市或經緯度。"
+                section: "位置"
+            }
+        }
+    }
+    fields {
+        id: "city"
+        label: "手动城市"
+        type: TEXT
+        description: "关闭自动定位后生效。城市名可加省份，如“杭州, 浙江”；重名城市可使用经纬度。"
+        section: "位置"
+        max_length: 128
+        localized {
+            key: "en"
+            value {
+                label: "Manual city"
+                description: "Used when automatic location is off. Add a region for ambiguous names, or use coordinates."
+                section: "Location"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "手動城市"
+                description: "關閉自動定位後生效。城市名可加省份，如“杭州, 浙江”；重名城市可使用經緯度。"
+                section: "位置"
+            }
+        }
+    }
+    fields {
+        id: "country"
+        label: "国家代码"
+        type: TEXT
+        description: "两位大写国家代码，如 CN、US；留空搜索全球。"
+        section: "位置"
+        max_length: 2
+        localized {
+            key: "en"
+            value {
+                label: "Country code"
+                description: "Two uppercase letters, e.g. CN or US; leave empty for worldwide search."
+                section: "Location"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "國家程式碼" description: "兩位大寫國家程式碼，如 CN、US；留空搜尋全球。" section: "位置" }
+        }
+    }
+    fields {
+        id: "coordinates"
+        label: "使用经纬度"
+        type: TOGGLE
+        description: "关闭自动定位后，启用此项使用下方坐标；城市文字只作为显示名称。"
+        section: "位置"
+        localized {
+            key: "en"
+            value {
+                label: "Use coordinates"
+                description: "With automatic location off, coordinates determine the location; city is the display name."
+                section: "Location"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "使用經緯度"
+                description: "關閉自動定位後，啟用此項使用下方座標；城市文字只作為顯示名稱。"
+                section: "位置"
+            }
+        }
+    }
+    fields {
+        id: "latitude"
+        label: "纬度"
+        type: NUMBER
+        description: "仅“使用经纬度”启用时生效。"
+        section: "位置"
+        minimum: -90.0
+        maximum: 90.0
+        step: 0.0001
+        localized {
+            key: "en"
+            value { label: "Latitude" description: "Used only when coordinate mode is enabled." section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "緯度" description: "僅“使用經緯度”啟用時生效。" section: "位置" }
+        }
+    }
+    fields {
+        id: "longitude"
+        label: "经度"
+        type: NUMBER
+        description: "仅“使用经纬度”启用时生效。"
+        section: "位置"
+        minimum: -180.0
+        maximum: 180.0
+        step: 0.0001
+        localized {
+            key: "en"
+            value { label: "Longitude" description: "Used only when coordinate mode is enabled." section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "經度" description: "僅“使用經緯度”啟用時生效。" section: "位置" }
+        }
+    }
+    fields {
+        id: "refresh_minutes"
+        label: "刷新间隔（分钟）"
+        type: INTEGER
+        description: "后台请求；相同位置共享缓存。双击可刷新，有请求间隔保护。"
+        section: "显示"
+        minimum: 5.0
+        maximum: 180.0
+        step: 5.0
+        integer_default: 15
+        localized {
+            key: "en"
+            value {
+                label: "Refresh interval (minutes)"
+                description: "Background requests share a cache for the same location; double-click refreshes with throttling."
+                section: "Display"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "重新整理間隔（分鐘）"
+                description: "後臺請求；相同位置共享快取。雙擊可重新整理，有請求間隔保護。"
+                section: "顯示"
+            }
+        }
+    }
+    fields {
+        id: "units"
+        label: "单位"
+        type: CHOICE
+        description: "只改变显示单位，不额外请求天气。"
+        section: "显示"
+        choices {
+            value: "metric"
+            label: "摄氏度 / m/s"
+            localized_labels { key: "en" value: "Celsius / m/s" }
+            localized_labels { key: "zh-TW" value: "攝氏度 / m/s" }
+        }
+        choices {
+            value: "imperial"
+            label: "华氏度 / mph"
+            localized_labels { key: "en" value: "Fahrenheit / mph" }
+            localized_labels { key: "zh-TW" value: "華氏度 / mph" }
+        }
+        text_default: "metric"
+        localized {
+            key: "en"
+            value {
+                label: "Units"
+                description: "Changes display units without another weather request."
+                section: "Display"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "單位" description: "只改變顯示單位，不額外請求天氣。" section: "顯示" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        description: "默认使用外部思源真黑 Heavy 字体。"
+        section: "显示"
+        max_length: 128
+        text_default: "Microsoft YaHei UI"
+        localized {
+            key: "en"
+            value {
+                label: "Font"
+                description: "Defaults to the shared external Gen Shin Gothic Heavy font."
+                section: "Display"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" description: "預設使用外部思源真黑 Heavy 字型。" section: "顯示" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        description: "支持简体中文和英文；设置按实例独立保存。"
+        section: "显示"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value {
+                label: "Language"
+                description: "Simplified Chinese and English; settings are saved per instance."
+                section: "Display"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" description: "支援簡體中文和英文；設定按例項獨立儲存。" section: "顯示" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Vampire.Alice · Weather settings"
+            description: "Automatically locates your city by default; turn off auto location to set it manually. Proxies / VPNs can affect IP location. Weather data by Open-Meteo.com (CC BY 4.0); free weather endpoint for non-commercial use."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value {
+            title: "吸血鬼.Alice · 天氣 2×4設定"
+            description: "預設自動定位城市，可關閉自動定位後手動指定。IP 定位可能受代理 / VPN 影響。Weather data by Open-Meteo.com（CC BY 4.0）；免費天氣介面僅限非商業使用。"
+        }
+    }
+}
+preview: "preview.png"
+required_services { id: "weather.forecast" version: 1 }
+
+tags: "吸血鬼"
+tags: "Alice"

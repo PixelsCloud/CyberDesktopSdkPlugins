@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "chrono-6x2.art.png",
+  "sha256": "58ae0c9f51870475b2b935f1072e0fd1ddeb3621cd3e24ca285b3db9df245033",
+  "crop": [
+    15,
+    7,
+    1975,
+    780
+  ]
+}

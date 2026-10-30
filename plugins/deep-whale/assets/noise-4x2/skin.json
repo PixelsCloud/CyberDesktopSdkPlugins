@@ -1,0 +1,138 @@
+{
+  "id": "com.cyberdesktop.deepwhale.noise.4x2",
+  "folder": "noise-4x2",
+  "sourceId": "com.cyberdesktop.ambient.noise.2x4",
+  "source": "plugins/ambience-suite/packages/noise-2x4/plugin.textproto",
+  "family": "ambience",
+  "kind": 2,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "row0": [
+      174.5,
+      73,
+      110,
+      17
+    ],
+    "row1": [
+      174.5,
+      94,
+      110,
+      17
+    ],
+    "row2": [
+      174.5,
+      115,
+      110,
+      17
+    ],
+    "row3": [
+      174.5,
+      136,
+      110,
+      17
+    ],
+    "toggle0": [
+      216,
+      73,
+      17,
+      17
+    ],
+    "toggle1": [
+      216,
+      94,
+      17,
+      17
+    ],
+    "toggle2": [
+      216,
+      115,
+      17,
+      17
+    ],
+    "toggle3": [
+      203,
+      136,
+      17,
+      17
+    ],
+    "slider0": [
+      237,
+      73,
+      47,
+      17
+    ],
+    "slider1": [
+      237,
+      94,
+      47,
+      17
+    ],
+    "slider2": [
+      237,
+      115,
+      47,
+      17
+    ],
+    "slider3": [
+      224,
+      136,
+      60,
+      17
+    ],
+    "master": [
+      194,
+      138,
+      48,
+      13
+    ],
+    "play": [
+      175,
+      138,
+      14,
+      14
+    ],
+    "timer": [
+      246,
+      138,
+      22,
+      14
+    ],
+    "page": [
+      272,
+      138,
+      14,
+      14
+    ],
+    "error": [
+      175,
+      62,
+      110,
+      8
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        23,
+        45,
+        1551,
+        910
+      ],
+      "destination": [
+        7,
+        13.45313,
+        306,
+        179.53125
+      ]
+    }
+  ],
+  "designUid": "b14-6",
+  "defaults": {}
+}

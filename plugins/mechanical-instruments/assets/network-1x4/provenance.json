@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "sha256": "639140569763751EC486888140A1787899210E64E9586FC256158F707BA6A0E7",
+      "source": "exec-17a9277c-5fc8-43f3-8583-b830d7323ddb.png",
+      "bytes": 1273625,
+      "file": "body.png"
+    }
+  ],
+  "generator": "OpenAI built-in image_gen",
+  "reference": "design/mechanical-monitor-network-sign-concept.png",
+  "role": "Approved contoured backplate; live scale, needle and readouts rendered separately."
+}

@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-cc3a60de-ba18-424e-af3c-f6cc99d17ec7.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    1610,
+    977
+  ],
+  "visibleBounds": [
+    57,
+    41,
+    1495,
+    874
+  ],
+  "purpose": "Empty full player chassis and cassette bay. Actual cover, metadata, transport, timeline and two cached animated reel sprites are native runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "5ae44a1b712f07321124808695396df245f6ceab2c3780cca893e5a8eee1b8f3"
+}

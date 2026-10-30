@@ -1,0 +1,1 @@
+Original CyberDesktop mechanical lunar-calendar housing generated with OpenAI image_gen from the approved project concept. All dates, lunar text, day tiles, highlights and navigation glyphs are drawn separately at runtime. The housing has no baked dates or fixed monthly grid. Calendar calculation and its sxtwl license remain provided by the existing lunar-suite.

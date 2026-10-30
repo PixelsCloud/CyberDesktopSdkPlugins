@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2,
+      "type": "integer"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "instance_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "branch_id": { "type": "string", "pattern": "^[A-Za-z0-9_.-]{1,64}$" },
+    "character_version": { "type": "integer", "minimum": 1 },
+    "state_version": { "type": "integer", "minimum": 0 },
+    "character_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "idle",
+        "generating"
+      ]
+    },
+    "committed_turns": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "mood_weights": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "media_enabled": {
+      "type": "boolean"
+    },
+    "unlocked_flags": {
+      "type": "array",
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "session_id",
+    "instance_id",
+    "branch_id",
+    "character_version",
+    "state_version",
+    "character_id",
+    "scene_id",
+    "generation",
+    "status",
+    "committed_turns",
+    "mood_weights",
+    "media_enabled",
+    "unlocked_flags"
+  ]
+}

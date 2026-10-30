@@ -1,0 +1,111 @@
+{
+  "id": "com.cyberdesktop.deepwhale.music.square.4x1",
+  "folder": "music-square-4x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+  "source": "plugins/mechanical-pixels/packages/music-square-4x1/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      105.91899852724595,
+      52.59646539027982,
+      177.31664212076583,
+      26.217967599410898
+    ]
+  },
+  "layers": [
+    {
+      "name": "rail-0",
+      "file": "art-0.png",
+      "source": [
+        1136,
+        8,
+        8,
+        679
+      ],
+      "destination": [
+        142.7761413843888,
+        7,
+        46.31693667157583,
+        86
+      ],
+      "repeatX": true
+    },
+    {
+      "name": "rail-1",
+      "file": "art-0.png",
+      "source": [
+        1648,
+        8,
+        8,
+        679
+      ],
+      "destination": [
+        225.6462444771723,
+        7,
+        46.31693667157586,
+        86
+      ],
+      "repeatX": true
+    },
+    {
+      "name": "rail-2",
+      "file": "art-0.png",
+      "source": [
+        28,
+        8,
+        1072,
+        679
+      ],
+      "destination": [
+        7,
+        7,
+        135.7761413843888,
+        86
+      ]
+    },
+    {
+      "name": "rail-3",
+      "file": "art-0.png",
+      "source": [
+        1220,
+        8,
+        288,
+        679
+      ],
+      "destination": [
+        189.09307805596464,
+        7,
+        36.47717231222386,
+        86
+      ]
+    },
+    {
+      "name": "rail-4",
+      "file": "art-0.png",
+      "source": [
+        1830,
+        8,
+        324,
+        679
+      ],
+      "destination": [
+        271.96318114874816,
+        7,
+        41.03681885125184,
+        86
+      ]
+    }
+  ],
+  "designUid": "b06-1",
+  "defaults": {},
+  "horizontalCuts": [
+    160
+  ]
+}

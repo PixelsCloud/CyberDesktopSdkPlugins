@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-31735e29-b909-4fa9-b65a-eca8838949e7.png",
+  "reference": "design/pixel-desk-suite/03-calendar-weather-air.png",
+  "imageSize": [
+    1721,
+    914
+  ],
+  "visibleBounds": [
+    36,
+    207,
+    1650,
+    498
+  ],
+  "purpose": "Empty mint pixel weather case. Flat panels are resized by native nine-slice while corner parts keep uniform scale. Actual host weather values and condition-specific pixel illustrations are independent native content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "da89718bce4fcb457285a7fdcb442e9044697054b486384c633367c4b40c1345"
+}

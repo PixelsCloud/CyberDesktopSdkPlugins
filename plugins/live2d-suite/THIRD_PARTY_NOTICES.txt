@@ -1,0 +1,26 @@
+Bundled Live2D character assets
+
+Mao, Haru, Hiyori and Wanko
+Copyright (c) Live2D Inc. All rights reserved.
+Source: official Cubism SDK for Native 5-r.5, Samples/Resources.
+https://www.live2d.com/zh-CHS/learn/sample/
+License: Live2D Free Material License Agreement and sample model terms.
+Full texts: licenses/Live2D-Free-Material-License.html,
+licenses/Live2D-Sample-Model-Terms.html and licenses/Live2D-SDK-LICENSE.md.
+Original runtime files are unchanged. Voice files are not included.
+
+DS Whale Girl
+Original character: Shangshan / 上善无形 (https://www.pixiv.net/users/62155430)
+DeepSeek maid redesign: ZipZipPipe (https://www.pixiv.net/users/18604994)
+Live2D model/motions: 氵六青 (https://space.bilibili.com/11272072)
+Runtime packaging: A8Chann (https://github.com/A8Chann/dsh-pet-live2d)
+License: CC BY-NC-SA 4.0 (attribution, non-commercial, share-alike).
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Full notice and license: licenses/Whale-Girl-NOTICE.md and
+licenses/Whale-Girl-CC-BY-NC-SA-4.0.txt.
+Modifications: SprayWater sets the required jingyu switch and runs for three
+seconds before returning to idle. This adaptation retains CC BY-NC-SA 4.0.
+
+models/catalog.json records upstream revisions and original/distributed
+SHA-256 values. Editable model/artwork sources remain available at the source
+repositories above. No creator endorsement of CyberDesktop is implied.

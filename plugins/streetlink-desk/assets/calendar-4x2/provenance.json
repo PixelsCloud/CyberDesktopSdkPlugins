@@ -1,0 +1,7 @@
+{
+  "sha256": "2a22584203122a75dbf39fdd18a0ebc3714356d6fca6180a05f961d6cc07ba0b",
+  "source": "art/10-calendar-4x2.png",
+  "productionSha256": "89051eb8efe731e41b233346eae61978e58a63e11f86e1675c03197fa6c5271d",
+  "pixelOperations": "imagegen: revised empty display or orthographic overhead pond; live content rendered separately",
+  "theme": "STREETLINK"
+}

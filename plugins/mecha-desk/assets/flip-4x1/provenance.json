@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "12-flip-lcd.art.png",
+  "sha256": "8740df27c390e4cba04312f327b6d0f8dd37b99e24f6e048a522c8d2d72bd75e",
+  "crop": [
+    22,
+    667,
+    618,
+    962
+  ]
+}

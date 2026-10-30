@@ -1,0 +1,7 @@
+/build/
+/design/
+/.vs/
+*.user
+__pycache__/
+*.pyc
+

@@ -1,0 +1,72 @@
+{
+  "id": "com.cyberdesktop.redline.moon.clock.2x2",
+  "folder": "moon-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+  "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    71,
+    72,
+    392,
+    404
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械月相表 2×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0.08,
+      0.09,
+      0.84,
+      0.82
+    ],
+    "pin": [
+      0.48,
+      0.49,
+      0.04,
+      0.04
+    ],
+    "moon": [
+      0.35,
+      0.6,
+      0.3,
+      0.18
+    ],
+    "date": [
+      0.725,
+      0.473,
+      0.083,
+      0.07
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+  "art": "plugins/redline-desk/assets/moon-clock-2x2/body.png",
+  "artSha256": "85512bd925a1e4b51a70d5bbf9fed48d0b6aff6c288a1b7def16bebc65244655",
+  "approvedCrop": [
+    71,
+    72,
+    392,
+    404
+  ],
+  "runtimeFixedLayer": true,
+  "fixedLayerSource": "exec-9052ec10-8896-4b0f-8640-14760816e3a7.png",
+  "reviewText": [
+    "date"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.hourglass.2x1",
+  "folder": "hourglass-2x1",
+  "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+  "source": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+  "family": "hourglass",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 8,
+  "slot": 2,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    441,
+    125,
+    602,
+    362
+  ],
+  "art": "design/vampire-muse-suite/08-timers.runtime.png",
+  "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 沙漏 2×1",
+  "regions": {
+    "glass": [
+      0.1079734219269103,
+      0.052486187845303865,
+      0.25083056478405313,
+      0.9337016574585635
+    ],
+    "title": [
+      0.46,
+      0.31,
+      0.42,
+      0.29
+    ],
+    "progress": [
+      0.44518272425249167,
+      0.6160220994475138,
+      0.446843853820598,
+      0.07458563535911603
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
+  "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

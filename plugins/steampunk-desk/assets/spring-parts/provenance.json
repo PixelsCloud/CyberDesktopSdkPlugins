@@ -1,0 +1,11 @@
+{
+  "generator": "native image_gen",
+  "original": "C:\\Users\\chess\\.codex\\generated_images\\01a14d38-ba60-7032-b6ff-70e8e361558b\\exec-f2aac834-73cb-438b-bca7-24b6e7296482.png",
+  "reference": "design/steampunk-desk-suite/01-clocks.png",
+  "purpose": "Separate gantry and blank hanging plaques; source rectangles cropped at runtime, all digits and spring motion live",
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "sha256": "bacfe9bb98cdee703217aec13642219dbf186269f9088ff0ba78810e7471e167"
+}

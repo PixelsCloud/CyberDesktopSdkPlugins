@@ -1,0 +1,19 @@
+{
+  "generator": "Built-in image_gen",
+  "reference": "design/mechanical-hourglass-concept.png",
+  "purpose": "Individually generated transparent mechanical chassis and empty glass; live sand and timer are rendered by code.",
+  "files": {
+    "chassis-1x1.png": {
+      "original": "exec-7c43e72c-d504-4c86-b87e-941281b62630.png",
+      "sha256": "f67bbfab561f888ceb7fde1ee794f0db84b4754a5ed6751dd66a3567734d79b7"
+    },
+    "chassis-2x1.png": {
+      "original": "exec-53b8d472-1035-46b4-b382-a7b2e35cb5bd.png",
+      "sha256": "257d324db7dcdf029a1c976fc183f97cbb9a971fbc7691c2ab6cc97dd7109763"
+    },
+    "glass.png": {
+      "original": "exec-6a0b1eae-a1f0-49a6-b130-26520e4a63f5.png",
+      "sha256": "38477e46453d5a15a46cf421b23805a3992f4062b265aabcee7608e420b9c7c2"
+    }
+  }
+}

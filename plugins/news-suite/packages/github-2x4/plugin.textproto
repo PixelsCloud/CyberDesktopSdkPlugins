@@ -1,0 +1,316 @@
+id: "com.cyberdesktop.news.github.2x4"
+name: "开源热榜 / Open source 4×2"
+version: "1.0.6"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "2x4"
+    name: "4×2（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+description: "GitHub Trending 日周月榜、编程语言筛选、收藏与离线缓存，无需 API Key。"
+settings_page {
+    title: "开源热榜 / Open source"
+    fields {
+        id: "list_mode"
+        label: "浏览方式"
+        type: CHOICE
+        section: "显示"
+        choices {
+            value: "scroll"
+            label: "平滑滚动"
+            localized_labels { key: "en" value: "Smooth scrolling" }
+            localized_labels { key: "zh-TW" value: "平滑捲動" }
+        }
+        choices {
+            value: "pages"
+            label: "分页"
+            localized_labels { key: "en" value: "Pages" }
+            localized_labels { key: "zh-TW" value: "分頁" }
+        }
+        text_default: "scroll"
+        localized {
+            key: "en"
+            value { label: "Browse mode" section: "Display" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "瀏覽方式" section: "顯示" }
+        }
+    }
+    fields {
+        id: "period"
+        label: "榜单周期"
+        type: CHOICE
+        section: "数据源"
+        choices {
+            value: "daily"
+            label: "今日"
+            localized_labels { key: "en" value: "Today" }
+            localized_labels { key: "zh-TW" value: "今日" }
+        }
+        choices {
+            value: "weekly"
+            label: "本周"
+            localized_labels { key: "en" value: "This week" }
+            localized_labels { key: "zh-TW" value: "本週" }
+        }
+        choices {
+            value: "monthly"
+            label: "本月"
+            localized_labels { key: "en" value: "This month" }
+            localized_labels { key: "zh-TW" value: "本月" }
+        }
+        text_default: "daily"
+        localized {
+            key: "en"
+            value { label: "Period" section: "Sources" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "榜單週期" section: "資料來源" }
+        }
+    }
+    fields {
+        id: "code_language"
+        label: "编程语言"
+        type: CHOICE
+        section: "数据源"
+        choices {
+            value: "all"
+            label: "全部语言"
+            localized_labels { key: "en" value: "All languages" }
+            localized_labels { key: "zh-TW" value: "全部語言" }
+        }
+        choices {
+            value: "python"
+            label: "Python"
+            localized_labels { key: "zh-TW" value: "Python" }
+        }
+        choices {
+            value: "typescript"
+            label: "TypeScript"
+            localized_labels { key: "zh-TW" value: "TypeScript" }
+        }
+        choices {
+            value: "javascript"
+            label: "JavaScript"
+            localized_labels { key: "zh-TW" value: "JavaScript" }
+        }
+        choices {
+            value: "c++"
+            label: "C++"
+            localized_labels { key: "zh-TW" value: "C++" }
+        }
+        choices {
+            value: "c"
+            label: "C"
+            localized_labels { key: "zh-TW" value: "C" }
+        }
+        choices {
+            value: "rust"
+            label: "Rust"
+            localized_labels { key: "zh-TW" value: "Rust" }
+        }
+        choices {
+            value: "go"
+            label: "Go"
+            localized_labels { key: "zh-TW" value: "Go" }
+        }
+        choices {
+            value: "java"
+            label: "Java"
+            localized_labels { key: "zh-TW" value: "Java" }
+        }
+        choices {
+            value: "c#"
+            label: "C#"
+            localized_labels { key: "zh-TW" value: "C#" }
+        }
+        choices {
+            value: "swift"
+            label: "Swift"
+            localized_labels { key: "zh-TW" value: "Swift" }
+        }
+        choices {
+            value: "kotlin"
+            label: "Kotlin"
+            localized_labels { key: "zh-TW" value: "Kotlin" }
+        }
+        choices {
+            value: "ruby"
+            label: "Ruby"
+            localized_labels { key: "zh-TW" value: "Ruby" }
+        }
+        choices {
+            value: "php"
+            label: "PHP"
+            localized_labels { key: "zh-TW" value: "PHP" }
+        }
+        choices {
+            value: "shell"
+            label: "Shell"
+            localized_labels { key: "zh-TW" value: "Shell" }
+        }
+        text_default: "all"
+        localized {
+            key: "en"
+            value { label: "Programming language" section: "Sources" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "程式語言" section: "資料來源" }
+        }
+    }
+    fields {
+        id: "refresh_minutes"
+        label: "更新间隔"
+        type: INTEGER
+        section: "数据源"
+        minimum: 5.0
+        maximum: 180.0
+        step: 5.0
+        integer_default: 30
+        localized {
+            key: "en"
+            value { label: "Refresh minutes" section: "Sources" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "更新間隔" section: "資料來源" }
+        }
+    }
+    fields {
+        id: "lighting"
+        label: "昼夜模式"
+        type: CHOICE
+        section: "外观"
+        choices {
+            value: "theme"
+            label: "跟随主题"
+            localized_labels { key: "en" value: "Follow theme" }
+            localized_labels { key: "zh-TW" value: "跟隨主題" }
+        }
+        choices {
+            value: "day"
+            label: "白天"
+            localized_labels { key: "en" value: "Light" }
+            localized_labels { key: "zh-TW" value: "白天" }
+        }
+        choices {
+            value: "night"
+            label: "黑夜"
+            localized_labels { key: "en" value: "Dark" }
+            localized_labels { key: "zh-TW" value: "黑夜" }
+        }
+        text_default: "theme"
+        localized {
+            key: "en"
+            value { label: "Appearance" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "晝夜模式" section: "外觀" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示背景" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 8
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角" section: "外觀" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "界面语言"
+        type: CHOICE
+        description: "新闻保留来源原文，不自动翻译。"
+        section: "外观"
+        choices {
+            value: "auto"
+            label: "跟随系统"
+            localized_labels { key: "en" value: "System" }
+            localized_labels { key: "zh-TW" value: "跟隨系統" }
+        }
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "auto"
+        localized {
+            key: "en"
+            value {
+                label: "Interface language"
+                description: "Stories retain their original language; no automatic translation."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "介面語言" description: "新聞保留來源原文，不自動翻譯。" section: "外觀" }
+        }
+    }
+    localized {
+        key: "en"
+        value { title: "Open source settings" }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "開源熱榜 / Open source" }
+    }
+}
+preview: "preview.png"
+tags: "简约"
+tags: "资讯"
+
+capabilities: CONTENT
+required_services { id: "content.feeds" version: 1 }

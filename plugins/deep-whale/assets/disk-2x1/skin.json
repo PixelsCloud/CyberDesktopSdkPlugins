@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.deepwhale.disk.2x1",
+  "folder": "disk-2x1",
+  "sourceId": "com.cyberdesktop.disk.1x2",
+  "source": "plugins/productivity-suite/packages/disk-1x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 4,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "capacity": [
+      36,
+      78,
+      87,
+      3
+    ],
+    "title": [
+      37,
+      48,
+      85,
+      12
+    ],
+    "usage": [
+      36,
+      61,
+      87,
+      15
+    ],
+    "free": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        30,
+        76,
+        1539,
+        811
+      ],
+      "destination": [
+        7,
+        16.0625,
+        146,
+        76.92188
+      ]
+    }
+  ],
+  "designUid": "b10-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

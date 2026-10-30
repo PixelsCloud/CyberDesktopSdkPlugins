@@ -1,0 +1,69 @@
+{
+  "folder": "spectrum-6x1",
+  "kind": "spectrum",
+  "columns": 6,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    44,
+    195,
+    1447,
+    292
+  ],
+  "inset": 6.25,
+  "regions": {
+    "plot": [
+      66,
+      213,
+      1403,
+      223
+    ]
+  },
+  "originalArtwork": "supplement-spectrum-width.art.png",
+  "originalSha256": "7dcb95359c0701607fcca03c8bf46379388e55f23b31ed82ff34e321f1e9b963",
+  "board": 9,
+  "slot": 4,
+  "nativePixelsUnmodified": true,
+  "parts": {
+    "body": {
+      "source": [
+        44,
+        440,
+        1447,
+        47
+      ]
+    },
+    "rod": {
+      "source": [
+        1009,
+        223,
+        11,
+        194
+      ],
+      "destination": [
+        0,
+        0,
+        11,
+        194
+      ]
+    },
+    "ball": {
+      "file": "ball.png",
+      "source": [
+        88,
+        94,
+        1077,
+        1057
+      ],
+      "destination": [
+        0,
+        0,
+        1077,
+        1057
+      ]
+    }
+  }
+}

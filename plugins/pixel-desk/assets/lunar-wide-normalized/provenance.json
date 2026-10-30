@@ -1,0 +1,29 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a13908-b313-7e50-9e54-5024f7f83857\\exec-a111baa5-f728-48cc-a207-dc8fefb8a667.png",
+  "reference": "design/pixel-desk-suite/grid-02-time-calendar.art.png",
+  "sha256": "b979d7331f4bf4f8f73325872b82e530ee6351ea86f88b9268985d22f8991d61",
+  "imageSize": [
+    519,
+    319
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    515,
+    315
+  ],
+  "sourceCrop": [
+    612,
+    627,
+    1131,
+    946
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt",
+    "body-2.prompt.txt"
+  ]
+}

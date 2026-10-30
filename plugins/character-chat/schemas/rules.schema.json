@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "relationship_stages", "events"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "relationship_stages": {
+      "type": "array", "minItems": 1, "maxItems": 8,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "name", "minimum_turns"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "name": {"type": "string", "minLength": 1, "maxLength": 40},
+          "minimum_turns": {"$ref": "#/$defs/count"}
+        }
+      }
+    },
+    "events": {
+      "type": "array", "maxItems": 32,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "name", "trigger", "when", "grant_flags"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "name": {"type": "string", "minLength": 1, "maxLength": 40},
+          "trigger": {"enum": ["user_confirmation", "turn_committed"]},
+          "when": {"$ref": "#/$defs/predicate"},
+          "enabled": {"type": "boolean", "default": true},
+          "grant_flags": {
+            "type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true,
+            "items": {"$ref": "#/$defs/id"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,64}$"},
+    "count": {"type": "integer", "minimum": 0, "maximum": 1000000000},
+    "predicate": {
+      "type": "object", "minProperties": 1, "maxProperties": 1, "additionalProperties": false,
+      "properties": {
+        "all": {"type": "array", "minItems": 1, "maxItems": 16, "items": {"$ref": "#/$defs/predicate"}},
+        "any": {"type": "array", "minItems": 1, "maxItems": 16, "items": {"$ref": "#/$defs/predicate"}},
+        "scene_id": {"$ref": "#/$defs/id"},
+        "minimum_turns": {"$ref": "#/$defs/count"},
+        "flag": {"$ref": "#/$defs/id"},
+        "relationship_at_least": {"$ref": "#/$defs/id"}
+      }
+    }
+  }
+}

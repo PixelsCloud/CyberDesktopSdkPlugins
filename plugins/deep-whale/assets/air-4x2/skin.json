@@ -1,0 +1,74 @@
+{
+  "id": "com.cyberdesktop.deepwhale.air.4x2",
+  "folder": "air-4x2",
+  "sourceId": "com.cyberdesktop.airquality.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/air-2x4/plugin.textproto",
+  "family": "air",
+  "kind": 0,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "city": [
+      136.08078350515467,
+      69.89484536082475,
+      149.65905154639174,
+      13.875216494845361
+    ],
+    "aqi": [
+      136.08078350515467,
+      82.22837113402062,
+      71.71162886597939,
+      26.20874226804124
+    ],
+    "quality": [
+      217.14610309278353,
+      89.93682474226804,
+      43.650556701030936,
+      12.333525773195877
+    ],
+    "pm25": [
+      145,
+      114,
+      53,
+      32
+    ],
+    "pm10": [
+      220,
+      114,
+      53,
+      32
+    ],
+    "updated": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        10,
+        6,
+        1566,
+        970
+      ],
+      "destination": [
+        9.84375,
+        7,
+        300.28125,
+        186
+      ]
+    }
+  ],
+  "designUid": "b04-1",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

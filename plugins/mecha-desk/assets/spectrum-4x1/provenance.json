@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "spectrum.art.png",
+  "sha256": "33fca4a1bb2b22d4cceaab94a7e0de91ab5c49594f69bc11452b609e4f861a48",
+  "crop": [
+    16,
+    230,
+    1929,
+    647
+  ]
+}

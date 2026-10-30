@@ -1,0 +1,42 @@
+{
+  "id": "com.cyberdesktop.deepwhale.beat.4x2",
+  "folder": "beat-4x2",
+  "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+  "source": "plugins/beat-machine/packages/4x2/plugin.textproto",
+  "family": "beat",
+  "kind": 0,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "world": [
+      35.20276497695852,
+      19.95589203423306,
+      162.16589861751152,
+      121.87623436471362
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        55,
+        81,
+        1519,
+        848
+      ],
+      "destination": [
+        7,
+        22.17188,
+        306,
+        170.82813
+      ]
+    }
+  ],
+  "designUid": "b07-3",
+  "defaults": {}
+}

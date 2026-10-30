@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-3ceac2fd-db7b-4df3-b3f5-c43ed92b7d2b.png",
+  "reference": "design/pixel-desk-suite/01-clocks.png",
+  "sha256": "c80e79054daa138f1dc862f9c0e887e22cd402c2cde124cdf99e46c4ff3be51c",
+  "imageSize": [
+    2172,
+    724
+  ],
+  "visibleBounds": [
+    79,
+    126,
+    2014,
+    476
+  ],
+  "aperture": [
+    236,
+    226,
+    1700,
+    242
+  ],
+  "purpose": "Pixel Desk square-dot clock empty case; live digits are rendered independently",
+  "transparency": "Outside frame; opaque dark glass",
+  "prompts": [
+    "body.prompt.txt",
+    "body.refinement.prompt.txt"
+  ]
+}

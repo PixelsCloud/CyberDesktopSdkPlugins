@@ -1,0 +1,86 @@
+id: "com.cyberdesktop.spectrum"
+name: "Spectrum"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+capabilities: AUDIO_FFT
+footprint_rules { topology: RECT min_cells: 1 max_cells: 64 max_columns: 16 max_rows: 16 }
+layouts {
+    id: "default"
+    name: "Default"
+    topology: RECT
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    allowed_rotations: 0
+    is_default: true
+}
+settings_page {
+    localized {
+        key: "en"
+        value {
+            title: "Plugin settings"
+            description: "Settings are saved separately for each instance. Select a font and language below."
+        }
+    }
+    title: "Spectrum settings"
+    description: "Settings are saved independently for this instance."
+    fields {
+        id: "gain"
+        label: "Spectrum gain"
+        type: NUMBER
+        minimum: 0.2
+        maximum: 5
+        step: 0.1
+        number_default: 1
+        localized {
+            key: "en"
+            value { label: "Gain" section: "General" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "color"
+        label: "Bar color"
+        type: COLOR
+        color_default: 0x46C8AAFF
+        localized {
+            key: "en"
+            value { label: "Color" section: "General" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        section: "外观"
+        type: FONT
+        max_length: 128
+        text_default: "@siyuan-heavy"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        section: "外观"
+        type: CHOICE
+        text_default: "zh-CN"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+        }
+        localized {
+            key: "en"
+            value { label: "Language" section: "Appearance" description: "Affects only this instance." }
+        }
+    }
+}

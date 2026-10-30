@@ -1,0 +1,104 @@
+{
+  "id": "com.cyberdesktop.redline.air.2x1",
+  "folder": "air-2x1",
+  "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+  "family": "air",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 5,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    605,
+    676,
+    403,
+    213
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械空气质量 2×1",
+  "runtimePlate": true,
+  "regions": {
+    "city": [
+      0.1,
+      0.15,
+      0.3,
+      0.15
+    ],
+    "aqiLabel": [
+      0.1,
+      0.36,
+      0.08,
+      0.12
+    ],
+    "aqi": [
+      0.19,
+      0.42,
+      0.28,
+      0.38
+    ],
+    "quality": [
+      0.48,
+      0.56,
+      0.12,
+      0.2
+    ],
+    "pm25Label": [
+      0.7,
+      0.28,
+      0.19,
+      0.12
+    ],
+    "pm25": [
+      0.7,
+      0.48,
+      0.19,
+      0.31
+    ],
+    "progress0": [
+      0.16,
+      0.84,
+      0.39,
+      0.04
+    ],
+    "progress1": [
+      0.69,
+      0.84,
+      0.2,
+      0.04
+    ],
+    "surface0": [
+      0.08,
+      0.14,
+      0.83,
+      0.75
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-03-calendar-weather-air.art.png",
+  "art": "plugins/redline-desk/assets/air-2x1/body.png",
+  "artSha256": "08c2b16df4647f75ee6cd4fff921a48ee00953437ae4035f386c3f7a7984fd0f",
+  "approvedCrop": [
+    605,
+    676,
+    403,
+    213
+  ],
+  "reviewText": [
+    "city",
+    "aqi",
+    "aqiLabel",
+    "pm25",
+    "pm25Label"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

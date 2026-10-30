@@ -1,0 +1,7 @@
+{
+  "generator": "OpenAI image_gen",
+  "approved_reference": "design/mechanical-pixel-clock-music-concept.png",
+  "role": "transparent static chassis; dynamic pixels are not baked into artwork",
+  "file": "body.png",
+  "sha256": "9fede8b71f2ad5b1897985cbeba4d72b7c2d76e5aaf7523c00dc386fc023f0cd"
+}

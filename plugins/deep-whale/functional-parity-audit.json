@@ -1,0 +1,1207 @@
+{
+  "baseline": "plugins/pixel-desk",
+  "scope": "settings types, choices and numeric constraints; excludes theme defaults",
+  "specifications": 75,
+  "status": "settings-complete",
+  "runtimeParity": "theme-specific compositions; source review and native behavior checks in FUNCTIONAL_PARITY.md",
+  "summary": {
+    "schemaDifferences": 17,
+    "missingSettingsLayouts": 0,
+    "missingSettingsOccurrences": 0,
+    "families": {
+      "clock": 2,
+      "spring": 2,
+      "marble": 2,
+      "precision": 3,
+      "calendar": 1,
+      "lunar": 3,
+      "weather": 3,
+      "air": 3,
+      "monitor": 4,
+      "productivity": 8,
+      "widget": 6,
+      "player": 3,
+      "matrix": 6,
+      "basic": 13,
+      "sign": 1,
+      "hourglass": 2,
+      "brick": 1,
+      "beat": 2,
+      "chime": 2,
+      "pond": 3,
+      "ambience": 5
+    }
+  },
+  "items": [
+    {
+      "folder": "clock-square-4x1",
+      "pixelFolder": "clock-square-4x1",
+      "family": "clock",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "c02cd059ee46c18beca1614b9cb319d3695468e985e72dd2455b8b424a457659",
+        "deep": "60ad77f5ac4d2ae72a6c4e8b57c7702cf5a24af8658f5dd593b495cf59fc5edf"
+      }
+    },
+    {
+      "folder": "clock-round-4x1",
+      "pixelFolder": "clock-round-4x1",
+      "family": "clock",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "65a45b0ebd4bc2cf78cd7a4c4442feabcb4aa987a84663ed2f6ca6dee6b2932f",
+        "deep": "40bf7ef31efb12231067516bc681f34f325fc19b78ecd6d890b5e4da6cd3b61e"
+      }
+    },
+    {
+      "folder": "clock-spring-4x1",
+      "pixelFolder": "clock-spring-4x1",
+      "family": "spring",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1af405d82ebff66c7618d6a6451754209871439bf3b03512420f3a4dd6df9b40",
+        "deep": "1b4e59a7e0ab1f82e31caa37926380b8ee0d312c447bb85a96a6704c81b93f04"
+      }
+    },
+    {
+      "folder": "clock-spring-4x2",
+      "pixelFolder": "clock-spring-4x2",
+      "family": "spring",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "8dfc3c77af3762709800bbf5b4ae59b0f507948b851cbeef3d102b87344ab262",
+        "deep": "5e6f39e380c66469bd26c3be018a94fe6bde1c7ff8a42190c5b04c37f08209c1"
+      }
+    },
+    {
+      "folder": "clock-marble-4x2",
+      "pixelFolder": "clock-marble-4x2",
+      "family": "marble",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "6698beb927da2ffbe4c9ea5c2dabe38b20bae297f06b60ff345b3a016f5f54f0",
+        "deep": "39985b57fca239d9fc85101d6c7a691951c7410b186b40901a1de396f3737d36"
+      }
+    },
+    {
+      "folder": "clock-marble-6x2",
+      "pixelFolder": "clock-marble-6x2",
+      "family": "marble",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "a4cb0e0cdf43571eeb22f9a69cbc2ee5a933f9470a86c36b02ae1629698704ad",
+        "deep": "a2e803dd741d3a8a0dd47457b1e2000650649e9e16a05ceb720030887faf0388"
+      }
+    },
+    {
+      "folder": "moon-clock-2x2",
+      "pixelFolder": "clock-precision-dress-2x2",
+      "family": "precision",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "841b3b7f60693e65bed913493fdf11441a7837c1b2cacaa6337cac86d8fd8392",
+        "deep": "402305f5b74aa702b44e7af28aa0416feeea9bab0b1318c84a98d114ff08a722"
+      }
+    },
+    {
+      "folder": "dive-clock-2x2",
+      "pixelFolder": "clock-precision-green-2x2",
+      "family": "precision",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "04293d9c94957acc3a9c2689df0032f68dbcc243cb155413fe2dfb6d56fa4c08",
+        "deep": "004d39762d23b5bf50b78036d4dcf5765da25a599ab1c58adf8cb39e7f9fea6c"
+      }
+    },
+    {
+      "folder": "skeleton-clock-2x2",
+      "pixelFolder": "clock-precision-skeleton-2x2",
+      "family": "precision",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "53354b8cf7ac00e45eaa4b6571db95a85eb0eabc10094ff3f746608306dce128",
+        "deep": "aea832ce52c79779aaeabc7f49d91c7d25daf8e7da61f0fd97bae509d300dcfa"
+      }
+    },
+    {
+      "folder": "calendar-4x2",
+      "pixelFolder": "calendar-4x2",
+      "family": "calendar",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "547749fefd3f93929b2a2148bf85d7352c3b89557db92f514fddfb2514c5bd4f",
+        "deep": "c6789986b5309225b795cc6b99a882fddeddcc90048297a3dc7306ded38c7f06"
+      }
+    },
+    {
+      "folder": "lunar-2x1",
+      "pixelFolder": "lunar-2x1",
+      "family": "lunar",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1d64ccc677cfb023a08f1c633be9b3526030a64f0ecfd4d8f697536f801cfc6e",
+        "deep": "caad8dcc375925afc83e1eb4e6e9de782b3f6e5d5c11566980636adc8771eada"
+      }
+    },
+    {
+      "folder": "lunar-2x2",
+      "pixelFolder": "lunar-2x2",
+      "family": "lunar",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "706386569c54891f55d4ccb324a8ce3183d110c609acb22e4a6c8aba7d2ee309",
+        "deep": "e25790049100a794ca795d540588454ff0d0a9cadfd5f0c09643f4ee4c48c29d"
+      }
+    },
+    {
+      "folder": "lunar-4x4",
+      "pixelFolder": "lunar-4x4",
+      "family": "lunar",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "76fc488bc5870a2aa2b6f77c561d01b895b34ec2e20b80aca6851c7a71873ba7",
+        "deep": "6fe6e1dfe5865e2d6f002085ee69cca894c7d81081da9bc620e53610a13b6d6f"
+      }
+    },
+    {
+      "folder": "weather-2x1",
+      "pixelFolder": "weather-2x1",
+      "family": "weather",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "0fab17b425bca347ffc05622afa2fa9bc1b464c9038cddc090a588ada7349f3f",
+        "deep": "a5680973f3fb315d5da30603cb9263a7f9ebf03b60386390e49c90121e6ce19d"
+      }
+    },
+    {
+      "folder": "weather-4x1",
+      "pixelFolder": "weather-4x1",
+      "family": "weather",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "9673c594b0b771fe9d7772a9d61f3544abdc36bc2a356362f8209f33f88c7ee1",
+        "deep": "7fa879db55db3922eba9bcd455eee640b67daba15318c434d81e31e6f94d0a7c"
+      }
+    },
+    {
+      "folder": "weather-4x2",
+      "pixelFolder": "weather-4x2",
+      "family": "weather",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "40c962cc14806ff95fae117d045f25aff089062f0cc696b11a737534da9f47f4",
+        "deep": "af07f186bde29ab4a8f14e61ed09137f294a44ccaffd661d1ebcdf18ec3e0cd9"
+      }
+    },
+    {
+      "folder": "air-2x1",
+      "pixelFolder": "air-2x1",
+      "family": "air",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "fec299081439d0caf0c4898ba35d190e0b0be9f305a51a978a6363e888faae43",
+        "deep": "d34361b1f85dd243f1f61fd70f7f5362e178d74c80fa78de2bc9ba0b6037f6eb"
+      }
+    },
+    {
+      "folder": "air-4x1",
+      "pixelFolder": "air-4x1",
+      "family": "air",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "66cf03d3ec4b0622dbf6d670c567b4368fa84968d0dc79fa95d1d5b16ceaf4eb",
+        "deep": "2097a8a8430fb0e06f489d5e9f8d9e68073123d65c21296057fef8ae4ccee5b0"
+      }
+    },
+    {
+      "folder": "air-4x2",
+      "pixelFolder": "air-4x2",
+      "family": "air",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1646f28a55da82faad8f522d7fcc8a9dd93a04bd6b510dfb211176690094179c",
+        "deep": "fca18dd766fb20197d1066ea6cdf9b411c5e1e21480e7aa1973d10a0c63e7549"
+      }
+    },
+    {
+      "folder": "monitor-1x1",
+      "pixelFolder": "monitor-1x1",
+      "family": "monitor",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "cc9df29785940049572cc85eaae694f2f3dc62076fbfeca12fe381e33d549ed9",
+        "deep": "c399519303221b02e462f0f99255e8f8ef26d7912526d227a8ff01eb04d51179"
+      }
+    },
+    {
+      "folder": "monitor-2x1",
+      "pixelFolder": "monitor-2x1",
+      "family": "monitor",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "407a8271197352a61ea617e947f8a38f00199fd3e839339b4cb971ceb08df225",
+        "deep": "1fbfac59491e12c1bac723856a2891095a2f1641cc589213bbbc192f8c07f9cb"
+      }
+    },
+    {
+      "folder": "monitor-4x1",
+      "pixelFolder": "monitor-4x1",
+      "family": "monitor",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "067a0a649c238164d785884fab8348554dd3ca3ff30c1e37eaef4f44a531312a",
+        "deep": "6ede66f605958776635e42f29e8fdaa640b69526a5124871a5a050acf206e8af"
+      }
+    },
+    {
+      "folder": "monitor-2x2",
+      "pixelFolder": "monitor-2x2",
+      "family": "monitor",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "e847cfc808572a1615acdf682498a24421ab00006b6b427abe866e52bffa05fd",
+        "deep": "71bb68118ff64003d0d874e81bf64c91adc82442cf26a72f63d485b55fe610bd"
+      }
+    },
+    {
+      "folder": "network-4x1",
+      "pixelFolder": "network-4x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "b8d6bb960377d53fe2e8c7987b14f9ce9f4462f99be1c16edff2f033c1ed87ee",
+        "deep": "05baff37cf3ca09ae08d0e5fa3970e663a2ab189cc65be04c57ea2130ed84013"
+      }
+    },
+    {
+      "folder": "disk-2x2",
+      "pixelFolder": "disk-2x2",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "dd303b9f88862e50f05189a7eddfc5827867f1368a3b011b980c008084acded7",
+        "deep": "6faccbca2be6bfdca5836f5071ea55bc531559f277b43933f9dce0d64630d903"
+      }
+    },
+    {
+      "folder": "input-4x1",
+      "pixelFolder": "input-4x1",
+      "family": "widget",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "30c9823cbe01b79457d72878a46bbba71a62ef23353d57a870b459d45e75a100",
+        "deep": "68f6f708962b155029a82be18ec9b3ac9efa71dbe505a8f6a0766e2b66c088a5"
+      }
+    },
+    {
+      "folder": "album-4x2",
+      "pixelFolder": "album-4x2",
+      "family": "widget",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "18de0b47cf023ade58dd932769ca5bf609ecb8fb6378c96a3c45a499d6acf8a8",
+        "deep": "ae8d676ff355feb4d6f587458d017e1aea51affcafeed61ab56316dae7d4586b"
+      }
+    },
+    {
+      "folder": "player-4x1",
+      "pixelFolder": "player-4x1",
+      "family": "player",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "d44ed1c164af0e6511700e536fec6c0e752edd6dec8d1b373cde0b756712d3c8",
+        "deep": "9717df14b978f997f8bff6233357ff62330b313f1960a97490078f2ca4daa093"
+      }
+    },
+    {
+      "folder": "player-2x2",
+      "pixelFolder": "player-2x2",
+      "family": "player",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "222f0c55776c39307cc70d8ecc7fa4070402367ec8f410df6e7fda1e1af7b294",
+        "deep": "e0d13d48a5b781729d5c94c387cf10cb3f8dcb9317f23f8bc44f4d6c9e5ac00d"
+      }
+    },
+    {
+      "folder": "player-4x2",
+      "pixelFolder": "player-4x2",
+      "family": "player",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "8893acd7aaa5067714d6ae6f361e09d105f2bbb495b8f8b355ecc56446a92a54",
+        "deep": "ce8d8f6d2ae2ee81e1692312be931746148918880c81082a144b586b4b087d53"
+      }
+    },
+    {
+      "folder": "music-square-4x1",
+      "pixelFolder": "music-matrix-square-4x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1741de2ab01946421e2c5329148262292846b1ccd7696d91dea1b5dc1dbb3767",
+        "deep": "75f3d5eba5c1e48b0c6e38a0fff3c934bccb10dc07a593437fc973db5947ded4"
+      }
+    },
+    {
+      "folder": "music-round-4x1",
+      "pixelFolder": "music-matrix-round-4x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "3e0d275899fea5cc73e70b543c5865851ec28d81f3fc726a1858d3e7c9f483dd",
+        "deep": "648517a8c659c1e119dbf0880b29d652e4448cb4d3b2b3fa545e096429333dc1"
+      }
+    },
+    {
+      "folder": "music-square-6x1",
+      "pixelFolder": "music-matrix-square-6x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1128ff285387a85d6cd7f867a066fb168d251e8c6615288ab69c773bb8e34c33",
+        "deep": "2a96306477f7cbcfbab1f188cd912e98119ce0739bb379b9346dd1347596384c"
+      }
+    },
+    {
+      "folder": "music-round-6x1",
+      "pixelFolder": "music-matrix-round-6x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "f96395fd833ad1d407f21402270b7a9ed4f3d04dba33ad85955a1a819d0e8be7",
+        "deep": "783c086d84f6e34b13d1c5bc3d394ac02d3c7bfe71ab9f6e2b02ef187cefe56b"
+      }
+    },
+    {
+      "folder": "music-square-8x1",
+      "pixelFolder": "music-matrix-square-8x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "3c812ed18b59514bd0c7f2a60da33ac3a7173affc3345630b2829eab529ea92b",
+        "deep": "e645521e520bcd2ca770a71dccc5256417eb8ad3b34df3dd3a5b0c46f254fd3c"
+      }
+    },
+    {
+      "folder": "music-round-8x1",
+      "pixelFolder": "music-matrix-round-8x1",
+      "family": "matrix",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "38e0a57c3e372fd77c349acf85be18f83270b1b1dffa8ff28c963253b6c32164",
+        "deep": "b363cbfb5b0bfa400eb72510796f826adf1e9013be0de38804211a6f29ea73bc"
+      }
+    },
+    {
+      "folder": "spectrum-4x1",
+      "pixelFolder": "spectrum-4x1",
+      "family": "widget",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "5c6c83f0eb59481d3589766eedb3d791dd36a40ec844022fc24878e8360dd131",
+        "deep": "0c61038abbaa6b98ec2df445a944b49ba6ce37b39bfb76397cccac8857a1bdee"
+      }
+    },
+    {
+      "folder": "radial-2x2",
+      "pixelFolder": "radial-2x2",
+      "family": "widget",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "a4dc502b36b454c82cd24a11ac67ca8c425f9976fddda5a796a3d78c391f3d41",
+        "deep": "deaad9a9c93aaea825f4d577764f89647b856c9302b3af9be400544089d8670c"
+      }
+    },
+    {
+      "folder": "timer-2x2",
+      "pixelFolder": "timer-2x2",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "c6a381d71e48284eeec67acf19dec35a9a5cf01f36dfc0dcdaf3a9ca67957f8a",
+        "deep": "d24dff4bba136c2de40afeede8a61f557326e60a1e7e66153ec795a1bb442dd2"
+      }
+    },
+    {
+      "folder": "timer-2x1",
+      "pixelFolder": "timer-2x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "6c1463e85e354bbd0909695edcf5e6ef112f212bfde7b85ca1b05ed50d708256",
+        "deep": "c40124d0fb2c59c21bff04fddb73f787b73f4b16d21d83caad2f25287927694e"
+      }
+    },
+    {
+      "folder": "network-2x1",
+      "pixelFolder": "network-2x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "7c1f2377ca89926cf06d102cd07da9f9c2f769ffa02ae694846d4518276b26ae",
+        "deep": "2a169c3a84dafb7dc4d1eab09ee6bb3ea001996d2b220e1b877e4f673deb11d8"
+      }
+    },
+    {
+      "folder": "disk-2x1",
+      "pixelFolder": "disk-2x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "1059b3e6fa2f7145c497b1ab683685bcdaa36a10ab9c10eed8c8fbc4d04a6f0c",
+        "deep": "7e48ffc30f48e7c7dbb746f88ec57ea7ab34c7f24fb2f17ac9cc8dde184fcbd8"
+      }
+    },
+    {
+      "folder": "spectrum-6x1",
+      "pixelFolder": "spectrum-6x1",
+      "family": "widget",
+      "missing": {},
+      "extra": {
+        "show_background": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "background": {
+          "type": "COLOR",
+          "choices": []
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "c2e5b3aebc023509ba824707e2bfb45ce66d4f016ff08fa93dde758bba73ae57",
+        "deep": "7a1fed72ad9213c24d887759cd84e39f0b273cfee28c1da49b6b96ecc3b5057c"
+      }
+    },
+    {
+      "folder": "spectrum-8x1",
+      "pixelFolder": "spectrum-8x1",
+      "family": "widget",
+      "missing": {},
+      "extra": {
+        "show_background": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "background": {
+          "type": "COLOR",
+          "choices": []
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "84f380acd9a8cf09074434a6000300da4283c19ea8e465fa3c099f3595da1486",
+        "deep": "4d6df52810636146f165fee2dceece71da990e8ccaeb7f0d0e5a4d6603e28ced"
+      }
+    },
+    {
+      "folder": "analog-1x1",
+      "pixelFolder": "clock-analog-1x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "45048e37223d9c597dab6ab5ee44e2b46b206b0f9b7d4bd4d2f33cb48af61add",
+        "deep": "8bc940a5d02d60f7632a408ab88621b5dc575ba4480f455a065553f212798fa2"
+      }
+    },
+    {
+      "folder": "analog-2x1",
+      "pixelFolder": "clock-analog-2x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "8cc3e9b890b83697ccb07b9b54b914cb6bd50bbbe45d3a696f58afd3430050c2",
+        "deep": "63b59cdd79cebb0697118d048c3264ddf03744a939c7774e9a23a5b05e0bb040"
+      }
+    },
+    {
+      "folder": "analog-4x1",
+      "pixelFolder": "clock-analog-4x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "4e33c87fd0091433fc392853f58b45b99a6cc862fe38be7c7595e69a0d81a705",
+        "deep": "e6deebf5c0e7bc1140cbfec9ebddcb8a8db0e7a7b1ac5aa886a1bc6d2724e9d3"
+      }
+    },
+    {
+      "folder": "analog-2x2",
+      "pixelFolder": "clock-analog-2x2",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "4d343a00e675f331de93da24fd3c0a8137342e74ee0e70278b970529c81983f6",
+        "deep": "894534f29e79e12a8bf9a314cec707ab4c5b1da36fb1b3d3944f1831b0f26f5d"
+      }
+    },
+    {
+      "folder": "digital-1x1",
+      "pixelFolder": "clock-digital-1x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "seconds_visibility": {
+          "type": "CHOICE",
+          "choices": [
+            "auto",
+            "always"
+          ]
+        },
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "4452f124afbfca1bb4b47d2c24726933c3884a1bb3f41d2b63491047b12ca340",
+        "deep": "e789d581958126a114f9aea22c2e17e8ba6a7c79472040fceac79cab04b57b3f"
+      }
+    },
+    {
+      "folder": "digital-2x1",
+      "pixelFolder": "clock-digital-2x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "74ea7f6f5075eb5698aa10ec5a9927e03d2a0b00ae000546be7669433856226a",
+        "deep": "3faa2c29ad03e533d742506079fc692fca7efcedca1115a28502705cdb0f05c5"
+      }
+    },
+    {
+      "folder": "digital-4x1",
+      "pixelFolder": "clock-digital-4x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "dab0ff5bf3f29b300681329cd1e0d7b711e048461d231d9ac88ced5ff3410e0e",
+        "deep": "3f5a3d7a06f975ab0dc7fd1916c8e8d03fe1bd00d057cb59a65c9c9cf32ad406"
+      }
+    },
+    {
+      "folder": "digital-2x2",
+      "pixelFolder": "clock-digital-2x2",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "b60e7f3347f28f32360a4a400ea5fa5ed41809ee692df13d410d4df436b8d144",
+        "deep": "be1eeff8c9991be7fe678995fb5e95b05231acaf22428d707ef704eca20e439b"
+      }
+    },
+    {
+      "folder": "flip-4x1",
+      "pixelFolder": "clock-flip-4x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        },
+        "card_color": {
+          "type": "COLOR",
+          "choices": []
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "462b8227ecc432876889a5a28fc847afae3193cac865c7845f87a94b9f3ef2be",
+        "deep": "260418b4043c979604620f6f689a2d71b466fccc64c3a4c327af1b5ff2ba6b96"
+      }
+    },
+    {
+      "folder": "flip-2x2",
+      "pixelFolder": "clock-flip-2x2",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        },
+        "card_color": {
+          "type": "COLOR",
+          "choices": []
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "3da0aec4255de86403e3d04e961aff1e03158e5806d524667e7c97c15a309c18",
+        "deep": "4d5d0245c2afafe8b9794f08fd39a8205e5abfb8c58e1a814ba561b65cc08d63"
+      }
+    },
+    {
+      "folder": "flip-4x2",
+      "pixelFolder": "clock-flip-4x2",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "relief_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        },
+        "card_color": {
+          "type": "COLOR",
+          "choices": []
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "0262ffcb8d42c813dad37790767810d1e4bafb6e6ac1a39738065268be4074aa",
+        "deep": "0e2bdfe4431cb0826df858420f6b1a25f876985e29a2d12f3279a3125f36e969"
+      }
+    },
+    {
+      "folder": "lcd-2x1",
+      "pixelFolder": "clock-lcd-2x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        },
+        "card_color": {
+          "type": "COLOR",
+          "choices": []
+        },
+        "glow_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "2bd5efcfab3f2b9fb77216e98b6667c15f40a2fd03969af8debf7b67800a6bbb",
+        "deep": "aacc889eefd28ccdd5ebd6f696c107683296ae943a0c8419e40b2a409efce4ae"
+      }
+    },
+    {
+      "folder": "lcd-4x1",
+      "pixelFolder": "clock-lcd-4x1",
+      "family": "basic",
+      "missing": {},
+      "extra": {
+        "theme_colors": {
+          "type": "TOGGLE",
+          "choices": []
+        },
+        "background_corner_radius": {
+          "type": "INTEGER",
+          "choices": [],
+          "maximum": 32.0,
+          "step": 1.0
+        },
+        "card_color": {
+          "type": "COLOR",
+          "choices": []
+        },
+        "glow_strength": {
+          "type": "NUMBER",
+          "choices": [],
+          "maximum": 100.0,
+          "step": 5.0
+        }
+      },
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "768d088b8a32c777eb8cb96406ee4a7d2dc1c0dcfa86c02021e63b32f356dc21",
+        "deep": "eea3ddce3169f0a75146ecc1ce97f84933aacff122d86c910fc83f092b0ecf91"
+      }
+    },
+    {
+      "folder": "countdown-2x1",
+      "pixelFolder": "countdown-2x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "2e0e1c9c4828625be25f9caf024cdc1cd2ea325d743ba62be264ca98e3f96538",
+        "deep": "ec4e0f34eccc10c496dec1809a4c16384670013917517fa54b59d98ed9a05088"
+      }
+    },
+    {
+      "folder": "countdown-4x1",
+      "pixelFolder": "countdown-4x1",
+      "family": "productivity",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "ecc7bc69944fef56f65bb0c8a525842f4f69f4948c68c3e0903771c04d470116",
+        "deep": "01738fa7701dd645dc5679747968a42016127a96a575deca30ca9c71d7eb1cc6"
+      }
+    },
+    {
+      "folder": "split-flap-4x1",
+      "pixelFolder": "sign-4x1",
+      "family": "sign",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "f344c79fed820092e19d8ef99c422075bd3e26d69a205b9f1821c73ea4654e67",
+        "deep": "12cbc6f0bbeef0dadbafbf48676c76164cea8becdec8a2df4a399f135da05914"
+      }
+    },
+    {
+      "folder": "hourglass-1x1",
+      "pixelFolder": "hourglass-1x1",
+      "family": "hourglass",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "77108fdc93f295bf346044b07125c7d846437533d6f076698903f7b858444cfd",
+        "deep": "ed1791d24facded51e890846429673be5f2a39175c2ddc03fd14e878e4c775d5"
+      }
+    },
+    {
+      "folder": "hourglass-2x1",
+      "pixelFolder": "hourglass-2x1",
+      "family": "hourglass",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "ae9fc10a803ccc59a5777bfe1a1d4d17e06fd3a99765b197b70a37ae15fe5395",
+        "deep": "ee0a2b1a11d38e68bee7368ffb07d0a9eca269b47cebb13e33b5d6900a8161ff"
+      }
+    },
+    {
+      "folder": "brick-4x1",
+      "pixelFolder": "clock-brick-4x1",
+      "family": "brick",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "f4fed095df61b2c7a949bc68401ec6b7b856ea65f2fa7dc7a5eaed1ac5dac1c7",
+        "deep": "4e3854e0b7fb84eb9a99bac2a5a792808da189219145280f0aa6ed9c0ca41194"
+      }
+    },
+    {
+      "folder": "beat-4x2",
+      "pixelFolder": "beat-machine-4x2",
+      "family": "beat",
+      "missing": {},
+      "extra": {},
+      "different": {
+        "balls": {
+          "pixel": {
+            "type": "CHOICE",
+            "choices": [
+              "24",
+              "36",
+              "48"
+            ]
+          },
+          "deep": {
+            "type": "CHOICE",
+            "choices": [
+              "18",
+              "24",
+              "36",
+              "48"
+            ]
+          }
+        }
+      },
+      "descriptorSha256": {
+        "pixel": "92d11f0e328ac063a872afa981b9d73b2e38c7bb57785a5f3c6550aa3b94e805",
+        "deep": "943517273fcfdbb52448f4901397cdc1eb0138746e1917a1444bbc64805efefa"
+      }
+    },
+    {
+      "folder": "beat-6x2",
+      "pixelFolder": "beat-machine-6x2",
+      "family": "beat",
+      "missing": {},
+      "extra": {},
+      "different": {
+        "balls": {
+          "pixel": {
+            "type": "CHOICE",
+            "choices": [
+              "24",
+              "36",
+              "48"
+            ]
+          },
+          "deep": {
+            "type": "CHOICE",
+            "choices": [
+              "28",
+              "24",
+              "36",
+              "48"
+            ]
+          }
+        }
+      },
+      "descriptorSha256": {
+        "pixel": "6785406eb5fbfbd8873abff70150eaac98dcca5f9559ef69fb059f9bec4ef179",
+        "deep": "5dfdcdf50f6d265b54fe3032e7e1953cb5d9af7e74496a02d6fb9db37bfcdf6b"
+      }
+    },
+    {
+      "folder": "chime-2x2",
+      "pixelFolder": "windchime-2x2",
+      "family": "chime",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "a54253f465b20d6b15abab2e25999125b926bb5135540260a4109b602b4ffaeb",
+        "deep": "0f81acf303256fcf1c0bdb13ec78962aef592c7ead41f23c9c6ac5d6b39ca296"
+      }
+    },
+    {
+      "folder": "chime-2x3",
+      "pixelFolder": "windchime-2x3",
+      "family": "chime",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "c9370210626aba05f3fa67762bb240ee826b2ce9482f001f23a6787ef1e29beb",
+        "deep": "a762e4e009bd007c5d22011bbe27dafe79cea3d5e7a3bf240f93a45dbf09e7dc"
+      }
+    },
+    {
+      "folder": "koi-4x2",
+      "pixelFolder": "koi-4x2",
+      "family": "pond",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "717d014f42d629f20882ea7c1cc0e0c0403be43035e8518d0728945aec5d82b7",
+        "deep": "25ed90e5680b5778b21f412806c5856b36ab66adc77fc73a5e1bc5fbd9bedf49"
+      }
+    },
+    {
+      "folder": "plant-1x1",
+      "pixelFolder": "plant-1x1",
+      "family": "ambience",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "fc0164aba36eab1d53acfafd7f6b51684be961e0c9b4baf3b3302eebbf806db8",
+        "deep": "b1363ed4ad3cb78feb969ae7abd482b694b2338d26cc84e553e43bae2b5f6ac0"
+      }
+    },
+    {
+      "folder": "koi-4x4",
+      "pixelFolder": "koi-4x4",
+      "family": "pond",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "fbb65251f6ce2afb570fb9c785c1fdde6b2820e4dca906d246ac0b6e12fad8e8",
+        "deep": "8b2a397172afe28ebe8c8d19853bac8049591aa881807996a66a318a4f8cfbb4"
+      }
+    },
+    {
+      "folder": "koi-6x3",
+      "pixelFolder": "koi-6x3",
+      "family": "pond",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "8d31461ffc2c4606d35e3a156b966cc93e18f11ec6b58c1d025e27138f735e75",
+        "deep": "3a1ab664731bad7fca85817553d4ad7f47fae739c28496ede18388f1357a1a29"
+      }
+    },
+    {
+      "folder": "plant-2x2",
+      "pixelFolder": "plant-2x2",
+      "family": "ambience",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "5289212b2be9d4bfaaff501eeec601b5bb8b56e41689bb90c0aa12349535a81b",
+        "deep": "2d605db549392f357007ba6406ec240a1e6eac54cf337a5feb31d508bf3d5a70"
+      }
+    },
+    {
+      "folder": "plant-4x2",
+      "pixelFolder": "plant-4x2",
+      "family": "ambience",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "338023d5c939f9b690d8bd8e6656841c0a4f0f6055a4c8d6845953f70758eb0a",
+        "deep": "0cc1ee3b7aa1dab204791c3a36f3e00e8abcb9efedfed9212d3c2ed1bb0e4e49"
+      }
+    },
+    {
+      "folder": "noise-2x1",
+      "pixelFolder": "noise-2x1",
+      "family": "ambience",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "808f2bb4e6dd720acbad5bad2290eea6a45c2e78fdf27285d330054306df7b3f",
+        "deep": "ed4deb3d4e62e67a10181a19ee01af44b2fd47ae04472c7a4be459f0d045832a"
+      }
+    },
+    {
+      "folder": "noise-4x2",
+      "pixelFolder": "noise-4x2",
+      "family": "ambience",
+      "missing": {},
+      "extra": {},
+      "different": {},
+      "descriptorSha256": {
+        "pixel": "e39db430f95ed7c8d8ea5832299064d7b54971ce29da9918f14cfdfc744d3276",
+        "deep": "740b35d781534a2c62a41ef10d599551d651e280a9d34d7ea77c284078bb9ff7"
+      }
+    }
+  ]
+}

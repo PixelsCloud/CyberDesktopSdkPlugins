@@ -1,0 +1,20 @@
+[
+  {
+    "id": "com.cyberdesktop.weather.1x2",
+    "rows": 1,
+    "columns": 2,
+    "name": "天气 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.weather.1x4",
+    "rows": 1,
+    "columns": 4,
+    "name": "天气 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.weather.2x4",
+    "rows": 2,
+    "columns": 4,
+    "name": "天气 4×2"
+  }
+]

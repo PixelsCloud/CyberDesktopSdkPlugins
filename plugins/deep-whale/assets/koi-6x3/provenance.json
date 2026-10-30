@@ -1,0 +1,22 @@
+[
+  {
+    "source": "design/blue-whale-suite/artwork/complete/remaining-b14-2.png",
+    "file": "art-0.png",
+    "sha256": "56c72b9e87a741562bad5eabf900a8444594523eb5dc05d1c645f791880978a2"
+  },
+  {
+    "source": "design/blue-whale-suite/artwork/complete/remaining-koi-0.png",
+    "file": "fish-0.png",
+    "sha256": "8fcf5879c95c81fdcc908ede6a38f1f57bb99f67de5982e500748cf660176abb"
+  },
+  {
+    "source": "design/blue-whale-suite/artwork/complete/remaining-koi-1.png",
+    "file": "fish-1.png",
+    "sha256": "2f96dfa23218f51e14e9fa87170fdcb8b66dfda6bd8265621d4d711550df089e"
+  },
+  {
+    "source": "design/blue-whale-suite/artwork/complete/remaining-koi-2.png",
+    "file": "fish-2.png",
+    "sha256": "471987ff3d7e16c40bf5aa2492834f9253792be0b7a17be75cc5c8030481b92e"
+  }
+]

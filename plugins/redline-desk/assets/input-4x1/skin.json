@@ -1,0 +1,80 @@
+{
+  "id": "com.cyberdesktop.redline.input.4x1",
+  "folder": "input-4x1",
+  "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 8,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    474,
+    254,
+    532,
+    141
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械键鼠计数 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "keyboard": [
+      0.17,
+      0.26,
+      0.22,
+      0.35
+    ],
+    "mouse": [
+      0.5,
+      0.26,
+      0.22,
+      0.35
+    ],
+    "keyboardIcon": [
+      0.06,
+      0.3,
+      0.09,
+      0.31
+    ],
+    "mouseIcon": [
+      0.41,
+      0.3,
+      0.07,
+      0.31
+    ],
+    "surface0": [
+      0.055,
+      0.25,
+      0.88,
+      0.62
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+  "art": "plugins/redline-desk/assets/input-4x1/body.png",
+  "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+  "approvedCrop": [
+    474,
+    254,
+    532,
+    141
+  ],
+  "reviewText": [
+    "keyboard",
+    "mouse"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": [
+    "keyboardIcon",
+    "mouseIcon"
+  ]
+}

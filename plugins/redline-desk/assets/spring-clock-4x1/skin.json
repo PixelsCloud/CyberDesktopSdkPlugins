@@ -1,0 +1,151 @@
+{
+  "id": "com.cyberdesktop.redline.spring.clock.4x1",
+  "folder": "spring-clock-4x1",
+  "sourceId": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+  "source": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+  "family": "toys",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 1,
+  "slot": 3,
+  "imageSize": [
+    1877,
+    838
+  ],
+  "crop": [
+    45,
+    226,
+    1789,
+    365
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械弹簧数字时钟 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0.055,
+      0.2,
+      0.89,
+      0.67
+    ],
+    "cutoutCards": [
+      0,
+      0.2,
+      1,
+      0.8
+    ]
+  },
+  "approvedArt": "design/redline-collection/compact-spring-clock.art.png",
+  "art": "plugins/redline-desk/assets/spring-clock-4x1/body.png",
+  "artSha256": "f3cdaa55f67fe7d686cd0003d8d5781d84c111749e301070545aa270e55a36f6",
+  "toyGeometry": {
+    "size": [
+      308,
+      45
+    ],
+    "anchors": [
+      [
+        25,
+        5
+      ],
+      [
+        76,
+        5
+      ],
+      [
+        127,
+        5
+      ],
+      [
+        178,
+        5
+      ],
+      [
+        229,
+        5
+      ],
+      [
+        280,
+        5
+      ]
+    ],
+    "bodies": [
+      [
+        25,
+        29,
+        40,
+        30
+      ],
+      [
+        76,
+        29,
+        40,
+        30
+      ],
+      [
+        127,
+        29,
+        40,
+        30
+      ],
+      [
+        178,
+        29,
+        40,
+        30
+      ],
+      [
+        229,
+        29,
+        40,
+        30
+      ],
+      [
+        280,
+        29,
+        40,
+        30
+      ]
+    ]
+  },
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    45,
+    226,
+    1789,
+    365
+  ],
+  "hardware": {
+    "cardCompact": [
+      1168,
+      168,
+      243,
+      141
+    ],
+    "spring": [
+      895,
+      422,
+      93,
+      296
+    ]
+  },
+  "runtimeVisibleBounds": [
+    0,
+    0,
+    1789,
+    288.86871352413016
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

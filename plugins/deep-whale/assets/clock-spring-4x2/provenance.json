@@ -1,0 +1,109 @@
+{
+  "instrument": {
+    "uid": "b01-4",
+    "key": "spring-tall-instrument",
+    "name": "潮汐垂铃钟",
+    "file": "artwork/complete/spring-tall-instrument.png",
+    "composition": "器物",
+    "expression": null,
+    "model": [
+      360,
+      216
+    ],
+    "prompt": "artwork/complete/clock-revision-prompts.json",
+    "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-97bce253-97e8-43e2-a2bd-8b897e68785a.png",
+    "imageSize": [
+      1619,
+      971
+    ],
+    "bounds": [
+      13,
+      54,
+      1606,
+      902
+    ],
+    "sha256": "2936fdf983927ccdd685d015d91229295d4726d18279560f954c8d5dca3b8539",
+    "type": "integrated-clock-instrument",
+    "label": "潮汐垂铃钟",
+    "partCuts": [
+      [
+        96,
+        188,
+        312,
+        908
+      ],
+      [
+        316,
+        188,
+        538,
+        908
+      ],
+      [
+        587,
+        188,
+        808,
+        908
+      ],
+      [
+        812,
+        188,
+        1035,
+        908
+      ],
+      [
+        1083,
+        188,
+        1307,
+        908
+      ],
+      [
+        1310,
+        188,
+        1533,
+        908
+      ]
+    ],
+    "partAnchors": [
+      [
+        202,
+        188
+      ],
+      [
+        428,
+        188
+      ],
+      [
+        697,
+        188
+      ],
+      [
+        924,
+        188
+      ],
+      [
+        1197,
+        188
+      ],
+      [
+        1426,
+        188
+      ]
+    ],
+    "digitCenters": [
+      202,
+      428,
+      697,
+      924,
+      1197,
+      1426
+    ],
+    "digitBaseline": 727,
+    "digitFontSize": 270,
+    "readingFaceY": [
+      480,
+      800
+    ],
+    "motionEnvelopePixels": 3,
+    "referenceModel": "360x216; independent long springs; no sideposts or bottom plate; static colons"
+  }
+}

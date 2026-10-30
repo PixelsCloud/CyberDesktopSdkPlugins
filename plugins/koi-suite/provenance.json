@@ -1,0 +1,17 @@
+{
+  "source": "https://github.com/argonautcode/animal-proc-anim",
+  "revision": "cb171e8c386494a9d92dd47ea3422f84f7fbaa8d",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2024 argonaut",
+  "adapted": [
+    "12-joint constrained chain from Chain.pde",
+    "body widths, fins and Catmull-Rom body outline from Fish.pde",
+    "wrapped angle constraints from Util.pde"
+  ],
+  "upstreamFiles": {
+    "Chain.pde": "53ddfd0d9e9f664c43ba8025e37ea32fcc0ecce63cdd9479a1cff83dd72c3770",
+    "Fish.pde": "3f5dd7656e39a46d2373297f7f87a72a45d2b08a85a77454ee097746c40f6b28",
+    "Util.pde": "512e5f11c1b8f427c05ef7b883c3bdd2a79694ec35fc35d8ec90d2246524393b",
+    "LICENSE": "515f5f14264b270e0152bf9481fe4cad4a1a35732c12c53441fe97017d5afe66"
+  }
+}

@@ -1,0 +1,740 @@
+[
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "family": "clock",
+    "art": "clock-square-integrated",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "family": "clock",
+    "art": "clock-round-integrated",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.spring.4x1",
+    "folder": "clock-spring-4x1",
+    "family": "spring",
+    "art": "spring-compact-instrument",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.spring.4x2",
+    "folder": "clock-spring-4x2",
+    "family": "spring",
+    "art": "b01-4",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.marble.4x2",
+    "folder": "clock-marble-4x2",
+    "family": "marble",
+    "art": "b01-5",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.clock.marble.6x2",
+    "folder": "clock-marble-6x2",
+    "family": "marble",
+    "art": "b01-6",
+    "columns": 6,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.moon.clock.2x2",
+    "folder": "moon-clock-2x2",
+    "family": "precision",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+    "art": "b02-1",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.dive.clock.2x2",
+    "folder": "dive-clock-2x2",
+    "family": "precision",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+    "art": "b02-2",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.skeleton.clock.2x2",
+    "folder": "skeleton-clock-2x2",
+    "family": "precision",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+    "art": "b02-3",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.calendar.4x2",
+    "folder": "calendar-4x2",
+    "family": "calendar",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+    "art": "b02-4",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.lunar.2x1",
+    "folder": "lunar-2x1",
+    "family": "lunar",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+    "art": "b02-5",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.lunar.2x2",
+    "folder": "lunar-2x2",
+    "family": "lunar",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+    "art": "b02-6",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.lunar.4x4",
+    "folder": "lunar-4x4",
+    "family": "lunar",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+    "art": "b03-1",
+    "columns": 4,
+    "rows": 4
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.weather.2x1",
+    "folder": "weather-2x1",
+    "family": "weather",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+    "art": "b03-2",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.weather.4x1",
+    "folder": "weather-4x1",
+    "family": "weather",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+    "art": "b03-3",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.weather.4x2",
+    "folder": "weather-4x2",
+    "family": "weather",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+    "art": "b03-4",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.air.2x1",
+    "folder": "air-2x1",
+    "family": "air",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+    "art": "b03-5",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.air.4x1",
+    "folder": "air-4x1",
+    "family": "air",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x4",
+    "art": "b03-6",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.air.4x2",
+    "folder": "air-4x2",
+    "family": "air",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.airquality.mechanical.2x4",
+    "art": "b04-1",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.monitor.1x1",
+    "folder": "monitor-1x1",
+    "family": "monitor",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+    "art": "b04-2",
+    "columns": 1,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.monitor.2x1",
+    "folder": "monitor-2x1",
+    "family": "monitor",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+    "art": "b04-3",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.monitor.4x1",
+    "folder": "monitor-4x1",
+    "family": "monitor",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+    "art": "b04-4",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.monitor.2x2",
+    "folder": "monitor-2x2",
+    "family": "monitor",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+    "art": "b04-5",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.network.4x1",
+    "folder": "network-4x1",
+    "family": "productivity",
+    "kind": 3,
+    "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+    "art": "b04-6",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.disk.2x2",
+    "folder": "disk-2x2",
+    "family": "productivity",
+    "kind": 4,
+    "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+    "art": "b05-1",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.input.4x1",
+    "folder": "input-4x1",
+    "family": "widget",
+    "kind": 8,
+    "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+    "art": "b05-2",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.album.4x2",
+    "folder": "album-4x2",
+    "family": "widget",
+    "kind": 3,
+    "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+    "art": "b05-3",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.player.4x1",
+    "folder": "player-4x1",
+    "family": "player",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+    "art": "b05-4",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.player.2x2",
+    "folder": "player-2x2",
+    "family": "player",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x2",
+    "art": "b05-5",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.player.4x2",
+    "folder": "player-4x2",
+    "family": "player",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+    "art": "b05-6",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.square.4x1",
+    "folder": "music-square-4x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+    "art": "b06-1",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.round.4x1",
+    "folder": "music-round-4x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+    "art": "b06-2",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.square.6x1",
+    "folder": "music-square-6x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+    "art": "b06-3",
+    "columns": 6,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.round.6x1",
+    "folder": "music-round-6x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+    "art": "b06-4",
+    "columns": 6,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.square.8x1",
+    "folder": "music-square-8x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+    "art": "b06-5",
+    "columns": 8,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.music.round.8x1",
+    "folder": "music-round-8x1",
+    "family": "matrix",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.8x1",
+    "art": "b06-6",
+    "columns": 8,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "family": "widget",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+    "art": "b07-1",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.radial.2x2",
+    "folder": "radial-2x2",
+    "family": "widget",
+    "kind": 1,
+    "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+    "art": "b07-2",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.timer.2x2",
+    "folder": "timer-2x2",
+    "family": "productivity",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+    "art": "b08-3",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.timer.2x1",
+    "folder": "timer-2x1",
+    "family": "productivity",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.timer.1x2",
+    "art": "b10-1",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.network.2x1",
+    "folder": "network-2x1",
+    "family": "productivity",
+    "kind": 3,
+    "sourceId": "com.cyberdesktop.network.1x2",
+    "art": "b10-2",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.disk.2x1",
+    "folder": "disk-2x1",
+    "family": "productivity",
+    "kind": 4,
+    "sourceId": "com.cyberdesktop.disk.1x2",
+    "art": "b10-3",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.spectrum.6x1",
+    "folder": "spectrum-6x1",
+    "family": "widget",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.spectrum.1x6",
+    "art": "b10-4",
+    "columns": 6,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.spectrum.8x1",
+    "folder": "spectrum-8x1",
+    "family": "widget",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.spectrum.1x8",
+    "art": "b10-5",
+    "columns": 8,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.analog.1x1",
+    "folder": "analog-1x1",
+    "family": "basic",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.analog.1x1",
+    "art": "b11-1",
+    "columns": 1,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.analog.2x1",
+    "folder": "analog-2x1",
+    "family": "basic",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.analog.1x2",
+    "art": "b11-2",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.analog.4x1",
+    "folder": "analog-4x1",
+    "family": "basic",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.analog.1x4",
+    "art": "b11-3",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.analog.2x2",
+    "folder": "analog-2x2",
+    "family": "basic",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.analog.2x2",
+    "art": "b11-4",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.digital.1x1",
+    "folder": "digital-1x1",
+    "family": "basic",
+    "kind": 1,
+    "sourceId": "com.cyberdesktop.clock.digital.1x1",
+    "art": "b11-5",
+    "columns": 1,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.digital.2x1",
+    "folder": "digital-2x1",
+    "family": "basic",
+    "kind": 1,
+    "sourceId": "com.cyberdesktop.clock.digital.1x2",
+    "art": "b11-6",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.digital.4x1",
+    "folder": "digital-4x1",
+    "family": "basic",
+    "kind": 1,
+    "sourceId": "com.cyberdesktop.clock.digital.1x4",
+    "art": "b12-1",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.digital.2x2",
+    "folder": "digital-2x2",
+    "family": "basic",
+    "kind": 1,
+    "sourceId": "com.cyberdesktop.clock.digital.2x2",
+    "art": "b12-2",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.flip.4x1",
+    "folder": "flip-4x1",
+    "family": "basic",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.clock.flip.1x4",
+    "art": "b12-3",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.flip.2x2",
+    "folder": "flip-2x2",
+    "family": "basic",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.clock.flip.2x2",
+    "art": "b12-4",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.flip.4x2",
+    "folder": "flip-4x2",
+    "family": "basic",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.clock.flip.2x4",
+    "art": "b12-5",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.lcd.2x1",
+    "folder": "lcd-2x1",
+    "family": "basic",
+    "kind": 3,
+    "sourceId": "com.cyberdesktop.clock.lcd.1x2",
+    "art": "b12-6",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.lcd.4x1",
+    "folder": "lcd-4x1",
+    "family": "basic",
+    "kind": 3,
+    "sourceId": "com.cyberdesktop.clock.lcd.1x4",
+    "art": "b13-1",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.countdown.2x1",
+    "folder": "countdown-2x1",
+    "family": "productivity",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.countdown.1x2",
+    "art": "b13-3",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.countdown.4x1",
+    "folder": "countdown-4x1",
+    "family": "productivity",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.countdown.1x4",
+    "art": "b13-4",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.split.flap.4x1",
+    "folder": "split-flap-4x1",
+    "family": "sign",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+    "art": "b07-6",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "family": "hourglass",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+    "art": "b08-1",
+    "columns": 1,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "family": "hourglass",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+    "art": "b08-2",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.brick.4x1",
+    "folder": "brick-4x1",
+    "family": "brick",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.clock.brick.1x4",
+    "art": "b13-2",
+    "columns": 4,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.beat.4x2",
+    "folder": "beat-4x2",
+    "family": "beat",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+    "art": "b07-3",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.beat.6x2",
+    "folder": "beat-6x2",
+    "family": "beat",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+    "art": "b07-4",
+    "columns": 6,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.chime.2x2",
+    "folder": "chime-2x2",
+    "family": "chime",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+    "art": "b07-5",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.chime.2x3",
+    "folder": "chime-2x3",
+    "family": "chime",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.physics.windchime.3x2",
+    "art": "b10-6",
+    "columns": 2,
+    "rows": 3
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.koi.4x2",
+    "folder": "koi-4x2",
+    "family": "pond",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.koi.2x4",
+    "art": "b13-5",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.plant.1x1",
+    "folder": "plant-1x1",
+    "family": "ambience",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
+    "art": "b13-6",
+    "columns": 1,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.koi.4x4",
+    "folder": "koi-4x4",
+    "family": "pond",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.koi.4x4",
+    "art": "b14-1",
+    "columns": 4,
+    "rows": 4
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.koi.6x3",
+    "folder": "koi-6x3",
+    "family": "pond",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.koi.3x6",
+    "art": "b14-2",
+    "columns": 6,
+    "rows": 3
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.plant.2x2",
+    "folder": "plant-2x2",
+    "family": "ambience",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.plant.cartoon.2x2",
+    "art": "b14-3",
+    "columns": 2,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.plant.4x2",
+    "folder": "plant-4x2",
+    "family": "ambience",
+    "kind": 0,
+    "sourceId": "com.cyberdesktop.plant.cartoon.2x4",
+    "art": "b14-4",
+    "columns": 4,
+    "rows": 2
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.noise.2x1",
+    "folder": "noise-2x1",
+    "family": "ambience",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.ambient.noise.1x2",
+    "art": "b14-5",
+    "columns": 2,
+    "rows": 1
+  },
+  {
+    "id": "com.cyberdesktop.deepwhale.noise.4x2",
+    "folder": "noise-4x2",
+    "family": "ambience",
+    "kind": 2,
+    "sourceId": "com.cyberdesktop.ambient.noise.2x4",
+    "art": "b14-6",
+    "columns": 4,
+    "rows": 2
+  }
+]

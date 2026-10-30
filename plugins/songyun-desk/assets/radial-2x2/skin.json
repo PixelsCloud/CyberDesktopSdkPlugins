@@ -1,0 +1,46 @@
+{
+  "id": "com.cyberdesktop.songyun.radial.2x2",
+  "folder": "radial-2x2",
+  "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+  "family": "widget",
+  "kind": 1,
+  "rows": 2,
+  "columns": 2,
+  "board": 7,
+  "slot": 2,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    706,
+    16,
+    387,
+    407
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 环形频谱 2×2",
+  "regions": {
+    "plot": [
+      0.14987080103359174,
+      0.16461916461916462,
+      0.6976744186046512,
+      0.6633906633906634
+    ],
+    "hubCircle": [
+      0.35400516795865633,
+      0.35872235872235875,
+      0.28940568475452194,
+      0.2751842751842752
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/07-audio-interactive.art.png",
+  "artSha256": "75ab6a1e33fbf351fc465c2956c278d84d89eb09ab07a637d27376985ea4c18c",
+  "renderInset": 7
+}

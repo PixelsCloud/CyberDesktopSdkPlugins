@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.redline.music.square.8x1",
+  "folder": "music-square-8x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+  "source": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 8,
+  "board": 6,
+  "slot": 5,
+  "imageSize": [
+    2115,
+    743
+  ],
+  "crop": [
+    29,
+    237,
+    2045,
+    119
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械方点阵频谱 8×1",
+  "runtimePlate": true,
+  "regions": {
+    "plot": [
+      0.025,
+      0.25,
+      0.95,
+      0.64
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-long-spectra.art.png",
+  "art": "plugins/redline-desk/assets/music-square-8x1/body.png",
+  "artSha256": "5855593a53604dde4d2291d4f95d6e77982923ec8ef6b754242468351100ba59",
+  "approvedCrop": [
+    29,
+    237,
+    2045,
+    119
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

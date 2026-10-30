@@ -1,0 +1,33 @@
+id: "com.cyberdesktop.redline.marble.clock.6x2"
+name: "RedLine · 双风扇机械时钟 6×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "RedLine 双风扇机械时钟，两个 Box2D 电机缓慢反向旋转，读数跟随系统时间。"
+layouts {
+    id: "6x2"
+    name: "6×2（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 12 max_cells: 12 max_columns: 6 max_rows: 2 }
+settings_page {
+    title: "RedLine · 双风扇机械时钟 6×2"
+    fields { id: "running" label: "启用动态" type: TOGGLE bool_default: true }
+    fields { id: "reduced_motion" label: "减少动态" type: TOGGLE bool_default: false }
+}
+icon: "preview.png"
+tags: "RedLine"

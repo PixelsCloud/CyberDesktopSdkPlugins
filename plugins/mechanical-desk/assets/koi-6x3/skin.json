@@ -1,0 +1,79 @@
+{
+  "folder": "koi-6x3",
+  "kind": "koi",
+  "columns": 6,
+  "rows": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    455,
+    203,
+    781,
+    342
+  ],
+  "inset": 6.25,
+  "regions": {
+    "water": [
+      488,
+      242,
+      717,
+      244
+    ],
+    "lily0": [
+      516,
+      262,
+      180,
+      115
+    ],
+    "lily1": [
+      1042,
+      267,
+      135,
+      100
+    ]
+  },
+  "originalArtwork": "supplement-13.art.png",
+  "originalSha256": "487db3d1b1aca1f2dd3ceda4ab065a88bba4ba188e167193eac5d263c793e837",
+  "board": 13,
+  "slot": 2,
+  "nativePixelsUnmodified": true,
+  "parts": {
+    "body": {
+      "source": [
+        455,
+        203,
+        781,
+        342
+      ]
+    },
+    "water": {
+      "file": "water.png",
+      "source": [
+        488,
+        242,
+        717,
+        244
+      ]
+    },
+    "lily0": {
+      "file": "water.png",
+      "source": [
+        516,
+        262,
+        180,
+        115
+      ]
+    },
+    "lily1": {
+      "file": "water.png",
+      "source": [
+        1042,
+        267,
+        135,
+        100
+      ]
+    }
+  }
+}

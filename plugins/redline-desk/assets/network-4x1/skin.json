@@ -1,0 +1,92 @@
+{
+  "id": "com.cyberdesktop.redline.network.4x1",
+  "folder": "network-4x1",
+  "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+  "family": "productivity",
+  "kind": 3,
+  "rows": 1,
+  "columns": 4,
+  "board": 4,
+  "slot": 6,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    106,
+    814,
+    813,
+    203
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械网速 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "down": [
+      0.18,
+      0.3,
+      0.25,
+      0.31
+    ],
+    "up": [
+      0.65,
+      0.3,
+      0.25,
+      0.31
+    ],
+    "downIcon": [
+      0.1,
+      0.31,
+      0.06,
+      0.27
+    ],
+    "upIcon": [
+      0.57,
+      0.31,
+      0.06,
+      0.27
+    ],
+    "downHistory": [
+      0.1,
+      0.69,
+      0.39,
+      0.13
+    ],
+    "upHistory": [
+      0.56,
+      0.69,
+      0.36,
+      0.13
+    ],
+    "surface0": [
+      0.07,
+      0.24,
+      0.86,
+      0.64
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-strips.art.png",
+  "art": "plugins/redline-desk/assets/network-4x1/body.png",
+  "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+  "approvedCrop": [
+    106,
+    814,
+    813,
+    203
+  ],
+  "reviewText": [
+    "down",
+    "up"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": [
+    "downIcon",
+    "upIcon"
+  ]
+}

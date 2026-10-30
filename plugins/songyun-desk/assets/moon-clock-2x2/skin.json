@@ -1,0 +1,60 @@
+{
+  "id": "com.cyberdesktop.songyun.moon.clock.2x2",
+  "folder": "moon-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+  "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    57,
+    83,
+    450,
+    420
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 玫瑰金月相表 2×2",
+  "regions": {
+    "world": [
+      0.12666666666666668,
+      0.08095238095238096,
+      0.7688888888888888,
+      0.8238095238095238
+    ],
+    "surface0Circle": [
+      0.12222222222222222,
+      0.07857142857142857,
+      0.7777777777777778,
+      0.8333333333333334
+    ],
+    "moon": [
+      0.49333333333333335,
+      0.24761904761904763,
+      0.1111111111111111,
+      0.11904761904761904
+    ],
+    "pin": [
+      0.4888888888888889,
+      0.4738095238095238,
+      0.044444444444444446,
+      0.047619047619047616
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+  "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+  "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+  "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+  "renderInset": 7
+}

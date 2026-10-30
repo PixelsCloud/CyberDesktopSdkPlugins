@@ -1,0 +1,85 @@
+{
+  "id": "com.cyberdesktop.redline.calendar.4x2",
+  "folder": "calendar-4x2",
+  "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+  "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+  "family": "calendar",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 2,
+  "slot": 4,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    61,
+    610,
+    521,
+    309
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械月历 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "body": [
+      0.08,
+      0.12,
+      0.84,
+      0.78
+    ],
+    "title": [
+      0.19,
+      0.13,
+      0.5,
+      0.13
+    ],
+    "previous": [
+      0.09,
+      0.13,
+      0.08,
+      0.13
+    ],
+    "next": [
+      0.69,
+      0.13,
+      0.08,
+      0.13
+    ],
+    "grid": [
+      0.09,
+      0.29,
+      0.81,
+      0.58
+    ],
+    "surface0": [
+      0.07,
+      0.095,
+      0.87,
+      0.82
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+  "art": "plugins/redline-desk/assets/calendar-4x2/body.png",
+  "artSha256": "513e1eba4102615e84937913313439a2282a223d4a7db8f3861be868661d4c32",
+  "approvedCrop": [
+    61,
+    610,
+    521,
+    309
+  ],
+  "reviewText": [
+    "title"
+  ],
+  "reviewButtons": [
+    "previous",
+    "next"
+  ],
+  "reviewIcons": []
+}

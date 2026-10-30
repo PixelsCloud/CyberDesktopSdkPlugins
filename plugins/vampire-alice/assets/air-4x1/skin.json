@@ -1,0 +1,80 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.air.4x1",
+  "folder": "air-4x1",
+  "sourceId": "com.cyberdesktop.airquality.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/air-1x4/plugin.textproto",
+  "family": "air",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 3,
+  "slot": 6,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    8,
+    1020,
+    1008,
+    197
+  ],
+  "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+  "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 空气质量 4×1",
+  "regions": {
+    "aqi": [
+      0.32142857142857145,
+      0.39593908629441626,
+      0.05654761904761905,
+      0.23857868020304568
+    ],
+    "city": [
+      0.26,
+      0.22,
+      0.13,
+      0.15
+    ],
+    "quality": [
+      0.26,
+      0.65,
+      0.13,
+      0.12
+    ],
+    "pm25": [
+      0.5625,
+      0.38578680203045684,
+      0.07936507936507936,
+      0.2436548223350254
+    ],
+    "pm10": [
+      0.7946428571428571,
+      0.38578680203045684,
+      0.07837301587301587,
+      0.2436548223350254
+    ],
+    "pm25Bar": [
+      0.4791666666666667,
+      0.7258883248730964,
+      0.15376984126984128,
+      0.04060913705583756
+    ],
+    "pm10Bar": [
+      0.7212301587301587,
+      0.7258883248730964,
+      0.13988095238095238,
+      0.04060913705583756
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+  "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

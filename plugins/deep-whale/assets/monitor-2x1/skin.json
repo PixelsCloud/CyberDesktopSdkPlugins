@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.deepwhale.monitor.2x1",
+  "folder": "monitor-2x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "gauge0": [
+      22.13298565840939,
+      28.75619295958279,
+      46.065189048239894,
+      46.065189048239894
+    ],
+    "gauge1": [
+      91.23076923076923,
+      28.75619295958279,
+      46.065189048239894,
+      46.065189048239894
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        25,
+        84,
+        1534,
+        840
+      ],
+      "destination": [
+        7,
+        13.04688,
+        146,
+        79.9375
+      ]
+    }
+  ],
+  "designUid": "b04-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

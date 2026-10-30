@@ -1,0 +1,23 @@
+[
+  {
+    "id": "com.cyberdesktop.koi.2x4",
+    "folder": "2x4",
+    "rows": 2,
+    "columns": 4,
+    "fishCount": 5
+  },
+  {
+    "id": "com.cyberdesktop.koi.4x4",
+    "folder": "4x4",
+    "rows": 4,
+    "columns": 4,
+    "fishCount": 8
+  },
+  {
+    "id": "com.cyberdesktop.koi.3x6",
+    "folder": "3x6",
+    "rows": 3,
+    "columns": 6,
+    "fishCount": 9
+  }
+]

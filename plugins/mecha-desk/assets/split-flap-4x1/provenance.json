@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "07-audio-interactive.art.png",
+  "sha256": "a9cb8025266af67e6943e06feeb39495a063815b715cb683e3711f473b910236",
+  "crop": [
+    420,
+    1155,
+    1010,
+    1365
+  ]
+}

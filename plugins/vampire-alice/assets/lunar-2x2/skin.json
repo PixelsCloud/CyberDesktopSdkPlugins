@@ -1,0 +1,80 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.lunar.2x2",
+  "folder": "lunar-2x2",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 6,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1182,
+    515,
+    349,
+    498
+  ],
+  "art": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+  "artSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 农历 2×2",
+  "regions": {
+    "title": [
+      0.19,
+      0.14,
+      0.62,
+      0.07
+    ],
+    "day": [
+      0.23782234957020057,
+      0.24497991967871485,
+      0.5730659025787965,
+      0.28313253012048195
+    ],
+    "weekday": [
+      0.20057306590257878,
+      0.5401606425702812,
+      0.6475644699140402,
+      0.08032128514056225
+    ],
+    "lunar": [
+      0.2521489971346705,
+      0.6405622489959839,
+      0.5730659025787965,
+      0.09437751004016064
+    ],
+    "festival": [
+      0.2808022922636103,
+      0.7590361445783133,
+      0.4584527220630373,
+      0.09036144578313253
+    ],
+    "cutout0": [
+      0.0,
+      0.0,
+      0.40114613180515757,
+      0.07429718875502007
+    ],
+    "cutout1": [
+      0.6561604584527221,
+      0.0,
+      0.3438395415472779,
+      0.07028112449799197
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+  "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

@@ -1,0 +1,300 @@
+id: "com.cyberdesktop.live2d"
+name: "Live2D 互动角色"
+version: "1.3.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+description: "内置 Mao、Haru、Hiyori、Wanko 和鲸鱼娘，鼠标跟随、点击切换动作、自动轮播待机，支持自定义模型。"
+required_services { id: "render.live2d" version: 1 }
+footprint_rules { topology: RECT min_cells: 4 max_cells: 42 max_columns: 6 max_rows: 7 }
+layouts {
+    id: "2x2"
+    name: "2×2（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    is_default: true
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+}
+layouts {
+    id: "3x3"
+    name: "3×3（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+}
+layouts {
+    id: "3x4"
+    name: "3×4（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+}
+layouts {
+    id: "4x4"
+    name: "4×4（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+}
+layouts {
+    id: "4x5"
+    name: "4×5（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+}
+layouts {
+    id: "5x5"
+    name: "5×5（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    cells { a: 4 b: 4 }
+}
+layouts {
+    id: "5x6"
+    name: "5×6（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    cells { a: 4 b: 4 }
+    cells { a: 0 b: 5 }
+    cells { a: 1 b: 5 }
+    cells { a: 2 b: 5 }
+    cells { a: 3 b: 5 }
+    cells { a: 4 b: 5 }
+}
+layouts {
+    id: "6x6"
+    name: "6×6（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 5 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 5 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    cells { a: 4 b: 4 }
+    cells { a: 5 b: 4 }
+    cells { a: 0 b: 5 }
+    cells { a: 1 b: 5 }
+    cells { a: 2 b: 5 }
+    cells { a: 3 b: 5 }
+    cells { a: 4 b: 5 }
+    cells { a: 5 b: 5 }
+}
+layouts {
+    id: "6x7"
+    name: "6×7（宽×高）"
+    topology: RECT
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 5 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 5 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    cells { a: 4 b: 4 }
+    cells { a: 5 b: 4 }
+    cells { a: 0 b: 5 }
+    cells { a: 1 b: 5 }
+    cells { a: 2 b: 5 }
+    cells { a: 3 b: 5 }
+    cells { a: 4 b: 5 }
+    cells { a: 5 b: 5 }
+    cells { a: 0 b: 6 }
+    cells { a: 1 b: 6 }
+    cells { a: 2 b: 6 }
+    cells { a: 3 b: 6 }
+    cells { a: 4 b: 6 }
+    cells { a: 5 b: 6 }
+}
+settings_page {
+    title: "Live2D 角色"
+    description: "默认显示内置角色。填写自定义模型目录后优先使用该目录，清空即可恢复内置角色。"
+    fields {
+        id: "model"
+        label: "内置角色"
+        type: CHOICE
+        text_default: "mao"
+        choices { value: "mao" label: "Mao · 魔女少女" }
+        choices { value: "haru" label: "Haru · 春" }
+        choices { value: "hiyori" label: "Hiyori · 桃濑日和" }
+        choices { value: "wanko" label: "Wanko · 麻薯犬" }
+        choices { value: "whale-girl" label: "DS 鲸鱼娘" }
+    }
+    fields { id: "directory" label: "自定义模型目录（可留空）" type: TEXT text_editor: DIRECTORY max_length: 4096 }
+    fields {
+        id: "motion"
+        label: "待机动作"
+        description: "auto 自动轮播；也可填写 Idle/0 等动作名称。点击角色可依次播放互动动作。"
+        type: TEXT
+        text_default: "auto"
+        max_length: 256
+    }
+    fields { id: "expression" label: "表情名称" type: TEXT max_length: 256 }
+    fields {
+        id: "fps"
+        label: "帧率"
+        type: CHOICE
+        text_default: "30"
+        choices { value: "30" label: "30 FPS" }
+        choices { value: "60" label: "60 FPS" }
+    }
+    fields { id: "scale" label: "缩放" type: NUMBER minimum: 0.1 maximum: 4 step: 0.1 number_default: 1 }
+    fields { id: "x" label: "水平位置" type: NUMBER minimum: -2 maximum: 2 step: 0.05 }
+    fields { id: "y" label: "垂直位置" type: NUMBER minimum: -2 maximum: 2 step: 0.05 }
+    fields { id: "paused" label: "暂停动画" type: TOGGLE }
+    fields { id: "physics" label: "物理效果" type: TOGGLE bool_default: true }
+    fields { id: "follow" label: "视线跟随" type: TOGGLE bool_default: true }
+}
+tags: "二次元"
+tags: "互动"

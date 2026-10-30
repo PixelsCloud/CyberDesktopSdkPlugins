@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.26)
+project(CyberDesktopCharacterProtocol LANGUAGES CXX)
+find_package(nlohmann_json 3.12 CONFIG REQUIRED)
+add_library(cd_character_protocol STATIC src/Protocol.cpp)
+add_library(CyberDesktop::CharacterProtocol ALIAS cd_character_protocol)
+target_include_directories(cd_character_protocol PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_link_libraries(cd_character_protocol PUBLIC nlohmann_json::nlohmann_json)
+target_compile_features(cd_character_protocol PUBLIC cxx_std_20)
+target_compile_options(cd_character_protocol PRIVATE /utf-8 /W4)
+set_target_properties(cd_character_protocol PROPERTIES
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
+add_executable(cd_character_protocol_tests EXCLUDE_FROM_ALL tests/ProtocolTest.cpp)
+target_link_libraries(cd_character_protocol_tests PRIVATE CyberDesktop::CharacterProtocol)
+target_compile_options(cd_character_protocol_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_character_protocol_tests PROPERTIES
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)

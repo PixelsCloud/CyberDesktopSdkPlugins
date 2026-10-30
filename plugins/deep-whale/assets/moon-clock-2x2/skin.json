@@ -1,0 +1,45 @@
+{
+  "id": "com.cyberdesktop.deepwhale.moon.clock.2x2",
+  "folder": "moon-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+  "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "world": [
+      48.78985507246377,
+      83.3677536231884,
+      86.48913043478261,
+      86.48913043478261
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        9,
+        10,
+        1104,
+        1323
+      ],
+      "destination": [
+        7,
+        18.03125,
+        146,
+        174.95313
+      ]
+    }
+  ],
+  "designUid": "b02-1",
+  "defaults": {
+    "hand_color": 3584459263,
+    "seconds_color": 2523947007
+  }
+}

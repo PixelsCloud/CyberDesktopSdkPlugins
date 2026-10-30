@@ -1,0 +1,33 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-7428abea-c3e1-4e6b-8c85-7f1ba6147996.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1243,
+    1266
+  ],
+  "visibleBounds": [
+    42,
+    82,
+    1183,
+    1102
+  ],
+  "center": [
+    610,
+    643
+  ],
+  "dialRadius": 370,
+  "dateRect": [
+    836,
+    618,
+    92,
+    60
+  ],
+  "bezelRadius": 450,
+  "purpose": "Empty pixel diver face; exact bezel numbers, actual host date and time hands are rendered independently, with no baked state.",
+  "prompts": [
+    "body.prompt.txt",
+    "body.refinement.prompt.txt"
+  ],
+  "sha256": "c2697b459ee504e043aa81d00d199a520e317d1c2dae356a03a2a00c6c925b77"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "com.cyberdesktop.songyun.monitor.2x2",
+  "folder": "monitor-2x2",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 4,
+  "slot": 5,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    661,
+    568,
+    326,
+    311
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 系统监控 2×2",
+  "regions": {
+    "gauge0": [
+      0.08895705521472393,
+      0.09967845659163987,
+      0.34662576687116564,
+      0.3633440514469453
+    ],
+    "gauge1": [
+      0.5644171779141104,
+      0.09967845659163987,
+      0.34662576687116564,
+      0.3633440514469453
+    ],
+    "gauge2": [
+      0.08282208588957055,
+      0.5852090032154341,
+      0.35276073619631904,
+      0.36977491961414793
+    ],
+    "gauge3": [
+      0.5644171779141104,
+      0.5884244372990354,
+      0.34662576687116564,
+      0.3633440514469453
+    ],
+    "surface0Circle": [
+      0.08895705521472393,
+      0.09967845659163987,
+      0.34662576687116564,
+      0.3633440514469453
+    ],
+    "surface1Circle": [
+      0.5644171779141104,
+      0.09967845659163987,
+      0.34662576687116564,
+      0.3633440514469453
+    ],
+    "surface2Circle": [
+      0.08282208588957055,
+      0.5852090032154341,
+      0.35276073619631904,
+      0.36977491961414793
+    ],
+    "surface3Circle": [
+      0.5644171779141104,
+      0.5884244372990354,
+      0.34662576687116564,
+      0.3633440514469453
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+  "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+  "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+  "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+  "nativeTicks": true,
+  "renderInset": 7
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "path": "controllers/productivity/Instance.cpp",
+    "source": "plugins/productivity-suite/Instance.cpp",
+    "sourceSha256": "582379658e2dddfde054c7e75b69bfa0f0abc6f94cbd7ac6b5850547f984342e"
+  },
+  {
+    "path": "controllers/productivity/Productivity.h",
+    "source": "plugins/songyun-desk/controllers/productivity/Productivity.h",
+    "sourceSha256": "233f578c6878a42d6f341a58ddb461d77541371e51464224b1a36a632e8887db"
+  },
+  {
+    "path": "controllers/widget/Instance.cpp",
+    "source": "plugins/widget-suite/Instance.cpp",
+    "sourceSha256": "2a31e85a105f31eb6d1b5edb4bf065ec3d5fe5ba827229933f5010d4c3e29bcb"
+  },
+  {
+    "path": "controllers/widget/Widget.h",
+    "source": "plugins/songyun-desk/controllers/widget/Widget.h",
+    "sourceSha256": "8c6fa9f9c02375a8aa9c7227e34863ebe7df4f3428dbb7fbd9869e4cbfc24826"
+  },
+  {
+    "path": "controllers/ambience/Atmosphere.h",
+    "source": "plugins/ambience-suite/Atmosphere.h",
+    "sourceSha256": "5429adf92799b5b93a2d1221832cbaed76d1d0ddc223be87c139b04b7eafe6eb"
+  },
+  {
+    "path": "controllers/ambience/Instance.cpp",
+    "source": "plugins/ambience-suite/Instance.cpp",
+    "sourceSha256": "6949548a43337a0a0bed2fa315e2b44492bc9ba8c42d39780ab51a8a9e1e5188"
+  },
+  {
+    "path": "BasicClock.h",
+    "source": "plugins/pixel-desk/BasicClock.h",
+    "sourceSha256": "863149143415151d2e5375ac39881c973293f85d45deec463353b1f11516d16e"
+  },
+  {
+    "path": "BasicClockInstance.cpp",
+    "source": "plugins/pixel-desk/BasicClock.cpp",
+    "sourceSha256": "f576d05eaa09f43dc77ca07e61302bd3e78a1200641cffa4c833c6999327ff10"
+  },
+  {
+    "path": "Pond.h",
+    "source": "plugins/pixel-desk/PixelPond.h",
+    "sourceSha256": "aa361760cdff7edaf2ecbbf09b011c3e213006d599199bb2b30254d6b68549b2"
+  },
+  {
+    "path": "PondInstance.cpp",
+    "source": "plugins/pixel-desk/PondInstance.cpp",
+    "sourceSha256": "e34bfbdb3fe04c08f44ed9de3c9f8b620e845b4812354241f56d513cf9da6336"
+  },
+  {
+    "path": "Brick.h",
+    "source": "plugins/pixel-desk/PixelBrick.h",
+    "sourceSha256": "f5d6f4a10325aaa366cf326b0e28c22f1285adc682f0569ce38f99fa0ef8e9aa"
+  },
+  {
+    "path": "BrickInstance.cpp",
+    "source": "plugins/pixel-desk/BrickInstance.cpp",
+    "sourceSha256": "131594743496cfbb5ecbb95346d3d08e37aeb4f808fc715842b2f343c086c3c9"
+  },
+  {
+    "path": "controllers/toys/Toys.h",
+    "source": "plugins/songyun-desk/controllers/toys/Toys.h",
+    "sourceSha256": "b514eb8b889a66ce2e7aa2e814202b12e129d276ed1c352cd6e4caef8cea564c"
+  },
+  {
+    "path": "controllers/toys/Instance.cpp",
+    "source": "plugins/songyun-desk/controllers/toys/Instance.cpp",
+    "sourceSha256": "a1b64033facb4293541c3d86d637cfdae44f0b744f950ae14e873cd9aa45b760"
+  },
+  {
+    "path": "ToysModel.cpp",
+    "source": "plugins/songyun-desk/ToysModel.cpp",
+    "sourceSha256": "6a707016809153e4d81dfed3200e97430e58ebffbc953c4728d792f923bf0352"
+  }
+]

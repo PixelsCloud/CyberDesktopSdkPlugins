@@ -1,0 +1,171 @@
+include_guard(GLOBAL)
+# Runtime/library dependencies. Dependency families are EXCLUDE_FROM_ALL;
+# their unrelated plugin modules and archives are not selected.
+set(CD_PUBLIC_PLUGIN_FAMILIES
+    air-quality-suite
+    ambience-suite
+    beat-machine
+    brick-clock
+    character-chat
+    clock-suite
+    deep-whale
+    hourglass-suite
+    koi-suite
+    live2d-suite
+    lunar-suite
+    marble-clock
+    mecha-desk
+    mechanical-calendar
+    mechanical-desk
+    mechanical-hourglass
+    mechanical-instruments
+    mechanical-pixels
+    mechanical-sign
+    news-suite
+    physics-toys
+    pixel-desk
+    precision-clocks
+    productivity-suite
+    redline-desk
+    sign-suite
+    songyun-desk
+    steampunk-desk
+    streetlink-desk
+    system-info-suite
+    vampire-alice
+    weather-suite
+    widget-suite
+)
+
+set(CD_PLUGIN_DEPENDENCIES_character-chat
+    live2d-suite)
+set(CD_PLUGIN_DEPENDENCIES_deep-whale
+    air-quality-suite
+    ambience-suite
+    beat-machine
+    brick-clock
+    clock-suite
+    koi-suite
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-hourglass
+    mechanical-pixels
+    mechanical-sign
+    physics-toys
+    precision-clocks
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_mecha-desk
+    air-quality-suite
+    ambience-suite
+    beat-machine
+    brick-clock
+    clock-suite
+    koi-suite
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-hourglass
+    mechanical-pixels
+    mechanical-sign
+    physics-toys
+    precision-clocks
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_mechanical-calendar
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_mechanical-desk
+    ambience-suite
+    brick-clock
+    clock-suite
+    koi-suite
+    physics-toys
+    productivity-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_mechanical-hourglass
+    hourglass-suite)
+set(CD_PLUGIN_DEPENDENCIES_mechanical-instruments
+    air-quality-suite
+    lunar-suite
+    mechanical-calendar
+    mechanical-sign
+    physics-toys
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_mechanical-pixels
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_pixel-desk
+    air-quality-suite
+    brick-clock
+    clock-suite
+    hourglass-suite
+    koi-suite
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-pixels
+    physics-toys
+    precision-clocks
+    weather-suite)
+set(CD_PLUGIN_DEPENDENCIES_precision-clocks
+    lunar-suite)
+set(CD_PLUGIN_DEPENDENCIES_redline-desk
+    air-quality-suite
+    beat-machine
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-hourglass
+    mechanical-pixels
+    mechanical-sign
+    physics-toys
+    precision-clocks
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_songyun-desk
+    air-quality-suite
+    beat-machine
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-hourglass
+    mechanical-pixels
+    mechanical-sign
+    physics-toys
+    precision-clocks
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)
+set(CD_PLUGIN_DEPENDENCIES_steampunk-desk
+    marble-clock
+    mechanical-pixels
+    physics-toys)
+set(CD_PLUGIN_DEPENDENCIES_streetlink-desk
+    beat-machine
+    mecha-desk
+    mechanical-pixels)
+set(CD_PLUGIN_DEPENDENCIES_vampire-alice
+    air-quality-suite
+    beat-machine
+    lunar-suite
+    marble-clock
+    mechanical-calendar
+    mechanical-hourglass
+    mechanical-pixels
+    mechanical-sign
+    physics-toys
+    precision-clocks
+    productivity-suite
+    system-info-suite
+    weather-suite
+    widget-suite)

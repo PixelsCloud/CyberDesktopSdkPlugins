@@ -1,0 +1,58 @@
+{
+  "folder": "brick-4x1",
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "world": [
+      65.14,
+      32.90454258675079,
+      205.02,
+      33.41384858044164
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        63,
+        179,
+        1902,
+        483
+      ],
+      "destination": [
+        7.0,
+        11.146687697160885,
+        306.0,
+        77.70662460567823
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {},
+  "palette": "terminal",
+  "screens": [
+    [
+      65.14,
+      32.12747634069401,
+      205.02,
+      34.967981072555204
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 313.0,
+    "cuts": [
+      160.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

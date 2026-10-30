@@ -1,0 +1,89 @@
+id: "com.cyberdesktop.steamdesk.windchime.2x2"
+name: "蒸汽朋克风铃 2×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "CyberDesktop 蒸汽工坊；做旧黄铜、铜管、铸铁与搪瓷，保留实时服务和原有物理交互。"
+layouts {
+    id: "2x2"
+    name: "2×2（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 2 max_rows: 2 }
+settings_page {
+    title: "蒸汽朋克风铃 2×2"
+    description: "拖动挂件，松手自然回摆；双击轻拨；随机阵风持续推动吊件自然摆动。蒸汽朋克零件独立运动，支持暂停和减少动态。"
+    fields {
+        id: "speed"
+        label: "运动速度"
+        type: NUMBER
+        minimum: 0.25
+        maximum: 2
+        step: 0.05
+        number_default: 0.75
+        localized {
+            key: "en"
+            value { label: "Motion speed" }
+        }
+    }
+    fields {
+        id: "wind"
+        label: "微风强度"
+        type: NUMBER
+        minimum: 0
+        maximum: 1
+        step: 0.05
+        number_default: 0.55
+        localized {
+            key: "en"
+            value { label: "Breeze strength" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用摆动"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Pixel Wind Chime 2x2"
+            description: "Drag and release. Double-click to pluck. Motion pauses while hidden."
+        }
+    }
+
+    fields {
+        id: "palette"
+        label: "配色"
+        type: CHOICE
+        text_default: "pastel"
+        choices { value: "pastel" label: "暖金" }
+        choices { value: "ocean" label: "海蓝" }
+    }
+}
+content_padding: 0
+preview: "preview.png"
+tags: "蒸汽朋克"
+tags: "互动"
+tags: "风铃"

@@ -1,0 +1,85 @@
+{
+  "id": "com.cyberdesktop.redline.lunar.2x2",
+  "folder": "lunar-2x2",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 6,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1143,
+    519,
+    328,
+    439
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械农历 2×2",
+  "runtimePlate": true,
+  "regions": {
+    "title": [
+      0.22,
+      0.1,
+      0.57,
+      0.09
+    ],
+    "weekday": [
+      0.34,
+      0.405,
+      0.32,
+      0.06
+    ],
+    "day": [
+      0.17,
+      0.19,
+      0.65,
+      0.19
+    ],
+    "lunar": [
+      0.1,
+      0.47,
+      0.8,
+      0.17
+    ],
+    "festival": [
+      0.12,
+      0.74,
+      0.76,
+      0.12
+    ],
+    "surface0": [
+      0.1,
+      0.06,
+      0.8,
+      0.85
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+  "art": "plugins/redline-desk/assets/lunar-2x2/body.png",
+  "artSha256": "513e1eba4102615e84937913313439a2282a223d4a7db8f3861be868661d4c32",
+  "approvedCrop": [
+    1143,
+    519,
+    328,
+    439
+  ],
+  "reviewText": [
+    "title",
+    "day",
+    "weekday",
+    "lunar"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

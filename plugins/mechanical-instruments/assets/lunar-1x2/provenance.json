@@ -1,0 +1,21 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-lunar-calendar-concept.png",
+  "prompts": "design/mechanical-lunar-calendar-assets.prompt.txt",
+  "files": [
+    {
+      "file": "body.png",
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        80,
+        120,
+        1694,
+        823
+      ],
+      "bytes": 1696802,
+      "sha256": "c0c4c07572e9777e4e4728c391515354aecfffd432a22feac8e936053f7f8ab3",
+      "source": "exec-3ff7eb0a-0251-4497-b579-a52b5fb088c2.png"
+    }
+  ]
+}

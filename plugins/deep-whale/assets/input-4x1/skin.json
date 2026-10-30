@@ -1,0 +1,51 @@
+{
+  "id": "com.cyberdesktop.deepwhale.input.4x1",
+  "folder": "input-4x1",
+  "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 8,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "keyboard": [
+      66.35400907715584,
+      36.66414523449319,
+      162.34190620272315,
+      19.16641452344932
+    ],
+    "mouse": [
+      66.35400907715584,
+      57.83055975794251,
+      162.34190620272315,
+      19.16641452344932
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        35,
+        77,
+        2014,
+        661
+      ],
+      "destination": [
+        28.96875,
+        7,
+        262.03125,
+        86
+      ]
+    }
+  ],
+  "designUid": "b05-2",
+  "defaults": {},
+  "horizontalCuts": [
+    140
+  ]
+}

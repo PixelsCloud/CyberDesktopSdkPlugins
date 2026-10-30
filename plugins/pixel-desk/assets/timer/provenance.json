@@ -1,0 +1,18 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-32ab90d1-e634-44f4-8455-64db43dcd7cb.png",
+  "reference": "design/pixel-desk-suite/08-timers.png",
+  "sha256": "ada88b2ed37b403d867cf0b9371c95e33bca3c25509e1f923ad1ec09cf3964a5",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "visibleBounds": [
+    107,
+    42,
+    1040,
+    1166
+  ],
+  "purpose": "Empty pixel focus timer shell. Native code renders actual progress, time, tomato motif and public Lucide controls.",
+  "transparency": "Transparent exterior, opaque dark display"
+}

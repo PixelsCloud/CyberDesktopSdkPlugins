@@ -1,0 +1,13 @@
+﻿{
+    "reference":  "approved mechanical-instruments redesign concepts in design/",
+    "files":  [
+                  {
+                      "source":  "exec-d9c2a673-283b-42bf-a9ff-c4debf55b2ce.png",
+                      "sha256":  "8A1C04A97A3D31C9F5B2EAE173BDAEFDBDBAED777606C4376676E3CCFAC535BA",
+                      "file":  "body.png",
+                      "bytes":  1795864
+                  }
+              ],
+    "generator":  "OpenAI built-in image_gen",
+    "role":  "Static transparent material; live readouts, needles, icons and record rendered separately"
+}

@@ -1,0 +1,193 @@
+id: "com.cyberdesktop.input.stats.1x4"
+name: "键鼠计数 4×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x4"
+    name: "4×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+capabilities: INPUT_STATS
+description: "显示今日键盘按下次数、鼠标点击次数及累计次数。仅在本体运行期间记录，后台统计，本地保存。"
+settings_page {
+    title: "键鼠计数设置"
+    description: "只保存计数。长按不重复计数，双击计两次，鼠标移动和滚轮不计入点击；本体关闭期间无法统计。今日按本地日期归零，累计次数保留。"
+    fields {
+        id: "show_total"
+        label: "显示累计次数"
+        type: TOGGLE
+        section: "设置"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show totals" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示累計次數" section: "設定" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示卡片背景"
+        type: TOGGLE
+        section: "设置"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示卡片背景" section: "設定" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "设置"
+        color_default: 388180991
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景顏色" section: "設定" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "设置"
+        color_default: 3992385023
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "文字顏色" section: "設定" }
+        }
+    }
+    fields {
+        id: "keyboard_color"
+        label: "键盘数字颜色"
+        type: COLOR
+        section: "设置"
+        color_default: 1273213951
+        localized {
+            key: "en"
+            value { label: "Keyboard count color" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "鍵盤數字顏色" section: "設定" }
+        }
+    }
+    fields {
+        id: "mouse_color"
+        label: "鼠标数字颜色"
+        type: COLOR
+        section: "设置"
+        color_default: 1740046335
+        localized {
+            key: "en"
+            value { label: "Mouse count color" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "滑鼠數字顏色" section: "設定" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角（px）"
+        type: INTEGER
+        section: "设置"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value { label: "Background corner radius (px)" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角（px）" section: "設定" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "设置"
+        text_default: "@siyuan-heavy"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" section: "設定" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        section: "设置"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" section: "設定" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Input statistics"
+            description: "Only aggregate counts are stored. Key repeats, movement and wheel events are excluded. Recording requires the host to be running. Today resets at local midnight; totals persist."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value {
+            title: "鍵鼠計數設定"
+            description: "只儲存計數。長按不重複計數，雙擊計兩次，滑鼠移動和滾輪不計入點選；本體關閉期間無法統計。今日按本地日期歸零，累計次數保留。"
+        }
+    }
+}
+preview: "preview.png"
+tags: "简约"

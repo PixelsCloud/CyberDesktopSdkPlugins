@@ -1,0 +1,60 @@
+{
+  "id": "com.cyberdesktop.songyun.weather.2x1",
+  "folder": "weather-2x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 2,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    658,
+    234,
+    382,
+    323
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 天气 2×1",
+  "regions": {
+    "city": [
+      0.6910994764397905,
+      0.3065015479876161,
+      0.2486910994764398,
+      0.12074303405572756
+    ],
+    "temperature": [
+      0.6073298429319371,
+      0.4613003095975232,
+      0.35340314136125656,
+      0.21671826625386997
+    ],
+    "condition": [
+      0.725130890052356,
+      0.653250773993808,
+      0.17015706806282724,
+      0.1021671826625387
+    ],
+    "surface0": [
+      0.6099476439790575,
+      0.29721362229102166,
+      0.3612565445026178,
+      0.4674922600619195
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/03-calendar-weather-air.art.png",
+  "artSha256": "f9ace1574063a78bb6e998512b8cde45de8ef07598a704617bea26b07f41d51b",
+  "plateSha256": "d03eada9ee11fe3ba5970e360e79e1eb1152067044f7f6a3805bb8b2201591b4",
+  "plateSource": "plugins/songyun-desk/materials/03-calendar-weather-air.runtime.png",
+  "renderInset": 7
+}

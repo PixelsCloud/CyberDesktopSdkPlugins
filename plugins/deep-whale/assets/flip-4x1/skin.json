@@ -1,0 +1,48 @@
+{
+  "id": "com.cyberdesktop.deepwhale.flip.4x1",
+  "folder": "flip-4x1",
+  "sourceId": "com.cyberdesktop.clock.flip.1x4",
+  "source": "plugins/clock-suite/packages/flip-1x4/plugin.textproto",
+  "family": "basic",
+  "kind": 2,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      58.838905775076,
+      39.67477203647416,
+      202.5835866261398,
+      29.537993920972642
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        14,
+        17,
+        2142,
+        658
+      ],
+      "destination": [
+        20.01563,
+        7,
+        279.95313,
+        86
+      ]
+    }
+  ],
+  "designUid": "b12-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    110,
+    210
+  ]
+}

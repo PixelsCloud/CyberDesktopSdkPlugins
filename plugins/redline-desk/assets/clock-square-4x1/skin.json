@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.redline.clock.square.4x1",
+  "folder": "clock-square-4x1",
+  "sourceId": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+  "source": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 1,
+  "slot": 1,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    146,
+    87,
+    727,
+    198
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械方像素时钟 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "plot": [
+      0.085,
+      0.23,
+      0.83,
+      0.57
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-strips.art.png",
+  "art": "plugins/redline-desk/assets/clock-square-4x1/body.png",
+  "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+  "approvedCrop": [
+    146,
+    87,
+    727,
+    198
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

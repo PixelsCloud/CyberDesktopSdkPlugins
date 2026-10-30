@@ -1,0 +1,65 @@
+name: Native SDK
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned static dependencies
+        shell: pwsh
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git build/vcpkg
+          if ($LASTEXITCODE) { throw 'vcpkg clone failed' }
+          git -C build/vcpkg checkout b216ddff25a1f432870e6c340ce79357049ef86e
+          if ($LASTEXITCODE) { throw 'vcpkg checkout failed' }
+          & build/vcpkg/bootstrap-vcpkg.bat -disableMetrics
+          if ($LASTEXITCODE) { throw 'vcpkg bootstrap failed' }
+          $env:VCPKG_MAX_CONCURRENCY='16'
+          $process = [Diagnostics.Process]::GetCurrentProcess()
+          $process.ProcessorAffinity = [IntPtr]($process.ProcessorAffinity.ToInt64() -band 65535)
+          & build/vcpkg/vcpkg.exe install --triplet x64-windows-static-release --overlay-triplets=sdk/triplets --x-manifest-root=sdk --x-install-root=build/vcpkg_installed
+          if ($LASTEXITCODE) { throw 'vcpkg dependencies failed' }
+      - name: Build and verify public developer release
+        shell: pwsh
+        run: ./sdk/scripts/release-sdk.ps1 -InstalledDirectory "$PWD/build/vcpkg_installed/x64-windows-static-release" -WorkDirectory "$PWD/build/release" -Jobs 16 -Archive
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CyberDesktopSDK
+          path: build/release/artifacts/*
+          if-no-files-found: error
+      - name: Build every public plugin without private sources
+        shell: pwsh
+        run: ./sdk/scripts/verify-public-plugins.ps1 -InstalledDirectory "$PWD/build/vcpkg_installed/x64-windows-static-release" -WorkDirectory "$PWD/build/public-plugins" -Jobs 16
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-plugin-verification
+          path: |
+            build/public-plugins/*.log
+            build/public-plugins/verification.json
+            build/public-plugins/public-plugin-ids.txt
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: sdk-build-logs
+          path: build/release/*.log
+  draft-release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: CyberDesktopSDK
+          path: artifacts
+      - name: Create reviewable draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" artifacts/* --repo "$GITHUB_REPOSITORY" --draft --title "CyberDesktop SDK $GITHUB_REF_NAME" --notes "C ABI 1, protobuf package 1, Windows x64 /MT. See release-report.json and SHA256SUMS.txt."

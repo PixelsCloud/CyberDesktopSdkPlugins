@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "rules": { "$ref": "rules.schema.json" },
+    "character_template": { "$ref": "characters.schema.json#/properties/characters/items" },
+    "scenes": { "$ref": "scenes.schema.json#/properties/scenes" },
+    "assets": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+          },
+          "character_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+          },
+          "collection_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+          },
+          "type": {
+            "enum": [
+              "image",
+              "video"
+            ]
+          },
+          "file": {
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 1,
+            "pattern": "[^ \\t\\r\\n]"
+          },
+          "tags": {
+            "type": "array",
+            "maxItems": 16,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+            }
+          },
+          "required_flags": {
+            "type": "array",
+            "maxItems": 16,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+            }
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "minimum_turns": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "cooldown_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "maximum_sends": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          }
+        },
+        "required": [
+          "id",
+          "character_id",
+          "collection_id",
+          "type",
+          "file",
+          "tags"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "assets"
+  ]
+}

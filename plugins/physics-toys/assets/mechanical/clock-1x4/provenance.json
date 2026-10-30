@@ -1,0 +1,35 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-spring-chime-air-quality-concept.png",
+  "prompts": "design/mechanical-spring-chime-air-quality-assets.prompt.txt",
+  "files": [
+    {
+      "file": "beam.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        44,
+        273,
+        2128,
+        450
+      ],
+      "bytes": 658214,
+      "sha256": "d791752c3a559fb2db0af4fb87ad6909876994c07303d4c88438e64397234bec",
+      "source": "exec-7aacabdc-8c6e-4011-b075-1871b4cdef10.png"
+    },
+    {
+      "file": "card.png",
+      "width": 940,
+      "height": 1672,
+      "bounds": [
+        66,
+        84,
+        873,
+        1577
+      ],
+      "bytes": 1662396,
+      "sha256": "e492b9fa17420d7232ad9e7b128422198c19bfd9328c5aabc23802c80ce58305",
+      "source": "exec-0c0e9b94-f650-4800-8605-38517a2d2db1.png"
+    }
+  ]
+}

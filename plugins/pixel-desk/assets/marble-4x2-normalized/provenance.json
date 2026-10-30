@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:/Users/chess/.codex/generated_images/01a13908-b313-7e50-9e54-5024f7f83857/exec-6fdf2401-7050-4e5e-9ac2-764eb1bfaff9.png",
+  "reference": "design/pixel-desk-suite/normalized-marble.art.png",
+  "sha256": "5048d2dbf8803f8d7b32f1ecb1ee1f358f5e3087165bc5c52094dc2d5f23e1e3",
+  "imageSize": [
+    1067,
+    439
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    1063,
+    437
+  ],
+  "sourceCrop": [
+    386,
+    9,
+    1453,
+    448
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

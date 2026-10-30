@@ -1,0 +1,48 @@
+{
+  "id": "com.cyberdesktop.deepwhale.lcd.4x1",
+  "folder": "lcd-4x1",
+  "sourceId": "com.cyberdesktop.clock.lcd.1x4",
+  "source": "plugins/clock-suite/packages/lcd-1x4/plugin.textproto",
+  "family": "basic",
+  "kind": 3,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      118.11849710982659,
+      43.040462427745666,
+      146.39884393063582,
+      33.80346820809248
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        5,
+        7,
+        2150,
+        692
+      ],
+      "destination": [
+        26.39063,
+        7,
+        267.1875,
+        86
+      ]
+    }
+  ],
+  "designUid": "b13-1",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    140,
+    230
+  ]
+}

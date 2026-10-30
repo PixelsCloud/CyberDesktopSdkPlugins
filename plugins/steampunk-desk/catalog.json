@@ -1,0 +1,366 @@
+[
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "art": "clock-square",
+    "order": 1,
+    "family": "clock",
+    "name": "蒸汽朋克方像素时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "art": "clock-round",
+    "order": 2,
+    "family": "clock",
+    "name": "蒸汽朋克圆点阵时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.spring.4x1",
+    "folder": "clock-spring-4x1",
+    "art": "spring-parts",
+    "order": 3,
+    "family": "spring",
+    "name": "蒸汽朋克弹簧数字时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.spring.4x2",
+    "folder": "clock-spring-4x2",
+    "art": "spring-parts",
+    "order": 4,
+    "family": "spring",
+    "name": "蒸汽朋克弹簧数字时钟 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.marble.4x2",
+    "folder": "clock-marble-4x2",
+    "art": "marble-clock-4x2",
+    "order": 5,
+    "family": "marble",
+    "name": "蒸汽朋克滚珠轨道时钟 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.marble.6x2",
+    "folder": "clock-marble-6x2",
+    "art": "marble-clock-6x2",
+    "order": 6,
+    "family": "marble",
+    "name": "蒸汽朋克滚珠轨道时钟 6×2"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.precision.dress.2x2",
+    "folder": "clock-precision-dress-2x2",
+    "name": "蒸汽朋克玫瑰金月相表 2×2",
+    "art": "precision-dress",
+    "order": 7,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.precision.green.2x2",
+    "folder": "clock-precision-green-2x2",
+    "name": "蒸汽朋克翡翠绿潜水表 2×2",
+    "art": "precision-green",
+    "order": 8,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.clock.precision.skeleton.2x2",
+    "folder": "clock-precision-skeleton-2x2",
+    "name": "蒸汽朋克镂空精密钟 2×2",
+    "art": "precision-skeleton",
+    "order": 9,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.calendar.4x2",
+    "folder": "calendar-4x2",
+    "name": "蒸汽朋克月历 4×2",
+    "art": "calendar",
+    "order": 10,
+    "family": "calendar"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.lunar.2x1",
+    "folder": "lunar-2x1",
+    "name": "蒸汽朋克农历 2×1",
+    "art": "lunar-compact",
+    "order": 11,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.lunar.2x2",
+    "folder": "lunar-2x2",
+    "name": "蒸汽朋克农历 2×2",
+    "art": "lunar-portrait",
+    "order": 12,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.lunar.4x4",
+    "folder": "lunar-4x4",
+    "name": "蒸汽朋克农历 4×4",
+    "art": "lunar-month",
+    "order": 13,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.weather.2x1",
+    "folder": "weather-2x1",
+    "name": "蒸汽朋克天气 2×1",
+    "art": "weather-compact",
+    "order": 14,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.weather.4x1",
+    "folder": "weather-4x1",
+    "name": "蒸汽朋克天气 4×1",
+    "art": "weather-compact",
+    "order": 15,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.weather.4x2",
+    "folder": "weather-4x2",
+    "name": "蒸汽朋克天气 4×2",
+    "art": "weather-compact",
+    "scene": "weather-scene",
+    "order": 16,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.air.2x1",
+    "folder": "air-2x1",
+    "name": "蒸汽朋克空气质量 2×1",
+    "art": "air-compact",
+    "order": 17,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.air.4x1",
+    "folder": "air-4x1",
+    "name": "蒸汽朋克空气质量 4×1",
+    "art": "air-compact",
+    "order": 18,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.air.4x2",
+    "folder": "air-4x2",
+    "name": "蒸汽朋克空气质量 4×2",
+    "art": "air-large",
+    "order": 19,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.monitor.1x1",
+    "folder": "monitor-1x1",
+    "name": "蒸汽朋克系统监控 1×1",
+    "art": "monitor",
+    "order": 20,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.monitor.2x1",
+    "folder": "monitor-2x1",
+    "name": "蒸汽朋克系统监控 2×1",
+    "art": "monitor",
+    "order": 21,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.monitor.4x1",
+    "folder": "monitor-4x1",
+    "name": "蒸汽朋克系统监控 4×1",
+    "art": "monitor",
+    "order": 22,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.monitor.2x2",
+    "folder": "monitor-2x2",
+    "name": "蒸汽朋克系统监控 2×2",
+    "art": "monitor",
+    "order": 23,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.network.4x1",
+    "folder": "network-4x1",
+    "name": "蒸汽朋克网速 4×1",
+    "art": "network",
+    "order": 24,
+    "family": "productivity"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.disk.2x2",
+    "folder": "disk-2x2",
+    "name": "蒸汽朋克磁盘 2×2",
+    "art": "disk",
+    "order": 25,
+    "family": "disk"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.input.4x1",
+    "folder": "input-4x1",
+    "name": "蒸汽朋克键鼠计数 4×1",
+    "art": "input",
+    "order": 26,
+    "family": "input"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.album.4x2",
+    "folder": "album-4x2",
+    "name": "蒸汽朋克相册 4×2",
+    "art": "album",
+    "order": 27,
+    "family": "album"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.player.4x1",
+    "folder": "player-4x1",
+    "name": "蒸汽朋克音乐控制 4×1",
+    "art": "player-compact",
+    "order": 28,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.player.2x2",
+    "folder": "player-2x2",
+    "name": "蒸汽朋克音乐控制 2×2",
+    "art": "player-portrait",
+    "order": 29,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.player.4x2",
+    "folder": "player-4x2",
+    "name": "蒸汽朋克音乐控制 4×2",
+    "art": "player-full",
+    "order": 30,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.square.4x1",
+    "folder": "music-matrix-square-4x1",
+    "name": "蒸汽朋克方点阵频谱 4×1",
+    "art": "clock-square",
+    "order": 31,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.round.4x1",
+    "folder": "music-matrix-round-4x1",
+    "name": "蒸汽朋克圆点阵频谱 4×1",
+    "art": "clock-square",
+    "order": 32,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.square.6x1",
+    "folder": "music-matrix-square-6x1",
+    "name": "蒸汽朋克方点阵频谱 6×1",
+    "art": "clock-square",
+    "order": 33,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.round.6x1",
+    "folder": "music-matrix-round-6x1",
+    "name": "蒸汽朋克圆点阵频谱 6×1",
+    "art": "clock-square",
+    "order": 34,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.square.8x1",
+    "folder": "music-matrix-square-8x1",
+    "name": "蒸汽朋克方点阵频谱 8×1",
+    "art": "clock-square",
+    "order": 35,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.music.matrix.round.8x1",
+    "folder": "music-matrix-round-8x1",
+    "name": "蒸汽朋克圆点阵频谱 8×1",
+    "art": "clock-square",
+    "order": 36,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "name": "蒸汽朋克柱状频谱 4×1",
+    "art": "spectrum-frame",
+    "order": 37,
+    "family": "spectrum"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.radial.2x2",
+    "folder": "radial-2x2",
+    "name": "蒸汽朋克环形频谱 2×2",
+    "art": "spectrum-frame",
+    "order": 38,
+    "family": "spectrum"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.beat-machine.4x2",
+    "folder": "beat-machine-4x2",
+    "name": "蒸汽朋克节拍弹珠台 4×2",
+    "art": "spectrum-frame",
+    "order": 39,
+    "family": "beat"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.beat-machine.6x2",
+    "folder": "beat-machine-6x2",
+    "name": "蒸汽朋克节拍弹珠台 6×2",
+    "art": "spectrum-frame",
+    "order": 40,
+    "family": "beat"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.windchime.2x2",
+    "folder": "windchime-2x2",
+    "name": "蒸汽朋克风铃 2×2",
+    "art": "procedural",
+    "order": 41,
+    "family": "chime",
+    "renderer": "procedural"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.sign.4x1",
+    "folder": "sign-4x1",
+    "name": "蒸汽朋克翻牌招牌 4×1",
+    "art": "spectrum-frame",
+    "order": 42,
+    "family": "sign"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "name": "蒸汽朋克沙漏 1×1",
+    "art": "procedural",
+    "order": 43,
+    "family": "hourglass",
+    "renderer": "procedural"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "name": "蒸汽朋克沙漏 2×1",
+    "art": "procedural",
+    "order": 44,
+    "family": "hourglass",
+    "renderer": "procedural"
+  },
+  {
+    "id": "com.cyberdesktop.steamdesk.timer.2x2",
+    "folder": "timer-2x2",
+    "name": "蒸汽朋克番茄钟 2×2",
+    "art": "timer",
+    "order": 45,
+    "family": "timer"
+  }
+]

@@ -1,0 +1,11 @@
+CyberDesktop Mechanical Pixels artwork
+
+The four chassis sprites were generated with OpenAI's built-in image_gen from
+the project's approved mechanical-pixel-clock-music-concept.png design.
+They contain static housing only; time, matrix cells and spectrum are rendered
+from runtime data. Source prompts and per-asset provenance accompany the source.
+No third-party branded artwork or fonts are embedded in these chassis images.
+
+CyberDesktop SDK and CyberCanvas are used under their included MIT notices.
+Yoga and Tweeny notices for the existing linked shared implementation are
+included in each plugin package's licenses directory.

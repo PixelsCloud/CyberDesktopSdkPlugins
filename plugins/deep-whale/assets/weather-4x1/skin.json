@@ -1,0 +1,77 @@
+{
+  "id": "com.cyberdesktop.deepwhale.weather.4x1",
+  "folder": "weather-4x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "temperature": [
+      111,
+      54,
+      31,
+      24
+    ],
+    "city": [
+      93,
+      40,
+      48,
+      13
+    ],
+    "forecast0": [
+      143.14063,
+      43.03125,
+      42.59375,
+      36
+    ],
+    "forecast1": [
+      187.73438,
+      43.03125,
+      42.57813,
+      36
+    ],
+    "forecast2": [
+      232.3125,
+      43.03125,
+      42.59375,
+      36
+    ],
+    "icon": [
+      94,
+      58,
+      16,
+      16
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        12,
+        18,
+        2158,
+        654
+      ],
+      "destination": [
+        18.10938,
+        7,
+        283.76563,
+        86
+      ]
+    }
+  ],
+  "designUid": "b03-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    146
+  ]
+}

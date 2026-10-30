@@ -1,0 +1,156 @@
+id: "com.cyberdesktop.character-chat"
+name: "虚拟人物聊天"
+version: "0.1.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+preview: "preview.png"
+description: "虚拟人物情景聊天，支持用户自己的 DeepSeek API 和离线演示。"
+layouts {
+    id: "6x4"
+    name: "6×4（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 5 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 5 b: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+layouts {
+    id: "4x5"
+    name: "4×5（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    allowed_rotations: 0
+}
+layouts {
+    id: "6x6"
+    name: "6×6（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { a: 4 b: 2 }
+    cells { a: 5 b: 2 }
+    cells { a: 0 b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    cells { a: 4 b: 3 }
+    cells { a: 5 b: 3 }
+    cells { a: 0 b: 4 }
+    cells { a: 1 b: 4 }
+    cells { a: 2 b: 4 }
+    cells { a: 3 b: 4 }
+    cells { a: 4 b: 4 }
+    cells { a: 5 b: 4 }
+    cells { a: 0 b: 5 }
+    cells { a: 1 b: 5 }
+    cells { a: 2 b: 5 }
+    cells { a: 3 b: 5 }
+    cells { a: 4 b: 5 }
+    cells { a: 5 b: 5 }
+    allowed_rotations: 0
+}
+footprint_rules { min_cells: 20 max_cells: 36 max_columns: 6 max_rows: 6 }
+required_services { id: "ai.character_chat" version: 1 }
+required_services { id: "ui.text_input" version: 1 }
+required_services { id: "render.character_images" version: 1 }
+required_services { id: "render.character_images.versioned" version: 1 }
+settings_page {
+    title: "虚拟人物聊天"
+    description: "表情和动作读取当前角色资源或 Live2D 模型；各角色分别保存人物演出设置。"
+    fields { id: "offline" label: "离线演示" type: TOGGLE bool_default: true }
+    fields { id: "story" label: "剧情节奏" type: TOGGLE bool_default: true }
+    fields {
+        id: "expression"
+        label: "当前立绘的表情（跟随对话或手动预览）"
+        type: CHOICE
+        text_default: "auto"
+        choices { value: "auto" label: "跟随对话" }
+    }
+    fields {
+        id: "pose"
+        label: "当前立绘的动作（跟随对话或手动预览）"
+        type: CHOICE
+        text_default: "auto"
+        choices { value: "auto" label: "跟随对话" }
+    }
+    fields {
+        id: "renderer"
+        label: "人物演出"
+        type: CHOICE
+        text_default: "image"
+        choices { value: "image" label: "图片立绘" }
+        choices { value: "mao" label: "Mao · Live2D 示例" }
+        choices { value: "haru" label: "Haru · Live2D 示例" }
+    }
+    fields {
+        id: "model_directory"
+        label: "自选 Live2D 模型目录（留空使用示例）"
+        type: TEXT
+        text_editor: DIRECTORY
+        max_length: 4096
+    }
+    fields {
+        id: "fps"
+        label: "Live2D 帧率"
+        type: CHOICE
+        text_default: "30"
+        choices { value: "30" label: "30 FPS（省资源）" }
+        choices { value: "60" label: "60 FPS（更流畅）" }
+    }
+}
+tags: "二次元"
+tags: "互动"

@@ -1,0 +1,90 @@
+{
+  "id": "com.cyberdesktop.deepwhale.noise.2x1",
+  "folder": "noise-2x1",
+  "sourceId": "com.cyberdesktop.ambient.noise.1x2",
+  "source": "plugins/ambience-suite/packages/noise-1x2/plugin.textproto",
+  "family": "ambience",
+  "kind": 2,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "row0": [
+      77,
+      45,
+      65,
+      12
+    ],
+    "toggle0": [
+      107,
+      45,
+      12,
+      12
+    ],
+    "slider0": [
+      80,
+      59,
+      61,
+      11
+    ],
+    "master": [
+      80,
+      60,
+      61,
+      11
+    ],
+    "play": [
+      80,
+      45,
+      13,
+      13
+    ],
+    "timer": [
+      99,
+      45,
+      25,
+      13
+    ],
+    "page": [
+      129,
+      45,
+      13,
+      13
+    ],
+    "source": [
+      77,
+      45,
+      28,
+      12
+    ],
+    "error": [
+      77,
+      72,
+      65,
+      8
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        14,
+        44,
+        1559,
+        917
+      ],
+      "destination": [
+        7,
+        7.10938,
+        146,
+        85.875
+      ]
+    }
+  ],
+  "designUid": "b14-5",
+  "defaults": {}
+}

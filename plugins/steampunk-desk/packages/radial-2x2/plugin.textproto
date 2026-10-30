@@ -1,0 +1,45 @@
+id: "com.cyberdesktop.steamdesk.radial.2x2"
+name: "蒸汽朋克环形频谱 2×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "2x2"
+    name: "2×2（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 2 max_rows: 2 }
+capabilities: AUDIO_FFT
+description: "CyberDesktop 蒸汽工坊；做旧黄铜、铜管、铸铁与搪瓷，保留实时服务和原有物理交互。"
+settings_page {
+    title: "蒸汽朋克频谱设置"
+    fields { id: "gain" label: "灵敏度" type: NUMBER minimum: 0.2 maximum: 5.0 step: 0.1 number_default: 3.5 }
+    fields {
+        id: "release"
+        label: "回落时间（ms）"
+        type: INTEGER
+        minimum: 40.0
+        maximum: 600.0
+        step: 10.0
+        integer_default: 160
+    }
+    fields { id: "peaks" label: "显示峰值" type: TOGGLE bool_default: true }
+    fields { id: "reduced_motion" label: "减少动态" type: TOGGLE }
+    fields { id: "color" label: "侧边颜色" type: COLOR color_default: 2613949695 }
+    fields { id: "color_middle" label: "杆身颜色" type: COLOR color_default: 4125609471 }
+    fields { id: "color_top" label: "峰值颜色" type: COLOR color_default: 3938548735 }
+    fields { id: "brightness" label: "亮度" type: NUMBER minimum: 30.0 maximum: 100.0 step: 1.0 number_default: 100.0 }
+    fields { id: "glow" label: "柔和辉光" type: NUMBER maximum: 40.0 step: 1.0 }
+}
+content_padding: 0.0
+preview: "preview.png"
+required_services { id: "audio.spectrum" version: 1 }
+tags: "蒸汽朋克"
+tags: "音乐"
+tags: "频谱"

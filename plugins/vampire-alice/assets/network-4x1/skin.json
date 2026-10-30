@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.network.4x1",
+  "folder": "network-4x1",
+  "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+  "family": "productivity",
+  "kind": 3,
+  "rows": 1,
+  "columns": 4,
+  "board": 4,
+  "slot": 6,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    8,
+    1237,
+    1008,
+    192
+  ],
+  "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+  "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 网速 4×1",
+  "regions": {
+    "down": [
+      0.2648809523809524,
+      0.359375,
+      0.2113095238095238,
+      0.3125
+    ],
+    "up": [
+      0.5555555555555556,
+      0.359375,
+      0.18154761904761904,
+      0.3125
+    ],
+    "downHistory": [
+      0.25,
+      0.7,
+      0.23,
+      0.085
+    ],
+    "upHistory": [
+      0.53,
+      0.7,
+      0.23,
+      0.085
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+  "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

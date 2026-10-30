@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-84c0d6b8-f6e4-481a-b605-769f5688c3a0.png",
+  "reference": "design/pixel-desk-suite/03-calendar-weather-air.png",
+  "imageSize": [
+    1122,
+    1402
+  ],
+  "visibleBounds": [
+    39,
+    78,
+    1044,
+    1242
+  ],
+  "purpose": "Pixel calendar frame and decorative footer lanterns. The empty center is overpainted with native opaque cream paper; real dual-calendar grid, holiday footer and functional header are separate native content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "a77293912d682f91beecae992e321d6415e7df05e624c41bf17a52c4a855d781"
+}

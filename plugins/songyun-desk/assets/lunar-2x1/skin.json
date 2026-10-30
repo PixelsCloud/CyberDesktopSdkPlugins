@@ -1,0 +1,66 @@
+{
+  "id": "com.cyberdesktop.songyun.lunar.2x1",
+  "folder": "lunar-2x1",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/lunar-1x2/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 2,
+  "slot": 5,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    729,
+    656,
+    419,
+    237
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 农历 2×1",
+  "regions": {
+    "title": [
+      0.5155131264916468,
+      0.3206751054852321,
+      0.30071599045346065,
+      0.11392405063291139
+    ],
+    "day": [
+      0.2577565632458234,
+      0.31645569620253167,
+      0.23627684964200477,
+      0.37130801687763715
+    ],
+    "lunar": [
+      0.5155131264916468,
+      0.4641350210970464,
+      0.30071599045346065,
+      0.1308016877637131
+    ],
+    "festival": [
+      0.5274463007159904,
+      0.6033755274261603,
+      0.11455847255369929,
+      0.1350210970464135
+    ],
+    "surface0": [
+      0.25059665871121717,
+      0.3037974683544304,
+      0.5990453460620525,
+      0.459915611814346
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+  "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+  "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+  "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+  "renderInset": 7
+}

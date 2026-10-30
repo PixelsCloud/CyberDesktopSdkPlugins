@@ -1,0 +1,34 @@
+[
+  {
+    "id": "com.cyberdesktop.news.reader.2x4",
+    "folder": "reader-2x4",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.6"
+  },
+  {
+    "id": "com.cyberdesktop.news.reader.4x4",
+    "folder": "reader-4x4",
+    "kind": 0,
+    "rows": 4,
+    "columns": 4,
+    "version": "1.0.6"
+  },
+  {
+    "id": "com.cyberdesktop.news.github.2x4",
+    "folder": "github-2x4",
+    "kind": 1,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.6"
+  },
+  {
+    "id": "com.cyberdesktop.news.github.4x4",
+    "folder": "github-4x4",
+    "kind": 1,
+    "rows": 4,
+    "columns": 4,
+    "version": "1.0.6"
+  }
+]

@@ -1,0 +1,1 @@
+Extract only the unchanged native baseline beam from rows 476 through 503 of the approved dedicated 8x1 artwork; all live rods are rendered separately. No image painting or resizing.

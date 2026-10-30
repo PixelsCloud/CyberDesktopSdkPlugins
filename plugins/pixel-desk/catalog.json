@@ -1,0 +1,708 @@
+[
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "art": "clock-square-normalized",
+    "order": 1,
+    "family": "clock"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "art": "clock-square-normalized",
+    "order": 2,
+    "family": "clock"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.spring.4x1",
+    "folder": "clock-spring-4x1",
+    "art": "spring-compact-parts",
+    "order": 3,
+    "family": "spring"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.spring.4x2",
+    "folder": "clock-spring-4x2",
+    "art": "spring-tall-parts",
+    "order": 4,
+    "family": "spring"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.marble.4x2",
+    "folder": "clock-marble-4x2",
+    "art": "marble-4x2-normalized",
+    "order": 5,
+    "family": "marble"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.marble.6x2",
+    "folder": "clock-marble-6x2",
+    "art": "marble-6x2-normalized",
+    "order": 6,
+    "family": "marble"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.precision.dress.2x2",
+    "folder": "clock-precision-dress-2x2",
+    "name": "像素月相钟 2×2",
+    "art": "precision-dress-normalized",
+    "order": 7,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.precision.green.2x2",
+    "folder": "clock-precision-green-2x2",
+    "name": "像素潜水钟 2×2",
+    "art": "precision-green-normalized",
+    "order": 8,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.precision.skeleton.2x2",
+    "folder": "clock-precision-skeleton-2x2",
+    "name": "像素镂空钟 2×2",
+    "art": "precision-skeleton",
+    "order": 9,
+    "family": "precision"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.calendar.4x2",
+    "folder": "calendar-4x2",
+    "name": "像素月历 4×2",
+    "art": "calendar-normalized",
+    "order": 10,
+    "family": "calendar"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.lunar.2x1",
+    "folder": "lunar-2x1",
+    "name": "像素农历 2×1",
+    "art": "lunar-wide-normalized",
+    "order": 11,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.lunar.2x2",
+    "folder": "lunar-2x2",
+    "name": "像素农历 2×2",
+    "art": "lunar-compact-normalized",
+    "order": 12,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.lunar.4x4",
+    "folder": "lunar-4x4",
+    "name": "像素双历月历 4×4",
+    "art": "lunar-month-normalized",
+    "order": 13,
+    "family": "lunar"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.weather.2x1",
+    "folder": "weather-2x1",
+    "name": "像素天气 2×1",
+    "art": "weather-compact-normalized",
+    "order": 14,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.weather.4x1",
+    "folder": "weather-4x1",
+    "name": "像素天气 4×1",
+    "art": "weather-wide-normalized",
+    "order": 15,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.weather.4x2",
+    "folder": "weather-4x2",
+    "name": "像素天气 4×2",
+    "art": "weather-large-normalized",
+    "order": 16,
+    "family": "weather"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.air.2x1",
+    "folder": "air-2x1",
+    "name": "像素空气质量 2×1",
+    "art": "air-compact-normalized",
+    "order": 17,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.air.4x1",
+    "folder": "air-4x1",
+    "name": "像素空气质量 4×1",
+    "art": "air-wide-normalized",
+    "order": 18,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.air.4x2",
+    "folder": "air-4x2",
+    "name": "像素空气质量 4×2",
+    "art": "air-large-normalized",
+    "order": 19,
+    "family": "air"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.monitor.1x1",
+    "folder": "monitor-1x1",
+    "name": "像素系统监控 1×1",
+    "art": "monitor-1x1-normalized",
+    "order": 20,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.monitor.2x1",
+    "folder": "monitor-2x1",
+    "name": "像素系统监控 2×1",
+    "art": "monitor-2x1-normalized",
+    "order": 21,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.monitor.4x1",
+    "folder": "monitor-4x1",
+    "name": "像素系统监控 4×1",
+    "art": "monitor-4x1-normalized",
+    "order": 22,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.monitor.2x2",
+    "folder": "monitor-2x2",
+    "name": "像素系统监控 2×2",
+    "art": "monitor-2x2-normalized",
+    "order": 23,
+    "family": "monitor"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.network.4x1",
+    "folder": "network-4x1",
+    "name": "像素网速 4×1",
+    "art": "network-wide-normalized",
+    "order": 24,
+    "family": "productivity"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.disk.2x2",
+    "folder": "disk-2x2",
+    "name": "像素磁盘 2×2",
+    "art": "disk-normalized",
+    "order": 25,
+    "family": "disk"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.input.4x1",
+    "folder": "input-4x1",
+    "name": "像素键鼠计数 4×1",
+    "art": "input-normalized",
+    "order": 26,
+    "family": "input"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.album.4x2",
+    "folder": "album-4x2",
+    "name": "像素相册 4×2",
+    "art": "album-normalized",
+    "order": 27,
+    "family": "album"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.player.4x1",
+    "folder": "player-4x1",
+    "name": "像素音乐控制 4×1",
+    "art": "player-4x1-normalized",
+    "order": 28,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.player.2x2",
+    "folder": "player-2x2",
+    "name": "像素音乐控制 2×2",
+    "art": "player-2x2-normalized",
+    "order": 29,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.player.4x2",
+    "folder": "player-4x2",
+    "name": "像素音乐控制 4×2",
+    "art": "player-4x2-normalized",
+    "order": 30,
+    "family": "player"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.square.4x1",
+    "folder": "music-matrix-square-4x1",
+    "name": "像素方点阵频谱 4×1",
+    "art": "matrix-square-4x1-normalized",
+    "order": 31,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.round.4x1",
+    "folder": "music-matrix-round-4x1",
+    "name": "像素圆点阵频谱 4×1",
+    "art": "matrix-round-4x1-normalized",
+    "order": 32,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.square.6x1",
+    "folder": "music-matrix-square-6x1",
+    "name": "像素方点阵频谱 6×1",
+    "art": "matrix-square-6x1-normalized",
+    "order": 33,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.round.6x1",
+    "folder": "music-matrix-round-6x1",
+    "name": "像素圆点阵频谱 6×1",
+    "art": "matrix-round-6x1-normalized",
+    "order": 34,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.square.8x1",
+    "folder": "music-matrix-square-8x1",
+    "name": "像素方点阵频谱 8×1",
+    "art": "matrix-square-8x1-normalized",
+    "order": 35,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.music.matrix.round.8x1",
+    "folder": "music-matrix-round-8x1",
+    "name": "像素圆点阵频谱 8×1",
+    "art": "matrix-round-8x1-normalized",
+    "order": 36,
+    "family": "matrix"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "name": "像素柱状频谱 4×1",
+    "art": "spectrum-normalized",
+    "order": 37,
+    "family": "spectrum"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.radial.2x2",
+    "folder": "radial-2x2",
+    "name": "像素环形频谱 2×2",
+    "art": "radial-normalized",
+    "order": 38,
+    "family": "spectrum"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.beat-machine.4x2",
+    "folder": "beat-machine-4x2",
+    "name": "像素节拍弹珠台 4×2",
+    "art": "beat-4x2-normalized",
+    "order": 39,
+    "family": "beat",
+    "runtimeAssets": {
+      "parts.png": "beat-moving-parts/body.png",
+      "parts.provenance.json": "beat-moving-parts/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.beat-machine.6x2",
+    "folder": "beat-machine-6x2",
+    "name": "像素节拍弹珠台 6×2",
+    "art": "beat-6x2-normalized",
+    "order": 40,
+    "family": "beat",
+    "runtimeAssets": {
+      "parts.png": "beat-moving-parts/body.png",
+      "parts.provenance.json": "beat-moving-parts/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.windchime.2x2",
+    "folder": "windchime-2x2",
+    "name": "像素风铃 2×2",
+    "art": "chime-rail-normalized",
+    "order": 41,
+    "family": "chime",
+    "runtimeAssets": {
+      "body.png": "chime-rail-normalized/body.png",
+      "provenance.json": "chime-rail-normalized/provenance.json",
+      "moon.png": "chime-moon-part/body.png",
+      "moon.provenance.json": "chime-moon-part/provenance.json",
+      "mint-left.png": "chime-mint-left-part/body.png",
+      "mint-left.provenance.json": "chime-mint-left-part/provenance.json",
+      "bell.png": "chime-bell-part/body.png",
+      "bell.provenance.json": "chime-bell-part/provenance.json",
+      "clay.png": "chime-clay-part/body.png",
+      "clay.provenance.json": "chime-clay-part/provenance.json",
+      "star.png": "chime-star-part/body.png",
+      "star.provenance.json": "chime-star-part/provenance.json",
+      "mint-right.png": "chime-mint-right-part/body.png",
+      "mint-right.provenance.json": "chime-mint-right-part/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.sign.4x1",
+    "folder": "sign-4x1",
+    "name": "像素翻牌招牌 4×1",
+    "art": "sign-normalized",
+    "order": 42,
+    "family": "sign"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "name": "像素沙漏 1×1",
+    "art": "hourglass-active-1x1-normalized",
+    "order": 43,
+    "family": "hourglass",
+    "runtimeAssets": {
+      "body.png": "hourglass-active-1x1-normalized/body.png",
+      "provenance.json": "hourglass-active-1x1-normalized/provenance.json",
+      "paused.png": "hourglass-paused-1x1-normalized/body.png",
+      "paused.provenance.json": "hourglass-paused-1x1-normalized/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "name": "像素沙漏 2×1",
+    "art": "hourglass-active-2x1-normalized",
+    "order": 44,
+    "family": "hourglass",
+    "runtimeAssets": {
+      "body.png": "hourglass-active-2x1-normalized/body.png",
+      "provenance.json": "hourglass-active-2x1-normalized/provenance.json",
+      "paused.png": "hourglass-paused-2x1-normalized/body.png",
+      "paused.provenance.json": "hourglass-paused-2x1-normalized/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.timer.2x2",
+    "folder": "timer-2x2",
+    "name": "像素番茄钟 2×2",
+    "art": "timer-normalized",
+    "order": 45,
+    "family": "timer"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.timer.2x1",
+    "folder": "timer-2x1",
+    "art": "timer-compact-normalized",
+    "order": 46,
+    "family": "timer",
+    "name": "像素番茄钟 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.network.2x1",
+    "folder": "network-2x1",
+    "art": "network-compact-normalized",
+    "order": 47,
+    "family": "productivity",
+    "name": "像素网速 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.disk.2x1",
+    "folder": "disk-2x1",
+    "art": "disk-compact-normalized",
+    "order": 48,
+    "family": "disk",
+    "name": "像素磁盘 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.spectrum.6x1",
+    "folder": "spectrum-6x1",
+    "art": "spectrum-6x1-normalized",
+    "order": 49,
+    "family": "spectrum",
+    "name": "像素频谱 6×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.spectrum.8x1",
+    "folder": "spectrum-8x1",
+    "art": "spectrum-8x1-normalized",
+    "order": 50,
+    "family": "spectrum",
+    "name": "像素频谱 8×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.windchime.2x3",
+    "folder": "windchime-2x3",
+    "art": "chime-tall-rail-normalized",
+    "family": "chime",
+    "order": 51,
+    "name": "像素风铃 2×3",
+    "runtimeAssets": {
+      "body.png": "chime-tall-rail-normalized/body.png",
+      "body.provenance.json": "chime-tall-rail-normalized/provenance.json",
+      "moon.png": "chime-tall-moon-part/body.png",
+      "moon.provenance.json": "chime-tall-moon-part/provenance.json",
+      "mint-left.png": "chime-tall-leaf-left-part/body.png",
+      "mint-left.provenance.json": "chime-tall-leaf-left-part/provenance.json",
+      "bell.png": "chime-tall-bell-part/body.png",
+      "bell.provenance.json": "chime-tall-bell-part/provenance.json",
+      "clay.png": "chime-tall-leaf-center-part/body.png",
+      "clay.provenance.json": "chime-tall-leaf-center-part/provenance.json",
+      "star.png": "chime-tall-star-part/body.png",
+      "star.provenance.json": "chime-tall-star-part/provenance.json",
+      "mint-right.png": "chime-tall-leaf-right-part/body.png",
+      "mint-right.provenance.json": "chime-tall-leaf-right-part/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.analog.1x1",
+    "folder": "clock-analog-1x1",
+    "art": "clock-analog-1x1-normalized",
+    "family": "basic-clock",
+    "order": 52,
+    "name": "像素模拟钟 1×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.analog.2x1",
+    "folder": "clock-analog-2x1",
+    "art": "clock-analog-2x1-normalized",
+    "family": "basic-clock",
+    "order": 53,
+    "name": "像素基础模拟钟 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.analog.4x1",
+    "folder": "clock-analog-4x1",
+    "art": "clock-analog-4x1-normalized",
+    "family": "basic-clock",
+    "order": 54,
+    "name": "像素基础模拟钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.analog.2x2",
+    "folder": "clock-analog-2x2",
+    "art": "clock-analog-2x2-normalized",
+    "family": "basic-clock",
+    "order": 55,
+    "name": "像素基础模拟钟 2×2"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.digital.1x1",
+    "folder": "clock-digital-1x1",
+    "art": "clock-digital-1x1-normalized",
+    "family": "basic-clock",
+    "order": 56,
+    "name": "像素数字时钟 1×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.digital.2x1",
+    "folder": "clock-digital-2x1",
+    "art": "clock-digital-2x1-normalized",
+    "family": "basic-clock",
+    "order": 57,
+    "name": "像素数字时钟 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.digital.4x1",
+    "folder": "clock-digital-4x1",
+    "art": "clock-digital-4x1-normalized",
+    "family": "basic-clock",
+    "order": 58,
+    "name": "像素数字时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.digital.2x2",
+    "folder": "clock-digital-2x2",
+    "art": "clock-digital-2x2-normalized",
+    "family": "basic-clock",
+    "order": 59,
+    "name": "像素数字时钟 2×2"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.flip.4x1",
+    "folder": "clock-flip-4x1",
+    "art": "clock-flip-4x1-normalized",
+    "family": "basic-clock",
+    "order": 60,
+    "name": "像素翻页卡片时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.flip.2x2",
+    "folder": "clock-flip-2x2",
+    "art": "clock-flip-2x2-normalized",
+    "family": "basic-clock",
+    "order": 61,
+    "name": "像素翻页卡片时钟 2×2"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.flip.4x2",
+    "folder": "clock-flip-4x2",
+    "art": "clock-flip-4x2-normalized",
+    "family": "basic-clock",
+    "order": 62,
+    "name": "像素翻页卡片时钟 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.lcd.2x1",
+    "folder": "clock-lcd-2x1",
+    "art": "clock-lcd-2x1-normalized",
+    "family": "basic-clock",
+    "order": 63,
+    "name": "像素LCD 电子钟 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.lcd.4x1",
+    "folder": "clock-lcd-4x1",
+    "art": "clock-lcd-4x1-normalized",
+    "family": "basic-clock",
+    "order": 64,
+    "name": "像素LCD 电子钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.clock.brick.4x1",
+    "folder": "clock-brick-4x1",
+    "art": "clock-brick-carved-normalized",
+    "family": "brick",
+    "order": 65,
+    "name": "像素砖刻时钟 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.countdown.2x1",
+    "folder": "countdown-2x1",
+    "art": "countdown-2x1-normalized",
+    "family": "countdown",
+    "order": 66,
+    "name": "像素倒数日 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.countdown.4x1",
+    "folder": "countdown-4x1",
+    "art": "countdown-4x1-normalized",
+    "family": "countdown",
+    "order": 67,
+    "name": "像素倒数日 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.koi.4x2",
+    "folder": "koi-4x2",
+    "art": "koi-4x2-normalized",
+    "family": "koi",
+    "order": 68,
+    "name": "像素锦鲤池 4×2"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.plant.1x1",
+    "folder": "plant-1x1",
+    "art": "plant-1x1-normalized",
+    "family": "plant",
+    "order": 69,
+    "name": "像素盆栽 1×1",
+    "runtimeAssets": {
+      "foliage-0.png": "plant-foliage-pixel-0/body.png",
+      "foliage-0.provenance.json": "plant-foliage-pixel-0/provenance.json",
+      "foliage-1.png": "plant-foliage-pixel-1/body.png",
+      "foliage-1.provenance.json": "plant-foliage-pixel-1/provenance.json",
+      "foliage-2.png": "plant-foliage-pixel-2/body.png",
+      "foliage-2.provenance.json": "plant-foliage-pixel-2/provenance.json",
+      "foliage-3.png": "plant-foliage-pixel-3/body.png",
+      "foliage-3.provenance.json": "plant-foliage-pixel-3/provenance.json",
+      "foliage-4.png": "plant-foliage-pixel-4/body.png",
+      "foliage-4.provenance.json": "plant-foliage-pixel-4/provenance.json",
+      "foliage-5.png": "plant-foliage-pixel-5/body.png",
+      "foliage-5.provenance.json": "plant-foliage-pixel-5/provenance.json",
+      "foliage-6.png": "plant-foliage-pixel-6/body.png",
+      "foliage-6.provenance.json": "plant-foliage-pixel-6/provenance.json",
+      "foliage-7.png": "plant-foliage-pixel-7/body.png",
+      "foliage-7.provenance.json": "plant-foliage-pixel-7/provenance.json",
+      "foliage-8.png": "plant-foliage-pixel-8/body.png",
+      "foliage-8.provenance.json": "plant-foliage-pixel-8/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.koi.4x4",
+    "folder": "koi-4x4",
+    "art": "koi-4x4-normalized",
+    "family": "koi",
+    "order": 70,
+    "name": "像素锦鲤池 4×4"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.koi.6x3",
+    "folder": "koi-6x3",
+    "art": "koi-6x3-normalized",
+    "family": "koi",
+    "order": 71,
+    "name": "像素锦鲤池 6×3"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.plant.2x2",
+    "folder": "plant-2x2",
+    "art": "plant-2x2-normalized",
+    "family": "plant",
+    "order": 72,
+    "name": "像素盆栽 2×2",
+    "runtimeAssets": {
+      "foliage-0.png": "plant-foliage-pixel-0/body.png",
+      "foliage-0.provenance.json": "plant-foliage-pixel-0/provenance.json",
+      "foliage-1.png": "plant-foliage-pixel-1/body.png",
+      "foliage-1.provenance.json": "plant-foliage-pixel-1/provenance.json",
+      "foliage-2.png": "plant-foliage-pixel-2/body.png",
+      "foliage-2.provenance.json": "plant-foliage-pixel-2/provenance.json",
+      "foliage-3.png": "plant-foliage-pixel-3/body.png",
+      "foliage-3.provenance.json": "plant-foliage-pixel-3/provenance.json",
+      "foliage-4.png": "plant-foliage-pixel-4/body.png",
+      "foliage-4.provenance.json": "plant-foliage-pixel-4/provenance.json",
+      "foliage-5.png": "plant-foliage-pixel-5/body.png",
+      "foliage-5.provenance.json": "plant-foliage-pixel-5/provenance.json",
+      "foliage-6.png": "plant-foliage-pixel-6/body.png",
+      "foliage-6.provenance.json": "plant-foliage-pixel-6/provenance.json",
+      "foliage-7.png": "plant-foliage-pixel-7/body.png",
+      "foliage-7.provenance.json": "plant-foliage-pixel-7/provenance.json",
+      "foliage-8.png": "plant-foliage-pixel-8/body.png",
+      "foliage-8.provenance.json": "plant-foliage-pixel-8/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.plant.4x2",
+    "folder": "plant-4x2",
+    "art": "plant-4x2-normalized",
+    "family": "plant",
+    "order": 73,
+    "name": "像素盆栽 4×2",
+    "runtimeAssets": {
+      "foliage-0.png": "plant-foliage-pixel-0/body.png",
+      "foliage-0.provenance.json": "plant-foliage-pixel-0/provenance.json",
+      "foliage-1.png": "plant-foliage-pixel-1/body.png",
+      "foliage-1.provenance.json": "plant-foliage-pixel-1/provenance.json",
+      "foliage-2.png": "plant-foliage-pixel-2/body.png",
+      "foliage-2.provenance.json": "plant-foliage-pixel-2/provenance.json",
+      "foliage-3.png": "plant-foliage-pixel-3/body.png",
+      "foliage-3.provenance.json": "plant-foliage-pixel-3/provenance.json",
+      "foliage-4.png": "plant-foliage-pixel-4/body.png",
+      "foliage-4.provenance.json": "plant-foliage-pixel-4/provenance.json",
+      "foliage-5.png": "plant-foliage-pixel-5/body.png",
+      "foliage-5.provenance.json": "plant-foliage-pixel-5/provenance.json",
+      "foliage-6.png": "plant-foliage-pixel-6/body.png",
+      "foliage-6.provenance.json": "plant-foliage-pixel-6/provenance.json",
+      "foliage-7.png": "plant-foliage-pixel-7/body.png",
+      "foliage-7.provenance.json": "plant-foliage-pixel-7/provenance.json",
+      "foliage-8.png": "plant-foliage-pixel-8/body.png",
+      "foliage-8.provenance.json": "plant-foliage-pixel-8/provenance.json"
+    }
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.noise.2x1",
+    "folder": "noise-2x1",
+    "art": "noise-2x1-normalized",
+    "family": "noise",
+    "order": 74,
+    "name": "像素白噪音 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.pixeldesk.noise.4x2",
+    "folder": "noise-4x2",
+    "art": "noise-4x2-normalized",
+    "family": "noise",
+    "order": 75,
+    "name": "像素白噪音 4×2"
+  }
+]

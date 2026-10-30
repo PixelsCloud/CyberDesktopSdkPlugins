@@ -1,0 +1,20 @@
+[
+  {
+    "id": "com.cyberdesktop.airquality.1x2",
+    "rows": 1,
+    "columns": 2,
+    "name": "空气质量 2×1"
+  },
+  {
+    "id": "com.cyberdesktop.airquality.1x4",
+    "rows": 1,
+    "columns": 4,
+    "name": "空气质量 4×1"
+  },
+  {
+    "id": "com.cyberdesktop.airquality.2x4",
+    "rows": 2,
+    "columns": 4,
+    "name": "空气质量 4×2"
+  }
+]

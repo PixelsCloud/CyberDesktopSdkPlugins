@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "file": "approved-body.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1616327,
+      "sha256": "FFB1E8E1446D9C37EE7784F65B5D2801FF44224F2E7AB734464A6E83DA0E75B3",
+      "source": "OpenAI image_gen exec-02097b10-d572-4cf7-a8e1-16faa15d6a40.png",
+      "reference": "design/mechanical-monitor-network-sign-concept.png"
+    }
+  ]
+}

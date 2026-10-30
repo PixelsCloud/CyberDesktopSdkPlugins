@@ -1,0 +1,78 @@
+{
+  "id": "com.cyberdesktop.songyun.air.2x1",
+  "folder": "air-2x1",
+  "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+  "family": "air",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 5,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    115,
+    1253,
+    786,
+    238
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 空气质量 2×1",
+  "regions": {
+    "city": [
+      0.49363867684478374,
+      0.3277310924369748,
+      0.09796437659033079,
+      0.12184873949579832
+    ],
+    "aqi": [
+      0.5903307888040712,
+      0.39915966386554624,
+      0.09541984732824428,
+      0.2815126050420168
+    ],
+    "quality": [
+      0.7379134860050891,
+      0.4411764705882353,
+      0.09287531806615776,
+      0.23529411764705882
+    ],
+    "aqiLabel": [
+      0.49236641221374045,
+      0.48739495798319327,
+      0.09669211195928754,
+      0.15546218487394958
+    ],
+    "gauge": [
+      0.089058524173028,
+      0.29831932773109243,
+      0.28498727735368956,
+      0.42436974789915966
+    ],
+    "surface0": [
+      0.48346055979643765,
+      0.3025210084033613,
+      0.3549618320610687,
+      0.44537815126050423
+    ],
+    "surface1": [
+      0.07251908396946564,
+      0.31092436974789917,
+      0.30661577608142493,
+      0.42436974789915966
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-02-controls.art.png",
+  "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+  "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+  "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+  "renderInset": 7
+}

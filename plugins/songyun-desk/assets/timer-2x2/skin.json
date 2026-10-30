@@ -1,0 +1,67 @@
+{
+  "id": "com.cyberdesktop.songyun.timer.2x2",
+  "folder": "timer-2x2",
+  "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 8,
+  "slot": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1088,
+    15,
+    436,
+    454
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 番茄钟 2×2",
+  "regions": {
+    "gauge": [
+      0.16743119266055045,
+      0.18722466960352424,
+      0.6674311926605505,
+      0.6409691629955947
+    ],
+    "title": [
+      0.25,
+      0.43612334801762115,
+      0.5091743119266054,
+      0.16519823788546256
+    ],
+    "reset": [
+      0.2706422018348624,
+      0.6806167400881057,
+      0.14678899082568808,
+      0.14096916299559473
+    ],
+    "toggle": [
+      0.44954128440366975,
+      0.6806167400881057,
+      0.1559633027522936,
+      0.14977973568281938
+    ],
+    "surface0Circle": [
+      0.16743119266055045,
+      0.18722466960352424,
+      0.6674311926605505,
+      0.6409691629955947
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/08-timers.art.png",
+  "artSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d",
+  "plateSha256": "e471d1a235ee38acdc7a483beb8ab9b4bda1df31f9ef11b6bc01877e6bec0e31",
+  "plateSource": "plugins/songyun-desk/materials/08-timers.runtime.png",
+  "nativeTicks": true,
+  "renderInset": 7
+}

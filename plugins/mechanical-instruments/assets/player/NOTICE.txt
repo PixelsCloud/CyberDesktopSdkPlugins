@@ -1,0 +1,11 @@
+﻿CyberDesktop mechanical instrument artwork.
+Generated with the built-in OpenAI image_gen tool from the user-approved project concepts.
+Source output: exec-b3eac0d5-cc89-426b-8939-0c9c5f2ccdde.png
+Derived from exec-01d7e718-06dc-4ee3-b3f4-a2b472943060.png by removing the static moving arm.
+The stationary bearing and casing remain in body.png.
+arm.png is the ORIGINAL exec-01d7e718-06dc-4ee3-b3f4-a2b472943060.png, copied byte-for-byte.
+Software masks the original moving-arm pixels and rotates them by at most 1.5 degrees; it does not redraw them.
+vinyl.png is exec-bc3c25dc-bc32-4834-b593-260412df72bd.png, a photographic PNG material.
+It is derived from exec-005b62ef-3380-48cc-9504-0d220d62580a.png with restrained asymmetric lighting.
+Software clips the live media cover and rotates the vinyl texture; it does not draw grooves or spindle graphics.
+Original weather icon attribution remains in assets/provenance.json and bundled licenses.

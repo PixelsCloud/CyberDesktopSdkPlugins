@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "character_id": "female_youth",
+  "assets": [
+    {
+      "id": "neutral",
+      "file": "neutral.png",
+      "usages": [
+        "expression",
+        "pose"
+      ],
+      "type": "image",
+      "sha256": "ac80f47414af613c8a92b75a6c62f3f78b592f01c6bd0a83273b489568d9448b",
+      "bytes": 2133282,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "neutral"
+    },
+    {
+      "id": "happy",
+      "file": "happy.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "10103cb8b9a35513ed96b4acf76ce6d4a6c4b03b43133ce5195e371bb49fab90",
+      "bytes": 1989420,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "happy"
+    },
+    {
+      "id": "sad",
+      "file": "sad.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "9473ba82c07cad3ea55c5001c21283b1b1f78e250f722b24dd9444cce1df8e62",
+      "bytes": 1987926,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "sad"
+    },
+    {
+      "id": "angry",
+      "file": "angry.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "957d1dd0bd550bcc3acd0dcfa9bb5855db27ef794e0d578efa303ae22555b5f8",
+      "bytes": 2004635,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "angry"
+    },
+    {
+      "id": "shy",
+      "file": "shy.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "1e36e85e6ea7c8dc94a8cce02462a02e00fbe5a89bc7d5139c2022485ddff66b",
+      "bytes": 1992695,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "shy"
+    },
+    {
+      "id": "surprised",
+      "file": "surprised.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "7f945968e489af9c89b513b80d6e88fb26849e05c915f75ab3d76724157daae8",
+      "bytes": 2005359,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "surprised"
+    },
+    {
+      "id": "worried",
+      "file": "worried.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "ee2ce1413a6dffcb42904f4fbd51a6b985a8f49465491f4efb4b37bbb1b68e54",
+      "bytes": 2017863,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "worried"
+    },
+    {
+      "id": "thoughtful",
+      "file": "thoughtful.png",
+      "usages": [
+        "expression"
+      ],
+      "type": "image",
+      "sha256": "2d8ca1791fe9c064f712c5d3fdb9a17a8a6216af5f5094a2cd5db9a345b43ed5",
+      "bytes": 1963682,
+      "width": 1024,
+      "height": 1536,
+      "emotion": "thoughtful"
+    },
+    {
+      "id": "pose_wave",
+      "file": "pose_wave.png",
+      "usages": [
+        "pose"
+      ],
+      "type": "image",
+      "sha256": "54e23f4345adf7b3cf2b71cde6e1eecbb187241ca8841855f7574de1a5c09a5e",
+      "bytes": 2094125,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "pose_folded",
+      "file": "pose_folded.png",
+      "usages": [
+        "pose"
+      ],
+      "type": "image",
+      "sha256": "d7182fd5de66358efa5418792fcfa497de39a800cd93ca026373d8c020551f9f",
+      "bytes": 2042275,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "scene_cafe",
+      "file": "scene_cafe.png",
+      "usages": [
+        "background",
+        "media"
+      ],
+      "type": "image",
+      "sha256": "b70a993483273d967c6c455f55d1a9573c3f444b6c4b3d64be146f4647f89064",
+      "bytes": 2304407,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "scene_home",
+      "file": "scene_home.png",
+      "usages": [
+        "background",
+        "media"
+      ],
+      "type": "image",
+      "sha256": "6c4b9a2db5022c78b27e750b6fe143d0dc8ed61d2d554dd893a5fae7581d5b34",
+      "bytes": 2474740,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "scene_beach",
+      "file": "scene_beach.png",
+      "usages": [
+        "background",
+        "media"
+      ],
+      "type": "image",
+      "sha256": "63008927d607b26532bacf9e0537c6ed18cb7be9a142f2634b0736948ec63e23",
+      "bytes": 2317520,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "id": "selfie_cafe",
+      "file": "selfie_cafe.png",
+      "usages": [
+        "media"
+      ],
+      "type": "image",
+      "sha256": "d1039f86168440fc782950a7fd37abcfd534d2d15ee6856e36765c125c6bdf32",
+      "bytes": 2502960,
+      "width": 1122,
+      "height": 1402
+    },
+    {
+      "id": "selfie_home",
+      "file": "selfie_home.png",
+      "usages": [
+        "media"
+      ],
+      "type": "image",
+      "sha256": "3e82df76b220259031ee46687e76aa59438671051200fb5c7cf45ceb10061f45",
+      "bytes": 2433101,
+      "width": 1122,
+      "height": 1402
+    },
+    {
+      "id": "selfie_beach",
+      "file": "selfie_beach.png",
+      "usages": [
+        "media"
+      ],
+      "type": "image",
+      "sha256": "33866bb9d0994aad89faeab1dd25eee1d585f1e443ddf336fa2a2852086e8012",
+      "bytes": 2367770,
+      "width": 1122,
+      "height": 1402
+    },
+    {
+      "id": "scene_beach_demo",
+      "file": "scene_beach_demo.mp4",
+      "usages": [
+        "media"
+      ],
+      "type": "video",
+      "sha256": "32cf368f91740783585aa7f1324c3139699fae9366f193d03a9b96f5b8b18297",
+      "bytes": 153983,
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "duration_ms": 6000
+    }
+  ]
+}

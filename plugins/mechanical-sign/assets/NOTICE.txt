@@ -1,0 +1,14 @@
+Mechanical Split-flap Sign artwork
+
+approved-body.png was generated with the built-in OpenAI image_gen tool for this project.
+Approved reference: design/mechanical-monitor-network-sign-concept.png.
+Source generated image: exec-02097b10-d572-4cf7-a8e1-16faa15d6a40.png.
+Original generated PNG is copied unchanged; the software composes its photographic
+backplate and blank flap materials with independently rendered live lettering.
+The transmission assembly uses those original PNG pixels with a small axial motion.
+The generation prompt is recorded in tools/ApprovedPlatePrompt.txt.
+
+Only approved-body.png is required by the current 4x1 design. Old design source
+materials may remain in the source tree but are not bundled into this package.
+ICU grapheme segmentation uses Windows system APIs. ICU binaries are not shipped.
+CyberDesktop SDK and Tweeny notices are included under licenses/.

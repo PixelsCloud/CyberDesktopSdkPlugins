@@ -1,0 +1,76 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.weather.4x1",
+  "folder": "weather-4x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 3,
+  "slot": 3,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    8,
+    807,
+    1008,
+    186
+  ],
+  "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+  "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 天气 4×1",
+  "regions": {
+    "city": [
+      0.15,
+      0.22,
+      0.15,
+      0.17
+    ],
+    "temperature": [
+      0.145,
+      0.38,
+      0.2,
+      0.48
+    ],
+    "icon": [
+      0.295,
+      0.28,
+      0.105,
+      0.48
+    ],
+    "forecast0": [
+      0.44,
+      0.19,
+      0.13,
+      0.62
+    ],
+    "forecast1": [
+      0.6,
+      0.19,
+      0.13,
+      0.62
+    ],
+    "forecast2": [
+      0.76,
+      0.19,
+      0.13,
+      0.62
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+  "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+  "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+}

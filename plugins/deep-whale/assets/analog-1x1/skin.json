@@ -1,0 +1,44 @@
+{
+  "id": "com.cyberdesktop.deepwhale.analog.1x1",
+  "folder": "analog-1x1",
+  "sourceId": "com.cyberdesktop.clock.analog.1x1",
+  "source": "plugins/clock-suite/packages/analog-1x1/plugin.textproto",
+  "family": "basic",
+  "kind": 0,
+  "columns": 1,
+  "rows": 1,
+  "scene": [
+    80,
+    100
+  ],
+  "regions": {
+    "plot": [
+      18.932850333651096,
+      39.058684461391806,
+      42.19721639656815,
+      42.19721639656815
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        24,
+        78,
+        1049,
+        1202
+      ],
+      "destination": [
+        7,
+        17.35938,
+        66,
+        75.625
+      ]
+    }
+  ],
+  "designUid": "b11-1",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

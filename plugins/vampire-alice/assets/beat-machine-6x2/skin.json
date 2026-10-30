@@ -1,0 +1,123 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.beat.machine.6x2",
+  "folder": "beat-machine-6x2",
+  "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+  "source": "plugins/beat-machine/packages/6x2/plugin.textproto",
+  "family": "beat",
+  "kind": 0,
+  "rows": 2,
+  "columns": 6,
+  "board": 7,
+  "slot": 4,
+  "character": true,
+  "imageSize": [
+    1983,
+    793
+  ],
+  "crop": [
+    0,
+    0,
+    1982,
+    793
+  ],
+  "art": "design/vampire-muse-suite/beat-machine-6x2.integrated.runtime.png",
+  "artSha256": "5d3d31f6c8b2e0f392cf2994b01fd3ea66051d1d1b7e086002eb1e3481daad8c",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 节拍弹珠台 6×2",
+  "regions": {
+    "world": [
+      0.08577194752774975,
+      0.403530895334174,
+      0.5993945509586277,
+      0.49936948297604034
+    ],
+    "paddlePivot0": [
+      0.256811301715439,
+      0.5498108448928121,
+      0.0,
+      0.0
+    ],
+    "paddlePivot1": [
+      0.4313824419778002,
+      0.5523329129886507,
+      0.0,
+      0.0
+    ]
+  },
+  "hardware": {
+    "cap0": [
+      186,
+      533,
+      100,
+      45
+    ],
+    "cap1": [
+      345,
+      554,
+      100,
+      45
+    ],
+    "cap2": [
+      490,
+      567,
+      100,
+      45
+    ],
+    "cap3": [
+      640,
+      577,
+      100,
+      45
+    ],
+    "base0": [
+      187,
+      650,
+      101,
+      38
+    ],
+    "base1": [
+      348,
+      663,
+      101,
+      38
+    ],
+    "base2": [
+      490,
+      672,
+      101,
+      38
+    ],
+    "base3": [
+      640,
+      682,
+      101,
+      38
+    ],
+    "paddle0": [
+      485,
+      374,
+      179,
+      143
+    ],
+    "paddle1": [
+      831,
+      377,
+      179,
+      143
+    ]
+  },
+  "hardwareSha256": "ed9f73fd9819cc3244fa0190fb962173834020f2d5a31abf962499baa9a2b39c",
+  "approvedArt": "design/vampire-muse-suite/beat-machine-6x2.integrated.art.png",
+  "approvedArtSha256": "ed9f73fd9819cc3244fa0190fb962173834020f2d5a31abf962499baa9a2b39c",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "hardwareSize": [
+    1983,
+    793
+  ]
+}

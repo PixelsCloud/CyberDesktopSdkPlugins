@@ -1,0 +1,86 @@
+{
+  "id": "com.cyberdesktop.redline.album.4x2",
+  "folder": "album-4x2",
+  "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+  "family": "widget",
+  "kind": 3,
+  "rows": 2,
+  "columns": 4,
+  "board": 5,
+  "slot": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1041,
+    162,
+    475,
+    295
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械相册 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "photo": [
+      0.055,
+      0.105,
+      0.89,
+      0.7
+    ],
+    "previous": [
+      0.13,
+      0.84,
+      0.12,
+      0.1
+    ],
+    "next": [
+      0.47,
+      0.84,
+      0.12,
+      0.1
+    ],
+    "toggle": [
+      0.3,
+      0.84,
+      0.12,
+      0.1
+    ],
+    "surface0": [
+      0.1,
+      0.82,
+      0.82,
+      0.12
+    ],
+    "counter": [
+      0.65,
+      0.84,
+      0.23,
+      0.1
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+  "art": "plugins/redline-desk/assets/album-4x2/body.png",
+  "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+  "approvedCrop": [
+    1041,
+    162,
+    475,
+    295
+  ],
+  "reviewText": [
+    "counter"
+  ],
+  "reviewButtons": [
+    "previous",
+    "toggle",
+    "next"
+  ],
+  "reviewIcons": []
+}

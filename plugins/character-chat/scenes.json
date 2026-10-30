@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {"id": "cafe", "name": "雨天咖啡馆", "file": "scene_cafe.png", "description": "窗外下着雨，安静的咖啡馆里可以慢慢聊天。"},
+    {"id": "home", "name": "傍晚客厅", "file": "scene_home.png", "description": "夕阳照进客厅，一起聊聊今天的生活。"},
+    {"id": "beach", "name": "海边日落", "file": "scene_beach.png", "description": "傍晚的海边，听着海浪，谈谈旅途和心事。"}
+  ]
+}

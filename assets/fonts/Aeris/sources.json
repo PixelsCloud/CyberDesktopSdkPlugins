@@ -1,0 +1,48 @@
+[
+  {
+    "file": "Orbitron-Variable.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/orbitron/Orbitron%5Bwght%5D.ttf",
+    "sha256": "f42db2dd16e642258e35782916eceb1dcdbea06fb958d77ad71dc5963587e8fd"
+  },
+  {
+    "file": "orbitron-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/orbitron/OFL.txt",
+    "sha256": "ab609b0e110d622435ff337cdf233288556e011bbf9bd0550be98846c0630819"
+  },
+  {
+    "file": "ChakraPetch-Medium.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/a4c8c2a0f77efa06765d596d64d077af1d7f0dae/ofl/chakrapetch/ChakraPetch-Medium.ttf",
+    "sha256": "d480f4f97405fac3600652e2e14fd0b14339031c0af4da11582994878f04d919"
+  },
+  {
+    "file": "ChakraPetch-SemiBold.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/a4c8c2a0f77efa06765d596d64d077af1d7f0dae/ofl/chakrapetch/ChakraPetch-SemiBold.ttf",
+    "sha256": "45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b"
+  },
+  {
+    "file": "chakrapetch-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/a4c8c2a0f77efa06765d596d64d077af1d7f0dae/ofl/chakrapetch/OFL.txt",
+    "sha256": "13831d02389d917d22fcfa6c79f98f8acbf61d230add0e73a4d4dc5f3bfb9e56"
+  },
+  {
+    "file": "SmileySans-Oblique.woff2",
+    "url": "https://github.com/atelier-anchor/smiley-sans/releases/tag/v2.0.1",
+    "archiveMember": "SmileySans-Oblique.ttf.woff2",
+    "sha256": "731f22973349404b15a88a99ef3b5dd4104c0965c23b7e485c1f11e84fea99e2"
+  },
+  {
+    "file": "smiley-sans-OFL.txt",
+    "url": "https://raw.githubusercontent.com/atelier-anchor/smiley-sans/v2.0.1/LICENSE",
+    "sha256": "9401f4050f1b66c26b6ccdc8b0e14a3c1cc37aac122eda84386f25854a9bec72"
+  },
+  {
+    "file": "NotoSansSC-Variable.ttf",
+    "url": "https://raw.githubusercontent.com/google/fonts/a85815a42757630ce188fdad368c2dfc444d4773/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+    "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da"
+  },
+  {
+    "file": "noto-sans-sc-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/a85815a42757630ce188fdad368c2dfc444d4773/ofl/notosanssc/OFL.txt",
+    "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+  }
+]

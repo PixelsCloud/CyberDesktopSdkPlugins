@@ -1,0 +1,60 @@
+{
+  "id": "com.cyberdesktop.songyun.album.4x2",
+  "folder": "album-4x2",
+  "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+  "family": "widget",
+  "kind": 3,
+  "rows": 2,
+  "columns": 4,
+  "board": 5,
+  "slot": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1021,
+    157,
+    490,
+    324
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 相册 4×2",
+  "regions": {
+    "photo": [
+      0.11428571428571428,
+      0.13580246913580246,
+      0.7673469387755102,
+      0.6820987654320988
+    ],
+    "previous": [
+      0.02040816326530612,
+      0.4074074074074074,
+      0.08571428571428572,
+      0.1419753086419753
+    ],
+    "next": [
+      0.8979591836734694,
+      0.4074074074074074,
+      0.08571428571428572,
+      0.1419753086419753
+    ],
+    "toggle": [
+      0.43673469387755104,
+      0.8333333333333334,
+      0.044897959183673466,
+      0.06172839506172839
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+  "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+  "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+  "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+  "renderInset": 7
+}

@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "design\\pixel-desk-suite\\supplement-12.art.png",
+  "reference": "design/pixel-desk-suite/supplement-12.art.png",
+  "sha256": "6a09eb8dd95f3bf25df5d2a5858bfc6d62c1f6b1a1d85d4ea4701923e164c662",
+  "imageSize": [
+    680,
+    384
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    676,
+    380
+  ],
+  "sourceCrop": [
+    436,
+    539,
+    1116,
+    923
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

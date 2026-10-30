@@ -1,0 +1,145 @@
+{
+  "id": "com.cyberdesktop.redline.spring.clock.4x2",
+  "folder": "spring-clock-4x2",
+  "sourceId": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+  "source": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+  "family": "toys",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 1,
+  "slot": 4,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    23,
+    573,
+    467,
+    285
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械弹簧数字时钟 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0.055,
+      0.1,
+      0.89,
+      0.81
+    ],
+    "cutoutCards": [
+      0.065,
+      0.14,
+      0.87,
+      0.8
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-01-clocks.art.png",
+  "art": "plugins/redline-desk/assets/spring-clock-4x2/body.png",
+  "artSha256": "1638e8ba5f3ac5e7e7c2ffea82a31d42ba88a38aeed7f973ca449de4e887a0a3",
+  "toyGeometry": {
+    "size": [
+      308,
+      158
+    ],
+    "anchors": [
+      [
+        25,
+        5
+      ],
+      [
+        76,
+        5
+      ],
+      [
+        127,
+        5
+      ],
+      [
+        178,
+        5
+      ],
+      [
+        229,
+        5
+      ],
+      [
+        280,
+        5
+      ]
+    ],
+    "bodies": [
+      [
+        25,
+        91,
+        40,
+        105
+      ],
+      [
+        76,
+        91,
+        40,
+        105
+      ],
+      [
+        127,
+        91,
+        40,
+        105
+      ],
+      [
+        178,
+        91,
+        40,
+        105
+      ],
+      [
+        229,
+        91,
+        40,
+        105
+      ],
+      [
+        280,
+        91,
+        40,
+        105
+      ]
+    ]
+  },
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    23,
+    573,
+    467,
+    285
+  ],
+  "hardware": {
+    "card": [
+      547,
+      407,
+      122,
+      321
+    ],
+    "spring": [
+      895,
+      422,
+      93,
+      296
+    ]
+  },
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

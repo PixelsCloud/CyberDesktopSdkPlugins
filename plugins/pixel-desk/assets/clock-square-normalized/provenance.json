@@ -1,0 +1,26 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "reference": "design/pixel-desk-suite/grid-width-refinement.art.png",
+  "sha256": "4022aa501d82a7c3aec69a96ca5664a4aaf654807c3f5266c6662a6a0917bc1f",
+  "imageSize": [
+    2055,
+    765
+  ],
+  "visibleBounds": [
+    55,
+    130,
+    1946,
+    485
+  ],
+  "aperture": [
+    230,
+    235,
+    1590,
+    276
+  ],
+  "purpose": "Clean normalized artwork; live contents drawn separately",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "visibleAlphaThreshold": 16
+}

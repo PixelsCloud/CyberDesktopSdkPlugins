@@ -1,0 +1,36 @@
+{
+  "generator": "Approved image_gen design / unchanged alpha extraction",
+  "source": "design\\pixel-desk-suite\\supplement-spectrum-8x1.art.png",
+  "reference": "design/pixel-desk-suite/supplement-spectrum-8x1.art.png",
+  "sha256": "5f6475c993271e50a4fc46253f444d68d537703c6afe80912247980a11186fd9",
+  "imageSize": [
+    2064,
+    25
+  ],
+  "visibleBounds": [
+    2,
+    0,
+    2060,
+    23
+  ],
+  "sourceCrop": [
+    8,
+    476,
+    2072,
+    501
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ],
+  "runtimeEnvelope": {
+    "width": 2066,
+    "height": 219,
+    "artworkOffset": [
+      1,
+      193
+    ]
+  }
+}

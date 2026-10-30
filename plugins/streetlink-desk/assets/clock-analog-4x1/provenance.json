@@ -1,0 +1,7 @@
+{
+  "sha256": "505a2b560d158686a3578b5e4f921a7960a2e324e3ae98d701b1eeecfb44e31d",
+  "source": "art/54-clock-analog-4x1.png",
+  "productionSha256": "de044d0960822cca53f5252f682143a4b03d5a963f89d007c831a03f84b7ddbe",
+  "pixelOperations": "imagegen: remove clock hands, ticks and sample values; preserve city and housing",
+  "theme": "STREETLINK"
+}

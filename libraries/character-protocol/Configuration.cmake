@@ -1,0 +1,12 @@
+if(TARGET cd_character_chat_configuration)
+    return()
+endif()
+find_package(nlohmann_json 3.12 CONFIG REQUIRED)
+find_package(tomlplusplus 3.4 CONFIG REQUIRED)
+add_library(cd_character_chat_configuration STATIC "${CMAKE_CURRENT_LIST_DIR}/src/Configuration.cpp")
+target_include_directories(cd_character_chat_configuration PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
+target_link_libraries(cd_character_chat_configuration PUBLIC nlohmann_json::nlohmann_json PRIVATE tomlplusplus::tomlplusplus)
+target_compile_options(cd_character_chat_configuration PRIVATE /utf-8 /W4)
+target_compile_features(cd_character_chat_configuration PUBLIC cxx_std_20)
+set_target_properties(cd_character_chat_configuration PROPERTIES MSVC_RUNTIME_LIBRARY
+    "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)

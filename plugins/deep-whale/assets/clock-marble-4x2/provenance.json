@@ -1,0 +1,74 @@
+{
+  "instrument": {
+    "uid": "b01-5",
+    "key": "marble-maid-workshop",
+    "file": "artwork/complete/marble-maid-workshop.png",
+    "composition": "Q版全身",
+    "expression": "专注好奇",
+    "prompt": "artwork/complete/marble-character-prompts.json",
+    "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-38180fd9-f563-4093-8b89-d345c99f3834.png",
+    "physicalSkin": true,
+    "imageSize": [
+      1585,
+      992
+    ],
+    "bounds": [
+      29,
+      33,
+      1579,
+      973
+    ],
+    "sha256": "e88db90894770828357ef5f307144597404236977269f81b6a5a0010fa490f27",
+    "type": "full-character-and-fixed-instrument",
+    "label": "专注好奇",
+    "faceSourceBox": [
+      665,
+      175,
+      1440,
+      322
+    ],
+    "modelBox": [
+      112,
+      81,
+      180,
+      90
+    ],
+    "characterRegionSource": [
+      29,
+      83,
+      582,
+      973
+    ],
+    "modelSource": "plugins/marble-clock/Model.cpp",
+    "modelSourceSha256": "8998a014401e63933072944fe5e86af2cddca0ffbc588139551cb852f3dd1991",
+    "corrections": "artwork/complete/marble-character-corrections.json",
+    "motionLayerPolicy": "Original Box2D coordinates, uniformly scaled; character/static fixtures PNG contains no tracks, loose pearls or moving flap.",
+    "name": "鲸娘的珍珠工坊"
+  },
+  "backdrop": {
+    "uid": "b01-5",
+    "key": "marble-workshop-backdrop",
+    "file": "artwork/complete/marble-workshop-backdrop.png",
+    "box": [
+      102,
+      67,
+      204,
+      122
+    ],
+    "prompt": "artwork/complete/marble-backdrop-prompts.json",
+    "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-da1e936b-c13f-432a-86ab-1ee9167db2ff.png",
+    "imageSize": [
+      1602,
+      981
+    ],
+    "bounds": [
+      8,
+      14,
+      1594,
+      959
+    ],
+    "sha256": "55948be30509292f2833fbcebdde4ae54daadcab2354f38d149c8c295a061e55",
+    "type": "opaque-workshop-background-plane",
+    "label": "珍珠养护工坊背柜"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "com.cyberdesktop.songyun.music.round.6x1",
+  "folder": "music-round-6x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+  "source": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 6,
+  "board": 6,
+  "slot": 4,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    49,
+    788,
+    927,
+    156
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 圆点阵频谱 6×1",
+  "regions": {
+    "plot": [
+      0.0668824163969795,
+      0.19230769230769232,
+      0.8673139158576052,
+      0.5961538461538461
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-03-dot-matrix.art.png",
+  "artSha256": "b532d56b457efc2c0864c66d92b81659599c8cf8e903df9014f87cab32e6c79f",
+  "renderInset": 7
+}

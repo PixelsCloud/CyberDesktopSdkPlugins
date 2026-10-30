@@ -1,0 +1,254 @@
+id: "com.cyberdesktop.mecha.air.2x1"
+name: "机甲 · 空气质量 2×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x2"
+    name: "2×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+capabilities: AIR_QUALITY
+description: "独立机械空气质量仪表；仅显示地区、AQI 和核心污染物分项指数。"
+icon: "preview.png"
+settings_page {
+    title: "空气质量设置"
+    description: "显示附近监测站 US AQI，不代表全城平均；分项和预报均为指数，不是浓度。数据来自 WAQI 和原监测机构。默认 IP 自动定位；代理 / VPN 可能影响位置。凭据不随桌面控件包分发。AQICN 对公开和付费应用有额外授权要求。"
+    fields {
+        id: "location_mode"
+        label: "位置来源"
+        type: CHOICE
+        section: "位置"
+        choices {
+            value: "auto"
+            label: "跟随本体默认位置（附近监测站）"
+            localized_labels { key: "en" value: "Follow host default location (nearby station)" }
+            localized_labels { key: "zh-TW" value: "跟隨本體預設位置（附近監測站）" }
+        }
+        choices {
+            value: "city"
+            label: "搜索城市 / 监测站"
+            localized_labels { key: "en" value: "Search city / station" }
+            localized_labels { key: "zh-TW" value: "搜尋城市 / 監測站" }
+        }
+        choices {
+            value: "coordinates"
+            label: "指定经纬度"
+            localized_labels { key: "en" value: "Coordinates" }
+            localized_labels { key: "zh-TW" value: "指定經緯度" }
+        }
+        choices {
+            value: "station"
+            label: "指定站点 ID"
+            localized_labels { key: "en" value: "Station ID" }
+            localized_labels { key: "zh-TW" value: "指定站點 ID" }
+        }
+        text_default: "auto"
+        localized {
+            key: "en"
+            value { label: "Location source" section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "位置來源" section: "位置" }
+        }
+    }
+    fields {
+        id: "city"
+        label: "城市 / 监测站名称"
+        type: TEXT
+        description: "搜索模式使用此名称匹配站点；经纬度模式可作显示名称。自动模式忽略此项，不回退默认城市。"
+        section: "位置"
+        max_length: 128
+        localized {
+            key: "en"
+            value {
+                label: "City / station name"
+                description: "Search mode matches the first station. In coordinate mode this is an optional display name. Ignored in automatic mode."
+                section: "Location"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "城市 / 監測站名稱"
+                description: "搜尋模式使用此名稱匹配站點；經緯度模式可作顯示名稱。自動模式忽略此項，不回退預設城市。"
+                section: "位置"
+            }
+        }
+    }
+    fields {
+        id: "station"
+        label: "站点 ID"
+        type: TEXT
+        description: "只填数字，仅“指定站点 ID”模式使用。"
+        section: "位置"
+        max_length: 16
+        localized {
+            key: "en"
+            value { label: "Station ID" description: "Digits only, used in Station ID mode." section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "站點 ID" description: "只填數字，僅“指定站點 ID”模式使用。" section: "位置" }
+        }
+    }
+    fields {
+        id: "latitude"
+        label: "纬度"
+        type: NUMBER
+        section: "位置"
+        minimum: -90.0
+        maximum: 90.0
+        step: 0.0001
+        localized {
+            key: "en"
+            value { label: "Latitude" section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "緯度" section: "位置" }
+        }
+    }
+    fields {
+        id: "longitude"
+        label: "经度"
+        type: NUMBER
+        section: "位置"
+        minimum: -180.0
+        maximum: 180.0
+        step: 0.0001
+        localized {
+            key: "en"
+            value { label: "Longitude" section: "Location" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "經度" section: "位置" }
+        }
+    }
+    fields {
+        id: "credentials_file"
+        label: "宿主凭据配置 ID"
+        type: TEXT
+        description: "在设置→数据服务中添加私有凭据，填写其配置 ID；留空使用 default。旧文件路径由宿主导入为不透明 ID。不要填写 Token。"
+        section: "连接"
+        max_length: 1024
+        localized {
+            key: "en"
+            value {
+                label: "Host credential profile ID"
+                description: "Add credentials in Settings > Data services and enter the profile ID; empty uses default. Previous file paths are privately imported by the host. Never enter a token."
+                section: "Connection"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "宿主憑據配置 ID"
+                description: "在設定→資料服務中新增私有憑據，填寫其配置 ID；留空使用 default。舊檔案路徑由宿主匯入為不透明 ID。不要填寫 Token。"
+                section: "連線"
+            }
+        }
+    }
+    fields {
+        id: "refresh_minutes"
+        label: "刷新间隔（分钟）"
+        type: INTEGER
+        description: "后台请求，同地点实例共用内存缓存。双击刷新；原始观测可能为小时更新。"
+        section: "显示"
+        minimum: 5.0
+        maximum: 180.0
+        step: 5.0
+        integer_default: 15
+        localized {
+            key: "en"
+            value {
+                label: "Refresh interval (minutes)"
+                description: "Background requests share a volatile cache. Double-click refreshes. Station observations may update hourly."
+                section: "Display"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "重新整理間隔（分鐘）"
+                description: "後臺請求，同地點例項共用記憶體快取。雙擊重新整理；原始觀測可能為小時更新。"
+                section: "顯示"
+            }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "显示"
+        max_length: 128
+        text_default: "Chakra Petch"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Display" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" section: "顯示" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        section: "显示"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" section: "Display" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" section: "顯示" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Air quality settings"
+            description: "Nearby station US AQI, not a city average. Pollutant values and forecasts are indices, not concentrations. Data by WAQI and the originating EPA. Automatic IP location may be affected by proxies / VPNs. Credentials are not bundled. Public / paid usage is subject to AQICN\'s terms."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value {
+            title: "空氣質量設定"
+            description: "顯示附近監測站 US AQI，不代表全城平均；分項和預報均為指數，不是濃度。資料來自 WAQI 和原監測機構。預設 IP 自動定位；代理 / VPN 可能影響位置。憑據不隨桌面小工具包分發。AQICN 對公開和付費應用有額外授權要求。"
+        }
+    }
+}
+preview: "preview.png"
+required_services { id: "air.quality" version: 1 }
+
+tags: "机甲"

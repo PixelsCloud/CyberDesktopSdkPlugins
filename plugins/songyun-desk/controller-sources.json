@@ -1,0 +1,114 @@
+[
+  {
+    "suite": "mechanical-pixels",
+    "namespace": "mechanicalpixels",
+    "family": "matrix",
+    "header": "Pixels.h",
+    "controller": "plugins/mechanical-pixels/Instance.cpp",
+    "sha256": "1b21ef215e4e397c0bb99cb1adab28784a1985e0bb1d388fd1038dabb9ec70f8"
+  },
+  {
+    "suite": "precision-clocks",
+    "namespace": "precisionclock",
+    "family": "precision",
+    "header": "Clock.h",
+    "controller": "plugins/precision-clocks/Instance.cpp",
+    "sha256": "e1480d6a18cb2703bd1e315153e898b460b15735bec0b04004c1ea62bff3e929"
+  },
+  {
+    "suite": "physics-toys",
+    "namespace": "toys",
+    "family": "toys",
+    "header": "Toys.h",
+    "controller": "plugins/physics-toys/Instance.cpp",
+    "sha256": "4f13e8858c9a762610c7a14267a8e26f5ce8bf9509a0b2648a12fb226a47236e"
+  },
+  {
+    "suite": "marble-clock",
+    "namespace": "marbleclock",
+    "family": "marble",
+    "header": "Clock.h",
+    "controller": "plugins/marble-clock/Instance.cpp",
+    "sha256": "8f0c8d882f0aa0f518e2fa269846b3c27c3d16660577208382624b1acd6a64e6"
+  },
+  {
+    "suite": "beat-machine",
+    "namespace": "beatmachine",
+    "family": "beat",
+    "header": "Machine.h",
+    "controller": "plugins/beat-machine/Instance.cpp",
+    "sha256": "8a8c07574354cddce993c4194a131446d180981719c8ae63151889342583b8ec"
+  },
+  {
+    "suite": "mechanical-calendar",
+    "namespace": "mechanicalcalendar",
+    "family": "calendar",
+    "header": "Calendar.h",
+    "controller": "plugins/mechanical-calendar/Instance.cpp",
+    "sha256": "3560ddc903b1f607ab1b4c2cb037ce935ce2f4d0a60eeb8f2134e0c128d35883"
+  },
+  {
+    "suite": "mechanical-hourglass",
+    "namespace": "mechanicalhourglass",
+    "family": "hourglass",
+    "header": "MechanicalHourglass.h",
+    "controller": "plugins/mechanical-hourglass/Instance.cpp",
+    "sha256": "002c51dc7cecc3b05a9ca24126c02f9e7819332b3f8d17c5f89da41bf4f532bd"
+  },
+  {
+    "suite": "mechanical-sign",
+    "namespace": "mechanicalsign",
+    "family": "sign",
+    "header": "Sign.h",
+    "controller": "plugins/mechanical-sign/Instance.cpp",
+    "sha256": "900d68204fd5f7adb9f05e79bd9ca6312048c944dcdc84274a352ab7ddccb9c6"
+  },
+  {
+    "suite": "widget-suite",
+    "namespace": "widgetplugin",
+    "family": "widget",
+    "header": "Widget.h",
+    "controller": "plugins/widget-suite/Instance.cpp",
+    "sha256": "2a31e85a105f31eb6d1b5edb4bf065ec3d5fe5ba827229933f5010d4c3e29bcb"
+  },
+  {
+    "suite": "weather-suite",
+    "namespace": "weatherplugin",
+    "family": "weather",
+    "header": "Weather.h",
+    "controller": "plugins/weather-suite/Instance.cpp",
+    "sha256": "828b291b7eeed56a443871775af00727ad0e820142b17835a97659c03362ddfe"
+  },
+  {
+    "suite": "air-quality-suite",
+    "namespace": "airplugin",
+    "family": "air",
+    "header": "AirQuality.h",
+    "controller": "plugins/air-quality-suite/Instance.cpp",
+    "sha256": "b8621a211f1cbfd9857cb6c838e25c5d2d8caf49ca56f4e60b0381ab7b60123a"
+  },
+  {
+    "suite": "lunar-suite",
+    "namespace": "lunarplugin",
+    "family": "lunar",
+    "header": "Lunar.h",
+    "controller": "plugins/lunar-suite/Instance.cpp",
+    "sha256": "a9519d85c4f3533b864ef59b0a2e02f82227c1a673e8e86c2c5f3b1eae40bd3e"
+  },
+  {
+    "suite": "productivity-suite",
+    "namespace": "productivity",
+    "family": "productivity",
+    "header": "Productivity.h",
+    "controller": "plugins/productivity-suite/Instance.cpp",
+    "sha256": "582379658e2dddfde054c7e75b69bfa0f0abc6f94cbd7ac6b5850547f984342e"
+  },
+  {
+    "suite": "system-info-suite",
+    "namespace": "monitorplugin",
+    "family": "monitor",
+    "header": "Monitor.h",
+    "controller": "plugins/system-info-suite/Monitor.cpp",
+    "sha256": "d2e3d59177f8a6fc59f5d2936165a117270795555a439d4d4322e1e27490a98e"
+  }
+]

@@ -1,0 +1,259 @@
+id: "com.cyberdesktop.music.matrix.round.1x4"
+name: "圆点阵频谱 4×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "1x4"
+    name: "4×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+capabilities: AUDIO_FFT
+description: "固定 4×1 格（宽×高），适配长方形和正方形格子；独立设置，局部刷新。"
+settings_page {
+    title: "圆点阵频谱 4×1设置"
+    description: "每个实例独立保存。选择字体、语言和显示参数。"
+    fields {
+        id: "gain"
+        label: "灵敏度"
+        type: NUMBER
+        description: "只修改当前实例。"
+        section: "设置"
+        minimum: 0.2
+        maximum: 5.0
+        step: 0.1
+        number_default: 3.5
+        localized {
+            key: "en"
+            value { label: "Sensitivity" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "靈敏度" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "release"
+        label: "回落时间（ms）"
+        type: INTEGER
+        description: "只修改当前实例。"
+        section: "设置"
+        minimum: 40.0
+        maximum: 600.0
+        step: 10.0
+        integer_default: 160
+        localized {
+            key: "en"
+            value { label: "Release (ms)" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "回落時間（ms）" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "peaks"
+        label: "显示峰值"
+        type: TOGGLE
+        description: "只修改当前实例。"
+        section: "设置"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Peak indicators" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示峰值" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "color"
+        label: "点阵底部颜色"
+        type: COLOR
+        description: "只修改当前实例。"
+        section: "设置"
+        color_default: 98321407
+        localized {
+            key: "en"
+            value { label: "Matrix base color" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "點陣底部顏色" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "color_top"
+        label: "点阵顶部颜色"
+        type: COLOR
+        description: "只修改当前实例。"
+        section: "设置"
+        color_default: 98321407
+        localized {
+            key: "en"
+            value { label: "Matrix top color" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "點陣頂部顏色" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示卡片底板"
+        type: TOGGLE
+        description: "默认显示暗色底板，可关闭以露出桌面砖块。"
+        section: "设置"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Show card background"
+                description: "Dark background by default; disable it to reveal the desktop brick."
+                section: "Settings"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示卡片底板" description: "預設顯示暗色底板，可關閉以露出桌面磚塊。" section: "設定" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "卡片底色"
+        type: COLOR
+        description: "只修改当前实例。"
+        section: "设置"
+        color_default: 387062271
+        localized {
+            key: "en"
+            value { label: "Card background" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "卡片底色" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    fields {
+        id: "matrix_rows"
+        label: "点阵行数"
+        type: INTEGER
+        description: "调整纵向密度，横向点数随画布比例自适应。"
+        section: "点阵"
+        minimum: 6.0
+        maximum: 24.0
+        step: 1.0
+        integer_default: 9
+        localized {
+            key: "en"
+            value {
+                label: "Matrix rows"
+                description: "Vertical density; columns adapt to the canvas aspect ratio."
+                section: "Matrix"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "點陣行數" description: "調整縱向密度，橫向點數隨畫布比例自適應。" section: "點陣" }
+        }
+    }
+    fields {
+        id: "glow_strength"
+        label: "辉光强度"
+        type: NUMBER
+        description: "0 为关闭辉光，保留点阵本体。"
+        section: "点阵"
+        maximum: 100.0
+        step: 5.0
+        number_default: 70.0
+        localized {
+            key: "en"
+            value {
+                label: "Glow strength"
+                description: "0 disables glow while keeping the dots visible."
+                section: "Matrix"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "輝光強度" description: "0 為關閉輝光，保留點陣本體。" section: "點陣" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角（px）"
+        type: INTEGER
+        description: "桌面控件背景的圆角，0 为直角。"
+        section: "背景"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius (px)"
+                description: "Corner radius of the desktop widget background; 0 gives square corners."
+                section: "Background"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角（px）" description: "桌面小工具背景的圓角，0 為直角。" section: "背景" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        description: "只修改当前实例。"
+        section: "设置"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" description: "Affects only this instance." section: "Settings" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" description: "只修改當前例項。" section: "設定" }
+        }
+    }
+    localized {
+        key: "en"
+        value { title: "Widget settings" description: "Settings are saved separately for each instance." }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "圓點陣頻譜 1×4設定" description: "每個例項獨立儲存。選擇字型、語言和顯示引數。" }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "科技"
+tags: "音乐"
+tags: "可视化"

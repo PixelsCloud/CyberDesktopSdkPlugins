@@ -1,0 +1,142 @@
+[
+  {
+    "source": "plugins/vampire-alice/controllers/precision/Clock.h",
+    "target": "plugins/deep-whale/controllers/precision/Clock.h",
+    "sha256": "f329ea3e2b2550c26c2c269c95d42da914d010f7b6e28c254a6dc478686bf45f"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/precision/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/precision/Instance.cpp",
+    "sha256": "47cda295507d1326e92ce36286992f0b386532967bd3d623cd342a252d7cc430"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/calendar/Calendar.h",
+    "target": "plugins/deep-whale/controllers/calendar/Calendar.h",
+    "sha256": "e3d6836e976f4f222df1df1a15fc70786cf48625dfe2a4ecce8297ab0ab3542e"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/calendar/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/calendar/Instance.cpp",
+    "sha256": "3502dc7dab4c94065d872d4b78b9bb31f5b3ce561b58c6c54c165251c788e0b6"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/lunar/Lunar.h",
+    "target": "plugins/deep-whale/controllers/lunar/Lunar.h",
+    "sha256": "3e10c41887467cb59aa559ea4f8c08b9372e54687925b5b6a15cda46df5a39dc"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/lunar/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/lunar/Instance.cpp",
+    "sha256": "e01f4426e140315126f5def6d3d8cf54f3b46c464abf173c2796f4f64549b9a5"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/weather/Weather.h",
+    "target": "plugins/deep-whale/controllers/weather/Weather.h",
+    "sha256": "167ad1770a4dffb510327fc9f550443fd2ab055887112d45d111ae44a9d8f83b"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/weather/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/weather/Instance.cpp",
+    "sha256": "34c71755b6fde529cdf1a3e8faa845fd79446a008ffde0837cbf58b72147701e"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/air/AirQuality.h",
+    "target": "plugins/deep-whale/controllers/air/AirQuality.h",
+    "sha256": "5b62d0bab8ba383c58205def101754e862731f4b929b19bf6cb049547a2d526e"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/air/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/air/Instance.cpp",
+    "sha256": "81ad49e8b56267589fb32764392820914519308413a16ed6b9bb7b84180af14b"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/monitor/Monitor.h",
+    "target": "plugins/deep-whale/controllers/monitor/Monitor.h",
+    "sha256": "483f29dfdbfc74c27eebb07150f6bfd0f3e1879ce729e642a917d4f57bc8d5ec"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/monitor/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/monitor/Instance.cpp",
+    "sha256": "30f9ba0837c6939b39060cda462b225f55f08417f1593ad2f56a0fc8d78b41e7"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/productivity/Productivity.h",
+    "target": "plugins/deep-whale/controllers/productivity/Productivity.h",
+    "sha256": "57125c5be4e33a1dad6c09926dea5fcf78801deb3225dde6032c8f5f8ad9cb25"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/productivity/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/productivity/Instance.cpp",
+    "sha256": "acad29a8daba1d2bc22da333d7a2624c1ad83402ffd95991dfc4745fdb74d7b9"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/widget/Widget.h",
+    "target": "plugins/deep-whale/controllers/widget/Widget.h",
+    "sha256": "41a65a3a1dfe1b76a0f7832140e9bd3f70f5fb985f9f7be5606dbf462991c5ef"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/widget/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/widget/Instance.cpp",
+    "sha256": "fd214288d17695399fd3cf69d282178f2052bd6e3e4268fd2f3f26c9c0b63a55"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/matrix/Pixels.h",
+    "target": "plugins/deep-whale/controllers/matrix/Pixels.h",
+    "sha256": "a504fadd731715aa3b767e21518c0c9591750a12d636f089d651db5eb3a19b80"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/matrix/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/matrix/Instance.cpp",
+    "sha256": "6bbc6a03dd07a57943d88c833d360bd7d72d73678c99ef06f9d4d8e4af255c68"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/sign/Sign.h",
+    "target": "plugins/deep-whale/controllers/sign/Sign.h",
+    "sha256": "7fab8a134d42b67596d8a8058f8f73a218bae1b8cfaf2c3d822776a35d99a836"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/sign/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/sign/Instance.cpp",
+    "sha256": "b23396477f79a908d03f16986d7630b9befcbd97c17d40666ada0b0150271dfa"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/hourglass/MechanicalHourglass.h",
+    "target": "plugins/deep-whale/controllers/hourglass/MechanicalHourglass.h",
+    "sha256": "6e879f73dc722fb612deb7de95a0f05b5dc2b9c74fab72637227362255d42143"
+  },
+  {
+    "source": "plugins/vampire-alice/controllers/hourglass/Instance.cpp",
+    "target": "plugins/deep-whale/controllers/hourglass/Instance.cpp",
+    "sha256": "440948c3cc96b5090faca912db24b029cb43e65409a337944c67f436b3a45c21"
+  },
+  {
+    "source": "plugins/pixel-desk/PondInstance.cpp",
+    "target": "plugins/deep-whale/PondInstance.cpp",
+    "sha256": "e34bfbdb3fe04c08f44ed9de3c9f8b620e845b4812354241f56d513cf9da6336",
+    "adaptation": "Deep Whale art and host controller binding; mature model remains shared."
+  },
+  {
+    "source": "plugins/ambience-suite/Instance.cpp",
+    "target": "plugins/deep-whale/AmbienceInstance.cpp",
+    "sha256": "6949548a43337a0a0bed2fa315e2b44492bc9ba8c42d39780ab51a8a9e1e5188",
+    "adaptation": "Deep Whale art and host controller binding; mature model remains shared."
+  },
+  {
+    "source": "plugins/pixel-desk/PlayerInstance.cpp",
+    "target": "plugins/deep-whale/PlayerInstance.cpp",
+    "sha256": "4d76d1409feec852563f11637521d1a9ab6b8c3dcf0a2150744a8234b85acb83",
+    "adaptation": "Deep Whale art and host controller binding; mature model remains shared."
+  },
+  {
+    "source": "plugins/pixel-desk/BasicClock.cpp",
+    "target": "plugins/deep-whale/BasicClockInstance.cpp",
+    "sha256": "f576d05eaa09f43dc77ca07e61302bd3e78a1200641cffa4c833c6999327ff10",
+    "adaptation": "Deep Whale art and host controller binding; mature model remains shared."
+  },
+  {
+    "source": "plugins/brick-clock/Instance.cpp",
+    "target": "plugins/deep-whale/BrickInstance.cpp",
+    "sha256": "805a02b1523a7c2dcc1d9e7b99b00c3b0bbb93aaa8f7dff2ec6f720c2e01afb2",
+    "adaptation": "Deep Whale art and host controller binding; mature model remains shared."
+  }
+]

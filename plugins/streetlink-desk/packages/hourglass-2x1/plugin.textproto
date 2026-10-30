@@ -1,0 +1,57 @@
+id: "com.cyberdesktop.streetlink.hourglass.2x1"
+name: "STREETLINK · 能量计量终端"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "2x1"
+    name: "2×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+description: "拉丝钢机架、透明玻璃与实时颗粒流沙，支持自动翻转。"
+settings_page {
+    title: "机械沙漏设置"
+    description: "点击沙漏重置，点击右侧倒计时暂停或继续。拖动不会触发点击。"
+    fields {
+        id: "duration"
+        label: "每轮时长（秒）"
+        type: INTEGER
+        section: "沙漏"
+        minimum: 5.0
+        maximum: 3600.0
+        step: 1.0
+        integer_default: 30
+    }
+    fields {
+        id: "physics"
+        label: "物理沙粒"
+        type: TOGGLE
+        description: "开启碰撞和堆积；切换后重新开始。"
+        section: "沙漏"
+        bool_default: true
+    }
+    fields { id: "repeat" label: "自动翻转循环" type: TOGGLE section: "沙漏" bool_default: true }
+    fields { id: "running" label: "启用流动" type: TOGGLE section: "沙漏" bool_default: true }
+    fields { id: "sand_color" label: "沙粒颜色" type: COLOR section: "配色" color_default: 4038944255 }
+    fields { id: "text_color" label: "倒计时颜色" type: COLOR section: "配色" color_default: 3656444159 }
+    fields { id: "glow" label: "柔和辉光" type: INTEGER section: "显示" maximum: 40.0 step: 1.0 integer_default: 18 }
+    fields {
+        id: "frame_rate"
+        label: "动画流畅度"
+        type: CHOICE
+        section: "动画"
+        choices { value: "15" label: "15 帧" }
+        choices { value: "20" label: "20 帧" }
+        choices { value: "30" label: "30 帧" }
+        text_default: "20"
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+tags: "赛博朋克"
+tags: "STREETLINK"

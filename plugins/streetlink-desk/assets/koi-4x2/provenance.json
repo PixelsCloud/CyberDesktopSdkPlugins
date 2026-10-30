@@ -1,0 +1,7 @@
+{
+  "sha256": "8a996ada3805938512aa1fed57e008b571063142591e851ccda6a103d54e730a",
+  "source": "art/68-koi-4x2.png",
+  "productionSha256": "6c9f45b4ba2b63820b09bc98c3db68dc55eeec241b9ba198b7b659f266529230",
+  "pixelOperations": "imagegen: revised empty display or orthographic overhead pond; live content rendered separately",
+  "theme": "STREETLINK"
+}

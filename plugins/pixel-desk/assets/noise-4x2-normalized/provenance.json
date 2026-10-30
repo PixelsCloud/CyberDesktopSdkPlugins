@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:/Users/chess/.codex/generated_images/01a13908-b313-7e50-9e54-5024f7f83857/exec-94da9d0e-1a18-4d06-9a41-adaff33e4885.png",
+  "reference": "design/pixel-desk-suite/supplement-14.art.png",
+  "sha256": "aa7814f5c42f998bfe9f8f907fd0da8d2656378e9812af2ae245e45a86ca5dcc",
+  "imageSize": [
+    1088,
+    704
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    1084,
+    700
+  ],
+  "sourceCrop": [
+    74,
+    567,
+    1162,
+    1271
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

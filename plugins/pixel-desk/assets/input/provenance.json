@@ -1,0 +1,21 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-3b96619f-bb7d-4633-8854-f52575a31a2c.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    2149,
+    732
+  ],
+  "visibleBounds": [
+    108,
+    123,
+    1935,
+    492
+  ],
+  "purpose": "Empty counter case; exactly two groups of five native drum cards, real independent counters and public icons are runtime content.",
+  "prompts": [
+    "body.prompt.txt",
+    "body-clean.prompt.txt"
+  ],
+  "sha256": "f6f086fe8cd162604f9969049a0ddd3fed6775c2e6ece17bf6e06d4f470b650b"
+}

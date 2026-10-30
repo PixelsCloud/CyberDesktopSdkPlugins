@@ -1,0 +1,265 @@
+id: "com.cyberdesktop.hourglass.pixel.1x1"
+name: "电子像素沙漏 1×1"
+version: "1.2.1"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x1"
+    name: "1×1（宽×高）"
+    cells {}
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 1 max_cells: 1 max_columns: 1 max_rows: 1 }
+description: "方形纯像素沙漏，无标题、文字和数字；沙粒流动堆积、自动翻转，支持昼夜主题与透明背景。"
+settings_page {
+    fields {
+        id: "physics"
+        label: "物理沙粒"
+        type: TOGGLE
+        bool_default: true
+        description: "真实碰撞和堆积，倒计时控制出砂量。切换后重新开始；关闭使用经典像素动画。"
+        localized {
+            key: "en"
+            value {
+                label: "Physical grains"
+                description: "Real collisions and piles with timed metering. Switching restarts the timer; disable for classic pixel animation."
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "物理沙粒" description: "真實碰撞與堆積，倒數計時控制出砂量。切換後重新開始。" }
+        }
+    }
+    title: "电子像素沙漏设置"
+    description: "点击上半部重置，点击下半部暂停或继续。卡片只显示沙漏，拖动不触发点击。"
+    fields {
+        id: "duration"
+        label: "每轮时长（秒）"
+        type: INTEGER
+        description: "调整时长会重新开始。默认 30 秒，可设置为 5 秒到 1 小时。"
+        section: "沙漏"
+        minimum: 5.0
+        maximum: 3600.0
+        step: 5.0
+        integer_default: 30
+        localized {
+            key: "en"
+            value {
+                label: "Duration per round (seconds)"
+                description: "Adjusting the duration will restart. Default is 30 seconds, can be set from 5 seconds to 1 hour."
+                section: "Hourglass"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "每輪時長（秒）"
+                description: "調整時長會重新開始。預設 30 秒，可設定為 5 秒到 1 小時。"
+                section: "沙漏"
+            }
+        }
+    }
+    fields {
+        id: "repeat"
+        label: "自动翻转循环"
+        type: TOGGLE
+        description: "关闭后沙粒流完即停止；点击卡片可以重新开始。"
+        section: "沙漏"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Auto flip loop"
+                description: "When off, the hourglass stops when the sand runs out; click the card to restart."
+                section: "Hourglass"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "自動翻轉迴圈" description: "關閉後沙粒流完即停止；點選卡片可以重新開始。" section: "沙漏" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用流动"
+        type: TOGGLE
+        section: "沙漏"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable flow" section: "Hourglass" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "啟用流動" section: "沙漏" }
+        }
+    }
+    fields {
+        id: "lighting"
+        label: "昼夜模式"
+        type: CHOICE
+        section: "外观"
+        choices {
+            value: "theme"
+            label: "跟随桌面主题"
+            localized_labels { key: "zh-TW" value: "跟隨桌面主題" }
+        }
+        choices {
+            value: "day"
+            label: "白天"
+            localized_labels { key: "zh-TW" value: "白天" }
+        }
+        choices {
+            value: "night"
+            label: "黑夜"
+            localized_labels { key: "zh-TW" value: "黑夜" }
+        }
+        text_default: "theme"
+        localized {
+            key: "en"
+            value { label: "Day/Night Mode" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "晝夜模式" section: "外觀" }
+        }
+    }
+    fields {
+        id: "color"
+        label: "沙粒配色"
+        type: CHOICE
+        section: "外观"
+        choices {
+            value: "amber"
+            label: "暖金琥珀"
+            localized_labels { key: "zh-TW" value: "暖金琥珀" }
+        }
+        choices {
+            value: "mint"
+            label: "薄荷绿"
+            localized_labels { key: "zh-TW" value: "薄荷綠" }
+        }
+        choices {
+            value: "cyan"
+            label: "冰蓝"
+            localized_labels { key: "zh-TW" value: "冰藍" }
+        }
+        text_default: "amber"
+        localized {
+            key: "en"
+            value { label: "Sand color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "沙粒配色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show Background" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示背景" section: "外觀" }
+        }
+    }
+    fields {
+        id: "glow"
+        label: "像素发光强度"
+        type: INTEGER
+        section: "外观"
+        maximum: 100.0
+        step: 5.0
+        integer_default: 35
+        localized {
+            key: "en"
+            value { label: "Pixel glow intensity" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "畫素發光強度" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value { label: "Background Corner Radius" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角" section: "外觀" }
+        }
+    }
+    fields {
+        id: "frame_rate"
+        label: "动画帧率"
+        type: CHOICE
+        description: "默认 20 帧，只刷新当前桌面控件区域。隐藏或手动暂停时停止定时器。"
+        section: "动画"
+        choices {
+            value: "15"
+            label: "15 FPS"
+            localized_labels { key: "zh-TW" value: "15 FPS" }
+        }
+        choices {
+            value: "20"
+            label: "20 FPS"
+            localized_labels { key: "zh-TW" value: "20 FPS" }
+        }
+        choices {
+            value: "30"
+            label: "30 FPS"
+            localized_labels { key: "zh-TW" value: "30 FPS" }
+        }
+        text_default: "20"
+        localized {
+            key: "en"
+            value {
+                label: "Animation frame rate"
+                description: "默认 20 帧，只刷新当前桌面控件区域。隐藏或手动暂停时停止定时器。"
+                section: "Animation"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "動畫幀率"
+                description: "預設 20 幀，只重新整理當前桌面小工具區域。隱藏或手動暫停時停止定時器。"
+                section: "動畫"
+            }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Digital Pixel Hourglass Settings"
+            description: "Click the upper half to reset, click the lower half to pause or resume. The card only displays the hourglass, dragging does not trigger clicks."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value {
+            title: "電子畫素沙漏設定"
+            description: "點選上半部重置，點選下半部暫停或繼續。卡片只顯示沙漏，拖動不觸發點選。"
+        }
+    }
+}
+preview: "preview.png"
+tags: "物理"
+tags: "计时"

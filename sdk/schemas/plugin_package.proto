@@ -1,0 +1,169 @@
+syntax = "proto3";
+package cyberdesktop.package.v1;
+
+// Public schema. Release artifacts are serialized PluginPackage messages.
+message PluginPackage {
+    bytes magic = 1;            // "CyberDesktopPlugin"
+    uint32 format_version = 2;  // 1, other versions are rejected
+    PluginDescriptor plugin = 3;
+    repeated EmbeddedFile files = 4;
+    bytes descriptor_sha256 = 5;  // SHA-256 of deterministic descriptor encoding
+}
+message PluginDescriptor {
+    string id = 1;
+    string name = 2;
+    string version = 3;
+    string author = 4;
+    uint32 abi_version = 5;  // C ABI 1; old Qt plugins are not accepted
+    string entry = 6;        // Relative DLL path
+    repeated Layout layouts = 7;
+    repeated FootprintRule footprint_rules = 8;
+    bool runtime_layout_editing = 9;
+    repeated Capability capabilities = 10;
+    repeated Dependency dependencies = 11;
+    string description = 12;
+    SettingsPage settings_page = 14;       // Required, per-instance plugin settings
+    string icon = 13;                      // Embedded relative resource path, optional
+    optional double content_padding = 15;  // Logical pixels per side, 0..24; absent = 12
+    string preview = 16;                   // Optional embedded static preview image for the plugin catalog.
+    repeated ServiceRequirement required_services = 17;
+    repeated string tags = 18;  // Optional style/content search labels; at most 16, each up to 96 UTF-8 bytes.
+}
+
+message ServiceRequirement {
+    string id = 1;
+    uint32 version = 2;  // Exact service interface version required by the plugin.
+}
+
+enum Topology {
+    RECT = 0;
+    HEX = 1;
+}
+
+message Cell {
+    sint32 a = 1;
+    sint32 b = 2;
+}
+message Layout {
+    string id = 1;
+    string name = 2;
+    Topology topology = 3;
+    repeated Cell cells = 4;
+    repeated uint32 allowed_rotations = 5;
+    bool is_default = 6;
+}
+message FootprintRule {
+    Topology topology = 1;
+    uint32 min_cells = 2;
+    uint32 max_cells = 3;
+    uint32 max_columns = 4;
+    uint32 max_rows = 5;
+    bool allow_irregular = 6;
+}
+
+enum Capability {
+    CAPABILITY_UNSPECIFIED = 0;
+    SYSTEM_INFO = 1;
+    AUDIO_PCM = 2;
+    AUDIO_FFT = 3;
+    MEDIA_CONTROL = 4;
+    INPUT_STATS = 5;
+    LOCATION = 6;
+    WEATHER = 7;
+    AIR_QUALITY = 8;
+    CONTENT = 9;
+    MEDIA_LIBRARY = 10;
+    IMAGE_SKINS = 11;
+}
+
+message Dependency {
+    enum Source {
+        EMBEDDED = 0;  // Plugin-private DLL, mandatory in files
+        WINDOWS = 1;   // Windows OS dependency, checked but not bundled
+    }
+
+    string name = 1;
+    Source source = 2;
+}
+message EmbeddedFile {
+    string path = 1;
+    bytes content = 2;
+    bytes sha256 = 3;  // SHA-256 of the exact content
+    uint64 size = 4;
+}
+
+message SettingsPage {
+    string title = 1;
+    string description = 2;
+    repeated SettingField fields = 3;
+    map<string, LocalizedSettingsPage> localized = 4;
+}
+message LocalizedSettingsPage {
+    string title = 1;
+    string description = 2;
+}
+message LocalizedSettingField {
+    string label = 1;
+    string description = 2;
+    string section = 3;
+}
+
+enum SettingType {
+    SETTING_UNSPECIFIED = 0;
+    TOGGLE = 1;
+    INTEGER = 2;
+    NUMBER = 3;
+    TEXT = 4;
+    CHOICE = 5;
+    COLOR = 6;
+    FONT = 7;
+}
+
+message SettingChoice {
+    string value = 1;
+    string label = 2;
+    map<string, string> localized_labels = 3;
+}
+
+// Development tools only. Opaque plugin state remains versioned by the plugin.
+message PreviewState {
+    uint32 format_version = 1;
+    string plugin_id = 2;
+    string plugin_version = 3;
+    bytes native_state = 4;
+    repeated PreviewSetting settings = 5;
+}
+
+message PreviewSetting {
+    string id = 1;
+    uint32 type = 2;
+    sint64 integer = 3;
+    double number = 4;
+    string text = 5;
+}
+message SettingField {
+    string id = 1;
+    string label = 2;
+    SettingType type = 3;
+    string description = 4;
+    string section = 5;
+    double minimum = 6;
+    double maximum = 7;
+    double step = 8;
+    uint32 max_length = 9;
+    repeated SettingChoice choices = 10;
+    bool bool_default = 11;
+    sint64 integer_default = 12;
+    double number_default = 13;
+    string text_default = 14;                           // TEXT or CHOICE
+    uint32 color_default = 15;                          // Packed RGBA: 0xRRGGBBAA
+    map<string, LocalizedSettingField> localized = 16;  // Only zh-CN and en
+
+    enum TextEditor {
+        PLAIN = 0;
+        DIRECTORY = 1;
+        MULTILINE = 2;
+    }
+
+    TextEditor text_editor = 17;  // Optional TEXT editor hint; value remains UTF-8 TEXT.
+}

@@ -1,0 +1,44 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.radial.2x2",
+  "folder": "radial-2x2",
+  "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+  "family": "widget",
+  "kind": 1,
+  "rows": 2,
+  "columns": 2,
+  "board": 7,
+  "slot": 2,
+  "character": false,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    713,
+    13,
+    416,
+    451
+  ],
+  "art": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+  "artSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 环形频谱 2×2",
+  "regions": {
+    "plot": [
+      0.09,
+      0.15,
+      0.82,
+      0.76
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/07-audio-interactive.art.png",
+  "approvedArtSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

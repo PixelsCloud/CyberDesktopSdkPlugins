@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "03-calendar-weather-air.art.png",
+  "sha256": "89fcc81f698b200e43bae803966d996e1586e7d1a50861c205b7a907a2b1b8ab",
+  "crop": [
+    525,
+    1261,
+    1009,
+    1488
+  ]
+}

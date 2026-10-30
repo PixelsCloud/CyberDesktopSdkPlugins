@@ -1,0 +1,19 @@
+{
+  "tool": "built-in imagegen",
+  "nativePixelsUnmodified": true,
+  "designSource": "design/mechanical-desk-suite/supplement-13.art.png",
+  "materials": [
+    {
+      "file": "body.png",
+      "sha256": "487db3d1b1aca1f2dd3ceda4ab065a88bba4ba188e167193eac5d263c793e837"
+    },
+    {
+      "file": "foliage.png",
+      "sha256": "88b75930cf83e9005a2eb02d1d368bba7d74cc006e6a2e855fcbdd548f1b6d8d"
+    },
+    {
+      "file": "vessel.png",
+      "sha256": "5fb3b0f1ad040e3d637c1a9f1c7769dc7c0511277fd8587c0936a5cddf4407d1"
+    }
+  ]
+}

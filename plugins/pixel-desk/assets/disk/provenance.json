@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-727d4856-283f-4398-93da-e6ebaefd81ee.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "visibleBounds": [
+    86,
+    155,
+    1083,
+    990
+  ],
+  "purpose": "Empty storage cartridge only. Drive, used/total capacity, available-to-user capacity, meter and live state are separate native content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "10b587af19bc536ddc9e335e577f62ec2726b8c667739b262f1aa0a8885b9d2f"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.spectrum.4x1",
+  "folder": "spectrum-4x1",
+  "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 7,
+  "slot": 1,
+  "character": false,
+  "imageSize": [
+    1145,
+    1374
+  ],
+  "crop": [
+    7,
+    747,
+    1132,
+    161
+  ],
+  "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+  "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 柱状频谱 4×1",
+  "regions": {
+    "plot": [
+      0.07773851590106007,
+      0.049689440993788817,
+      0.8462897526501767,
+      0.7701863354037267
+    ],
+    "motion": [
+      0.07685512367491167,
+      0.0,
+      0.8480565371024735,
+      0.8322981366459627
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+  "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

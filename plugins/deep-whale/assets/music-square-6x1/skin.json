@@ -1,0 +1,79 @@
+{
+  "id": "com.cyberdesktop.deepwhale.music.square.6x1",
+  "folder": "music-square-6x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+  "source": "plugins/mechanical-pixels/packages/music-square-6x1/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "columns": 6,
+  "rows": 1,
+  "scene": [
+    480,
+    100
+  ],
+  "regions": {
+    "plot": [
+      59.29978586723769,
+      44.56745182012848,
+      361.4004282655246,
+      34.25267665952891
+    ]
+  },
+  "layers": [
+    {
+      "name": "continuous-rail",
+      "file": "art-0.png",
+      "source": [
+        543,
+        125,
+        8,
+        467
+      ],
+      "destination": [
+        59.29978586723769,
+        7,
+        361.4004282655246,
+        86
+      ],
+      "repeatX": true
+    },
+    {
+      "name": "rail-2",
+      "file": "art-0.png",
+      "source": [
+        27,
+        125,
+        284,
+        467
+      ],
+      "destination": [
+        7,
+        7,
+        52.29978586723769,
+        86
+      ]
+    },
+    {
+      "name": "rail-4",
+      "file": "art-0.png",
+      "source": [
+        1862,
+        125,
+        284,
+        467
+      ],
+      "destination": [
+        420.7002141327623,
+        7,
+        52.29978586723769,
+        86
+      ]
+    }
+  ],
+  "designUid": "b06-3",
+  "defaults": {},
+  "compositionNote": "One continuous original rail with complete independent endcaps and character; no clipped crest strips.",
+  "horizontalCuts": [
+    240
+  ]
+}

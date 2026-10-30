@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.input.4x1",
+  "folder": "input-4x1",
+  "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 8,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 2,
+  "character": false,
+  "imageSize": [
+    1145,
+    1374
+  ],
+  "crop": [
+    6,
+    147,
+    1134,
+    169
+  ],
+  "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+  "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 键鼠计数 4×1",
+  "regions": {
+    "keyboard": [
+      0.17989417989417988,
+      0.25443786982248523,
+      0.2821869488536155,
+      0.5088757396449705
+    ],
+    "mouse": [
+      0.6534391534391535,
+      0.25443786982248523,
+      0.2786596119929453,
+      0.5088757396449705
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+  "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

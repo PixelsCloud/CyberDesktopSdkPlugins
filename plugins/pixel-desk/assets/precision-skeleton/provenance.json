@@ -1,0 +1,26 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-b6338845-0391-49db-8af8-86cf79596bd8.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "visibleBounds": [
+    61,
+    77,
+    1133,
+    1066
+  ],
+  "center": [
+    626,
+    603
+  ],
+  "dialRadius": 450,
+  "mechanismScale": 1.2,
+  "purpose": "Static empty pixel case; gears, balance, hairspring and live hands are separately rendered using original precision clock model.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "478a01901674057ed21ac021d3aff6013ce00e560aae49a4fc839327c3aa035e"
+}

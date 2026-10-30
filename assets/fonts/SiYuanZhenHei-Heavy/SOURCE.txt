@@ -1,0 +1,5 @@
+Gen Shin Gothic Heavy 1.002.20150607
+Author/project: Jikasei Font Workshop, https://jikasei.me/font/genshin/
+Local filename: GenShinGothic-Heavy-2.ttf (font data unchanged).
+Copyright and SIL OFL 1.1 declaration reproduced from the font name table.
+The font has its own license; the repository MIT license does not replace it.

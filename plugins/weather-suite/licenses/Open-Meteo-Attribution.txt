@@ -1,0 +1,12 @@
+Weather data by Open-Meteo.com — https://open-meteo.com/
+Data license: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+Weather variables are rounded for display; optional Fahrenheit and mph are local conversions.
+The free hosted API is restricted to non-commercial use. Service terms:
+https://open-meteo.com/en/terms
+Commercial subscriptions: https://open-meteo.com/en/pricing
+Meteocons icon licensing is independent from weather-service terms.
+Location data based on GeoNames — https://www.geonames.org/
+Geocoding provider: https://open-meteo.com/en/docs/geocoding-api
+Automatic IP geolocation provider: ipwho.is — https://ipwhois.io/documentation
+IP-based locations are approximate and may reflect a proxy or VPN exit node.

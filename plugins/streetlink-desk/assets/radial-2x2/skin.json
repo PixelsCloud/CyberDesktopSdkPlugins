@@ -1,0 +1,55 @@
+{
+  "folder": "radial-2x2",
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "plot": [
+      36.2,
+      44.67896848137536,
+      83.21999999999998,
+      89.12832855778413
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        44,
+        128,
+        1047,
+        1102
+      ],
+      "destination": [
+        7.0,
+        23.16523400191022,
+        146.0,
+        153.66953199617956
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "color": 15200255,
+    "color_middle": 15200255,
+    "color_top": 15200255,
+    "peak_color": 4107155711
+  },
+  "palette": "terminal",
+  "screens": [],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "roundScreens": [
+    [
+      36.2,
+      44.67896848137536,
+      83.21999999999998,
+      89.12832855778413
+    ]
+  ]
+}

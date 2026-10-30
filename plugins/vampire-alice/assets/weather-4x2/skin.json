@@ -1,0 +1,112 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.weather.4x2",
+  "folder": "weather-4x2",
+  "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 3,
+  "slot": 4,
+  "character": true,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    17,
+    622,
+    630,
+    388
+  ],
+  "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+  "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 天气 4×2",
+  "regions": {
+    "city": [
+      0.5825396825396826,
+      0.2268041237113402,
+      0.16825396825396827,
+      0.09536082474226804
+    ],
+    "temperature": [
+      0.580952380952381,
+      0.3247422680412371,
+      0.18253968253968253,
+      0.17783505154639176
+    ],
+    "icon": [
+      0.4253968253968254,
+      0.2963917525773196,
+      0.1492063492063492,
+      0.21649484536082475
+    ],
+    "humidity": [
+      0.8444444444444444,
+      0.2860824742268041,
+      0.1126984126984127,
+      0.08247422680412371
+    ],
+    "wind": [
+      0.8380952380952381,
+      0.43041237113402064,
+      0.12380952380952381,
+      0.08247422680412371
+    ],
+    "forecast0": [
+      0.46825396825396826,
+      0.5644329896907216,
+      0.1523809523809524,
+      0.30670103092783507
+    ],
+    "forecast1": [
+      0.6317460317460317,
+      0.5644329896907216,
+      0.1523809523809524,
+      0.30670103092783507
+    ],
+    "forecast2": [
+      0.7968253968253968,
+      0.5644329896907216,
+      0.1523809523809524,
+      0.30670103092783507
+    ],
+    "cutout0": [
+      0.0,
+      0.0,
+      0.1984126984126984,
+      0.041237113402061855
+    ],
+    "cutout1": [
+      0.4174603174603175,
+      0.0,
+      0.5825396825396826,
+      0.041237113402061855
+    ],
+    "humidityLabel": [
+      0.834920634920635,
+      0.20876288659793815,
+      0.13015873015873017,
+      0.07216494845360824
+    ],
+    "windLabel": [
+      0.834920634920635,
+      0.35051546391752575,
+      0.13015873015873017,
+      0.07216494845360824
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+  "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+  "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+}

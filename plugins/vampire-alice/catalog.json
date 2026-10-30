@@ -1,0 +1,3006 @@
+[
+  {
+    "id": "com.cyberdesktop.vampire.alice.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      148,
+      1009,
+      192
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 方像素时钟 4×1",
+    "regions": {
+      "plot": [
+        0.205,
+        0.19,
+        0.59,
+        0.59
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      365,
+      1008,
+      190
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 圆点阵时钟 4×1",
+    "regions": {
+      "plot": [
+        0.205,
+        0.19,
+        0.59,
+        0.59
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.spring.clock.4x1",
+    "folder": "spring-clock-4x1",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      582,
+      1008,
+      203
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 弹簧数字时钟 4×1",
+    "regions": {
+      "world": [
+        0.17162698412698413,
+        0.06403940886699508,
+        0.6448412698412699,
+        0.9961685823743842
+      ],
+      "card": [
+        0.18,
+        0.34,
+        0.09,
+        0.56
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "hardware": {
+      "card": [
+        190,
+        652,
+        83,
+        112
+      ],
+      "spring": [
+        214,
+        616,
+        36,
+        39
+      ]
+    },
+    "hardwareSize": [
+      1024,
+      1536
+    ],
+    "hardwareSha256": "ee4804b1e692d3833fb9a0d5573d95fb9dd19e6336e25bbdc6426f285656b38c"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.spring.clock.4x2",
+    "folder": "spring-clock-4x2",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 4,
+    "character": true,
+    "imageSize": [
+      1586,
+      992
+    ],
+    "crop": [
+      19,
+      20,
+      1551,
+      965
+    ],
+    "art": "design/vampire-muse-suite/spring-clock-4x2.integrated.runtime.png",
+    "artSha256": "b745be63a66a13a98361325e56829e6f8ee4077f8061c2883b8fb5a3e1c801a5",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 弹簧数字时钟 4×2",
+    "regions": {
+      "world": [
+        0.3726627981947131,
+        0.38860103626943004,
+        0.5802707930367504,
+        0.5595854922279793
+      ],
+      "card": [
+        0.38,
+        0.55,
+        0.083,
+        0.32
+      ],
+      "cutout0": [
+        0.3694390715667311,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ],
+      "cutout1": [
+        0.47130883301096066,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ],
+      "cutout2": [
+        0.5725338491295938,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ],
+      "cutout3": [
+        0.6731141199226306,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ],
+      "cutout4": [
+        0.7736943907156673,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ],
+      "cutout5": [
+        0.874274661508704,
+        0.4310880829015544,
+        0.09219858156028368,
+        0.46424870466321244
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/spring-clock-4x2.integrated.art.png",
+    "approvedArtSha256": "6ef9fdcc205258afe1175556da7395a9afc4bf25656b44c707efab4cd08bb6dd",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "hardware": {
+      "card": [
+        594,
+        534,
+        144,
+        337
+      ],
+      "spring": [
+        627,
+        422,
+        67,
+        109
+      ]
+    },
+    "hardwareSize": [
+      1586,
+      992
+    ],
+    "hardwareSha256": "b745be63a66a13a98361325e56829e6f8ee4077f8061c2883b8fb5a3e1c801a5"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.marble.clock.4x2",
+    "folder": "marble-clock-4x2",
+    "sourceId": "com.cyberdesktop.clock.marble.4x2",
+    "source": "plugins/marble-clock/packages/4x2/plugin.textproto",
+    "family": "marble",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 5,
+    "character": true,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      8,
+      13,
+      1758,
+      869
+    ],
+    "art": "design/vampire-muse-suite/marble-clock-4x2.integrated.runtime.png",
+    "artSha256": "2f0e36d193c6b5f2941ff698827861746e8637fd09fcaeb1bf59ea7c8839beaf",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 滚珠轨道时钟 4×2",
+    "regions": {
+      "world": [
+        0.03526734926052332,
+        0.4085155350978136,
+        0.6143344709897611,
+        0.6214039125431531
+      ],
+      "motion": [
+        0.03526734926052332,
+        0.4326812428078251,
+        0.6257110352673493,
+        0.5063291139240507
+      ],
+      "digit0": [
+        0.3447098976109215,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "digit1": [
+        0.39533560864618883,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "digit2": [
+        0.4465301478953356,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "digit3": [
+        0.49658703071672355,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "digit4": [
+        0.5472127417519909,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "digit5": [
+        0.5972696245733788,
+        0.34062140391254314,
+        0.03526734926052332,
+        0.10586881472957423
+      ],
+      "feeder": [
+        0.04948805460750853,
+        0.2991944764096663,
+        0.09385665529010238,
+        0.18872266973532797
+      ],
+      "drain": [
+        0.22013651877133106,
+        0.715765247410817,
+        0.11262798634812286,
+        0.10817031070195628
+      ],
+      "rotor": [
+        0.06484641638225255,
+        0.3256616800920598,
+        0.06370875995449374,
+        0.12888377445339472
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/marble-clock-4x2.integrated.art.png",
+    "approvedArtSha256": "84674c71d20779b15f12b450f24f3679f5084bd71056b9f36241c892a60773ce",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.marble.clock.6x2",
+    "folder": "marble-clock-6x2",
+    "sourceId": "com.cyberdesktop.clock.marble.6x2",
+    "source": "plugins/marble-clock/packages/6x2/plugin.textproto",
+    "family": "marble",
+    "kind": 0,
+    "rows": 2,
+    "columns": 6,
+    "board": 1,
+    "slot": 6,
+    "character": true,
+    "imageSize": [
+      1983,
+      793
+    ],
+    "crop": [
+      7,
+      2,
+      1970,
+      787
+    ],
+    "art": "design/vampire-muse-suite/marble-clock-6x2.integrated.runtime.png",
+    "artSha256": "aa590466e2be628c1d350a1fe652c9a50ebd0c4d6f3d9ed936e50f4e6f9b1cff",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 滚珠轨道时钟 6×2",
+    "regions": {
+      "world": [
+        0.3365482233502538,
+        0.4320203303684879,
+        0.6304568527918781,
+        0.5260482846251588
+      ],
+      "motion": [
+        0.3517766497461929,
+        0.5476493011435832,
+        0.6243654822335025,
+        0.40660736975857686
+      ],
+      "digit0": [
+        0.6944162436548224,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "digit1": [
+        0.7385786802030457,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "digit2": [
+        0.7878172588832487,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "digit3": [
+        0.8208121827411168,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "digit4": [
+        0.8700507614213198,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "digit5": [
+        0.9096446700507614,
+        0.45743329097839897,
+        0.030456852791878174,
+        0.10800508259212198
+      ],
+      "feeder": [
+        0.3131979695431472,
+        0.4485387547649301,
+        0.06954314720812182,
+        0.17662007623888182
+      ],
+      "drain": [
+        0.37208121827411167,
+        0.7789072426937739,
+        0.07106598984771574,
+        0.12706480304955528
+      ],
+      "rotor": [
+        0.32436548223350253,
+        0.4764930114358323,
+        0.047715736040609136,
+        0.11944091486658195
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/marble-clock-6x2.integrated.art.png",
+    "approvedArtSha256": "1d9859d5dc1d93134950359c28214f3c6e7df2bcf77e6d5c7f28f31db451b442",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.moon.clock.2x2",
+    "folder": "moon-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+    "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      36,
+      10,
+      513,
+      526
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.clean-dials.png",
+    "artSha256": "834acf5c9cc7c5dedaa9109d71b068fb78f6b2ee4fe9cde676291f303bc7e46d",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 玫瑰金月相表 2×2",
+    "regions": {
+      "world": [
+        0.14035087719298245,
+        0.16539923954372623,
+        0.7290448343079922,
+        0.7110266159695817
+      ],
+      "moon": [
+        0.49122807017543857,
+        0.5893536121673004,
+        0.09746588693957114,
+        0.09505703422053231
+      ],
+      "pin": [
+        0.47953216374269003,
+        0.49809885931558934,
+        0.04873294346978557,
+        0.04752851711026616
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.dive.clock.2x2",
+    "folder": "dive-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+    "source": "plugins/precision-clocks/packages/green/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      550,
+      6,
+      484,
+      541
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.clean-dials.png",
+    "artSha256": "834acf5c9cc7c5dedaa9109d71b068fb78f6b2ee4fe9cde676291f303bc7e46d",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 翡翠绿潜水表 2×2",
+    "regions": {
+      "world": [
+        0.14669421487603307,
+        0.24214417744916822,
+        0.6652892561983471,
+        0.5951940850277264
+      ],
+      "date": [
+        0.6611570247933884,
+        0.5175600739371534,
+        0.06611570247933884,
+        0.051756007393715345
+      ],
+      "pin": [
+        0.45454545454545453,
+        0.5175600739371534,
+        0.049586776859504134,
+        0.04436229205175601
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.skeleton.clock.2x2",
+    "folder": "skeleton-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+    "source": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1041,
+      7,
+      476,
+      528
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.clean-dials.png",
+    "artSha256": "834acf5c9cc7c5dedaa9109d71b068fb78f6b2ee4fe9cde676291f303bc7e46d",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 镂空精密钟 2×2",
+    "regions": {
+      "world": [
+        0.12815126050420167,
+        0.21022727272727273,
+        0.7436974789915967,
+        0.6704545454545454
+      ],
+      "pin": [
+        0.4726890756302521,
+        0.5208333333333334,
+        0.0546218487394958,
+        0.04924242424242424
+      ],
+      "gear0": [
+        0.296218487394958,
+        0.3465909090909091,
+        0.15756302521008403,
+        0.14204545454545456
+      ],
+      "gear1": [
+        0.47478991596638653,
+        0.3428030303030303,
+        0.15336134453781514,
+        0.13825757575757575
+      ],
+      "gear2": [
+        0.28781512605042014,
+        0.5511363636363636,
+        0.15966386554621848,
+        0.14393939393939395
+      ],
+      "gear3": [
+        0.46638655462184875,
+        0.5662878787878788,
+        0.1869747899159664,
+        0.16856060606060605
+      ],
+      "gear4": [
+        0.6239495798319328,
+        0.48295454545454547,
+        0.12815126050420167,
+        0.11553030303030302
+      ],
+      "gear5": [
+        0.3907563025210084,
+        0.678030303030303,
+        0.11134453781512606,
+        0.10037878787878787
+      ],
+      "cutout0": [
+        0.5966386554621849,
+        0.9659090909090909,
+        0.15756302521008403,
+        0.03409090909090909
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.calendar.4x2",
+    "folder": "calendar-4x2",
+    "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+    "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+    "family": "calendar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 2,
+    "slot": 4,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      9,
+      538,
+      754,
+      460
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "artSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 月历 4×2",
+    "regions": {
+      "title": [
+        0.5411140583554377,
+        0.1391304347826087,
+        0.23607427055702918,
+        0.10652173913043478
+      ],
+      "grid": [
+        0.42,
+        0.28,
+        0.52,
+        0.54
+      ],
+      "previous": [
+        0.41644562334217505,
+        0.1391304347826087,
+        0.0649867374005305,
+        0.10652173913043478
+      ],
+      "next": [
+        0.8381962864721485,
+        0.1391304347826087,
+        0.0649867374005305,
+        0.10652173913043478
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.lunar.2x1",
+    "folder": "lunar-2x1",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-1x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 2,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      762,
+      633,
+      422,
+      283
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "artSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 农历 2×1",
+    "regions": {
+      "title": [
+        0.2,
+        0.27,
+        0.6,
+        0.17
+      ],
+      "lunar": [
+        0.22,
+        0.47,
+        0.56,
+        0.17
+      ],
+      "festival": [
+        0.3744075829383886,
+        0.657243816254417,
+        0.2914691943127962,
+        0.1872791519434629
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.lunar.2x2",
+    "folder": "lunar-2x2",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 6,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1182,
+      515,
+      349,
+      498
+    ],
+    "art": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "artSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 农历 2×2",
+    "regions": {
+      "title": [
+        0.19,
+        0.14,
+        0.62,
+        0.07
+      ],
+      "day": [
+        0.23782234957020057,
+        0.24497991967871485,
+        0.5730659025787965,
+        0.28313253012048195
+      ],
+      "weekday": [
+        0.20057306590257878,
+        0.5401606425702812,
+        0.6475644699140402,
+        0.08032128514056225
+      ],
+      "lunar": [
+        0.2521489971346705,
+        0.6405622489959839,
+        0.5730659025787965,
+        0.09437751004016064
+      ],
+      "festival": [
+        0.2808022922636103,
+        0.7590361445783133,
+        0.4584527220630373,
+        0.09036144578313253
+      ],
+      "cutout0": [
+        0.0,
+        0.0,
+        0.40114613180515757,
+        0.07429718875502007
+      ],
+      "cutout1": [
+        0.6561604584527221,
+        0.0,
+        0.3438395415472779,
+        0.07028112449799197
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.lunar.4x4",
+    "folder": "lunar-4x4",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+    "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 4,
+    "columns": 4,
+    "board": 3,
+    "slot": 1,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      21,
+      5,
+      530,
+      618
+    ],
+    "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 农历 4×4",
+    "regions": {
+      "title": [
+        0.269811320754717,
+        0.4449838187702265,
+        0.41132075471698115,
+        0.07928802588996764
+      ],
+      "grid": [
+        0.06792452830188679,
+        0.587378640776699,
+        0.8547169811320755,
+        0.33495145631067963
+      ],
+      "festival": [
+        0.3584905660377358,
+        0.9239482200647249,
+        0.20754716981132076,
+        0.04854368932038835
+      ],
+      "previous": [
+        0.12452830188679245,
+        0.45307443365695793,
+        0.08867924528301886,
+        0.07766990291262135
+      ],
+      "next": [
+        0.6811320754716981,
+        0.45145631067961167,
+        0.08867924528301886,
+        0.07766990291262135
+      ],
+      "today": [
+        0.7962264150943397,
+        0.44983818770226536,
+        0.11509433962264151,
+        0.07281553398058252
+      ],
+      "body": [
+        0.06792452830188679,
+        0.5372168284789643,
+        0.8547169811320755,
+        0.38673139158576053
+      ],
+      "weekdays": [
+        0.06792452830188679,
+        0.5388349514563107,
+        0.8547169811320755,
+        0.045307443365695796
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.weather.2x1",
+    "folder": "weather-2x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      561,
+      228,
+      343,
+      258
+    ],
+    "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 天气 2×1",
+    "regions": {
+      "icon": [
+        0.09912536443148688,
+        0.3372093023255814,
+        0.39941690962099125,
+        0.4496124031007752
+      ],
+      "city": [
+        0.5160349854227405,
+        0.35271317829457366,
+        0.40816326530612246,
+        0.14728682170542637
+      ],
+      "temperature": [
+        0.4897959183673469,
+        0.5155038759689923,
+        0.44314868804664725,
+        0.2713178294573643
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+    "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.weather.4x1",
+    "folder": "weather-4x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      807,
+      1008,
+      186
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 天气 4×1",
+    "regions": {
+      "city": [
+        0.15,
+        0.22,
+        0.15,
+        0.17
+      ],
+      "temperature": [
+        0.145,
+        0.38,
+        0.2,
+        0.48
+      ],
+      "icon": [
+        0.295,
+        0.28,
+        0.105,
+        0.48
+      ],
+      "forecast0": [
+        0.44,
+        0.19,
+        0.13,
+        0.62
+      ],
+      "forecast1": [
+        0.6,
+        0.19,
+        0.13,
+        0.62
+      ],
+      "forecast2": [
+        0.76,
+        0.19,
+        0.13,
+        0.62
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+    "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.weather.4x2",
+    "folder": "weather-4x2",
+    "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 3,
+    "slot": 4,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      17,
+      622,
+      630,
+      388
+    ],
+    "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 天气 4×2",
+    "regions": {
+      "city": [
+        0.5825396825396826,
+        0.2268041237113402,
+        0.16825396825396827,
+        0.09536082474226804
+      ],
+      "temperature": [
+        0.580952380952381,
+        0.3247422680412371,
+        0.18253968253968253,
+        0.17783505154639176
+      ],
+      "icon": [
+        0.4253968253968254,
+        0.2963917525773196,
+        0.1492063492063492,
+        0.21649484536082475
+      ],
+      "humidity": [
+        0.8444444444444444,
+        0.2860824742268041,
+        0.1126984126984127,
+        0.08247422680412371
+      ],
+      "wind": [
+        0.8380952380952381,
+        0.43041237113402064,
+        0.12380952380952381,
+        0.08247422680412371
+      ],
+      "forecast0": [
+        0.46825396825396826,
+        0.5644329896907216,
+        0.1523809523809524,
+        0.30670103092783507
+      ],
+      "forecast1": [
+        0.6317460317460317,
+        0.5644329896907216,
+        0.1523809523809524,
+        0.30670103092783507
+      ],
+      "forecast2": [
+        0.7968253968253968,
+        0.5644329896907216,
+        0.1523809523809524,
+        0.30670103092783507
+      ],
+      "cutout0": [
+        0.0,
+        0.0,
+        0.1984126984126984,
+        0.041237113402061855
+      ],
+      "cutout1": [
+        0.4174603174603175,
+        0.0,
+        0.5825396825396826,
+        0.041237113402061855
+      ],
+      "humidityLabel": [
+        0.834920634920635,
+        0.20876288659793815,
+        0.13015873015873017,
+        0.07216494845360824
+      ],
+      "windLabel": [
+        0.834920634920635,
+        0.35051546391752575,
+        0.13015873015873017,
+        0.07216494845360824
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "illustrationsSha256": "cc2382255416aeef4f7e3635d36c20374b7ebb03ccc1f9fabb78002aaf76a4ad",
+    "illustrationsSource": "design/vampire-muse-suite/weather-illustrations.runtime.png"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.air.2x1",
+    "folder": "air-2x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      641,
+      688,
+      300,
+      289
+    ],
+    "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 空气质量 2×1",
+    "regions": {
+      "aqi": [
+        0.31333333333333335,
+        0.43252595155709345,
+        0.36666666666666664,
+        0.22837370242214533
+      ],
+      "city": [
+        0.3,
+        0.3356401384083045,
+        0.4,
+        0.10380622837370242
+      ],
+      "quality": [
+        0.31333333333333335,
+        0.6782006920415224,
+        0.36666666666666664,
+        0.12110726643598616
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.air.4x1",
+    "folder": "air-4x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/air-1x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 6,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      1020,
+      1008,
+      197
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 空气质量 4×1",
+    "regions": {
+      "aqi": [
+        0.32142857142857145,
+        0.39593908629441626,
+        0.05654761904761905,
+        0.23857868020304568
+      ],
+      "city": [
+        0.26,
+        0.22,
+        0.13,
+        0.15
+      ],
+      "quality": [
+        0.26,
+        0.65,
+        0.13,
+        0.12
+      ],
+      "pm25": [
+        0.5625,
+        0.38578680203045684,
+        0.07936507936507936,
+        0.2436548223350254
+      ],
+      "pm10": [
+        0.7946428571428571,
+        0.38578680203045684,
+        0.07837301587301587,
+        0.2436548223350254
+      ],
+      "pm25Bar": [
+        0.4791666666666667,
+        0.7258883248730964,
+        0.15376984126984128,
+        0.04060913705583756
+      ],
+      "pm10Bar": [
+        0.7212301587301587,
+        0.7258883248730964,
+        0.13988095238095238,
+        0.04060913705583756
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.air.4x2",
+    "folder": "air-4x2",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/air-2x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 4,
+    "slot": 1,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      30,
+      139,
+      649,
+      406
+    ],
+    "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 空气质量 4×2",
+    "regions": {
+      "aqi": [
+        0.1679506933744222,
+        0.3054187192118227,
+        0.2049306625577812,
+        0.19704433497536947
+      ],
+      "city": [
+        0.4206471494607088,
+        0.3054187192118227,
+        0.1864406779661017,
+        0.08620689655172414
+      ],
+      "quality": [
+        0.17257318952234207,
+        0.5024630541871922,
+        0.20801232665639446,
+        0.0812807881773399
+      ],
+      "pm25": [
+        0.13713405238828968,
+        0.6748768472906403,
+        0.14329738058551617,
+        0.11822660098522167
+      ],
+      "pm10": [
+        0.3898305084745763,
+        0.6724137931034483,
+        0.14791987673343607,
+        0.12315270935960591
+      ],
+      "updated": [
+        0.1926040061633282,
+        0.8251231527093597,
+        0.3359013867488444,
+        0.06896551724137931
+      ],
+      "aqiArc": [
+        0.1263482280431433,
+        0.21182266009852216,
+        0.27426810477657937,
+        0.3768472906403941
+      ],
+      "pm25Arc": [
+        0.09861325115562404,
+        0.6330049261083743,
+        0.1864406779661017,
+        0.16009852216748768
+      ],
+      "pm10Arc": [
+        0.3559322033898305,
+        0.6330049261083743,
+        0.17411402157164868,
+        0.16009852216748768
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.monitor.1x1",
+    "folder": "monitor-1x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 4,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      688,
+      178,
+      292,
+      315
+    ],
+    "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 系统监控 1×1",
+    "regions": {
+      "gauge0": [
+        0.1815068493150685,
+        0.20317460317460317,
+        0.636986301369863,
+        0.5904761904761905
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "runtimePlate": true,
+    "nativeTicks": true
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.monitor.2x1",
+    "folder": "monitor-2x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 4,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1006,
+      188,
+      492,
+      298
+    ],
+    "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 系统监控 2×1",
+    "regions": {
+      "gauge0": [
+        0.09959349593495935,
+        0.20134228187919462,
+        0.35365853658536583,
+        0.5838926174496645
+      ],
+      "gauge1": [
+        0.5467479674796748,
+        0.20134228187919462,
+        0.35365853658536583,
+        0.5838926174496645
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "runtimePlate": true,
+    "nativeTicks": true
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.monitor.4x1",
+    "folder": "monitor-4x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 4,
+    "character": false,
+    "imageSize": [
+      1145,
+      1374
+    ],
+    "crop": [
+      6,
+      545,
+      1134,
+      168
+    ],
+    "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 系统监控 4×1",
+    "regions": {
+      "gauge0": [
+        0.10846560846560846,
+        0.10714285714285714,
+        0.12345679012345678,
+        0.8333333333333334
+      ],
+      "gauge1": [
+        0.328042328042328,
+        0.10714285714285714,
+        0.12345679012345678,
+        0.8333333333333334
+      ],
+      "gauge2": [
+        0.54673721340388,
+        0.10714285714285714,
+        0.12345679012345678,
+        0.8333333333333334
+      ],
+      "gauge3": [
+        0.7627865961199295,
+        0.10119047619047619,
+        0.12345679012345678,
+        0.8333333333333334
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+    "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.monitor.2x2",
+    "folder": "monitor-2x2",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 4,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      688,
+      594,
+      331,
+      335
+    ],
+    "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 系统监控 2×2",
+    "regions": {
+      "gauge0": [
+        0.11782477341389729,
+        0.1373134328358209,
+        0.34441087613293053,
+        0.3402985074626866
+      ],
+      "gauge1": [
+        0.5347432024169184,
+        0.1373134328358209,
+        0.34441087613293053,
+        0.3402985074626866
+      ],
+      "gauge2": [
+        0.12386706948640483,
+        0.5313432835820896,
+        0.34441087613293053,
+        0.3402985074626866
+      ],
+      "gauge3": [
+        0.5347432024169184,
+        0.5313432835820896,
+        0.34441087613293053,
+        0.3402985074626866
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "runtimePlate": true,
+    "nativeTicks": true
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.network.4x1",
+    "folder": "network-4x1",
+    "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+    "family": "productivity",
+    "kind": 3,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 6,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      8,
+      1237,
+      1008,
+      192
+    ],
+    "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 网速 4×1",
+    "regions": {
+      "down": [
+        0.2648809523809524,
+        0.359375,
+        0.2113095238095238,
+        0.3125
+      ],
+      "up": [
+        0.5555555555555556,
+        0.359375,
+        0.18154761904761904,
+        0.3125
+      ],
+      "downHistory": [
+        0.25,
+        0.7,
+        0.23,
+        0.085
+      ],
+      "upHistory": [
+        0.53,
+        0.7,
+        0.23,
+        0.085
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.disk.2x2",
+    "folder": "disk-2x2",
+    "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 4,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      26,
+      5,
+      369,
+      513
+    ],
+    "art": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "artSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 磁盘 2×2",
+    "regions": {
+      "title": [
+        0.3875338753387534,
+        0.3489278752436647,
+        0.23577235772357724,
+        0.09551656920077972
+      ],
+      "usage": [
+        0.23306233062330622,
+        0.4522417153996101,
+        0.5365853658536586,
+        0.09551656920077972
+      ],
+      "free": [
+        0.3116531165311653,
+        0.5906432748538012,
+        0.3983739837398374,
+        0.08187134502923976
+      ],
+      "gauge": [
+        0.14634146341463414,
+        0.26900584795321636,
+        0.7046070460704607,
+        0.49317738791423
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "approvedArtSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.input.4x1",
+    "folder": "input-4x1",
+    "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 8,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1145,
+      1374
+    ],
+    "crop": [
+      6,
+      147,
+      1134,
+      169
+    ],
+    "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 键鼠计数 4×1",
+    "regions": {
+      "keyboard": [
+        0.17989417989417988,
+        0.25443786982248523,
+        0.2821869488536155,
+        0.5088757396449705
+      ],
+      "mouse": [
+        0.6534391534391535,
+        0.25443786982248523,
+        0.2786596119929453,
+        0.5088757396449705
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+    "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.album.4x2",
+    "folder": "album-4x2",
+    "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 3,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 3,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      904,
+      50,
+      632,
+      410
+    ],
+    "art": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "artSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 相册 4×2",
+    "regions": {
+      "photo": [
+        0.07436708860759493,
+        0.21951219512195122,
+        0.5759493670886076,
+        0.6585365853658537
+      ],
+      "previous": [
+        0.012658227848101266,
+        0.47073170731707314,
+        0.07911392405063292,
+        0.12195121951219512
+      ],
+      "next": [
+        0.9018987341772152,
+        0.47317073170731705,
+        0.07911392405063292,
+        0.12195121951219512
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "approvedArtSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.player.4x1",
+    "folder": "player-4x1",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 4,
+    "character": false,
+    "imageSize": [
+      1145,
+      1374
+    ],
+    "crop": [
+      5,
+      350,
+      1135,
+      154
+    ],
+    "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 音乐控制 4×1",
+    "regions": {
+      "cover": [
+        0.10572687224669604,
+        0.17532467532467533,
+        0.09779735682819383,
+        0.6883116883116883
+      ],
+      "title": [
+        0.26343612334801764,
+        0.18831168831168832,
+        0.3004405286343612,
+        0.35714285714285715
+      ],
+      "progress": [
+        0.24933920704845816,
+        0.6298701298701299,
+        0.2986784140969163,
+        0.05844155844155844
+      ],
+      "previous": [
+        0.5903083700440529,
+        0.22077922077922077,
+        0.0801762114537445,
+        0.5909090909090909
+      ],
+      "toggle": [
+        0.6960352422907489,
+        0.16233766233766234,
+        0.09515418502202644,
+        0.7012987012987013
+      ],
+      "next": [
+        0.8149779735682819,
+        0.22077922077922077,
+        0.0801762114537445,
+        0.5909090909090909
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+    "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.player.2x2",
+    "folder": "player-2x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/player-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      575,
+      496,
+      326,
+      484
+    ],
+    "art": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "artSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 音乐控制 2×2",
+    "regions": {
+      "cover": [
+        0.15644171779141106,
+        0.1487603305785124,
+        0.6809815950920245,
+        0.4132231404958678
+      ],
+      "title": [
+        0.13496932515337423,
+        0.5785123966942148,
+        0.7392638036809815,
+        0.08057851239669421
+      ],
+      "progress": [
+        0.1441717791411043,
+        0.6714876033057852,
+        0.7055214723926381,
+        0.01859504132231405
+      ],
+      "previous": [
+        0.1196319018404908,
+        0.731404958677686,
+        0.19631901840490798,
+        0.1322314049586777
+      ],
+      "toggle": [
+        0.37423312883435583,
+        0.7107438016528925,
+        0.254601226993865,
+        0.17148760330578514
+      ],
+      "next": [
+        0.6840490797546013,
+        0.731404958677686,
+        0.19938650306748465,
+        0.1322314049586777
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "approvedArtSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.player.4x2",
+    "folder": "player-4x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 6,
+    "character": true,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      903,
+      546,
+      632,
+      418
+    ],
+    "art": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "artSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 音乐控制 4×2",
+    "regions": {
+      "cover": [
+        0.07753164556962025,
+        0.24162679425837322,
+        0.17405063291139242,
+        0.2631578947368421
+      ],
+      "title": [
+        0.2689873417721519,
+        0.284688995215311,
+        0.28164556962025317,
+        0.10047846889952153
+      ],
+      "artist": [
+        0.27056962025316456,
+        0.38995215311004783,
+        0.2737341772151899,
+        0.07655502392344497
+      ],
+      "progress": [
+        0.08227848101265822,
+        0.5406698564593302,
+        0.4889240506329114,
+        0.023923444976076555
+      ],
+      "elapsed": [
+        0.08069620253164557,
+        0.5765550239234449,
+        0.1360759493670886,
+        0.05741626794258373
+      ],
+      "duration": [
+        0.43670886075949367,
+        0.5765550239234449,
+        0.13765822784810128,
+        0.05741626794258373
+      ],
+      "previous": [
+        0.08386075949367089,
+        0.6626794258373205,
+        0.12025316455696203,
+        0.18181818181818182
+      ],
+      "toggle": [
+        0.24050632911392406,
+        0.6435406698564593,
+        0.1439873417721519,
+        0.21770334928229665
+      ],
+      "next": [
+        0.4208860759493671,
+        0.6626794258373205,
+        0.12025316455696203,
+        0.18181818181818182
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "approvedArtSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.square.4x1",
+    "folder": "music-square-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      193,
+      172,
+      638,
+      143
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 方点阵频谱 4×1",
+    "regions": {
+      "plot": [
+        0.07993730407523511,
+        0.23076923076923078,
+        0.8479623824451411,
+        0.5734265734265734
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.round.4x1",
+    "folder": "music-round-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      193,
+      374,
+      638,
+      146
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 圆点阵频谱 4×1",
+    "regions": {
+      "plot": [
+        0.07993730407523511,
+        0.2191780821917808,
+        0.8479623824451411,
+        0.5821917808219178
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.square.6x1",
+    "folder": "music-square-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      51,
+      590,
+      922,
+      137
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 方点阵频谱 6×1",
+    "regions": {
+      "plot": [
+        0.0596529284164859,
+        0.24817518248175183,
+        0.8817787418655098,
+        0.5474452554744526
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.round.6x1",
+    "folder": "music-round-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 4,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      52,
+      793,
+      921,
+      144
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 圆点阵频谱 6×1",
+    "regions": {
+      "plot": [
+        0.05863192182410423,
+        0.2569444444444444,
+        0.8849077090119435,
+        0.5277777777777778
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.square.8x1",
+    "folder": "music-square-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      15,
+      1005,
+      995,
+      142
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 方点阵频谱 8×1",
+    "regions": {
+      "plot": [
+        0.05829145728643216,
+        0.23943661971830985,
+        0.8864321608040201,
+        0.5633802816901409
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.music.round.8x1",
+    "folder": "music-round-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 6,
+    "character": false,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      15,
+      1227,
+      996,
+      142
+    ],
+    "art": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "artSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 圆点阵频谱 8×1",
+    "regions": {
+      "plot": [
+        0.05823293172690763,
+        0.2605633802816901,
+        0.8855421686746988,
+        0.5633802816901409
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-03-dot-matrix.art.png",
+    "approvedArtSha256": "25efde25ae8fa2d73ca19bd4e1cc81bc3c9d49f5724f9f6eaec9307b0535f8ec"
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1145,
+      1374
+    ],
+    "crop": [
+      7,
+      747,
+      1132,
+      161
+    ],
+    "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 柱状频谱 4×1",
+    "regions": {
+      "plot": [
+        0.07773851590106007,
+        0.049689440993788817,
+        0.8462897526501767,
+        0.7701863354037267
+      ],
+      "motion": [
+        0.07685512367491167,
+        0.0,
+        0.8480565371024735,
+        0.8322981366459627
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+    "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.radial.2x2",
+    "folder": "radial-2x2",
+    "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 1,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      713,
+      13,
+      416,
+      451
+    ],
+    "art": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+    "artSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 环形频谱 2×2",
+    "regions": {
+      "plot": [
+        0.09,
+        0.15,
+        0.82,
+        0.76
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/07-audio-interactive.art.png",
+    "approvedArtSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.beat.machine.4x2",
+    "folder": "beat-machine-4x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+    "source": "plugins/beat-machine/packages/4x2/plugin.textproto",
+    "family": "beat",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 7,
+    "slot": 3,
+    "character": true,
+    "imageSize": [
+      1586,
+      992
+    ],
+    "crop": [
+      17,
+      15,
+      1553,
+      958
+    ],
+    "art": "design/vampire-muse-suite/beat-machine-4x2.integrated.runtime.png",
+    "artSha256": "c965559351d7111431b62982218e4ac254a31051383189b7294cdcddb3814522",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 节拍弹珠台 4×2",
+    "regions": {
+      "world": [
+        0.3528654217643271,
+        0.44780793319415446,
+        0.5934320669671603,
+        0.4810020876826722
+      ],
+      "paddlePivot0": [
+        0.46683837733419187,
+        0.5730688935281837,
+        0.0,
+        0.0
+      ],
+      "paddlePivot1": [
+        0.609143593045718,
+        0.5762004175365344,
+        0.0,
+        0.0
+      ]
+    },
+    "hardware": {
+      "cap0": [
+        600,
+        674,
+        103,
+        48
+      ],
+      "cap1": [
+        751,
+        701,
+        103,
+        48
+      ],
+      "cap2": [
+        894,
+        728,
+        103,
+        48
+      ],
+      "cap3": [
+        1024,
+        752,
+        103,
+        48
+      ],
+      "base0": [
+        607,
+        781,
+        97,
+        34
+      ],
+      "base1": [
+        760,
+        805,
+        97,
+        34
+      ],
+      "base2": [
+        902,
+        829,
+        97,
+        34
+      ],
+      "base3": [
+        1033,
+        849,
+        97,
+        34
+      ],
+      "paddle0": [
+        714,
+        498,
+        170,
+        144
+      ],
+      "paddle1": [
+        935,
+        500,
+        170,
+        144
+      ]
+    },
+    "hardwareSha256": "2a7334390427945bbc11ecca69cf20673c8d7453f71d41d9ff83584cb83abfa3",
+    "approvedArt": "design/vampire-muse-suite/beat-machine-4x2.integrated.art.png",
+    "approvedArtSha256": "2a7334390427945bbc11ecca69cf20673c8d7453f71d41d9ff83584cb83abfa3",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "hardwareSize": [
+      1586,
+      992
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.beat.machine.6x2",
+    "folder": "beat-machine-6x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+    "source": "plugins/beat-machine/packages/6x2/plugin.textproto",
+    "family": "beat",
+    "kind": 0,
+    "rows": 2,
+    "columns": 6,
+    "board": 7,
+    "slot": 4,
+    "character": true,
+    "imageSize": [
+      1983,
+      793
+    ],
+    "crop": [
+      0,
+      0,
+      1982,
+      793
+    ],
+    "art": "design/vampire-muse-suite/beat-machine-6x2.integrated.runtime.png",
+    "artSha256": "5d3d31f6c8b2e0f392cf2994b01fd3ea66051d1d1b7e086002eb1e3481daad8c",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 节拍弹珠台 6×2",
+    "regions": {
+      "world": [
+        0.08577194752774975,
+        0.403530895334174,
+        0.5993945509586277,
+        0.49936948297604034
+      ],
+      "paddlePivot0": [
+        0.256811301715439,
+        0.5498108448928121,
+        0.0,
+        0.0
+      ],
+      "paddlePivot1": [
+        0.4313824419778002,
+        0.5523329129886507,
+        0.0,
+        0.0
+      ]
+    },
+    "hardware": {
+      "cap0": [
+        186,
+        533,
+        100,
+        45
+      ],
+      "cap1": [
+        345,
+        554,
+        100,
+        45
+      ],
+      "cap2": [
+        490,
+        567,
+        100,
+        45
+      ],
+      "cap3": [
+        640,
+        577,
+        100,
+        45
+      ],
+      "base0": [
+        187,
+        650,
+        101,
+        38
+      ],
+      "base1": [
+        348,
+        663,
+        101,
+        38
+      ],
+      "base2": [
+        490,
+        672,
+        101,
+        38
+      ],
+      "base3": [
+        640,
+        682,
+        101,
+        38
+      ],
+      "paddle0": [
+        485,
+        374,
+        179,
+        143
+      ],
+      "paddle1": [
+        831,
+        377,
+        179,
+        143
+      ]
+    },
+    "hardwareSha256": "ed9f73fd9819cc3244fa0190fb962173834020f2d5a31abf962499baa9a2b39c",
+    "approvedArt": "design/vampire-muse-suite/beat-machine-6x2.integrated.art.png",
+    "approvedArtSha256": "ed9f73fd9819cc3244fa0190fb962173834020f2d5a31abf962499baa9a2b39c",
+    "runtimePlate": true,
+    "nativeTicks": false,
+    "hardwareSize": [
+      1983,
+      793
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.wind.chime.2x2",
+    "folder": "wind-chime-2x2",
+    "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+    "source": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 5,
+    "character": false,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      861,
+      476,
+      277,
+      397
+    ],
+    "art": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+    "artSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 风铃 2×2",
+    "regions": {
+      "world": [
+        0.01444043321299639,
+        0.0,
+        0.9855595667870036,
+        1.0
+      ],
+      "charm0": [
+        0.04693140794223827,
+        0.33249370277078083,
+        0.3285198555956679,
+        0.2871536523929471
+      ],
+      "charm1": [
+        0.35018050541516244,
+        0.327455919395466,
+        0.33935018050541516,
+        0.2871536523929471
+      ],
+      "charm2": [
+        0.6462093862815884,
+        0.3879093198992443,
+        0.35018050541516244,
+        0.2795969773299748
+      ],
+      "charm3": [
+        0.12274368231046931,
+        0.6675062972292192,
+        0.1444043321299639,
+        0.21662468513853905
+      ],
+      "charm4": [
+        0.4151624548736462,
+        0.690176322418136,
+        0.16606498194945848,
+        0.2695214105793451
+      ],
+      "charm5": [
+        0.740072202166065,
+        0.6977329974811083,
+        0.1444043321299639,
+        0.29219143576826195
+      ],
+      "motion": [
+        0.0,
+        0.19143576826196473,
+        1.0,
+        0.8085642317380353
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/07-audio-interactive.art.png",
+    "approvedArtSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.split.flap.4x1",
+    "folder": "split-flap-4x1",
+    "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+    "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+    "family": "sign",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 6,
+    "character": false,
+    "imageSize": [
+      1145,
+      1374
+    ],
+    "crop": [
+      6,
+      938,
+      1133,
+      167
+    ],
+    "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 翻牌招牌 4×1",
+    "regions": {
+      "plot": [
+        0.09532215357458076,
+        0.19161676646706588,
+        0.8111209179170344,
+        0.6347305389221557
+      ],
+      "world": [
+        0.09532215357458076,
+        0.19161676646706588,
+        0.8111209179170344,
+        0.6347305389221557
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+    "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+    "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 8,
+    "slot": 1,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      91,
+      68,
+      267,
+      429
+    ],
+    "art": "design/vampire-muse-suite/08-timers.runtime.png",
+    "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 沙漏 1×1",
+    "regions": {
+      "glass": [
+        0.20224719101123595,
+        0.1282051282051282,
+        0.5730337078651685,
+        0.7855477855477856
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
+    "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+    "source": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 8,
+    "slot": 2,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      441,
+      125,
+      602,
+      362
+    ],
+    "art": "design/vampire-muse-suite/08-timers.runtime.png",
+    "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 沙漏 2×1",
+    "regions": {
+      "glass": [
+        0.1079734219269103,
+        0.052486187845303865,
+        0.25083056478405313,
+        0.9337016574585635
+      ],
+      "title": [
+        0.46,
+        0.31,
+        0.42,
+        0.29
+      ],
+      "progress": [
+        0.44518272425249167,
+        0.6160220994475138,
+        0.446843853820598,
+        0.07458563535911603
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
+    "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "runtimePlate": true,
+    "nativeTicks": false
+  },
+  {
+    "id": "com.cyberdesktop.vampire.alice.timer.2x2",
+    "folder": "timer-2x2",
+    "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 8,
+    "slot": 3,
+    "character": false,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1065,
+      11,
+      383,
+      501
+    ],
+    "art": "design/vampire-muse-suite/08-timers.runtime.png",
+    "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "吸血鬼",
+      "Alice"
+    ],
+    "name": "吸血鬼.Alice · 番茄钟 2×2",
+    "regions": {
+      "title": [
+        0.2297650130548303,
+        0.38922155688622756,
+        0.5535248041775457,
+        0.16766467065868262
+      ],
+      "toggle": [
+        0.185378590078329,
+        0.7584830339321357,
+        0.2193211488250653,
+        0.16766467065868262
+      ],
+      "reset": [
+        0.5926892950391645,
+        0.7584830339321357,
+        0.2193211488250653,
+        0.16766467065868262
+      ],
+      "gauge": [
+        0.15404699738903394,
+        0.1996007984031936,
+        0.6945169712793734,
+        0.530938123752495
+      ]
+    },
+    "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
+    "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "runtimePlate": true,
+    "nativeTicks": false
+  }
+]

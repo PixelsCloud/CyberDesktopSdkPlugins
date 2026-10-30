@@ -1,0 +1,71 @@
+{
+  "id": "com.cyberdesktop.deepwhale.plant.2x2",
+  "folder": "plant-2x2",
+  "sourceId": "com.cyberdesktop.plant.cartoon.2x2",
+  "source": "plugins/ambience-suite/packages/plant-2x2/plugin.textproto",
+  "family": "ambience",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "care": [
+      125,
+      166,
+      18,
+      18
+    ],
+    "pot": [
+      7.0,
+      127.96419220325834,
+      146.0,
+      65.00455779674166
+    ],
+    "plant": [
+      18,
+      38,
+      124,
+      108
+    ],
+    "info": [
+      31,
+      182,
+      90,
+      9
+    ]
+  },
+  "layers": [
+    {
+      "name": "pot-0",
+      "file": "art-0.png",
+      "source": [
+        26,
+        833,
+        1069,
+        476
+      ],
+      "destination": [
+        7.0,
+        127.96419220325834,
+        146.0,
+        65.00455779674166
+      ]
+    }
+  ],
+  "designUid": "b14-3",
+  "defaults": {},
+  "parts": {
+    "pot": {
+      "file": "art-0.png",
+      "source": [
+        26,
+        833,
+        1069,
+        476
+      ]
+    }
+  }
+}

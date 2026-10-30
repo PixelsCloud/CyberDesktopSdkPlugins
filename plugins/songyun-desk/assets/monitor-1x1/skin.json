@@ -1,0 +1,49 @@
+{
+  "id": "com.cyberdesktop.songyun.monitor.1x1",
+  "folder": "monitor-1x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 1,
+  "columns": 1,
+  "board": 4,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    703,
+    222,
+    290,
+    297
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 系统监控 1×1",
+  "regions": {
+    "gauge0": [
+      0.16206896551724137,
+      0.11784511784511785,
+      0.6827586206896552,
+      0.6666666666666666
+    ],
+    "surface0Circle": [
+      0.16206896551724137,
+      0.11784511784511785,
+      0.6827586206896552,
+      0.6666666666666666
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+  "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+  "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+  "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+  "nativeTicks": true,
+  "renderInset": 7
+}

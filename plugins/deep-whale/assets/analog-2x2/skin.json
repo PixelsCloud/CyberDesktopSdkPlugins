@@ -1,0 +1,44 @@
+{
+  "id": "com.cyberdesktop.deepwhale.analog.2x2",
+  "folder": "analog-2x2",
+  "sourceId": "com.cyberdesktop.clock.analog.2x2",
+  "source": "plugins/clock-suite/packages/analog-2x2/plugin.textproto",
+  "family": "basic",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "plot": [
+      29.23488667271079,
+      81.54495013599276,
+      83.66077969174977,
+      83.66077969174977
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        18,
+        20,
+        1103,
+        1350
+      ],
+      "destination": [
+        7,
+        14.29688,
+        146,
+        178.6875
+      ]
+    }
+  ],
+  "designUid": "b11-4",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

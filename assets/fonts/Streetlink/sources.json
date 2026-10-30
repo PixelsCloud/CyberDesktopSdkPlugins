@@ -1,0 +1,7 @@
+{
+  "source": "assets/fonts/Aeris/Orbitron-Variable.ttf",
+  "sourceSha256": "f42db2dd16e642258e35782916eceb1dcdbea06fb958d77ad71dc5963587e8fd",
+  "license": "SIL Open Font License 1.1",
+  "modification": "Static wght=900 instance using fontTools 4.60.1; family renamed Streetlink Display.",
+  "reason": "Legacy DirectWrite custom collections select the default variable face otherwise."
+}

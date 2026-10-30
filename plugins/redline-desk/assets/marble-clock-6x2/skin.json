@@ -1,0 +1,91 @@
+{
+  "id": "com.cyberdesktop.redline.marble.clock.6x2",
+  "folder": "marble-clock-6x2",
+  "sourceId": "com.cyberdesktop.clock.marble.6x2",
+  "source": "plugins/marble-clock/packages/6x2/plugin.textproto",
+  "family": "kinetic",
+  "kind": 1,
+  "rows": 2,
+  "columns": 6,
+  "board": 1,
+  "slot": 6,
+  "imageSize": [
+    2172,
+    724
+  ],
+  "crop": [
+    143,
+    56,
+    1866,
+    615
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 双风扇机械时钟 6×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "readout": [
+      0.66,
+      0.16,
+      0.31,
+      0.26
+    ],
+    "cutoutFan0Circle": [
+      0.0594855305466238,
+      0.1772357723577236,
+      0.1864951768488746,
+      0.5658536585365853
+    ],
+    "cutoutFan1Circle": [
+      0.3633440514469453,
+      0.12032520325203253,
+      0.19292604501607716,
+      0.5853658536585366
+    ],
+    "cutoutFan2Circle": [
+      0.7545551982851019,
+      0.4764227642276423,
+      0.13504823151125403,
+      0.4097560975609756
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-balance-6x2.art.png",
+  "art": "plugins/redline-desk/assets/marble-clock-6x2/body.png",
+  "artSha256": "c3d38b84390de55dd4efaf3d0e7374450d2828fbdd664181da8fcf142e60459d",
+  "runtimeFixedLayer": true,
+  "fixedLayerSource": "exec-446c5cf1-1178-417f-bddf-674cff8cf780.png",
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    22,
+    7,
+    2124,
+    688
+  ],
+  "hardware": {
+    "wheel": [
+      421,
+      70,
+      310,
+      307
+    ]
+  },
+  "reviewText": [
+    "readout"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

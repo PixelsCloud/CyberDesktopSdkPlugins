@@ -1,0 +1,4155 @@
+[
+  {
+    "id": "com.cyberdesktop.redline.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      146,
+      87,
+      727,
+      198
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械方像素时钟 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.085,
+        0.23,
+        0.83,
+        0.57
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-strips.art.png",
+    "art": "plugins/redline-desk/assets/clock-square-4x1/body.png",
+    "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+    "approvedCrop": [
+      146,
+      87,
+      727,
+      198
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 2,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      149,
+      321,
+      719,
+      204
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械圆点阵时钟 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.085,
+        0.23,
+        0.83,
+        0.57
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-strips.art.png",
+    "art": "plugins/redline-desk/assets/clock-round-4x1/body.png",
+    "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+    "approvedCrop": [
+      149,
+      321,
+      719,
+      204
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.spring.clock.4x1",
+    "folder": "spring-clock-4x1",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 3,
+    "imageSize": [
+      1877,
+      838
+    ],
+    "crop": [
+      45,
+      226,
+      1789,
+      365
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械弹簧数字时钟 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.055,
+        0.2,
+        0.89,
+        0.67
+      ],
+      "cutoutCards": [
+        0,
+        0.2,
+        1,
+        0.8
+      ]
+    },
+    "approvedArt": "design/redline-collection/compact-spring-clock.art.png",
+    "art": "plugins/redline-desk/assets/spring-clock-4x1/body.png",
+    "artSha256": "f3cdaa55f67fe7d686cd0003d8d5781d84c111749e301070545aa270e55a36f6",
+    "toyGeometry": {
+      "size": [
+        308,
+        45
+      ],
+      "anchors": [
+        [
+          25,
+          5
+        ],
+        [
+          76,
+          5
+        ],
+        [
+          127,
+          5
+        ],
+        [
+          178,
+          5
+        ],
+        [
+          229,
+          5
+        ],
+        [
+          280,
+          5
+        ]
+      ],
+      "bodies": [
+        [
+          25,
+          29,
+          40,
+          30
+        ],
+        [
+          76,
+          29,
+          40,
+          30
+        ],
+        [
+          127,
+          29,
+          40,
+          30
+        ],
+        [
+          178,
+          29,
+          40,
+          30
+        ],
+        [
+          229,
+          29,
+          40,
+          30
+        ],
+        [
+          280,
+          29,
+          40,
+          30
+        ]
+      ]
+    },
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      45,
+      226,
+      1789,
+      365
+    ],
+    "hardware": {
+      "cardCompact": [
+        1168,
+        168,
+        243,
+        141
+      ],
+      "spring": [
+        895,
+        422,
+        93,
+        296
+      ]
+    },
+    "runtimeVisibleBounds": [
+      0,
+      0,
+      1789,
+      288.86871352413016
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.spring.clock.4x2",
+    "folder": "spring-clock-4x2",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 4,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      23,
+      573,
+      467,
+      285
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械弹簧数字时钟 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.055,
+        0.1,
+        0.89,
+        0.81
+      ],
+      "cutoutCards": [
+        0.065,
+        0.14,
+        0.87,
+        0.8
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-01-clocks.art.png",
+    "art": "plugins/redline-desk/assets/spring-clock-4x2/body.png",
+    "artSha256": "1638e8ba5f3ac5e7e7c2ffea82a31d42ba88a38aeed7f973ca449de4e887a0a3",
+    "toyGeometry": {
+      "size": [
+        308,
+        158
+      ],
+      "anchors": [
+        [
+          25,
+          5
+        ],
+        [
+          76,
+          5
+        ],
+        [
+          127,
+          5
+        ],
+        [
+          178,
+          5
+        ],
+        [
+          229,
+          5
+        ],
+        [
+          280,
+          5
+        ]
+      ],
+      "bodies": [
+        [
+          25,
+          91,
+          40,
+          105
+        ],
+        [
+          76,
+          91,
+          40,
+          105
+        ],
+        [
+          127,
+          91,
+          40,
+          105
+        ],
+        [
+          178,
+          91,
+          40,
+          105
+        ],
+        [
+          229,
+          91,
+          40,
+          105
+        ],
+        [
+          280,
+          91,
+          40,
+          105
+        ]
+      ]
+    },
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      23,
+      573,
+      467,
+      285
+    ],
+    "hardware": {
+      "card": [
+        547,
+        407,
+        122,
+        321
+      ],
+      "spring": [
+        895,
+        422,
+        93,
+        296
+      ]
+    },
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.marble.clock.4x2",
+    "folder": "marble-clock-4x2",
+    "sourceId": "com.cyberdesktop.clock.marble.4x2",
+    "source": "plugins/marble-clock/packages/4x2/plugin.textproto",
+    "family": "kinetic",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 5,
+    "imageSize": [
+      1706,
+      922
+    ],
+    "crop": [
+      46,
+      30,
+      1615,
+      825
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 擒纵摆锤时钟 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "readout": [
+        0.55,
+        0.16,
+        0.41,
+        0.26
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-escapement-4x2.art.png",
+    "art": "plugins/redline-desk/assets/marble-clock-4x2/body.png",
+    "artSha256": "ee79870f97dfce1fc05cbac72ae8e97ad7b5d592f8cb58cc980da09f7d3f65bd",
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-37754485-419b-47da-9203-35ca9250e38d.png",
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      47,
+      32,
+      1613,
+      820
+    ],
+    "hardware": {
+      "pendulum": [
+        190,
+        14,
+        81,
+        380
+      ],
+      "gear": [
+        772,
+        70,
+        325,
+        318
+      ]
+    },
+    "reviewText": [
+      "readout"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.marble.clock.6x2",
+    "folder": "marble-clock-6x2",
+    "sourceId": "com.cyberdesktop.clock.marble.6x2",
+    "source": "plugins/marble-clock/packages/6x2/plugin.textproto",
+    "family": "kinetic",
+    "kind": 1,
+    "rows": 2,
+    "columns": 6,
+    "board": 1,
+    "slot": 6,
+    "imageSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      143,
+      56,
+      1866,
+      615
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 双风扇机械时钟 6×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "readout": [
+        0.66,
+        0.16,
+        0.31,
+        0.26
+      ],
+      "cutoutFan0Circle": [
+        0.0594855305466238,
+        0.1772357723577236,
+        0.1864951768488746,
+        0.5658536585365853
+      ],
+      "cutoutFan1Circle": [
+        0.3633440514469453,
+        0.12032520325203253,
+        0.19292604501607716,
+        0.5853658536585366
+      ],
+      "cutoutFan2Circle": [
+        0.7545551982851019,
+        0.4764227642276423,
+        0.13504823151125403,
+        0.4097560975609756
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-balance-6x2.art.png",
+    "art": "plugins/redline-desk/assets/marble-clock-6x2/body.png",
+    "artSha256": "c3d38b84390de55dd4efaf3d0e7374450d2828fbdd664181da8fcf142e60459d",
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-446c5cf1-1178-417f-bddf-674cff8cf780.png",
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      22,
+      7,
+      2124,
+      688
+    ],
+    "hardware": {
+      "wheel": [
+        421,
+        70,
+        310,
+        307
+      ]
+    },
+    "reviewText": [
+      "readout"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.moon.clock.2x2",
+    "folder": "moon-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+    "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      71,
+      72,
+      392,
+      404
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械月相表 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.08,
+        0.09,
+        0.84,
+        0.82
+      ],
+      "pin": [
+        0.48,
+        0.49,
+        0.04,
+        0.04
+      ],
+      "moon": [
+        0.35,
+        0.6,
+        0.3,
+        0.18
+      ],
+      "date": [
+        0.725,
+        0.473,
+        0.083,
+        0.07
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/moon-clock-2x2/body.png",
+    "artSha256": "85512bd925a1e4b51a70d5bbf9fed48d0b6aff6c288a1b7def16bebc65244655",
+    "approvedCrop": [
+      71,
+      72,
+      392,
+      404
+    ],
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-9052ec10-8896-4b0f-8640-14760816e3a7.png",
+    "reviewText": [
+      "date"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.dive.clock.2x2",
+    "folder": "dive-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+    "source": "plugins/precision-clocks/packages/green/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      576,
+      72,
+      386,
+      405
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械潜水表 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.08,
+        0.09,
+        0.84,
+        0.82
+      ],
+      "pin": [
+        0.48,
+        0.49,
+        0.04,
+        0.04
+      ],
+      "moon": [
+        0.35,
+        0.6,
+        0.3,
+        0.18
+      ],
+      "date": [
+        0.712,
+        0.473,
+        0.083,
+        0.07
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/dive-clock-2x2/body.png",
+    "artSha256": "85512bd925a1e4b51a70d5bbf9fed48d0b6aff6c288a1b7def16bebc65244655",
+    "approvedCrop": [
+      576,
+      72,
+      386,
+      405
+    ],
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-9052ec10-8896-4b0f-8640-14760816e3a7.png",
+    "reviewText": [
+      "date"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.skeleton.clock.2x2",
+    "folder": "skeleton-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+    "source": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1076,
+      72,
+      390,
+      406
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 镂空精密机械钟 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.08,
+        0.09,
+        0.84,
+        0.82
+      ],
+      "pin": [
+        0.48,
+        0.49,
+        0.04,
+        0.04
+      ],
+      "moon": [
+        0.35,
+        0.6,
+        0.3,
+        0.18
+      ],
+      "date": [
+        0.712,
+        0.473,
+        0.083,
+        0.07
+      ],
+      "gear0": [
+        0.3717948717948718,
+        0.20689655172413793,
+        0.23076923076923078,
+        0.22167487684729065
+      ],
+      "gear1": [
+        0.10256410256410256,
+        0.35467980295566504,
+        0.3128205128205128,
+        0.30049261083743845
+      ],
+      "gear2": [
+        0.32051282051282054,
+        0.5640394088669951,
+        0.3384615384615385,
+        0.3251231527093596
+      ],
+      "gear3": [
+        0.6153846153846154,
+        0.30295566502463056,
+        0.17435897435897435,
+        0.16748768472906403
+      ],
+      "gear4": [
+        0.23846153846153847,
+        0.31773399014778325,
+        0.1076923076923077,
+        0.10344827586206896
+      ],
+      "gear5": [
+        0.18974358974358974,
+        0.5541871921182266,
+        0.12307692307692308,
+        0.11822660098522167
+      ],
+      "gear6": [
+        0.6897435897435897,
+        0.2315270935960591,
+        0.10256410256410256,
+        0.09852216748768473
+      ],
+      "gearBridge": [
+        0.13076923076923078,
+        0.4753694581280788,
+        0.7102564102564103,
+        0.06896551724137931
+      ],
+      "cutoutGear0Circle": [
+        0.3717948717948718,
+        0.20689655172413793,
+        0.23076923076923078,
+        0.22167487684729065
+      ],
+      "cutoutGear1Circle": [
+        0.10256410256410256,
+        0.35467980295566504,
+        0.3128205128205128,
+        0.30049261083743845
+      ],
+      "cutoutGear2Circle": [
+        0.32051282051282054,
+        0.5640394088669951,
+        0.3384615384615385,
+        0.3251231527093596
+      ],
+      "cutoutGear3Circle": [
+        0.6153846153846154,
+        0.30295566502463056,
+        0.17435897435897435,
+        0.16748768472906403
+      ],
+      "cutoutGear4Circle": [
+        0.23846153846153847,
+        0.31773399014778325,
+        0.1076923076923077,
+        0.10344827586206896
+      ],
+      "cutoutGear5Circle": [
+        0.18974358974358974,
+        0.5541871921182266,
+        0.12307692307692308,
+        0.11822660098522167
+      ],
+      "cutoutGear6Circle": [
+        0.6897435897435897,
+        0.2315270935960591,
+        0.10256410256410256,
+        0.09852216748768473
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/skeleton-clock-2x2/body.png",
+    "artSha256": "85512bd925a1e4b51a70d5bbf9fed48d0b6aff6c288a1b7def16bebc65244655",
+    "approvedCrop": [
+      1076,
+      72,
+      390,
+      406
+    ],
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-9052ec10-8896-4b0f-8640-14760816e3a7.png",
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": [],
+    "hardwareSize": [
+      1774,
+      887
+    ],
+    "hardware": {
+      "gear0": [
+        28,
+        44,
+        389,
+        387
+      ],
+      "gear1": [
+        473,
+        39,
+        384,
+        381
+      ],
+      "gear2": [
+        915,
+        44,
+        387,
+        383
+      ],
+      "gear3": [
+        1379,
+        64,
+        345,
+        349
+      ],
+      "gear4": [
+        73,
+        517,
+        299,
+        301
+      ],
+      "gear5": [
+        515,
+        517,
+        300,
+        299
+      ],
+      "gear6": [
+        971,
+        525,
+        277,
+        282
+      ]
+    },
+    "hardwareSha256": "e16043ae5576a5b9e453f60f15c1390323c4df7f2330807fbffc1f9ff5d08c77"
+  },
+  {
+    "id": "com.cyberdesktop.redline.calendar.4x2",
+    "folder": "calendar-4x2",
+    "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+    "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+    "family": "calendar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 2,
+    "slot": 4,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      61,
+      610,
+      521,
+      309
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械月历 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "body": [
+        0.08,
+        0.12,
+        0.84,
+        0.78
+      ],
+      "title": [
+        0.19,
+        0.13,
+        0.5,
+        0.13
+      ],
+      "previous": [
+        0.09,
+        0.13,
+        0.08,
+        0.13
+      ],
+      "next": [
+        0.69,
+        0.13,
+        0.08,
+        0.13
+      ],
+      "grid": [
+        0.09,
+        0.29,
+        0.81,
+        0.58
+      ],
+      "surface0": [
+        0.07,
+        0.095,
+        0.87,
+        0.82
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/calendar-4x2/body.png",
+    "artSha256": "513e1eba4102615e84937913313439a2282a223d4a7db8f3861be868661d4c32",
+    "approvedCrop": [
+      61,
+      610,
+      521,
+      309
+    ],
+    "reviewText": [
+      "title"
+    ],
+    "reviewButtons": [
+      "previous",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.lunar.2x1",
+    "folder": "lunar-2x1",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-1x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 2,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      608,
+      616,
+      497,
+      286
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械农历 2×1",
+    "runtimePlate": true,
+    "regions": {
+      "title": [
+        0.09,
+        0.66,
+        0.32,
+        0.12
+      ],
+      "day": [
+        0.08,
+        0.17,
+        0.36,
+        0.45
+      ],
+      "lunar": [
+        0.49,
+        0.24,
+        0.43,
+        0.26
+      ],
+      "festival": [
+        0.5,
+        0.61,
+        0.4,
+        0.12
+      ],
+      "surface0": [
+        0.07,
+        0.13,
+        0.86,
+        0.75
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/lunar-2x1/body.png",
+    "artSha256": "513e1eba4102615e84937913313439a2282a223d4a7db8f3861be868661d4c32",
+    "approvedCrop": [
+      608,
+      616,
+      497,
+      286
+    ],
+    "reviewText": [
+      "title",
+      "day",
+      "lunar"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.lunar.2x2",
+    "folder": "lunar-2x2",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 6,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1143,
+      519,
+      328,
+      439
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械农历 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "title": [
+        0.22,
+        0.1,
+        0.57,
+        0.09
+      ],
+      "weekday": [
+        0.34,
+        0.405,
+        0.32,
+        0.06
+      ],
+      "day": [
+        0.17,
+        0.19,
+        0.65,
+        0.19
+      ],
+      "lunar": [
+        0.1,
+        0.47,
+        0.8,
+        0.17
+      ],
+      "festival": [
+        0.12,
+        0.74,
+        0.76,
+        0.12
+      ],
+      "surface0": [
+        0.1,
+        0.06,
+        0.8,
+        0.85
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-02-time-calendar.art.png",
+    "art": "plugins/redline-desk/assets/lunar-2x2/body.png",
+    "artSha256": "513e1eba4102615e84937913313439a2282a223d4a7db8f3861be868661d4c32",
+    "approvedCrop": [
+      1143,
+      519,
+      328,
+      439
+    ],
+    "reviewText": [
+      "title",
+      "day",
+      "weekday",
+      "lunar"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.lunar.4x4",
+    "folder": "lunar-4x4",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+    "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 4,
+    "columns": 4,
+    "board": 3,
+    "slot": 1,
+    "imageSize": [
+      1129,
+      1393
+    ],
+    "crop": [
+      37,
+      720,
+      629,
+      641
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械农历 4×4",
+    "runtimePlate": true,
+    "regions": {
+      "body": [
+        0.075,
+        0.245,
+        0.85,
+        0.69
+      ],
+      "title": [
+        0.24,
+        0.25,
+        0.46,
+        0.065
+      ],
+      "previous": [
+        0.08,
+        0.25,
+        0.07,
+        0.065
+      ],
+      "next": [
+        0.86,
+        0.25,
+        0.07,
+        0.065
+      ],
+      "weekdays": [
+        0.1,
+        0.325,
+        0.8,
+        0.055
+      ],
+      "grid": [
+        0.1,
+        0.38,
+        0.8,
+        0.48
+      ],
+      "festival": [
+        0.22,
+        0.87,
+        0.56,
+        0.045
+      ],
+      "today": [
+        0.72,
+        0.25,
+        0.12,
+        0.065
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-core.art.png",
+    "art": "plugins/redline-desk/assets/lunar-4x4/body.png",
+    "artSha256": "ef410cd577c21029860439efaed37414147c723f0eb38df8a5ea17415e0fb95d",
+    "approvedCrop": [
+      37,
+      720,
+      629,
+      641
+    ],
+    "reviewText": [
+      "title",
+      "today"
+    ],
+    "reviewButtons": [
+      "previous",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.weather.2x1",
+    "folder": "weather-2x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      515,
+      215,
+      493,
+      216
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械天气 2×1",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.59,
+        0.26,
+        0.29,
+        0.12
+      ],
+      "temperature": [
+        0.36,
+        0.36,
+        0.28,
+        0.43
+      ],
+      "condition": [
+        0.66,
+        0.45,
+        0.25,
+        0.15
+      ],
+      "icon": [
+        0.08,
+        0.21,
+        0.29,
+        0.55
+      ],
+      "surface0": [
+        0.35,
+        0.16,
+        0.6,
+        0.73
+      ],
+      "surface1": [
+        0.05,
+        0.12,
+        0.3,
+        0.7
+      ],
+      "range": [
+        0.64,
+        0.68,
+        0.27,
+        0.12
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-03-calendar-weather-air.art.png",
+    "art": "plugins/redline-desk/assets/weather-2x1/body.png",
+    "artSha256": "08c2b16df4647f75ee6cd4fff921a48ee00953437ae4035f386c3f7a7984fd0f",
+    "approvedCrop": [
+      515,
+      215,
+      493,
+      216
+    ],
+    "reviewText": [
+      "city",
+      "temperature",
+      "condition",
+      "range"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.weather.4x1",
+    "folder": "weather-4x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 3,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      77,
+      571,
+      870,
+      195
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械天气 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.22,
+        0.23,
+        0.18,
+        0.16
+      ],
+      "temperature": [
+        0.22,
+        0.43,
+        0.18,
+        0.37
+      ],
+      "icon": [
+        0.07,
+        0.23,
+        0.14,
+        0.52
+      ],
+      "forecast0": [
+        0.6,
+        0.24,
+        0.1,
+        0.56
+      ],
+      "forecast1": [
+        0.72,
+        0.24,
+        0.1,
+        0.56
+      ],
+      "forecast2": [
+        0.84,
+        0.24,
+        0.1,
+        0.56
+      ],
+      "surface0": [
+        0.055,
+        0.16,
+        0.89,
+        0.76
+      ],
+      "range": [
+        0.41,
+        0.46,
+        0.16,
+        0.21
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-strips.art.png",
+    "art": "plugins/redline-desk/assets/weather-4x1/body.png",
+    "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+    "approvedCrop": [
+      77,
+      571,
+      870,
+      195
+    ],
+    "reviewText": [
+      "city",
+      "temperature",
+      "range"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.weather.4x2",
+    "folder": "weather-4x2",
+    "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 3,
+    "slot": 4,
+    "imageSize": [
+      1605,
+      980
+    ],
+    "crop": [
+      39,
+      81,
+      1537,
+      837
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械天气 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.34,
+        0.57,
+        0.13,
+        0.07
+      ],
+      "temperature": [
+        0.34,
+        0.28,
+        0.21,
+        0.28
+      ],
+      "condition": [
+        0.53,
+        0.57,
+        0.12,
+        0.07
+      ],
+      "icon": [
+        0.1,
+        0.145,
+        0.215,
+        0.37
+      ],
+      "humidity": [
+        0.66,
+        0.36,
+        0.13,
+        0.07
+      ],
+      "wind": [
+        0.66,
+        0.49,
+        0.13,
+        0.065
+      ],
+      "humidityIcon": [
+        0.59,
+        0.36,
+        0.05,
+        0.07
+      ],
+      "windIcon": [
+        0.59,
+        0.49,
+        0.05,
+        0.065
+      ],
+      "humidityLabel": [
+        0.66,
+        0.29,
+        0.13,
+        0.06
+      ],
+      "windLabel": [
+        0.66,
+        0.435,
+        0.13,
+        0.05
+      ],
+      "forecast0": [
+        0.39,
+        0.68,
+        0.17,
+        0.2
+      ],
+      "forecast1": [
+        0.58,
+        0.68,
+        0.17,
+        0.2
+      ],
+      "forecast2": [
+        0.77,
+        0.68,
+        0.17,
+        0.2
+      ],
+      "range": [
+        0.66,
+        0.56,
+        0.13,
+        0.065
+      ],
+      "conditionIcon": [
+        0.475,
+        0.555,
+        0.04,
+        0.08
+      ]
+    },
+    "approvedArt": "plugins/redline-desk/assets/weather-4x2/body.png",
+    "art": "plugins/redline-desk/assets/weather-4x2/body.png",
+    "artSha256": "899de85ef718a2622420b6f2eba301a5f99191535479d01c19a223a64a353624",
+    "approvedCrop": [
+      39,
+      81,
+      1537,
+      837
+    ],
+    "reviewText": [
+      "city",
+      "temperature",
+      "condition",
+      "humidity",
+      "wind",
+      "humidityLabel",
+      "windLabel",
+      "range"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": [
+      "humidityIcon",
+      "windIcon",
+      "conditionIcon"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.redline.air.2x1",
+    "folder": "air-2x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      605,
+      676,
+      403,
+      213
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械空气质量 2×1",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.1,
+        0.15,
+        0.3,
+        0.15
+      ],
+      "aqiLabel": [
+        0.1,
+        0.36,
+        0.08,
+        0.12
+      ],
+      "aqi": [
+        0.19,
+        0.42,
+        0.28,
+        0.38
+      ],
+      "quality": [
+        0.48,
+        0.56,
+        0.12,
+        0.2
+      ],
+      "pm25Label": [
+        0.7,
+        0.28,
+        0.19,
+        0.12
+      ],
+      "pm25": [
+        0.7,
+        0.48,
+        0.19,
+        0.31
+      ],
+      "progress0": [
+        0.16,
+        0.84,
+        0.39,
+        0.04
+      ],
+      "progress1": [
+        0.69,
+        0.84,
+        0.2,
+        0.04
+      ],
+      "surface0": [
+        0.08,
+        0.14,
+        0.83,
+        0.75
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-03-calendar-weather-air.art.png",
+    "art": "plugins/redline-desk/assets/air-2x1/body.png",
+    "artSha256": "08c2b16df4647f75ee6cd4fff921a48ee00953437ae4035f386c3f7a7984fd0f",
+    "approvedCrop": [
+      605,
+      676,
+      403,
+      213
+    ],
+    "reviewText": [
+      "city",
+      "aqi",
+      "aqiLabel",
+      "pm25",
+      "pm25Label"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.air.4x1",
+    "folder": "air-4x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/air-1x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 6,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1037,
+      720,
+      479,
+      128
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械空气质量 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.06,
+        0.2,
+        0.23,
+        0.17
+      ],
+      "aqiLabel": [
+        0.06,
+        0.43,
+        0.065,
+        0.15
+      ],
+      "aqi": [
+        0.14,
+        0.4,
+        0.17,
+        0.41
+      ],
+      "quality": [
+        0.32,
+        0.53,
+        0.06,
+        0.2
+      ],
+      "pm25Label": [
+        0.41,
+        0.22,
+        0.15,
+        0.13
+      ],
+      "pm25": [
+        0.42,
+        0.46,
+        0.14,
+        0.34
+      ],
+      "pm10Label": [
+        0.62,
+        0.22,
+        0.15,
+        0.13
+      ],
+      "pm10": [
+        0.63,
+        0.46,
+        0.14,
+        0.34
+      ],
+      "progress0": [
+        0.12,
+        0.84,
+        0.23,
+        0.035
+      ],
+      "progress1": [
+        0.42,
+        0.84,
+        0.14,
+        0.035
+      ],
+      "progress2": [
+        0.63,
+        0.84,
+        0.14,
+        0.035
+      ],
+      "surface0": [
+        0.06,
+        0.14,
+        0.88,
+        0.73
+      ],
+      "ozone": [
+        0.83,
+        0.46,
+        0.1,
+        0.34
+      ],
+      "ozoneLabel": [
+        0.83,
+        0.22,
+        0.1,
+        0.13
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-03-calendar-weather-air.art.png",
+    "art": "plugins/redline-desk/assets/air-4x1/body.png",
+    "artSha256": "08c2b16df4647f75ee6cd4fff921a48ee00953437ae4035f386c3f7a7984fd0f",
+    "approvedCrop": [
+      1037,
+      720,
+      479,
+      128
+    ],
+    "reviewText": [
+      "city",
+      "aqi",
+      "aqiLabel",
+      "pm25",
+      "pm10",
+      "ozone",
+      "pm25Label",
+      "pm10Label",
+      "ozoneLabel"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.air.4x2",
+    "folder": "air-4x2",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/air-2x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 4,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      57,
+      539,
+      915,
+      475
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械空气质量 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "city": [
+        0.24,
+        0.35,
+        0.24,
+        0.1
+      ],
+      "aqiLabel": [
+        0.27,
+        0.45,
+        0.18,
+        0.07
+      ],
+      "aqi": [
+        0.27,
+        0.53,
+        0.18,
+        0.27
+      ],
+      "quality": [
+        0.29,
+        0.82,
+        0.13,
+        0.07
+      ],
+      "pm25Label": [
+        0.48,
+        0.46,
+        0.12,
+        0.08
+      ],
+      "pm25": [
+        0.49,
+        0.56,
+        0.1,
+        0.22
+      ],
+      "pm10Label": [
+        0.64,
+        0.46,
+        0.12,
+        0.08
+      ],
+      "pm10": [
+        0.65,
+        0.56,
+        0.1,
+        0.22
+      ],
+      "progress0": [
+        0.24,
+        0.91,
+        0.24,
+        0.025
+      ],
+      "progress1": [
+        0.51,
+        0.86,
+        0.12,
+        0.025
+      ],
+      "progress2": [
+        0.69,
+        0.86,
+        0.12,
+        0.025
+      ],
+      "surface0": [
+        0.23,
+        0.34,
+        0.7,
+        0.59
+      ],
+      "ozoneLabel": [
+        0.8,
+        0.46,
+        0.1,
+        0.08
+      ],
+      "ozone": [
+        0.8,
+        0.56,
+        0.1,
+        0.22
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-details.art.png",
+    "art": "plugins/redline-desk/assets/air-4x2/body.png",
+    "artSha256": "d067e053ac91a0a0366fae46ea5de89e3b3c1755814652e558a1e3db1cb14c85",
+    "approvedCrop": [
+      57,
+      539,
+      915,
+      475
+    ],
+    "reviewText": [
+      "city",
+      "aqi",
+      "aqiLabel",
+      "pm25",
+      "pm10",
+      "ozone",
+      "pm25Label",
+      "pm10Label",
+      "ozoneLabel"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.monitor.1x1",
+    "folder": "monitor-1x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 4,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      662,
+      119,
+      252,
+      310
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械系统监控 1×1",
+    "runtimePlate": true,
+    "regions": {
+      "gauge0": [
+        0.12,
+        0.16,
+        0.76,
+        0.67
+      ],
+      "surface0": [
+        0.12,
+        0.14,
+        0.78,
+        0.74
+      ],
+      "gauge0Title": [
+        0.1352,
+        0.16,
+        0.6232,
+        0.1474
+      ],
+      "gauge0Value": [
+        0.1352,
+        0.31410000000000005,
+        0.6232,
+        0.3886
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+    "art": "plugins/redline-desk/assets/monitor-1x1/body.png",
+    "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+    "approvedCrop": [
+      662,
+      119,
+      252,
+      310
+    ],
+    "reviewText": [
+      "gauge0Title",
+      "gauge0Value"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.monitor.2x1",
+    "folder": "monitor-2x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 4,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      967,
+      195,
+      549,
+      238
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械系统监控 2×1",
+    "runtimePlate": true,
+    "regions": {
+      "gauge0": [
+        0.1,
+        0.19,
+        0.38,
+        0.61
+      ],
+      "gauge1": [
+        0.53,
+        0.19,
+        0.37,
+        0.61
+      ],
+      "surface0": [
+        0.07,
+        0.16,
+        0.86,
+        0.75
+      ],
+      "gauge0Title": [
+        0.1076,
+        0.19,
+        0.3116,
+        0.13419999999999999
+      ],
+      "gauge0Value": [
+        0.1076,
+        0.33030000000000004,
+        0.3116,
+        0.35379999999999995
+      ],
+      "gauge1Title": [
+        0.5374,
+        0.19,
+        0.3034,
+        0.13419999999999999
+      ],
+      "gauge1Value": [
+        0.5374,
+        0.33030000000000004,
+        0.3034,
+        0.35379999999999995
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+    "art": "plugins/redline-desk/assets/monitor-2x1/body.png",
+    "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+    "approvedCrop": [
+      967,
+      195,
+      549,
+      238
+    ],
+    "reviewText": [
+      "gauge0Title",
+      "gauge0Value",
+      "gauge1Title",
+      "gauge1Value"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.monitor.4x1",
+    "folder": "monitor-4x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 4,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      24,
+      709,
+      589,
+      164
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械系统监控 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "gauge0": [
+        0.055,
+        0.18,
+        0.21,
+        0.63
+      ],
+      "gauge1": [
+        0.285,
+        0.18,
+        0.21,
+        0.63
+      ],
+      "gauge2": [
+        0.515,
+        0.18,
+        0.21,
+        0.63
+      ],
+      "gauge3": [
+        0.745,
+        0.18,
+        0.2,
+        0.63
+      ],
+      "surface0": [
+        0.05,
+        0.16,
+        0.9,
+        0.7
+      ],
+      "gauge0Title": [
+        0.0592,
+        0.18,
+        0.1722,
+        0.1386
+      ],
+      "gauge0Value": [
+        0.0592,
+        0.32489999999999997,
+        0.1722,
+        0.3654
+      ],
+      "gauge1Title": [
+        0.28919999999999996,
+        0.18,
+        0.1722,
+        0.1386
+      ],
+      "gauge1Value": [
+        0.28919999999999996,
+        0.32489999999999997,
+        0.1722,
+        0.3654
+      ],
+      "gauge2Title": [
+        0.5192,
+        0.18,
+        0.1722,
+        0.1386
+      ],
+      "gauge2Value": [
+        0.5192,
+        0.32489999999999997,
+        0.1722,
+        0.3654
+      ],
+      "gauge3Title": [
+        0.749,
+        0.18,
+        0.164,
+        0.1386
+      ],
+      "gauge3Value": [
+        0.749,
+        0.32489999999999997,
+        0.164,
+        0.3654
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+    "art": "plugins/redline-desk/assets/monitor-4x1/body.png",
+    "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+    "approvedCrop": [
+      24,
+      709,
+      589,
+      164
+    ],
+    "reviewText": [
+      "gauge0Title",
+      "gauge0Value",
+      "gauge1Title",
+      "gauge1Value",
+      "gauge2Title",
+      "gauge2Value",
+      "gauge3Title",
+      "gauge3Value"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.monitor.2x2",
+    "folder": "monitor-2x2",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 4,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      629,
+      502,
+      310,
+      413
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械系统监控 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "gauge0": [
+        0.14,
+        0.1,
+        0.73,
+        0.44
+      ],
+      "gauge1": [
+        0.14,
+        0.61,
+        0.23,
+        0.23
+      ],
+      "gauge2": [
+        0.4,
+        0.61,
+        0.23,
+        0.23
+      ],
+      "gauge3": [
+        0.66,
+        0.61,
+        0.23,
+        0.23
+      ],
+      "surface0": [
+        0.12,
+        0.055,
+        0.81,
+        0.865
+      ],
+      "gauge0Title": [
+        0.15460000000000002,
+        0.1,
+        0.5985999999999999,
+        0.0968
+      ],
+      "gauge0Value": [
+        0.15460000000000002,
+        0.2012,
+        0.5985999999999999,
+        0.2552
+      ],
+      "gauge1Title": [
+        0.1446,
+        0.61,
+        0.1886,
+        0.0506
+      ],
+      "gauge1Value": [
+        0.1446,
+        0.6629,
+        0.1886,
+        0.1334
+      ],
+      "gauge2Title": [
+        0.4046,
+        0.61,
+        0.1886,
+        0.0506
+      ],
+      "gauge2Value": [
+        0.4046,
+        0.6629,
+        0.1886,
+        0.1334
+      ],
+      "gauge3Title": [
+        0.6646000000000001,
+        0.61,
+        0.1886,
+        0.0506
+      ],
+      "gauge3Value": [
+        0.6646000000000001,
+        0.6629,
+        0.1886,
+        0.1334
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+    "art": "plugins/redline-desk/assets/monitor-2x2/body.png",
+    "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+    "approvedCrop": [
+      629,
+      502,
+      310,
+      413
+    ],
+    "reviewText": [
+      "gauge0Title",
+      "gauge0Value",
+      "gauge1Title",
+      "gauge1Value",
+      "gauge2Title",
+      "gauge2Value",
+      "gauge3Title",
+      "gauge3Value"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.network.4x1",
+    "folder": "network-4x1",
+    "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+    "family": "productivity",
+    "kind": 3,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 6,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      106,
+      814,
+      813,
+      203
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械网速 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "down": [
+        0.18,
+        0.3,
+        0.25,
+        0.31
+      ],
+      "up": [
+        0.65,
+        0.3,
+        0.25,
+        0.31
+      ],
+      "downIcon": [
+        0.1,
+        0.31,
+        0.06,
+        0.27
+      ],
+      "upIcon": [
+        0.57,
+        0.31,
+        0.06,
+        0.27
+      ],
+      "downHistory": [
+        0.1,
+        0.69,
+        0.39,
+        0.13
+      ],
+      "upHistory": [
+        0.56,
+        0.69,
+        0.36,
+        0.13
+      ],
+      "surface0": [
+        0.07,
+        0.24,
+        0.86,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-strips.art.png",
+    "art": "plugins/redline-desk/assets/network-4x1/body.png",
+    "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+    "approvedCrop": [
+      106,
+      814,
+      813,
+      203
+    ],
+    "reviewText": [
+      "down",
+      "up"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": [
+      "downIcon",
+      "upIcon"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.redline.disk.2x2",
+    "folder": "disk-2x2",
+    "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 4,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      49,
+      100,
+      379,
+      391
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械磁盘 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "title": [
+        0.29,
+        0.15,
+        0.45,
+        0.09
+      ],
+      "usage": [
+        0.15,
+        0.3,
+        0.7,
+        0.2
+      ],
+      "total": [
+        0.15,
+        0.52,
+        0.7,
+        0.075
+      ],
+      "free": [
+        0.44,
+        0.76,
+        0.41,
+        0.07
+      ],
+      "surface0": [
+        0.08,
+        0.15,
+        0.84,
+        0.73
+      ],
+      "driveIcon": [
+        0.15,
+        0.15,
+        0.1,
+        0.09
+      ],
+      "capacity": [
+        0.15,
+        0.66,
+        0.7,
+        0.06
+      ],
+      "percent": [
+        0.15,
+        0.76,
+        0.28,
+        0.07
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+    "art": "plugins/redline-desk/assets/disk-2x2/body.png",
+    "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+    "approvedCrop": [
+      49,
+      100,
+      379,
+      391
+    ],
+    "reviewText": [
+      "title",
+      "usage",
+      "total",
+      "free",
+      "percent"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.input.4x1",
+    "folder": "input-4x1",
+    "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 8,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      474,
+      254,
+      532,
+      141
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械键鼠计数 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "keyboard": [
+        0.17,
+        0.26,
+        0.22,
+        0.35
+      ],
+      "mouse": [
+        0.5,
+        0.26,
+        0.22,
+        0.35
+      ],
+      "keyboardIcon": [
+        0.06,
+        0.3,
+        0.09,
+        0.31
+      ],
+      "mouseIcon": [
+        0.41,
+        0.3,
+        0.07,
+        0.31
+      ],
+      "surface0": [
+        0.055,
+        0.25,
+        0.88,
+        0.62
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+    "art": "plugins/redline-desk/assets/input-4x1/body.png",
+    "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+    "approvedCrop": [
+      474,
+      254,
+      532,
+      141
+    ],
+    "reviewText": [
+      "keyboard",
+      "mouse"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": [
+      "keyboardIcon",
+      "mouseIcon"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.redline.album.4x2",
+    "folder": "album-4x2",
+    "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 3,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1041,
+      162,
+      475,
+      295
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械相册 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "photo": [
+        0.055,
+        0.105,
+        0.89,
+        0.7
+      ],
+      "previous": [
+        0.13,
+        0.84,
+        0.12,
+        0.1
+      ],
+      "next": [
+        0.47,
+        0.84,
+        0.12,
+        0.1
+      ],
+      "toggle": [
+        0.3,
+        0.84,
+        0.12,
+        0.1
+      ],
+      "surface0": [
+        0.1,
+        0.82,
+        0.82,
+        0.12
+      ],
+      "counter": [
+        0.65,
+        0.84,
+        0.23,
+        0.1
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+    "art": "plugins/redline-desk/assets/album-4x2/body.png",
+    "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+    "approvedCrop": [
+      1041,
+      162,
+      475,
+      295
+    ],
+    "reviewText": [
+      "counter"
+    ],
+    "reviewButtons": [
+      "previous",
+      "toggle",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.player.4x1",
+    "folder": "player-4x1",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 4,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      27,
+      699,
+      535,
+      143
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械音乐控制 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "cover": [
+        0.05,
+        0.16,
+        0.17,
+        0.66
+      ],
+      "title": [
+        0.28,
+        0.25,
+        0.3,
+        0.25
+      ],
+      "progress": [
+        0.28,
+        0.65,
+        0.3,
+        0.06
+      ],
+      "previous": [
+        0.63,
+        0.39,
+        0.08,
+        0.36
+      ],
+      "toggle": [
+        0.75,
+        0.39,
+        0.08,
+        0.36
+      ],
+      "next": [
+        0.87,
+        0.39,
+        0.08,
+        0.36
+      ],
+      "surface0": [
+        0.26,
+        0.22,
+        0.68,
+        0.57
+      ],
+      "artist": [
+        0.28,
+        0.52,
+        0.3,
+        0.09
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+    "art": "plugins/redline-desk/assets/player-4x1/body.png",
+    "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+    "approvedCrop": [
+      27,
+      699,
+      535,
+      143
+    ],
+    "reviewText": [
+      "title",
+      "artist"
+    ],
+    "reviewButtons": [
+      "previous",
+      "toggle",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.player.2x2",
+    "folder": "player-2x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/player-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      609,
+      508,
+      318,
+      416
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械音乐控制 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "cover": [
+        0.13,
+        0.08,
+        0.74,
+        0.51
+      ],
+      "title": [
+        0.12,
+        0.6,
+        0.76,
+        0.07
+      ],
+      "progress": [
+        0.12,
+        0.88,
+        0.76,
+        0.025
+      ],
+      "previous": [
+        0.2,
+        0.73,
+        0.16,
+        0.1
+      ],
+      "toggle": [
+        0.42,
+        0.73,
+        0.16,
+        0.1
+      ],
+      "next": [
+        0.65,
+        0.73,
+        0.16,
+        0.1
+      ],
+      "surface0": [
+        0.12,
+        0.59,
+        0.76,
+        0.33
+      ],
+      "artist": [
+        0.12,
+        0.68,
+        0.76,
+        0.04
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+    "art": "plugins/redline-desk/assets/player-2x2/body.png",
+    "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+    "approvedCrop": [
+      609,
+      508,
+      318,
+      416
+    ],
+    "reviewText": [
+      "title",
+      "artist"
+    ],
+    "reviewButtons": [
+      "previous",
+      "toggle",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.player.4x2",
+    "folder": "player-4x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 6,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      51,
+      1032,
+      921,
+      463
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械音乐控制 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "cover": [
+        0.45,
+        0.25,
+        0.17,
+        0.37
+      ],
+      "title": [
+        0.65,
+        0.32,
+        0.28,
+        0.13
+      ],
+      "progress": [
+        0.45,
+        0.64,
+        0.48,
+        0.035
+      ],
+      "previous": [
+        0.47,
+        0.76,
+        0.14,
+        0.14
+      ],
+      "toggle": [
+        0.62,
+        0.76,
+        0.14,
+        0.14
+      ],
+      "next": [
+        0.77,
+        0.76,
+        0.14,
+        0.14
+      ],
+      "surface0": [
+        0.415,
+        0.275,
+        0.55,
+        0.645
+      ],
+      "artist": [
+        0.65,
+        0.49,
+        0.28,
+        0.09
+      ],
+      "recordCircle": [
+        0.04125950054288816,
+        0.0755939524838013,
+        0.3474484256243214,
+        0.755939524838013
+      ],
+      "cutoutRecordCircle": [
+        0.04125950054288816,
+        0.0755939524838013,
+        0.3474484256243214,
+        0.755939524838013
+      ],
+      "recordLabel": [
+        0.14115092290988057,
+        0.2958963282937365,
+        0.1769815418023887,
+        0.37365010799136067
+      ],
+      "tonearmCover": [
+        0.23235613463626492,
+        0,
+        0.14115092290988057,
+        0.326133909287257
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-details.art.png",
+    "art": "plugins/redline-desk/assets/player-4x2/body.png",
+    "artSha256": "d067e053ac91a0a0366fae46ea5de89e3b3c1755814652e558a1e3db1cb14c85",
+    "approvedCrop": [
+      51,
+      1032,
+      921,
+      463
+    ],
+    "reviewText": [
+      "title",
+      "artist"
+    ],
+    "reviewButtons": [
+      "previous",
+      "toggle",
+      "next"
+    ],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.square.4x1",
+    "folder": "music-square-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      256,
+      119,
+      510,
+      120
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械方点阵频谱 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.055,
+        0.25,
+        0.89,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-06-dot-matrix-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-square-4x1/body.png",
+    "artSha256": "aca3cb98b89021611845866e7fb3f87cfae76ee6fba02748b0a1584aa854d2eb",
+    "approvedCrop": [
+      256,
+      119,
+      510,
+      120
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.round.4x1",
+    "folder": "music-round-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 2,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      256,
+      335,
+      510,
+      126
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械圆点阵频谱 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.055,
+        0.25,
+        0.89,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-06-dot-matrix-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-round-4x1/body.png",
+    "artSha256": "aca3cb98b89021611845866e7fb3f87cfae76ee6fba02748b0a1584aa854d2eb",
+    "approvedCrop": [
+      256,
+      335,
+      510,
+      126
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.square.6x1",
+    "folder": "music-square-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 3,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      120,
+      560,
+      783,
+      141
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械方点阵频谱 6×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.055,
+        0.25,
+        0.89,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-06-dot-matrix-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-square-6x1/body.png",
+    "artSha256": "aca3cb98b89021611845866e7fb3f87cfae76ee6fba02748b0a1584aa854d2eb",
+    "approvedCrop": [
+      120,
+      560,
+      783,
+      141
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.round.6x1",
+    "folder": "music-round-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 4,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      120,
+      797,
+      783,
+      142
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械圆点阵频谱 6×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.055,
+        0.25,
+        0.89,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-06-dot-matrix-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-round-6x1/body.png",
+    "artSha256": "aca3cb98b89021611845866e7fb3f87cfae76ee6fba02748b0a1584aa854d2eb",
+    "approvedCrop": [
+      120,
+      797,
+      783,
+      142
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.square.8x1",
+    "folder": "music-square-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 5,
+    "imageSize": [
+      2115,
+      743
+    ],
+    "crop": [
+      29,
+      237,
+      2045,
+      119
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械方点阵频谱 8×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.025,
+        0.25,
+        0.95,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-long-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-square-8x1/body.png",
+    "artSha256": "5855593a53604dde4d2291d4f95d6e77982923ec8ef6b754242468351100ba59",
+    "approvedCrop": [
+      29,
+      237,
+      2045,
+      119
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.music.round.8x1",
+    "folder": "music-round-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 6,
+    "imageSize": [
+      2115,
+      743
+    ],
+    "crop": [
+      29,
+      466,
+      2044,
+      119
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械圆点阵频谱 8×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.025,
+        0.25,
+        0.95,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-long-spectra.art.png",
+    "art": "plugins/redline-desk/assets/music-round-8x1/body.png",
+    "artSha256": "5855593a53604dde4d2291d4f95d6e77982923ec8ef6b754242468351100ba59",
+    "approvedCrop": [
+      29,
+      466,
+      2044,
+      119
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      22,
+      225,
+      501,
+      122
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械柱状频谱 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.055,
+        0.3,
+        0.89,
+        0.49
+      ],
+      "motion": [
+        0.055,
+        0.3,
+        0.89,
+        0.49
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+    "art": "plugins/redline-desk/assets/spectrum-4x1/body.png",
+    "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+    "approvedCrop": [
+      22,
+      225,
+      501,
+      122
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.radial.2x2",
+    "folder": "radial-2x2",
+    "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 1,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      598,
+      69,
+      341,
+      380
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械环形频谱 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "plot": [
+        0.085,
+        0.09,
+        0.83,
+        0.82
+      ],
+      "hubCircle": [
+        0.36,
+        0.34,
+        0.28,
+        0.28
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+    "art": "plugins/redline-desk/assets/radial-2x2/body.png",
+    "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+    "approvedCrop": [
+      598,
+      69,
+      341,
+      380
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.beat.machine.4x2",
+    "folder": "beat-machine-4x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+    "source": "plugins/beat-machine/packages/4x2/plugin.textproto",
+    "family": "kinetic",
+    "kind": 2,
+    "rows": 2,
+    "columns": 4,
+    "board": 7,
+    "slot": 3,
+    "imageSize": [
+      1728,
+      910
+    ],
+    "crop": [
+      31,
+      12,
+      1628,
+      855
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 双锤击鼓器 4×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "drumFace0": [
+        0.147,
+        0.378,
+        0.286,
+        0.4
+      ],
+      "drumFace1": [
+        0.66,
+        0.48,
+        0.203,
+        0.316
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-percussion-4x2.art.png",
+    "art": "plugins/redline-desk/assets/beat-machine-4x2/body.png",
+    "artSha256": "a4f4ac6c0a3f6f2e540ac821b2c8f67c44e22e6b90e78777008ffbe91d4cc664",
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-1be4bcfb-61eb-4248-8426-f08ef30fec35.png",
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      34,
+      11,
+      1664,
+      870
+    ],
+    "hardware": {
+      "mallet": [
+        1168,
+        168,
+        243,
+        141
+      ],
+      "hat": [
+        33,
+        509,
+        405,
+        116
+      ]
+    },
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.beat.machine.6x2",
+    "folder": "beat-machine-6x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+    "source": "plugins/beat-machine/packages/6x2/plugin.textproto",
+    "family": "kinetic",
+    "kind": 3,
+    "rows": 2,
+    "columns": 6,
+    "board": 7,
+    "slot": 4,
+    "imageSize": [
+      1978,
+      795
+    ],
+    "crop": [
+      44,
+      23,
+      1868,
+      739
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械节奏鼓组 6×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "drumFace0": [
+        0.111,
+        0.341,
+        0.234,
+        0.514
+      ],
+      "drumFace1": [
+        0.472,
+        0.494,
+        0.184,
+        0.219
+      ]
+    },
+    "approvedArt": "design/redline-collection/normalized-percussion-6x2.art.png",
+    "art": "plugins/redline-desk/assets/beat-machine-6x2/body.png",
+    "artSha256": "985ac14f1a9b1f1d51e43316b50ba632f3fd5d4b99f9675849cd49d83afa8530",
+    "runtimeFixedLayer": true,
+    "fixedLayerSource": "exec-736ea809-93f7-4946-baf9-a41c7b32d80a.png",
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      43,
+      28,
+      1875,
+      727
+    ],
+    "hardware": {
+      "mallet": [
+        1168,
+        168,
+        243,
+        141
+      ],
+      "hat": [
+        33,
+        509,
+        405,
+        116
+      ]
+    },
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.wind.chime.2x2",
+    "folder": "wind-chime-2x2",
+    "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+    "source": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      602,
+      554,
+      334,
+      405
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械风铃 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.03,
+        0.1,
+        0.94,
+        0.9
+      ],
+      "cutoutChimes": [
+        0.03,
+        0.14,
+        0.94,
+        0.86
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+    "art": "plugins/redline-desk/assets/wind-chime-2x2/body.png",
+    "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+    "toyGeometry": {
+      "size": [
+        148,
+        170
+      ],
+      "anchors": [
+        [
+          25,
+          5
+        ],
+        [
+          74,
+          5
+        ],
+        [
+          123,
+          5
+        ]
+      ],
+      "bodies": [
+        [
+          25,
+          58,
+          28,
+          38
+        ],
+        [
+          74,
+          65,
+          30,
+          38
+        ],
+        [
+          123,
+          55,
+          26,
+          36
+        ]
+      ],
+      "tails": [
+        [
+          25,
+          151,
+          12,
+          31
+        ],
+        [
+          74,
+          154,
+          12,
+          31
+        ],
+        [
+          123,
+          149,
+          12,
+          31
+        ]
+      ]
+    },
+    "hardwareSize": [
+      1448,
+      1086
+    ],
+    "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+    "approvedCrop": [
+      602,
+      554,
+      334,
+      405
+    ],
+    "hardware": {
+      "chain": [
+        1259,
+        406,
+        56,
+        320
+      ],
+      "charm0": [
+        89,
+        740,
+        254,
+        301
+      ],
+      "charm1": [
+        473,
+        762,
+        226,
+        271
+      ],
+      "charm2": [
+        818,
+        745,
+        249,
+        296
+      ],
+      "tail": [
+        1238,
+        750,
+        96,
+        293
+      ]
+    },
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.split.flap.4x1",
+    "folder": "split-flap-4x1",
+    "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+    "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+    "family": "sign",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 6,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      976,
+      703,
+      543,
+      129
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械翻牌招牌 4×1",
+    "runtimePlate": true,
+    "regions": {
+      "world": [
+        0.055,
+        0.18,
+        0.91,
+        0.64
+      ],
+      "plot": [
+        0.08154943934760449,
+        0.1695906432748538,
+        0.835881753312946,
+        0.631578947368421
+      ],
+      "surface0": [
+        0.055,
+        0.18,
+        0.91,
+        0.64
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+    "art": "plugins/redline-desk/assets/split-flap-4x1/body.png",
+    "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+    "approvedCrop": [
+      976,
+      703,
+      543,
+      129
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+    "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 8,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      74,
+      46,
+      326,
+      429
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械沙漏 1×1",
+    "runtimePlate": true,
+    "regions": {
+      "glass": [
+        0.24,
+        0.13,
+        0.52,
+        0.69
+      ],
+      "cutoutGlass": [
+        0.24,
+        0.13,
+        0.52,
+        0.69
+      ],
+      "world": [
+        0.24,
+        0.13,
+        0.52,
+        0.69
+      ],
+      "flip": [
+        0.08,
+        0.1,
+        0.34,
+        0.78
+      ],
+      "toggle": [
+        0.44,
+        0.24,
+        0.45,
+        0.5
+      ],
+      "title": [
+        0.44,
+        0.24,
+        0.45,
+        0.5
+      ],
+      "progress": [
+        0.46,
+        0.79,
+        0.4,
+        0.05
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-08-timers.art.png",
+    "art": "plugins/redline-desk/assets/hourglass-1x1/body.png",
+    "artSha256": "3062ad2657124c705c8ec053b8d571cb6cba873c61bd21b0212a78839fc7e3ea",
+    "approvedCrop": [
+      74,
+      46,
+      326,
+      429
+    ],
+    "reviewText": [],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+    "source": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 8,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      475,
+      125,
+      580,
+      288
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械沙漏 2×1",
+    "runtimePlate": true,
+    "regions": {
+      "glass": [
+        0.12,
+        0.17,
+        0.24,
+        0.66
+      ],
+      "cutoutGlass": [
+        0.12,
+        0.17,
+        0.24,
+        0.66
+      ],
+      "world": [
+        0.14,
+        0.2,
+        0.21,
+        0.6
+      ],
+      "flip": [
+        0.08,
+        0.1,
+        0.34,
+        0.78
+      ],
+      "toggle": [
+        0.44,
+        0.24,
+        0.45,
+        0.5
+      ],
+      "title": [
+        0.44,
+        0.24,
+        0.45,
+        0.5
+      ],
+      "progress": [
+        0.46,
+        0.79,
+        0.4,
+        0.05
+      ],
+      "surface0": [
+        0.42,
+        0.22,
+        0.5,
+        0.62
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-08-timers.art.png",
+    "art": "plugins/redline-desk/assets/hourglass-2x1/body.png",
+    "artSha256": "3062ad2657124c705c8ec053b8d571cb6cba873c61bd21b0212a78839fc7e3ea",
+    "approvedCrop": [
+      475,
+      125,
+      580,
+      288
+    ],
+    "reviewText": [
+      "title"
+    ],
+    "reviewButtons": [],
+    "reviewIcons": []
+  },
+  {
+    "id": "com.cyberdesktop.redline.timer.2x2",
+    "folder": "timer-2x2",
+    "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 8,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1116,
+      37,
+      351,
+      443
+    ],
+    "minimumInset": 6,
+    "renderInset": 6.25,
+    "version": "1.0.0",
+    "tags": [
+      "RedLine"
+    ],
+    "name": "RedLine · 机械番茄钟 2×2",
+    "runtimePlate": true,
+    "regions": {
+      "gauge": [
+        0.14,
+        0.17,
+        0.72,
+        0.57
+      ],
+      "title": [
+        0.19,
+        0.355,
+        0.62,
+        0.2
+      ],
+      "toggle": [
+        0.12,
+        0.8,
+        0.23,
+        0.1
+      ],
+      "reset": [
+        0.4,
+        0.8,
+        0.23,
+        0.1
+      ],
+      "surface0": [
+        0.08,
+        0.1,
+        0.84,
+        0.82
+      ],
+      "phase": [
+        0.12,
+        0.11,
+        0.35,
+        0.08
+      ],
+      "round": [
+        0.57,
+        0.11,
+        0.3,
+        0.08
+      ],
+      "upcoming": [
+        0.65,
+        0.8,
+        0.23,
+        0.1
+      ]
+    },
+    "approvedArt": "design/redline-collection/grid-08-timers.art.png",
+    "art": "plugins/redline-desk/assets/timer-2x2/body.png",
+    "artSha256": "3062ad2657124c705c8ec053b8d571cb6cba873c61bd21b0212a78839fc7e3ea",
+    "approvedCrop": [
+      1116,
+      37,
+      351,
+      443
+    ],
+    "reviewText": [
+      "title",
+      "phase",
+      "round",
+      "upcoming"
+    ],
+    "reviewButtons": [
+      "toggle",
+      "reset"
+    ],
+    "reviewIcons": []
+  }
+]

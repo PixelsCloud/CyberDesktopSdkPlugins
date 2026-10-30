@@ -1,0 +1,15 @@
+{
+  "tool": "built-in imagegen",
+  "nativePixelsUnmodified": true,
+  "designSource": "design/mechanical-desk-suite/supplement-12.art.png",
+  "materials": [
+    {
+      "file": "body.png",
+      "sha256": "192e66749fa094775a2079f59002092c212d847e34c9e2b516992cb811f990c4"
+    },
+    {
+      "file": "water.png",
+      "sha256": "06183276e1f229ef7bf35e22e1ed16dcad5716a3839f70f83d6dee08e7c16d73"
+    }
+  ]
+}

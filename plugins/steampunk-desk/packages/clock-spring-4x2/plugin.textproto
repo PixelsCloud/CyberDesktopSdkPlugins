@@ -1,0 +1,84 @@
+id: "com.cyberdesktop.steamdesk.clock.spring.4x2"
+name: "蒸汽朋克弹簧数字时钟 4×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "CyberDesktop 蒸汽工坊；做旧黄铜、铜管、铸铁与搪瓷，保留实时服务和原有物理交互。"
+layouts {
+    id: "2x4"
+    name: "4×2（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+settings_page {
+    title: "蒸汽朋克弹簧数字时钟 4×2"
+    description: "显示时、分、秒，变化的数字每秒弹动；拖动数字牌，松手自然回弹。蒸汽朋克零件独立运动，支持暂停和减少动态。"
+    fields {
+        id: "speed"
+        label: "运动速度"
+        type: NUMBER
+        minimum: 0.25
+        maximum: 2
+        step: 0.05
+        number_default: 0.75
+        localized {
+            key: "en"
+            value { label: "Motion speed" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用摆动"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    fields {
+        id: "twelve_hour"
+        label: "12 小时制"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "12-hour time" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Pixel Spring Clock 4x2"
+            description: "HH:MM:SS with a bounce each second. Drag and release a digit card. Motion pauses while hidden."
+        }
+    }
+
+    fields { id: "text_color" label: "数字颜色" type: COLOR section: "配色" color_default: 4024549375 }
+    fields { id: "accent_color" label: "机架颜色" type: COLOR section: "配色" color_default: 2373476607 }
+}
+content_padding: 0
+preview: "preview.png"
+tags: "蒸汽朋克"
+tags: "时钟"
+tags: "互动"

@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.redline.radial.2x2",
+  "folder": "radial-2x2",
+  "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+  "family": "widget",
+  "kind": 1,
+  "rows": 2,
+  "columns": 2,
+  "board": 7,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    598,
+    69,
+    341,
+    380
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械环形频谱 2×2",
+  "runtimePlate": true,
+  "regions": {
+    "plot": [
+      0.085,
+      0.09,
+      0.83,
+      0.82
+    ],
+    "hubCircle": [
+      0.36,
+      0.34,
+      0.28,
+      0.28
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+  "art": "plugins/redline-desk/assets/radial-2x2/body.png",
+  "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+  "approvedCrop": [
+    598,
+    69,
+    341,
+    380
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

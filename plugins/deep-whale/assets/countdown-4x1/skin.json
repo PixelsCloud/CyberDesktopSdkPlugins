@@ -1,0 +1,65 @@
+{
+  "id": "com.cyberdesktop.deepwhale.countdown.4x1",
+  "folder": "countdown-4x1",
+  "sourceId": "com.cyberdesktop.countdown.1x4",
+  "source": "plugins/productivity-suite/packages/countdown-1x4/plugin.textproto",
+  "family": "productivity",
+  "kind": 2,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "title": [
+      124,
+      48,
+      146,
+      12
+    ],
+    "count": [
+      131,
+      61,
+      100,
+      20
+    ],
+    "unit": [
+      236,
+      66,
+      29,
+      14
+    ],
+    "target": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        5,
+        9,
+        2156,
+        684
+      ],
+      "destination": [
+        24.45313,
+        7,
+        271.0625,
+        86
+      ]
+    }
+  ],
+  "designUid": "b13-4",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    215
+  ]
+}

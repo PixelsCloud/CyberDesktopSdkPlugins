@@ -1,0 +1,376 @@
+[
+  {
+    "id": "com.cyberdesktop.systeminfo.mechanical.1x1",
+    "name": "机械系统监控 1×1",
+    "folder": "monitor-1x1",
+    "family": "monitor",
+    "suite": "system-info-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.systeminfo.mechanical.1x2",
+    "name": "机械系统监控 2×1",
+    "folder": "monitor-1x2",
+    "family": "monitor",
+    "suite": "system-info-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.systeminfo.mechanical.1x4",
+    "name": "机械系统监控 4×1",
+    "folder": "monitor-1x4",
+    "family": "monitor",
+    "suite": "system-info-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.systeminfo.mechanical.2x2",
+    "name": "机械系统监控 2×2",
+    "folder": "monitor-2x2",
+    "family": "monitor",
+    "suite": "system-info-suite",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.timer.mechanical.2x2",
+    "name": "机械番茄钟 2×2",
+    "folder": "timer-2x2",
+    "family": "timer",
+    "suite": "productivity-suite",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.3",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.network.mechanical.1x4",
+    "name": "机械网速 4×1",
+    "folder": "network-1x4",
+    "family": "network",
+    "suite": "productivity-suite",
+    "kind": 3,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.disk.mechanical.2x2",
+    "name": "机械磁盘 2×2",
+    "folder": "disk-2x2",
+    "family": "disk",
+    "suite": "productivity-suite",
+    "kind": 4,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.4",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.weather.mechanical.1x2",
+    "name": "机械天气 2×1",
+    "folder": "weather-1x2",
+    "family": "weather",
+    "suite": "weather-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "version": "1.0.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.weather.mechanical.1x4",
+    "name": "机械天气 4×1",
+    "folder": "weather-1x4",
+    "family": "weather",
+    "suite": "weather-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.weather.mechanical.2x4",
+    "name": "机械天气 4×2",
+    "folder": "weather-2x4",
+    "family": "weather",
+    "suite": "weather-suite",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.4",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.music.player.mechanical.1x4",
+    "name": "机械音乐控制 4×1",
+    "folder": "player-1x4",
+    "family": "player",
+    "suite": "widget-suite",
+    "kind": 7,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.3",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.music.player.mechanical.2x2",
+    "name": "机械音乐控制 2×2",
+    "folder": "player-2x2",
+    "family": "player",
+    "suite": "widget-suite",
+    "kind": 7,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.2",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.music.player.mechanical.2x4",
+    "name": "机械音乐控制 4×2",
+    "folder": "player-2x4",
+    "family": "player",
+    "suite": "widget-suite",
+    "kind": 7,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.8",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.airquality.mechanical.1x2",
+    "name": "机械空气质量 2×1",
+    "folder": "air-1x2",
+    "family": "air",
+    "suite": "air-quality-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "version": "1.0.1",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表",
+      "空气质量"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.airquality.mechanical.1x4",
+    "name": "机械空气质量 4×1",
+    "folder": "air-1x4",
+    "family": "air",
+    "suite": "air-quality-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.1",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表",
+      "空气质量"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.airquality.mechanical.2x4",
+    "name": "机械空气质量 4×2",
+    "folder": "air-2x4",
+    "family": "air",
+    "suite": "air-quality-suite",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.0",
+    "tags": [
+      "机械",
+      "金属",
+      "仪表",
+      "空气质量"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.music.radial.mechanical.2x2",
+    "name": "机械环形频谱 2×2",
+    "folder": "radial-2x2",
+    "family": "radial",
+    "suite": "widget-suite",
+    "kind": 1,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.0",
+    "tags": [
+      "机械",
+      "金属",
+      "频谱",
+      "音乐"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+    "name": "机械柱状频谱 4×1",
+    "folder": "spectrum-1x4",
+    "family": "spectrum",
+    "suite": "widget-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.4",
+    "tags": [
+      "机械",
+      "金属",
+      "频谱",
+      "音乐"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.album.mechanical.2x4",
+    "name": "机械相册 4×2",
+    "folder": "album-2x4",
+    "family": "album",
+    "suite": "widget-suite",
+    "kind": 3,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.2",
+    "tags": ["机械", "金属", "相册", "照片"]
+  },
+  {
+    "id": "com.cyberdesktop.input.stats.mechanical.1x4",
+    "name": "机械键鼠计数 4×1",
+    "folder": "input-1x4",
+    "family": "input",
+    "suite": "widget-suite",
+    "kind": 8,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.1",
+    "tags": [
+      "机械",
+      "金属",
+      "键盘",
+      "鼠标",
+      "计数"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+    "name": "机械农历 2×1",
+    "folder": "lunar-1x2",
+    "family": "lunar",
+    "suite": "lunar-suite",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "农历",
+      "日历"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+    "name": "机械农历 2×2",
+    "folder": "lunar-2x2",
+    "family": "lunar",
+    "suite": "lunar-suite",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "农历",
+      "日历"
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+    "name": "机械农历 4×4",
+    "folder": "lunar-4x4",
+    "family": "lunar",
+    "suite": "lunar-suite",
+    "kind": 0,
+    "rows": 4,
+    "columns": 4,
+    "version": "1.1.0",
+    "tags": [
+      "机械",
+      "金属",
+      "农历",
+      "日历"
+    ]
+  }
+]

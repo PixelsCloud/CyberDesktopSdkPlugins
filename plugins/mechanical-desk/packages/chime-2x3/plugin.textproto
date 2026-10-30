@@ -1,0 +1,83 @@
+id: "com.cyberdesktop.mechanicaldesk.chime.2x3"
+name: "机械悬挂风铃 2×3"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "精密机械独立组件；拉丝钢与黄铜结构，设置仅影响当前实例。"
+layouts {
+    id: "3x2"
+    name: "2×3（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 6 max_cells: 6 max_columns: 2 max_rows: 3 }
+settings_page {
+    title: "悬挂风铃 2×3"
+    description: "拖动挂件，松手自然回摆；双击轻拨。支持昼夜主题、透明背景、暂停和减少动态。"
+    fields {
+        id: "speed"
+        label: "运动速度"
+        type: NUMBER
+        minimum: 0.25
+        maximum: 2
+        step: 0.05
+        number_default: 0.75
+        localized {
+            key: "en"
+            value { label: "Motion speed" }
+        }
+    }
+    fields {
+        id: "wind"
+        label: "微风强度"
+        type: NUMBER
+        minimum: 0
+        maximum: 1
+        step: 0.05
+        number_default: 0.35
+        localized {
+            key: "en"
+            value { label: "Breeze strength" }
+        }
+    }
+
+    fields {
+        id: "running"
+        label: "启用摆动"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+
+    localized {
+        key: "en"
+        value {
+            title: "Wind Chime 3x2"
+            description: "Drag and release. Double-click to pluck. Motion pauses while hidden."
+        }
+    }
+}
+content_padding: 0
+preview: "preview.png"
+tags: "机械"
+tags: "精密机械"

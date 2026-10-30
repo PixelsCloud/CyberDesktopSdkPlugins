@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "female_cute_selfie_1",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "happy.png",
+      "tags": [
+        "selfie",
+        "happy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_cute_selfie_2",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "shy.png",
+      "tags": [
+        "selfie",
+        "shy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_cute_selfie_3",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "neutral.png",
+      "tags": [
+        "selfie",
+        "neutral"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_cute_travel",
+      "character_id": "female_cute",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_youth_selfie_1",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "happy.png",
+      "tags": [
+        "selfie",
+        "happy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_youth_selfie_2",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "shy.png",
+      "tags": [
+        "selfie",
+        "shy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_youth_selfie_3",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "neutral.png",
+      "tags": [
+        "selfie",
+        "neutral"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_youth_travel",
+      "character_id": "female_youth",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_elegant_selfie_1",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "happy.png",
+      "tags": [
+        "selfie",
+        "happy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_selfie_2",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "shy.png",
+      "tags": [
+        "selfie",
+        "shy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_selfie_3",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "neutral.png",
+      "tags": [
+        "selfie",
+        "neutral"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_travel",
+      "character_id": "female_elegant",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_married_selfie_1",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "happy.png",
+      "tags": [
+        "selfie",
+        "happy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_married_selfie_2",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "shy.png",
+      "tags": [
+        "selfie",
+        "shy"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_married_selfie_3",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "neutral.png",
+      "tags": [
+        "selfie",
+        "neutral"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_married_travel",
+      "character_id": "female_married",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    }
+  ]
+}

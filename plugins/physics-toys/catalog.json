@@ -1,0 +1,44 @@
+[
+  {
+    "id": "com.cyberdesktop.physics.windchime.2x2",
+    "folder": "chime-2x2",
+    "rows": 2,
+    "columns": 2
+  },
+  {
+    "id": "com.cyberdesktop.physics.windchime.3x2",
+    "folder": "chime-3x2",
+    "rows": 3,
+    "columns": 2
+  },
+  {
+    "id": "com.cyberdesktop.physics.springclock.2x4",
+    "folder": "clock-2x4",
+    "rows": 2,
+    "columns": 4
+  },
+  {
+    "id": "com.cyberdesktop.physics.springclock.1x4",
+    "folder": "clock-1x4",
+    "rows": 1,
+    "columns": 4
+  },
+  {
+    "id": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+    "folder": "mechanical-chime-2x2",
+    "rows": 2,
+    "columns": 2
+  },
+  {
+    "id": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+    "folder": "mechanical-clock-1x4",
+    "rows": 1,
+    "columns": 4
+  },
+  {
+    "id": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+    "folder": "mechanical-clock-2x4",
+    "rows": 2,
+    "columns": 4
+  }
+]

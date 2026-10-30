@@ -1,0 +1,84 @@
+{
+  "id": "com.cyberdesktop.deepwhale.album.4x2",
+  "folder": "album-4x2",
+  "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+  "family": "widget",
+  "kind": 3,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "photo": [
+      33.730927835051546,
+      51.294845360824745,
+      145.54020618556703,
+      95.30103092783506
+    ],
+    "previous": [
+      35,
+      154,
+      22,
+      14
+    ],
+    "next": [
+      91,
+      154,
+      22,
+      14
+    ],
+    "toggle": [
+      63,
+      154,
+      22,
+      14
+    ],
+    "counter": [
+      119,
+      154,
+      58,
+      14
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        8,
+        11,
+        1577,
+        970
+      ],
+      "destination": [
+        8.79688,
+        7,
+        302.39063,
+        186
+      ]
+    },
+    {
+      "name": "art-1",
+      "file": "art-1.png",
+      "source": [
+        15,
+        97,
+        490,
+        419
+      ],
+      "destination": [
+        50.76563,
+        51.28125,
+        111.4375,
+        95.29688
+      ]
+    }
+  ],
+  "designUid": "b05-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

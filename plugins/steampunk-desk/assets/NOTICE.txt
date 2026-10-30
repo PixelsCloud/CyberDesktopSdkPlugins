@@ -1,0 +1,4 @@
+CyberDesktop Steamworks artwork
+Original artwork generated for CyberDesktop from the approved Steamworks designs with the native image generation tool.
+Runtime data, text, emitters and moving physics parts are rendered independently.
+Source references, prompts and SHA-256 hashes accompany each asset.

@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-da50a947-1000-4c39-af04-02624ae24a3f.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    1612,
+    976
+  ],
+  "visibleBounds": [
+    64,
+    96,
+    1483,
+    783
+  ],
+  "purpose": "Empty photo frame only. Real unmodified user photo and public navigation icons are native runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "2e9f492e4030806ddee263b50564e7496a5817e7a748cc981e24a0ee583fca30"
+}

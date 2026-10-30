@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a13908-b313-7e50-9e54-5024f7f83857\\exec-09f35247-4b88-484a-b665-1e1ad85333f1.png",
+  "reference": "grid-08-timers.art.png",
+  "sha256": "c9ffe009c95b79ba96a7195d9ff64d01d6444bcba458899752edc344246b86b1",
+  "imageSize": [
+    343,
+    457
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    339,
+    453
+  ],
+  "sourceCrop": [
+    137,
+    511,
+    480,
+    968
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

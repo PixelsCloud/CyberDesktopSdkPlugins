@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.split.flap.4x1",
+  "folder": "split-flap-4x1",
+  "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+  "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+  "family": "sign",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 7,
+  "slot": 6,
+  "character": false,
+  "imageSize": [
+    1145,
+    1374
+  ],
+  "crop": [
+    6,
+    938,
+    1133,
+    167
+  ],
+  "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+  "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 翻牌招牌 4×1",
+  "regions": {
+    "plot": [
+      0.09532215357458076,
+      0.19161676646706588,
+      0.8111209179170344,
+      0.6347305389221557
+    ],
+    "world": [
+      0.09532215357458076,
+      0.19161676646706588,
+      0.8111209179170344,
+      0.6347305389221557
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+  "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

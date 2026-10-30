@@ -1,0 +1,68 @@
+{
+  "id": "com.cyberdesktop.deepwhale.timer.2x2",
+  "folder": "timer-2x2",
+  "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "title": [
+      58.95313,
+      100.26563,
+      64.57813,
+      26
+    ],
+    "toggle": [
+      63.75,
+      130.26563,
+      23,
+      23
+    ],
+    "reset": [
+      95.75,
+      130.26563,
+      23,
+      23
+    ],
+    "phase": [
+      59,
+      86,
+      65,
+      13
+    ],
+    "progress": [
+      60,
+      126.8,
+      63,
+      2.5
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        6,
+        13,
+        1109,
+        1374
+      ],
+      "destination": [
+        7,
+        12.10938,
+        146,
+        180.875
+      ]
+    }
+  ],
+  "designUid": "b08-3",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

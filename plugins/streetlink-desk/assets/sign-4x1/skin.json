@@ -1,0 +1,60 @@
+{
+  "folder": "split-flap-4x1",
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "world": [
+      48.31000000000001,
+      34.90340175953079,
+      224.91,
+      27.72844574780059
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        63,
+        160,
+        2046,
+        412
+      ],
+      "destination": [
+        7.0,
+        19.190615835777123,
+        306.0,
+        61.61876832844575
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "text": "STREETLINK"
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      47.392,
+      33.9791202346041,
+      227.05200000000002,
+      29.57700879765396
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 313.0,
+    "cuts": [
+      160.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

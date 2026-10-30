@@ -1,0 +1,7 @@
+CyberDesktop mechanical turntable casing.
+Generated using the built-in OpenAI image_gen tool from the user-approved project design.
+Body source: exec-cebab1ef-38cb-4347-a6e1-c6408909f6b0.png
+Approved composition: design/mechanical-player-4x1-complete.png
+arm.png and vinyl.png are shared unchanged with the approved 4x2 turntable.
+Software places, clips and rotates the original PNG materials and the live media cover; it does not redraw them.
+Functional icons use the host CyberGlass Lucide service and follow the bundled Lucide ISC license.

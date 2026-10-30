@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.air.2x1",
+  "folder": "air-2x1",
+  "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+  "family": "air",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 5,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    641,
+    688,
+    300,
+    289
+  ],
+  "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+  "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 空气质量 2×1",
+  "regions": {
+    "aqi": [
+      0.31333333333333335,
+      0.43252595155709345,
+      0.36666666666666664,
+      0.22837370242214533
+    ],
+    "city": [
+      0.3,
+      0.3356401384083045,
+      0.4,
+      0.10380622837370242
+    ],
+    "quality": [
+      0.31333333333333335,
+      0.6782006920415224,
+      0.36666666666666664,
+      0.12110726643598616
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+  "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

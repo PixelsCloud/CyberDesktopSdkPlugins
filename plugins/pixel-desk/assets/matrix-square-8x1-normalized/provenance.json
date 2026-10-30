@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a13908-b313-7e50-9e54-5024f7f83857\\exec-d60b20f2-1522-4866-b2e3-e7b4bb616aef.png",
+  "reference": "design/pixel-desk-suite/grid-06-dot-matrix-spectra.art.png",
+  "sha256": "88b411fe46646743d53b358efe384b7aaa529539c1a9f5d356c51f6e734b05c8",
+  "imageSize": [
+    976,
+    139
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    972,
+    135
+  ],
+  "sourceCrop": [
+    25,
+    1051,
+    1001,
+    1190
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

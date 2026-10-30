@@ -1,0 +1,42 @@
+[
+  {
+    "id": "com.cyberdesktop.plant.cartoon.1x1",
+    "folder": "plant-1x1",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "version": "1.0.1"
+  },
+  {
+    "id": "com.cyberdesktop.plant.cartoon.2x2",
+    "folder": "plant-2x2",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.1"
+  },
+  {
+    "id": "com.cyberdesktop.plant.cartoon.2x4",
+    "folder": "plant-2x4",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.1"
+  },
+  {
+    "id": "com.cyberdesktop.ambient.noise.1x2",
+    "folder": "noise-1x2",
+    "kind": 2,
+    "rows": 1,
+    "columns": 2,
+    "version": "1.0.11"
+  },
+  {
+    "id": "com.cyberdesktop.ambient.noise.2x4",
+    "folder": "noise-2x4",
+    "kind": 2,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.11"
+  }
+]

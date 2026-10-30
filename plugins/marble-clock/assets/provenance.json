@@ -1,0 +1,52 @@
+{
+  "generator": "OpenAI image_gen",
+  "styleReference": "design/mechanical-physics-precision-redesign.png",
+  "layout": "source collection; packages select exactly one independent chassis",
+  "files": [
+    {
+      "file": "chassis-4x2.png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 2297490,
+      "sha256": "4f010a37a627c06be4caa7fcd29bb4b02f094029b16e8e32ad17b88c729b154e",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-8bc1664e-1a76-4e8b-8462-14fb2f807040.png"
+    },
+    {
+      "file": "precision-gear.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1716567,
+      "sha256": "5cf5efc6a2a73b7e33ea43d26b72d4f0bd7d13ab7a9bb24822f435540734b61a",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-9671c2d6-ef8d-4ef4-8c83-dc06d989dc37.png"
+    },
+    {
+      "file": "clock-window.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1553218,
+      "sha256": "cb06c6dc05e2105541ff665988fece4f662ef80c17490f0b28fbac3046ca999e",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-a2fa34dd-ca0b-456d-a7bb-a27e37e30b70.png"
+    },
+    {
+      "file": "steel-marble.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1318995,
+      "sha256": "31aa8da08e8efa57c2edb5501d58b30974fc6eb27ac147749453dc3b0750d633",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-96ec5123-c617-41e4-a7cb-58bb0b50d435.png"
+    },
+    {
+      "file": "chassis-6x2.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2340569,
+      "sha256": "834fc8db72430d0c5bcfe511eaedb9f0c0ac02715823438366e657d90c065834",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-d53ded4a-c452-46b6-8c91-2765c38c0c55.png"
+    }
+  ]
+}

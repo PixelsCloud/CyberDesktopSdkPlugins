@@ -1,0 +1,14 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-c7ae2347-671d-4c73-ac72-fd90886d8c3e.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "purpose": "Native test and package-preview sample only. Not copied into the runtime plugin or displayed when no user photo is loaded.",
+  "imageSize": [
+    1672,
+    941
+  ],
+  "prompts": [
+    "preview-photo.prompt.txt"
+  ],
+  "sha256": "8d3494109607c7809be7464fe30618e2b4b472a1919f652b5d8bd35b5ae7301c"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.deepwhale.network.2x1",
+  "folder": "network-2x1",
+  "sourceId": "com.cyberdesktop.network.1x2",
+  "source": "plugins/productivity-suite/packages/network-1x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 3,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "down": [
+      52,
+      47,
+      73,
+      14
+    ],
+    "up": [
+      52,
+      62,
+      73,
+      14
+    ],
+    "downHistory": [
+      38,
+      79,
+      85,
+      3
+    ],
+    "upHistory": [
+      38,
+      79,
+      85,
+      3
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        25,
+        129,
+        1537,
+        718
+      ],
+      "destination": [
+        7,
+        24.79688,
+        146,
+        68.1875
+      ]
+    }
+  ],
+  "designUid": "b10-2",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "generator": "Approved image_gen design / unchanged alpha extraction",
+  "source": "design\\pixel-desk-suite\\supplement-10.art.png",
+  "reference": "design/pixel-desk-suite/supplement-10.art.png",
+  "sha256": "ec4dcc0b067a8d922026dde7ba6e0a8ef98daf1624abcc3aaf58fe73d283a094",
+  "imageSize": [
+    434,
+    232
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    430,
+    228
+  ],
+  "sourceCrop": [
+    1048,
+    114,
+    1482,
+    346
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

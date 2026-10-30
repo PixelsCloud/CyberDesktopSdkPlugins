@@ -1,0 +1,4 @@
+Mechanical album materials
+Generated with OpenAI image_gen from the user-approved mechanical album concept.
+Original PNG materials retained unchanged; runtime clips the frame and atlas regions.
+Live photos are supplied by the user. Functional icons use the host CyberGlass Lucide service.

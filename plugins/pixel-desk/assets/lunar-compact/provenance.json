@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-5506a222-c047-4999-b268-5dd9bffc0596.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1774,
+    887
+  ],
+  "visibleBounds": [
+    185,
+    113,
+    1405,
+    658
+  ],
+  "purpose": "Empty pixel tear-off paper, live Gregorian/lunar dates, festival, solar term and weekday rendered independently from existing lunar calendar core.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "3a1d687611021e7ad8b1e186d1a9f6aae5faddb4b7ce4a565163d3451bf8bf68"
+}

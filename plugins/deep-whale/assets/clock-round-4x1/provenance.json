@@ -1,0 +1,29 @@
+{
+  "uid": "b01-2",
+  "key": "clock-round-integrated",
+  "name": "月汐珍珠钟",
+  "file": "artwork/complete/clock-round-integrated.png",
+  "composition": "半身",
+  "expression": "俏皮眨眼",
+  "prompt": "artwork/complete/clock-revision-prompts.json",
+  "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-13742530-4967-4e2e-bca6-7cc3705628af.png",
+  "imageSize": [
+    2116,
+    743
+  ],
+  "bounds": [
+    10,
+    98,
+    2110,
+    706
+  ],
+  "sha256": "24ea54f4a4693a7b4084781de656e4f8436600ae8f9a573cf9235b980b239730",
+  "type": "integrated-clock-instrument",
+  "label": "月汐珍珠钟",
+  "faceSourceBox": [
+    320,
+    375,
+    1375,
+    588
+  ]
+}

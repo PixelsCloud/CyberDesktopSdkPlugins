@@ -1,0 +1,86 @@
+id: "com.cyberdesktop.hexclock"
+name: "Hex clock"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+preview: "preview.png"
+footprint_rules { topology: HEX min_cells: 1 max_cells: 64 max_columns: 16 max_rows: 16 }
+layouts {
+    id: "default"
+    name: "Default"
+    topology: HEX
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: -1 b: 1 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: -1 b: 2 }
+    cells { a: 0 b: 2 }
+    allowed_rotations: 0
+    is_default: true
+}
+settings_page {
+    localized {
+        key: "en"
+        value {
+            title: "Clock settings"
+            description: "Settings are saved separately for each instance. Select a font and language below."
+        }
+    }
+    title: "Hexclock settings"
+    description: "Settings are saved independently for this instance."
+    fields {
+        id: "date"
+        label: "Show date"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show date" section: "General" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "seconds"
+        label: "Show seconds"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Show seconds / second hand" section: "General" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        section: "外观"
+        type: FONT
+        max_length: 128
+        text_default: "@siyuan-heavy"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" description: "Affects only this instance." }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        section: "外观"
+        type: CHOICE
+        text_default: "zh-CN"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+        }
+        localized {
+            key: "en"
+            value { label: "Language" section: "Appearance" description: "Affects only this instance." }
+        }
+    }
+}

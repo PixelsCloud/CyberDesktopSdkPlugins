@@ -1,0 +1,91 @@
+{
+  "id": "com.cyberdesktop.redline.weather.2x1",
+  "folder": "weather-2x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 3,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    515,
+    215,
+    493,
+    216
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械天气 2×1",
+  "runtimePlate": true,
+  "regions": {
+    "city": [
+      0.59,
+      0.26,
+      0.29,
+      0.12
+    ],
+    "temperature": [
+      0.36,
+      0.36,
+      0.28,
+      0.43
+    ],
+    "condition": [
+      0.66,
+      0.45,
+      0.25,
+      0.15
+    ],
+    "icon": [
+      0.08,
+      0.21,
+      0.29,
+      0.55
+    ],
+    "surface0": [
+      0.35,
+      0.16,
+      0.6,
+      0.73
+    ],
+    "surface1": [
+      0.05,
+      0.12,
+      0.3,
+      0.7
+    ],
+    "range": [
+      0.64,
+      0.68,
+      0.27,
+      0.12
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-03-calendar-weather-air.art.png",
+  "art": "plugins/redline-desk/assets/weather-2x1/body.png",
+  "artSha256": "08c2b16df4647f75ee6cd4fff921a48ee00953437ae4035f386c3f7a7984fd0f",
+  "approvedCrop": [
+    515,
+    215,
+    493,
+    216
+  ],
+  "reviewText": [
+    "city",
+    "temperature",
+    "condition",
+    "range"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

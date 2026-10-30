@@ -1,0 +1,64 @@
+{
+  "id": "com.cyberdesktop.songyun.calendar.4x2",
+  "folder": "calendar-4x2",
+  "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+  "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+  "family": "calendar",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 2,
+  "slot": 4,
+  "imageSize": [
+    1611,
+    976
+  ],
+  "crop": [
+    22,
+    18,
+    1575,
+    923
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 月历 4×2",
+  "regions": {
+    "body": [
+      0.16952380952380952,
+      0.3293607800650054,
+      0.7504761904761905,
+      0.580715059588299
+    ],
+    "title": [
+      0.2876190476190476,
+      0.3423618634886241,
+      0.4380952380952381,
+      0.06717226435536294
+    ],
+    "previous": [
+      0.17777777777777778,
+      0.3434452871072589,
+      0.05015873015873016,
+      0.06717226435536294
+    ],
+    "next": [
+      0.8609523809523809,
+      0.3434452871072589,
+      0.05015873015873016,
+      0.06717226435536294
+    ],
+    "grid": [
+      0.17015873015873015,
+      0.4312026002166847,
+      0.7492063492063492,
+      0.47670639219934996
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/normalized-month.art.png",
+  "artSha256": "e8e2fa607c0bd481f07a74069b16d3fb89448834d6c4a92613a151614f41f411",
+  "renderInset": 7
+}

@@ -1,0 +1,36 @@
+{
+  "generator": "native image_gen",
+  "original": "C:\\Users\\chess\\.codex\\generated_images\\01a14d38-ba60-7032-b6ff-70e8e361558b\\exec-614a7fbb-46bb-4420-a114-83ee57708da2.png",
+  "reference": "design/steampunk-desk-suite/01-clocks.png",
+  "purpose": "Static empty round-clock case; round glass emitters and time drawn live",
+  "sha256": "d986b763ffe5de8ba4b992d330e448fb0f8e627afc8c22e6ac4576b917749ae9",
+  "sourceSize": [
+    2172,
+    724
+  ],
+  "visible": [
+    30,
+    118,
+    2111,
+    479
+  ],
+  "opening": [
+    420,
+    253,
+    1326,
+    230
+  ],
+  "rectangleFormat": "x,y,width,height",
+  "runtimeCaseSize": [
+    2150,
+    460
+  ],
+  "runtimeOpening": [
+    425,
+    138,
+    1299,
+    205
+  ],
+  "resize": "Three vertical source strips; only the central 45-55 percent straight band changes height; other hardware keeps uniform scale",
+  "registrationMethod": "Measured source alpha bounds at threshold 32/255"
+}

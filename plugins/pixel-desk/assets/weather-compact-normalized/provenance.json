@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a13908-b313-7e50-9e54-5024f7f83857\\exec-b498077f-253e-4174-a8f3-7edbbc76677e.png",
+  "reference": "design/pixel-desk-suite/grid-03-calendar-weather-air.art.png",
+  "sha256": "f22cb7df8856c0f4cfc3a87639bf6e0dc4f0793a82746840ba327438291f6952",
+  "imageSize": [
+    458,
+    267
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    454,
+    263
+  ],
+  "sourceCrop": [
+    537,
+    168,
+    995,
+    435
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

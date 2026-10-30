@@ -1,0 +1,71 @@
+{
+  "id": "com.cyberdesktop.redline.monitor.1x1",
+  "folder": "monitor-1x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 1,
+  "columns": 1,
+  "board": 4,
+  "slot": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    662,
+    119,
+    252,
+    310
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械系统监控 1×1",
+  "runtimePlate": true,
+  "regions": {
+    "gauge0": [
+      0.12,
+      0.16,
+      0.76,
+      0.67
+    ],
+    "surface0": [
+      0.12,
+      0.14,
+      0.78,
+      0.74
+    ],
+    "gauge0Title": [
+      0.1352,
+      0.16,
+      0.6232,
+      0.1474
+    ],
+    "gauge0Value": [
+      0.1352,
+      0.31410000000000005,
+      0.6232,
+      0.3886
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-04-system-instruments.art.png",
+  "art": "plugins/redline-desk/assets/monitor-1x1/body.png",
+  "artSha256": "ca36f955e64056c53c227798642bc0bf354a6344c8774631f8ef9a8961b55a00",
+  "approvedCrop": [
+    662,
+    119,
+    252,
+    310
+  ],
+  "reviewText": [
+    "gauge0Title",
+    "gauge0Value"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

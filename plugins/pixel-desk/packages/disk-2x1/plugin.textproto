@@ -1,0 +1,145 @@
+id: "com.cyberdesktop.pixeldesk.disk.2x1"
+name: "像素磁盘 2×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x2"
+    name: "2×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+description: "独立像素风外观，奶油白与薄荷绿机框；设置仅影响当前组件。"
+icon: "preview.png"
+settings_page {
+    title: "磁盘空间设置"
+    description: "单击控件操作；拖动移位不触发点击。每块砖独立保存配置。"
+    fields {
+        id: "drive"
+        label: "盘符（如 C:\\）"
+        type: TEXT
+        section: "内容"
+        max_length: 3
+        text_default: "C:\\"
+        localized {
+            key: "en"
+            value { label: "Drive root (e.g. C:\\)" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "磁碟機代號（如 C:\\）" section: "內容" }
+        }
+    }
+    fields {
+        id: "refresh_seconds"
+        label: "采样间隔（秒）"
+        type: INTEGER
+        section: "内容"
+        minimum: 10.0
+        maximum: 300.0
+        step: 10.0
+        integer_default: 30
+        localized {
+            key: "en"
+            value { label: "Sample interval (seconds)" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "取樣間隔（秒）" section: "內容" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角（px）"
+        type: INTEGER
+        description: "桌面控件背景的圆角，0 为直角。"
+        section: "背景"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 5
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius (px)"
+                description: "Corner radius of the desktop widget background; 0 gives square corners."
+                section: "Background"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景圓角（px）" description: "桌面小工具背景的圓角，0 為直角。" section: "背景" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "内容"
+        max_length: 128
+        text_default: "@siyuan-heavy"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" section: "內容" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        section: "内容"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" section: "Content" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" section: "內容" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Storage settings"
+            description: "Click controls to interact. Dragging does not activate a click. Settings are saved per instance."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "磁碟空間設定" description: "單擊控制元件操作；拖動移位不觸發點選。每塊磚獨立儲存配置。" }
+    }
+}
+preview: "preview.png"
+tags: "像素"
+tags: "磁盘"
+
+capabilities: SYSTEM_INFO
+
+capabilities: IMAGE_SKINS

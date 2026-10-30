@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/yuangu/sxtwl_cpp",
+  "revision": "7598b0601a76cfdaa9266257b1b5690720c1e2ce",
+  "patches": [
+    "Release temporary Time in Day::fromSolar to avoid a per-conversion allocation leak."
+  ],
+  "license": "BSD-3-Clause"
+}

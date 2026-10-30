@@ -1,0 +1,236 @@
+{
+  "folder": "plant-4x2",
+  "kind": "plant",
+  "columns": 4,
+  "rows": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    16,
+    568,
+    577,
+    384
+  ],
+  "inset": 6.25,
+  "regions": {
+    "foliage": [
+      30,
+      560,
+      535,
+      250
+    ],
+    "pot": [
+      16,
+      787,
+      577,
+      165
+    ],
+    "foliage0": [
+      55,
+      575,
+      200,
+      225
+    ],
+    "foliage1": [
+      222,
+      650,
+      166,
+      160
+    ],
+    "foliage2": [
+      345,
+      555,
+      220,
+      250
+    ]
+  },
+  "originalArtwork": "supplement-13.art.png",
+  "originalSha256": "487db3d1b1aca1f2dd3ceda4ab065a88bba4ba188e167193eac5d263c793e837",
+  "board": 13,
+  "slot": 4,
+  "nativePixelsUnmodified": true,
+  "parts": {
+    "body": {
+      "file": "vessel.png",
+      "source": [
+        16,
+        568,
+        577,
+        384
+      ]
+    },
+    "foliage-0-0": {
+      "file": "foliage.png",
+      "source": [
+        56,
+        149,
+        309,
+        265
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-0-1": {
+      "file": "foliage.png",
+      "source": [
+        449,
+        113,
+        338,
+        305
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-0-2": {
+      "file": "foliage.png",
+      "source": [
+        860,
+        13,
+        358,
+        499
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.46,
+        0.8
+      ]
+    },
+    "foliage-1-0": {
+      "file": "foliage.png",
+      "source": [
+        115,
+        662,
+        190,
+        169
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-1-1": {
+      "file": "foliage.png",
+      "source": [
+        450,
+        584,
+        319,
+        251
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-1-2": {
+      "file": "foliage.png",
+      "source": [
+        819,
+        514,
+        418,
+        320
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-2-0": {
+      "file": "foliage.png",
+      "source": [
+        70,
+        985,
+        303,
+        212
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-2-1": {
+      "file": "foliage.png",
+      "source": [
+        440,
+        885,
+        359,
+        309
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    },
+    "foliage-2-2": {
+      "file": "foliage.png",
+      "source": [
+        824,
+        848,
+        398,
+        377
+      ],
+      "destination": [
+        30,
+        560,
+        535,
+        250
+      ],
+      "root": [
+        0.5,
+        1
+      ]
+    }
+  }
+}

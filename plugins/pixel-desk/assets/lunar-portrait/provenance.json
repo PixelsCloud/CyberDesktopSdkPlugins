@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-84f387ac-317f-4fe7-96f6-ef353ccde1d1.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1122,
+    1402
+  ],
+  "visibleBounds": [
+    67,
+    158,
+    990,
+    1123
+  ],
+  "purpose": "Empty pixel tear-off paper; native year/month, large day, weekday, lunar date, holiday badge and Lucide month navigation.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "5054f8b24f076027a26b65cc456db9d27d94bb18e4f2c7051f857cd5e9f65783"
+}

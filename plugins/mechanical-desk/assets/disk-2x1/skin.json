@@ -1,0 +1,42 @@
+{
+  "folder": "disk-2x1",
+  "kind": "disk",
+  "columns": 2,
+  "rows": 1,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    95,
+    110,
+    1584,
+    697
+  ],
+  "inset": 6.25,
+  "regions": {
+    "drive": [
+      670,
+      300,
+      175,
+      200
+    ],
+    "percent": [
+      845,
+      252,
+      620,
+      242
+    ],
+    "capacity": [
+      640,
+      514,
+      880,
+      126
+    ]
+  },
+  "originalArtwork": "supplement-disk-readable.art.png",
+  "originalSha256": "ec9c25ff544b63ea35ee35859e438bea01647ae2a511a18dec4a6d2379d6b3d3",
+  "board": 9,
+  "slot": 3,
+  "nativePixelsUnmodified": true
+}

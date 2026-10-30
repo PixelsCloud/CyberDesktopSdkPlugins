@@ -1,0 +1,276 @@
+# 人物素材配置（UTF-8 / TOML 1.0）。图片和视频均为独立文件，未编译进程序。
+# 可以直接替换 PNG/JPEG/WebP 或修改 file 路径，不需填写哈希、大小、尺寸和视频参数。
+# 保存后在人物管理点击「重新加载 TOML」，或重启 Desktop；成功检查全部资源后整体切换。
+# 缺图、坏图和错误配置会提示错误并保留旧版本；修正后重新加载，旧聊天引用的图片不受替换影响。
+# file 相对于本文件目录，使用 /；不支持绝对路径、..、网络路径和链接文件。
+# 图片：PNG/JPEG/WebP 静态图，单张 <=32 MiB，宽高 <=4096；透明人物建议 PNG/WebP。
+# 视频：单个 <=128 MiB、<=120 秒、<=1920×1080、<=30 FPS，需 Player 运行库可解码。
+# resources.character_id 是包标识；media 中 character_template.id 和 assets.character_id 与其一致。
+# 姓名和提示词：修改插件根目录 characters.toml；下方 character_template 用于独立导入此素材包。
+# resources.assets 的 id 是资源标识。可改文件名，但请保持 id 及所有引用一致。
+# usages：expression=情绪立绘，pose=动作，background=场景背景，media=允许发送给用户。
+# emotion 映射大模型情绪：neutral=平静、happy=开心、sad=难过、shy=害羞、angry=生气、
+# surprised=惊讶、worried=担心、thoughtful=思考。每种情绪只映射一张，neutral 必须存在。
+# pose_wave 对应 wave（挥手），pose_folded 对应 folded（抱臂）；neutral 兼作默认姿态。
+# 自定义动作可添加 usages=["pose"] 的图片，例如 id="pose_salute" 对应 salute；名称会自动进入设置。
+# 所有 usages=["expression"] 的图片会自动进入表情设置；没有 emotion 的图片以资源 id 显示。
+# 设置中的选项随角色、图片包和 Live2D 模型切换；手动选择分别保存，失效时回到「跟随对话」。
+# media.scenes：id 为场景标识，name 为名称，file 为背景图，description 提供场景提示。
+# media.assets：可发送的图片/视频；tags 用于筛选；collection_id 为相册/集合标识。
+# required_flags 为解锁条件，minimum_turns 为最少聊天轮数，maximum_sends 为发送次数上限。
+# 可选 enabled=false 禁用；cooldown_ms 设置冷却毫秒数。程序按条件随机选图，大模型不能越权。
+# media.rules.relationship_stages 定义关系阶段；events 定义事件；user_confirmation 需用户确认。
+# 不在此填写 API Key，连接配置使用应用的连接设置和 Windows 凭据存储。
+
+[resources]
+schema_version = 1
+character_id = "female_youth"
+
+[[resources.assets]]
+id = "neutral"
+file = "neutral.png"
+usages = ["expression", "pose"]
+type = "image"
+emotion = "neutral"
+
+[[resources.assets]]
+id = "happy"
+file = "happy.png"
+usages = ["expression"]
+type = "image"
+emotion = "happy"
+
+[[resources.assets]]
+id = "sad"
+file = "sad.png"
+usages = ["expression"]
+type = "image"
+emotion = "sad"
+
+[[resources.assets]]
+id = "angry"
+file = "angry.png"
+usages = ["expression"]
+type = "image"
+emotion = "angry"
+
+[[resources.assets]]
+id = "shy"
+file = "shy.png"
+usages = ["expression"]
+type = "image"
+emotion = "shy"
+
+[[resources.assets]]
+id = "surprised"
+file = "surprised.png"
+usages = ["expression"]
+type = "image"
+emotion = "surprised"
+
+[[resources.assets]]
+id = "worried"
+file = "worried.png"
+usages = ["expression"]
+type = "image"
+emotion = "worried"
+
+[[resources.assets]]
+id = "thoughtful"
+file = "thoughtful.png"
+usages = ["expression"]
+type = "image"
+emotion = "thoughtful"
+
+[[resources.assets]]
+id = "pose_wave"
+file = "pose_wave.png"
+usages = ["pose"]
+type = "image"
+
+[[resources.assets]]
+id = "pose_folded"
+file = "pose_folded.png"
+usages = ["pose"]
+type = "image"
+
+[[resources.assets]]
+id = "scene_cafe"
+file = "scene_cafe.png"
+usages = ["background", "media"]
+type = "image"
+
+[[resources.assets]]
+id = "scene_home"
+file = "scene_home.png"
+usages = ["background", "media"]
+type = "image"
+
+[[resources.assets]]
+id = "scene_beach"
+file = "scene_beach.png"
+usages = ["background", "media"]
+type = "image"
+
+[[resources.assets]]
+id = "selfie_cafe"
+file = "selfie_cafe.png"
+usages = ["media"]
+type = "image"
+
+[[resources.assets]]
+id = "selfie_home"
+file = "selfie_home.png"
+usages = ["media"]
+type = "image"
+
+[[resources.assets]]
+id = "selfie_beach"
+file = "selfie_beach.png"
+usages = ["media"]
+type = "image"
+
+[[resources.assets]]
+id = "scene_beach_demo"
+file = "scene_beach_demo.mp4"
+usages = ["media"]
+type = "video"
+
+[media]
+schema_version = 1
+
+[[media.assets]]
+id = "female_youth_selfie_1"
+character_id = "female_youth"
+collection_id = "selfies"
+type = "image"
+file = "selfie_cafe.png"
+tags = ["selfie", "cafe", "happy"]
+required_flags = []
+cooldown_ms = 45000
+enabled = true
+
+[[media.assets]]
+id = "female_youth_selfie_2"
+character_id = "female_youth"
+collection_id = "selfies"
+type = "image"
+file = "selfie_home.png"
+tags = ["selfie", "home", "shy"]
+required_flags = []
+cooldown_ms = 45000
+enabled = true
+
+[[media.assets]]
+id = "female_youth_selfie_3"
+character_id = "female_youth"
+collection_id = "selfies"
+type = "image"
+file = "selfie_beach.png"
+tags = ["selfie", "beach", "happy"]
+required_flags = []
+cooldown_ms = 45000
+enabled = true
+
+[[media.assets]]
+id = "female_youth_cafe_memory"
+character_id = "female_youth"
+collection_id = "scenes"
+type = "image"
+file = "scene_cafe.png"
+tags = ["cafe", "illustration"]
+required_flags = []
+enabled = true
+
+[[media.assets]]
+id = "female_youth_home_memory"
+character_id = "female_youth"
+collection_id = "scenes"
+type = "image"
+file = "scene_home.png"
+tags = ["home", "illustration"]
+required_flags = []
+enabled = true
+
+[[media.assets]]
+id = "female_youth_travel"
+character_id = "female_youth"
+collection_id = "travel"
+type = "image"
+file = "scene_beach.png"
+tags = ["beach", "illustration"]
+required_flags = ["trip_finished"]
+minimum_turns = 1
+maximum_sends = 2
+
+[[media.assets]]
+id = "female_youth_beach_video"
+character_id = "female_youth"
+collection_id = "trip_videos"
+type = "video"
+file = "scene_beach_demo.mp4"
+tags = ["beach", "demo", "camera_pan"]
+required_flags = ["trip_finished"]
+minimum_turns = 1
+maximum_sends = 2
+
+[[media.scenes]]
+id = "cafe"
+name = "雨天咖啡馆"
+file = "scene_cafe.png"
+description = "窗外下着雨，安静的咖啡馆里可以慢慢聊天。"
+
+[[media.scenes]]
+id = "home"
+name = "傍晚客厅"
+file = "scene_home.png"
+description = "夕阳照进客厅，一起聊聊今天的生活。"
+
+[[media.scenes]]
+id = "beach"
+name = "海边日落"
+file = "scene_beach.png"
+description = "傍晚的海边，听着海浪，谈谈旅途和心事。"
+
+[media.character_template]
+id = "female_youth"
+name = "夏晴"
+age = 22
+prompt = '''你扮演夏晴，一位 22 岁的成年女性，刚毕业，喜欢摄影、音乐和户外散步。你青春爽朗、真诚独立，带一点轻松幽默，像与用户平等相处的伙伴。说话清爽自然，愿意分享自己的虚构生活见闻和观点，也会认真倾听，不连续盘问、不说教、不一味附和。面对犹豫时一起分析，面对好消息时自然高兴。尊重当前场景、历史事实和关系进度，不凭空捏造已经发生的共同经历。让表情和动作随具体对白变化，情绪保持连贯，不为了表演而突然转折。'''
+greeting = "来啦？坐下来聊会儿吧。"
+
+# 关系阶段按 minimum_turns 递增。id 被事件条件引用，改名请修改 name。
+[media.rules]
+schema_version = 1
+
+[[media.rules.relationship_stages]]
+id = "acquaintance"
+name = "初识"
+minimum_turns = 0
+
+[[media.rules.relationship_stages]]
+id = "familiar"
+name = "熟悉"
+minimum_turns = 5
+
+[[media.rules.relationship_stages]]
+id = "trusted"
+name = "信任"
+minimum_turns = 20
+
+# 在海边聊过至少一轮后，由用户在管理窗口确认旅行剧情完成。
+# grant_flags 解锁的标记与上方媒体 required_flags 对应，模型不能自行授予。
+[[media.rules.events]]
+id = "trip_finished"
+name = "旅行剧情完成"
+trigger = "user_confirmation"
+when = { all = [{ scene_id = "beach" }, { minimum_turns = 1 }] }
+grant_flags = ["trip_finished"]
+
+# turn_committed 在一轮聊天正式保存后检查条件，无需额外 API 调用。
+[[media.rules.events]]
+id = "familiarity_reached"
+name = "逐渐熟悉"
+trigger = "turn_committed"
+when = { relationship_at_least = "familiar" }
+grant_flags = ["familiar"]

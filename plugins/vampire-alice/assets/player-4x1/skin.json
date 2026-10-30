@@ -1,0 +1,74 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.player.4x1",
+  "folder": "player-4x1",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 7,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 4,
+  "character": false,
+  "imageSize": [
+    1145,
+    1374
+  ],
+  "crop": [
+    5,
+    350,
+    1135,
+    154
+  ],
+  "art": "design/vampire-muse-suite/width-02-controls.runtime.png",
+  "artSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 音乐控制 4×1",
+  "regions": {
+    "cover": [
+      0.10572687224669604,
+      0.17532467532467533,
+      0.09779735682819383,
+      0.6883116883116883
+    ],
+    "title": [
+      0.26343612334801764,
+      0.18831168831168832,
+      0.3004405286343612,
+      0.35714285714285715
+    ],
+    "progress": [
+      0.24933920704845816,
+      0.6298701298701299,
+      0.2986784140969163,
+      0.05844155844155844
+    ],
+    "previous": [
+      0.5903083700440529,
+      0.22077922077922077,
+      0.0801762114537445,
+      0.5909090909090909
+    ],
+    "toggle": [
+      0.6960352422907489,
+      0.16233766233766234,
+      0.09515418502202644,
+      0.7012987012987013
+    ],
+    "next": [
+      0.8149779735682819,
+      0.22077922077922077,
+      0.0801762114537445,
+      0.5909090909090909
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
+  "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

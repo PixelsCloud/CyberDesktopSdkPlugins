@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.21)
+project(InstalledFluidConsumer LANGUAGES CXX)
+set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded)
+find_package(CyberCanvas 1.2 CONFIG REQUIRED COMPONENTS Fluid PhysicsParticles)
+add_executable(installed_fluid_consumer Consumer.cpp)
+target_compile_options(installed_fluid_consumer PRIVATE /utf-8)
+target_link_libraries(installed_fluid_consumer PRIVATE CyberCanvas::Fluid CyberCanvas::PhysicsParticles)

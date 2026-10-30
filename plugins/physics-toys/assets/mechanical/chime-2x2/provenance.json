@@ -1,0 +1,91 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-spring-chime-air-quality-concept.png",
+  "prompts": "design/mechanical-spring-chime-air-quality-assets.prompt.txt",
+  "files": [
+    {
+      "file": "beam.png",
+      "width": 2172,
+      "height": 724,
+      "bounds": [
+        69,
+        178,
+        2103,
+        554
+      ],
+      "bytes": 770806,
+      "sha256": "173d38cce17f55473e5f8eb70f3c29838293439ed4cbe49bdcca9f4f9563a5a2",
+      "source": "exec-16656777-89b6-44de-b3aa-d048dc809b9e.png"
+    },
+    {
+      "file": "moon.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        199,
+        23,
+        1100,
+        1226
+      ],
+      "bytes": 1311331,
+      "sha256": "0a8610a82c7e6b2dc624d5ec76926d560da5683a5d60c14c96fd381f21a61fe2",
+      "source": "exec-e236ad5a-1ed8-4ade-bd5f-2a8e8cd3a4dd.png"
+    },
+    {
+      "file": "bell.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        229,
+        95,
+        1019,
+        1125
+      ],
+      "bytes": 952277,
+      "sha256": "d1955440ef7c40c6751b5326a66e7045e1b379f8d1a2e835ed5a6e8e61f2e4cb",
+      "source": "exec-c0b087eb-7555-4c45-a9c6-0f50b8c8abc6.png"
+    },
+    {
+      "file": "star.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        133,
+        89,
+        1121,
+        1088
+      ],
+      "bytes": 1065815,
+      "sha256": "adfab3fd3bd70f21a49e23c5054eef1b357145ff4e792897d32cf3a108771ba3",
+      "source": "exec-67a02f4e-6ea9-429f-9d45-b4238eb3658b.png"
+    },
+    {
+      "file": "leaf.png",
+      "width": 866,
+      "height": 1817,
+      "bounds": [
+        83,
+        130,
+        783,
+        1673
+      ],
+      "bytes": 1977749,
+      "sha256": "40e541125a4ebd0ca8c02a30a99625cfbee3e4b3e9440ee3dfb4dd85f0672de8",
+      "source": "exec-af1aa7d7-6322-4a3a-a247-c3e510052a67.png"
+    },
+    {
+      "file": "tag.png",
+      "width": 948,
+      "height": 1659,
+      "bounds": [
+        231,
+        89,
+        715,
+        1545
+      ],
+      "bytes": 1086287,
+      "sha256": "39d503e9de6d22e8900f905130fbc72b22aa721cf906b51ec000cde8999888b4",
+      "source": "exec-caea693f-50d0-4f96-97ed-006fd265d406.png"
+    }
+  ]
+}

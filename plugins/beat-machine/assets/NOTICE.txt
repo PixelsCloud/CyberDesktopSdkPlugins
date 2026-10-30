@@ -1,0 +1,11 @@
+CyberDesktop precision physics mechanism materials
+
+Generated with OpenAI image_gen using design/mechanical-physics-precision-redesign.png.
+The 4x2 and 6x2 chassis were authored separately. Mechanism PNGs are independent
+transparent layers. Digits, physics, tracks, springs and collision response remain live.
+Original PNG dimensions, layout and SHA-256 hashes are recorded in provenance.json.
+The renderer registers visible PNG bounds and exact mechanical pivot coordinates,
+preserves circular parts, and decodes the chassis for its actual physical display size.
+Only the chassis for this independent plugin size is shipped.
+Source prompts: tools/PrecisionAssetPrompts.txt in the source tree.
+Engine and Box2D licenses are included separately in the package.

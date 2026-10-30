@@ -1,0 +1,19 @@
+{
+  "generator": "native image_gen",
+  "original": "C:\\Users\\chess\\.codex\\generated_images\\01a14d38-ba60-7032-b6ff-70e8e361558b\\exec-851b65b4-995a-4f5f-8547-0f74c260d75a.png",
+  "reference": "design/steampunk-desk-suite/01-clocks.png",
+  "purpose": "Empty static iron/brass chassis; all physics rails, gears, gate, marbles and time rendered independently",
+  "sha256": "0ded8afd80e24e74d9bee1bc0451dab4a363808c9ee43103e662c772d1782f21",
+  "reusedMaterials": [
+    {
+      "file": "precision-gear.png",
+      "source": "plugins/marble-clock/assets/precision-gear.png",
+      "sha256": "5cf5efc6a2a73b7e33ea43d26b72d4f0bd7d13ab7a9bb24822f435540734b61a"
+    },
+    {
+      "file": "clock-window.png",
+      "source": "plugins/marble-clock/assets/clock-window.png",
+      "sha256": "cb06c6dc05e2105541ff665988fece4f662ef80c17490f0b28fbac3046ca999e"
+    }
+  ]
+}

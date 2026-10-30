@@ -1,0 +1,54 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.moon.clock.2x2",
+  "folder": "moon-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+  "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 1,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    36,
+    10,
+    513,
+    526
+  ],
+  "art": "design/vampire-muse-suite/02-time-calendar.clean-dials.png",
+  "artSha256": "834acf5c9cc7c5dedaa9109d71b068fb78f6b2ee4fe9cde676291f303bc7e46d",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 玫瑰金月相表 2×2",
+  "regions": {
+    "world": [
+      0.14035087719298245,
+      0.16539923954372623,
+      0.7290448343079922,
+      0.7110266159695817
+    ],
+    "moon": [
+      0.49122807017543857,
+      0.5893536121673004,
+      0.09746588693957114,
+      0.09505703422053231
+    ],
+    "pin": [
+      0.47953216374269003,
+      0.49809885931558934,
+      0.04873294346978557,
+      0.04752851711026616
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/02-time-calendar.art.png",
+  "approvedArtSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa"
+}

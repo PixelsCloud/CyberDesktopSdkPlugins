@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "source": {
+      "enum": [
+        "protocol",
+        "provider",
+        "worker",
+        "resource",
+        "input"
+      ]
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "recoverable": {
+      "type": "boolean"
+    },
+    "retryable": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source",
+    "code",
+    "message",
+    "recoverable",
+    "retryable"
+  ]
+}

@@ -1,0 +1,342 @@
+id: "com.cyberdesktop.mechanicaldesk.noise.4x2"
+name: "机械白噪音 4×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "2x4"
+    name: "4×2（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+capabilities: MEDIA_CONTROL
+description: "精密机械独立组件；拉丝钢与黄铜结构，设置仅影响当前实例。"
+settings_page {
+    title: "白噪音设置"
+
+    fields {
+        id: "language"
+        label: "设置语言"
+        type: CHOICE
+        section: "声音"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Set Language" section: "Sound" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "設定語言" section: "聲音" }
+        }
+    }
+
+    fields {
+        id: "primary"
+        label: "简洁卡片声音"
+        type: INTEGER
+        description: "0 雨声、1 海浪、2 溪流、3 森林、4 壁炉、5 风声。"
+        section: "声音"
+        maximum: 5.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Simple Card Sound"
+                description: "0 Rain, 1 Ocean Waves, 2 Stream, 3 Forest, 4 Fireplace, 5 Wind."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "簡潔卡片聲音"
+                description: "0 雨聲、1 海浪、2 溪流、3 森林、4 壁爐、5 風聲。"
+                section: "聲音"
+            }
+        }
+    }
+    fields {
+        id: "preset"
+        label: "声音配方"
+        type: CHOICE
+        section: "声音"
+        choices {
+            value: "rain"
+            label: "雨夜"
+            localized_labels { key: "zh-TW" value: "雨夜" }
+        }
+        choices {
+            value: "sea"
+            label: "海边"
+            localized_labels { key: "zh-TW" value: "海邊" }
+        }
+        choices {
+            value: "campfire"
+            label: "炉边"
+            localized_labels { key: "zh-TW" value: "爐邊" }
+        }
+        choices {
+            value: "custom"
+            label: "自定义混音"
+            localized_labels { key: "zh-TW" value: "自定義混音" }
+        }
+        text_default: "rain"
+        localized {
+            key: "en"
+            value { label: "Sound Recipe" section: "Sound" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "聲音配方" section: "聲音" }
+        }
+    }
+    fields {
+        id: "link"
+        label: "共享声音组"
+        type: CHOICE
+        description: "多个白噪音卡片可加入同一组，共用音量与播放状态；最后一个实例移除后停止声音。"
+        section: "声音"
+        choices {
+            value: "independent"
+            label: "独立播放"
+            localized_labels { key: "zh-TW" value: "獨立播放" }
+        }
+        choices {
+            value: "rain"
+            label: "雨声组"
+            localized_labels { key: "zh-TW" value: "雨聲組" }
+        }
+        choices {
+            value: "fire"
+            label: "壁炉组"
+            localized_labels { key: "zh-TW" value: "壁爐組" }
+        }
+        choices {
+            value: "stars"
+            label: "风声组"
+            localized_labels { key: "zh-TW" value: "風聲組" }
+        }
+        text_default: "independent"
+        localized {
+            key: "en"
+            value {
+                label: "Shared Sound Groups"
+                description: "Multiple white noise cards can be added to the same group, sharing volume and playback status; sound stops when the last instance is removed."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "共享聲音組"
+                description: "多個白噪音卡片可加入同一組，共用音量與播放狀態；最後一個例項移除後停止聲音。"
+                section: "聲音"
+            }
+        }
+    }
+    fields {
+        id: "master"
+        label: "主音量"
+        type: INTEGER
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        integer_default: 25
+        localized {
+            key: "en"
+            value { label: "Main Volume" section: "Sound" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "主音量" section: "聲音" }
+        }
+    }
+    fields {
+        id: "timer_minutes"
+        label: "定时关闭（分钟）"
+        type: INTEGER
+        description: "0 为不限时，最后十秒渐弱；隐藏后仍计时。"
+        section: "声音"
+        maximum: 240.0
+        step: 5.0
+        integer_default: 30
+        localized {
+            key: "en"
+            value {
+                label: "Timer Off (minutes)"
+                description: "0 means no time limit, fade out in the last ten seconds; timing continues when hidden."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "定時關閉（分鐘）" description: "0 為不限時，最後十秒漸弱；隱藏後仍計時。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "rain"
+        label: "雨声音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        integer_default: 60
+        localized {
+            key: "en"
+            value {
+                label: "Rain Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "雨聲音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "ocean"
+        label: "海浪音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Ocean Wave Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "海浪音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "stream"
+        label: "溪流音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Stream Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "溪流音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "forest"
+        label: "森林鸟鸣音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Forest Birdsong Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "森林鳥鳴音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "fire"
+        label: "壁炉音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Fireplace Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "壁爐音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    fields {
+        id: "wind"
+        label: "风声音量"
+        type: INTEGER
+        description: "最多同时启用四种声音；0 表示关闭。"
+        section: "声音"
+        maximum: 100.0
+        step: 1.0
+        localized {
+            key: "en"
+            value {
+                label: "Wind Volume"
+                description: "Up to four sounds can be enabled simultaneously; 0 means off."
+                section: "Sound"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "風聲音量" description: "最多同時啟用四種聲音；0 表示關閉。" section: "聲音" }
+        }
+    }
+    localized {
+        key: "en"
+        value { title: "White Noise Settings" }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "白噪音設定" }
+    }
+}
+preview: "preview.png"
+required_services { id: "audio.ambient" version: 1 }
+tags: "机械"
+tags: "精密机械"

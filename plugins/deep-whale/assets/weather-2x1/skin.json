@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.deepwhale.weather.2x1",
+  "folder": "weather-2x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "temperature": [
+      60,
+      58,
+      56,
+      25
+    ],
+    "city": [
+      60,
+      44,
+      48,
+      12
+    ],
+    "icon": [
+      28,
+      58,
+      25,
+      25
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        17,
+        25,
+        1607,
+        883
+      ],
+      "destination": [
+        7,
+        12.76563,
+        146,
+        80.21875
+      ]
+    }
+  ],
+  "designUid": "b03-2",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "com.cyberdesktop.deepwhale.player.4x2",
+  "folder": "player-4x2",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+  "family": "player",
+  "kind": 0,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "cover": [
+      44.65625,
+      64.20313,
+      44,
+      38
+    ],
+    "title": [
+      95.66,
+      60.2,
+      78,
+      18
+    ],
+    "previous": [
+      95.65625,
+      83.20313,
+      20,
+      20
+    ],
+    "toggle": [
+      123.65625,
+      82.20313,
+      22,
+      22
+    ],
+    "next": [
+      153.65625,
+      83.20313,
+      20,
+      20
+    ],
+    "progress": [
+      35.39063,
+      105.20313,
+      147.53125,
+      12
+    ],
+    "elapsed": [
+      35.39,
+      119.2,
+      35.4,
+      12
+    ],
+    "duration": [
+      147.51,
+      119.2,
+      35.4,
+      12
+    ],
+    "artist": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        10,
+        34,
+        1568,
+        944
+      ],
+      "destination": [
+        7,
+        8.76563,
+        306,
+        184.21875
+      ]
+    }
+  ],
+  "designUid": "b05-6",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

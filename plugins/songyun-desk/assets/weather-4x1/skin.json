@@ -1,0 +1,84 @@
+{
+  "id": "com.cyberdesktop.songyun.weather.4x1",
+  "folder": "weather-4x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 3,
+  "slot": 3,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    23,
+    873,
+    979,
+    219
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 天气 4×1",
+  "regions": {
+    "city": [
+      0.1787538304392237,
+      0.3424657534246575,
+      0.07252298263534218,
+      0.1461187214611872
+    ],
+    "temperature": [
+      0.177732379979571,
+      0.54337899543379,
+      0.09601634320735444,
+      0.2191780821917808
+    ],
+    "icon": [
+      0.05822267620020429,
+      0.3378995433789954,
+      0.10214504596527069,
+      0.4520547945205479
+    ],
+    "surface0": [
+      0.04698672114402452,
+      0.3013698630136986,
+      0.25025536261491316,
+      0.4931506849315068
+    ],
+    "surface1": [
+      0.5587334014300307,
+      0.3105022831050228,
+      0.4034729315628192,
+      0.5159817351598174
+    ],
+    "forecast0": [
+      0.5617977528089888,
+      0.3378995433789954,
+      0.12768130745658834,
+      0.4611872146118721
+    ],
+    "forecast1": [
+      0.7027579162410623,
+      0.3378995433789954,
+      0.12768130745658834,
+      0.4611872146118721
+    ],
+    "forecast2": [
+      0.8406537282941777,
+      0.3378995433789954,
+      0.12768130745658834,
+      0.4611872146118721
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+  "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+  "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+  "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+  "renderInset": 7
+}

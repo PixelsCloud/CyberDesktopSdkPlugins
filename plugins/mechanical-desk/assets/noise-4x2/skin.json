@@ -1,0 +1,133 @@
+{
+  "folder": "noise-4x2",
+  "kind": "noise",
+  "columns": 4,
+  "rows": 2,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    989,
+    685,
+    530,
+    265
+  ],
+  "inset": 6.25,
+  "regions": {
+    "track0": [
+      1215,
+      715,
+      200,
+      24
+    ],
+    "button0": [
+      1443,
+      704,
+      29,
+      29
+    ],
+    "track1": [
+      1215,
+      762,
+      200,
+      24
+    ],
+    "button1": [
+      1443,
+      751,
+      29,
+      29
+    ],
+    "track2": [
+      1215,
+      809,
+      200,
+      24
+    ],
+    "button2": [
+      1443,
+      798,
+      29,
+      29
+    ],
+    "track3": [
+      1215,
+      855,
+      200,
+      24
+    ],
+    "button3": [
+      1443,
+      844,
+      29,
+      29
+    ],
+    "master": [
+      1071,
+      911,
+      363,
+      24
+    ]
+  },
+  "originalArtwork": "supplement-13.art.png",
+  "originalSha256": "487db3d1b1aca1f2dd3ceda4ab065a88bba4ba188e167193eac5d263c793e837",
+  "board": 13,
+  "slot": 6,
+  "nativePixelsUnmodified": true,
+  "parts": {
+    "body": {
+      "source": [
+        989,
+        685,
+        530,
+        265
+      ]
+    },
+    "track0": {
+      "file": "tracks.png",
+      "source": [
+        1067,
+        899,
+        371,
+        52
+      ]
+    },
+    "track1": {
+      "file": "tracks.png",
+      "source": [
+        1211,
+        703,
+        208,
+        52
+      ]
+    },
+    "track2": {
+      "file": "tracks.png",
+      "source": [
+        1211,
+        750,
+        208,
+        52
+      ]
+    },
+    "track3": {
+      "file": "tracks.png",
+      "source": [
+        1211,
+        797,
+        208,
+        52
+      ]
+    },
+    "track4": {
+      "file": "tracks.png",
+      "source": [
+        1211,
+        843,
+        208,
+        52
+      ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "com.cyberdesktop.deepwhale.spectrum.4x1",
+  "folder": "spectrum-4x1",
+  "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "plot": [
+      30.40625,
+      35.57813,
+      259.01563,
+      41.04688
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        2,
+        97,
+        2169,
+        506
+      ],
+      "destination": [
+        7,
+        21.60938,
+        306,
+        71.375
+      ]
+    }
+  ],
+  "designUid": "b07-1",
+  "defaults": {},
+  "horizontalCuts": [
+    160
+  ]
+}

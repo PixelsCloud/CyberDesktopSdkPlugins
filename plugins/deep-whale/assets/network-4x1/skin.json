@@ -1,0 +1,66 @@
+{
+  "id": "com.cyberdesktop.deepwhale.network.4x1",
+  "folder": "network-4x1",
+  "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+  "family": "productivity",
+  "kind": 3,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "down": [
+      123.73228529839884,
+      43.75342066957788,
+      65.58783114992723,
+      22.507714701601163
+    ],
+    "up": [
+      195.02340611353713,
+      43.75342066957788,
+      65.58783114992723,
+      22.507714701601163
+    ],
+    "downHistory": [
+      123.73228529839884,
+      69.36564774381368,
+      136.8789519650655,
+      5.432896652110626
+    ],
+    "upHistory": [
+      123.73228529839884,
+      69.36564774381368,
+      136.8789519650655,
+      5.432896652110626
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        16,
+        26,
+        2083,
+        687
+      ],
+      "destination": [
+        29.60938,
+        7,
+        260.75,
+        86
+      ]
+    }
+  ],
+  "designUid": "b04-6",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    145,
+    235
+  ]
+}

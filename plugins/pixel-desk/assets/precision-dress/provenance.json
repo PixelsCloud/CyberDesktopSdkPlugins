@@ -1,0 +1,27 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-638c6e01-8440-4802-95f0-c1a4e5d6ee3b.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1227,
+    1281
+  ],
+  "visibleBounds": [
+    44,
+    58,
+    1137,
+    1086
+  ],
+  "center": [
+    612,
+    590
+  ],
+  "dialRadius": 450,
+  "moonCenter": [
+    612,
+    779
+  ],
+  "moonRadius": 60,
+  "purpose": "Pixel moonphase dial only, without hands or baked moon phase. All time hands and ephemeris phase are live content.",
+  "sha256": "c459ed1c007563ab2b641714d9e85f0c53d9ab0177fca009a8f1d6b1c78c8f91"
+}

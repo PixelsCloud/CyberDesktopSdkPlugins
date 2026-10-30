@@ -1,0 +1,6 @@
+Pixel Desk artwork
+
+Original pixel-art cases created for CyberDesktop using OpenAI image generation,
+based on the approved Pixel Desk concept and design boards.
+Asset prompts, generation sources and checksums are retained with the source assets.
+No third-party brand or application icon is included in this artwork.

@@ -1,0 +1,74 @@
+[
+  {
+    "folder": "clock-square",
+    "id": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+    "columns": 4,
+    "rows": 1,
+    "kind": 0,
+    "version": "1.0.1",
+    "art": "clock-square"
+  },
+  {
+    "folder": "clock-round",
+    "id": "com.cyberdesktop.clock.mechanical.pixel.round.4x1",
+    "columns": 4,
+    "rows": 1,
+    "kind": 1,
+    "version": "1.0.1",
+    "art": "clock-round"
+  },
+  {
+    "folder": "music-square",
+    "id": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+    "columns": 8,
+    "rows": 1,
+    "kind": 2,
+    "version": "1.0.1",
+    "art": "music-square"
+  },
+  {
+    "folder": "music-round",
+    "id": "com.cyberdesktop.music.mechanical.matrix.round.8x1",
+    "columns": 8,
+    "rows": 1,
+    "kind": 3,
+    "version": "1.0.1",
+    "art": "music-round"
+  },
+  {
+    "folder": "music-square-4x1",
+    "id": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+    "columns": 4,
+    "rows": 1,
+    "kind": 2,
+    "version": "1.0.1",
+    "art": "music-square"
+  },
+  {
+    "folder": "music-square-6x1",
+    "id": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+    "columns": 6,
+    "rows": 1,
+    "kind": 2,
+    "version": "1.0.1",
+    "art": "music-square"
+  },
+  {
+    "folder": "music-round-4x1",
+    "id": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+    "columns": 4,
+    "rows": 1,
+    "kind": 3,
+    "version": "1.0.1",
+    "art": "music-round"
+  },
+  {
+    "folder": "music-round-6x1",
+    "id": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+    "columns": 6,
+    "rows": 1,
+    "kind": 3,
+    "version": "1.0.1",
+    "art": "music-round"
+  }
+]

@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Character chat story v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+    },
+    "state_proposals": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+          }
+        },
+        "required": [
+          "event_id"
+        ]
+      }
+    },
+    "preference_proposals": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "enum": [
+              "reply_length",
+              "gestures",
+              "proactive_media",
+              "media_enabled"
+            ]
+          },
+          "value": {
+            "type": [
+              "boolean",
+              "string"
+            ]
+          },
+          "scope": {
+            "const": "conversation"
+          },
+          "source_text": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "[^ \\t\\r\\n]"
+          }
+        },
+        "required": [
+          "key",
+          "value",
+          "scope",
+          "source_text"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "key": {
+                  "const": "reply_length"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "enum": [
+                    "short",
+                    "natural",
+                    "detailed"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "value": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "dialogue"
+              },
+              "speaker_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 300,
+                "minLength": 1,
+                "pattern": "[^ \\t\\r\\n]"
+              },
+              "emotion": {
+                "enum": [
+                  "neutral",
+                  "happy",
+                  "sad",
+                  "angry",
+                  "shy",
+                  "surprised",
+                  "worried",
+                  "thoughtful"
+                ]
+              },
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "expression": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "gesture": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              }
+            },
+            "required": [
+              "kind",
+              "speaker_id",
+              "text"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "narration"
+              },
+              "speaker_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 300,
+                "minLength": 1,
+                "pattern": "[^ \\t\\r\\n]"
+              },
+              "emotion": {
+                "enum": [
+                  "neutral",
+                  "happy",
+                  "sad",
+                  "angry",
+                  "shy",
+                  "surprised",
+                  "worried",
+                  "thoughtful"
+                ]
+              },
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "expression": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "gesture": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              }
+            },
+            "required": [
+              "kind",
+              "speaker_id",
+              "text"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "media_request"
+              },
+              "speaker_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "request_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "collection_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+              },
+              "media_type": {
+                "enum": [
+                  "image",
+                  "video"
+                ]
+              },
+              "required_tags": {
+                "type": "array",
+                "maxItems": 16,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+                }
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2
+              },
+              "caption": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "kind",
+              "speaker_id",
+              "request_id",
+              "collection_id",
+              "media_type",
+              "required_tags",
+              "count",
+              "caption"
+            ]
+          }
+        ]
+      }
+    },
+    "choices": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,64}$"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "pattern": "[^ \\t\\r\\n]"
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ]
+      }
+    },
+    "memory_summary_proposal": {
+      "type": "string",
+      "maxLength": 600
+    }
+  },
+  "required": [
+    "schema_version",
+    "scene_id",
+    "state_proposals",
+    "preference_proposals",
+    "beats",
+    "choices"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "weather.art.png",
+  "sha256": "98c680d3c3f4df1b7fe46160d44f8bad38b6c79fbd8ae8f4220cd59339c6d2fa",
+  "crop": [
+    17,
+    23,
+    1703,
+    847
+  ]
+}

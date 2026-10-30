@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.album.4x2",
+  "folder": "album-4x2",
+  "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+  "family": "widget",
+  "kind": 3,
+  "rows": 2,
+  "columns": 4,
+  "board": 5,
+  "slot": 3,
+  "character": true,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    904,
+    50,
+    632,
+    410
+  ],
+  "art": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+  "artSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 相册 4×2",
+  "regions": {
+    "photo": [
+      0.07436708860759493,
+      0.21951219512195122,
+      0.5759493670886076,
+      0.6585365853658537
+    ],
+    "previous": [
+      0.012658227848101266,
+      0.47073170731707314,
+      0.07911392405063292,
+      0.12195121951219512
+    ],
+    "next": [
+      0.9018987341772152,
+      0.47317073170731705,
+      0.07911392405063292,
+      0.12195121951219512
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/05-media-utilities.art.png",
+  "approvedArtSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

@@ -1,0 +1,10 @@
+{
+  "name": "thorvg",
+  "version": "1.0.6",
+  "port-version": 1,
+  "description": "CyberCanvas minimal CPU SVG/Lottie and image effects build of ThorVG",
+  "homepage": "https://www.thorvg.org",
+  "license": "MIT",
+  "supports": "windows & x64 & static",
+  "dependencies": [{ "name": "vcpkg-tool-meson", "host": true }]
+}

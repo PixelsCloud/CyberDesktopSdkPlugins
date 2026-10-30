@@ -1,0 +1,119 @@
+id: "com.cyberdesktop.vampire.alice.beat.machine.4x2"
+name: "吸血鬼.Alice · 节拍弹珠台 4×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+layouts {
+    id: "4x2"
+    name: "4×2（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+capabilities: AUDIO_FFT
+description: "吸血鬼.Alice 系列，支持当前实例独立设置。"
+settings_page {
+    title: "吸血鬼.Alice · 节拍弹珠台 4×2设置"
+    description: "点击撞锤或拨片，拖动钢珠。系统混音自动驱动，隐藏后不补播旧节拍。"
+    fields {
+        id: "theme"
+        label: "外观"
+        type: CHOICE
+        choices {
+            value: "dark"
+            label: "深色机械"
+            localized_labels { key: "en" value: "Dark" }
+        }
+        choices {
+            value: "light"
+            label: "浅色机械"
+            localized_labels { key: "en" value: "Light" }
+        }
+        choices {
+            value: "system"
+            label: "跟随系统"
+            localized_labels { key: "en" value: "System" }
+        }
+        text_default: "dark"
+        localized {
+            key: "en"
+            value { label: "Appearance" }
+        }
+    }
+    fields {
+        id: "show_background"
+        label: "显示底板"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show backplate" }
+        }
+    }
+    fields {
+        id: "gain"
+        label: "响应强度"
+        type: NUMBER
+        minimum: 0.25
+        maximum: 5.0
+        step: 0.05
+        number_default: 3.5
+        localized {
+            key: "en"
+            value { label: "Sensitivity" }
+        }
+    }
+    fields {
+        id: "balls"
+        label: "钢珠数量"
+        type: CHOICE
+        choices { value: "24" label: "24" }
+        choices { value: "36" label: "36" }
+        choices { value: "48" label: "48" }
+        text_default: "36"
+        localized {
+            key: "en"
+            value { label: "Marbles" }
+        }
+    }
+    fields {
+        id: "running"
+        label: "启用滚珠动画"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable physical motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Vampire.Alice · Beat Machine"
+            description: "System audio drives physical hammers and paddles. Click mechanisms or drag a ball."
+        }
+    }
+}
+content_padding: 0.0
+preview: "preview.png"
+required_services { id: "audio.spectrum" version: 1 }
+tags: "吸血鬼"
+tags: "Alice"

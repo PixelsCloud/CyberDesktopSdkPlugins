@@ -1,0 +1,105 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.spring.clock.4x2",
+  "folder": "spring-clock-4x2",
+  "sourceId": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+  "source": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+  "family": "toys",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 1,
+  "slot": 4,
+  "character": true,
+  "imageSize": [
+    1586,
+    992
+  ],
+  "crop": [
+    19,
+    20,
+    1551,
+    965
+  ],
+  "art": "design/vampire-muse-suite/spring-clock-4x2.integrated.runtime.png",
+  "artSha256": "b745be63a66a13a98361325e56829e6f8ee4077f8061c2883b8fb5a3e1c801a5",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 弹簧数字时钟 4×2",
+  "regions": {
+    "world": [
+      0.3726627981947131,
+      0.38860103626943004,
+      0.5802707930367504,
+      0.5595854922279793
+    ],
+    "card": [
+      0.38,
+      0.55,
+      0.083,
+      0.32
+    ],
+    "cutout0": [
+      0.3694390715667311,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ],
+    "cutout1": [
+      0.47130883301096066,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ],
+    "cutout2": [
+      0.5725338491295938,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ],
+    "cutout3": [
+      0.6731141199226306,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ],
+    "cutout4": [
+      0.7736943907156673,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ],
+    "cutout5": [
+      0.874274661508704,
+      0.4310880829015544,
+      0.09219858156028368,
+      0.46424870466321244
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/spring-clock-4x2.integrated.art.png",
+  "approvedArtSha256": "6ef9fdcc205258afe1175556da7395a9afc4bf25656b44c707efab4cd08bb6dd",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "hardware": {
+    "card": [
+      594,
+      534,
+      144,
+      337
+    ],
+    "spring": [
+      627,
+      422,
+      67,
+      109
+    ]
+  },
+  "hardwareSize": [
+    1586,
+    992
+  ],
+  "hardwareSha256": "b745be63a66a13a98361325e56829e6f8ee4077f8061c2883b8fb5a3e1c801a5"
+}

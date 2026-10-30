@@ -1,0 +1,35 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-radial-linear-spectrum-concept.png",
+  "prompts": "design/mechanical-radial-linear-spectrum-assets.prompt.txt",
+  "files": [
+    {
+      "file": "body.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        55,
+        73,
+        1196,
+        1199
+      ],
+      "bytes": 2048313,
+      "sha256": "bc1b03d9853a416e1dadd2798d654ec1ccd9557d2e3be60abf8aae6600caccbe",
+      "source": "exec-e7dd6599-1f9c-460b-8732-3c2d7b4eaffc.png"
+    },
+    {
+      "file": "rod.png",
+      "width": 1060,
+      "height": 1484,
+      "bounds": [
+        444,
+        42,
+        616,
+        1443
+      ],
+      "bytes": 385224,
+      "sha256": "112f819231e2a607ac2b9f7766fffadedd1bcedc45a222f3cac4b220148c334a",
+      "source": "exec-22dd0d33-5220-4db9-91f7-d0cbade73919.png"
+    }
+  ]
+}

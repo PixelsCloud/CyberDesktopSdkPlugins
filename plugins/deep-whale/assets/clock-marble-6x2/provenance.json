@@ -1,0 +1,74 @@
+{
+  "instrument": {
+    "uid": "b01-6",
+    "key": "marble-maid-observatory",
+    "file": "artwork/complete/marble-maid-observatory.png",
+    "composition": "Q版全身",
+    "expression": "得意眨眼",
+    "prompt": "artwork/complete/marble-character-prompts.json",
+    "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-0cb780b8-be7e-4752-8518-0d1cc611d29b.png",
+    "physicalSkin": true,
+    "imageSize": [
+      1944,
+      809
+    ],
+    "bounds": [
+      18,
+      13,
+      1938,
+      801
+    ],
+    "sha256": "f3a59ad9c7f8a975fc60e538d1331f373fd985df1ac0236fa3d54d1f6091747d",
+    "type": "full-character-and-fixed-instrument",
+    "label": "得意眨眼",
+    "faceSourceBox": [
+      930,
+      128,
+      1380,
+      249
+    ],
+    "modelBox": [
+      7,
+      58,
+      356.4,
+      118.8
+    ],
+    "characterRegionSource": [
+      1400,
+      13,
+      1938,
+      801
+    ],
+    "modelSource": "plugins/marble-clock/Model.cpp",
+    "modelSourceSha256": "8998a014401e63933072944fe5e86af2cddca0ffbc588139551cb852f3dd1991",
+    "corrections": "artwork/complete/marble-character-corrections.json",
+    "motionLayerPolicy": "Original Box2D coordinates, uniformly scaled; character/static fixtures PNG contains no tracks, loose pearls or moving flap.",
+    "name": "星潮海珠研究台"
+  },
+  "backdrop": {
+    "uid": "b01-6",
+    "key": "marble-observatory-backdrop",
+    "file": "artwork/complete/marble-observatory-backdrop.png",
+    "box": [
+      15,
+      10,
+      351,
+      164
+    ],
+    "prompt": "artwork/complete/marble-backdrop-prompts.json",
+    "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-a227208f-a0fd-432c-8e83-f8d99ea91698.png",
+    "imageSize": [
+      1834,
+      858
+    ],
+    "bounds": [
+      23,
+      12,
+      1812,
+      840
+    ],
+    "sha256": "61aa14cc3984e512f8b711e0922546d2f06796ad1284144633ab6293ab9189c5",
+    "type": "opaque-workshop-background-plane",
+    "label": "海洋观察室背墙"
+  }
+}

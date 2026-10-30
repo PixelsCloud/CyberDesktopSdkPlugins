@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-fb419f01-8bbc-4538-9e19-4e41c4f349eb.png",
+  "reference": "design/pixel-desk-suite/03-calendar-weather-air.png",
+  "imageSize": [
+    1672,
+    941
+  ],
+  "visibleBounds": [
+    0,
+    509,
+    1672,
+    432
+  ],
+  "purpose": "Transparent waterfront foreground only, no baked sun/moon/clouds/conditions. Native sky, pixel condition artwork and night/rain shading follow the actual host weather.",
+  "prompts": [
+    "city.prompt.txt"
+  ],
+  "sha256": "fdfcc73be6693a0573096e1825ebd355385c93a1085a382c3de8feae2f43c4b6"
+}

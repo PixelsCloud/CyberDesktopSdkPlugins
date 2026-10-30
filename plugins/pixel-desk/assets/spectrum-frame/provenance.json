@@ -1,0 +1,18 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-a454eaf1-a427-401a-8998-ffb7a942e801.png",
+  "reference": "design/pixel-desk-suite/07-audio-interactive.png",
+  "sha256": "01fbd918091d9a2111d9ff486d7f25df211d874ac1b287ff84e78bbc50191f26",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "visibleBounds": [
+    112,
+    151,
+    1031,
+    965
+  ],
+  "purpose": "Empty Pixel Desk audio instrument frame. Rods, peak balls and spokes are native live content.",
+  "transparency": "Transparent exterior, dark navy glass"
+}

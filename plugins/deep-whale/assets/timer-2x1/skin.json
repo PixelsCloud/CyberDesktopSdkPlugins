@@ -1,0 +1,68 @@
+{
+  "id": "com.cyberdesktop.deepwhale.timer.2x1",
+  "folder": "timer-2x1",
+  "sourceId": "com.cyberdesktop.timer.1x2",
+  "source": "plugins/productivity-suite/packages/timer-1x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 0,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "title": [
+      74.47,
+      48,
+      50.73,
+      13
+    ],
+    "toggle": [
+      76.34375,
+      64.48438,
+      19,
+      19
+    ],
+    "reset": [
+      104.34375,
+      64.48438,
+      19,
+      19
+    ],
+    "phase": [
+      74,
+      36,
+      51,
+      12
+    ],
+    "progress": [
+      74.5,
+      61.7,
+      50.7,
+      2.2
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        15,
+        107,
+        1592,
+        773
+      ],
+      "destination": [
+        7,
+        22.09375,
+        146,
+        70.89063
+      ]
+    }
+  ],
+  "designUid": "b10-1",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

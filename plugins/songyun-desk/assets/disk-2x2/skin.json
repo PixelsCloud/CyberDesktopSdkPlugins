@@ -1,0 +1,73 @@
+{
+  "id": "com.cyberdesktop.songyun.disk.2x2",
+  "folder": "disk-2x2",
+  "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 4,
+  "rows": 2,
+  "columns": 2,
+  "board": 5,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    58,
+    134,
+    348,
+    376
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 磁盘 2×2",
+  "regions": {
+    "gauge": [
+      0.2442528735632184,
+      0.19946808510638298,
+      0.5287356321839081,
+      0.48936170212765956
+    ],
+    "title": [
+      0.4281609195402299,
+      0.2978723404255319,
+      0.14655172413793102,
+      0.07712765957446809
+    ],
+    "usage": [
+      0.31896551724137934,
+      0.39893617021276595,
+      0.367816091954023,
+      0.14627659574468085
+    ],
+    "total": [
+      0.35344827586206895,
+      0.5531914893617021,
+      0.3505747126436782,
+      0.06648936170212766
+    ],
+    "free": [
+      0.35344827586206895,
+      0.625,
+      0.3505747126436782,
+      0.06914893617021277
+    ],
+    "surface0Circle": [
+      0.23563218390804597,
+      0.18882978723404256,
+      0.5459770114942529,
+      0.5053191489361702
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+  "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+  "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+  "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+  "nativeTicks": true,
+  "renderInset": 7
+}

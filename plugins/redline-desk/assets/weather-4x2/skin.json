@@ -1,0 +1,147 @@
+{
+  "id": "com.cyberdesktop.redline.weather.4x2",
+  "folder": "weather-4x2",
+  "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+  "source": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 2,
+  "columns": 4,
+  "board": 3,
+  "slot": 4,
+  "imageSize": [
+    1605,
+    980
+  ],
+  "crop": [
+    39,
+    81,
+    1537,
+    837
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械天气 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "city": [
+      0.34,
+      0.57,
+      0.13,
+      0.07
+    ],
+    "temperature": [
+      0.34,
+      0.28,
+      0.21,
+      0.28
+    ],
+    "condition": [
+      0.53,
+      0.57,
+      0.12,
+      0.07
+    ],
+    "icon": [
+      0.1,
+      0.145,
+      0.215,
+      0.37
+    ],
+    "humidity": [
+      0.66,
+      0.36,
+      0.13,
+      0.07
+    ],
+    "wind": [
+      0.66,
+      0.49,
+      0.13,
+      0.065
+    ],
+    "humidityIcon": [
+      0.59,
+      0.36,
+      0.05,
+      0.07
+    ],
+    "windIcon": [
+      0.59,
+      0.49,
+      0.05,
+      0.065
+    ],
+    "humidityLabel": [
+      0.66,
+      0.29,
+      0.13,
+      0.06
+    ],
+    "windLabel": [
+      0.66,
+      0.435,
+      0.13,
+      0.05
+    ],
+    "forecast0": [
+      0.39,
+      0.68,
+      0.17,
+      0.2
+    ],
+    "forecast1": [
+      0.58,
+      0.68,
+      0.17,
+      0.2
+    ],
+    "forecast2": [
+      0.77,
+      0.68,
+      0.17,
+      0.2
+    ],
+    "range": [
+      0.66,
+      0.56,
+      0.13,
+      0.065
+    ],
+    "conditionIcon": [
+      0.475,
+      0.555,
+      0.04,
+      0.08
+    ]
+  },
+  "approvedArt": "plugins/redline-desk/assets/weather-4x2/body.png",
+  "art": "plugins/redline-desk/assets/weather-4x2/body.png",
+  "artSha256": "899de85ef718a2622420b6f2eba301a5f99191535479d01c19a223a64a353624",
+  "approvedCrop": [
+    39,
+    81,
+    1537,
+    837
+  ],
+  "reviewText": [
+    "city",
+    "temperature",
+    "condition",
+    "humidity",
+    "wind",
+    "humidityLabel",
+    "windLabel",
+    "range"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": [
+    "humidityIcon",
+    "windIcon",
+    "conditionIcon"
+  ]
+}

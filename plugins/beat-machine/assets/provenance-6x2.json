@@ -1,0 +1,70 @@
+{
+  "generator": "OpenAI image_gen",
+  "styleReference": "design/mechanical-physics-precision-redesign.png",
+  "layout": "6x2",
+  "files": [
+    {
+      "file": "chassis-6x2.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2099389,
+      "sha256": "e4e40ca855aa24f055103c5ac3f437f8fe3be49da47fa0351bcee7ec81729dbd",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-88e6d0f1-99a8-4e52-8e68-00fe6a483b01.png"
+    },
+    {
+      "file": "piston-base.png",
+      "width": 2112,
+      "height": 745,
+      "bytes": 854969,
+      "sha256": "98565fd9ecaec3d8b373979380b3f79dcbaadf0bfdb5bb3a728e59f92d347a35",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-edccd021-9a3e-4385-9d4a-099339592f73.png"
+    },
+    {
+      "file": "piston-cap.png",
+      "width": 1983,
+      "height": 793,
+      "bytes": 1038374,
+      "sha256": "3cf267ab7c52153c5daacfc07f26268c7a2358f05ae89498dcbd6a3589642ce0",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-863d0196-29bf-4e7c-8208-feab2eeec8ed.png"
+    },
+    {
+      "file": "paddle.png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 810813,
+      "sha256": "e243b8c0c54537c54665c30a20448b1abdf46cbb1ab29e08f30ea2749101d18b",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-17a98f88-30b5-4e42-963f-a8502062fea5.png"
+    },
+    {
+      "file": "bumper.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1844558,
+      "sha256": "c267d6a9f9023d78a779a073745a9acecbdedec530f5596742a275efd63fecd8",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-7bf63110-6d40-4fe3-8dfd-6a30c9de1ea5.png"
+    },
+    {
+      "file": "steel-marble.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1318995,
+      "sha256": "31aa8da08e8efa57c2edb5501d58b30974fc6eb27ac147749453dc3b0750d633",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-96ec5123-c617-41e4-a7cb-58bb0b50d435.png"
+    },
+    {
+      "file": "launcher.png",
+      "width": 1159,
+      "height": 1358,
+      "bytes": 593083,
+      "sha256": "c5b6b6b5bae5109116120121daa696b5a6ee7ee77c03243a1e40f9b20b044768",
+      "source": "OpenAI image_gen; tools/PrecisionAssetPrompts.txt",
+      "generatedSource": "exec-3e29d692-a88c-460e-a105-3789fea9a80c.png"
+    }
+  ]
+}

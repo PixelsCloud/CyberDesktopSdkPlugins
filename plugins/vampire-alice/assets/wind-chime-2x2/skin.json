@@ -1,0 +1,86 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.wind.chime.2x2",
+  "folder": "wind-chime-2x2",
+  "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+  "source": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+  "family": "toys",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 7,
+  "slot": 5,
+  "character": false,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    861,
+    476,
+    277,
+    397
+  ],
+  "art": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+  "artSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 风铃 2×2",
+  "regions": {
+    "world": [
+      0.01444043321299639,
+      0.0,
+      0.9855595667870036,
+      1.0
+    ],
+    "charm0": [
+      0.04693140794223827,
+      0.33249370277078083,
+      0.3285198555956679,
+      0.2871536523929471
+    ],
+    "charm1": [
+      0.35018050541516244,
+      0.327455919395466,
+      0.33935018050541516,
+      0.2871536523929471
+    ],
+    "charm2": [
+      0.6462093862815884,
+      0.3879093198992443,
+      0.35018050541516244,
+      0.2795969773299748
+    ],
+    "charm3": [
+      0.12274368231046931,
+      0.6675062972292192,
+      0.1444043321299639,
+      0.21662468513853905
+    ],
+    "charm4": [
+      0.4151624548736462,
+      0.690176322418136,
+      0.16606498194945848,
+      0.2695214105793451
+    ],
+    "charm5": [
+      0.740072202166065,
+      0.6977329974811083,
+      0.1444043321299639,
+      0.29219143576826195
+    ],
+    "motion": [
+      0.0,
+      0.19143576826196473,
+      1.0,
+      0.8085642317380353
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/07-audio-interactive.art.png",
+  "approvedArtSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

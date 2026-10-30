@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "data": {
+    "aqi": 155,
+    "idx": 100001,
+    "dominentpol": "pm25",
+    "city": {"name": "Synthetic station (测试监测站)", "geo": [36.6683, 116.9972], "url": "https://aqicn.org/city/synthetic-test/"},
+    "time": {"s": "2026-10-13 11:00:00", "tz": "+08:00"},
+    "iaqi": {"pm25": {"v": 155}, "pm10": {"v": 64}, "o3": {"v": 16.3}, "no2": {"v": 22}, "co": {"v": 3}, "so2": {"v": 5}},
+    "attributions": [{"name": "Synthetic EPA (测试监测机构)", "url": "https://example.org/epa"}, {"name": "World Air Quality Index Project", "url": "https://waqi.info/"}],
+    "forecast": {"daily": {"pm25": [{"day": "2026-10-12", "avg": 60, "min": 40, "max": 80}, {"day": "2026-10-13", "avg": 90, "min": 70, "max": 110}, {"day": "2026-10-14", "avg": 120, "min": 100, "max": 140}, {"day": "2026-10-15", "avg": 70, "min": 40, "max": 100}]}}
+  }
+}

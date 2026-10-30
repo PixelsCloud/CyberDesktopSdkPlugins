@@ -1,0 +1,91 @@
+{
+  "folder": "weather-4x1",
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "icon": [
+      19.240000000000002,
+      26.25194942044257,
+      67.32000000000001,
+      47.49610115911485
+    ],
+    "city": [
+      95.74,
+      21.502339304531084,
+      67.32000000000001,
+      14.248830347734456
+    ],
+    "temperature": [
+      98.8,
+      35.751169652265546,
+      88.74,
+      30.87246575342466
+    ],
+    "humidity": [
+      215.08,
+      31.793161222339307,
+      42.84,
+      13.457228661749213
+    ],
+    "wind": [
+      212.02,
+      61.87402528977872,
+      58.14,
+      13.457228661749213
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        148,
+        113,
+        1898,
+        491
+      ],
+      "destination": [
+        7.0,
+        10.419915700737619,
+        306.0,
+        79.16016859852476
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "font_family": "Chakra Petch"
+  },
+  "palette": "terminal",
+  "screens": [],
+  "styles": {
+    "city": {
+      "size": 13,
+      "color": 3639209983,
+      "minimumSize": 11,
+      "overflow": "optional"
+    },
+    "temperature": {
+      "size": 26.24159589041096,
+      "color": 4093180671,
+      "role": "display",
+      "minimumSize": 12,
+      "overflow": "fit"
+    }
+  },
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 313.0,
+    "cuts": [
+      160.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

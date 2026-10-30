@@ -1,0 +1,147 @@
+{
+    "format": 1,
+    "publicRemote": "https://github.com/PixelsCloud/CyberDesktopSdkPlugins.git",
+    "activation": "public publication authorized 2026-10-30",
+    "trees": [
+        {
+            "path": "sdk",
+            "consumers": [
+                "sdk"
+            ]
+        },
+        {
+            "path": "libraries/cybercanvas",
+            "consumers": [
+                "sdk"
+            ]
+        },
+        {
+            "path": "libraries/character-resources",
+            "consumers": [
+                "sdk"
+            ]
+        },
+        {
+            "path": "runtime/live2d",
+            "consumers": [
+                "sdk"
+            ]
+        },
+        {
+            "path": "tests/sdk-install",
+            "consumers": [
+                "sdk"
+            ]
+        },
+        {
+            "path": "plugins",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "libraries/content-model",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "third_party/sxtwl",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "assets/fonts/Aeris",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "assets/fonts/DeepWhale",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "assets/fonts/Streetlink",
+            "consumers": [
+                "plugins"
+            ]
+        },
+        {
+            "path": "libraries/character-protocol",
+            "consumers": [
+                "sdk",
+                "plugins"
+            ]
+        },
+        {
+            "path": "libraries/cyberglass/resources/lucide",
+            "consumers": [
+                "sdk",
+                "plugins"
+            ]
+        },
+        {
+            "path": "assets/fonts/SiYuanZhenHei-Heavy",
+            "consumers": [
+                "sdk",
+                "plugins"
+            ]
+        },
+        {
+            "path": "assets/fonts/ZQKFreeFont",
+            "consumers": [
+                "sdk",
+                "plugins"
+            ]
+        }
+    ],
+    "rootFiles": [
+        ".clang-format"
+    ],
+    "externalDependencies": [
+        {
+            "name": "vcpkg",
+            "source": "sdk/vcpkg.json",
+            "redistribution": "Static libraries and original notices in installed SDK; no dependency cache in public source"
+        },
+        {
+            "name": "Qt",
+            "source": "User-supplied Qt installation, Core/Gui/Network for full preview",
+            "redistribution": "Qt remains separately licensed; preserve notices from the actual installation"
+        },
+        {
+            "name": "Cubism Native",
+            "source": "User-supplied CD_CUBISM_ROOT, Native 5-r.5",
+            "redistribution": "No external SDK source or binary in candidate tree; original model and framework notices remain applicable"
+        }
+    ],
+    "excluded": [
+        "design/",
+        "src/",
+        "apps/",
+        "build/",
+        ".git/",
+        "user data",
+        "private credentials",
+        "core repository history"
+    ],
+    "repositoryFiles": {
+        "sdk/repository/CMakeLists.txt": "CMakeLists.txt",
+        "sdk/repository/.gitignore": ".gitignore",
+        "sdk/LICENSE": "LICENSE",
+        "plugins/README.md": "README.md",
+        "sdk/.github/workflows/sdk.yml": ".github/workflows/sdk.yml"
+    },
+    "excludedSourceTrees": [
+        "plugins/deep-whale/tools",
+        "plugins/mecha-desk/tools",
+        "plugins/mechanical-desk/tools",
+        "plugins/pixel-desk/tools",
+        "plugins/redline-desk/tools",
+        "plugins/songyun-desk/tools",
+        "plugins/vampire-alice/tools"
+    ]
+}

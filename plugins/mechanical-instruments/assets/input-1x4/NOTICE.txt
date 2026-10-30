@@ -1,0 +1,1 @@
+Original CyberDesktop mechanical input counter artwork generated with OpenAI image_gen from the approved project concept. Blank drum faces and engraved keyboard/mouse medallions are part of the static material. Live digits are drawn separately. No keystroke contents are collected by this plugin.

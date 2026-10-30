@@ -1,0 +1,42 @@
+id: "com.example.data"
+name: "Native telemetry starter"
+version: "1.0.0"
+author: "Your Name"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 8
+capabilities: SYSTEM_INFO
+required_services { id: "system.telemetry" version: 1 }
+footprint_rules { topology: RECT min_cells: 1 max_cells: 64 max_columns: 16 max_rows: 16 }
+layouts {
+    id: "default"
+    name: "Default"
+    topology: RECT
+    is_default: true
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+}
+settings_page {
+    title: "Appearance and behavior"
+    fields { id: "color" label: "Accent" type: COLOR color_default: 0x6BD7C7FF }
+    fields {
+        id: "font_family"
+        label: "System font"
+        type: CHOICE
+        text_default: "Segoe UI"
+        choices { value: "Segoe UI" label: "Segoe UI" }
+        choices { value: "Consolas" label: "Consolas" }
+        choices { value: "Microsoft YaHei" label: "Microsoft YaHei" }
+    }
+    fields {
+        id: "language"
+        label: "Language"
+        type: CHOICE
+        text_default: "en"
+        choices { value: "en" label: "English" }
+        choices { value: "zh-CN" label: "简体中文" }
+    }
+}

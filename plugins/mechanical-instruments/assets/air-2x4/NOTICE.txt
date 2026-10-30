@@ -1,0 +1,4 @@
+Generated with OpenAI image_gen from the approved mechanical concept.
+Separate PNG components; digits, needles, cords and physics are live.
+Native dimensions and SHA256 hashes: provenance.json.
+Generation prompts: design/mechanical-spring-chime-air-quality-assets.prompt.txt.

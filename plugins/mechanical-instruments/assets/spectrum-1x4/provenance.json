@@ -1,0 +1,50 @@
+{
+  "generator": "OpenAI image_gen",
+  "reference": "design/mechanical-radial-linear-spectrum-concept.png",
+  "prompts": "design/mechanical-radial-linear-spectrum-assets.prompt.txt",
+  "files": [
+    {
+      "file": "body.png",
+      "width": 2021,
+      "height": 778,
+      "bounds": [
+        31,
+        296,
+        1990,
+        585
+      ],
+      "bytes": 489753,
+      "sha256": "cfe0d3fdca16934c654e1b4235cefa7312e068dcf337898c3cc93f2bb9aa95ab",
+      "source": "exec-36282c85-5c0e-478b-8772-7d772d309ce1.png"
+    },
+    {
+      "file": "rod.png",
+      "width": 1060,
+      "height": 1484,
+      "bounds": [
+        444,
+        42,
+        616,
+        1443
+      ],
+      "bytes": 385224,
+      "sha256": "112f819231e2a607ac2b9f7766fffadedd1bcedc45a222f3cac4b220148c334a",
+      "source": "exec-22dd0d33-5220-4db9-91f7-d0cbade73919.png"
+    },
+    {
+      "file": "ball.png",
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        90,
+        96,
+        1163,
+        1149
+      ],
+      "bytes": 1318995,
+      "sha256": "31aa8da08e8efa57c2edb5501d58b30974fc6eb27ac147749453dc3b0750d633",
+      "source": "plugins/marble-clock/assets/steel-marble.png",
+      "generatedSource": "exec-96ec5123-c617-41e4-a7cb-58bb0b50d435.png"
+    }
+  ]
+}

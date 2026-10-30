@@ -1,0 +1,66 @@
+{
+  "id": "com.cyberdesktop.deepwhale.lunar.4x4",
+  "folder": "lunar-4x4",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+  "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "columns": 4,
+  "rows": 4,
+  "scene": [
+    320,
+    400
+  ],
+  "regions": {
+    "title": [
+      139.4375,
+      123.09375,
+      126.65625,
+      22
+    ],
+    "previous": [
+      115.4375,
+      123.09375,
+      22,
+      22
+    ],
+    "next": [
+      268.09375,
+      123.09375,
+      22,
+      22
+    ],
+    "grid": [
+      115.43823264201983,
+      173.3863660955816,
+      174.6600541027953,
+      160.84176735798016
+    ],
+    "weekdays": [
+      115.43823264201983,
+      154.33931469792606,
+      174.6600541027953,
+      19.047051397655544
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        7,
+        35,
+        1109,
+        1283
+      ],
+      "destination": [
+        7,
+        38.98438,
+        306,
+        354
+      ]
+    }
+  ],
+  "designUid": "b03-1",
+  "defaults": {}
+}

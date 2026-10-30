@@ -1,0 +1,4 @@
+Mechanical Calendar artwork
+Generated for CyberDesktop from the approved calendar concept using the built-in image generation tool.
+The housing contains no dates, glyphs or functional icons. All text and calendar values are drawn live.
+Navigation icons use the host CyberGlass Lucide entry through SDK ui.icons; Lucide license is included.

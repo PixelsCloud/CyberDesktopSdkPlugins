@@ -1,0 +1,40 @@
+{
+  "id": "com.cyberdesktop.songyun.music.square.8x1",
+  "folder": "music-square-8x1",
+  "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+  "source": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 8,
+  "board": 6,
+  "slot": 5,
+  "imageSize": [
+    1774,
+    887
+  ],
+  "crop": [
+    23,
+    205,
+    1729,
+    184
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 方点阵频谱 8×1",
+  "regions": {
+    "plot": [
+      0.061885482938114515,
+      0.17391304347826086,
+      0.876229034123771,
+      0.6086956521739131
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-04-eight-column.art.png",
+  "artSha256": "44a39da6addb6064b73935dc2dc0ed84865b7f8f6eedebaa543761d366044fe9",
+  "renderInset": 7
+}

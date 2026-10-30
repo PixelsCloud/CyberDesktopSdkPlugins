@@ -1,0 +1,81 @@
+{
+  "id": "com.cyberdesktop.deepwhale.spectrum.8x1",
+  "folder": "spectrum-8x1",
+  "sourceId": "com.cyberdesktop.music.spectrum.1x8",
+  "source": "plugins/widget-suite/packages/spectrum-1x8/plugin.textproto",
+  "family": "widget",
+  "kind": 0,
+  "columns": 8,
+  "rows": 1,
+  "scene": [
+    640,
+    100
+  ],
+  "regions": {
+    "plot": [
+      37.04688,
+      43.4375,
+      565.73438,
+      29.5625
+    ]
+  },
+  "layers": [
+    {
+      "name": "continuous-rail",
+      "file": "art-0.png",
+      "source": [
+        679,
+        93,
+        8,
+        538
+      ],
+      "destination": [
+        46.64312267657992,
+        7,
+        546.7137546468402,
+        86
+      ],
+      "repeatX": true
+    },
+    {
+      "name": "rail-2",
+      "file": "art-0.png",
+      "source": [
+        11,
+        93,
+        248,
+        538
+      ],
+      "destination": [
+        7,
+        7,
+        39.64312267657992,
+        86
+      ]
+    },
+    {
+      "name": "rail-4",
+      "file": "art-0.png",
+      "source": [
+        1913,
+        93,
+        248,
+        538
+      ],
+      "destination": [
+        593.3568773234201,
+        7,
+        39.64312267657992,
+        86
+      ]
+    }
+  ],
+  "designUid": "b10-5",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "compositionNote": "One continuous original rail with complete independent endcaps and character; no clipped crest strips.",
+  "horizontalCuts": [
+    340
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "com.cyberdesktop.redline.weather.4x1",
+  "folder": "weather-4x1",
+  "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+  "family": "weather",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 3,
+  "slot": 3,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    77,
+    571,
+    870,
+    195
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械天气 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "city": [
+      0.22,
+      0.23,
+      0.18,
+      0.16
+    ],
+    "temperature": [
+      0.22,
+      0.43,
+      0.18,
+      0.37
+    ],
+    "icon": [
+      0.07,
+      0.23,
+      0.14,
+      0.52
+    ],
+    "forecast0": [
+      0.6,
+      0.24,
+      0.1,
+      0.56
+    ],
+    "forecast1": [
+      0.72,
+      0.24,
+      0.1,
+      0.56
+    ],
+    "forecast2": [
+      0.84,
+      0.24,
+      0.1,
+      0.56
+    ],
+    "surface0": [
+      0.055,
+      0.16,
+      0.89,
+      0.76
+    ],
+    "range": [
+      0.41,
+      0.46,
+      0.16,
+      0.21
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-strips.art.png",
+  "art": "plugins/redline-desk/assets/weather-4x1/body.png",
+  "artSha256": "34669655b1757b001e6011fe4acc1b4719040f9ecab245df1d57d61eb276dc3c",
+  "approvedCrop": [
+    77,
+    571,
+    870,
+    195
+  ],
+  "reviewText": [
+    "city",
+    "temperature",
+    "range"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

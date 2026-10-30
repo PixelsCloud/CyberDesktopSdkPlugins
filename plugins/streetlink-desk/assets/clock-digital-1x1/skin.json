@@ -1,0 +1,80 @@
+{
+  "folder": "digital-1x1",
+  "columns": 1,
+  "rows": 1,
+  "scene": [
+    80,
+    100
+  ],
+  "regions": {
+    "plot": [
+      22.465555555555554,
+      26.78,
+      32.24075268817204,
+      48.160000000000004
+    ],
+    "readout0": [
+      23.031182795698925,
+      27.64,
+      31.675125448028677,
+      18.92
+    ],
+    "readout1": [
+      23.031182795698925,
+      50.86,
+      31.675125448028677,
+      18.92
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        210,
+        183,
+        734,
+        1116
+      ],
+      "destination": [
+        11.718637992831539,
+        7.0,
+        56.56272401433692,
+        86.0
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "text_color": 4093180671,
+    "seconds_color": 15200255,
+    "font_family": "Chakra Petch"
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      22.465555555555554,
+      26.78,
+      32.24075268817204,
+      48.160000000000004
+    ]
+  ],
+  "styles": {
+    "readout0": {
+      "size": 16.082,
+      "color": 4093180671,
+      "role": "display",
+      "minimumSize": 12,
+      "overflow": "fit"
+    },
+    "readout1": {
+      "size": 16.082,
+      "color": 4093180671,
+      "role": "display",
+      "minimumSize": 12,
+      "overflow": "fit"
+    }
+  },
+  "armour": [],
+  "actuators": []
+}

@@ -1,0 +1,47 @@
+{
+  "id": "com.cyberdesktop.deepwhale.spectrum.6x1",
+  "folder": "spectrum-6x1",
+  "sourceId": "com.cyberdesktop.music.spectrum.1x6",
+  "source": "plugins/widget-suite/packages/spectrum-1x6/plugin.textproto",
+  "family": "widget",
+  "kind": 0,
+  "columns": 6,
+  "rows": 1,
+  "scene": [
+    480,
+    100
+  ],
+  "regions": {
+    "plot": [
+      118.4375,
+      25.07813,
+      310.375,
+      54.40625
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        18,
+        192,
+        2141,
+        389
+      ],
+      "destination": [
+        7,
+        8.32813,
+        466,
+        84.65625
+      ]
+    }
+  ],
+  "designUid": "b10-4",
+  "defaults": {
+    "font_family": "Bree Serif"
+  },
+  "horizontalCuts": [
+    240
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR orthographic pond revision; fish are native procedural geometry",
+  "file": "pond-topview.art.png",
+  "sha256": "780de7dba18e9597fe7c4ab62e9223c1db431a7edf3423e663c85a2f1fd7bb88",
+  "crop": [
+    0,
+    38,
+    908,
+    512
+  ]
+}

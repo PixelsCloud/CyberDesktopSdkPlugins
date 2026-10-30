@@ -1,0 +1,1 @@
+Original CyberDesktop mechanical spectrum artwork generated with OpenAI image_gen from the approved project concept. Static housing and moving brass rod are separate transparent PNG layers. Runtime audio levels are never baked into material assets. Provenance and SHA-256 hashes are recorded in provenance.json.

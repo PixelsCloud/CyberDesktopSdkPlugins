@@ -1,0 +1,98 @@
+{
+  "id": "com.cyberdesktop.redline.lunar.4x4",
+  "folder": "lunar-4x4",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+  "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "rows": 4,
+  "columns": 4,
+  "board": 3,
+  "slot": 1,
+  "imageSize": [
+    1129,
+    1393
+  ],
+  "crop": [
+    37,
+    720,
+    629,
+    641
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械农历 4×4",
+  "runtimePlate": true,
+  "regions": {
+    "body": [
+      0.075,
+      0.245,
+      0.85,
+      0.69
+    ],
+    "title": [
+      0.24,
+      0.25,
+      0.46,
+      0.065
+    ],
+    "previous": [
+      0.08,
+      0.25,
+      0.07,
+      0.065
+    ],
+    "next": [
+      0.86,
+      0.25,
+      0.07,
+      0.065
+    ],
+    "weekdays": [
+      0.1,
+      0.325,
+      0.8,
+      0.055
+    ],
+    "grid": [
+      0.1,
+      0.38,
+      0.8,
+      0.48
+    ],
+    "festival": [
+      0.22,
+      0.87,
+      0.56,
+      0.045
+    ],
+    "today": [
+      0.72,
+      0.25,
+      0.12,
+      0.065
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-core.art.png",
+  "art": "plugins/redline-desk/assets/lunar-4x4/body.png",
+  "artSha256": "ef410cd577c21029860439efaed37414147c723f0eb38df8a5ea17415e0fb95d",
+  "approvedCrop": [
+    37,
+    720,
+    629,
+    641
+  ],
+  "reviewText": [
+    "title",
+    "today"
+  ],
+  "reviewButtons": [
+    "previous",
+    "next"
+  ],
+  "reviewIcons": []
+}

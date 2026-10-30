@@ -1,0 +1,7 @@
+Air quality data provider: World Air Quality Index Project — https://waqi.info/
+Originating monitoring agency is named in the plugin card, taken from the feed's attributions.
+API documentation and current terms: https://aqicn.org/api/
+Map overlay documentation: https://aqicn.org/faq/2015-09-18/map-web-service-real-time-air-quality-tile-api/
+Terms restrict paid applications, public for-profit use without agreement, and cached-data redistribution.
+API readings and availability may change; this development package grants no additional data rights.
+Actual feed responses and credentials are not included in this package.

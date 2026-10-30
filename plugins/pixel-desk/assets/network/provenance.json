@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-6827700a-c434-4a8a-9ec1-09ca42d24837.png",
+  "reference": "design/pixel-desk-suite/04-system-instruments.png",
+  "imageSize": [
+    2170,
+    725
+  ],
+  "visibleBounds": [
+    89,
+    76,
+    1991,
+    547
+  ],
+  "purpose": "Empty network case. Actual download/upload values, meter ticks and measured history traces are separate native content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "6fba4529bf6c81a31c54ab52ff8a389a0dddf87790ca1b88de71f8b161c1075c"
+}

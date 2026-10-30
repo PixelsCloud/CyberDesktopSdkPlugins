@@ -1,0 +1,19 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "reference": "design/mechanical-album-concept.png",
+  "role": "Transparent metal frame and blank mechanical keycap/counter atlas; photographs, Lucide icons and count are dynamic.",
+  "files": [
+    {
+      "file": "body.png",
+      "source": "exec-6c0e1559-d52b-4613-920d-43c5c9bb850c.png",
+      "bytes": 866964,
+      "sha256": "53B2A4ADF12C48552C87CF7C74077784D20233EFAFAF6B837D68D46ECE39D0A3"
+    },
+    {
+      "file": "controls.png",
+      "source": "exec-b809f489-1414-4e1e-9833-9048abd8a3f8.png",
+      "bytes": 786460,
+      "sha256": "B974783E579D915D7F08F618824D2AB9A7E32E1EADBC03222D71DC32FE8F4590"
+    }
+  ]
+}

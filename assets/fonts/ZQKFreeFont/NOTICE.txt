@@ -1,0 +1,9 @@
+ZQKfreefont, Version 1.000, 2024
+Copyright: 济南一字百炼艺术设计有限公司. Author: 郑庆科 / 庆科字体.
+Original author release: https://www.zcool.com.cn/work/ZNjg2OTA5OTI=.html
+Font name-table declaration: 本字体商用免费，详情可@庆科字体。
+Original font file retained unchanged. This is a third-party freeware font,
+not a font licensed under this repository's MIT license. The author's published
+commercial-use statement is not an open-source license or permission to modify
+or relicense the font. Public source redistribution requires the original
+author's applicable redistribution terms; do not relabel it as MIT/OFL.

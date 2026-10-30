@@ -1,0 +1,108 @@
+id: "com.cyberdesktop.mecha.dive.clock.2x2"
+name: "机甲 · 极地潜航精密钟"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "翡翠绿放射纹表盘、立体指针与实时日期，支持流畅及机械微步走秒。"
+layouts {
+    id: "2x2"
+    name: "2×2（宽×高）"
+    is_default: true
+    allowed_rotations: 0
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 2 max_rows: 2 }
+content_padding: 0
+preview: "preview.png"
+settings_page {
+    title: "翡翠绿潜水表"
+    description: "只调整当前实例。日期、时区和走时跟随系统；隐藏后停止刷新，恢复时直接校准。"
+    fields {
+        id: "motion"
+        label: "走秒方式"
+        type: CHOICE
+        text_default: "beat"
+        choices {
+            value: "sweep"
+            label: "流畅扫秒"
+            localized_labels { key: "en" value: "Smooth sweep" }
+        }
+        choices {
+            value: "beat"
+            label: "机械微步（每秒八步）"
+            localized_labels { key: "en" value: "Eight beats per second" }
+        }
+        choices {
+            value: "tick"
+            label: "每秒跳动"
+            localized_labels { key: "en" value: "One tick per second" }
+        }
+        localized {
+            key: "en"
+            value { label: "Seconds motion" }
+        }
+    }
+    fields {
+        id: "seconds"
+        label: "显示秒针"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show seconds hand" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "显示方形机壳"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show square case" }
+        }
+    }
+    fields {
+        id: "detail"
+        label: "显示实时日期"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show date" }
+        }
+    }
+    fields {
+        id: "animation"
+        label: "启用动画"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable animation" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态效果"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Emerald Diver Clock"
+            description: "Settings affect this instance only. Follows system time and time zone; hidden clocks stop callbacks."
+        }
+    }
+}
+
+tags: "机甲"

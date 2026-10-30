@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.timer.2x2",
+  "folder": "timer-2x2",
+  "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 8,
+  "slot": 3,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1065,
+    11,
+    383,
+    501
+  ],
+  "art": "design/vampire-muse-suite/08-timers.runtime.png",
+  "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 番茄钟 2×2",
+  "regions": {
+    "title": [
+      0.2297650130548303,
+      0.38922155688622756,
+      0.5535248041775457,
+      0.16766467065868262
+    ],
+    "toggle": [
+      0.185378590078329,
+      0.7584830339321357,
+      0.2193211488250653,
+      0.16766467065868262
+    ],
+    "reset": [
+      0.5926892950391645,
+      0.7584830339321357,
+      0.2193211488250653,
+      0.16766467065868262
+    ],
+    "gauge": [
+      0.15404699738903394,
+      0.1996007984031936,
+      0.6945169712793734,
+      0.530938123752495
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
+  "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

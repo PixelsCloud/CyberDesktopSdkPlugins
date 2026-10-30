@@ -1,0 +1,42 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a13908-b313-7e50-9e54-5024f7f83857\\exec-58d6ee2d-82c4-4791-ab61-94c24f00789a.png",
+  "reference": "design/pixel-desk-suite/grid-01-clocks.art.png",
+  "sha256": "0e5a079e565b050383e8a4691d5f21312fb8c4b088aea68c2080995cccef6c2d",
+  "imageSize": [
+    841,
+    392
+  ],
+  "visibleBounds": [
+    2,
+    2,
+    837,
+    388
+  ],
+  "sourceCrop": [
+    36,
+    500,
+    877,
+    892
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Clean layered runtime sprite; extraction preserves native source pixels",
+  "prompts": [
+    "body-1.prompt.txt"
+  ],
+  "parts": {
+    "beam": [
+      2,
+      2,
+      837,
+      68
+    ],
+    "card": [
+      3,
+      70,
+      131,
+      320
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "project": "Lucide",
+  "license": "ISC / MIT (Feather-derived icons)",
+  "source": "https://github.com/lucide-icons/lucide",
+  "package": "lucide-static",
+  "version": "1.55.0",
+  "tarball": "https://registry.npmjs.org/lucide-static/-/lucide-static-1.55.0.tgz",
+  "integrity": "sha512-h18lunTFsIJWnY0FMRPjXeO9KcAtNi7fDqtqgWHOFbssfgUWsctn/pA7bpiyrd4g1DuBOJ24CsRnPfkYblwm/A==",
+  "processing": "Original SVG retained; colored transparent PNG derivatives, no CDN at runtime.",
+  "icons": [
+    {
+      "name": "leaf",
+      "svgSha256": "cee1c402ae3c5e979e7ac4096585e2af36ecea70ff64e85bfb03f9a55f083eac",
+      "pngSha256": "a4310eab0037ae2649acb591da184cd58ac4c248654df48419799abd5830e4ca"
+    },
+    {
+      "name": "wind",
+      "svgSha256": "4f2948d0e62a9a679fbfbe5d1b19caf85e8c823a198c0eed62a5e85f23c1820f",
+      "pngSha256": "9960e6cc560df670cc4feecb5d35552a5b881f9d31cfb305837b680b21573dd9"
+    },
+    {
+      "name": "cloud-fog",
+      "svgSha256": "b7e6738ed2482e0584bf8d16b3623f5cc6d165cadcd0141557cbaffee987b408",
+      "pngSha256": "d0d5269c2278b12ebd0a915a96f7e649b7de4dced2cb175b2a05b15470863423"
+    },
+    {
+      "name": "factory",
+      "svgSha256": "b9d69049fe580d17f1cdbb59c42d0801dba109fdf7bf23a2e0e15a0239f92eb0",
+      "pngSha256": "3f4b81dbf0cd3444a662ba652464cdf14acd66227b42bacfe5e14592bd60bbca"
+    },
+    {
+      "name": "shield-alert",
+      "svgSha256": "351ce81f5e8d8f3338a1c0a71ce8637484cd0d3220b56fabdea1b4051b1e65ad",
+      "pngSha256": "07086a5c847dd4ecad06c741f5c657e053f1c63634a6c627ebd1bc5a0c0754a3"
+    },
+    {
+      "name": "triangle-alert",
+      "svgSha256": "a5ea134b192b88831c5eb32f786ba659d8d8057ee2bc56deebcbf5c47981b917",
+      "pngSha256": "5af32af4a41b41748be058ed74e1ec286e8fd0bc84ab94824de900b9ac3d1957"
+    },
+    {
+      "name": "map-pin",
+      "svgSha256": "366300ea360f0e92aa37b2f287317fd1c09af334a843b1307049b7e638dfff14",
+      "pngSha256": "bcd1039fceaea619545d5d1db5b35f68a1c25d0536ce22d56d55e45315e3eb9a"
+    },
+    {
+      "name": "circle-help",
+      "svgSha256": "e819cf1818917c0248e50e36135659b5f1867d343ab79e3cdb7d0f2de12cdaab",
+      "pngSha256": "a6ccd11ece54560a3a62732020bb285541dc5806aad7a1dc11425620576892e3"
+    }
+  ]
+}

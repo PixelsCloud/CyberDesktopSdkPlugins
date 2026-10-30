@@ -1,0 +1,46 @@
+{
+  "id": "com.cyberdesktop.deepwhale.split.flap.4x1",
+  "folder": "split-flap-4x1",
+  "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+  "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+  "family": "sign",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "world": [
+      62.36325385694249,
+      45.64796633941094,
+      195.4165497896213,
+      30.900420757363253
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        16,
+        73,
+        2139,
+        549
+      ],
+      "destination": [
+        7,
+        14.45313,
+        306,
+        78.53125
+      ]
+    }
+  ],
+  "designUid": "b07-6",
+  "defaults": {},
+  "horizontalCuts": [
+    100,
+    220
+  ]
+}

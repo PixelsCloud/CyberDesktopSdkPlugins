@@ -1,0 +1,42 @@
+{
+  "id": "com.cyberdesktop.deepwhale.radial.2x2",
+  "folder": "radial-2x2",
+  "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+  "family": "widget",
+  "kind": 1,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "plot": [
+      37.1875,
+      82.29688,
+      88.23438,
+      88.23438
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        65,
+        67,
+        1000,
+        1265
+      ],
+      "destination": [
+        7,
+        8.29688,
+        146,
+        184.6875
+      ]
+    }
+  ],
+  "designUid": "b07-2",
+  "defaults": {}
+}

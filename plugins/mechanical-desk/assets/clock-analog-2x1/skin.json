@@ -1,0 +1,23 @@
+{
+  "folder": "clock-analog-2x1",
+  "kind": "analog",
+  "columns": 2,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    345,
+    94,
+    502,
+    283
+  ],
+  "inset": 6.25,
+  "regions": {},
+  "originalArtwork": "supplement-10.art.png",
+  "originalSha256": "c708d153e83d08092d56188127957ed3d7cb4ef697e8a4a4969b6f03b658b564",
+  "board": 10,
+  "slot": 2,
+  "nativePixelsUnmodified": true
+}

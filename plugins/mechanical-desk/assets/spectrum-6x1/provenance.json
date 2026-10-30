@@ -1,0 +1,15 @@
+{
+  "tool": "built-in imagegen",
+  "nativePixelsUnmodified": true,
+  "designSource": "design/mechanical-desk-suite/supplement-spectrum-width.art.png",
+  "materials": [
+    {
+      "file": "ball.png",
+      "sha256": "31aa8da08e8efa57c2edb5501d58b30974fc6eb27ac147749453dc3b0750d633"
+    },
+    {
+      "file": "body.png",
+      "sha256": "7dcb95359c0701607fcca03c8bf46379388e55f23b31ed82ff34e321f1e9b963"
+    }
+  ]
+}

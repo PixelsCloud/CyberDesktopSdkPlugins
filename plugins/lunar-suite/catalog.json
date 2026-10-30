@@ -1,0 +1,23 @@
+[
+  {
+    "id": "com.cyberdesktop.calendar.lunar.1x2",
+    "folder": "1x2",
+    "rows": 1,
+    "columns": 2,
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.calendar.lunar.2x2",
+    "folder": "2x2",
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.calendar.lunar.4x4",
+    "folder": "4x4",
+    "rows": 4,
+    "columns": 4,
+    "version": "1.0.0"
+  }
+]

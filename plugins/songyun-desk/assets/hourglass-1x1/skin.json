@@ -1,0 +1,61 @@
+{
+  "id": "com.cyberdesktop.songyun.hourglass.1x1",
+  "folder": "hourglass-1x1",
+  "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+  "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+  "family": "hourglass",
+  "kind": 0,
+  "rows": 1,
+  "columns": 1,
+  "board": 8,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    24,
+    87,
+    301,
+    377
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 沙漏 1×1",
+  "regions": {
+    "glass": [
+      0.22259136212624583,
+      0.13262599469496023,
+      0.5780730897009967,
+      0.713527851458886
+    ],
+    "surface0": [
+      0.22259136212624583,
+      0.13262599469496023,
+      0.5780730897009967,
+      0.713527851458886
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/08-timers.art.png",
+  "artSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d",
+  "plateSha256": "e471d1a235ee38acdc7a483beb8ab9b4bda1df31f9ef11b6bc01877e6bec0e31",
+  "plateSource": "plugins/songyun-desk/materials/08-timers.runtime.png",
+  "renderInset": 7,
+  "hardware": {
+    "sandTexture": [
+      163,
+      207,
+      16,
+      16
+    ]
+  },
+  "hardwareSize": [
+    1536,
+    1024
+  ],
+  "hardwareSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d"
+}

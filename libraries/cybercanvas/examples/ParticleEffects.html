@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>粒子与物理特效 · CyberCanvas</title>
+  <style>
+    :root { color-scheme:dark; --bg:#0b1119; --panel:#111c29; --line:#263445; --text:#e7eef6; --muted:#91a3b7; --accent:#9de3d0; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:14px/1.65 "Segoe UI","Microsoft YaHei",sans-serif; }
+    button,select,input { font:inherit; }
+    button,select,.native { color:var(--text); background:#1a2838; border:1px solid var(--line); border-radius:8px; }
+    button { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:8px 12px; cursor:pointer; }
+    button:hover,select:hover,.native:hover { background:#263b4c; }
+    button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    button[aria-pressed="true"],button.primary { background:#294a4a; border-color:#44736d; color:#c2f1e3; }
+    .icon { display:inline-flex; width:17px; height:17px; flex:none; color:inherit; }
+    .icon svg { display:block; width:100%; height:100%; stroke:currentColor; }
+    main { max-width:1440px; padding:42px 42px 24px; margin:auto; }
+    .eyebrow { font-size:11px; letter-spacing:2.4px; font-weight:600; color:var(--accent); }
+    .hero { display:flex; justify-content:space-between; align-items:center; gap:25px; margin-bottom:28px; }
+    h1 { font-size:32px; line-height:1.3; margin:10px 0 10px; letter-spacing:1px; font-weight:650; }
+    .intro { color:var(--muted); margin:0; max-width:760px; }
+    .facts { display:flex; gap:28px; text-align:right; flex:none; }
+    .fact strong { display:block; color:#e0ebf5; font-size:25px; font-weight:500; line-height:1.25; }
+    .fact span { font-size:11px; color:var(--muted); }
+    .toolbar { position:sticky; top:0; z-index:3; padding:13px 0; background:#0b1119f5; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .transport { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    select { padding:8px 28px 8px 10px; }
+    label { display:inline-flex; gap:8px; align-items:center; color:var(--muted); }
+    .seek { flex:1; min-width:90px; accent-color:var(--accent); }
+    .time { font-variant-numeric:tabular-nums; font-size:12px; color:var(--muted); min-width:87px; }
+    .filters { display:flex; align-items:center; gap:7px; margin:22px 0 17px; flex-wrap:wrap; }
+    .filters button { padding:6px 14px; background:transparent; border-color:transparent; color:var(--muted); }
+    .filters button[aria-pressed="true"] { background:#294a4a; border-color:#44736d; color:#c2f1e3; }
+    .filters button:hover { background:#1d3040; color:var(--text); }
+    #visibleCount { margin-left:auto; color:var(--muted); font-size:12px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    article { border:1px solid var(--line); background:var(--panel); border-radius:13px; overflow:hidden; min-width:0; }
+    article[hidden] { display:none; }
+    .card-head { display:flex; align-items:center; justify-content:space-between; padding:14px 16px 10px; gap:10px; }
+    h2 { margin:0; font-size:15px; font-weight:600; }
+    .number { font-size:11px; color:#6e859b; margin-right:10px; font-variant-numeric:tabular-nums; }
+    .badge { font-size:10px; line-height:1.6; padding:2px 7px; border-radius:5px; color:#a8becf; border:1px solid #354b5b; white-space:nowrap; }
+    .badge.fluid { color:#89d3ee; border-color:#315b6d; }
+    .badge.light { color:#cfdb9a; border-color:#535e38; }
+    .stage-button { display:block; width:100%; padding:0; border:0; border-radius:0; background:#101b28; line-height:0; cursor:zoom-in; }
+    .stage-button:hover { background:#101b28; }
+    canvas { width:100%; aspect-ratio:360/220; display:block; }
+    .card-body { padding:13px 16px 12px; }
+    .description { margin:0 0 15px; font-size:12px; color:#9db0c3; min-height:40px; }
+    .card-bottom { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .count { color:#738ba1; font-size:11px; font-variant-numeric:tabular-nums; }
+    .actions { display:flex; gap:5px; }
+    .small { padding:5px 7px; border:0; background:transparent; color:#9fb7ca; font-size:11px; gap:6px; }
+    .small .icon { width:14px; height:14px; }
+    .bar { height:2px; background:#243445; }
+    .bar span { display:block; width:0; height:100%; background:#7bbcaf; }
+    footer { margin:24px 0 12px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; color:#71869a; font-size:11px; }
+    dialog { padding:0; border:1px solid #3b5268; border-radius:16px; color:var(--text); background:#111c29; width:min(900px,94vw); max-height:94vh; }
+    dialog::backdrop { background:#050b12cf; backdrop-filter:blur(5px); }
+    .detail-head { padding:18px 22px; display:flex; align-items:center; justify-content:space-between; }
+    .detail-head h2 { font-size:19px; }
+    .close { padding:8px; }
+    .detail-foot { padding:16px 22px; }
+    .detail-foot p { color:var(--muted); margin:0 0 12px; }
+    .detail-foot .native { display:inline-flex; text-decoration:none; padding:6px 12px; font-size:12px; }
+    #error { border:1px solid #875554; color:#edb7ac; padding:18px; border-radius:10px; }
+    [hidden] { display:none !important; }
+    @media(max-width:1100px) { main{padding:28px 24px;} .grid{grid-template-columns:repeat(2,minmax(0,1fr));} .facts{gap:17px;} .fact strong{font-size:21px;} }
+    @media(max-width:700px) { main{padding:22px 14px;} .hero{align-items:flex-start;} h1{font-size:24px;} .facts{display:none;} .grid{grid-template-columns:1fr;} .seek{flex-basis:40%;} .transport{gap:7px;} .time{margin-left:auto;} .filters button{padding:6px 9px;} #visibleCount{display:none;} }
+    @media(prefers-reduced-motion:reduce) { dialog::backdrop{backdrop-filter:none;} }
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div><div class="eyebrow">CYBERCANVAS / EFFECTS LAB</div><h1>粒子与物理特效</h1><p class="intro">从一片飘落的雪，到被搅动的液体。观察风力、碰撞、旋转与黏性，让每种运动看得清楚。</p></div>
+    <div class="facts" aria-label="演示规格"><div class="fact"><strong>12</strong><span>不同效果</span></div><div class="fact"><strong>60</strong><span>帧 / 秒</span></div><div class="fact"><strong>4s</strong><span>每轮回放</span></div></div>
+  </header>
+  <section class="toolbar" aria-label="播放控制">
+    <div class="transport">
+      <button class="primary" id="play" type="button"><span class="icon" data-icon="pause" aria-hidden="true"></span><span>全部暂停</span></button>
+      <button id="restart" type="button" aria-label="从头重播" title="从头重播"><span class="icon" data-icon="rotate-ccw" aria-hidden="true"></span></button>
+      <label>速度<select id="speed" aria-label="播放速度"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+      <label>DPI<select id="dpi" aria-label="绘制 DPI"><option value="auto">跟随屏幕</option><option value="1">100%</option><option value="1.5">150%</option><option value="2">200%</option></select></label>
+      <input class="seek" id="seek" type="range" min="0" max="3999" step="1" value="0" aria-label="回放进度">
+      <span class="time" id="time">0.00 / 4.00 s</span>
+    </div>
+  </section>
+  <nav class="filters" aria-label="效果分类">
+    <button type="button" data-filter="all" aria-pressed="true">全部效果</button><button type="button" data-filter="nature" aria-pressed="false">自然天气</button><button type="button" data-filter="collision" aria-pressed="false">碰撞与碎屑</button><button type="button" data-filter="fluid" aria-pressed="false">液体与黏性</button><button type="button" data-filter="atmosphere" aria-pressed="false">光与烟雾</button><span id="visibleCount">12 种效果</span>
+  </nav>
+  <p id="error" hidden role="alert"></p>
+  <section class="grid" id="grid" aria-label="粒子效果样板"></section>
+  <footer><span>物理轨迹由 C++ 引擎生成，当前为浏览器回放。点击画面可放大，拖动进度可逐帧观察。</span><span>Box2D · Salva · CyberCanvas</span></footer>
+</main>
+<dialog id="detail" aria-labelledby="detailTitle">
+  <div class="detail-head"><h2 id="detailTitle"></h2><button class="close" id="closeDetail" type="button" aria-label="关闭放大预览"><span class="icon" data-icon="x" aria-hidden="true"></span></button></div>
+  <canvas id="detailCanvas" aria-label="放大效果回放"></canvas>
+  <div class="detail-foot"><p id="detailDescription"></p><a class="native" id="native" href="#" target="_blank" rel="noopener">查看 C++ 原生渲染图（1.50 s）</a></div>
+</dialog>
+<script src="effects-data.js"></script>
+<script>
+(() => {
+  'use strict';
+  const data = window.PARTICLE_EFFECTS;
+  if (!data || data.version !== 2 || !Array.isArray(data.scenes)) {
+    const error = document.getElementById('error');
+    error.hidden = false; error.textContent = '效果数据尚未生成，请先运行原生样板生成程序。'; return;
+  }
+  const $ = id => document.getElementById(id);
+  const duration = data.scenes[0].frames.length / data.fps;
+  const labels = {rigid:'刚体碰撞',fluid:'流体求解',light:'轻量粒子'};
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let playing = !reduced.matches, elapsed = 0, speed = 1, last = 0, raf = 0, detailState = null;
+  const states = [];
+  const icon = name => `<span class="icon" aria-hidden="true">${data.icons[name] || ''}</span>`;
+  for (const span of document.querySelectorAll('[data-icon]')) span.innerHTML = data.icons[span.dataset.icon] || '';
+  const io = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      const state = states.find(item => item.card === entry.target);
+      if (state) state.visible = entry.isIntersecting;
+    }
+    schedule();
+  }, {rootMargin:'60px'});
+  const ro = new ResizeObserver(() => schedule());
+  for (const [i, scene] of data.scenes.entries()) {
+    const card = document.createElement('article'); card.dataset.id = scene.id;
+    card.innerHTML = `<div class="card-head"><h2><span class="number">${String(i + 1).padStart(2,'0')}</span>${scene.name}</h2><span class="badge ${scene.kind}">${labels[scene.kind]}</span></div><button type="button" class="stage-button" aria-label="放大${scene.name}"><canvas aria-label="${scene.name}效果"></canvas></button><div class="card-body"><p class="description">${scene.description}</p><div class="card-bottom"><span class="count"></span><div class="actions"><button class="small toggle" type="button" aria-label="暂停${scene.name}" aria-pressed="false">${icon('pause')}<span>暂停</span></button><button class="small expand" type="button" aria-label="放大${scene.name}">${icon('maximize')}<span>放大</span></button></div></div></div><div class="bar"><span></span></div>`;
+    $('grid').append(card);
+    const state = {scene,card,canvas:card.querySelector('canvas'),visible:true,hold:null,offset:0,cacheIndex:-1,nextMap:null};
+    states.push(state); io.observe(card); ro.observe(state.canvas);
+    card.querySelector('.toggle').addEventListener('click', () => {
+      if (state.hold === null) state.hold = elapsed + state.offset;
+      else { state.offset = state.hold - elapsed; state.hold = null; }
+      updateCardButton(state); schedule();
+    });
+    const open = () => {
+      detailState = state; $('detailTitle').textContent = scene.name;
+      $('detailDescription').textContent = scene.description;
+      updateNativeLink(); $('detail').showModal(); schedule();
+    };
+    card.querySelector('.expand').addEventListener('click', open);
+    card.querySelector('.stage-button').addEventListener('click', open);
+  }
+  ro.observe($('detailCanvas'));
+  function ratio() { return $('dpi').value === 'auto' ? Math.min(3, window.devicePixelRatio || 1) : Number($('dpi').value); }
+  function updateNativeLink() {
+    if (!detailState) return;
+    const dpi = ratio() <= 1.25 ? 100 : ratio() < 1.75 ? 150 : 200;
+    $('native').href = `${detailState.scene.id}-${dpi}.png`;
+  }
+  function updateCardButton(state) {
+    const button = state.card.querySelector('.toggle'), paused = state.hold !== null;
+    button.innerHTML = `${icon(paused ? 'play' : 'pause')}<span>${paused ? '播放' : '暂停'}</span>`;
+    button.setAttribute('aria-pressed', String(paused));
+    button.setAttribute('aria-label', `${paused ? '播放' : '暂停'}${state.scene.name}`);
+  }
+  function updatePlayButton() {
+    $('play').innerHTML = `${icon(playing ? 'pause' : 'play')}<span>${playing ? '全部暂停' : '全部播放'}</span>`;
+    $('play').setAttribute('aria-pressed', String(playing));
+  }
+  function color(value, multiplier = 1) {
+    return `rgba(${value >>> 24},${(value >>> 16) & 255},${(value >>> 8) & 255},${((value & 255) / 255) * multiplier})`;
+  }
+  function circle(ctx,x,y,r,fill) { if(r <= 0) return; ctx.fillStyle=fill;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill(); }
+  function stroke(ctx,x,y,xx,yy,fill,width) {ctx.strokeStyle=fill;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();}
+  function angleMix(a,b,t) { return a + ((((b-a)%360)+540)%360-180)*t; }
+  function paint(state, canvas) {
+    const rect=canvas.getBoundingClientRect(); if(rect.width<1 || rect.height<1)return;
+    const r=ratio(), width=Math.round(rect.width*r),height=Math.round(rect.height*r);
+    if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
+    const ctx=canvas.getContext('2d');ctx.setTransform(width/360,0,0,height/220,0,0);
+    ctx.fillStyle='#101b28';ctx.fillRect(0,0,360,220);ctx.save();ctx.beginPath();ctx.rect(6,6,348,208);ctx.clip();ctx.lineCap='round';
+    const scene=state.scene, time=((state.hold ?? elapsed+state.offset)%duration+duration)%duration;
+    const position=time*data.fps,index=Math.min(scene.frames.length-1,Math.floor(position));
+    const nextIndex=Math.min(index+1,scene.frames.length-1),fraction=position-index;
+    const frame=scene.frames[index],next=scene.frames[nextIndex];
+    if(state.cacheIndex!==index){state.cacheIndex=index;state.nextMap=new Map(next[0].map(p=>[p[0],p]));}
+    for(const p of frame[0]){
+      const q=state.nextMap.get(p[0])||p,x=p[1]+(q[1]-p[1])*fraction,y=p[2]+(q[2]-p[2])*fraction;
+      if(x < -60 || x > 420 || y < -60 || y > 280)continue;
+      const size=p[3]+(q[3]-p[3])*fraction,rotation=angleMix(p[4],q[4],fraction),ink=p[5];
+      if(scene.id==='rain'){stroke(ctx,x,y,x-p[6]*.025,y-p[7]*.025,color(ink),1.35);}
+      else if(scene.id==='sparks'){stroke(ctx,x,y,x-p[6]*.028,y-p[7]*.028,color(ink,.35),1.4);circle(ctx,x,y,size,color(ink));}
+      else if(scene.id==='petals'||scene.id==='debris'){
+        ctx.save();ctx.translate(x,y);ctx.rotate(rotation*Math.PI/180);ctx.fillStyle=color(ink);
+        if(scene.id==='petals'){ctx.beginPath();ctx.ellipse(0,0,5.5,2.5,0,0,Math.PI*2);ctx.fill();stroke(ctx,-3,0,3,0,'#ffe4ed99',.7);}
+        else{ctx.beginPath();ctx.roundRect(-4,-3,8,6,1);ctx.fill();}ctx.restore();
+      } else if(scene.id==='fireflies'||scene.id==='smoke'){
+        const glowSize=scene.id==='fireflies'?size*1.8:size;
+        const pulse=scene.id==='fireflies'?.55+.45*Math.sin(time*2.5+p[0]):1;
+        if(glowSize>0){const g=ctx.createRadialGradient(x,y,0,x,y,glowSize);g.addColorStop(0,color(ink,pulse));g.addColorStop(1,color(ink,0));circle(ctx,x,y,glowSize,g);}
+        if(scene.id==='fireflies')circle(ctx,x,y,size*.45,color(ink,pulse));
+      } else if(scene.id==='snow'){circle(ctx,x,y,1.2+p[0]%3,color(ink));}
+      else if(scene.kind==='fluid'){circle(ctx,x,y,size,scene.id==='syrup'?'#f0b66a':'#64cef0');}
+      else{circle(ctx,x,y,size,color(ink));if(scene.id==='balls')circle(ctx,x-1.3,y-1.5,1.5,'#ffffff88');}
+    }
+    for(const o of scene.obstacles){
+      ctx.save();ctx.translate(o[1],o[2]);ctx.rotate((o[0]===2?angleMix(frame[1],next[1],fraction):o[5])*Math.PI/180);
+      if(o[0]===1){circle(ctx,0,0,o[3],'#233b4c');ctx.strokeStyle='#7299af';ctx.lineWidth=1;ctx.beginPath();ctx.arc(0,0,o[3],0,Math.PI*2);ctx.stroke();}
+      else{ctx.fillStyle='#5b768e';ctx.beginPath();ctx.roundRect(-o[3],-o[4],o[3]*2,o[4]*2,2);ctx.fill();}
+      if(o[0]===2){circle(ctx,0,0,6,'#d4e0e9');circle(ctx,0,0,2.5,'#273d51');}ctx.restore();
+    }
+    ctx.restore();state.card.querySelector('.count').textContent=`${frame[0].length} 个粒子 · ${labels[scene.kind]}`;
+    state.card.querySelector('.bar span').style.width=`${time/duration*100}%`;
+  }
+  function tick(now){
+    raf=0;const delta=last?Math.min((now-last)/1000,.1):0;last=now;
+    if(playing)elapsed=(elapsed+delta*speed)%duration;
+    if(detailState)paint(detailState,$('detailCanvas'));
+    else for(const state of states)if(state.visible&&!state.card.hidden)paint(state,state.canvas);
+    $('seek').value=Math.round(elapsed*1000);$('time').textContent=`${elapsed.toFixed(2)} / ${duration.toFixed(2)} s`;
+    if(playing)schedule();
+  }
+  function schedule(){if(!raf&&!document.hidden)raf=requestAnimationFrame(tick);}
+  $('play').addEventListener('click',()=>{playing=!playing;last=0;updatePlayButton();schedule();});
+  $('restart').addEventListener('click',()=>{elapsed=0;last=0;for(const s of states){s.hold=null;s.offset=0;updateCardButton(s);}schedule();});
+  $('speed').addEventListener('change',()=>{speed=Number($('speed').value);last=0;schedule();});
+  $('dpi').addEventListener('change',()=>{updateNativeLink();schedule();});
+  $('seek').addEventListener('input',()=>{elapsed=Number($('seek').value)/1000;last=0;for(const s of states){s.offset=0;if(s.hold!==null)s.hold=elapsed;}schedule();});
+  for(const button of document.querySelectorAll('[data-filter]'))button.addEventListener('click',()=>{
+    for(const other of document.querySelectorAll('[data-filter]'))other.setAttribute('aria-pressed',String(other===button));
+    let visible=0;for(const state of states){state.card.hidden=button.dataset.filter!=='all'&&state.scene.group!==button.dataset.filter;if(!state.card.hidden)visible++;}
+    $('visibleCount').textContent=`${visible} 种效果`;schedule();
+  });
+  $('closeDetail').addEventListener('click',()=>$('detail').close());
+  $('detail').addEventListener('close',()=>{detailState=null;schedule();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;last=0;}else schedule();});
+  reduced.addEventListener('change',event=>{if(event.matches){playing=false;updatePlayButton();schedule();}});
+  updatePlayButton();schedule();
+})();
+</script>
+</body>
+</html>

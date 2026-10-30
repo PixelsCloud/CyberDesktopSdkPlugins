@@ -1,0 +1,7 @@
+Precision Clocks artwork for CyberDesktop.
+Static face: generated with the built-in OpenAI image_gen tool from design/precision-clocks-redesign.png.
+Source output: exec-02143d4a-b46f-42ca-8f03-0d1ddc7d4202.png
+Prompt: plugins/precision-clocks/tools/dress-asset.prompt.txt.
+Hands, date, moon and moving gears are rendered in native code; the skeleton overlay includes stationary bridges.
+Brass texture, where present, reuses the existing project-generated marble-clock material.
+No third-party watch photograph or brand logo is included. Licenses are in README.txt and licenses/.

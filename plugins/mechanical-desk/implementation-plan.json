@@ -1,0 +1,621 @@
+{
+  "scope": "approved mechanical supplement boards 09-13",
+  "count": 30,
+  "runtimeApplied": true,
+  "entries": [
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.timer.2x1",
+      "folder": "timer-2x1",
+      "name": "机械番茄钟 2×1",
+      "family": "productivity",
+      "kind": "timer",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/productivity-suite/packages/timer-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.timer.1x2",
+      "board": 9,
+      "slot": 1,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.network.2x1",
+      "folder": "network-2x1",
+      "name": "机械网速 2×1",
+      "family": "productivity",
+      "kind": "network",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/productivity-suite/packages/network-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.network.1x2",
+      "board": 9,
+      "slot": 2,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.disk.2x1",
+      "folder": "disk-2x1",
+      "name": "机械磁盘空间 2×1",
+      "family": "productivity",
+      "kind": "disk",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/productivity-suite/packages/disk-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.disk.1x2",
+      "board": 9,
+      "slot": 3,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.spectrum.6x1",
+      "folder": "spectrum-6x1",
+      "name": "机械柱状频谱 6×1",
+      "family": "spectrum",
+      "kind": "spectrum",
+      "columns": 6,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/widget-suite/packages/spectrum-1x6/plugin.textproto",
+      "sourceId": "com.cyberdesktop.music.spectrum.1x6",
+      "board": 9,
+      "slot": 4,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.spectrum.8x1",
+      "folder": "spectrum-8x1",
+      "name": "机械柱状频谱 8×1",
+      "family": "spectrum",
+      "kind": "spectrum",
+      "columns": 8,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/widget-suite/packages/spectrum-1x8/plugin.textproto",
+      "sourceId": "com.cyberdesktop.music.spectrum.1x8",
+      "board": 9,
+      "slot": 5,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.chime.2x3",
+      "folder": "chime-2x3",
+      "name": "机械悬挂风铃 2×3",
+      "family": "chime",
+      "kind": "chime",
+      "columns": 2,
+      "rows": 3,
+      "version": "1.0.0",
+      "source": "plugins/physics-toys/packages/chime-3x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.physics.windchime.3x2",
+      "board": 9,
+      "slot": 6,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.analog.1x1",
+      "folder": "clock-analog-1x1",
+      "name": "机械基础模拟钟 1×1",
+      "family": "clock",
+      "kind": "analog",
+      "columns": 1,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/analog-1x1/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.analog.1x1",
+      "board": 10,
+      "slot": 1,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.analog.2x1",
+      "folder": "clock-analog-2x1",
+      "name": "机械基础模拟钟 2×1",
+      "family": "clock",
+      "kind": "analog",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/analog-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.analog.1x2",
+      "board": 10,
+      "slot": 2,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.analog.4x1",
+      "folder": "clock-analog-4x1",
+      "name": "机械基础模拟钟 4×1",
+      "family": "clock",
+      "kind": "analog",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/analog-1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.analog.1x4",
+      "board": 10,
+      "slot": 3,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.analog.2x2",
+      "folder": "clock-analog-2x2",
+      "name": "机械基础模拟钟 2×2",
+      "family": "clock",
+      "kind": "analog",
+      "columns": 2,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/analog-2x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.analog.2x2",
+      "board": 10,
+      "slot": 4,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.digital.1x1",
+      "folder": "clock-digital-1x1",
+      "name": "机械数字时钟 1×1",
+      "family": "clock",
+      "kind": "digital",
+      "columns": 1,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/digital-1x1/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.digital.1x1",
+      "board": 10,
+      "slot": 5,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.digital.2x1",
+      "folder": "clock-digital-2x1",
+      "name": "机械数字时钟 2×1",
+      "family": "clock",
+      "kind": "digital",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/digital-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.digital.1x2",
+      "board": 10,
+      "slot": 6,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.digital.4x1",
+      "folder": "clock-digital-4x1",
+      "name": "机械数字时钟 4×1",
+      "family": "clock",
+      "kind": "digital",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/digital-1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.digital.1x4",
+      "board": 11,
+      "slot": 1,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.digital.2x2",
+      "folder": "clock-digital-2x2",
+      "name": "机械数字时钟 2×2",
+      "family": "clock",
+      "kind": "digital",
+      "columns": 2,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/digital-2x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.digital.2x2",
+      "board": 11,
+      "slot": 2,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.flip.4x1",
+      "folder": "clock-flip-4x1",
+      "name": "机械翻页卡片时钟 4×1",
+      "family": "clock",
+      "kind": "flip",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/flip-1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.flip.1x4",
+      "board": 11,
+      "slot": 3,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.flip.2x2",
+      "folder": "clock-flip-2x2",
+      "name": "机械翻页卡片时钟 2×2",
+      "family": "clock",
+      "kind": "flip",
+      "columns": 2,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/flip-2x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.flip.2x2",
+      "board": 11,
+      "slot": 4,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.flip.4x2",
+      "folder": "clock-flip-4x2",
+      "name": "机械翻页卡片时钟 4×2",
+      "family": "clock",
+      "kind": "flip",
+      "columns": 4,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/flip-2x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.flip.2x4",
+      "board": 11,
+      "slot": 5,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.lcd.2x1",
+      "folder": "clock-lcd-2x1",
+      "name": "机械LCD 电子钟 2×1",
+      "family": "clock",
+      "kind": "lcd",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/lcd-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.lcd.1x2",
+      "board": 11,
+      "slot": 6,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.clock.lcd.4x1",
+      "folder": "clock-lcd-4x1",
+      "name": "机械LCD 电子钟 4×1",
+      "family": "clock",
+      "kind": "lcd",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/clock-suite/packages/lcd-1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.lcd.1x4",
+      "board": 12,
+      "slot": 1,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.brick.4x1",
+      "folder": "brick-4x1",
+      "name": "机械砖刻时钟 4×1",
+      "family": "brick",
+      "kind": "brick",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/brick-clock/packages/1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.clock.brick.1x4",
+      "board": 12,
+      "slot": 2,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.countdown.2x1",
+      "folder": "countdown-2x1",
+      "name": "机械倒数日 2×1",
+      "family": "productivity",
+      "kind": "countdown",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/productivity-suite/packages/countdown-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.countdown.1x2",
+      "board": 12,
+      "slot": 3,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.countdown.4x1",
+      "folder": "countdown-4x1",
+      "name": "机械倒数日 4×1",
+      "family": "productivity",
+      "kind": "countdown",
+      "columns": 4,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/productivity-suite/packages/countdown-1x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.countdown.1x4",
+      "board": 12,
+      "slot": 4,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.koi.4x2",
+      "folder": "koi-4x2",
+      "name": "机械锦鲤池 4×2",
+      "family": "pond",
+      "kind": "koi",
+      "columns": 4,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/koi-suite/packages/2x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.koi.2x4",
+      "board": 12,
+      "slot": 5,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.plant.1x1",
+      "folder": "plant-1x1",
+      "name": "机械盆栽 1×1",
+      "family": "ambience",
+      "kind": "plant",
+      "columns": 1,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/ambience-suite/packages/plant-1x1/plugin.textproto",
+      "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
+      "board": 12,
+      "slot": 6,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.koi.4x4",
+      "folder": "koi-4x4",
+      "name": "机械锦鲤池 4×4",
+      "family": "pond",
+      "kind": "koi",
+      "columns": 4,
+      "rows": 4,
+      "version": "1.0.0",
+      "source": "plugins/koi-suite/packages/4x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.koi.4x4",
+      "board": 13,
+      "slot": 1,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.koi.6x3",
+      "folder": "koi-6x3",
+      "name": "机械锦鲤池 6×3",
+      "family": "pond",
+      "kind": "koi",
+      "columns": 6,
+      "rows": 3,
+      "version": "1.0.0",
+      "source": "plugins/koi-suite/packages/3x6/plugin.textproto",
+      "sourceId": "com.cyberdesktop.koi.3x6",
+      "board": 13,
+      "slot": 2,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.plant.2x2",
+      "folder": "plant-2x2",
+      "name": "机械盆栽 2×2",
+      "family": "ambience",
+      "kind": "plant",
+      "columns": 2,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/ambience-suite/packages/plant-2x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.plant.cartoon.2x2",
+      "board": 13,
+      "slot": 3,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.plant.4x2",
+      "folder": "plant-4x2",
+      "name": "机械盆栽 4×2",
+      "family": "ambience",
+      "kind": "plant",
+      "columns": 4,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/ambience-suite/packages/plant-2x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.plant.cartoon.2x4",
+      "board": 13,
+      "slot": 4,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.noise.2x1",
+      "folder": "noise-2x1",
+      "name": "机械白噪音 2×1",
+      "family": "ambience",
+      "kind": "noise",
+      "columns": 2,
+      "rows": 1,
+      "version": "1.0.0",
+      "source": "plugins/ambience-suite/packages/noise-1x2/plugin.textproto",
+      "sourceId": "com.cyberdesktop.ambient.noise.1x2",
+      "board": 13,
+      "slot": 5,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    },
+    {
+      "id": "com.cyberdesktop.mechanicaldesk.noise.4x2",
+      "folder": "noise-4x2",
+      "name": "机械白噪音 4×2",
+      "family": "ambience",
+      "kind": "noise",
+      "columns": 4,
+      "rows": 2,
+      "version": "1.0.0",
+      "source": "plugins/ambience-suite/packages/noise-2x4/plugin.textproto",
+      "sourceId": "com.cyberdesktop.ambient.noise.2x4",
+      "board": 13,
+      "slot": 6,
+      "tags": [
+        "机械",
+        "精密机械"
+      ],
+      "state": "passed",
+      "published": true
+    }
+  ],
+  "status": "complete",
+  "publicationDirectory": "build/dist",
+  "verification": "build/relwithdebinfo/Testing/mechanical-desk/verification.json",
+  "nativeReview": "build/relwithdebinfo/Testing/mechanical-desk/runtime-review.png",
+  "reviewFixes": {
+    "status": "passed",
+    "checks": [
+      "closedPonds",
+      "themeColors",
+      "localizedDateCaptions",
+      "quietNoise"
+    ],
+    "deployed": true
+  }
+}

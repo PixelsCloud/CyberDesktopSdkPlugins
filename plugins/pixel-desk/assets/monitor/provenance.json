@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-bba374ef-23ff-4854-a90b-afa483273612.png",
+  "reference": "design/pixel-desk-suite/04-system-instruments.png",
+  "imageSize": [
+    1254,
+    1254
+  ],
+  "visibleBounds": [
+    82,
+    92,
+    1091,
+    1068
+  ],
+  "purpose": "Empty round stepped case. Real system values, calibrated ticks and animated needles are native runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "b9d4b46ae72990408a82a6eda8d0df10c02c1ee9d73f3c0425e9d9a19f363548"
+}

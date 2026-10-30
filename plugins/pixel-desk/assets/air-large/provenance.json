@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-43472051-1a04-4cc0-8d20-df92b9300a1b.png",
+  "reference": "design/pixel-desk-suite/04-system-instruments.png",
+  "imageSize": [
+    1902,
+    827
+  ],
+  "visibleBounds": [
+    47,
+    43,
+    1808,
+    695
+  ],
+  "purpose": "Empty case only; live AQI, city, sub-indices, category scale and update state are separate native runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "645f069e7a20d906aa7951e56d971a5377461d5522ac59bcb0e466d70ee73be4"
+}

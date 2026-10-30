@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "female_cute_selfie_1",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_cafe.png",
+      "tags": [
+        "selfie",
+        "cafe",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_cute_selfie_2",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_home.png",
+      "tags": [
+        "selfie",
+        "home",
+        "shy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_cute_selfie_3",
+      "character_id": "female_cute",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_beach.png",
+      "tags": [
+        "selfie",
+        "beach",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_cute_cafe_memory",
+      "character_id": "female_cute",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_cafe.png",
+      "tags": [
+        "cafe",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_cute_home_memory",
+      "character_id": "female_cute",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_home.png",
+      "tags": [
+        "home",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_cute_travel",
+      "character_id": "female_cute",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach",
+        "illustration"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_cute_beach_video",
+      "character_id": "female_cute",
+      "collection_id": "trip_videos",
+      "type": "video",
+      "file": "scene_beach_demo.mp4",
+      "tags": [
+        "beach",
+        "demo",
+        "camera_pan"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_youth_selfie_1",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_cafe.png",
+      "tags": [
+        "selfie",
+        "cafe",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_youth_selfie_2",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_home.png",
+      "tags": [
+        "selfie",
+        "home",
+        "shy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_youth_selfie_3",
+      "character_id": "female_youth",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_beach.png",
+      "tags": [
+        "selfie",
+        "beach",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_youth_cafe_memory",
+      "character_id": "female_youth",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_cafe.png",
+      "tags": [
+        "cafe",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_youth_home_memory",
+      "character_id": "female_youth",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_home.png",
+      "tags": [
+        "home",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_youth_travel",
+      "character_id": "female_youth",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach",
+        "illustration"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_youth_beach_video",
+      "character_id": "female_youth",
+      "collection_id": "trip_videos",
+      "type": "video",
+      "file": "scene_beach_demo.mp4",
+      "tags": [
+        "beach",
+        "demo",
+        "camera_pan"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_elegant_selfie_1",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_cafe.png",
+      "tags": [
+        "selfie",
+        "cafe",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_selfie_2",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_home.png",
+      "tags": [
+        "selfie",
+        "home",
+        "shy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_selfie_3",
+      "character_id": "female_elegant",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_beach.png",
+      "tags": [
+        "selfie",
+        "beach",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_cafe_memory",
+      "character_id": "female_elegant",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_cafe.png",
+      "tags": [
+        "cafe",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_home_memory",
+      "character_id": "female_elegant",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_home.png",
+      "tags": [
+        "home",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_elegant_travel",
+      "character_id": "female_elegant",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach",
+        "illustration"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_elegant_beach_video",
+      "character_id": "female_elegant",
+      "collection_id": "trip_videos",
+      "type": "video",
+      "file": "scene_beach_demo.mp4",
+      "tags": [
+        "beach",
+        "demo",
+        "camera_pan"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_married_selfie_1",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_cafe.png",
+      "tags": [
+        "selfie",
+        "cafe",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_married_selfie_2",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_home.png",
+      "tags": [
+        "selfie",
+        "home",
+        "shy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_married_selfie_3",
+      "character_id": "female_married",
+      "collection_id": "selfies",
+      "type": "image",
+      "file": "selfie_beach.png",
+      "tags": [
+        "selfie",
+        "beach",
+        "happy"
+      ],
+      "required_flags": [],
+      "cooldown_ms": 45000,
+      "enabled": true
+    },
+    {
+      "id": "female_married_cafe_memory",
+      "character_id": "female_married",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_cafe.png",
+      "tags": [
+        "cafe",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_married_home_memory",
+      "character_id": "female_married",
+      "collection_id": "scenes",
+      "type": "image",
+      "file": "scene_home.png",
+      "tags": [
+        "home",
+        "illustration"
+      ],
+      "required_flags": [],
+      "enabled": true
+    },
+    {
+      "id": "female_married_travel",
+      "character_id": "female_married",
+      "collection_id": "travel",
+      "type": "image",
+      "file": "scene_beach.png",
+      "tags": [
+        "beach",
+        "illustration"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    },
+    {
+      "id": "female_married_beach_video",
+      "character_id": "female_married",
+      "collection_id": "trip_videos",
+      "type": "video",
+      "file": "scene_beach_demo.mp4",
+      "tags": [
+        "beach",
+        "demo",
+        "camera_pan"
+      ],
+      "required_flags": [
+        "trip_finished"
+      ],
+      "minimum_turns": 1,
+      "maximum_sends": 2
+    }
+  ],
+  "rules": {
+    "schema_version": 1,
+    "relationship_stages": [
+      {
+        "id": "acquaintance",
+        "name": "初识",
+        "minimum_turns": 0
+      },
+      {
+        "id": "familiar",
+        "name": "熟悉",
+        "minimum_turns": 5
+      },
+      {
+        "id": "trusted",
+        "name": "信任",
+        "minimum_turns": 20
+      }
+    ],
+    "events": [
+      {
+        "id": "trip_finished",
+        "name": "旅行剧情完成",
+        "trigger": "user_confirmation",
+        "when": {
+          "all": [
+            {
+              "scene_id": "beach"
+            },
+            {
+              "minimum_turns": 1
+            }
+          ]
+        },
+        "grant_flags": [
+          "trip_finished"
+        ]
+      },
+      {
+        "id": "familiarity_reached",
+        "name": "逐渐熟悉",
+        "trigger": "turn_committed",
+        "when": {
+          "relationship_at_least": "familiar"
+        },
+        "grant_flags": [
+          "familiar"
+        ]
+      }
+    ]
+  },
+  "character_template": {
+    "id": "female_youth",
+    "name": "夏晴",
+    "age": 22,
+    "prompt": "你扮演夏晴，一位 22 岁的成年女性，刚毕业，喜欢摄影、音乐和户外散步。你青春爽朗、真诚独立，带一点轻松幽默，像与用户平等相处的伙伴。说话清爽自然，愿意分享自己的虚构生活见闻和观点，也会认真倾听，不连续盘问、不说教、不一味附和。面对犹豫时一起分析，面对好消息时自然高兴。尊重当前场景、历史事实和关系进度，不凭空捏造已经发生的共同经历。让表情和动作随具体对白变化，情绪保持连贯，不为了表演而突然转折。",
+    "greeting": "来啦？坐下来聊会儿吧。"
+  },
+  "scenes": [
+    {
+      "id": "cafe",
+      "name": "雨天咖啡馆",
+      "file": "scene_cafe.png",
+      "description": "窗外下着雨，安静的咖啡馆里可以慢慢聊天。"
+    },
+    {
+      "id": "home",
+      "name": "傍晚客厅",
+      "file": "scene_home.png",
+      "description": "夕阳照进客厅，一起聊聊今天的生活。"
+    },
+    {
+      "id": "beach",
+      "name": "海边日落",
+      "file": "scene_beach.png",
+      "description": "傍晚的海边，听着海浪，谈谈旅途和心事。"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "com.cyberdesktop.redline.disk.2x2",
+  "folder": "disk-2x2",
+  "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 4,
+  "rows": 2,
+  "columns": 2,
+  "board": 5,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    49,
+    100,
+    379,
+    391
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械磁盘 2×2",
+  "runtimePlate": true,
+  "regions": {
+    "title": [
+      0.29,
+      0.15,
+      0.45,
+      0.09
+    ],
+    "usage": [
+      0.15,
+      0.3,
+      0.7,
+      0.2
+    ],
+    "total": [
+      0.15,
+      0.52,
+      0.7,
+      0.075
+    ],
+    "free": [
+      0.44,
+      0.76,
+      0.41,
+      0.07
+    ],
+    "surface0": [
+      0.08,
+      0.15,
+      0.84,
+      0.73
+    ],
+    "driveIcon": [
+      0.15,
+      0.15,
+      0.1,
+      0.09
+    ],
+    "capacity": [
+      0.15,
+      0.66,
+      0.7,
+      0.06
+    ],
+    "percent": [
+      0.15,
+      0.76,
+      0.28,
+      0.07
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+  "art": "plugins/redline-desk/assets/disk-2x2/body.png",
+  "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+  "approvedCrop": [
+    49,
+    100,
+    379,
+    391
+  ],
+  "reviewText": [
+    "title",
+    "usage",
+    "total",
+    "free",
+    "percent"
+  ],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

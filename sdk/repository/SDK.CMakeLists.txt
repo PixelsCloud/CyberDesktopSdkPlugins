@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.26)
+project(CyberDesktopPublicSDK LANGUAGES C CXX)
+set(CD_SDK_BUILD_TOOLS ON CACHE BOOL "Build SDK developer tools")
+set(CD_SDK_BUILD_EXAMPLES ON CACHE BOOL "Build SDK examples")
+set(CD_SDK_BUILD_TESTS ON CACHE BOOL "Build SDK contract tests")
+add_subdirectory(sdk)

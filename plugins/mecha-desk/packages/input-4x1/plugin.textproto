@@ -1,0 +1,29 @@
+id: "com.cyberdesktop.mecha.input.4x1"
+name: "机甲 · 键鼠计数 4×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x4"
+    name: "4×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+capabilities: INPUT_STATS
+required_services { id: "input.stats" version: 1 }
+description: "独立机械双滚轮计数器；显示今日键盘和鼠标次数，五位显示上限 99999。"
+preview: "preview.png"
+settings_page {
+    title: "机械键鼠计数设置"
+    description: "显示今日按键和点击次数，超过 99999 后保持显示 99999。后台保留真实统计；按本地日期归零。仅记录次数，不记录按键内容，鼠标移动和滚轮不计入点击。"
+    fields { id: "reduced_motion" label: "减少动态效果" type: TOGGLE bool_default: false }
+}
+
+tags: "机甲"

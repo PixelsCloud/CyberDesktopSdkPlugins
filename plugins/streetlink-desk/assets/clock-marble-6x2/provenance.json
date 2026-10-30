@@ -1,0 +1,7 @@
+{
+  "sha256": "ed1ab301beb329ae9fad0b67b8fae7752c9d82fc192c6b673d07a8dce3b2b303",
+  "source": "art/06-clock-marble-6x2.png",
+  "productionSha256": "cffda63b3276fab52fa14615198dd85b023af00a1ceafb7bfd42f3fc6af57dd5",
+  "pixelOperations": "imagegen: revised empty display or orthographic overhead pond; live content rendered separately",
+  "theme": "STREETLINK"
+}

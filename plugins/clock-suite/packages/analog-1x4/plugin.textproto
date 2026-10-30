@@ -1,0 +1,386 @@
+id: "com.cyberdesktop.clock.analog.1x4"
+name: "模拟时钟 4×1"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "1x4"
+    name: "4×1（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+description: "正式 Clock 桌面控件；4×1 格（宽×高），支持正方及竖向长方形格子。"
+settings_page {
+    title: "时钟设置"
+    description: "只调整当前时钟实例。尺寸由桌面网格决定，内容自动适配实际宽高。"
+    fields {
+        id: "format"
+        label: "时间制"
+        type: CHOICE
+        section: "时间"
+        choices {
+            value: "24"
+            label: "24 小时"
+            localized_labels { key: "en" value: "24-hour" }
+            localized_labels { key: "zh-TW" value: "24 小時" }
+        }
+        choices {
+            value: "12"
+            label: "12 小时"
+            localized_labels { key: "en" value: "12-hour" }
+            localized_labels { key: "zh-TW" value: "12 小時" }
+        }
+        text_default: "24"
+        localized {
+            key: "en"
+            value { label: "Time format" description: "Affects only this instance." section: "Time" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "時間制" section: "時間" }
+        }
+    }
+    fields {
+        id: "timezone"
+        label: "时区"
+        type: CHOICE
+        section: "时间"
+        choices {
+            value: "local"
+            label: "跟随系统时区"
+            localized_labels { key: "en" value: "System time zone" }
+            localized_labels { key: "zh-TW" value: "跟隨系統時區" }
+        }
+        choices {
+            value: "utc"
+            label: "UTC"
+            localized_labels { key: "en" value: "UTC" }
+            localized_labels { key: "zh-TW" value: "UTC" }
+        }
+        choices {
+            value: "offset"
+            label: "自定义 UTC 偏移"
+            localized_labels { key: "en" value: "Custom UTC offset" }
+            localized_labels { key: "zh-TW" value: "自定義 UTC 偏移" }
+        }
+        text_default: "local"
+        localized {
+            key: "en"
+            value { label: "Time zone" description: "Affects only this instance." section: "Time" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "時區" section: "時間" }
+        }
+    }
+    fields {
+        id: "utc_offset"
+        label: "UTC 偏移（分钟）"
+        type: INTEGER
+        description: "选择自定义 UTC 偏移时生效。例如 UTC+8 为 480，支持半小时和四十五分钟时区。"
+        section: "时间"
+        minimum: -720.0
+        maximum: 840.0
+        step: 15.0
+        integer_default: 480
+        localized {
+            key: "en"
+            value { label: "UTC offset (minutes)" description: "Affects only this instance." section: "Time" }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "UTC 偏移（分鐘）"
+                description: "選擇自定義 UTC 偏移時生效。例如 UTC+8 為 480，支援半小時和四十五分鐘時區。"
+                section: "時間"
+            }
+        }
+    }
+    fields {
+        id: "seconds"
+        label: "显示秒数 / 秒针"
+        type: TOGGLE
+        section: "时间"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show seconds / second hand" description: "Affects only this instance." section: "Time" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示秒數 / 秒針" section: "時間" }
+        }
+    }
+    fields {
+        id: "seconds_motion"
+        label: "秒针运动"
+        type: CHOICE
+        description: "数字时钟每秒刷新；模拟时钟可选择连续扫秒。关闭秒针时停止扫秒刷新。"
+        section: "时间"
+        choices {
+            value: "tick"
+            label: "逐秒跳动"
+            localized_labels { key: "en" value: "Tick" }
+            localized_labels { key: "zh-TW" value: "逐秒跳動" }
+        }
+        choices {
+            value: "smooth"
+            label: "连续扫秒"
+            localized_labels { key: "en" value: "Smooth sweep" }
+            localized_labels { key: "zh-TW" value: "連續掃秒" }
+        }
+        text_default: "tick"
+        localized {
+            key: "en"
+            value { label: "Second-hand motion" description: "Affects only this instance." section: "Time" }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "秒針運動"
+                description: "數字時鐘每秒重新整理；模擬時鐘可選擇連續掃秒。關閉秒針時停止掃秒重新整理。"
+                section: "時間"
+            }
+        }
+    }
+    fields {
+        id: "date"
+        label: "显示日期"
+        type: TOGGLE
+        section: "信息"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show date" description: "Affects only this instance." section: "Information" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示日期" section: "資訊" }
+        }
+    }
+    fields {
+        id: "weekday"
+        label: "显示星期"
+        type: TOGGLE
+        section: "信息"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show weekday" description: "Affects only this instance." section: "Information" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "顯示星期" section: "資訊" }
+        }
+    }
+    fields {
+        id: "date_format"
+        label: "日期格式"
+        type: CHOICE
+        section: "信息"
+        choices {
+            value: "auto"
+            label: "随空间自动调整"
+            localized_labels { key: "en" value: "Automatic" }
+            localized_labels { key: "zh-TW" value: "隨空間自動調整" }
+        }
+        choices {
+            value: "short"
+            label: "月 / 日"
+            localized_labels { key: "en" value: "Month / day" }
+            localized_labels { key: "zh-TW" value: "月 / 日" }
+        }
+        choices {
+            value: "long"
+            label: "年月日"
+            localized_labels { key: "en" value: "Year / month / day" }
+            localized_labels { key: "zh-TW" value: "年月日" }
+        }
+        text_default: "auto"
+        localized {
+            key: "en"
+            value { label: "Date format" description: "Affects only this instance." section: "Information" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "日期格式" section: "資訊" }
+        }
+    }
+    fields {
+        id: "theme_colors"
+        label: "文字跟随桌面主题"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Use desktop theme colors" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "文字跟隨桌面主題" section: "外觀" }
+        }
+    }
+    fields {
+        id: "text_color"
+        label: "自定义文字 / 指针"
+        type: COLOR
+        description: "关闭跟随桌面主题后生效。"
+        section: "外观"
+        color_default: 724116735
+        localized {
+            key: "en"
+            value { label: "Text and hands" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "自定義文字 / 指標" description: "關閉跟隨桌面主題後生效。" section: "外觀" }
+        }
+    }
+    fields {
+        id: "secondary_color"
+        label: "自定义日期 / 星期"
+        type: COLOR
+        description: "关闭跟随桌面主题后生效。"
+        section: "外观"
+        color_default: 1986748671
+        localized {
+            key: "en"
+            value { label: "Date and weekday color" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "自定義日期 / 星期" description: "關閉跟隨桌面主題後生效。" section: "外觀" }
+        }
+    }
+    fields {
+        id: "seconds_color"
+        label: "秒数 / 秒针颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3379443711
+        localized {
+            key: "en"
+            value { label: "Seconds and second hand" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "秒數 / 秒針顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "content_scale"
+        label: "内容大小（%）"
+        type: NUMBER
+        section: "布局"
+        minimum: 70.0
+        maximum: 100.0
+        step: 1.0
+        number_default: 100.0
+        localized {
+            key: "en"
+            value { label: "Content size (%)" description: "Affects only this instance." section: "Layout" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "內容大小（%）" section: "佈局" }
+        }
+    }
+    fields {
+        id: "relief_strength"
+        label: "立体阴影强度（%）"
+        type: NUMBER
+        description: "调节文字、刻度、指针的投影和细微高光；0 为平面绘制。"
+        section: "外观"
+        maximum: 100.0
+        step: 5.0
+        number_default: 65.0
+        localized {
+            key: "en"
+            value {
+                label: "Relief and shadow strength (%)"
+                description: "0 disables raised details."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "立體陰影強度（%）"
+                description: "調節文字、刻度、指標的投影和細微高光；0 為平面繪製。"
+                section: "外觀"
+            }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        max_length: 128
+        text_default: "@siyuan-heavy"
+        localized {
+            key: "en"
+            value { label: "Font" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "字型" section: "外觀" }
+        }
+    }
+    fields {
+        id: "language"
+        label: "语言"
+        type: CHOICE
+        section: "外观"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Language" description: "Affects only this instance." section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "語言" section: "外觀" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Clock settings"
+            description: "Settings are saved separately for each instance. Select a font and language below."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "時鐘設定" description: "只調整當前時鐘例項。尺寸由桌面網格決定，內容自動適配實際寬高。" }
+    }
+}
+preview: "preview.png"
+tags: "简约"
+tags: "时钟"
+tags: "透明"

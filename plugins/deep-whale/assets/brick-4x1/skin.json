@@ -1,0 +1,46 @@
+{
+  "id": "com.cyberdesktop.deepwhale.brick.4x1",
+  "folder": "brick-4x1",
+  "sourceId": "com.cyberdesktop.clock.brick.1x4",
+  "source": "plugins/brick-clock/packages/1x4/plugin.textproto",
+  "family": "brick",
+  "kind": 0,
+  "columns": 4,
+  "rows": 1,
+  "scene": [
+    320,
+    100
+  ],
+  "regions": {
+    "world": [
+      54.849337748344375,
+      36.04635761589404,
+      205.60264900662253,
+      32.17880794701987
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        37,
+        60,
+        2097,
+        604
+      ],
+      "destination": [
+        10.70313,
+        7,
+        298.57813,
+        86
+      ]
+    }
+  ],
+  "designUid": "b13-2",
+  "defaults": {},
+  "horizontalCuts": [
+    110,
+    220
+  ]
+}

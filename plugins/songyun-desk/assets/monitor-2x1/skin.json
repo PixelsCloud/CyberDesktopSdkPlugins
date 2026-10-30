@@ -1,0 +1,61 @@
+{
+  "id": "com.cyberdesktop.songyun.monitor.2x1",
+  "folder": "monitor-2x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 4,
+  "slot": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1021,
+    272,
+    488,
+    247
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 系统监控 2×1",
+  "regions": {
+    "gauge0": [
+      0.07991803278688525,
+      0.10526315789473684,
+      0.3442622950819672,
+      0.680161943319838
+    ],
+    "gauge1": [
+      0.5758196721311475,
+      0.10526315789473684,
+      0.3442622950819672,
+      0.680161943319838
+    ],
+    "surface0Circle": [
+      0.07991803278688525,
+      0.10526315789473684,
+      0.3442622950819672,
+      0.680161943319838
+    ],
+    "surface1Circle": [
+      0.5758196721311475,
+      0.10526315789473684,
+      0.3442622950819672,
+      0.680161943319838
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+  "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+  "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+  "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+  "nativeTicks": true,
+  "renderInset": 7
+}

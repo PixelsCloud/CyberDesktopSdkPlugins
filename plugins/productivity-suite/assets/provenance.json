@@ -1,0 +1,52 @@
+{
+  "project": "Lucide",
+  "version": "1.55.0",
+  "source": "https://github.com/lucide-icons/lucide",
+  "tarball": "https://registry.npmjs.org/lucide-static/-/lucide-static-1.55.0.tgz",
+  "integrity": "sha512-h18lunTFsIJWnY0FMRPjXeO9KcAtNi7fDqtqgWHOFbssfgUWsctn/pA7bpiyrd4g1DuBOJ24CsRnPfkYblwm/A==",
+  "license": "ISC / MIT",
+  "icons": [
+    {
+      "name": "timer",
+      "svg": "timer.svg",
+      "svgSha256": "2d4eb3a66089b4fe14cb737d08c14e8b1373cdb7998dec2e4ff638c39ee3b561",
+      "pngSha256": "bc1344f752105e4e100ba2993ca9ddb18adc8afa7c71e42142b3c5c960f5dbaf"
+    },
+    {
+      "name": "todo",
+      "svg": "list-todo.svg",
+      "svgSha256": "9d26299714797618962c44b35c6ef5b39bfb6076898dedbf1f2cbdd7998a9796",
+      "pngSha256": "bec981533d31595fc20930e37de476245f5437ffb1ec677837b19a02c6691f9b"
+    },
+    {
+      "name": "countdown",
+      "svg": "calendar-clock.svg",
+      "svgSha256": "b8098ecdfec2eac593bc7cace05a59e31125b77554a0abc3bc3fca7ebe855036",
+      "pngSha256": "b3613ba539188a480f9905c1f968eaa483e6b72fe5b8f790cdcc398ef2a01f6e"
+    },
+    {
+      "name": "network",
+      "svg": "network.svg",
+      "svgSha256": "96e22e85e9d80a0de408c987b651be6e5ed94749c23b21e0da0c64b9210146fa",
+      "pngSha256": "234b58eb1ab1ac9257b64f3200cb38dcf92da0cdfd85f1fe50aacbacd412d13e"
+    },
+    {
+      "name": "disk",
+      "svg": "hard-drive.svg",
+      "svgSha256": "9ed8bb8a48ae6dc3b3172dbfcb075e1272b00398ea1253c0f97d41338126646a",
+      "pngSha256": "719e7f9e545df5ba1587c3843a11821c0dd29cdbf56b72aa54e45626a1d9c3db"
+    },
+    {
+      "name": "notes",
+      "svg": "sticky-note.svg",
+      "svgSha256": "856f46abfbebec163408d954b5cb2815ee64f54d5c526302f2d006e033490ae0",
+      "pngSha256": "6061373401bac512d50287d092c53b2f86b14d9ce0d2c2ec6d2137f394c2c776"
+    },
+    {
+      "name": "rss",
+      "svg": "rss.svg",
+      "svgSha256": "f03ebf391cd26640ac61fd404416d85a064b4a82beb3e9013c4ac7c02aa81bbf",
+      "pngSha256": "975cabdae59d525acc6e570916647705b831f520b22e4613eef50b5ba9317674"
+    }
+  ]
+}

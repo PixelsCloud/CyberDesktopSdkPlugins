@@ -1,0 +1,63 @@
+{
+  "folder": "music-square-8x1",
+  "columns": 8,
+  "rows": 1,
+  "scene": [
+    640,
+    100
+  ],
+  "regions": {
+    "plot": [
+      25.779999999999998,
+      32.654583333333335,
+      588.4399999999999,
+      38.40770833333333
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        28,
+        253,
+        2112,
+        209
+      ],
+      "destination": [
+        7.0,
+        19.026041666666668,
+        626.0,
+        61.947916666666664
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "color": 15200255,
+    "color_middle": 15200255,
+    "color_top": 15200255,
+    "peak_color": 4107155711
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      25.779999999999998,
+      31.415625000000002,
+      588.4399999999999,
+      40.26614583333333
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 633.0,
+    "cuts": [
+      320.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

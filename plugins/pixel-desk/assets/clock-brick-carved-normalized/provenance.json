@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI image_gen built-in edit",
+  "source": "design/pixel-desk-suite/brick-carved-wall.art.png",
+  "reference": "plugins/pixel-desk/assets/clock-brick-4x1-normalized/body.png",
+  "sha256": "96a2490e006283e8230dd0dcb9ed18a2ca238c7caf968b17fc2e91aadf8bfdcc",
+  "imageSize": [
+    2170,
+    725
+  ],
+  "visibleBounds": [
+    15,
+    31,
+    2140,
+    665
+  ],
+  "sourceCrop": [
+    0,
+    0,
+    2170,
+    725
+  ],
+  "nativePixelsUnmodified": true,
+  "visibleAlphaThreshold": 16,
+  "purpose": "Continuous brick masonry with detached rubble; live numerals are carved into the brick courses by the native renderer.",
+  "prompts": [
+    "body-1.prompt.txt"
+  ]
+}

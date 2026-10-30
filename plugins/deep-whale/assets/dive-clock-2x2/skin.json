@@ -1,0 +1,45 @@
+{
+  "id": "com.cyberdesktop.deepwhale.dive.clock.2x2",
+  "folder": "dive-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+  "source": "plugins/precision-clocks/packages/green/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "world": [
+      29.483162518301615,
+      78.48609077598829,
+      94.7701317715959,
+      94.7701317715959
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        48,
+        13,
+        1066,
+        1366
+      ],
+      "destination": [
+        7.42188,
+        7,
+        145.14063,
+        186
+      ]
+    }
+  ],
+  "designUid": "b02-2",
+  "defaults": {
+    "hand_color": 3285638399,
+    "seconds_color": 3853688319
+  }
+}

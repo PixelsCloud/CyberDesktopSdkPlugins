@@ -1,0 +1,32 @@
+{
+  "uid": "b01-1",
+  "key": "clock-square-integrated",
+  "name": "星砂方点钟",
+  "file": "artwork/complete/clock-square-integrated.png",
+  "composition": "半身",
+  "expression": "闭眼轻笑",
+  "prompt": "artwork/complete/clock-revision-prompts.json",
+  "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-114f0c54-dad3-4e5c-aa2a-60ff66c8e81b.png",
+  "imageSize": [
+    2089,
+    753
+  ],
+  "bounds": [
+    49,
+    32,
+    2037,
+    719
+  ],
+  "sha256": "f16c51daf7d72b149d034e009a8eaf498094881639811612c7cefa4c6eb80a5d",
+  "type": "integrated-clock-instrument",
+  "label": "星砂方点钟",
+  "faceSourceBox": [
+    527,
+    435,
+    1717,
+    619
+  ],
+  "revisionOf": "ecfe7b53d7e82b566e907d7cb9a6392155686ef61e05d07f60c51836c9a694ad",
+  "proportionRevision": "Natural anime head and case proportions; uniform native scaling; no flattened glyphs",
+  "revisionPrompt": "plugins/deep-whale/assets/clock-square-4x1/proportion.prompt.txt"
+}

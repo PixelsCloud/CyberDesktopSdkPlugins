@@ -1,0 +1,99 @@
+{
+  "id": "com.cyberdesktop.redline.player.4x1",
+  "folder": "player-4x1",
+  "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+  "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+  "family": "widget",
+  "kind": 7,
+  "rows": 1,
+  "columns": 4,
+  "board": 5,
+  "slot": 4,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    27,
+    699,
+    535,
+    143
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械音乐控制 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "cover": [
+      0.05,
+      0.16,
+      0.17,
+      0.66
+    ],
+    "title": [
+      0.28,
+      0.25,
+      0.3,
+      0.25
+    ],
+    "progress": [
+      0.28,
+      0.65,
+      0.3,
+      0.06
+    ],
+    "previous": [
+      0.63,
+      0.39,
+      0.08,
+      0.36
+    ],
+    "toggle": [
+      0.75,
+      0.39,
+      0.08,
+      0.36
+    ],
+    "next": [
+      0.87,
+      0.39,
+      0.08,
+      0.36
+    ],
+    "surface0": [
+      0.26,
+      0.22,
+      0.68,
+      0.57
+    ],
+    "artist": [
+      0.28,
+      0.52,
+      0.3,
+      0.09
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-05-media-utilities.art.png",
+  "art": "plugins/redline-desk/assets/player-4x1/body.png",
+  "artSha256": "f55ecacbfd65d8c37988604b0155a67e89826143afef582ec58e28e0e4799742",
+  "approvedCrop": [
+    27,
+    699,
+    535,
+    143
+  ],
+  "reviewText": [
+    "title",
+    "artist"
+  ],
+  "reviewButtons": [
+    "previous",
+    "toggle",
+    "next"
+  ],
+  "reviewIcons": []
+}

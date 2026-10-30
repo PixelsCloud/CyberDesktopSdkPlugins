@@ -1,0 +1,146 @@
+[
+  {
+    "folder": "spectrum-1x4",
+    "id": "com.cyberdesktop.spectrum",
+    "name": "音乐频谱 4×1",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "spectrum-2x2",
+    "id": "com.cyberdesktop.music.radial.2x2",
+    "name": "环形频谱 2×2",
+    "kind": 1,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "spectrum-1x8",
+    "id": "com.cyberdesktop.music.spectrum.1x8",
+    "name": "音乐频谱 8×1",
+    "kind": 2,
+    "rows": 1,
+    "columns": 8,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "album-2x4",
+    "id": "com.cyberdesktop.album.2x4",
+    "name": "相册 4×2",
+    "kind": 3,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "calendar-2x4",
+    "id": "com.cyberdesktop.calendar.2x4",
+    "name": "日历 4×2",
+    "kind": 4,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "spectrum-1x6",
+    "id": "com.cyberdesktop.music.spectrum.1x6",
+    "name": "音乐频谱 6×1",
+    "kind": 2,
+    "rows": 1,
+    "columns": 6,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-round-1x4",
+    "id": "com.cyberdesktop.music.matrix.round.1x4",
+    "name": "圆点阵频谱 4×1",
+    "kind": 5,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-round-1x6",
+    "id": "com.cyberdesktop.music.matrix.round.1x6",
+    "name": "圆点阵频谱 6×1",
+    "kind": 5,
+    "rows": 1,
+    "columns": 6,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-round-1x8",
+    "id": "com.cyberdesktop.music.matrix.round.1x8",
+    "name": "圆点阵频谱 8×1",
+    "kind": 5,
+    "rows": 1,
+    "columns": 8,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-square-1x4",
+    "id": "com.cyberdesktop.music.matrix.square.1x4",
+    "name": "方点阵频谱 4×1",
+    "kind": 6,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-square-1x6",
+    "id": "com.cyberdesktop.music.matrix.square.1x6",
+    "name": "方点阵频谱 6×1",
+    "kind": 6,
+    "rows": 1,
+    "columns": 6,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "matrix-square-1x8",
+    "id": "com.cyberdesktop.music.matrix.square.1x8",
+    "name": "方点阵频谱 8×1",
+    "kind": 6,
+    "rows": 1,
+    "columns": 8,
+    "version": "1.0.0"
+  },
+  {
+    "folder": "player-1x4",
+    "id": "com.cyberdesktop.music.player.1x4",
+    "name": "音乐控制 4×1",
+    "kind": 7,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.1"
+  },
+  {
+    "folder": "player-2x2",
+    "id": "com.cyberdesktop.music.player.2x2",
+    "name": "音乐控制 2×2",
+    "kind": 7,
+    "rows": 2,
+    "columns": 2,
+    "version": "1.0.1"
+  },
+  {
+    "folder": "player-2x4",
+    "id": "com.cyberdesktop.music.player.2x4",
+    "name": "音乐控制 4×2",
+    "kind": 7,
+    "rows": 2,
+    "columns": 4,
+    "version": "1.0.1"
+  },
+  {
+    "folder": "input-stats-1x4",
+    "id": "com.cyberdesktop.input.stats.1x4",
+    "name": "键鼠计数 4×1",
+    "kind": 8,
+    "rows": 1,
+    "columns": 4,
+    "version": "1.0.0"
+  }
+]

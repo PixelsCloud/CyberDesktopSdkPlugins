@@ -1,0 +1,11 @@
+{
+  "source": "AERIS POLAR approved local artwork",
+  "file": "monitor.art.png",
+  "sha256": "e82ed86fe3c4901bfa19a0cd8a5ddcfb0b01aa085eb0b148f24af40f83ba433d",
+  "crop": [
+    24,
+    30,
+    1097,
+    1341
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "com.cyberdesktop.deepwhale.digital.2x2",
+  "folder": "digital-2x2",
+  "sourceId": "com.cyberdesktop.clock.digital.2x2",
+  "source": "plugins/clock-suite/packages/digital-2x2/plugin.textproto",
+  "family": "basic",
+  "kind": 1,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "plot": [
+      31.530098831985626,
+      111.80143755615453,
+      94.97214734950585,
+      54.569631626235406
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        6,
+        6,
+        1113,
+        1342
+      ],
+      "destination": [
+        7,
+        16.95313,
+        146,
+        176.03125
+      ]
+    }
+  ],
+  "designUid": "b12-2",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

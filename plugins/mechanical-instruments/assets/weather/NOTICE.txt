@@ -1,0 +1,5 @@
+﻿CyberDesktop mechanical instrument artwork.
+Generated with the built-in OpenAI image_gen tool from the user-approved project concepts.
+Source output: exec-8b95b5c5-9ece-4bdb-9d9b-a989a2f2c2bd.png
+Native code draws all live values, scales, needles and controls.
+Original weather icon attribution remains in assets/provenance.json and bundled licenses.

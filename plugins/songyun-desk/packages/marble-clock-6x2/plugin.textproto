@@ -1,0 +1,61 @@
+id: "com.cyberdesktop.songyun.marble.clock.6x2"
+name: "宋韵 · 滚珠轨道时钟 6×2"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+description: "每秒一颗滚珠沿轨道折返，整分钟开启翻板回收。自然碰撞、可拖动滚珠，时分秒独立准确显示。"
+layouts {
+    id: "6x2"
+    name: "6×2（宽×高）"
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 2 b: 0 }
+    cells { a: 3 b: 0 }
+    cells { a: 4 b: 0 }
+    cells { a: 5 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { a: 4 b: 1 }
+    cells { a: 5 b: 1 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 12 max_cells: 12 max_columns: 6 max_rows: 2 }
+settings_page {
+    title: "滚珠轨道时钟"
+    description: "点击投珠器补球；点击金色转轴开仓；拖动滚珠并松手。隐藏和校时后直接同步，不补播离线动画。"
+    fields {
+        id: "running"
+        label: "启用滚珠动画"
+        type: TOGGLE
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Enable physical motion" }
+        }
+    }
+    fields {
+        id: "reduced_motion"
+        label: "减少动态"
+        type: TOGGLE
+        bool_default: false
+        localized {
+            key: "en"
+            value { label: "Reduce motion" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Rolling Marble Clock"
+            description: "Release a marble every second and empty the bin each minute. Click the dispenser or hinge; drag a marble to play."
+        }
+    }
+}
+content_padding: 0
+preview: "preview.png"
+
+tags: "宋"

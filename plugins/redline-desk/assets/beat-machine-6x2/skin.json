@@ -1,0 +1,83 @@
+{
+  "id": "com.cyberdesktop.redline.beat.machine.6x2",
+  "folder": "beat-machine-6x2",
+  "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+  "source": "plugins/beat-machine/packages/6x2/plugin.textproto",
+  "family": "kinetic",
+  "kind": 3,
+  "rows": 2,
+  "columns": 6,
+  "board": 7,
+  "slot": 4,
+  "imageSize": [
+    1978,
+    795
+  ],
+  "crop": [
+    44,
+    23,
+    1868,
+    739
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械节奏鼓组 6×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "drumFace0": [
+      0.111,
+      0.341,
+      0.234,
+      0.514
+    ],
+    "drumFace1": [
+      0.472,
+      0.494,
+      0.184,
+      0.219
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-percussion-6x2.art.png",
+  "art": "plugins/redline-desk/assets/beat-machine-6x2/body.png",
+  "artSha256": "985ac14f1a9b1f1d51e43316b50ba632f3fd5d4b99f9675849cd49d83afa8530",
+  "runtimeFixedLayer": true,
+  "fixedLayerSource": "exec-736ea809-93f7-4946-baf9-a41c7b32d80a.png",
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    43,
+    28,
+    1875,
+    727
+  ],
+  "hardware": {
+    "mallet": [
+      1168,
+      168,
+      243,
+      141
+    ],
+    "hat": [
+      33,
+      509,
+      405,
+      116
+    ]
+  },
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

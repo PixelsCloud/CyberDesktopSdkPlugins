@@ -1,0 +1,18 @@
+CyberDesktop Character Chat — public plugin
+
+The plugin DLL uses CyberDesktop SDK, CyberCanvas, nlohmann/json and the
+CyberDesktop Character Protocol library. The corresponding notices accompany
+this package. Lucide notices cover the associated UI artwork.
+
+Mao and Haru sample models retain their accompanying Live2D SDK and sample
+material terms. Those terms remain separate from the MIT licenses for project
+code; the plugin accesses the host's render.live2d service and does not embed
+the host renderer or Cubism runtime.
+
+The Xia Qing demonstration illustrations and animation were created for this
+project. Resource hashes and generation provenance accompany the assets. The
+four role templates share this demonstration artwork.
+
+Network providers, credentials, databases, model rendering and media extraction
+are services of the host application. Their implementations and third-party
+notices are distributed with that application, not required to build this DLL.

@@ -1,0 +1,104 @@
+{
+  "project": "Meteocons",
+  "author": "Bas Milius",
+  "license": "MIT",
+  "source": "https://github.com/basmilius/meteocons",
+  "package": "@meteocons/svg-static",
+  "version": "0.1.0",
+  "tarball": "https://registry.npmjs.org/@meteocons/svg-static/-/svg-static-0.1.0.tgz",
+  "integrity": "sha512-dnuXOkt1W5q+XZbyj54dzjuBcKmsC0eLv51IVaW9kzzvzwnhwv9KgNXHKgpvmdN6cX2stMo+k95iMFbcyM4x5Q==",
+  "style": "fill",
+  "processing": "Static SVG rasterized to 256px transparent PNG, transparent margins cropped; no icon animation or CDN request at runtime.",
+  "icons": [
+    {
+      "name": "clear-day",
+      "svgSha256": "48743c29f18f37a844737cddafceb2d6d194090cc59f70c2733d10a70a96218a",
+      "pngSha256": "8208e766fabf9f8923ba752ffad357272e718acd620004549462b7f729739727"
+    },
+    {
+      "name": "clear-night",
+      "svgSha256": "de9cbec8f7ef5611b693435396be57eb5ea3ea7889c40ca2cf47bfd4577e060a",
+      "pngSha256": "f32de377f432eff8a82b05b6cb506df0d4fd9bf3ca2a56d705185da9553a2087"
+    },
+    {
+      "name": "mostly-clear-day",
+      "svgSha256": "0c719adc78862cd4a77f20e492f3c196feb6360af1f5a4b4bcbddabd15e542b9",
+      "pngSha256": "ca5808b02552bacf43a22e18190eb8d037fa75d9d2f076e42729b39278aa33b9"
+    },
+    {
+      "name": "mostly-clear-night",
+      "svgSha256": "a0a4b4e19120a4e59c6c13aa25aac99615db40104cd67993c981989f328c93f2",
+      "pngSha256": "e95d4af511483bbdf24c5d205137d2cbeced93f7a28a12305a3980eb2dc4cedd"
+    },
+    {
+      "name": "partly-cloudy-day",
+      "svgSha256": "630e0fe6e488a53745d5de6b8dc709e665edd1443488ac3782445bdd1376ee9a",
+      "pngSha256": "b3afd4c04427cb0ff40ecc9d76779476ac093c51d9a09fe128050f6cd24adadd"
+    },
+    {
+      "name": "partly-cloudy-night",
+      "svgSha256": "5037008b15f5fb95245dc02cb60e03b5ee8da71497f16f56ec9c0d63c19021b1",
+      "pngSha256": "968cbdda3bfe119c2958d4547aa71d780ee774a7824b8ca67a9f9021b16a4f41"
+    },
+    {
+      "name": "overcast",
+      "svgSha256": "b6db5c2b7ab6e49dd1661e009f6096c78655b93594c39816f15c09b03ab722c4",
+      "pngSha256": "17da6fe720427a6840344e741624bacf22eb5551f2ad37c3520dec1acbb398f8"
+    },
+    {
+      "name": "fog",
+      "svgSha256": "773194ee3c9e92543f69d892208d48ed862eab22f62fa9211b31e4eb4cd877f9",
+      "pngSha256": "3d07219a51c093542f09abc5b384f565914e2219f78546060c8c88caf0c354b7"
+    },
+    {
+      "name": "drizzle",
+      "svgSha256": "45fca64f036414f4297f920a5da6994dfe2e76182d9e2e1ff1643dcc517b3604",
+      "pngSha256": "4e3703363b2b9fd67f29fff7e3e638d23d580f0a4b157c3c354b1c4bf7eb51b1"
+    },
+    {
+      "name": "rain",
+      "svgSha256": "bd2300f05bcc4f98751adbda0489dd35cf3ac94761a8ad79f0255cdd9e150e4a",
+      "pngSha256": "2025415896abac54cb0af1b2bc6126ed564b536db6ee736068d507fb6e618c34"
+    },
+    {
+      "name": "sleet",
+      "svgSha256": "d5151b8688ef3f7a2ad3acdebe09e32b40b9b2a7400c53683a95ed54686e781e",
+      "pngSha256": "c8fb15475667dcb00a16ebda86bcabeb3ecb572e0e2450d79ce2e484d5bae80c"
+    },
+    {
+      "name": "snow",
+      "svgSha256": "ab7f7a25b852f3d795cf76d6f70ffa47a9086f9f6ddd9d9c32bd05f2bc4f9d41",
+      "pngSha256": "21fe7af03fd63a1abd6e9acee6a7e079cebc1dfb7138f5ba7c767e84166f1251"
+    },
+    {
+      "name": "snowflake",
+      "svgSha256": "33c04ea14ca47e12626742cd7a69c469ea4c5bc9bc053ce69edb1da483afb034",
+      "pngSha256": "9e4849880830c4e2c6059f3734d241de07d43e67271df3a78187460aeb853c80"
+    },
+    {
+      "name": "thunderstorms-day",
+      "svgSha256": "bb2ba7187fc8cc4ad5ad306140d972b203ecf99ff7af8839d57f48ed279d99a8",
+      "pngSha256": "3d3742f9613c27ee01c5e7062a823fbe5c66bab6d6c5e57de4ae8b9a674cce36"
+    },
+    {
+      "name": "thunderstorms-night",
+      "svgSha256": "ec18999859890835d9fab606d80d2297585d0ed8b2595fa564a5f8b700854954",
+      "pngSha256": "c3ef83b5bb786e735debea03f7a64b3c96971b746be3b46dc0051efce0f75a03"
+    },
+    {
+      "name": "thunderstorms-day-rain",
+      "svgSha256": "901ece625b9530e3b2cd5afb159505769a8b083319f6f7b23598b4c0628760b1",
+      "pngSha256": "e6171c0a336070a29ca3b9773dedecab0723ec14909c6a61ba9a64a7948de480"
+    },
+    {
+      "name": "thunderstorms-night-rain",
+      "svgSha256": "1339422eff27329204fada17caa0b394ac3b851db0542e74eaea585a06c13dcd",
+      "pngSha256": "b63a6f7a0683f8ef7ee26099eeae2546d9e1efe6d4486ec4855226058fff31e7"
+    },
+    {
+      "name": "not-available",
+      "svgSha256": "c7cf03ab8e06a5ee1e7c4a394a779070b2297518f2cb61dbc981a059f43adc37",
+      "pngSha256": "de04f7a7e6f34de068d5447394769a93acd40d593ce41e81b243ec7d9d015a18"
+    }
+  ]
+}

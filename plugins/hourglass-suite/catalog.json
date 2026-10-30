@@ -1,0 +1,14 @@
+[
+  {
+    "id": "com.cyberdesktop.hourglass.pixel.1x2",
+    "folder": "1x2",
+    "rows": 1,
+    "columns": 2
+  },
+  {
+    "id": "com.cyberdesktop.hourglass.pixel.1x1",
+    "folder": "1x1",
+    "rows": 1,
+    "columns": 1
+  }
+]

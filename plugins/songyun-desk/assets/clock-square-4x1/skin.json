@@ -1,0 +1,48 @@
+{
+  "id": "com.cyberdesktop.songyun.clock.square.4x1",
+  "folder": "clock-square-4x1",
+  "sourceId": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+  "source": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+  "family": "matrix",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 1,
+  "slot": 1,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    31,
+    110,
+    963,
+    189
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 方像素时钟 4×1",
+  "regions": {
+    "plot": [
+      0.10176531671858775,
+      0.20634920634920634,
+      0.794392523364486,
+      0.5608465608465608
+    ],
+    "surface0": [
+      0.0976116303219107,
+      0.1746031746031746,
+      0.8058151609553479,
+      0.6084656084656085
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+  "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+  "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+  "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+  "renderInset": 7
+}

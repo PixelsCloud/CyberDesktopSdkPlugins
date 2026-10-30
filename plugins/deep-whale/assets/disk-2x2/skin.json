@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.deepwhale.disk.2x2",
+  "folder": "disk-2x2",
+  "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+  "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+  "family": "productivity",
+  "kind": 4,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "capacity": [
+      34.79688,
+      137.75,
+      90.90625,
+      5
+    ],
+    "title": [
+      34,
+      100,
+      93,
+      14
+    ],
+    "usage": [
+      33,
+      116,
+      95,
+      18
+    ],
+    "free": [
+      33,
+      145,
+      95,
+      14
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        8,
+        1,
+        1104,
+        1390
+      ],
+      "destination": [
+        7,
+        9.17188,
+        146,
+        183.8125
+      ]
+    }
+  ],
+  "designUid": "b05-1",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

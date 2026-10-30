@@ -1,0 +1,86 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.lunar.4x4",
+  "folder": "lunar-4x4",
+  "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+  "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+  "family": "lunar",
+  "kind": 0,
+  "rows": 4,
+  "columns": 4,
+  "board": 3,
+  "slot": 1,
+  "character": true,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    21,
+    5,
+    530,
+    618
+  ],
+  "art": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+  "artSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 农历 4×4",
+  "regions": {
+    "title": [
+      0.269811320754717,
+      0.4449838187702265,
+      0.41132075471698115,
+      0.07928802588996764
+    ],
+    "grid": [
+      0.06792452830188679,
+      0.587378640776699,
+      0.8547169811320755,
+      0.33495145631067963
+    ],
+    "festival": [
+      0.3584905660377358,
+      0.9239482200647249,
+      0.20754716981132076,
+      0.04854368932038835
+    ],
+    "previous": [
+      0.12452830188679245,
+      0.45307443365695793,
+      0.08867924528301886,
+      0.07766990291262135
+    ],
+    "next": [
+      0.6811320754716981,
+      0.45145631067961167,
+      0.08867924528301886,
+      0.07766990291262135
+    ],
+    "today": [
+      0.7962264150943397,
+      0.44983818770226536,
+      0.11509433962264151,
+      0.07281553398058252
+    ],
+    "body": [
+      0.06792452830188679,
+      0.5372168284789643,
+      0.8547169811320755,
+      0.38673139158576053
+    ],
+    "weekdays": [
+      0.06792452830188679,
+      0.5388349514563107,
+      0.8547169811320755,
+      0.045307443365695796
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+  "approvedArtSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+  "runtimePlate": true,
+  "nativeTicks": false
+}

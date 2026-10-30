@@ -1,0 +1,48 @@
+id: "org.cyberdesktop.sdk.workbench"
+name: "Canvas Workbench"
+version: "1.0.0"
+author: "CyberDesktop"
+abi_version: 1
+entry: "plugin.dll"
+capabilities: SYSTEM_INFO
+capabilities: MEDIA_CONTROL
+description: "Native Canvas example: themed scene, asynchronous image, animation, keyboard, settings and state."
+footprint_rules { topology: RECT min_cells: 1 max_cells: 64 max_columns: 16 max_rows: 16 }
+layouts {
+    id: "rect-2x3"
+    name: "2 × 3"
+    topology: RECT
+    cells { a: 0 b: 0 }
+    cells { a: 1 b: 0 }
+    cells { a: 0 b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 0 b: 2 }
+    cells { a: 1 b: 2 }
+    allowed_rotations: 0
+    is_default: true
+}
+settings_page {
+    title: "Workbench"
+    fields {
+        id: "page"
+        label: "Component example"
+        type: CHOICE
+        text_default: "canvas"
+        choices { value: "canvas" label: "Canvas / 原工作台" }
+        choices { value: "info" label: "Information / 信息卡" }
+        choices { value: "tasks" label: "Tasks / 可操作列表" }
+        choices { value: "media" label: "Media demo / 媒体控制示例" }
+        choices { value: "calendar" label: "Calendar / 日历" }
+    }
+    fields { id: "animate" label: "Animate illustration" type: TOGGLE bool_default: false }
+    fields { id: "level" label: "Level" type: NUMBER minimum: 0 maximum: 1 step: 0.05 number_default: 0.45 }
+    fields { id: "language" label: "Language (auto or BCP47)" type: TEXT max_length: 31 text_default: "auto" }
+    fields {
+        id: "data_source"
+        label: "Component data source / 组件数据来源"
+        type: CHOICE
+        text_default: "host"
+        choices { value: "host" label: "Host service / 宿主服务" }
+        choices { value: "demo" label: "Offline demo / 离线演示" }
+    }
+}

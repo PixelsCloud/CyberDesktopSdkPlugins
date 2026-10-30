@@ -1,0 +1,83 @@
+{
+  "id": "com.cyberdesktop.redline.beat.machine.4x2",
+  "folder": "beat-machine-4x2",
+  "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+  "source": "plugins/beat-machine/packages/4x2/plugin.textproto",
+  "family": "kinetic",
+  "kind": 2,
+  "rows": 2,
+  "columns": 4,
+  "board": 7,
+  "slot": 3,
+  "imageSize": [
+    1728,
+    910
+  ],
+  "crop": [
+    31,
+    12,
+    1628,
+    855
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 双锤击鼓器 4×2",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "drumFace0": [
+      0.147,
+      0.378,
+      0.286,
+      0.4
+    ],
+    "drumFace1": [
+      0.66,
+      0.48,
+      0.203,
+      0.316
+    ]
+  },
+  "approvedArt": "design/redline-collection/normalized-percussion-4x2.art.png",
+  "art": "plugins/redline-desk/assets/beat-machine-4x2/body.png",
+  "artSha256": "a4f4ac6c0a3f6f2e540ac821b2c8f67c44e22e6b90e78777008ffbe91d4cc664",
+  "runtimeFixedLayer": true,
+  "fixedLayerSource": "exec-1be4bcfb-61eb-4248-8426-f08ef30fec35.png",
+  "hardwareSize": [
+    1448,
+    1086
+  ],
+  "hardwareSha256": "666169492c8856612e7d702f3e3d06f33bace5e9dbe5ee98485d32b554a6010a",
+  "approvedCrop": [
+    34,
+    11,
+    1664,
+    870
+  ],
+  "hardware": {
+    "mallet": [
+      1168,
+      168,
+      243,
+      141
+    ],
+    "hat": [
+      33,
+      509,
+      405,
+      116
+    ]
+  },
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

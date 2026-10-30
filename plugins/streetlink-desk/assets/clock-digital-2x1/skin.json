@@ -1,0 +1,89 @@
+{
+  "folder": "digital-2x1",
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "plot": [
+      27.440000000000005,
+      38.44005305039788,
+      71.53999999999999,
+      22.54189655172414
+    ],
+    "readout0": [
+      27.440000000000005,
+      38.44005305039788,
+      71.53999999999999,
+      22.54189655172414
+    ],
+    "footer0": [
+      106.28000000000002,
+      47.68801061007957,
+      11.68,
+      11.559946949602123
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        60,
+        266,
+        1508,
+        597
+      ],
+      "destination": [
+        7.0,
+        21.100132625994693,
+        146.0,
+        57.799734748010614
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "text_color": 4093180671,
+    "secondary_color": 15200255,
+    "seconds_color": 15200255,
+    "font_family": "Chakra Petch"
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      27.440000000000005,
+      37.86205570291777,
+      93.44,
+      25.43188328912467
+    ]
+  ],
+  "styles": {
+    "footer0": {
+      "size": 13,
+      "color": 3639209983,
+      "minimumSize": 11,
+      "overflow": "optional"
+    },
+    "readout0": {
+      "size": 19.16061206896552,
+      "color": 4093180671,
+      "role": "display",
+      "minimumSize": 12,
+      "overflow": "fit"
+    }
+  },
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 7.0,
+    "right": 153.0,
+    "cuts": [
+      72.7
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

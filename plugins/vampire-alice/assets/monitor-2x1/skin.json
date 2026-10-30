@@ -1,0 +1,50 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.monitor.2x1",
+  "folder": "monitor-2x1",
+  "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+  "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+  "family": "monitor",
+  "kind": 0,
+  "rows": 1,
+  "columns": 2,
+  "board": 4,
+  "slot": 3,
+  "character": false,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1006,
+    188,
+    492,
+    298
+  ],
+  "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+  "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 系统监控 2×1",
+  "regions": {
+    "gauge0": [
+      0.09959349593495935,
+      0.20134228187919462,
+      0.35365853658536583,
+      0.5838926174496645
+    ],
+    "gauge1": [
+      0.5467479674796748,
+      0.20134228187919462,
+      0.35365853658536583,
+      0.5838926174496645
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
+  "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+  "runtimePlate": true,
+  "nativeTicks": true
+}

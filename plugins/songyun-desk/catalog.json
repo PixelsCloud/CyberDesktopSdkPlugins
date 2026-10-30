@@ -1,0 +1,4395 @@
+[
+  {
+    "id": "com.cyberdesktop.songyun.clock.square.4x1",
+    "folder": "clock-square-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      31,
+      110,
+      963,
+      189
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 方像素时钟 4×1",
+    "regions": {
+      "plot": [
+        0.10176531671858775,
+        0.20634920634920634,
+        0.794392523364486,
+        0.5608465608465608
+      ],
+      "surface0": [
+        0.0976116303219107,
+        0.1746031746031746,
+        0.8058151609553479,
+        0.6084656084656085
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.clock.round.4x1",
+    "folder": "clock-round-4x1",
+    "sourceId": "com.cyberdesktop.clock.mechanical.pixel.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/clock-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 2,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      30,
+      355,
+      965,
+      176
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 圆点阵时钟 4×1",
+    "regions": {
+      "plot": [
+        0.10259067357512953,
+        0.19318181818181818,
+        0.7927461139896373,
+        0.6136363636363636
+      ],
+      "surface0": [
+        0.09740932642487046,
+        0.1590909090909091,
+        0.805181347150259,
+        0.6534090909090909
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.spring.clock.4x1",
+    "folder": "spring-clock-4x1",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 1,
+    "slot": 3,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      34,
+      588,
+      958,
+      244
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 弹簧数字时钟 4×1",
+    "regions": {
+      "world": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "cutout0": [
+        0.08768267223382047,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ],
+      "cutout1": [
+        0.2139874739039666,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ],
+      "cutout2": [
+        0.3747390396659708,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ],
+      "cutout3": [
+        0.5010438413361169,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ],
+      "cutout4": [
+        0.6617954070981211,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ],
+      "cutout5": [
+        0.7901878914405011,
+        0.16393442622950818,
+        0.12108559498956159,
+        0.7090163934426229
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "toyGeometry": {
+      "size": [
+        958,
+        244
+      ],
+      "anchors": [
+        [
+          142,
+          40
+        ],
+        [
+          262,
+          40
+        ],
+        [
+          417,
+          40
+        ],
+        [
+          537,
+          40
+        ],
+        [
+          690,
+          40
+        ],
+        [
+          814,
+          40
+        ]
+      ],
+      "bodies": [
+        [
+          142.0,
+          145.5,
+          100,
+          119
+        ],
+        [
+          263.0,
+          145.5,
+          100,
+          119
+        ],
+        [
+          417.0,
+          145.5,
+          100,
+          119
+        ],
+        [
+          538.0,
+          145.5,
+          100,
+          119
+        ],
+        [
+          692.0,
+          145.5,
+          100,
+          119
+        ],
+        [
+          815.0,
+          145.5,
+          100,
+          119
+        ]
+      ]
+    },
+    "hardware": {
+      "card0": [
+        126,
+        674,
+        100,
+        119
+      ],
+      "card1": [
+        247,
+        674,
+        100,
+        119
+      ],
+      "card2": [
+        401,
+        674,
+        100,
+        119
+      ],
+      "card3": [
+        522,
+        674,
+        100,
+        119
+      ],
+      "card4": [
+        676,
+        674,
+        100,
+        119
+      ],
+      "card5": [
+        799,
+        674,
+        100,
+        119
+      ],
+      "spring": [
+        167,
+        628,
+        18,
+        46
+      ]
+    },
+    "hardwareSize": [
+      1024,
+      1536
+    ],
+    "hardwareSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.spring.clock.4x2",
+    "folder": "spring-clock-4x2",
+    "sourceId": "com.cyberdesktop.physics.springclock.mechanical.2x4",
+    "source": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 4,
+    "imageSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      33,
+      348,
+      683,
+      276
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 弹簧数字时钟 4×2",
+    "regions": {
+      "world": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "cutout0": [
+        0.0951683748169839,
+        0.13405797101449277,
+        0.13323572474377746,
+        0.8152173913043478
+      ],
+      "cutout1": [
+        0.22547584187408493,
+        0.13405797101449277,
+        0.13177159590043924,
+        0.8152173913043478
+      ],
+      "cutout2": [
+        0.37481698389458273,
+        0.13405797101449277,
+        0.12884333821376281,
+        0.8152173913043478
+      ],
+      "cutout3": [
+        0.5007320644216691,
+        0.13405797101449277,
+        0.13030746705710103,
+        0.8152173913043478
+      ],
+      "cutout4": [
+        0.6515373352855052,
+        0.13405797101449277,
+        0.12884333821376281,
+        0.8115942028985508
+      ],
+      "cutout5": [
+        0.7789165446559297,
+        0.13405797101449277,
+        0.13323572474377746,
+        0.8152173913043478
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/01-clocks.art.png",
+    "artSha256": "0dfc404a6a60805be012d7d393860257b3f446a4781675756fd21ede5b63a49b",
+    "toyGeometry": {
+      "size": [
+        683,
+        276
+      ],
+      "anchors": [
+        [
+          111,
+          37
+        ],
+        [
+          199,
+          37
+        ],
+        [
+          300,
+          37
+        ],
+        [
+          387,
+          37
+        ],
+        [
+          489,
+          37
+        ],
+        [
+          578,
+          37
+        ]
+      ],
+      "bodies": [
+        [
+          110.5,
+          181.0,
+          75,
+          146
+        ],
+        [
+          199.0,
+          185.0,
+          74,
+          138
+        ],
+        [
+          300.0,
+          180.5,
+          72,
+          147
+        ],
+        [
+          386.5,
+          185.0,
+          73,
+          138
+        ],
+        [
+          489.0,
+          184.5,
+          72,
+          137
+        ],
+        [
+          577.5,
+          185.0,
+          75,
+          138
+        ]
+      ]
+    },
+    "hardware": {
+      "card0": [
+        106,
+        456,
+        75,
+        146
+      ],
+      "card1": [
+        195,
+        464,
+        74,
+        138
+      ],
+      "card2": [
+        297,
+        455,
+        72,
+        147
+      ],
+      "card3": [
+        383,
+        464,
+        73,
+        138
+      ],
+      "card4": [
+        486,
+        464,
+        72,
+        137
+      ],
+      "card5": [
+        573,
+        464,
+        75,
+        138
+      ],
+      "spring": [
+        135,
+        385,
+        18,
+        71
+      ]
+    },
+    "hardwareSize": [
+      2172,
+      724
+    ],
+    "hardwareSha256": "3d0aaa92041f816cf06957b9561837cd86694b178d109b73f653d5c96f8c1c3b",
+    "plateSha256": "3d0aaa92041f816cf06957b9561837cd86694b178d109b73f653d5c96f8c1c3b",
+    "plateSource": "plugins/songyun-desk/materials/01-clocks.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.marble.clock.4x2",
+    "folder": "marble-clock-4x2",
+    "sourceId": "com.cyberdesktop.clock.marble.4x2",
+    "source": "plugins/marble-clock/packages/4x2/plugin.textproto",
+    "family": "marble",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 1,
+    "slot": 5,
+    "imageSize": [
+      1902,
+      827
+    ],
+    "crop": [
+      49,
+      38,
+      1804,
+      762
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 滚珠轨道时钟 4×2",
+    "regions": {
+      "world": [
+        0.12804878048780488,
+        0.12335958005249344,
+        0.753880266075388,
+        0.8923884514435696
+      ],
+      "surface0": [
+        0.12250554323725056,
+        0.09711286089238845,
+        0.7649667405764967,
+        0.8923884514435696
+      ],
+      "feeder": [
+        0.13636363636363635,
+        0.1167979002624672,
+        0.09700665188470066,
+        0.2152230971128609
+      ],
+      "drain": [
+        0.4190687361419069,
+        0.5223097112860893,
+        0.05376940133037694,
+        0.20866141732283464
+      ],
+      "digit0": [
+        0.48281596452328157,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "digit1": [
+        0.5399113082039911,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "digit2": [
+        0.6130820399113082,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "digit3": [
+        0.6696230598669624,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "digit4": [
+        0.7472283813747228,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "digit5": [
+        0.8015521064301552,
+        0.20866141732283464,
+        0.033813747228381374,
+        0.1377952755905512
+      ],
+      "surface1": [
+        0.47172949002217296,
+        0.1994750656167979,
+        0.35476718403547675,
+        0.16404199475065617
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-marble-compact.art.png",
+    "artSha256": "a1c6af18570ad0c3bc80174a8579380ff0e1eedbb63746087f5ab721d0f7fa44",
+    "plateSha256": "017e795ea5d976838a59851e13f163ec04de605c7630da10d1739d2a169f71b1",
+    "plateSource": "plugins/songyun-desk/materials/normalized-marble-compact.runtime.png",
+    "marbleGeometry": {
+      "origin": [
+        280,
+        132
+      ],
+      "scale": 1.8888888888888888,
+      "left": 365,
+      "pivot": 840,
+      "floorY": 582,
+      "track": [
+        [
+          400,
+          308
+        ],
+        [
+          700,
+          360
+        ],
+        [
+          1100,
+          392
+        ],
+        [
+          1550,
+          405
+        ],
+        [
+          1605,
+          428
+        ],
+        [
+          1618,
+          459
+        ],
+        [
+          1590,
+          485
+        ],
+        [
+          1530,
+          498
+        ],
+        [
+          904,
+          476
+        ],
+        [
+          842,
+          486
+        ]
+      ],
+      "returning": [
+        [
+          350,
+          735
+        ],
+        [
+          1555,
+          735
+        ]
+      ]
+    },
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.marble.clock.6x2",
+    "folder": "marble-clock-6x2",
+    "sourceId": "com.cyberdesktop.clock.marble.6x2",
+    "source": "plugins/marble-clock/packages/6x2/plugin.textproto",
+    "family": "marble",
+    "kind": 0,
+    "rows": 2,
+    "columns": 6,
+    "board": 1,
+    "slot": 6,
+    "imageSize": [
+      2057,
+      764
+    ],
+    "crop": [
+      4,
+      71,
+      2053,
+      668
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 滚珠轨道时钟 6×2",
+    "regions": {
+      "world": [
+        0.12226010716025329,
+        0.09880239520958084,
+        0.8153921091086215,
+        0.8353293413173652
+      ],
+      "surface0": [
+        0.11738918655625913,
+        0.0688622754491018,
+        0.8251339503166099,
+        0.8353293413173652
+      ],
+      "feeder": [
+        0.13054067218704335,
+        0.2275449101796407,
+        0.08962493911349245,
+        0.19461077844311378
+      ],
+      "drain": [
+        0.38480272771553825,
+        0.5224550898203593,
+        0.04188991719434973,
+        0.23652694610778444
+      ],
+      "digit0": [
+        0.5893813930832927,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "digit1": [
+        0.6327325864588407,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "digit2": [
+        0.685825621042377,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "digit3": [
+        0.7262542620555285,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "digit4": [
+        0.7783731125182659,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "digit5": [
+        0.8202630297126157,
+        0.2994011976047904,
+        0.026302971261568435,
+        0.12275449101796407
+      ],
+      "surface1": [
+        0.5825621042377009,
+        0.281437125748503,
+        0.26546517291768146,
+        0.16167664670658682
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-marble-wide.art.png",
+    "artSha256": "abc750473db9372afd7a4817f0143d89dc45222ca5b1340ce131899fb9099aa1",
+    "plateSha256": "b672b13bd42d77869208eefc9d457327fc66923c16e3281469621b1bc288a715",
+    "plateSource": "plugins/songyun-desk/materials/normalized-marble-wide.runtime.png",
+    "marbleGeometry": {
+      "origin": [
+        255,
+        137
+      ],
+      "scale": 1.55,
+      "left": 323,
+      "pivot": 850,
+      "floorY": 568,
+      "track": [
+        [
+          450,
+          350
+        ],
+        [
+          700,
+          367
+        ],
+        [
+          1100,
+          400
+        ],
+        [
+          1720,
+          435
+        ],
+        [
+          1800,
+          470
+        ],
+        [
+          1780,
+          514
+        ],
+        [
+          1700,
+          525
+        ],
+        [
+          880,
+          497
+        ],
+        [
+          828,
+          507
+        ]
+      ],
+      "returning": [
+        [
+          320,
+          678
+        ],
+        [
+          1800,
+          680
+        ]
+      ]
+    },
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.moon.clock.2x2",
+    "folder": "moon-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.dress.2x2",
+    "source": "plugins/precision-clocks/packages/dress/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      57,
+      83,
+      450,
+      420
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 玫瑰金月相表 2×2",
+    "regions": {
+      "world": [
+        0.12666666666666668,
+        0.08095238095238096,
+        0.7688888888888888,
+        0.8238095238095238
+      ],
+      "surface0Circle": [
+        0.12222222222222222,
+        0.07857142857142857,
+        0.7777777777777778,
+        0.8333333333333334
+      ],
+      "moon": [
+        0.49333333333333335,
+        0.24761904761904763,
+        0.1111111111111111,
+        0.11904761904761904
+      ],
+      "pin": [
+        0.4888888888888889,
+        0.4738095238095238,
+        0.044444444444444446,
+        0.047619047619047616
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+    "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+    "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+    "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.dive.clock.2x2",
+    "folder": "dive-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.green.2x2",
+    "source": "plugins/precision-clocks/packages/green/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      556,
+      84,
+      444,
+      422
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 翡翠绿潜水表 2×2",
+    "regions": {
+      "world": [
+        0.13963963963963963,
+        0.13981042654028436,
+        0.6666666666666666,
+        0.7014218009478673
+      ],
+      "surface0Circle": [
+        0.1373873873873874,
+        0.13744075829383887,
+        0.6711711711711712,
+        0.7061611374407583
+      ],
+      "date": [
+        0.6531531531531531,
+        0.46445497630331756,
+        0.06306306306306306,
+        0.06872037914691943
+      ],
+      "pin": [
+        0.44594594594594594,
+        0.46208530805687204,
+        0.05630630630630631,
+        0.05924170616113744
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+    "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+    "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+    "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.skeleton.clock.2x2",
+    "folder": "skeleton-clock-2x2",
+    "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+    "source": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+    "family": "precision",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1041,
+      75,
+      448,
+      430
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 镂空精密钟 2×2",
+    "regions": {
+      "world": [
+        0.11607142857142858,
+        0.10465116279069768,
+        0.7767857142857143,
+        0.8093023255813954
+      ],
+      "surface0Circle": [
+        0.109375,
+        0.1,
+        0.7901785714285714,
+        0.8232558139534883
+      ],
+      "pin": [
+        0.46651785714285715,
+        0.47674418604651164,
+        0.06696428571428571,
+        0.06976744186046512
+      ],
+      "gear0": [
+        0.3861607142857143,
+        0.24651162790697675,
+        0.15848214285714285,
+        0.16511627906976745
+      ],
+      "gear1": [
+        0.5401785714285714,
+        0.31627906976744186,
+        0.13616071428571427,
+        0.14186046511627906
+      ],
+      "gear2": [
+        0.3013392857142857,
+        0.413953488372093,
+        0.16741071428571427,
+        0.1744186046511628
+      ],
+      "gear3": [
+        0.49107142857142855,
+        0.4558139534883721,
+        0.18973214285714285,
+        0.19767441860465115
+      ],
+      "gear4": [
+        0.484375,
+        0.6325581395348837,
+        0.14508928571428573,
+        0.1511627906976744
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+    "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+    "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+    "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.calendar.4x2",
+    "folder": "calendar-4x2",
+    "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+    "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+    "family": "calendar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 2,
+    "slot": 4,
+    "imageSize": [
+      1611,
+      976
+    ],
+    "crop": [
+      22,
+      18,
+      1575,
+      923
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 月历 4×2",
+    "regions": {
+      "body": [
+        0.16952380952380952,
+        0.3293607800650054,
+        0.7504761904761905,
+        0.580715059588299
+      ],
+      "title": [
+        0.2876190476190476,
+        0.3423618634886241,
+        0.4380952380952381,
+        0.06717226435536294
+      ],
+      "previous": [
+        0.17777777777777778,
+        0.3434452871072589,
+        0.05015873015873016,
+        0.06717226435536294
+      ],
+      "next": [
+        0.8609523809523809,
+        0.3434452871072589,
+        0.05015873015873016,
+        0.06717226435536294
+      ],
+      "grid": [
+        0.17015873015873015,
+        0.4312026002166847,
+        0.7492063492063492,
+        0.47670639219934996
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-month.art.png",
+    "artSha256": "e8e2fa607c0bd481f07a74069b16d3fb89448834d6c4a92613a151614f41f411",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.lunar.2x1",
+    "folder": "lunar-2x1",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-1x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 2,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      729,
+      656,
+      419,
+      237
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 农历 2×1",
+    "regions": {
+      "title": [
+        0.5155131264916468,
+        0.3206751054852321,
+        0.30071599045346065,
+        0.11392405063291139
+      ],
+      "day": [
+        0.2577565632458234,
+        0.31645569620253167,
+        0.23627684964200477,
+        0.37130801687763715
+      ],
+      "lunar": [
+        0.5155131264916468,
+        0.4641350210970464,
+        0.30071599045346065,
+        0.1308016877637131
+      ],
+      "festival": [
+        0.5274463007159904,
+        0.6033755274261603,
+        0.11455847255369929,
+        0.1350210970464135
+      ],
+      "surface0": [
+        0.25059665871121717,
+        0.3037974683544304,
+        0.5990453460620525,
+        0.459915611814346
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+    "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+    "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+    "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.lunar.2x2",
+    "folder": "lunar-2x2",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 2,
+    "slot": 6,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1167,
+      544,
+      343,
+      392
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 农历 2×2",
+    "regions": {
+      "title": [
+        0.3119533527696793,
+        0.21683673469387754,
+        0.3673469387755102,
+        0.06887755102040816
+      ],
+      "weekday": [
+        0.36443148688046645,
+        0.29336734693877553,
+        0.27405247813411077,
+        0.07142857142857142
+      ],
+      "day": [
+        0.2536443148688047,
+        0.3852040816326531,
+        0.45481049562682213,
+        0.25
+      ],
+      "lunar": [
+        0.24198250728862974,
+        0.673469387755102,
+        0.46938775510204084,
+        0.08928571428571429
+      ],
+      "festival": [
+        0.7580174927113703,
+        0.6530612244897959,
+        0.06997084548104957,
+        0.1096938775510204
+      ],
+      "surface0": [
+        0.2478134110787172,
+        0.19387755102040816,
+        0.47230320699708456,
+        0.5816326530612245
+      ],
+      "surface1": [
+        0.7521865889212828,
+        0.6428571428571429,
+        0.08746355685131195,
+        0.1326530612244898
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+    "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+    "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+    "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.lunar.4x4",
+    "folder": "lunar-4x4",
+    "sourceId": "com.cyberdesktop.calendar.lunar.mechanical.4x4",
+    "source": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+    "family": "lunar",
+    "kind": 0,
+    "rows": 4,
+    "columns": 4,
+    "board": 3,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      16,
+      833,
+      483,
+      691
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 农历 4×4",
+    "regions": {
+      "body": [
+        0.09937888198757763,
+        0.2503617945007236,
+        0.8405797101449275,
+        0.6801736613603473
+      ],
+      "title": [
+        0.19875776397515527,
+        0.25615050651230103,
+        0.5797101449275363,
+        0.04341534008683068
+      ],
+      "previous": [
+        0.10766045548654245,
+        0.25615050651230103,
+        0.062111801242236024,
+        0.04341534008683068
+      ],
+      "next": [
+        0.8509316770186336,
+        0.25615050651230103,
+        0.062111801242236024,
+        0.04341534008683068
+      ],
+      "weekdays": [
+        0.10973084886128365,
+        0.30824891461649784,
+        0.7991718426501035,
+        0.03473227206946455
+      ],
+      "grid": [
+        0.10973084886128365,
+        0.35021707670043417,
+        0.7991718426501035,
+        0.5123010130246021
+      ],
+      "festival": [
+        0.2670807453416149,
+        0.8784370477568741,
+        0.47619047619047616,
+        0.03473227206946455
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-core.art.png",
+    "artSha256": "81133ae54ca8f4d1d1e4798eb3a2905c3da693b20cc01250c0c8d8c497910292",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.weather.2x1",
+    "folder": "weather-2x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 2,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      658,
+      234,
+      382,
+      323
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 天气 2×1",
+    "regions": {
+      "city": [
+        0.6910994764397905,
+        0.3065015479876161,
+        0.2486910994764398,
+        0.12074303405572756
+      ],
+      "temperature": [
+        0.6073298429319371,
+        0.4613003095975232,
+        0.35340314136125656,
+        0.21671826625386997
+      ],
+      "condition": [
+        0.725130890052356,
+        0.653250773993808,
+        0.17015706806282724,
+        0.1021671826625387
+      ],
+      "surface0": [
+        0.6099476439790575,
+        0.29721362229102166,
+        0.3612565445026178,
+        0.4674922600619195
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/03-calendar-weather-air.art.png",
+    "artSha256": "f9ace1574063a78bb6e998512b8cde45de8ef07598a704617bea26b07f41d51b",
+    "plateSha256": "d03eada9ee11fe3ba5970e360e79e1eb1152067044f7f6a3805bb8b2201591b4",
+    "plateSource": "plugins/songyun-desk/materials/03-calendar-weather-air.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.weather.4x1",
+    "folder": "weather-4x1",
+    "sourceId": "com.cyberdesktop.weather.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 3,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      23,
+      873,
+      979,
+      219
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 天气 4×1",
+    "regions": {
+      "city": [
+        0.1787538304392237,
+        0.3424657534246575,
+        0.07252298263534218,
+        0.1461187214611872
+      ],
+      "temperature": [
+        0.177732379979571,
+        0.54337899543379,
+        0.09601634320735444,
+        0.2191780821917808
+      ],
+      "icon": [
+        0.05822267620020429,
+        0.3378995433789954,
+        0.10214504596527069,
+        0.4520547945205479
+      ],
+      "surface0": [
+        0.04698672114402452,
+        0.3013698630136986,
+        0.25025536261491316,
+        0.4931506849315068
+      ],
+      "surface1": [
+        0.5587334014300307,
+        0.3105022831050228,
+        0.4034729315628192,
+        0.5159817351598174
+      ],
+      "forecast0": [
+        0.5617977528089888,
+        0.3378995433789954,
+        0.12768130745658834,
+        0.4611872146118721
+      ],
+      "forecast1": [
+        0.7027579162410623,
+        0.3378995433789954,
+        0.12768130745658834,
+        0.4611872146118721
+      ],
+      "forecast2": [
+        0.8406537282941777,
+        0.3378995433789954,
+        0.12768130745658834,
+        0.4611872146118721
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.weather.4x2",
+    "folder": "weather-4x2",
+    "sourceId": "com.cyberdesktop.weather.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+    "family": "weather",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 3,
+    "slot": 4,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      30,
+      550,
+      687,
+      323
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 天气 4×2",
+    "regions": {
+      "city": [
+        0.5327510917030568,
+        0.19814241486068113,
+        0.15574963609898107,
+        0.10526315789473684
+      ],
+      "temperature": [
+        0.5240174672489083,
+        0.3126934984520124,
+        0.17758369723435224,
+        0.2043343653250774
+      ],
+      "condition": [
+        0.5749636098981077,
+        0.5201238390092879,
+        0.08296943231441048,
+        0.11455108359133127
+      ],
+      "humidity": [
+        0.7976710334788938,
+        0.3126934984520124,
+        0.11499272197962154,
+        0.09597523219814241
+      ],
+      "wind": [
+        0.7962154294032023,
+        0.5015479876160991,
+        0.15574963609898107,
+        0.09597523219814241
+      ],
+      "humidityLabel": [
+        0.7976710334788938,
+        0.21981424148606812,
+        0.11499272197962154,
+        0.08359133126934984
+      ],
+      "windLabel": [
+        0.7962154294032023,
+        0.4117647058823529,
+        0.11499272197962154,
+        0.08359133126934984
+      ],
+      "humidityIcon": [
+        0.7481804949053857,
+        0.2724458204334365,
+        0.034934497816593885,
+        0.10526315789473684
+      ],
+      "windIcon": [
+        0.7481804949053857,
+        0.4613003095975232,
+        0.034934497816593885,
+        0.10526315789473684
+      ],
+      "surface0": [
+        0.5211062590975255,
+        0.17027863777089783,
+        0.4366812227074236,
+        0.4674922600619195
+      ],
+      "surface1": [
+        0.09024745269286755,
+        0.6625386996904025,
+        0.8719068413391557,
+        0.2724458204334365
+      ],
+      "forecast0": [
+        0.09461426491994178,
+        0.6904024767801857,
+        0.25327510917030566,
+        0.21671826625386997
+      ],
+      "forecast1": [
+        0.39737991266375544,
+        0.6904024767801857,
+        0.25327510917030566,
+        0.21671826625386997
+      ],
+      "forecast2": [
+        0.7088791848617176,
+        0.6904024767801857,
+        0.25327510917030566,
+        0.21671826625386997
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/03-calendar-weather-air.art.png",
+    "artSha256": "f9ace1574063a78bb6e998512b8cde45de8ef07598a704617bea26b07f41d51b",
+    "plateSha256": "d03eada9ee11fe3ba5970e360e79e1eb1152067044f7f6a3805bb8b2201591b4",
+    "plateSource": "plugins/songyun-desk/materials/03-calendar-weather-air.runtime.png",
+    "renderInset": 7,
+    "runtimeVisibleBounds": [
+      0,
+      4,
+      678,
+      319
+    ]
+  },
+  {
+    "id": "com.cyberdesktop.songyun.air.2x1",
+    "folder": "air-2x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 3,
+    "slot": 5,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      115,
+      1253,
+      786,
+      238
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 空气质量 2×1",
+    "regions": {
+      "city": [
+        0.49363867684478374,
+        0.3277310924369748,
+        0.09796437659033079,
+        0.12184873949579832
+      ],
+      "aqi": [
+        0.5903307888040712,
+        0.39915966386554624,
+        0.09541984732824428,
+        0.2815126050420168
+      ],
+      "quality": [
+        0.7379134860050891,
+        0.4411764705882353,
+        0.09287531806615776,
+        0.23529411764705882
+      ],
+      "aqiLabel": [
+        0.49236641221374045,
+        0.48739495798319327,
+        0.09669211195928754,
+        0.15546218487394958
+      ],
+      "gauge": [
+        0.089058524173028,
+        0.29831932773109243,
+        0.28498727735368956,
+        0.42436974789915966
+      ],
+      "surface0": [
+        0.48346055979643765,
+        0.3025210084033613,
+        0.3549618320610687,
+        0.44537815126050423
+      ],
+      "surface1": [
+        0.07251908396946564,
+        0.31092436974789917,
+        0.30661577608142493,
+        0.42436974789915966
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.air.4x1",
+    "folder": "air-4x1",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/air-1x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 3,
+    "slot": 6,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      29,
+      1141,
+      967,
+      166
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 空气质量 4×1",
+    "regions": {
+      "city": [
+        0.11168562564632885,
+        0.18674698795180722,
+        0.08376421923474664,
+        0.1746987951807229
+      ],
+      "aqi": [
+        0.21613236814891418,
+        0.3253012048192771,
+        0.07652533609100311,
+        0.26506024096385544
+      ],
+      "quality": [
+        0.29782833505687695,
+        0.3373493975903614,
+        0.04446742502585315,
+        0.24096385542168675
+      ],
+      "pm25": [
+        0.47776628748707345,
+        0.3614457831325301,
+        0.08790072388831438,
+        0.25301204819277107
+      ],
+      "pm10": [
+        0.7569803516028956,
+        0.3614457831325301,
+        0.08790072388831438,
+        0.25301204819277107
+      ],
+      "aqiLabel": [
+        0.16649431230610134,
+        0.463855421686747,
+        0.04136504653567735,
+        0.1566265060240964
+      ],
+      "pm25Label": [
+        0.4498448810754912,
+        0.1746987951807229,
+        0.15201654601861428,
+        0.1686746987951807
+      ],
+      "pm10Label": [
+        0.7166494312306101,
+        0.1746987951807229,
+        0.15822130299896586,
+        0.1686746987951807
+      ],
+      "progress0": [
+        0.15822130299896586,
+        0.6325301204819277,
+        0.18510858324715615,
+        0.0783132530120482
+      ],
+      "progress1": [
+        0.46949327817993797,
+        0.6445783132530121,
+        0.14167528438469493,
+        0.0783132530120482
+      ],
+      "progress2": [
+        0.7414684591520165,
+        0.6445783132530121,
+        0.14270941054808686,
+        0.0783132530120482
+      ],
+      "surface0": [
+        0.10134436401240951,
+        0.14457831325301204,
+        0.2626680455015512,
+        0.6566265060240963
+      ],
+      "surface1": [
+        0.41468459152016546,
+        0.14457831325301204,
+        0.22130299896587383,
+        0.6566265060240963
+      ],
+      "surface2": [
+        0.6804550155118925,
+        0.14457831325301204,
+        0.2326783867631851,
+        0.6566265060240963
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.air.4x2",
+    "folder": "air-4x2",
+    "sourceId": "com.cyberdesktop.airquality.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/air-2x4/plugin.textproto",
+    "family": "air",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 4,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      25,
+      161,
+      647,
+      360
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 空气质量 4×2",
+    "regions": {
+      "city": [
+        0.22565687789799072,
+        0.28055555555555556,
+        0.1545595054095827,
+        0.07777777777777778
+      ],
+      "aqi": [
+        0.22256568778979907,
+        0.475,
+        0.160741885625966,
+        0.23333333333333334
+      ],
+      "quality": [
+        0.40649149922720246,
+        0.5416666666666666,
+        0.07573415765069552,
+        0.15
+      ],
+      "aqiLabel": [
+        0.22565687789799072,
+        0.3861111111111111,
+        0.21947449768160743,
+        0.06944444444444445
+      ],
+      "pm25": [
+        0.7836166924265843,
+        0.35833333333333334,
+        0.10046367851622875,
+        0.10555555555555556
+      ],
+      "pm10": [
+        0.7851622874806801,
+        0.7361111111111112,
+        0.10046367851622875,
+        0.10555555555555556
+      ],
+      "pm25Label": [
+        0.7635239567233385,
+        0.23055555555555557,
+        0.1437403400309119,
+        0.11944444444444445
+      ],
+      "pm10Label": [
+        0.7635239567233385,
+        0.6138888888888889,
+        0.1437403400309119,
+        0.1111111111111111
+      ],
+      "progress0": [
+        0.14683153013910355,
+        0.7666666666666667,
+        0.5239567233384853,
+        0.03611111111111111
+      ],
+      "surface0": [
+        0.20401854714064915,
+        0.2611111111111111,
+        0.28129829984544047,
+        0.46111111111111114
+      ],
+      "surface1Circle": [
+        0.7387944358578052,
+        0.15833333333333333,
+        0.19783616692426584,
+        0.35555555555555557
+      ],
+      "surface2Circle": [
+        0.7387944358578052,
+        0.5333333333333333,
+        0.20401854714064915,
+        0.36666666666666664
+      ],
+      "pm25Gauge": [
+        0.7387944358578052,
+        0.15833333333333333,
+        0.19783616692426584,
+        0.35555555555555557
+      ],
+      "pm10Gauge": [
+        0.7387944358578052,
+        0.5333333333333333,
+        0.20401854714064915,
+        0.36666666666666664
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+    "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+    "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+    "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.monitor.1x1",
+    "folder": "monitor-1x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 4,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      703,
+      222,
+      290,
+      297
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 系统监控 1×1",
+    "regions": {
+      "gauge0": [
+        0.16206896551724137,
+        0.11784511784511785,
+        0.6827586206896552,
+        0.6666666666666666
+      ],
+      "surface0Circle": [
+        0.16206896551724137,
+        0.11784511784511785,
+        0.6827586206896552,
+        0.6666666666666666
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+    "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+    "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+    "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.monitor.2x1",
+    "folder": "monitor-2x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 4,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1021,
+      272,
+      488,
+      247
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 系统监控 2×1",
+    "regions": {
+      "gauge0": [
+        0.07991803278688525,
+        0.10526315789473684,
+        0.3442622950819672,
+        0.680161943319838
+      ],
+      "gauge1": [
+        0.5758196721311475,
+        0.10526315789473684,
+        0.3442622950819672,
+        0.680161943319838
+      ],
+      "surface0Circle": [
+        0.07991803278688525,
+        0.10526315789473684,
+        0.3442622950819672,
+        0.680161943319838
+      ],
+      "surface1Circle": [
+        0.5758196721311475,
+        0.10526315789473684,
+        0.3442622950819672,
+        0.680161943319838
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+    "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+    "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+    "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.monitor.4x1",
+    "folder": "monitor-4x1",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 4,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      24,
+      104,
+      977,
+      199
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 系统监控 4×1",
+    "regions": {
+      "gauge0": [
+        0.10542476970317298,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "gauge1": [
+        0.330603889457523,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "gauge2": [
+        0.5424769703172978,
+        0.15577889447236182,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "gauge3": [
+        0.7574206755373593,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "surface0Circle": [
+        0.10542476970317298,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "surface1Circle": [
+        0.330603889457523,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "surface2Circle": [
+        0.5424769703172978,
+        0.15577889447236182,
+        0.14534288638689866,
+        0.7135678391959799
+      ],
+      "surface3Circle": [
+        0.7574206755373593,
+        0.1507537688442211,
+        0.14534288638689866,
+        0.7135678391959799
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.monitor.2x2",
+    "folder": "monitor-2x2",
+    "sourceId": "com.cyberdesktop.systeminfo.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+    "family": "monitor",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 4,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      661,
+      568,
+      326,
+      311
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 系统监控 2×2",
+    "regions": {
+      "gauge0": [
+        0.08895705521472393,
+        0.09967845659163987,
+        0.34662576687116564,
+        0.3633440514469453
+      ],
+      "gauge1": [
+        0.5644171779141104,
+        0.09967845659163987,
+        0.34662576687116564,
+        0.3633440514469453
+      ],
+      "gauge2": [
+        0.08282208588957055,
+        0.5852090032154341,
+        0.35276073619631904,
+        0.36977491961414793
+      ],
+      "gauge3": [
+        0.5644171779141104,
+        0.5884244372990354,
+        0.34662576687116564,
+        0.3633440514469453
+      ],
+      "surface0Circle": [
+        0.08895705521472393,
+        0.09967845659163987,
+        0.34662576687116564,
+        0.3633440514469453
+      ],
+      "surface1Circle": [
+        0.5644171779141104,
+        0.09967845659163987,
+        0.34662576687116564,
+        0.3633440514469453
+      ],
+      "surface2Circle": [
+        0.08282208588957055,
+        0.5852090032154341,
+        0.35276073619631904,
+        0.36977491961414793
+      ],
+      "surface3Circle": [
+        0.5644171779141104,
+        0.5884244372990354,
+        0.34662576687116564,
+        0.3633440514469453
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/04-system-instruments.art.png",
+    "artSha256": "b90c3908c6404a0268938e0312ff06be12781cb37120ae452ffd7cef03a27297",
+    "plateSha256": "60f049fbe95806429eb239a532b371ce16181b037cf9c84fb44a39ac105e996b",
+    "plateSource": "plugins/songyun-desk/materials/04-system-instruments.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.network.4x1",
+    "folder": "network-4x1",
+    "sourceId": "com.cyberdesktop.network.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+    "family": "productivity",
+    "kind": 3,
+    "rows": 1,
+    "columns": 4,
+    "board": 4,
+    "slot": 6,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      23,
+      1350,
+      979,
+      155
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 网速 4×1",
+    "regions": {
+      "down": [
+        0.3442288049029622,
+        0.27741935483870966,
+        0.15219611848825332,
+        0.2645161290322581
+      ],
+      "up": [
+        0.5617977528089888,
+        0.27741935483870966,
+        0.15219611848825332,
+        0.2645161290322581
+      ],
+      "downIcon": [
+        0.3084780388151175,
+        0.2967741935483871,
+        0.0296220633299285,
+        0.21935483870967742
+      ],
+      "upIcon": [
+        0.5342185903983657,
+        0.2967741935483871,
+        0.028600612870275793,
+        0.21935483870967742
+      ],
+      "gauge0": [
+        0.09193054136874361,
+        0.1935483870967742,
+        0.15934627170582227,
+        0.7161290322580646
+      ],
+      "gauge1": [
+        0.7436159346271706,
+        0.1935483870967742,
+        0.15832482124616956,
+        0.7161290322580646
+      ],
+      "surface0": [
+        0.3023493360572012,
+        0.23870967741935484,
+        0.42083758937691523,
+        0.36774193548387096
+      ],
+      "surface1": [
+        0.09090909090909091,
+        0.1935483870967742,
+        0.16138917262512767,
+        0.7161290322580646
+      ],
+      "surface2": [
+        0.7425944841675178,
+        0.1935483870967742,
+        0.16138917262512767,
+        0.7161290322580646
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-01-time-weather.art.png",
+    "artSha256": "95c129e12dcc62df085a344552ee73751e0c3c43370f85261cad60396dc39d69",
+    "plateSha256": "ed34e3b31f3c13e6b40a692a6e8cedbcb9ef048098f8fc9b60011b89dd416315",
+    "plateSource": "plugins/songyun-desk/materials/width-01-time-weather.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.disk.2x2",
+    "folder": "disk-2x2",
+    "sourceId": "com.cyberdesktop.disk.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 4,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      58,
+      134,
+      348,
+      376
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 磁盘 2×2",
+    "regions": {
+      "gauge": [
+        0.2442528735632184,
+        0.19946808510638298,
+        0.5287356321839081,
+        0.48936170212765956
+      ],
+      "title": [
+        0.4281609195402299,
+        0.2978723404255319,
+        0.14655172413793102,
+        0.07712765957446809
+      ],
+      "usage": [
+        0.31896551724137934,
+        0.39893617021276595,
+        0.367816091954023,
+        0.14627659574468085
+      ],
+      "total": [
+        0.35344827586206895,
+        0.5531914893617021,
+        0.3505747126436782,
+        0.06648936170212766
+      ],
+      "free": [
+        0.35344827586206895,
+        0.625,
+        0.3505747126436782,
+        0.06914893617021277
+      ],
+      "surface0Circle": [
+        0.23563218390804597,
+        0.18882978723404256,
+        0.5459770114942529,
+        0.5053191489361702
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+    "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+    "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+    "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.input.4x1",
+    "folder": "input-4x1",
+    "sourceId": "com.cyberdesktop.input.stats.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 8,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 2,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      22,
+      356,
+      982,
+      163
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 键鼠计数 4×1",
+    "regions": {
+      "keyboard": [
+        0.18839103869653767,
+        0.27607361963190186,
+        0.29429735234215887,
+        0.44171779141104295
+      ],
+      "mouse": [
+        0.6262729124236253,
+        0.27607361963190186,
+        0.2892057026476578,
+        0.44171779141104295
+      ],
+      "keyboardIcon": [
+        0.09775967413441955,
+        0.36809815950920244,
+        0.06415478615071284,
+        0.26380368098159507
+      ],
+      "mouseIcon": [
+        0.5692464358452138,
+        0.3496932515337423,
+        0.035641547861507125,
+        0.3006134969325153
+      ],
+      "surface0": [
+        0.09164969450101833,
+        0.25153374233128833,
+        0.39307535641547864,
+        0.49079754601226994
+      ],
+      "surface1": [
+        0.5631364562118126,
+        0.25153374233128833,
+        0.3533604887983707,
+        0.49079754601226994
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.album.4x2",
+    "folder": "album-4x2",
+    "sourceId": "com.cyberdesktop.album.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 3,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1021,
+      157,
+      490,
+      324
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 相册 4×2",
+    "regions": {
+      "photo": [
+        0.11428571428571428,
+        0.13580246913580246,
+        0.7673469387755102,
+        0.6820987654320988
+      ],
+      "previous": [
+        0.02040816326530612,
+        0.4074074074074074,
+        0.08571428571428572,
+        0.1419753086419753
+      ],
+      "next": [
+        0.8979591836734694,
+        0.4074074074074074,
+        0.08571428571428572,
+        0.1419753086419753
+      ],
+      "toggle": [
+        0.43673469387755104,
+        0.8333333333333334,
+        0.044897959183673466,
+        0.06172839506172839
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+    "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+    "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+    "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.player.4x1",
+    "folder": "player-4x1",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 1,
+    "columns": 4,
+    "board": 5,
+    "slot": 4,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      24,
+      569,
+      978,
+      175
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 音乐控制 4×1",
+    "regions": {
+      "cover": [
+        0.07259713701431493,
+        0.18857142857142858,
+        0.12372188139059305,
+        0.6914285714285714
+      ],
+      "title": [
+        0.6012269938650306,
+        0.2914285714285714,
+        0.3006134969325153,
+        0.22285714285714286
+      ],
+      "progress": [
+        0.6063394683026585,
+        0.6,
+        0.29141104294478526,
+        0.08571428571428572
+      ],
+      "previous": [
+        0.25869120654396727,
+        0.2914285714285714,
+        0.081799591002045,
+        0.45714285714285713
+      ],
+      "toggle": [
+        0.3619631901840491,
+        0.2914285714285714,
+        0.081799591002045,
+        0.45714285714285713
+      ],
+      "next": [
+        0.46421267893660534,
+        0.2914285714285714,
+        0.081799591002045,
+        0.45714285714285713
+      ],
+      "surface0": [
+        0.5961145194274029,
+        0.24,
+        0.30879345603271985,
+        0.5257142857142857
+      ],
+      "surface1Circle": [
+        0.25971370143149286,
+        0.2914285714285714,
+        0.08077709611451943,
+        0.4514285714285714
+      ],
+      "surface2Circle": [
+        0.3619631901840491,
+        0.2914285714285714,
+        0.08077709611451943,
+        0.4514285714285714
+      ],
+      "surface3Circle": [
+        0.4652351738241309,
+        0.2914285714285714,
+        0.08077709611451943,
+        0.4514285714285714
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.player.2x2",
+    "folder": "player-2x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/player-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 2,
+    "board": 5,
+    "slot": 5,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      604,
+      558,
+      303,
+      368
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 音乐控制 2×2",
+    "regions": {
+      "cover": [
+        0.31353135313531355,
+        0.2608695652173913,
+        0.3465346534653465,
+        0.28532608695652173
+      ],
+      "title": [
+        0.3234323432343234,
+        0.7092391304347826,
+        0.34983498349834985,
+        0.057065217391304345
+      ],
+      "previous": [
+        0.20462046204620463,
+        0.782608695652174,
+        0.15841584158415842,
+        0.13043478260869565
+      ],
+      "toggle": [
+        0.39933993399339934,
+        0.7771739130434783,
+        0.17491749174917492,
+        0.14402173913043478
+      ],
+      "next": [
+        0.6204620462046204,
+        0.782608695652174,
+        0.15841584158415842,
+        0.13043478260869565
+      ],
+      "surface0": [
+        0.29372937293729373,
+        0.6956521739130435,
+        0.40264026402640263,
+        0.06793478260869565
+      ],
+      "surface1Circle": [
+        0.20462046204620463,
+        0.782608695652174,
+        0.15841584158415842,
+        0.13043478260869565
+      ],
+      "surface2Circle": [
+        0.39933993399339934,
+        0.7771739130434783,
+        0.17491749174917492,
+        0.14402173913043478
+      ],
+      "surface3Circle": [
+        0.6204620462046204,
+        0.782608695652174,
+        0.15841584158415842,
+        0.13043478260869565
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+    "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+    "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+    "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.player.4x2",
+    "folder": "player-4x2",
+    "sourceId": "com.cyberdesktop.music.player.mechanical.2x4",
+    "source": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+    "family": "widget",
+    "kind": 7,
+    "rows": 2,
+    "columns": 4,
+    "board": 5,
+    "slot": 6,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      937,
+      629,
+      579,
+      252
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 音乐控制 4×2",
+    "regions": {
+      "cover": [
+        0.09153713298791019,
+        0.21031746031746032,
+        0.20379965457685664,
+        0.5952380952380952
+      ],
+      "title": [
+        0.3298791018998273,
+        0.28174603174603174,
+        0.19170984455958548,
+        0.09523809523809523
+      ],
+      "progress": [
+        0.3333333333333333,
+        0.4642857142857143,
+        0.19689119170984457,
+        0.031746031746031744
+      ],
+      "elapsed": [
+        0.32642487046632124,
+        0.5436507936507936,
+        0.07772020725388601,
+        0.06349206349206349
+      ],
+      "duration": [
+        0.46632124352331605,
+        0.5436507936507936,
+        0.0690846286701209,
+        0.06349206349206349
+      ],
+      "previous": [
+        0.32469775474956825,
+        0.6388888888888888,
+        0.06735751295336788,
+        0.15476190476190477
+      ],
+      "toggle": [
+        0.4075993091537133,
+        0.626984126984127,
+        0.07772020725388601,
+        0.17857142857142858
+      ],
+      "next": [
+        0.5008635578583766,
+        0.6428571428571429,
+        0.06563039723661486,
+        0.15079365079365079
+      ],
+      "surface0": [
+        0.32469775474956825,
+        0.2619047619047619,
+        0.2158894645941278,
+        0.35714285714285715
+      ],
+      "surface1Circle": [
+        0.32469775474956825,
+        0.6388888888888888,
+        0.06735751295336788,
+        0.15476190476190477
+      ],
+      "surface2Circle": [
+        0.4075993091537133,
+        0.626984126984127,
+        0.07772020725388601,
+        0.17857142857142858
+      ],
+      "surface3Circle": [
+        0.5008635578583766,
+        0.6428571428571429,
+        0.06563039723661486,
+        0.15079365079365079
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/05-media-utilities.art.png",
+    "artSha256": "66ae53bc10a85716600a57b4b5ccbab3ff76a2e63d2c93bf565d56a2f09ea647",
+    "plateSha256": "c1fac17bc9313670adc9515e24226820aa51395fb4c25c821b2c7d10f3c08ffe",
+    "plateSource": "plugins/songyun-desk/materials/05-media-utilities.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.square.4x1",
+    "folder": "music-square-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      54,
+      120,
+      639,
+      159
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 方点阵频谱 4×1",
+    "regions": {
+      "plot": [
+        0.1189358372456964,
+        0.20754716981132076,
+        0.7527386541471048,
+        0.5911949685534591
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-03-dot-matrix.art.png",
+    "artSha256": "b532d56b457efc2c0864c66d92b81659599c8cf8e903df9014f87cab32e6c79f",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.round.4x1",
+    "folder": "music-round-4x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.4x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-4x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 6,
+    "slot": 2,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      54,
+      343,
+      639,
+      154
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 圆点阵频谱 4×1",
+    "regions": {
+      "plot": [
+        0.1189358372456964,
+        0.2077922077922078,
+        0.7527386541471048,
+        0.5844155844155844
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-03-dot-matrix.art.png",
+    "artSha256": "b532d56b457efc2c0864c66d92b81659599c8cf8e903df9014f87cab32e6c79f",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.square.6x1",
+    "folder": "music-square-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-square-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 3,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      50,
+      562,
+      926,
+      156
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 方点阵频谱 6×1",
+    "regions": {
+      "plot": [
+        0.06587473002159827,
+        0.1987179487179487,
+        0.8682505399568035,
+        0.5961538461538461
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-03-dot-matrix.art.png",
+    "artSha256": "b532d56b457efc2c0864c66d92b81659599c8cf8e903df9014f87cab32e6c79f",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.round.6x1",
+    "folder": "music-round-6x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.6x1",
+    "source": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 6,
+    "board": 6,
+    "slot": 4,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      49,
+      788,
+      927,
+      156
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 圆点阵频谱 6×1",
+    "regions": {
+      "plot": [
+        0.0668824163969795,
+        0.19230769230769232,
+        0.8673139158576052,
+        0.5961538461538461
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-03-dot-matrix.art.png",
+    "artSha256": "b532d56b457efc2c0864c66d92b81659599c8cf8e903df9014f87cab32e6c79f",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.square.8x1",
+    "folder": "music-square-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.square.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 5,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      23,
+      205,
+      1729,
+      184
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 方点阵频谱 8×1",
+    "regions": {
+      "plot": [
+        0.061885482938114515,
+        0.17391304347826086,
+        0.876229034123771,
+        0.6086956521739131
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-04-eight-column.art.png",
+    "artSha256": "44a39da6addb6064b73935dc2dc0ed84865b7f8f6eedebaa543761d366044fe9",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.music.round.8x1",
+    "folder": "music-round-8x1",
+    "sourceId": "com.cyberdesktop.music.mechanical.matrix.round.8x1",
+    "source": "plugins/mechanical-pixels/packages/music-round/plugin.textproto",
+    "family": "matrix",
+    "kind": 0,
+    "rows": 1,
+    "columns": 8,
+    "board": 6,
+    "slot": 6,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      23,
+      509,
+      1729,
+      189
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 圆点阵频谱 8×1",
+    "regions": {
+      "plot": [
+        0.061885482938114515,
+        0.1693121693121693,
+        0.876229034123771,
+        0.5925925925925926
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-04-eight-column.art.png",
+    "artSha256": "44a39da6addb6064b73935dc2dc0ed84865b7f8f6eedebaa543761d366044fe9",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.spectrum.4x1",
+    "folder": "spectrum-4x1",
+    "sourceId": "com.cyberdesktop.music.spectrum.mechanical.1x4",
+    "source": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+    "family": "widget",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 1,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      27,
+      793,
+      971,
+      208
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 柱状频谱 4×1",
+    "regions": {
+      "plot": [
+        0.03398558187435633,
+        0.028846153846153848,
+        0.9433573635427395,
+        0.6971153846153846
+      ],
+      "motion": [
+        0.030895983522142123,
+        -0.02403846153846154,
+        0.9505664263645726,
+        0.7692307692307693
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.radial.2x2",
+    "folder": "radial-2x2",
+    "sourceId": "com.cyberdesktop.music.radial.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+    "family": "widget",
+    "kind": 1,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 2,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      706,
+      16,
+      387,
+      407
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 环形频谱 2×2",
+    "regions": {
+      "plot": [
+        0.14987080103359174,
+        0.16461916461916462,
+        0.6976744186046512,
+        0.6633906633906634
+      ],
+      "hubCircle": [
+        0.35400516795865633,
+        0.35872235872235875,
+        0.28940568475452194,
+        0.2751842751842752
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/07-audio-interactive.art.png",
+    "artSha256": "75ab6a1e33fbf351fc465c2956c278d84d89eb09ab07a637d27376985ea4c18c",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.beat.machine.4x2",
+    "folder": "beat-machine-4x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.4x2",
+    "source": "plugins/beat-machine/packages/4x2/plugin.textproto",
+    "family": "beat",
+    "kind": 0,
+    "rows": 2,
+    "columns": 4,
+    "board": 7,
+    "slot": 3,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      35,
+      24,
+      1718,
+      835
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 节拍弹珠台 4×2",
+    "regions": {
+      "world": [
+        0.09022118742724097,
+        0.11497005988023952,
+        0.8591385331781141,
+        0.8838323353293414
+      ],
+      "surface0": [
+        0.08440046565774156,
+        0.11497005988023952,
+        0.8707799767171129,
+        0.8838323353293414
+      ],
+      "paddlePivot0": [
+        0.3172293364377183,
+        0.4179640718562874,
+        0.0,
+        0.0
+      ],
+      "paddlePivot1": [
+        0.60011641443539,
+        0.4167664670658683,
+        0.0,
+        0.0
+      ],
+      "part_cap0": [
+        0.16530849825378346,
+        0.6383233532934132,
+        0.051222351571594875,
+        0.0562874251497006
+      ],
+      "part_base0": [
+        0.16530849825378346,
+        0.7868263473053893,
+        0.05064027939464494,
+        0.059880239520958084
+      ],
+      "part_spring0": [
+        0.17112922002328287,
+        0.6946107784431138,
+        0.03958090803259604,
+        0.09221556886227544
+      ],
+      "part_cap1": [
+        0.2759022118742724,
+        0.6718562874251497,
+        0.05180442374854482,
+        0.055089820359281436
+      ],
+      "part_base1": [
+        0.2759022118742724,
+        0.8191616766467066,
+        0.05064027939464494,
+        0.05748502994011976
+      ],
+      "part_spring1": [
+        0.2817229336437718,
+        0.7269461077844311,
+        0.040162980209545986,
+        0.09221556886227544
+      ],
+      "part_cap2": [
+        0.3853317811408615,
+        0.7017964071856287,
+        0.052968568102444706,
+        0.055089820359281436
+      ],
+      "part_base2": [
+        0.3853317811408615,
+        0.8431137724550898,
+        0.05180442374854482,
+        0.0562874251497006
+      ],
+      "part_spring2": [
+        0.3911525029103609,
+        0.7568862275449102,
+        0.041327124563445866,
+        0.08622754491017964
+      ],
+      "part_cap3": [
+        0.4947613504074505,
+        0.725748502994012,
+        0.052968568102444706,
+        0.055089820359281436
+      ],
+      "part_base3": [
+        0.4947613504074505,
+        0.8670658682634731,
+        0.052968568102444706,
+        0.0562874251497006
+      ],
+      "part_spring3": [
+        0.5005820721769499,
+        0.7808383233532934,
+        0.041327124563445866,
+        0.08622754491017964
+      ],
+      "part_paddle0": [
+        0.30151338766006985,
+        0.38922155688622756,
+        0.10710128055878929,
+        0.12694610778443113
+      ],
+      "part_paddle1": [
+        0.5052386495925495,
+        0.38802395209580837,
+        0.11233993015133877,
+        0.12694610778443113
+      ],
+      "part_launcher": [
+        0.8474970896391153,
+        0.6479041916167665,
+        0.10128055878928988,
+        0.2347305389221557
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-beat-compact.art.png",
+    "artSha256": "376d52ea02b9645d579a98209bf080aa970eca235e5f872769f2d85bdeba5b9c",
+    "plateSha256": "dae64b43dac77b25ea9d452cf4efbd190a2a4b163e883776ba76ce8daadf6fbe",
+    "plateSource": "plugins/songyun-desk/materials/normalized-beat-compact.runtime.png",
+    "physicsGeometry": {
+      "world": [
+        190,
+        120,
+        1476,
+        738
+      ],
+      "origin": [
+        190,
+        120
+      ],
+      "scale": 2.05,
+      "floor": [
+        [
+          235,
+          538
+        ],
+        [
+          362,
+          577
+        ],
+        [
+          553,
+          607
+        ],
+        [
+          741,
+          632
+        ],
+        [
+          930,
+          653
+        ],
+        [
+          1190,
+          718
+        ],
+        [
+          1510,
+          777
+        ],
+        [
+          1595,
+          777
+        ]
+      ],
+      "bumpers": [
+        [
+          1323,
+          348
+        ],
+        [
+          1515,
+          433
+        ],
+        [
+          1379,
+          514
+        ]
+      ],
+      "heads": [
+        [
+          362,
+          576
+        ],
+        [
+          553,
+          608
+        ],
+        [
+          741,
+          632
+        ],
+        [
+          930,
+          653
+        ],
+        [
+          1539,
+          602
+        ]
+      ],
+      "pivots": [
+        [
+          580,
+          373
+        ],
+        [
+          1066,
+          372
+        ]
+      ],
+      "caps": [
+        [
+          319,
+          557,
+          88,
+          47
+        ],
+        [
+          509,
+          585,
+          89,
+          46
+        ],
+        [
+          697,
+          610,
+          91,
+          46
+        ],
+        [
+          885,
+          630,
+          91,
+          46
+        ]
+      ],
+      "bases": [
+        [
+          319,
+          681,
+          87,
+          50
+        ],
+        [
+          509,
+          708,
+          87,
+          48
+        ],
+        [
+          697,
+          728,
+          89,
+          47
+        ],
+        [
+          885,
+          748,
+          91,
+          47
+        ]
+      ],
+      "paddles": [
+        [
+          553,
+          349,
+          184,
+          106
+        ],
+        [
+          903,
+          348,
+          193,
+          106
+        ]
+      ]
+    },
+    "hardware": {
+      "cap0": [
+        318,
+        562,
+        91,
+        45
+      ],
+      "spring0": [
+        327,
+        607,
+        73,
+        68
+      ],
+      "base0": [
+        318,
+        675,
+        91,
+        36
+      ],
+      "cap1": [
+        505,
+        583,
+        90,
+        43
+      ],
+      "spring1": [
+        514,
+        626,
+        72,
+        66
+      ],
+      "base1": [
+        505,
+        692,
+        90,
+        34
+      ],
+      "cap2": [
+        695,
+        600,
+        90,
+        44
+      ],
+      "spring2": [
+        704,
+        644,
+        72,
+        67
+      ],
+      "base2": [
+        695,
+        711,
+        90,
+        35
+      ],
+      "cap3": [
+        886,
+        616,
+        90,
+        44
+      ],
+      "spring3": [
+        895,
+        660,
+        72,
+        66
+      ],
+      "base3": [
+        886,
+        726,
+        90,
+        35
+      ],
+      "paddle0": [
+        557,
+        354,
+        182,
+        104
+      ],
+      "paddle1": [
+        903,
+        346,
+        188,
+        113
+      ],
+      "launcher": [
+        1491,
+        565,
+        174,
+        196
+      ]
+    },
+    "hardwareSize": [
+      1774,
+      887
+    ],
+    "hardwareSha256": "9952cb2438841bf9d7adc1cd7bc6613dd6dbee15d94ee77e472a1669a4d4b6e0",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.beat.machine.6x2",
+    "folder": "beat-machine-6x2",
+    "sourceId": "com.cyberdesktop.music.beat-machine.6x2",
+    "source": "plugins/beat-machine/packages/6x2/plugin.textproto",
+    "family": "beat",
+    "kind": 0,
+    "rows": 2,
+    "columns": 6,
+    "board": 7,
+    "slot": 4,
+    "imageSize": [
+      2048,
+      768
+    ],
+    "crop": [
+      24,
+      8,
+      2005,
+      741
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 节拍弹珠台 6×2",
+    "regions": {
+      "world": [
+        0.08528678304239401,
+        0.1241565452091768,
+        0.8618453865336658,
+        0.7773279352226721
+      ],
+      "surface0": [
+        0.08029925187032419,
+        0.1241565452091768,
+        0.8718204488778055,
+        0.7773279352226721
+      ],
+      "paddlePivot0": [
+        0.341645885286783,
+        0.446693657219973,
+        0.0,
+        0.0
+      ],
+      "paddlePivot1": [
+        0.5940149625935162,
+        0.446693657219973,
+        0.0,
+        0.0
+      ],
+      "part_cap0": [
+        0.15261845386533665,
+        0.6477732793522267,
+        0.04688279301745636,
+        0.058029689608636977
+      ],
+      "part_base0": [
+        0.15261845386533665,
+        0.7678812415654521,
+        0.04688279301745636,
+        0.06477732793522267
+      ],
+      "part_spring0": [
+        0.15760598503740647,
+        0.7058029689608637,
+        0.03690773067331671,
+        0.0620782726045884
+      ],
+      "part_cap1": [
+        0.2633416458852868,
+        0.6828609986504723,
+        0.047880299251870324,
+        0.058029689608636977
+      ],
+      "part_base1": [
+        0.2633416458852868,
+        0.7989203778677463,
+        0.047880299251870324,
+        0.06477732793522267
+      ],
+      "part_spring1": [
+        0.2683291770573566,
+        0.7408906882591093,
+        0.03790523690773067,
+        0.058029689608636977
+      ],
+      "part_cap2": [
+        0.3830423940149626,
+        0.7112010796221323,
+        0.04887780548628429,
+        0.059379217273954114
+      ],
+      "part_base2": [
+        0.3830423940149626,
+        0.8313090418353576,
+        0.04887780548628429,
+        0.06477732793522267
+      ],
+      "part_spring2": [
+        0.38802992518703244,
+        0.7705802968960864,
+        0.03890274314214464,
+        0.06072874493927125
+      ],
+      "part_cap3": [
+        0.5027431421446384,
+        0.7449392712550608,
+        0.04937655860349127,
+        0.059379217273954114
+      ],
+      "part_base3": [
+        0.5027431421446384,
+        0.8663967611336032,
+        0.04937655860349127,
+        0.06477732793522267
+      ],
+      "part_spring3": [
+        0.5077306733167082,
+        0.8043184885290149,
+        0.03940149625935162,
+        0.0620782726045884
+      ],
+      "part_paddle0": [
+        0.3261845386533666,
+        0.4089068825910931,
+        0.10074812967581047,
+        0.1484480431848853
+      ],
+      "part_paddle1": [
+        0.5117206982543641,
+        0.40620782726045884,
+        0.09825436408977556,
+        0.14709851551956815
+      ],
+      "part_launcher": [
+        0.8209476309226933,
+        0.6774628879892037,
+        0.09625935162094763,
+        0.2766531713900135
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/normalized-beat-wide.art.png",
+    "artSha256": "4f266e3e552fe8ef370abfc2c33205d50dc1f65deec8e78ca84530d4c7a6d89c",
+    "plateSha256": "b138fd8bc1aa242b8660fd13337f285702bf35e0540ee61120acb590dbd59b17",
+    "plateSource": "plugins/songyun-desk/materials/normalized-beat-wide.runtime.png",
+    "physicsGeometry": {
+      "world": [
+        195,
+        100,
+        1728,
+        576
+      ],
+      "origin": [
+        195,
+        100
+      ],
+      "scale": 1.6,
+      "floor": [
+        [
+          235,
+          445
+        ],
+        [
+          377,
+          507
+        ],
+        [
+          600,
+          534
+        ],
+        [
+          842,
+          555
+        ],
+        [
+          1081,
+          582
+        ],
+        [
+          1350,
+          608
+        ],
+        [
+          1725,
+          657
+        ],
+        [
+          1880,
+          657
+        ]
+      ],
+      "bumpers": [
+        [
+          1407,
+          302
+        ],
+        [
+          1544,
+          377
+        ],
+        [
+          1647,
+          451
+        ]
+      ],
+      "heads": [
+        [
+          377,
+          507
+        ],
+        [
+          600,
+          534
+        ],
+        [
+          842,
+          555
+        ],
+        [
+          1081,
+          582
+        ],
+        [
+          1782,
+          566
+        ]
+      ],
+      "pivots": [
+        [
+          709,
+          339
+        ],
+        [
+          1215,
+          339
+        ]
+      ],
+      "caps": [
+        [
+          330,
+          488,
+          94,
+          43
+        ],
+        [
+          552,
+          514,
+          96,
+          43
+        ],
+        [
+          792,
+          535,
+          98,
+          44
+        ],
+        [
+          1032,
+          560,
+          99,
+          44
+        ]
+      ],
+      "bases": [
+        [
+          330,
+          577,
+          94,
+          48
+        ],
+        [
+          552,
+          600,
+          96,
+          48
+        ],
+        [
+          792,
+          624,
+          98,
+          48
+        ],
+        [
+          1032,
+          650,
+          99,
+          48
+        ]
+      ],
+      "paddles": [
+        [
+          678,
+          311,
+          202,
+          110
+        ],
+        [
+          1050,
+          309,
+          197,
+          109
+        ]
+      ]
+    },
+    "hardware": {
+      "cap0": [
+        209,
+        485,
+        107,
+        44
+      ],
+      "spring0": [
+        218,
+        529,
+        89,
+        68
+      ],
+      "base0": [
+        209,
+        597,
+        107,
+        36
+      ],
+      "cap1": [
+        486,
+        501,
+        108,
+        45
+      ],
+      "spring1": [
+        495,
+        546,
+        90,
+        69
+      ],
+      "base1": [
+        486,
+        615,
+        108,
+        36
+      ],
+      "cap2": [
+        776,
+        519,
+        108,
+        45
+      ],
+      "spring2": [
+        785,
+        564,
+        90,
+        68
+      ],
+      "base2": [
+        776,
+        632,
+        108,
+        36
+      ],
+      "cap3": [
+        1055,
+        529,
+        108,
+        44
+      ],
+      "spring3": [
+        1064,
+        573,
+        90,
+        68
+      ],
+      "base3": [
+        1055,
+        641,
+        108,
+        35
+      ],
+      "paddle0": [
+        676,
+        308,
+        206,
+        114
+      ],
+      "paddle1": [
+        1055,
+        308,
+        203,
+        115
+      ],
+      "launcher": [
+        1713,
+        509,
+        193,
+        205
+      ]
+    },
+    "hardwareSize": [
+      2048,
+      768
+    ],
+    "hardwareSha256": "1a100b9cf9b0f6bc7a45df0d2f90ff120df21214383573220787fa9256affcf3",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.wind.chime.2x2",
+    "folder": "wind-chime-2x2",
+    "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+    "source": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+    "family": "toys",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 7,
+    "slot": 5,
+    "imageSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      769,
+      448,
+      334,
+      423
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 风铃 2×2",
+    "regions": {
+      "world": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "motion": [
+        0.04790419161676647,
+        0.09456264775413711,
+        0.9011976047904192,
+        0.9030732860520094
+      ],
+      "charm0": [
+        0.0718562874251497,
+        0.26004728132387706,
+        0.23053892215568864,
+        0.2553191489361702
+      ],
+      "charm1": [
+        0.3502994011976048,
+        0.3049645390070922,
+        0.25449101796407186,
+        0.21513002364066194
+      ],
+      "charm2": [
+        0.6526946107784432,
+        0.32387706855791965,
+        0.2634730538922156,
+        0.23167848699763594
+      ],
+      "charm3": [
+        0.07784431137724551,
+        0.6548463356973995,
+        0.19461077844311378,
+        0.22695035460992907
+      ],
+      "charm4": [
+        0.40718562874251496,
+        0.6619385342789598,
+        0.1467065868263473,
+        0.17494089834515367
+      ],
+      "charm5": [
+        0.7215568862275449,
+        0.7777777777777778,
+        0.20958083832335328,
+        0.21513002364066194
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/07-audio-interactive.art.png",
+    "artSha256": "75ab6a1e33fbf351fc465c2956c278d84d89eb09ab07a637d27376985ea4c18c",
+    "hardware": {
+      "charm0": [
+        793.0,
+        558.0,
+        77.0,
+        107.99999999999999
+      ],
+      "charm1": [
+        886.0,
+        577.0,
+        85.0,
+        91.0
+      ],
+      "charm2": [
+        987.0,
+        585.0,
+        88.00000000000001,
+        98.0
+      ],
+      "charm3": [
+        795.0,
+        725.0,
+        65.0,
+        96.0
+      ],
+      "charm4": [
+        905.0,
+        728.0,
+        49.0,
+        74.0
+      ],
+      "charm5": [
+        1010.0,
+        777.0,
+        70.0,
+        91.0
+      ],
+      "chain0": [
+        827,
+        497,
+        13,
+        61
+      ],
+      "chain1": [
+        924,
+        497,
+        13,
+        80
+      ],
+      "chain2": [
+        1025,
+        496,
+        13,
+        89
+      ],
+      "chain3": [
+        827,
+        668,
+        13,
+        57
+      ],
+      "chain4": [
+        925,
+        670,
+        13,
+        58
+      ],
+      "chain5": [
+        1030,
+        685,
+        13,
+        92
+      ]
+    },
+    "hardwareSize": [
+      1774,
+      887
+    ],
+    "hardwareSha256": "75ab6a1e33fbf351fc465c2956c278d84d89eb09ab07a637d27376985ea4c18c",
+    "toyGeometry": {
+      "size": [
+        334,
+        423
+      ],
+      "anchors": [
+        [
+          64,
+          42
+        ],
+        [
+          162,
+          42
+        ],
+        [
+          262,
+          42
+        ]
+      ],
+      "bodies": [
+        [
+          62,
+          164,
+          77,
+          108
+        ],
+        [
+          160,
+          174,
+          85,
+          91
+        ],
+        [
+          262,
+          186,
+          88,
+          98
+        ]
+      ],
+      "tails": [
+        [
+          59,
+          325,
+          65,
+          96
+        ],
+        [
+          160,
+          317,
+          49,
+          74
+        ],
+        [
+          276,
+          374,
+          70,
+          91
+        ]
+      ]
+    },
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.split.flap.4x1",
+    "folder": "split-flap-4x1",
+    "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+    "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+    "family": "sign",
+    "kind": 0,
+    "rows": 1,
+    "columns": 4,
+    "board": 7,
+    "slot": 6,
+    "imageSize": [
+      1024,
+      1536
+    ],
+    "crop": [
+      22,
+      1049,
+      981,
+      171
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 翻牌招牌 4×1",
+    "regions": {
+      "world": [
+        0.08154943934760449,
+        0.1695906432748538,
+        0.835881753312946,
+        0.631578947368421
+      ],
+      "plot": [
+        0.08154943934760449,
+        0.1695906432748538,
+        0.835881753312946,
+        0.631578947368421
+      ],
+      "surface0": [
+        0.08154943934760449,
+        0.1695906432748538,
+        0.835881753312946,
+        0.631578947368421
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/width-02-controls.art.png",
+    "artSha256": "7951096a142a434f35ebfddc38ecd5d4488de00aaf856f9ba59eff32fc8a1b5e",
+    "plateSha256": "0b87df739a4b8dbdb40110726a928ea08b7998e072578faacd249f01e4cfe6f9",
+    "plateSource": "plugins/songyun-desk/materials/width-02-controls.runtime.png",
+    "renderInset": 7
+  },
+  {
+    "id": "com.cyberdesktop.songyun.hourglass.1x1",
+    "folder": "hourglass-1x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+    "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 1,
+    "board": 8,
+    "slot": 1,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      24,
+      87,
+      301,
+      377
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 沙漏 1×1",
+    "regions": {
+      "glass": [
+        0.22259136212624583,
+        0.13262599469496023,
+        0.5780730897009967,
+        0.713527851458886
+      ],
+      "surface0": [
+        0.22259136212624583,
+        0.13262599469496023,
+        0.5780730897009967,
+        0.713527851458886
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/08-timers.art.png",
+    "artSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d",
+    "plateSha256": "e471d1a235ee38acdc7a483beb8ab9b4bda1df31f9ef11b6bc01877e6bec0e31",
+    "plateSource": "plugins/songyun-desk/materials/08-timers.runtime.png",
+    "renderInset": 7,
+    "hardware": {
+      "sandTexture": [
+        163,
+        207,
+        16,
+        16
+      ]
+    },
+    "hardwareSize": [
+      1536,
+      1024
+    ],
+    "hardwareSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d"
+  },
+  {
+    "id": "com.cyberdesktop.songyun.hourglass.2x1",
+    "folder": "hourglass-2x1",
+    "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+    "source": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+    "family": "hourglass",
+    "kind": 0,
+    "rows": 1,
+    "columns": 2,
+    "board": 8,
+    "slot": 2,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      399,
+      126,
+      662,
+      339
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 沙漏 2×1",
+    "regions": {
+      "glass": [
+        0.09969788519637462,
+        0.12979351032448377,
+        0.2552870090634441,
+        0.7079646017699115
+      ],
+      "title": [
+        0.5287009063444109,
+        0.46017699115044247,
+        0.31268882175226587,
+        0.20353982300884957
+      ],
+      "progress": [
+        0.48489425981873113,
+        0.7079646017699115,
+        0.4003021148036254,
+        0.058997050147492625
+      ],
+      "surface0": [
+        0.09969788519637462,
+        0.12979351032448377,
+        0.2552870090634441,
+        0.7079646017699115
+      ],
+      "surface1": [
+        0.4622356495468278,
+        0.3274336283185841,
+        0.45770392749244715,
+        0.49262536873156343
+      ],
+      "surface2": [
+        0.4818731117824773,
+        0.6991150442477876,
+        0.4078549848942598,
+        0.07374631268436578
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/08-timers.art.png",
+    "artSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d",
+    "plateSha256": "e471d1a235ee38acdc7a483beb8ab9b4bda1df31f9ef11b6bc01877e6bec0e31",
+    "plateSource": "plugins/songyun-desk/materials/08-timers.runtime.png",
+    "renderInset": 7,
+    "hardware": {
+      "sandTexture": [
+        163,
+        207,
+        16,
+        16
+      ]
+    },
+    "hardwareSize": [
+      1536,
+      1024
+    ],
+    "hardwareSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d"
+  },
+  {
+    "id": "com.cyberdesktop.songyun.timer.2x2",
+    "folder": "timer-2x2",
+    "sourceId": "com.cyberdesktop.timer.mechanical.2x2",
+    "source": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+    "family": "productivity",
+    "kind": 0,
+    "rows": 2,
+    "columns": 2,
+    "board": 8,
+    "slot": 3,
+    "imageSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1088,
+      15,
+      436,
+      454
+    ],
+    "minimumInset": 6,
+    "version": "1.0.0",
+    "tags": [
+      "宋"
+    ],
+    "name": "宋韵 · 番茄钟 2×2",
+    "regions": {
+      "gauge": [
+        0.16743119266055045,
+        0.18722466960352424,
+        0.6674311926605505,
+        0.6409691629955947
+      ],
+      "title": [
+        0.25,
+        0.43612334801762115,
+        0.5091743119266054,
+        0.16519823788546256
+      ],
+      "reset": [
+        0.2706422018348624,
+        0.6806167400881057,
+        0.14678899082568808,
+        0.14096916299559473
+      ],
+      "toggle": [
+        0.44954128440366975,
+        0.6806167400881057,
+        0.1559633027522936,
+        0.14977973568281938
+      ],
+      "surface0Circle": [
+        0.16743119266055045,
+        0.18722466960352424,
+        0.6674311926605505,
+        0.6409691629955947
+      ]
+    },
+    "runtimePlate": true,
+    "art": "design/songyun-desk-suite/08-timers.art.png",
+    "artSha256": "c573ba5d1b9ebaa695d433fb13b95bca72be8a2010b3161367ce71f9c23f342d",
+    "plateSha256": "e471d1a235ee38acdc7a483beb8ab9b4bda1df31f9ef11b6bc01877e6bec0e31",
+    "plateSource": "plugins/songyun-desk/materials/08-timers.runtime.png",
+    "nativeTicks": true,
+    "renderInset": 7
+  }
+]

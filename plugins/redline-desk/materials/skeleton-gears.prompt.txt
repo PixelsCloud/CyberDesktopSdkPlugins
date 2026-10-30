@@ -1,0 +1,12 @@
+Built-in imagegen sprite extraction, reference: skeleton-clock-2x2/body.png,
+top-right black-and-silver skeleton clock. Transparent 4-column, 2-row hardware sheet.
+Seven isolated circular steel gears: 45, 60, 66, 34, 22, 24, 20 teeth, last cell empty.
+Each gear centered in its cell with clear padding, worn stainless-steel highlights,
+blackened spokes, red ruby axle. No fixed bridges, neighbors, dial, hands, lettering,
+clock case or background. Straight-on view; holes and exterior must be transparent.
+Generated asset: assets/skeleton-clock-2x2/hardware.png, actual 1774x887 pixels.
+Each wheel's visible ROI is registered separately; only these ROIs decode at actual DPI.
+Display axle locations stay fixed, neighboring drive directions alternate and speed
+uses the existing precision-clock gearAngle function. The central bridge is stationary.
+Exact built-in imagegen prompt:
+Use case: precise-object-edit / sprite asset extraction. Reference is attached clock collection; use ONLY the black-and-silver mechanical skeleton clock at the top RIGHT. Produce a TRANSPARENT hardware sprite sheet, landscape 2048x1024, four equal columns by two equal rows of 512x512 cells. Each cell contains ONE complete isolated circular steel gear, centered precisely, facing straight at camera, outside of gear including holes fully transparent. Row1: cell1 silver steel 45-tooth wheel with six broad blackened-steel spokes and red jewel axle, cell2 silver 60-tooth wheel with six spokes and red jewel axle, cell3 silver 66-tooth wheel with five spokes and red jewel axle, cell4 silver 34-tooth small wheel with circular rim and six spokes and red jewel axle. Row2: cell1 silver 22-tooth small pinion with six spokes and red jewel axle, cell2 silver 24-tooth pinion with six spokes and red jewel axle, cell3 silver 20-tooth pinion with six spokes and red jewel axle, cell4 EMPTY transparent. Every gear maximum outer diameter 400px with at least56px clear padding inside each cell. Preserve reference machined dark stainless steel, worn silver edge highlights, fine scratches, realistic beveled tooth faces, restrained deep-red ruby center. Wheels must rotate independently: NO bridges crossing them, NO neighboring gear fragments, NO fixed support arms. No clock cases, dial, hands, markings, labels, text, drop shadow, background or grid lines. Sprite sheet only, exactly 4x2 regular layout.

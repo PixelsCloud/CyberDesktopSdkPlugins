@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.deepwhale.calendar.4x2",
+  "folder": "calendar-4x2",
+  "sourceId": "com.cyberdesktop.calendar.mechanical.4x2",
+  "source": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+  "family": "calendar",
+  "kind": 0,
+  "columns": 4,
+  "rows": 2,
+  "scene": [
+    320,
+    200
+  ],
+  "regions": {
+    "title": [
+      162.17188,
+      46.6875,
+      101.82813,
+      20
+    ],
+    "previous": [
+      141.17188,
+      46.6875,
+      20,
+      20
+    ],
+    "next": [
+      265,
+      46.6875,
+      20,
+      20
+    ],
+    "grid": [
+      141.18,
+      68.48,
+      143.83,
+      91.12
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        20,
+        34,
+        1585,
+        909
+      ],
+      "destination": [
+        7,
+        17.5,
+        306,
+        175.48438
+      ]
+    }
+  ],
+  "designUid": "b02-4",
+  "defaults": {
+    "font_family": "Bree Serif"
+  }
+}

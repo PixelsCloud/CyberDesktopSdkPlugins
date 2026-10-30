@@ -1,0 +1,7 @@
+{
+  "sha256": "e17cbab23825c68e3b6c7f6deabbbab411d4e3218e4c7a59657dcac9f203429e",
+  "source": "art/14-weather-2x1.png",
+  "productionSha256": "a5ca431f25deeb98471ae52a3e9ced5c61dbb118badb4f0e3c544e004e90c6a7",
+  "pixelOperations": "imagegen: revised empty display or orthographic overhead pond; live content rendered separately",
+  "theme": "STREETLINK"
+}

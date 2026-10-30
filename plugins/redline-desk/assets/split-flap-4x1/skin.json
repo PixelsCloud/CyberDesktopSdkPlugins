@@ -1,0 +1,62 @@
+{
+  "id": "com.cyberdesktop.redline.split.flap.4x1",
+  "folder": "split-flap-4x1",
+  "sourceId": "com.cyberdesktop.sign.mechanical.6x2",
+  "source": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+  "family": "sign",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 7,
+  "slot": 6,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    976,
+    703,
+    543,
+    129
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械翻牌招牌 4×1",
+  "runtimePlate": true,
+  "regions": {
+    "world": [
+      0.055,
+      0.18,
+      0.91,
+      0.64
+    ],
+    "plot": [
+      0.08154943934760449,
+      0.1695906432748538,
+      0.835881753312946,
+      0.631578947368421
+    ],
+    "surface0": [
+      0.055,
+      0.18,
+      0.91,
+      0.64
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-07-audio-interactive.art.png",
+  "art": "plugins/redline-desk/assets/split-flap-4x1/body.png",
+  "artSha256": "ddb2d05d4b838c50e05c3f07a660d96d6e34a613f05f71f6f8c64259dc1f816f",
+  "approvedCrop": [
+    976,
+    703,
+    543,
+    129
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-0752c128-08ff-4d2b-a27c-41a83eeaabe2.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    2045,
+    769
+  ],
+  "visibleBounds": [
+    33,
+    116,
+    1979,
+    536
+  ],
+  "purpose": "Empty compact player chassis only. Real cover, title, capability-gated controls and one native shared progress groove are runtime content.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "485ec4a98008f5a362870eed77868b28dd8658a1147a22fb2c1e92e70a3d6bf8"
+}

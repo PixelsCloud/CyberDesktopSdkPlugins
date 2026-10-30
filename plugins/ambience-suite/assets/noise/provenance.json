@@ -1,0 +1,116 @@
+[
+  {
+    "sha256": "A733F0FBF121C104DC42D3C8212B7BFFC9DBAF0A13A3BF56B2BE238B1B9E157C",
+    "generator": "built-in image_gen",
+    "original": "exec-0c6b10d0-8c20-49fc-96e7-4207f516923e.png",
+    "file": "rain.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 51,
+      "transparent": 15320,
+      "partial": 9271
+    }
+  },
+  {
+    "sha256": "7AE3CBD03FF2A9004E8A05740656D2717722DF59BA9D9AD2CB813D85023113C7",
+    "generator": "built-in image_gen",
+    "original": "exec-3f9aa283-b659-4d0d-9261-9894c51093b3.png",
+    "file": "ocean.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 30,
+      "transparent": 15047,
+      "partial": 9565
+    }
+  },
+  {
+    "sha256": "645DA4B6397C4A94AFD284E09F9AF76BA728ACFCC6EC838E323A28A63ABE9516",
+    "generator": "built-in image_gen",
+    "original": "exec-b4a807ab-9de4-4651-9876-bb1add8e71a3.png",
+    "file": "stream.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 30,
+      "transparent": 11896,
+      "partial": 12716
+    }
+  },
+  {
+    "sha256": "000ED49301E74E59814FFED56E3B4447AF2CE3FB3860209B49D7187FB70A7E19",
+    "generator": "built-in image_gen",
+    "original": "exec-54d4d69c-ee0c-47bd-851b-609d3960b36d.png",
+    "file": "forest.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 26,
+      "transparent": 13772,
+      "partial": 10844
+    }
+  },
+  {
+    "sha256": "DC4ABE3CF35540C5B83863051DFB9155882D906265BAC003DC8C6BCE3DB8DD0D",
+    "generator": "built-in image_gen",
+    "original": "exec-7d19dda8-cc99-45c8-b8a5-2346084e75a8.png",
+    "file": "fire.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 14,
+      "transparent": 12321,
+      "partial": 12307
+    }
+  },
+  {
+    "sha256": "3C9C635B1947870D99463554F52FBA46B17B2ACDCFB8569B3FB82A5F775C42D9",
+    "generator": "built-in image_gen",
+    "original": "exec-5919c9bc-52d3-4e00-ab11-1e64aca86b99.png",
+    "file": "wind.png",
+    "style": "2D cartoon matching cartoon plants; clean dark outlines, rounded shapes and broad cel shading",
+    "width": 1774,
+    "frames": [
+      "day",
+      "night"
+    ],
+    "height": 887,
+    "changes": "Original generated RGBA PNG, unmodified; two equal horizontal cells selected at render time.",
+    "alphaSamples": {
+      "opaque": 43,
+      "transparent": 16512,
+      "partial": 8087
+    }
+  }
+]

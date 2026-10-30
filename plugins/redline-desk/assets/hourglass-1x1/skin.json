@@ -1,0 +1,86 @@
+{
+  "id": "com.cyberdesktop.redline.hourglass.1x1",
+  "folder": "hourglass-1x1",
+  "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
+  "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+  "family": "hourglass",
+  "kind": 0,
+  "rows": 1,
+  "columns": 1,
+  "board": 8,
+  "slot": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    74,
+    46,
+    326,
+    429
+  ],
+  "minimumInset": 6,
+  "renderInset": 6.25,
+  "version": "1.0.0",
+  "tags": [
+    "RedLine"
+  ],
+  "name": "RedLine · 机械沙漏 1×1",
+  "runtimePlate": true,
+  "regions": {
+    "glass": [
+      0.24,
+      0.13,
+      0.52,
+      0.69
+    ],
+    "cutoutGlass": [
+      0.24,
+      0.13,
+      0.52,
+      0.69
+    ],
+    "world": [
+      0.24,
+      0.13,
+      0.52,
+      0.69
+    ],
+    "flip": [
+      0.08,
+      0.1,
+      0.34,
+      0.78
+    ],
+    "toggle": [
+      0.44,
+      0.24,
+      0.45,
+      0.5
+    ],
+    "title": [
+      0.44,
+      0.24,
+      0.45,
+      0.5
+    ],
+    "progress": [
+      0.46,
+      0.79,
+      0.4,
+      0.05
+    ]
+  },
+  "approvedArt": "design/redline-collection/grid-08-timers.art.png",
+  "art": "plugins/redline-desk/assets/hourglass-1x1/body.png",
+  "artSha256": "3062ad2657124c705c8ec053b8d571cb6cba873c61bd21b0212a78839fc7e3ea",
+  "approvedCrop": [
+    74,
+    46,
+    326,
+    429
+  ],
+  "reviewText": [],
+  "reviewButtons": [],
+  "reviewIcons": []
+}

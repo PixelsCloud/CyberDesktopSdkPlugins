@@ -1,0 +1,2252 @@
+[
+  {
+    "key": "clock-square-4x1",
+    "name": "城市时码条",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.square.4x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/clock-square/plugin.textproto",
+    "family": "clock",
+    "columns": 4,
+    "rows": 1,
+    "order": 1,
+    "id": "com.cyberdesktop.streetlink.clock.square.4x1",
+    "sourceSha256": "88c04b6764a396ea20775d88f40fa502cba4e97a23cc223600d8c64928560fd6",
+    "sourceFile": "art/01-clock-square-4x1.png",
+    "sourceBounds": [
+      31,
+      167,
+      2111,
+      434
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-round-4x1",
+    "name": "光纤时码条",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.round.4x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/clock-round/plugin.textproto",
+    "family": "clock",
+    "columns": 4,
+    "rows": 1,
+    "order": 2,
+    "id": "com.cyberdesktop.streetlink.clock.round.4x1",
+    "sourceSha256": "d74e6f6c07d003803d3c35e79ac094cc3c147a0e579a849c39ce25d4e2f6a65e",
+    "sourceFile": "art/02-clock-round-4x1.png",
+    "sourceBounds": [
+      83,
+      180,
+      1858,
+      431
+    ],
+    "sourceImageSize": [
+      1989,
+      791
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-spring-4x1",
+    "name": "磁浮数字匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.spring.4x1",
+    "sourceDescriptor": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+    "family": "spring",
+    "columns": 4,
+    "rows": 1,
+    "order": 3,
+    "id": "com.cyberdesktop.streetlink.clock.spring.4x1",
+    "sourceSha256": "2cf1595bd7e239558a39b14915ed7e1c6689ca93dac0b850fbcde85373a398b6",
+    "sourceFile": "art/03-clock-spring-4x1.png",
+    "sourceBounds": [
+      41,
+      165,
+      2098,
+      460
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-spring-4x2",
+    "name": "磁浮时序阵列",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.spring.4x2",
+    "sourceDescriptor": "plugins/physics-toys/packages/mechanical-clock-2x4/plugin.textproto",
+    "family": "spring",
+    "columns": 4,
+    "rows": 2,
+    "order": 4,
+    "id": "com.cyberdesktop.streetlink.clock.spring.4x2",
+    "sourceSha256": "f32fc5504216ca9b51971cabe0a55564db4563176c49b6c235b2d6c255ad1784",
+    "sourceFile": "art/04-clock-spring-4x2.png",
+    "sourceBounds": [
+      56,
+      209,
+      1498,
+      610
+    ],
+    "sourceImageSize": [
+      1604,
+      981
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-marble-4x2",
+    "name": "粒子时序回路",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.marble.4x2",
+    "sourceDescriptor": "plugins/marble-clock/packages/4x2/plugin.textproto",
+    "family": "marble",
+    "columns": 4,
+    "rows": 2,
+    "order": 5,
+    "id": "com.cyberdesktop.streetlink.clock.marble.4x2",
+    "sourceSha256": "951eb46035d5a860182b4f4da0938ade90c3042f85c27679af02563b304af0c8",
+    "sourceFile": "art/05-clock-marble-4x2.png",
+    "sourceBounds": [
+      49,
+      144,
+      1507,
+      702
+    ],
+    "sourceImageSize": [
+      1604,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-marble-6x2",
+    "name": "城市同步中枢",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.marble.6x2",
+    "sourceDescriptor": "plugins/marble-clock/packages/6x2/plugin.textproto",
+    "family": "marble",
+    "columns": 6,
+    "rows": 2,
+    "order": 6,
+    "id": "com.cyberdesktop.streetlink.clock.marble.6x2",
+    "sourceSha256": "ed1ab301beb329ae9fad0b67b8fae7752c9d82fc192c6b673d07a8dce3b2b303",
+    "sourceFile": "art/06-clock-marble-6x2.png",
+    "sourceBounds": [
+      51,
+      79,
+      1838,
+      631
+    ],
+    "sourceImageSize": [
+      1942,
+      809
+    ],
+    "native": [
+      480,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-precision-dress-2x2",
+    "name": "月轨授时仪",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.precision.dress.2x2",
+    "sourceDescriptor": "plugins/precision-clocks/packages/dress/plugin.textproto",
+    "family": "precision",
+    "columns": 2,
+    "rows": 2,
+    "order": 7,
+    "id": "com.cyberdesktop.streetlink.clock.precision.dress.2x2",
+    "sourceSha256": "8578a89c9c8132d8fddc665389ed24a6fb3330a8c3d9e1d588efd93ca36a7502",
+    "sourceFile": "art/07-clock-precision-dress-2x2.png",
+    "sourceBounds": [
+      31,
+      164,
+      1057,
+      1095
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-precision-green-2x2",
+    "name": "深潜同步仪",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.precision.green.2x2",
+    "sourceDescriptor": "plugins/precision-clocks/packages/green/plugin.textproto",
+    "family": "precision",
+    "columns": 2,
+    "rows": 2,
+    "order": 8,
+    "id": "com.cyberdesktop.streetlink.clock.precision.green.2x2",
+    "sourceSha256": "9e40800dca2159cfdcf59ead64390074df3ea541a0dde94913e0d7343c88b479",
+    "sourceFile": "art/08-clock-precision-green-2x2.png",
+    "sourceBounds": [
+      87,
+      199,
+      975,
+      1104
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-precision-skeleton-2x2",
+    "name": "晶核授时仪",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.precision.skeleton.2x2",
+    "sourceDescriptor": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+    "family": "precision",
+    "columns": 2,
+    "rows": 2,
+    "order": 9,
+    "id": "com.cyberdesktop.streetlink.clock.precision.skeleton.2x2",
+    "sourceSha256": "a76598936ab00b5b6679059cb74bbfdad6eddd4f4d031b50be0bd6d3ce79023c",
+    "sourceFile": "art/09-clock-precision-skeleton-2x2.png",
+    "sourceBounds": [
+      117,
+      264,
+      936,
+      1036
+    ],
+    "sourceImageSize": [
+      1113,
+      1414
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "calendar-4x2",
+    "name": "城市排程终端",
+    "pixelId": "com.cyberdesktop.pixeldesk.calendar.4x2",
+    "sourceDescriptor": "plugins/mechanical-calendar/packages/4x2/plugin.textproto",
+    "family": "calendar",
+    "columns": 4,
+    "rows": 2,
+    "order": 10,
+    "id": "com.cyberdesktop.streetlink.calendar.4x2",
+    "sourceSha256": "2a22584203122a75dbf39fdd18a0ebc3714356d6fca6180a05f961d6cc07ba0b",
+    "sourceFile": "art/10-calendar-4x2.png",
+    "sourceBounds": [
+      72,
+      244,
+      1473,
+      640
+    ],
+    "sourceImageSize": [
+      1605,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "lunar-2x1",
+    "name": "日期通行证",
+    "pixelId": "com.cyberdesktop.pixeldesk.lunar.2x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/lunar-1x2/plugin.textproto",
+    "family": "lunar",
+    "columns": 2,
+    "rows": 1,
+    "order": 11,
+    "id": "com.cyberdesktop.streetlink.lunar.2x1",
+    "sourceSha256": "e1ca4ba9f13c43bb2cb5e0644f6ec34bde4395cca684fe065b4bb40e79fe8998",
+    "sourceFile": "art/11-lunar-2x1.png",
+    "sourceBounds": [
+      65,
+      241,
+      1497,
+      568
+    ],
+    "sourceImageSize": [
+      1625,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "lunar-2x2",
+    "name": "城市日期柱",
+    "pixelId": "com.cyberdesktop.pixeldesk.lunar.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/lunar-2x2/plugin.textproto",
+    "family": "lunar",
+    "columns": 2,
+    "rows": 2,
+    "order": 12,
+    "id": "com.cyberdesktop.streetlink.lunar.2x2",
+    "sourceSha256": "4c67b3199a2005ec880a2854b48b4042b30c53b8958e2be01b20d8e20eacb65b",
+    "sourceFile": "art/12-lunar-2x2.png",
+    "sourceBounds": [
+      177,
+      164,
+      775,
+      1172
+    ],
+    "sourceImageSize": [
+      1122,
+      1402
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "lunar-4x4",
+    "name": "城市信息站",
+    "pixelId": "com.cyberdesktop.pixeldesk.lunar.4x4",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/lunar-4x4/plugin.textproto",
+    "family": "lunar",
+    "columns": 4,
+    "rows": 4,
+    "order": 13,
+    "id": "com.cyberdesktop.streetlink.lunar.4x4",
+    "sourceSha256": "f6cc0b74ae948e3b8245c8e59e19d5a5c568f67b089be2a7c79ccf26bc259535",
+    "sourceFile": "art/13-lunar-4x4.png",
+    "sourceBounds": [
+      67,
+      161,
+      1020,
+      1145
+    ],
+    "sourceImageSize": [
+      1117,
+      1408
+    ],
+    "native": [
+      320,
+      400
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "weather-2x1",
+    "name": "微型气象探针",
+    "pixelId": "com.cyberdesktop.pixeldesk.weather.2x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/weather-1x2/plugin.textproto",
+    "family": "weather",
+    "columns": 2,
+    "rows": 1,
+    "order": 14,
+    "id": "com.cyberdesktop.streetlink.weather.2x1",
+    "sourceSha256": "e17cbab23825c68e3b6c7f6deabbbab411d4e3218e4c7a59657dcac9f203429e",
+    "sourceFile": "art/14-weather-2x1.png",
+    "sourceBounds": [
+      120,
+      238,
+      1400,
+      592
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "weather-4x1",
+    "name": "气象接入条",
+    "pixelId": "com.cyberdesktop.pixeldesk.weather.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/weather-1x4/plugin.textproto",
+    "family": "weather",
+    "columns": 4,
+    "rows": 1,
+    "order": 15,
+    "id": "com.cyberdesktop.streetlink.weather.4x1",
+    "sourceSha256": "3d279a3c77a9c0371ab71e097c58d2c57804681503f8ccee59480afae1a88adf",
+    "sourceFile": "art/15-weather-4x1.png",
+    "sourceBounds": [
+      152,
+      117,
+      1883,
+      486
+    ],
+    "sourceImageSize": [
+      2170,
+      725
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "weather-4x2",
+    "name": "城市气象扫描站",
+    "pixelId": "com.cyberdesktop.pixeldesk.weather.4x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/weather-2x4/plugin.textproto",
+    "family": "weather",
+    "columns": 4,
+    "rows": 2,
+    "order": 16,
+    "id": "com.cyberdesktop.streetlink.weather.4x2",
+    "sourceSha256": "c7da90683c0f08f8ef60951a8d66c55a3e53585b00f046c95546b6bbaf7240ba",
+    "sourceFile": "art/16-weather-4x2.png",
+    "sourceBounds": [
+      143,
+      192,
+      1329,
+      726
+    ],
+    "sourceImageSize": [
+      1604,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "air-2x1",
+    "name": "空气采样节点",
+    "pixelId": "com.cyberdesktop.pixeldesk.air.2x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/air-1x2/plugin.textproto",
+    "family": "air",
+    "columns": 2,
+    "rows": 1,
+    "order": 17,
+    "id": "com.cyberdesktop.streetlink.air.2x1",
+    "sourceSha256": "e0706a0b67aa4a38e39ad5f5be30dce37920dbc02338189f88f016fc32849172",
+    "sourceFile": "art/17-air-2x1.png",
+    "sourceBounds": [
+      67,
+      265,
+      1512,
+      526
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "air-4x1",
+    "name": "空气遥测条",
+    "pixelId": "com.cyberdesktop.pixeldesk.air.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/air-1x4/plugin.textproto",
+    "family": "air",
+    "columns": 4,
+    "rows": 1,
+    "order": 18,
+    "id": "com.cyberdesktop.streetlink.air.4x1",
+    "sourceSha256": "621d04090ae0d9c4d11f8a946147e62ca52636d3dfa09086cd8e89f82ab2387f",
+    "sourceFile": "art/18-air-4x1.png",
+    "sourceBounds": [
+      55,
+      152,
+      1979,
+      452
+    ],
+    "sourceImageSize": [
+      2073,
+      759
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "air-4x2",
+    "name": "城市净空分析站",
+    "pixelId": "com.cyberdesktop.pixeldesk.air.4x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/air-2x4/plugin.textproto",
+    "family": "air",
+    "columns": 4,
+    "rows": 2,
+    "order": 19,
+    "id": "com.cyberdesktop.streetlink.air.4x2",
+    "sourceSha256": "d3f0ac99b85571df59abee98876155063546363ab8562b81ee29473b8ea4b038",
+    "sourceFile": "art/19-air-4x2.png",
+    "sourceBounds": [
+      60,
+      229,
+      1493,
+      642
+    ],
+    "sourceImageSize": [
+      1604,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "monitor-1x1",
+    "name": "神经接入微芯",
+    "pixelId": "com.cyberdesktop.pixeldesk.monitor.1x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
+    "family": "monitor",
+    "columns": 1,
+    "rows": 1,
+    "order": 20,
+    "id": "com.cyberdesktop.streetlink.monitor.1x1",
+    "sourceSha256": "add6f189e5910140243156101ca430bd0f3675699115b631aabf3b63aa19fcec",
+    "sourceFile": "art/20-monitor-1x1.png",
+    "sourceBounds": [
+      108,
+      201,
+      914,
+      1087
+    ],
+    "sourceImageSize": [
+      1102,
+      1427
+    ],
+    "native": [
+      80,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "monitor-2x1",
+    "name": "双通道诊断器",
+    "pixelId": "com.cyberdesktop.pixeldesk.monitor.2x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/monitor-1x2/plugin.textproto",
+    "family": "monitor",
+    "columns": 2,
+    "rows": 1,
+    "order": 21,
+    "id": "com.cyberdesktop.streetlink.monitor.2x1",
+    "sourceSha256": "2b76471df5d15e030a1d5ca6261ea39f8cbd061881e6c02953649151184518ff",
+    "sourceFile": "art/21-monitor-2x1.png",
+    "sourceBounds": [
+      79,
+      252,
+      1477,
+      549
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "monitor-4x1",
+    "name": "四核遥测总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.monitor.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/monitor-1x4/plugin.textproto",
+    "family": "monitor",
+    "columns": 4,
+    "rows": 1,
+    "order": 22,
+    "id": "com.cyberdesktop.streetlink.monitor.4x1",
+    "sourceSha256": "8165fcd2f017f66f9d26bc3260e5a9265ffa2d98996180d2dce4b293af97025d",
+    "sourceFile": "art/22-monitor-4x1.png",
+    "sourceBounds": [
+      45,
+      125,
+      2067,
+      460
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "monitor-2x2",
+    "name": "神经负载终端",
+    "pixelId": "com.cyberdesktop.pixeldesk.monitor.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/monitor-2x2/plugin.textproto",
+    "family": "monitor",
+    "columns": 2,
+    "rows": 2,
+    "order": 23,
+    "id": "com.cyberdesktop.streetlink.monitor.2x2",
+    "sourceSha256": "0f814e60f06d36f10ca835494189f2fc7b24236d5a9b7c9059c6825c9360be48",
+    "sourceFile": "art/23-monitor-2x2.png",
+    "sourceBounds": [
+      97,
+      185,
+      961,
+      1125
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "network-4x1",
+    "name": "城市光纤桥",
+    "pixelId": "com.cyberdesktop.pixeldesk.network.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/network-1x4/plugin.textproto",
+    "family": "productivity",
+    "columns": 4,
+    "rows": 1,
+    "order": 24,
+    "id": "com.cyberdesktop.streetlink.network.4x1",
+    "sourceSha256": "41f0e388fc5e252bc7ca052d4fcbb32525dd5c583681082dd3bdc94006c0b988",
+    "sourceFile": "art/24-network-4x1.png",
+    "sourceBounds": [
+      82,
+      155,
+      1918,
+      472
+    ],
+    "sourceImageSize": [
+      2095,
+      750
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "disk-2x2",
+    "name": "存储晶匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.disk.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/disk-2x2/plugin.textproto",
+    "family": "disk",
+    "columns": 2,
+    "rows": 2,
+    "order": 25,
+    "id": "com.cyberdesktop.streetlink.disk.2x2",
+    "sourceSha256": "d1975d5e1db8fa3d4418df88f7cb47323410f39aa918bec4a21ad5e255f8c0cf",
+    "sourceFile": "art/25-disk-2x2.png",
+    "sourceBounds": [
+      145,
+      97,
+      849,
+      1221
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "input-4x1",
+    "name": "行为采集总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.input.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/input-1x4/plugin.textproto",
+    "family": "input",
+    "columns": 4,
+    "rows": 1,
+    "order": 26,
+    "id": "com.cyberdesktop.streetlink.input.4x1",
+    "sourceSha256": "abf88032f70b3ca069346a0abc830e79c5ac3286e832c44d7ba2236e48d38de2",
+    "sourceFile": "art/26-input-4x1.png",
+    "sourceBounds": [
+      44,
+      149,
+      2030,
+      437
+    ],
+    "sourceImageSize": [
+      2117,
+      743
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "album-4x2",
+    "name": "记忆取景器",
+    "pixelId": "com.cyberdesktop.pixeldesk.album.4x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/album-2x4/plugin.textproto",
+    "family": "album",
+    "columns": 4,
+    "rows": 2,
+    "order": 27,
+    "id": "com.cyberdesktop.streetlink.album.4x2",
+    "sourceSha256": "861749159f929866b7a6e585cbe105a4f9a2eae8719f61ea95007ea875c8c14b",
+    "sourceFile": "art/27-album-4x2.png",
+    "sourceBounds": [
+      64,
+      225,
+      1486,
+      591
+    ],
+    "sourceImageSize": [
+      1604,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "player-4x1",
+    "name": "街区音频匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.player.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/player-1x4/plugin.textproto",
+    "family": "player",
+    "columns": 4,
+    "rows": 1,
+    "order": 28,
+    "id": "com.cyberdesktop.streetlink.player.4x1",
+    "sourceSha256": "917a86699a3a33a7350c733d11e4697362b7e8a02f5347fc0d64273b89fa1d9c",
+    "sourceFile": "art/28-player-4x1.png",
+    "sourceBounds": [
+      42,
+      129,
+      2098,
+      465
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "player-2x2",
+    "name": "便携音频终端",
+    "pixelId": "com.cyberdesktop.pixeldesk.player.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/player-2x2/plugin.textproto",
+    "family": "player",
+    "columns": 2,
+    "rows": 2,
+    "order": 29,
+    "id": "com.cyberdesktop.streetlink.player.2x2",
+    "sourceSha256": "d99e692dfb8afdfba7b9aef5122ff020bbc52a645fb7725b7af999330a45ba0c",
+    "sourceFile": "art/29-player-2x2.png",
+    "sourceBounds": [
+      94,
+      127,
+      958,
+      1242
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "player-4x2",
+    "name": "街区音频接收站",
+    "pixelId": "com.cyberdesktop.pixeldesk.player.4x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/player-2x4/plugin.textproto",
+    "family": "player",
+    "columns": 4,
+    "rows": 2,
+    "order": 30,
+    "id": "com.cyberdesktop.streetlink.player.4x2",
+    "sourceSha256": "5fedc40b9c1489d0840b472a0ba68d46aeaee7f10da6313ef76cc25cb37730d4",
+    "sourceFile": "art/30-player-4x2.png",
+    "sourceBounds": [
+      64,
+      207,
+      1476,
+      627
+    ],
+    "sourceImageSize": [
+      1605,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-square-4x1",
+    "name": "方晶频谱匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.square.4x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-square-4x1/plugin.textproto",
+    "family": "matrix",
+    "columns": 4,
+    "rows": 1,
+    "order": 31,
+    "id": "com.cyberdesktop.streetlink.music.matrix.square.4x1",
+    "sourceSha256": "d338e6f99a454e9f5691b2b231de56c25412f67ce247e0a39a03886ef027bf3c",
+    "sourceFile": "art/31-music-matrix-square-4x1.png",
+    "sourceBounds": [
+      41,
+      152,
+      2098,
+      438
+    ],
+    "sourceImageSize": [
+      2171,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-round-4x1",
+    "name": "光点频谱匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.round.4x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-round-4x1/plugin.textproto",
+    "family": "matrix",
+    "columns": 4,
+    "rows": 1,
+    "order": 32,
+    "id": "com.cyberdesktop.streetlink.music.matrix.round.4x1",
+    "sourceSha256": "d582169bc6d4f5f24100dacf61895a46b61ab0ee8537bc69ab794b20e1f814b1",
+    "sourceFile": "art/32-music-matrix-round-4x1.png",
+    "sourceBounds": [
+      98,
+      140,
+      1992,
+      434
+    ],
+    "sourceImageSize": [
+      2168,
+      725
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-square-6x1",
+    "name": "方晶信号总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.square.6x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-square-6x1/plugin.textproto",
+    "family": "matrix",
+    "columns": 6,
+    "rows": 1,
+    "order": 33,
+    "id": "com.cyberdesktop.streetlink.music.matrix.square.6x1",
+    "sourceSha256": "299009c5c0840fa154ab0dc8cfc2a18f3f3e6d83456e6491c5d5b8263256aadd",
+    "sourceFile": "art/33-music-matrix-square-6x1.png",
+    "sourceBounds": [
+      21,
+      255,
+      1737,
+      376
+    ],
+    "sourceImageSize": [
+      1774,
+      887
+    ],
+    "native": [
+      480,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-round-6x1",
+    "name": "光子采样总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.round.6x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-round-6x1/plugin.textproto",
+    "family": "matrix",
+    "columns": 6,
+    "rows": 1,
+    "order": 34,
+    "id": "com.cyberdesktop.streetlink.music.matrix.round.6x1",
+    "sourceSha256": "ce5eec39acb854ae83c423e75df351fc47ee2bbd40886b1342ce15489dd62be1",
+    "sourceFile": "art/34-music-matrix-round-6x1.png",
+    "sourceBounds": [
+      53,
+      321,
+      1679,
+      312
+    ],
+    "sourceImageSize": [
+      1774,
+      887
+    ],
+    "native": [
+      480,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-square-8x1",
+    "name": "方晶城市频谱墙",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.square.8x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-square/plugin.textproto",
+    "family": "matrix",
+    "columns": 8,
+    "rows": 1,
+    "order": 35,
+    "id": "com.cyberdesktop.streetlink.music.matrix.square.8x1",
+    "sourceSha256": "6fc75bde0bd8f9a5a6c30a159006bf6c138b507475acbdbefc83408d449ac6a3",
+    "sourceFile": "art/35-music-matrix-square-8x1.png",
+    "sourceBounds": [
+      28,
+      253,
+      2112,
+      209
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      640,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "music-matrix-round-8x1",
+    "name": "光子城市频谱墙",
+    "pixelId": "com.cyberdesktop.pixeldesk.music.matrix.round.8x1",
+    "sourceDescriptor": "plugins/mechanical-pixels/packages/music-round/plugin.textproto",
+    "family": "matrix",
+    "columns": 8,
+    "rows": 1,
+    "order": 36,
+    "id": "com.cyberdesktop.streetlink.music.matrix.round.8x1",
+    "sourceSha256": "652ff20be487ba2fb32073abef9f336eb117763df28b5d31eaadb96c1cfb3afd",
+    "sourceFile": "art/36-music-matrix-round-8x1.png",
+    "sourceBounds": [
+      10,
+      272,
+      2155,
+      205
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      640,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "spectrum-4x1",
+    "name": "声压遥测条",
+    "pixelId": "com.cyberdesktop.pixeldesk.spectrum.4x1",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/spectrum-1x4/plugin.textproto",
+    "family": "spectrum",
+    "columns": 4,
+    "rows": 1,
+    "order": 37,
+    "id": "com.cyberdesktop.streetlink.spectrum.4x1",
+    "sourceSha256": "b2686bd927dff0aeb2c140009849ff2b97210288e18ba1c9510f1653329eead1",
+    "sourceFile": "art/37-spectrum-4x1.png",
+    "sourceBounds": [
+      65,
+      150,
+      2043,
+      427
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "radial-2x2",
+    "name": "声场矢量核",
+    "pixelId": "com.cyberdesktop.pixeldesk.radial.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/radial-2x2/plugin.textproto",
+    "family": "spectrum",
+    "columns": 2,
+    "rows": 2,
+    "order": 38,
+    "id": "com.cyberdesktop.streetlink.radial.2x2",
+    "sourceSha256": "53a8487d83b0cba322178d4fa1d2a4d28e9f0a41c461f295c5c4ba9b27edbca0",
+    "sourceFile": "art/38-radial-2x2.png",
+    "sourceBounds": [
+      44,
+      128,
+      1047,
+      1102
+    ],
+    "sourceImageSize": [
+      1114,
+      1412
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "beat-machine-4x2",
+    "name": "双声波采样器",
+    "pixelId": "com.cyberdesktop.pixeldesk.beat-machine.4x2",
+    "sourceDescriptor": "plugins/beat-machine/packages/4x2/plugin.textproto",
+    "family": "beat",
+    "columns": 4,
+    "rows": 2,
+    "order": 39,
+    "id": "com.cyberdesktop.streetlink.beat-machine.4x2",
+    "sourceSha256": "9b399987aa79422220392daf469ac823d5ed8f1dfbee67111504bbb474a430f3",
+    "sourceFile": "art/39-beat-machine-4x2.png",
+    "sourceBounds": [
+      47,
+      95,
+      1527,
+      762
+    ],
+    "sourceImageSize": [
+      1606,
+      979
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "beat-machine-6x2",
+    "name": "多通道声波工作站",
+    "pixelId": "com.cyberdesktop.pixeldesk.beat-machine.6x2",
+    "sourceDescriptor": "plugins/beat-machine/packages/6x2/plugin.textproto",
+    "family": "beat",
+    "columns": 6,
+    "rows": 2,
+    "order": 40,
+    "id": "com.cyberdesktop.streetlink.beat-machine.6x2",
+    "sourceSha256": "425eca84ac07c2d16b5e39e7c8963e791311fe945a13696d590fd6e842d0ae09",
+    "sourceFile": "art/40-beat-machine-6x2.png",
+    "sourceBounds": [
+      18,
+      140,
+      1941,
+      593
+    ],
+    "sourceImageSize": [
+      1977,
+      795
+    ],
+    "native": [
+      480,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "windchime-2x2",
+    "name": "磁浮共振节点",
+    "pixelId": "com.cyberdesktop.pixeldesk.windchime.2x2",
+    "sourceDescriptor": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+    "family": "chime",
+    "columns": 2,
+    "rows": 2,
+    "order": 41,
+    "id": "com.cyberdesktop.streetlink.windchime.2x2",
+    "sourceSha256": "25d37da4c34a8e598a0e4377f876330643d50317bc73ac640bc6f8fc4c2f681b",
+    "sourceFile": "art/41-windchime-2x2.png",
+    "sourceBounds": [
+      130,
+      118,
+      856,
+      1212
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "sign-4x1",
+    "name": "街区信息牌",
+    "pixelId": "com.cyberdesktop.pixeldesk.sign.4x1",
+    "sourceDescriptor": "plugins/mechanical-sign/packages/6x2/plugin.textproto",
+    "family": "sign",
+    "columns": 4,
+    "rows": 1,
+    "order": 42,
+    "id": "com.cyberdesktop.streetlink.sign.4x1",
+    "sourceSha256": "d536d4cb196c05d413051d1de9ab6f9bc116e031b6e2fafd4e14707ec6fea929",
+    "sourceFile": "art/42-sign-4x1.png",
+    "sourceBounds": [
+      63,
+      160,
+      2046,
+      412
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "hourglass-1x1",
+    "name": "微型能量计时舱",
+    "pixelId": "com.cyberdesktop.pixeldesk.hourglass.1x1",
+    "sourceDescriptor": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
+    "family": "hourglass",
+    "columns": 1,
+    "rows": 1,
+    "order": 43,
+    "id": "com.cyberdesktop.streetlink.hourglass.1x1",
+    "sourceSha256": "760f51e466f00464af65250e8c149ad7b12982850018c7765fadd156789632de",
+    "sourceFile": "art/43-hourglass-1x1.png",
+    "sourceBounds": [
+      213,
+      111,
+      704,
+      1254
+    ],
+    "sourceImageSize": [
+      1102,
+      1427
+    ],
+    "native": [
+      80,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "hourglass-2x1",
+    "name": "能量计量终端",
+    "pixelId": "com.cyberdesktop.pixeldesk.hourglass.2x1",
+    "sourceDescriptor": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+    "family": "hourglass",
+    "columns": 2,
+    "rows": 1,
+    "order": 44,
+    "id": "com.cyberdesktop.streetlink.hourglass.2x1",
+    "sourceSha256": "eba3e7fedd74cfcbaf4db5c47ecd8fb4741fd53135b08f6512f67812e3868e8f",
+    "sourceFile": "art/44-hourglass-2x1.png",
+    "sourceBounds": [
+      71,
+      124,
+      1494,
+      721
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "timer-2x2",
+    "name": "专注锁定终端",
+    "pixelId": "com.cyberdesktop.pixeldesk.timer.2x2",
+    "sourceDescriptor": "plugins/mechanical-instruments/packages/timer-2x2/plugin.textproto",
+    "family": "timer",
+    "columns": 2,
+    "rows": 2,
+    "order": 45,
+    "id": "com.cyberdesktop.streetlink.timer.2x2",
+    "sourceSha256": "27c5dcff1dbfd4a155ac0d4c96f65d37a93869dad2651efd4897d6b74aa1b873",
+    "sourceFile": "art/45-timer-2x2.png",
+    "sourceBounds": [
+      68,
+      113,
+      982,
+      1204
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "timer-2x1",
+    "name": "专注锁定条",
+    "pixelId": "com.cyberdesktop.pixeldesk.timer.2x1",
+    "sourceDescriptor": "plugins/productivity-suite/packages/timer-1x2/plugin.textproto",
+    "family": "timer",
+    "columns": 2,
+    "rows": 1,
+    "order": 46,
+    "id": "com.cyberdesktop.streetlink.timer.2x1",
+    "sourceSha256": "bb6d8618453a84cf9f4684be3bec27715c5a3ba3e1c0a9c6bd5807713b973baf",
+    "sourceFile": "art/46-timer-2x1.png",
+    "sourceBounds": [
+      63,
+      213,
+      1519,
+      601
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "network-2x1",
+    "name": "双端光纤接入器",
+    "pixelId": "com.cyberdesktop.pixeldesk.network.2x1",
+    "sourceDescriptor": "plugins/productivity-suite/packages/network-1x2/plugin.textproto",
+    "family": "network",
+    "columns": 2,
+    "rows": 1,
+    "order": 47,
+    "id": "com.cyberdesktop.streetlink.network.2x1",
+    "sourceSha256": "56223b621daeb9cafdd5d055a5a8595d5d400adb5df84e7b04625cb6b7d54e48",
+    "sourceFile": "art/47-network-2x1.png",
+    "sourceBounds": [
+      74,
+      235,
+      1491,
+      609
+    ],
+    "sourceImageSize": [
+      1625,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "disk-2x1",
+    "name": "微型存储晶匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.disk.2x1",
+    "sourceDescriptor": "plugins/productivity-suite/packages/disk-1x2/plugin.textproto",
+    "family": "disk",
+    "columns": 2,
+    "rows": 1,
+    "order": 48,
+    "id": "com.cyberdesktop.streetlink.disk.2x1",
+    "sourceSha256": "9c3812a3a625375ec441da8e40e06cb1ad9ee0a0464a286ebc42ed3f5f2d5f0f",
+    "sourceFile": "art/48-disk-2x1.png",
+    "sourceBounds": [
+      70,
+      230,
+      1503,
+      511
+    ],
+    "sourceImageSize": [
+      1625,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "spectrum-6x1",
+    "name": "声压分析总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.spectrum.6x1",
+    "sourceDescriptor": "plugins/widget-suite/packages/spectrum-1x6/plugin.textproto",
+    "family": "spectrum",
+    "columns": 6,
+    "rows": 1,
+    "order": 49,
+    "id": "com.cyberdesktop.streetlink.spectrum.6x1",
+    "sourceSha256": "c14ad0ed46cbe36574617d44b11d3e29ee8b08f0380c2c981c173569657c721e",
+    "sourceFile": "art/49-spectrum-6x1.png",
+    "sourceBounds": [
+      43,
+      219,
+      1964,
+      365
+    ],
+    "sourceImageSize": [
+      2061,
+      763
+    ],
+    "native": [
+      480,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "spectrum-8x1",
+    "name": "城市声压全景窗",
+    "pixelId": "com.cyberdesktop.pixeldesk.spectrum.8x1",
+    "sourceDescriptor": "plugins/widget-suite/packages/spectrum-1x8/plugin.textproto",
+    "family": "spectrum",
+    "columns": 8,
+    "rows": 1,
+    "order": 50,
+    "id": "com.cyberdesktop.streetlink.spectrum.8x1",
+    "sourceSha256": "c32b6c58ca6d8f84cb5ce0acf710e72326f88d58fdcbfd8753e6a647a5394b64",
+    "sourceFile": "art/50-spectrum-8x1.png",
+    "sourceBounds": [
+      20,
+      272,
+      2133,
+      200
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      640,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "windchime-2x3",
+    "name": "磁浮共振立柱",
+    "pixelId": "com.cyberdesktop.pixeldesk.windchime.2x3",
+    "sourceDescriptor": "plugins/physics-toys/packages/chime-3x2/plugin.textproto",
+    "family": "chime",
+    "columns": 2,
+    "rows": 3,
+    "order": 51,
+    "id": "com.cyberdesktop.streetlink.windchime.2x3",
+    "sourceSha256": "3ca08115a91e84a800b6b6311f1801a15983998104e0516f73aac81a73416295",
+    "sourceFile": "art/51-windchime-2x3.png",
+    "sourceBounds": [
+      69,
+      211,
+      752,
+      1479
+    ],
+    "sourceImageSize": [
+      899,
+      1750
+    ],
+    "native": [
+      160,
+      300
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-analog-1x1",
+    "name": "微型矢量授时器",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.analog.1x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/analog-1x1/plugin.textproto",
+    "family": "analog",
+    "columns": 1,
+    "rows": 1,
+    "order": 52,
+    "id": "com.cyberdesktop.streetlink.clock.analog.1x1",
+    "sourceSha256": "bc4961e32c667be7849943ac08317d0e7e530c5956d40882ca63825095b1de39",
+    "sourceFile": "art/52-clock-analog-1x1.png",
+    "sourceBounds": [
+      66,
+      236,
+      988,
+      1059
+    ],
+    "sourceImageSize": [
+      1102,
+      1427
+    ],
+    "native": [
+      80,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-analog-2x1",
+    "name": "矢量时间接入器",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.analog.2x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/analog-1x2/plugin.textproto",
+    "family": "analog",
+    "columns": 2,
+    "rows": 1,
+    "order": 53,
+    "id": "com.cyberdesktop.streetlink.clock.analog.2x1",
+    "sourceSha256": "a97dff1ab495fb9bd9962406405841c2218b2d6ce9c1d3ad6b99d0c494bcb39e",
+    "sourceFile": "art/53-clock-analog-2x1.png",
+    "sourceBounds": [
+      70,
+      222,
+      1498,
+      555
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-analog-4x1",
+    "name": "矢量城市授时条",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.analog.4x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/analog-1x4/plugin.textproto",
+    "family": "analog",
+    "columns": 4,
+    "rows": 1,
+    "order": 54,
+    "id": "com.cyberdesktop.streetlink.clock.analog.4x1",
+    "sourceSha256": "505a2b560d158686a3578b5e4f921a7960a2e324e3ae98d701b1eeecfb44e31d",
+    "sourceFile": "art/54-clock-analog-4x1.png",
+    "sourceBounds": [
+      54,
+      101,
+      1966,
+      542
+    ],
+    "sourceImageSize": [
+      2091,
+      752
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-analog-2x2",
+    "name": "矢量授时基站",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.analog.2x2",
+    "sourceDescriptor": "plugins/clock-suite/packages/analog-2x2/plugin.textproto",
+    "family": "analog",
+    "columns": 2,
+    "rows": 2,
+    "order": 55,
+    "id": "com.cyberdesktop.streetlink.clock.analog.2x2",
+    "sourceSha256": "f6fefd007378d8217ec98eaf06e260b6c03accb83b7915fe02ba2e545d0a728f",
+    "sourceFile": "art/55-clock-analog-2x2.png",
+    "sourceBounds": [
+      72,
+      148,
+      1003,
+      1189
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-digital-1x1",
+    "name": "微型时间身份牌",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.digital.1x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/digital-1x1/plugin.textproto",
+    "family": "digital",
+    "columns": 1,
+    "rows": 1,
+    "order": 56,
+    "id": "com.cyberdesktop.streetlink.clock.digital.1x1",
+    "sourceSha256": "baeeeec51c30b545a117f77ef5d1c50cf170764e26a9961d2e65277952232761",
+    "sourceFile": "art/56-clock-digital-1x1.png",
+    "sourceBounds": [
+      210,
+      183,
+      734,
+      1116
+    ],
+    "sourceImageSize": [
+      1102,
+      1427
+    ],
+    "native": [
+      80,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-digital-2x1",
+    "name": "城市本地时间器",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.digital.2x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/digital-1x2/plugin.textproto",
+    "family": "digital",
+    "columns": 2,
+    "rows": 1,
+    "order": 57,
+    "id": "com.cyberdesktop.streetlink.clock.digital.2x1",
+    "sourceSha256": "523a49b4b048d04bd2f77fae351074d0e45ec042d03faf4e69937fdc5db2fd5f",
+    "sourceFile": "art/57-clock-digital-2x1.png",
+    "sourceBounds": [
+      60,
+      266,
+      1508,
+      597
+    ],
+    "sourceImageSize": [
+      1627,
+      967
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-digital-4x1",
+    "name": "城市时间主线",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.digital.4x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/digital-1x4/plugin.textproto",
+    "family": "digital",
+    "columns": 4,
+    "rows": 1,
+    "order": 58,
+    "id": "com.cyberdesktop.streetlink.clock.digital.4x1",
+    "sourceSha256": "892ff9dd786441497d8c9258e1dddd68500ec49c303f2244dfcd6d2d748364be",
+    "sourceFile": "art/58-clock-digital-4x1.png",
+    "sourceBounds": [
+      97,
+      172,
+      1887,
+      408
+    ],
+    "sourceImageSize": [
+      2092,
+      752
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-digital-2x2",
+    "name": "双层时间立柱",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.digital.2x2",
+    "sourceDescriptor": "plugins/clock-suite/packages/digital-2x2/plugin.textproto",
+    "family": "digital",
+    "columns": 2,
+    "rows": 2,
+    "order": 59,
+    "id": "com.cyberdesktop.streetlink.clock.digital.2x2",
+    "sourceSha256": "7e76a8f78539ec91966a5ee8485b764a4aeb3cd0c32820aeda850a5e0d30f0e0",
+    "sourceFile": "art/59-clock-digital-2x2.png",
+    "sourceBounds": [
+      172,
+      254,
+      814,
+      1050
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-flip-4x1",
+    "name": "磁晶翻转时码条",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.flip.4x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/flip-1x4/plugin.textproto",
+    "family": "flip",
+    "columns": 4,
+    "rows": 1,
+    "order": 60,
+    "id": "com.cyberdesktop.streetlink.clock.flip.4x1",
+    "sourceSha256": "5e85ebac445f2d95221ffce93f0a988de0dedd1e0eb158d55280ce038321bce9",
+    "sourceFile": "art/60-clock-flip-4x1.png",
+    "sourceBounds": [
+      45,
+      201,
+      2080,
+      353
+    ],
+    "sourceImageSize": [
+      2171,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-flip-2x2",
+    "name": "磁晶时间立柱",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.flip.2x2",
+    "sourceDescriptor": "plugins/clock-suite/packages/flip-2x2/plugin.textproto",
+    "family": "flip",
+    "columns": 2,
+    "rows": 2,
+    "order": 61,
+    "id": "com.cyberdesktop.streetlink.clock.flip.2x2",
+    "sourceSha256": "356a8d12b7c18dfba76800f9ff3139156f0a8b8c96c8dee1f5443a1049540281",
+    "sourceFile": "art/61-clock-flip-2x2.png",
+    "sourceBounds": [
+      256,
+      123,
+      649,
+      1236
+    ],
+    "sourceImageSize": [
+      1113,
+      1414
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-flip-4x2",
+    "name": "磁晶时序显示站",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.flip.4x2",
+    "sourceDescriptor": "plugins/clock-suite/packages/flip-2x4/plugin.textproto",
+    "family": "flip",
+    "columns": 4,
+    "rows": 2,
+    "order": 62,
+    "id": "com.cyberdesktop.streetlink.clock.flip.4x2",
+    "sourceSha256": "22a85dc2886c419bc3102660e5b07004735c929946525e1ab311ce33144cadca",
+    "sourceFile": "art/62-clock-flip-4x2.png",
+    "sourceBounds": [
+      38,
+      242,
+      1532,
+      586
+    ],
+    "sourceImageSize": [
+      1605,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-lcd-2x1",
+    "name": "低功耗时码匣",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.lcd.2x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/lcd-1x2/plugin.textproto",
+    "family": "lcd",
+    "columns": 2,
+    "rows": 1,
+    "order": 63,
+    "id": "com.cyberdesktop.streetlink.clock.lcd.2x1",
+    "sourceSha256": "d4a6f1401e2a31a97c78a10210749fd8e4439cbe2d0ba7380df2afa910a27eab",
+    "sourceFile": "art/63-clock-lcd-2x1.png",
+    "sourceBounds": [
+      97,
+      261,
+      1434,
+      575
+    ],
+    "sourceImageSize": [
+      1625,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-lcd-4x1",
+    "name": "低功耗城市时码条",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.lcd.4x1",
+    "sourceDescriptor": "plugins/clock-suite/packages/lcd-1x4/plugin.textproto",
+    "family": "lcd",
+    "columns": 4,
+    "rows": 1,
+    "order": 64,
+    "id": "com.cyberdesktop.streetlink.clock.lcd.4x1",
+    "sourceSha256": "78f465e2151e6d37e7ef2a0cad384713c3a78a60ad7508c5edbf1ec58b1e5d89",
+    "sourceFile": "art/64-clock-lcd-4x1.png",
+    "sourceBounds": [
+      92,
+      111,
+      1990,
+      483
+    ],
+    "sourceImageSize": [
+      2172,
+      724
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "clock-brick-4x1",
+    "name": "激光蚀刻时序墙",
+    "pixelId": "com.cyberdesktop.pixeldesk.clock.brick.4x1",
+    "sourceDescriptor": "plugins/brick-clock/packages/1x4/plugin.textproto",
+    "family": "brick",
+    "columns": 4,
+    "rows": 1,
+    "order": 65,
+    "id": "com.cyberdesktop.streetlink.clock.brick.4x1",
+    "sourceSha256": "65dd99fd0e2dbefdebd5d60129cd651309e90671b24dc7f507633de60a52ad58",
+    "sourceFile": "art/65-clock-brick-4x1.png",
+    "sourceBounds": [
+      63,
+      179,
+      1902,
+      483
+    ],
+    "sourceImageSize": [
+      2018,
+      779
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "countdown-2x1",
+    "name": "事件接近节点",
+    "pixelId": "com.cyberdesktop.pixeldesk.countdown.2x1",
+    "sourceDescriptor": "plugins/productivity-suite/packages/countdown-1x2/plugin.textproto",
+    "family": "countdown",
+    "columns": 2,
+    "rows": 1,
+    "order": 66,
+    "id": "com.cyberdesktop.streetlink.countdown.2x1",
+    "sourceSha256": "b01646b7a6ba3409a1933cf464c41c0b63be8b59355304bc4f2aeb13826448e8",
+    "sourceFile": "art/66-countdown-2x1.png",
+    "sourceBounds": [
+      74,
+      242,
+      1489,
+      503
+    ],
+    "sourceImageSize": [
+      1625,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "countdown-4x1",
+    "name": "事件接近总线",
+    "pixelId": "com.cyberdesktop.pixeldesk.countdown.4x1",
+    "sourceDescriptor": "plugins/productivity-suite/packages/countdown-1x4/plugin.textproto",
+    "family": "countdown",
+    "columns": 4,
+    "rows": 1,
+    "order": 67,
+    "id": "com.cyberdesktop.streetlink.countdown.4x1",
+    "sourceSha256": "9143cf21829f687c1041707bff94aa6b92abbb9b41b16e8ad3427b1a07e9ca5d",
+    "sourceFile": "art/67-countdown-4x1.png",
+    "sourceBounds": [
+      84,
+      169,
+      1950,
+      411
+    ],
+    "sourceImageSize": [
+      2158,
+      729
+    ],
+    "native": [
+      320,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "koi-4x2",
+    "name": "城市水生态舱",
+    "pixelId": "com.cyberdesktop.pixeldesk.koi.4x2",
+    "sourceDescriptor": "plugins/koi-suite/packages/2x4/plugin.textproto",
+    "family": "koi",
+    "columns": 4,
+    "rows": 2,
+    "order": 68,
+    "id": "com.cyberdesktop.streetlink.koi.4x2",
+    "sourceSha256": "8a996ada3805938512aa1fed57e008b571063142591e851ccda6a103d54e730a",
+    "sourceFile": "art/68-koi-4x2.png",
+    "sourceBounds": [
+      41,
+      240,
+      1532,
+      573
+    ],
+    "sourceImageSize": [
+      1605,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "plant-1x1",
+    "name": "微型生物电池",
+    "pixelId": "com.cyberdesktop.pixeldesk.plant.1x1",
+    "sourceDescriptor": "plugins/ambience-suite/packages/plant-1x1/plugin.textproto",
+    "family": "plant",
+    "columns": 1,
+    "rows": 1,
+    "order": 69,
+    "id": "com.cyberdesktop.streetlink.plant.1x1",
+    "sourceSha256": "83c134337278b5dd991b9130cf81f0c795bddecec8aaa718e24d01f0773eba77",
+    "sourceFile": "art/69-plant-1x1.png",
+    "sourceBounds": [
+      169,
+      96,
+      807,
+      1244
+    ],
+    "sourceImageSize": [
+      1103,
+      1426
+    ],
+    "native": [
+      80,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "koi-4x4",
+    "name": "水生态观察站",
+    "pixelId": "com.cyberdesktop.pixeldesk.koi.4x4",
+    "sourceDescriptor": "plugins/koi-suite/packages/4x4/plugin.textproto",
+    "family": "koi",
+    "columns": 4,
+    "rows": 4,
+    "order": 70,
+    "id": "com.cyberdesktop.streetlink.koi.4x4",
+    "sourceSha256": "36134281d10caaeb1b9c398296bcef9190d297cbb7b3fe8315332aa07414db14",
+    "sourceFile": "art/70-koi-4x4.png",
+    "sourceBounds": [
+      39,
+      124,
+      1041,
+      1180
+    ],
+    "sourceImageSize": [
+      1117,
+      1408
+    ],
+    "native": [
+      320,
+      400
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "koi-6x3",
+    "name": "城市共生生态舱",
+    "pixelId": "com.cyberdesktop.pixeldesk.koi.6x3",
+    "sourceDescriptor": "plugins/koi-suite/packages/3x6/plugin.textproto",
+    "family": "koi",
+    "columns": 6,
+    "rows": 3,
+    "order": 71,
+    "id": "com.cyberdesktop.streetlink.koi.6x3",
+    "sourceSha256": "032560e71d8cdc773104ea1d4b7b522f31f6fa1c19b94c2ab5fcc02c89f2bc12",
+    "sourceFile": "art/71-koi-6x3.png",
+    "sourceBounds": [
+      16,
+      193,
+      1567,
+      613
+    ],
+    "sourceImageSize": [
+      1599,
+      984
+    ],
+    "native": [
+      480,
+      300
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "plant-2x2",
+    "name": "生物循环培养舱",
+    "pixelId": "com.cyberdesktop.pixeldesk.plant.2x2",
+    "sourceDescriptor": "plugins/ambience-suite/packages/plant-2x2/plugin.textproto",
+    "family": "plant",
+    "columns": 2,
+    "rows": 2,
+    "order": 72,
+    "id": "com.cyberdesktop.streetlink.plant.2x2",
+    "sourceSha256": "2e609b26d2619de57d42d275b221a242e8e6209fc90a448f808388506a823051",
+    "sourceFile": "art/72-plant-2x2.png",
+    "sourceBounds": [
+      65,
+      60,
+      962,
+      1296
+    ],
+    "sourceImageSize": [
+      1113,
+      1413
+    ],
+    "native": [
+      160,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "plant-4x2",
+    "name": "生物循环工作台",
+    "pixelId": "com.cyberdesktop.pixeldesk.plant.4x2",
+    "sourceDescriptor": "plugins/ambience-suite/packages/plant-2x4/plugin.textproto",
+    "family": "plant",
+    "columns": 4,
+    "rows": 2,
+    "order": 73,
+    "id": "com.cyberdesktop.streetlink.plant.4x2",
+    "sourceSha256": "48be75c14cc7f317e31022a6e5eadd129c3b167a4ea20baea81658ec7da52a00",
+    "sourceFile": "art/73-plant-4x2.png",
+    "sourceBounds": [
+      23,
+      47,
+      1556,
+      869
+    ],
+    "sourceImageSize": [
+      1605,
+      980
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "noise-2x1",
+    "name": "城市声景节点",
+    "pixelId": "com.cyberdesktop.pixeldesk.noise.2x1",
+    "sourceDescriptor": "plugins/ambience-suite/packages/noise-1x2/plugin.textproto",
+    "family": "noise",
+    "columns": 2,
+    "rows": 1,
+    "order": 74,
+    "id": "com.cyberdesktop.streetlink.noise.2x1",
+    "sourceSha256": "0c8d0f78342f641da7a159876f2f4b3b04dd8158816581b36f2da0feebe5ef44",
+    "sourceFile": "art/74-noise-2x1.png",
+    "sourceBounds": [
+      51,
+      194,
+      1538,
+      693
+    ],
+    "sourceImageSize": [
+      1624,
+      968
+    ],
+    "native": [
+      160,
+      100
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  },
+  {
+    "key": "noise-4x2",
+    "name": "城市声景接收站",
+    "pixelId": "com.cyberdesktop.pixeldesk.noise.4x2",
+    "sourceDescriptor": "plugins/ambience-suite/packages/noise-2x4/plugin.textproto",
+    "family": "noise",
+    "columns": 4,
+    "rows": 2,
+    "order": 75,
+    "id": "com.cyberdesktop.streetlink.noise.4x2",
+    "sourceSha256": "fdbe729f65b53417abba9ca5dbbb4f6d08d5e06cfaec2b0c38388139f27465a1",
+    "sourceFile": "art/75-noise-4x2.png",
+    "sourceBounds": [
+      9,
+      198,
+      1554,
+      683
+    ],
+    "sourceImageSize": [
+      1604,
+      981
+    ],
+    "native": [
+      320,
+      200
+    ],
+    "minimumInset": 6,
+    "samplingInset": 7,
+    "status": "native-verification"
+  }
+]

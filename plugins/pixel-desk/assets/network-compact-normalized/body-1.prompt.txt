@@ -1,0 +1,1 @@
+Extract the unchanged already-empty approved case pixels from supplement-10.art.png. No raster editing.

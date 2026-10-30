@@ -1,0 +1,28 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "reference": "design/mechanical-player-4x1-complete.png",
+  "role": "Authored transparent casing; live title, cover, Lucide icons, progress and time are rendered at runtime.",
+  "files": [
+    {
+      "file": "body.png",
+      "source": "exec-cebab1ef-38cb-4347-a6e1-c6408909f6b0.png",
+      "bytes": 1744804,
+      "sha256": "F15DBA306A10E8F5EA448C1229C4E1C86DA4340897C708FA5FD54908BBE4AFAE"
+    },
+    {
+      "file": "arm.png",
+      "source": "exec-01d7e718-06dc-4ee3-b3f4-a2b472943060.png",
+      "sha256": "DBD5721A8D7FCC7F3268BD17A657A46F34AB447EBCD65A7F8E1C35833638EDF2",
+      "bytes": 1430618,
+      "role": "Original image copied byte-for-byte; runtime masks select the original arm pixels, without redrawing or retouching."
+    },
+    {
+      "file": "vinyl.png",
+      "source": "exec-bc3c25dc-bc32-4834-b593-260412df72bd.png",
+      "sha256": "DA66269DA622332F0897F049560AF6C0C4858613625C00ED7227C13C246B096B",
+      "bytes": 1774629,
+      "derivedFrom": "exec-005b62ef-3380-48cc-9504-0d220d62580a.png",
+      "role": "Photographic vinyl with restrained asymmetric upper-left reflection, rotated as a PNG; no procedural grooves or spindle."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "uid": "b01-3",
+  "key": "spring-compact-instrument",
+  "name": "潮铃弹簧钟",
+  "file": "artwork/complete/spring-compact-instrument.png",
+  "composition": "器物",
+  "expression": null,
+  "model": [
+    360,
+    112
+  ],
+  "prompt": "artwork/complete/clock-revision-prompts.json",
+  "source": "C:/Users/chess/.codex/generated_images/01a168d9-df5a-78c0-8877-7eccae381ab2/exec-e0a25c27-a90a-4070-8428-718569c6433b.png",
+  "imageSize": [
+    2121,
+    741
+  ],
+  "bounds": [
+    24,
+    64,
+    2100,
+    677
+  ],
+  "sha256": "fa1b4b3a504f34d4339ebe98128c2728cda274e7e867418858df58bb119dbd84",
+  "type": "integrated-clock-instrument",
+  "label": "潮铃弹簧钟",
+  "partCuts": [
+    [
+      78,
+      238,
+      366,
+      690
+    ],
+    [
+      384,
+      238,
+      679,
+      690
+    ],
+    [
+      759,
+      238,
+      1050,
+      690
+    ],
+    [
+      1064,
+      238,
+      1357,
+      690
+    ],
+    [
+      1430,
+      238,
+      1725,
+      690
+    ],
+    [
+      1743,
+      238,
+      2040,
+      690
+    ]
+  ],
+  "partAnchors": [
+    [
+      224,
+      238
+    ],
+    [
+      530,
+      238
+    ],
+    [
+      906,
+      238
+    ],
+    [
+      1209,
+      238
+    ],
+    [
+      1579,
+      238
+    ],
+    [
+      1892,
+      238
+    ]
+  ],
+  "digitCenters": [
+    224,
+    530,
+    906,
+    1209,
+    1579,
+    1892
+  ],
+  "digitBaseline": 548,
+  "digitFontSize": 270,
+  "readingFaceY": [
+    350,
+    580
+  ],
+  "motionEnvelopePixels": 3,
+  "referenceModel": "360x112; each digit has an independent top suspension; pair gaps carry static colons"
+}

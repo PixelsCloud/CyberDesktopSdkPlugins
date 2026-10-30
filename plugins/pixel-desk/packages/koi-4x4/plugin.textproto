@@ -1,0 +1,379 @@
+id: "com.cyberdesktop.pixeldesk.koi.4x4"
+name: "像素锦鲤池 4×4"
+version: "1.0.0"
+author: "CyberDesktop / argonaut (procedural fish)"
+abi_version: 1
+entry: "plugin.dll"
+content_padding: 0
+layouts {
+    id: "4x4"
+    name: "4×4（宽×高）"
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
+    cells { a: 2 b: 1 }
+    cells { a: 3 b: 1 }
+    cells { b: 2 }
+    cells { a: 1 b: 2 }
+    cells { a: 2 b: 2 }
+    cells { a: 3 b: 2 }
+    cells { b: 3 }
+    cells { a: 1 b: 3 }
+    cells { a: 2 b: 3 }
+    cells { a: 3 b: 3 }
+    allowed_rotations: 0
+    is_default: true
+}
+footprint_rules { min_cells: 16 max_cells: 16 max_columns: 4 max_rows: 4 }
+description: "独立像素风外观，奶油白与薄荷绿机框；设置仅影响当前组件。"
+settings_page {
+    title: "锦鲤池 4×4设置"
+    description: "每个池塘独立保存。可调整鱼数量、点击吓跑或游向鼠标，鱼群与水面独立更新。"
+    fields {
+        id: "lighting"
+        label: "昼夜模式"
+        type: CHOICE
+        description: "跟随模式依据主题文字明暗选择昼夜；也可手动固定。"
+        section: "池塘"
+        choices {
+            value: "theme"
+            label: "跟随桌面主题"
+            localized_labels { key: "en" value: "Follow desktop theme" }
+            localized_labels { key: "zh-TW" value: "跟隨桌面主題" }
+        }
+        choices {
+            value: "day"
+            label: "白天"
+            localized_labels { key: "en" value: "Day" }
+            localized_labels { key: "zh-TW" value: "白天" }
+        }
+        choices {
+            value: "night"
+            label: "黑夜"
+            localized_labels { key: "en" value: "Night" }
+            localized_labels { key: "zh-TW" value: "黑夜" }
+        }
+        text_default: "day"
+        localized {
+            key: "en"
+            value {
+                label: "Lighting"
+                description: "Theme mode follows the desktop text contrast; manual day and night are available."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "晝夜模式" description: "跟隨模式依據主題文字明暗選擇晝夜；也可手動固定。" section: "池塘" }
+        }
+    }
+    fields {
+        id: "fish_count"
+        label: "锦鲤数量"
+        type: INTEGER
+        description: "只调整当前池塘的鱼群。"
+        section: "池塘"
+        minimum: 1.0
+        maximum: 12.0
+        step: 1.0
+        integer_default: 8
+        localized {
+            key: "en"
+            value { label: "Koi count" description: "Adjusts only this pond." section: "Pond" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "錦鯉數量" description: "只調整當前池塘的魚群。" section: "池塘" }
+        }
+    }
+    fields {
+        id: "mouse_behavior"
+        label: "鼠标交互"
+        type: CHOICE
+        description: "默认点击水面时鱼群加速逃离；游向鼠标模式跟随池塘内的鼠标，移出后恢复游动。拖动不触发惊吓。"
+        section: "池塘"
+        choices {
+            value: "flee"
+            label: "点击吓跑"
+            localized_labels { key: "en" value: "Flee on click" }
+            localized_labels { key: "zh-TW" value: "點選嚇跑" }
+        }
+        choices {
+            value: "follow"
+            label: "游向鼠标"
+            localized_labels { key: "en" value: "Swim toward pointer" }
+            localized_labels { key: "zh-TW" value: "遊向滑鼠" }
+        }
+        text_default: "flee"
+        localized {
+            key: "en"
+            value {
+                label: "Mouse interaction"
+                description: "Clicks startle the school by default. Follow mode swims toward the pointer inside the pond; leaving resumes roaming. Dragging does not startle fish."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "滑鼠互動"
+                description: "預設點選水面時魚群加速逃離；遊向滑鼠模式跟隨池塘內的滑鼠，移出後恢復遊動。拖動不觸發驚嚇。"
+                section: "池塘"
+            }
+        }
+    }
+
+    fields {
+        id: "blessings"
+        label: "显示祝福"
+        type: TOGGLE
+        description: "50 个简体中文祝福词随机轮换；调试期间每约 6 秒出现一次，淡入、轻浮、淡出。"
+        section: "池塘"
+        bool_default: false
+        localized {
+            key: "en"
+            value {
+                label: "Display blessings"
+                description: "50 Simplified Chinese blessing words rotate randomly; during debugging, appear about every 6 seconds, fading in, floating lightly, and fading out."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "顯示祝福"
+                description: "50 個簡體中文祝福詞隨機輪換；除錯期間每約 6 秒出現一次，淡入、輕浮、淡出。"
+                section: "池塘"
+            }
+        }
+    }
+    fields {
+        id: "swim_speed"
+        label: "游动速度"
+        type: NUMBER
+        section: "池塘"
+        minimum: 0.3
+        maximum: 2.0
+        step: 0.1
+        number_default: 1.0
+        localized {
+            key: "en"
+            value { label: "Swim speed" section: "Pond" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "遊動速度" section: "池塘" }
+        }
+    }
+    fields {
+        id: "motion_speed"
+        label: "水面与植物动效速度"
+        type: NUMBER
+        description: "荷叶、荷花、水面动效的速度倍率，默认 0.75 倍；游鱼速度单独设置。"
+        section: "池塘"
+        minimum: 0.25
+        maximum: 4.0
+        step: 0.25
+        number_default: 0.75
+        localized {
+            key: "en"
+            value {
+                label: "Water and plant animation speed"
+                description: "Animation multiplier for water, lily pads and lotus blossoms. Defaults to 0.75x; fish speed is separate."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "水面與植物動效速度"
+                description: "荷葉、荷花、水面動效的速度倍率，預設 0.75 倍；游魚速度單獨設定。"
+                section: "池塘"
+            }
+        }
+    }
+    fields {
+        id: "shimmer"
+        label: "水面波光强度"
+        type: INTEGER
+        section: "池塘"
+        maximum: 100.0
+        step: 1.0
+        integer_default: 65
+        localized {
+            key: "en"
+            value { label: "Water shimmer" section: "Pond" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "水面波光強度" section: "池塘" }
+        }
+    }
+    fields {
+        id: "color"
+        label: "锦鲤花纹颜色"
+        type: COLOR
+        description: "保留白、金和墨色，仅调整红色花纹。"
+        section: "池塘"
+        color_default: 3967372543
+        localized {
+            key: "en"
+            value {
+                label: "Koi marking color"
+                description: "Adjusts red markings; white, gold and black remain."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "錦鯉花紋顏色" description: "保留白、金和墨色，僅調整紅色花紋。" section: "池塘" }
+        }
+    }
+
+    fields {
+        id: "animation"
+        label: "启用动画"
+        type: TOGGLE
+        description: "关闭后保留静止池塘，停止动画定时器。"
+        section: "池塘"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Animate pond"
+                description: "Disabled keeps a still pond and removes its animation timer."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "啟用動畫" description: "關閉後保留靜止池塘，停止動畫定時器。" section: "池塘" }
+        }
+    }
+    fields {
+        id: "frame_rate"
+        label: "池塘基础帧率"
+        type: CHOICE
+        description: "池塘默认 20 帧；祝福文字进出时独立以 60 帧合成，只刷新池塘区域。"
+        section: "池塘"
+        choices {
+            value: "15"
+            label: "15 FPS"
+            localized_labels { key: "en" value: "15 FPS" }
+            localized_labels { key: "zh-TW" value: "15 FPS" }
+        }
+        choices {
+            value: "20"
+            label: "20 FPS"
+            localized_labels { key: "en" value: "20 FPS" }
+            localized_labels { key: "zh-TW" value: "20 FPS" }
+        }
+        choices {
+            value: "30"
+            label: "30 FPS"
+            localized_labels { key: "en" value: "30 FPS" }
+            localized_labels { key: "zh-TW" value: "30 FPS" }
+        }
+        text_default: "20"
+        localized {
+            key: "en"
+            value {
+                label: "Animation frame rate"
+                description: "The pond defaults to 20 fps; blessing transitions are composed separately at 60 fps within the card."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "池塘基礎幀率"
+                description: "池塘預設 20 幀；祝福文字進出時獨立以 60 幀合成，只重新整理池塘區域。"
+                section: "池塘"
+            }
+        }
+    }
+    fields {
+        id: "seed"
+        label: "池塘布局编号"
+        type: INTEGER
+        description: "每次启动随机分布和朝向；改变编号可重新随机排列当前鱼群。"
+        section: "池塘"
+        minimum: 1.0
+        maximum: 9999.0
+        step: 1.0
+        integer_default: 7
+        localized {
+            key: "en"
+            value {
+                label: "Pond variation"
+                description: "Every startup randomizes positions and headings. Changing this value reshuffles the current school."
+                section: "Pond"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value {
+                label: "池塘佈局編號"
+                description: "每次啟動隨機分佈和朝向；改變編號可重新隨機排列當前魚群。"
+                section: "池塘"
+            }
+        }
+    }
+
+    fields {
+        id: "language"
+        label: "设置语言"
+        type: CHOICE
+        section: "池塘"
+        choices {
+            value: "zh-CN"
+            label: "简体中文"
+            localized_labels { key: "en" value: "简体中文" }
+            localized_labels { key: "zh-TW" value: "簡體中文" }
+        }
+        choices {
+            value: "en"
+            label: "English"
+            localized_labels { key: "en" value: "English" }
+            localized_labels { key: "zh-TW" value: "English" }
+        }
+        choices {
+            value: "zh-TW"
+            label: "繁體中文"
+            localized_labels { key: "en" value: "Traditional Chinese" }
+            localized_labels { key: "zh-TW" value: "繁體中文" }
+        }
+        text_default: "zh-CN"
+        localized {
+            key: "en"
+            value { label: "Settings language" section: "Pond" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "設定語言" section: "池塘" }
+        }
+    }
+    localized {
+        key: "en"
+        value {
+            title: "Koi pond settings"
+            description: "Independent koi count, flee/follow interaction and optional transparent background."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value {
+            title: "錦鯉池 4×4設定"
+            description: "每個池塘獨立儲存。可調整魚數量、點選嚇跑或遊向滑鼠，魚群與水面獨立更新。"
+        }
+    }
+}
+preview: "preview.png"
+tags: "像素"
+tags: "锦鲤"
+tags: "互动"
+
+capabilities: IMAGE_SKINS

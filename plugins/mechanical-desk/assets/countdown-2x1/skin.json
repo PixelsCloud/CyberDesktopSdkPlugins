@@ -1,0 +1,42 @@
+{
+  "folder": "countdown-2x1",
+  "kind": "countdown",
+  "columns": 2,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1166,
+    174,
+    361,
+    244
+  ],
+  "inset": 6.25,
+  "regions": {
+    "date": [
+      1198,
+      212,
+      70,
+      75
+    ],
+    "title": [
+      1324,
+      237,
+      123,
+      24
+    ],
+    "days": [
+      1324,
+      278,
+      123,
+      59
+    ]
+  },
+  "originalArtwork": "supplement-12.art.png",
+  "originalSha256": "192e66749fa094775a2079f59002092c212d847e34c9e2b516992cb811f990c4",
+  "board": 12,
+  "slot": 3,
+  "nativePixelsUnmodified": true
+}

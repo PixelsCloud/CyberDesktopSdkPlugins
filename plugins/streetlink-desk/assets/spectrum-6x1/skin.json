@@ -1,0 +1,64 @@
+{
+  "folder": "spectrum-6x1",
+  "columns": 6,
+  "rows": 1,
+  "scene": [
+    480,
+    100
+  ],
+  "regions": {
+    "plot": [
+      105.80230136986302,
+      29.360000000000003,
+      347.06301369863013,
+      37.839999999999996
+    ]
+  },
+  "layers": [
+    {
+      "name": "body",
+      "file": "body.png",
+      "source": [
+        43,
+        219,
+        1964,
+        365
+      ],
+      "destination": [
+        8.62465753424658,
+        7.0,
+        462.75068493150684,
+        86.0
+      ]
+    }
+  ],
+  "parts": {},
+  "defaults": {
+    "color": 15200255,
+    "color_top": 15200255,
+    "font_family": "Chakra Petch",
+    "color_middle": 15200255,
+    "peak_color": 4107155711
+  },
+  "palette": "terminal",
+  "screens": [
+    [
+      105.80230136986302,
+      28.5,
+      347.06301369863013,
+      39.56
+    ]
+  ],
+  "styles": {},
+  "armour": [],
+  "actuators": [],
+  "horizontal": {
+    "left": 8.62465753424658,
+    "right": 471.3753424657534,
+    "cuts": [
+      240.0
+    ],
+    "inset": 7,
+    "preserveEndcaps": true
+  }
+}

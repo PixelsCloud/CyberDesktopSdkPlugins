@@ -1,0 +1,155 @@
+[
+  {
+    "id": "com.cyberdesktop.clock.digital.1x1",
+    "name": "数字时钟 1×1",
+    "family": "digital",
+    "rows": 1,
+    "columns": 1,
+    "folder": "digital-1x1",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.digital.1x2",
+    "name": "数字时钟 2×1",
+    "family": "digital",
+    "rows": 1,
+    "columns": 2,
+    "folder": "digital-1x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.digital.1x4",
+    "name": "数字时钟 4×1",
+    "family": "digital",
+    "rows": 1,
+    "columns": 4,
+    "folder": "digital-1x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.digital.2x2",
+    "name": "数字时钟 2×2",
+    "family": "digital",
+    "rows": 2,
+    "columns": 2,
+    "folder": "digital-2x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.analog.1x1",
+    "name": "模拟时钟 1×1",
+    "family": "analog",
+    "rows": 1,
+    "columns": 1,
+    "folder": "analog-1x1",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.analog.1x2",
+    "name": "模拟时钟 2×1",
+    "family": "analog",
+    "rows": 1,
+    "columns": 2,
+    "folder": "analog-1x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.analog.1x4",
+    "name": "模拟时钟 4×1",
+    "family": "analog",
+    "rows": 1,
+    "columns": 4,
+    "folder": "analog-1x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.analog.2x2",
+    "name": "模拟时钟 2×2",
+    "family": "analog",
+    "rows": 2,
+    "columns": 2,
+    "folder": "analog-2x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.flip.2x2",
+    "name": "翻页卡片时钟 2×2",
+    "family": "flip",
+    "rows": 2,
+    "columns": 2,
+    "folder": "flip-2x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.flip.1x4",
+    "name": "翻页卡片时钟 4×1",
+    "family": "flip",
+    "rows": 1,
+    "columns": 4,
+    "folder": "flip-1x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.flip.2x4",
+    "name": "翻页卡片时钟 4×2",
+    "family": "flip",
+    "rows": 2,
+    "columns": 4,
+    "folder": "flip-2x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.lcd.1x2",
+    "name": "电子时钟 2×1",
+    "family": "lcd",
+    "rows": 1,
+    "columns": 2,
+    "folder": "lcd-1x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.lcd.1x4",
+    "name": "电子时钟 4×1",
+    "family": "lcd",
+    "rows": 1,
+    "columns": 4,
+    "folder": "lcd-1x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.pixel.1x2",
+    "name": "像素时钟 2×1",
+    "family": "pixel",
+    "rows": 1,
+    "columns": 2,
+    "folder": "pixel-1x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.pixel.1x4",
+    "name": "像素时钟 4×1",
+    "family": "pixel",
+    "rows": 1,
+    "columns": 4,
+    "folder": "pixel-1x4",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.pixelround.1x2",
+    "name": "圆形点阵时钟 2×1",
+    "family": "pixelround",
+    "rows": 1,
+    "columns": 2,
+    "folder": "pixelround-1x2",
+    "version": "1.0.0"
+  },
+  {
+    "id": "com.cyberdesktop.clock.pixelround.1x4",
+    "name": "圆形点阵时钟 4×1",
+    "family": "pixelround",
+    "rows": 1,
+    "columns": 4,
+    "folder": "pixelround-1x4",
+    "version": "1.0.0"
+  }
+]

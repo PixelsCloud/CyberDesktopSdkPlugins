@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-fa6bdba9-352f-452a-8743-cdd024e4e3dd.png",
+  "reference": "design/pixel-desk-suite/05-media-utilities.png",
+  "imageSize": [
+    1122,
+    1402
+  ],
+  "visibleBounds": [
+    115,
+    94,
+    892,
+    1195
+  ],
+  "purpose": "Empty portrait player shell and screen recesses only. Native original cover, title, three controls and progress use their own aligned runtime rectangles.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "5bf206d22e91e22de1bb679b0dd25dbb922cefc24f3eea1b29fe4d722a5732b4"
+}

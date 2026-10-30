@@ -1,0 +1,11 @@
+{
+  "tool": "built-in imagegen",
+  "nativePixelsUnmodified": true,
+  "designSource": "design/mechanical-desk-suite/supplement-chime-clearance.art.png",
+  "materials": [
+    {
+      "file": "body.png",
+      "sha256": "a90ee7e540cbaf479388fc8277f558057ea51f32f4ad36cd2c198d7cd01b86f1"
+    }
+  ]
+}

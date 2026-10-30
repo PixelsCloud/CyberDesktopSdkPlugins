@@ -1,0 +1,48 @@
+{
+  "folder": "network-2x1",
+  "kind": "network",
+  "columns": 2,
+  "rows": 1,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    546,
+    109,
+    475,
+    225
+  ],
+  "inset": 6.25,
+  "regions": {
+    "download": [
+      793,
+      142,
+      190,
+      38
+    ],
+    "upload": [
+      793,
+      202,
+      190,
+      34
+    ],
+    "downloadHistory": [
+      795,
+      181,
+      182,
+      10
+    ],
+    "uploadHistory": [
+      795,
+      239,
+      182,
+      10
+    ]
+  },
+  "originalArtwork": "supplement-09.art.png",
+  "originalSha256": "7566af9a0837362fe2a206a3ad39c878e09cac24553cccd541892c77d8d89789",
+  "board": 9,
+  "slot": 2,
+  "nativePixelsUnmodified": true
+}

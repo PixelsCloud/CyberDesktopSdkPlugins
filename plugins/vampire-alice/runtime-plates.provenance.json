@@ -1,0 +1,326 @@
+[
+  {
+    "folder": "clock-square-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "clock-round-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "spring-clock-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "spring-clock-4x2",
+    "source": "design/vampire-muse-suite/spring-clock-4x2.integrated.art.png",
+    "sourceSha256": "6ef9fdcc205258afe1175556da7395a9afc4bf25656b44c707efab4cd08bb6dd",
+    "derived": "design/vampire-muse-suite/spring-clock-4x2.integrated.runtime.png",
+    "derivedSha256": "b745be63a66a13a98361325e56829e6f8ee4077f8061c2883b8fb5a3e1c801a5",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "marble-clock-4x2",
+    "source": "design/vampire-muse-suite/marble-clock-4x2.integrated.art.png",
+    "sourceSha256": "84674c71d20779b15f12b450f24f3679f5084bd71056b9f36241c892a60773ce",
+    "derived": "design/vampire-muse-suite/marble-clock-4x2.integrated.runtime.png",
+    "derivedSha256": "2f0e36d193c6b5f2941ff698827861746e8637fd09fcaeb1bf59ea7c8839beaf",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "marble-clock-6x2",
+    "source": "design/vampire-muse-suite/marble-clock-6x2.integrated.art.png",
+    "sourceSha256": "1d9859d5dc1d93134950359c28214f3c6e7df2bcf77e6d5c7f28f31db451b442",
+    "derived": "design/vampire-muse-suite/marble-clock-6x2.integrated.runtime.png",
+    "derivedSha256": "aa590466e2be628c1d350a1fe652c9a50ebd0c4d6f3d9ed936e50f4e6f9b1cff",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "calendar-4x2",
+    "source": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "sourceSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "derived": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "derivedSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "lunar-2x1",
+    "source": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "sourceSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "derived": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "derivedSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "lunar-2x2",
+    "source": "design/vampire-muse-suite/02-time-calendar.art.png",
+    "sourceSha256": "9538ddcc207f95b2467238287390e73f82916b6ee8ecc8248e2e37cb523a4cfa",
+    "derived": "design/vampire-muse-suite/02-time-calendar.runtime.png",
+    "derivedSha256": "eb8e918f14439ee2b0420f49b7b47068ed135e8d6f4becb03978ca09eae40d49",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "lunar-4x4",
+    "source": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "sourceSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "derived": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "derivedSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "weather-2x1",
+    "source": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "sourceSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "derived": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "derivedSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "weather-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "weather-4x2",
+    "source": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "sourceSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "derived": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "derivedSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "air-2x1",
+    "source": "design/vampire-muse-suite/03-calendar-weather-air.art.png",
+    "sourceSha256": "41df2cd8c3bdb13e2d341838205cfb05ae7cc724d5c7e2180b876e6d864010bc",
+    "derived": "design/vampire-muse-suite/03-calendar-weather-air.runtime.png",
+    "derivedSha256": "570fbdd0b26d53de34597030a79c0f5de0a650f478e6d386571f1fa441aef239",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "air-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "air-4x2",
+    "source": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "sourceSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "derived": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "derivedSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "monitor-1x1",
+    "source": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "sourceSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "derived": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "derivedSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "monitor-2x1",
+    "source": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "sourceSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "derived": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "derivedSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "monitor-4x1",
+    "source": "design/vampire-muse-suite/width-02-controls.art.png",
+    "sourceSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "derived": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "derivedSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "monitor-2x2",
+    "source": "design/vampire-muse-suite/04-system-instruments.art.png",
+    "sourceSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
+    "derived": "design/vampire-muse-suite/04-system-instruments.runtime.png",
+    "derivedSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "network-4x1",
+    "source": "design/vampire-muse-suite/width-01-time-weather.art.png",
+    "sourceSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+    "derived": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+    "derivedSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "disk-2x2",
+    "source": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "sourceSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "derived": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "derivedSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "input-4x1",
+    "source": "design/vampire-muse-suite/width-02-controls.art.png",
+    "sourceSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "derived": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "derivedSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "album-4x2",
+    "source": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "sourceSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "derived": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "derivedSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "player-4x1",
+    "source": "design/vampire-muse-suite/width-02-controls.art.png",
+    "sourceSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "derived": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "derivedSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "player-2x2",
+    "source": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "sourceSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "derived": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "derivedSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "player-4x2",
+    "source": "design/vampire-muse-suite/05-media-utilities.art.png",
+    "sourceSha256": "cb0feff4b1a11931c0e90b0af954680a61cadcc3f5bea0e0ef8cb594c484c936",
+    "derived": "design/vampire-muse-suite/05-media-utilities.runtime.png",
+    "derivedSha256": "ddd6acb319e3a813cec903afe72daca8d4caf94a1a19e62be1000db52b057926",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "spectrum-4x1",
+    "source": "design/vampire-muse-suite/width-02-controls.art.png",
+    "sourceSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "derived": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "derivedSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "radial-2x2",
+    "source": "design/vampire-muse-suite/07-audio-interactive.art.png",
+    "sourceSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+    "derived": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+    "derivedSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "beat-machine-4x2",
+    "source": "design/vampire-muse-suite/beat-machine-4x2.integrated.art.png",
+    "sourceSha256": "2a7334390427945bbc11ecca69cf20673c8d7453f71d41d9ff83584cb83abfa3",
+    "derived": "design/vampire-muse-suite/beat-machine-4x2.integrated.runtime.png",
+    "derivedSha256": "c965559351d7111431b62982218e4ac254a31051383189b7294cdcddb3814522",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "beat-machine-6x2",
+    "source": "design/vampire-muse-suite/beat-machine-6x2.integrated.art.png",
+    "sourceSha256": "ed9f73fd9819cc3244fa0190fb962173834020f2d5a31abf962499baa9a2b39c",
+    "derived": "design/vampire-muse-suite/beat-machine-6x2.integrated.runtime.png",
+    "derivedSha256": "5d3d31f6c8b2e0f392cf2994b01fd3ea66051d1d1b7e086002eb1e3481daad8c",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "wind-chime-2x2",
+    "source": "design/vampire-muse-suite/07-audio-interactive.art.png",
+    "sourceSha256": "62eca83c7c0ecfa1843dc2758a8fd92c4c5252efba48fde2f3b92e3ce2ae1302",
+    "derived": "design/vampire-muse-suite/07-audio-interactive.runtime.png",
+    "derivedSha256": "68b75dd5488aef7da347e2a74d63e14126920e02b16f0307a20e482eddc3f3d1",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "split-flap-4x1",
+    "source": "design/vampire-muse-suite/width-02-controls.art.png",
+    "sourceSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
+    "derived": "design/vampire-muse-suite/width-02-controls.runtime.png",
+    "derivedSha256": "8b19347a01287fdac0b004dbe40910187c6e19b76f194520a792268de2c0201b",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "hourglass-1x1",
+    "source": "design/vampire-muse-suite/08-timers.art.png",
+    "sourceSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "derived": "design/vampire-muse-suite/08-timers.runtime.png",
+    "derivedSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "hourglass-2x1",
+    "source": "design/vampire-muse-suite/08-timers.art.png",
+    "sourceSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "derived": "design/vampire-muse-suite/08-timers.runtime.png",
+    "derivedSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  },
+  {
+    "folder": "timer-2x2",
+    "source": "design/vampire-muse-suite/08-timers.art.png",
+    "sourceSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
+    "derived": "design/vampire-muse-suite/08-timers.runtime.png",
+    "derivedSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
+    "tool": "image_gen.imagegen",
+    "purpose": "Preserve approved frames/materials; remove only baked live content"
+  }
+]

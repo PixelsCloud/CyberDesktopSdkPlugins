@@ -1,0 +1,56 @@
+{
+  "id": "com.cyberdesktop.deepwhale.hourglass.2x1",
+  "folder": "hourglass-2x1",
+  "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
+  "source": "plugins/mechanical-hourglass/packages/2x1/plugin.textproto",
+  "family": "hourglass",
+  "kind": 0,
+  "columns": 2,
+  "rows": 1,
+  "scene": [
+    160,
+    100
+  ],
+  "regions": {
+    "glass": [
+      22.909634551495017,
+      30.026323521594684,
+      27.16279069767442,
+      45.59468438538206
+    ],
+    "title": [
+      83.5,
+      48.29688,
+      41.26563,
+      19
+    ],
+    "progress": [
+      73.34375,
+      70.29688,
+      61.59375,
+      5
+    ]
+  },
+  "layers": [
+    {
+      "name": "art-0",
+      "file": "art-0.png",
+      "source": [
+        51,
+        60,
+        1505,
+        844
+      ],
+      "destination": [
+        7,
+        11.10938,
+        146,
+        81.875
+      ]
+    }
+  ],
+  "designUid": "b08-2",
+  "defaults": {
+    "text_color": 1062963711
+  }
+}

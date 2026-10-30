@@ -1,0 +1,20 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-98ace516-37e5-4ecc-86b3-585f433658be.png",
+  "reference": "design/pixel-desk-suite/02-time-calendar.png",
+  "imageSize": [
+    1568,
+    1003
+  ],
+  "visibleBounds": [
+    30,
+    81,
+    1508,
+    811
+  ],
+  "purpose": "Empty calendar frame. Native code extends only straight sidewalls by 120 units, paints the cream paper and real Gregorian dates and navigation controls.",
+  "prompts": [
+    "body.prompt.txt"
+  ],
+  "sha256": "536e4f8ce2e0ce23574e1eb70d7b8a518ea9020d0d8b4aceaee025f292bda60d"
+}

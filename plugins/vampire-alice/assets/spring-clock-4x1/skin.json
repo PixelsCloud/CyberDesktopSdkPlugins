@@ -1,0 +1,69 @@
+{
+  "id": "com.cyberdesktop.vampire.alice.spring.clock.4x1",
+  "folder": "spring-clock-4x1",
+  "sourceId": "com.cyberdesktop.physics.springclock.mechanical.1x4",
+  "source": "plugins/physics-toys/packages/mechanical-clock-1x4/plugin.textproto",
+  "family": "toys",
+  "kind": 0,
+  "rows": 1,
+  "columns": 4,
+  "board": 1,
+  "slot": 3,
+  "character": false,
+  "imageSize": [
+    1024,
+    1536
+  ],
+  "crop": [
+    8,
+    582,
+    1008,
+    203
+  ],
+  "art": "design/vampire-muse-suite/width-01-time-weather.runtime.png",
+  "artSha256": "e1f78a15d4791d708710b2ddb6607a49b134e587d859a7ef670230fafa360f17",
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "吸血鬼",
+    "Alice"
+  ],
+  "name": "吸血鬼.Alice · 弹簧数字时钟 4×1",
+  "regions": {
+    "world": [
+      0.17162698412698413,
+      0.06403940886699508,
+      0.6448412698412699,
+      0.9961685823743842
+    ],
+    "card": [
+      0.18,
+      0.34,
+      0.09,
+      0.56
+    ]
+  },
+  "approvedArt": "design/vampire-muse-suite/width-01-time-weather.art.png",
+  "approvedArtSha256": "2888f9a694ad7069e209979459be30c88218f3083f5f9e0e57ab6e6dd6f460fb",
+  "runtimePlate": true,
+  "nativeTicks": false,
+  "hardware": {
+    "card": [
+      190,
+      652,
+      83,
+      112
+    ],
+    "spring": [
+      214,
+      616,
+      36,
+      39
+    ]
+  },
+  "hardwareSize": [
+    1024,
+    1536
+  ],
+  "hardwareSha256": "ee4804b1e692d3833fb9a0d5573d95fb9dd19e6336e25bbdc6426f285656b38c"
+}

@@ -1,0 +1,18 @@
+{
+  "generator": "OpenAI image_gen",
+  "source": "C:\\Users\\chess\\.codex\\generated_images\\01a14d2b-6efb-7750-b55d-5f75f6b2e418\\exec-7635eb11-137c-481e-adf6-6805f88d3d24.png",
+  "reference": "design/pixel-desk-suite/01-clocks.png",
+  "imageSize": [
+    1774,
+    887
+  ],
+  "visibleBounds": [
+    29,
+    132,
+    1716,
+    618
+  ],
+  "purpose": "Empty pixel chassis only. Live tracks, marbles, hinged floor, gears and clock digits are independently drawn from the existing Box2D model.",
+  "registration": "Uniform corner scale; extend only straight sidewall section to surround unchanged 720x360 simulation and clear bottom return.",
+  "sha256": "88fcc56ecb1653f5e7b316760d0c2f5bbc9d92238f8082d5e99769dd87ba8c85"
+}

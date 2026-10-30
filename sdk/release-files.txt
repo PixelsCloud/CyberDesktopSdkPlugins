@@ -1,0 +1,2 @@
+# Retired: sdk/public-source.json is the authoritative source inventory.
+# Use sdk/scripts/export-public-source.ps1, optionally with -SdkOnly.

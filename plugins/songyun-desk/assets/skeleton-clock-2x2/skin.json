@@ -1,0 +1,84 @@
+{
+  "id": "com.cyberdesktop.songyun.skeleton.clock.2x2",
+  "folder": "skeleton-clock-2x2",
+  "sourceId": "com.cyberdesktop.clock.precision.skeleton.2x2",
+  "source": "plugins/precision-clocks/packages/skeleton/plugin.textproto",
+  "family": "precision",
+  "kind": 0,
+  "rows": 2,
+  "columns": 2,
+  "board": 2,
+  "slot": 3,
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    1041,
+    75,
+    448,
+    430
+  ],
+  "minimumInset": 6,
+  "version": "1.0.0",
+  "tags": [
+    "宋"
+  ],
+  "name": "宋韵 · 镂空精密钟 2×2",
+  "regions": {
+    "world": [
+      0.11607142857142858,
+      0.10465116279069768,
+      0.7767857142857143,
+      0.8093023255813954
+    ],
+    "surface0Circle": [
+      0.109375,
+      0.1,
+      0.7901785714285714,
+      0.8232558139534883
+    ],
+    "pin": [
+      0.46651785714285715,
+      0.47674418604651164,
+      0.06696428571428571,
+      0.06976744186046512
+    ],
+    "gear0": [
+      0.3861607142857143,
+      0.24651162790697675,
+      0.15848214285714285,
+      0.16511627906976745
+    ],
+    "gear1": [
+      0.5401785714285714,
+      0.31627906976744186,
+      0.13616071428571427,
+      0.14186046511627906
+    ],
+    "gear2": [
+      0.3013392857142857,
+      0.413953488372093,
+      0.16741071428571427,
+      0.1744186046511628
+    ],
+    "gear3": [
+      0.49107142857142855,
+      0.4558139534883721,
+      0.18973214285714285,
+      0.19767441860465115
+    ],
+    "gear4": [
+      0.484375,
+      0.6325581395348837,
+      0.14508928571428573,
+      0.1511627906976744
+    ]
+  },
+  "runtimePlate": true,
+  "art": "design/songyun-desk-suite/02-time-calendar.art.png",
+  "artSha256": "0c7b3d4a6417f1e70254e2d31739c51276fdb9d3ec0670bbb5851b6f649edbd8",
+  "plateSha256": "945b4f8d469e606168b793e7c078f93bd4c03fdb2ef59095337bdc8c2495fc10",
+  "plateSource": "plugins/songyun-desk/materials/02-time-calendar.runtime.png",
+  "renderInset": 7
+}

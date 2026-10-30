@@ -1,0 +1,228 @@
+{
+  "id": "com.cyberdesktop.deepwhale.chime.2x2",
+  "folder": "chime-2x2",
+  "sourceId": "com.cyberdesktop.physics.windchime.mechanical.2x2",
+  "source": "plugins/physics-toys/packages/mechanical-chime-2x2/plugin.textproto",
+  "family": "chime",
+  "kind": 0,
+  "columns": 2,
+  "rows": 2,
+  "scene": [
+    160,
+    200
+  ],
+  "regions": {
+    "strand0": [
+      31.82,
+      66.9675,
+      32.85,
+      60.863749999999996
+    ],
+    "strand1": [
+      59.0,
+      65.375,
+      48.125,
+      121.75
+    ],
+    "strand2": [
+      107.125,
+      54.75,
+      40.625,
+      132.375
+    ]
+  },
+  "layers": [
+    {
+      "name": "fixed",
+      "file": "art-0.png",
+      "source": [
+        35,
+        21,
+        1056,
+        314
+      ],
+      "destination": [
+        14,
+        15.5,
+        132,
+        39.25
+      ]
+    },
+    {
+      "name": "fixed-bridge",
+      "file": "art-0.png",
+      "source": [
+        395,
+        335,
+        385,
+        85
+      ],
+      "destination": [
+        59.0,
+        54.75,
+        48.125,
+        10.625
+      ]
+    }
+  ],
+  "designUid": "b07-5",
+  "parts": {
+    "bell0": {
+      "file": "art-0.png",
+      "source": [
+        35,
+        335,
+        360,
+        667
+      ]
+    },
+    "tail0": {
+      "file": "art-0.png",
+      "source": [
+        35,
+        1002,
+        360,
+        392
+      ]
+    },
+    "bell1": {
+      "file": "art-0.png",
+      "source": [
+        395,
+        420,
+        385,
+        614
+      ]
+    },
+    "tail1": {
+      "file": "art-0.png",
+      "source": [
+        395,
+        1034,
+        385,
+        360
+      ]
+    },
+    "bell2": {
+      "file": "art-0.png",
+      "source": [
+        780,
+        335,
+        325,
+        667
+      ]
+    },
+    "tail2": {
+      "file": "art-0.png",
+      "source": [
+        780,
+        1002,
+        325,
+        392
+      ]
+    }
+  },
+  "pendulums": [
+    {
+      "pivot": [
+        32.75,
+        54.125
+      ],
+      "rect": [
+        14.0,
+        54.75,
+        45.0,
+        132.375
+      ]
+    },
+    {
+      "pivot": [
+        79.625,
+        63.5
+      ],
+      "rect": [
+        59.0,
+        65.375,
+        48.125,
+        121.75
+      ]
+    },
+    {
+      "pivot": [
+        126.25,
+        54.125
+      ],
+      "rect": [
+        107.125,
+        54.75,
+        40.625,
+        132.375
+      ]
+    }
+  ],
+  "swingDegrees": 1.4,
+  "defaults": {},
+  "chimePieces": [
+    {
+      "name": "bell0",
+      "rect": [
+        31.82,
+        66.9675,
+        32.85,
+        60.863749999999996
+      ],
+      "parent": -1
+    },
+    {
+      "name": "tail0",
+      "rect": [
+        31.82,
+        127.83125,
+        32.85,
+        35.769999999999996
+      ],
+      "parent": 0
+    },
+    {
+      "name": "bell1",
+      "rect": [
+        64.67,
+        74.72375,
+        35.13125,
+        56.027499999999996
+      ],
+      "parent": -1
+    },
+    {
+      "name": "tail1",
+      "rect": [
+        64.67,
+        130.75125,
+        35.13125,
+        32.85
+      ],
+      "parent": 2
+    },
+    {
+      "name": "bell2",
+      "rect": [
+        99.80125,
+        66.9675,
+        29.65625,
+        60.863749999999996
+      ],
+      "parent": -1
+    },
+    {
+      "name": "tail2",
+      "rect": [
+        99.80125,
+        127.83125,
+        29.65625,
+        35.769999999999996
+      ],
+      "parent": 4
+    }
+  ],
+  "motionInset": 7
+}
