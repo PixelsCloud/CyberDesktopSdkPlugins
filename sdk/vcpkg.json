@@ -30,7 +30,7 @@
           "name": "curl",
           "default-features": false,
           "features": [
-            "schannel"
+            "ssl"
           ]
         }
       ]
