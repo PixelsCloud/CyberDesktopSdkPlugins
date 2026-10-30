@@ -84,7 +84,16 @@ if(CD_WIDGET_BUILD_TESTS)
 endif()
 
 # Implementations shared by this plugin family.
-target_sources(cd_widget_core PRIVATE AlbumArtwork.cpp InputCounter.cpp MechanicalInputCounter.cpp MechanicalSpectrum.cpp PlayerArtwork.cpp)
+target_sources(cd_widget_core PRIVATE AlbumArtwork.cpp InputCounter.cpp MechanicalInputCounter.cpp MechanicalSpectrum.cpp PlayerArtwork.cpp
+    ThemedController.h ThemedController.cpp)
+add_executable(cd_themed_widget_tests EXCLUDE_FROM_ALL tools/ThemedControllerTests.cpp)
+target_link_libraries(cd_themed_widget_tests PRIVATE cd_widget_core)
+target_compile_options(cd_themed_widget_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_themed_widget_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+enable_testing()
+add_test(NAME themed_widget_controller COMMAND cd_themed_widget_tests)
+set_tests_properties(themed_widget_controller PROPERTIES TIMEOUT 30)
 
 include("${CMAKE_CURRENT_LIST_DIR}/../common/Artwork.cmake")
 target_link_libraries(cd_widget_core PUBLIC cd_mechanical_art)
