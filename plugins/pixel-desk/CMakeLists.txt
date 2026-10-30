@@ -124,8 +124,6 @@ set_target_properties(cd_pixel_desk_monitor_core PROPERTIES MSVC_RUNTIME_LIBRARY
   AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 
 find_package(nlohmann_json 3.12 CONFIG REQUIRED)
-find_package(cpr 1.14.2 EXACT CONFIG REQUIRED)
-find_package(tinyxml2 11 CONFIG REQUIRED)
 include("${CMAKE_CURRENT_LIST_DIR}/../common/ProductivityVolume.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/../common/ContentText.cmake")
 add_library(cd_pixel_desk_productivity_core STATIC ProductivityRenderer.cpp DiskRenderer.cpp TimerRenderer.cpp CountdownRenderer.cpp

@@ -22,7 +22,7 @@ jobs:
           $env:VCPKG_MAX_CONCURRENCY='16'
           $process = [Diagnostics.Process]::GetCurrentProcess()
           $process.ProcessorAffinity = [IntPtr]($process.ProcessorAffinity.ToInt64() -band 65535)
-          & build/vcpkg/vcpkg.exe install --triplet x64-windows-static-release --overlay-triplets=sdk/triplets --x-manifest-root=sdk --x-install-root=build/vcpkg_installed
+          & build/vcpkg/vcpkg.exe install --triplet x64-windows-static-release --overlay-triplets=sdk/triplets --x-manifest-root=sdk --x-feature=official-plugins --x-install-root=build/vcpkg_installed
           if ($LASTEXITCODE) { throw 'vcpkg dependencies failed' }
       - name: Build and verify public developer release
         shell: pwsh

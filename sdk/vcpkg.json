@@ -9,17 +9,46 @@
       "default-features": false
     }
   ],
-  "default-features": ["rendering-extensions"],
+  "default-features": [
+    "rendering-extensions"
+  ],
   "features": {
     "rendering-extensions": {
       "description": "Optional static Box2D, ThorVG and FastNoiseLite rendering components",
-      "dependencies": ["box2d", "thorvg", "nlohmann-json", "fastnoiselite"]
+      "dependencies": [
+        "box2d",
+        "thorvg",
+        "nlohmann-json",
+        "fastnoiselite"
+      ]
+    },
+    "official-plugins": {
+      "description": "Static URL parsing dependencies used by official plugin content views",
+      "dependencies": [
+        "zlib",
+        {
+          "name": "curl",
+          "default-features": false,
+          "features": [
+            "schannel"
+          ]
+        }
+      ]
     }
   },
   "overrides": [
-    { "name": "box2d", "version": "3.1.1" },
-    { "name": "nlohmann-json", "version": "3.12.0" },
-    { "name": "yoga", "version": "3.2.1" },
+    {
+      "name": "box2d",
+      "version": "3.1.1"
+    },
+    {
+      "name": "nlohmann-json",
+      "version": "3.12.0"
+    },
+    {
+      "name": "yoga",
+      "version": "3.2.1"
+    },
     {
       "name": "protobuf",
       "version": "6.33.4",

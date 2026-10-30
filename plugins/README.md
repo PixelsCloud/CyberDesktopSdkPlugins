@@ -6,7 +6,9 @@ Inactive descriptions without an implementation fail explicitly when selected by
 Core collectors, credentials, business databases and Desktop composition remain private.
 
 Use Windows x64 MSVC, CMake 3.26+, Ninja and static `/MT` vcpkg dependencies. All
-plugin modules build without Qt, CPR, SQLite or a private application. The optional
+plugin modules build without Qt, CPR, SQLite or a private application.
+Enable the vcpkg manifest feature `official-plugins` when building all plugins;
+it adds static libcurl and zlib for URL parsing in content views. The optional
 full preview host has additional explicit Qt/Cubism dependencies described below.
 Build with at most 16 jobs and restrict the build process affinity to those CPUs.
 
