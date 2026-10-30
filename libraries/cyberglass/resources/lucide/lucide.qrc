@@ -109,6 +109,9 @@
     <file alias="repeat-1.svg">repeat-1.svg</file>
     <file alias="shuffle.svg">shuffle.svg</file>
     <file alias="rotate-ccw-square.svg">rotate-ccw-square.svg</file>
+    <file alias="scissors.svg">scissors.svg</file>
+    <file alias="clipboard-paste.svg">clipboard-paste.svg</file>
+    <file alias="pencil.svg">pencil.svg</file>
   </qresource>
   <qresource prefix="/icons/brand">
     <file alias="cyber-desktop.svg">../brand/cyber-desktop.svg</file>

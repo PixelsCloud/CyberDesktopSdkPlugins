@@ -410,6 +410,18 @@
     {
       "name": "memory-stick",
       "sha256": "9f96ef0913d0043474e1870edbc4765b606a81bb2feb6612e74f373960a1fe63"
+    },
+    {
+      "name": "scissors",
+      "sha256": "6c0689573d0cc5e255ed7cdbb3626608acefa2d6c54141d132ba66f3b465bfbe"
+    },
+    {
+      "name": "clipboard-paste",
+      "sha256": "880af1bd9689fcb1fd189be647227cc486d3ff26c3a5764642abfcfa12b1208e"
+    },
+    {
+      "name": "pencil",
+      "sha256": "7d119b693843a895ee560bdce6d017b68cd60f0efb638b42781524584a2a7aff"
     }
   ]
 }
