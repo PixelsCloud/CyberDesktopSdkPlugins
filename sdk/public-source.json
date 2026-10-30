@@ -1,6 +1,6 @@
 {
     "format": 1,
-    "publicRemote": "https://github.com/PixelsCloud/CyberDesktopSdkPlugins.git",
+    "publicRemote": "git@github.com:PixelsCloud/CyberDesktopSdkPlugins.git",
     "activation": "public publication authorized 2026-10-30",
     "trees": [
         {
