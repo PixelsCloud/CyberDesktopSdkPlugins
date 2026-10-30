@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include "Clock.h"
+#include "plugins/clock-suite/Clock.h"
 using namespace clockplugin;
 
 namespace {
@@ -58,7 +58,7 @@ void equalMatrixMargins(Renderer& renderer, Spec spec, Options options, Time tim
 
 int wmain(int argc, wchar_t** argv) {
     try {
-        const std::filesystem::path out = argc > 1 ? argv[1] : L"electronic-previews";
+        const std::filesystem::path out = argc > 1 ? argv[1] : L".electronic-previews";
         std::filesystem::create_directories(out);
         Renderer renderer;
         Time time{2026, 10, 13, 2, 22, 58, 30, 0};

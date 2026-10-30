@@ -1,5 +1,8 @@
 /build/
 /design/
+/.design/
+/.backup/
+/.electronic-previews/
 /.vs/
 *.user
 __pycache__/
