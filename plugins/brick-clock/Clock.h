@@ -93,9 +93,7 @@ private:
     std::array<std::unique_ptr<cybercanvas::Path>, 10> glyphs_;
     std::unique_ptr<cybercanvas::Path> chip_, facet_;
     cybercanvas::ComPtr<ID2D1Factory> factory_;
-    ID2D1RenderTarget* owner_ = nullptr;
-    uint32_t width_ = 0, height_ = 0;
-    double dpi_ = 0, scale_ = 0;
+    double scale_ = 0;
     std::string palette_;
 };
 

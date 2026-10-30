@@ -1,5 +1,6 @@
 #pragma once
 
+#include <CyberCanvas/Native.h>
 #include <CyberCanvas/Physics2D.h>
 #include <sdk/Canvas.h>
 #include <sdk/Environment.h>
@@ -121,11 +122,9 @@ private:
     cdsdk::Images images_;
     std::filesystem::path assetRoot_;
     std::unique_ptr<cybercanvas::Path> gearOutline_;
-    ID2D1Factory* gearFactory_ = nullptr;
+    cybercanvas::ComPtr<ID2D1Factory> gearFactory_;
     uint64_t assetRevision_ = 0, cachedAssetRevision_ = 0;
-    ID2D1RenderTarget* owner_ = nullptr;
-    uint32_t pixelWidth_ = 0, pixelHeight_ = 0;
-    double dpi_ = 0, scale_ = 0;
+    double scale_ = 0;
     Appearance appearance_;
 };
 

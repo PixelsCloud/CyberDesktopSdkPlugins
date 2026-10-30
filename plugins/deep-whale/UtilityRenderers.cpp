@@ -122,11 +122,10 @@ bool Renderer::render(Kind kind, const cdsdk::Settings& settings, std::string_vi
                     key += ":" + std::to_string(colors[y][peak]);
                 }
             }
-            if (key != beadKey_ || beadOwner_ != canvas.target.Get()) {
+            if (key != beadKey_) {
                 beads_.reset();
                 dimGrid_.reset();
                 beadKey_ = std::move(key);
-                beadOwner_ = canvas.target.Get();
             }
             const auto sprite = [&](Canvas& c, unsigned style, unsigned y, Rect target) {
                 const auto source =
@@ -136,43 +135,44 @@ bool Renderer::render(Kind kind, const cdsdk::Settings& settings, std::string_vi
                                                  float(target.y + target.height)),
                                      1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, source);
             };
-            if (!beads_.bitmap() || !dimGrid_.bitmap()) {
-                beads_.prepare(canvas, {tile * 3, tile * rows, 1}, 0, [&](Canvas& layer) {
-                    for (unsigned y = 0; y < rows; ++y) {
-                        for (unsigned style = 0; style < 3; ++style) {
-                            const bool active = style != 0;
-                            const uint32_t color = active ? colors[y][style - 1] : 0x153b5dff;
-                            const double side = size * density, cx = (style + .5) * tile, cy = (y + .5) * tile;
-                            if (isRound(kind)) {
-                                if (active && glow > 0) {
-                                    layer.oval(cx, cy, side * (.5 + glow * .2), side * (.5 + glow * .2),
-                                               (color & 0xffffff00) | uint32_t(glow * 45));
-                                }
-                                const D2D1_GRADIENT_STOP stops[]{
-                                    {0, cybercanvas::color(active ? dim(color, 1.08) : 0x285776ff)},
-                                    {.58f, cybercanvas::color(color)},
-                                    {1, cybercanvas::color(dim(color, .45))}};
-                                const auto light = layer.radialGradient({cx - side * .16, cy - side * .19},
-                                                                        {side * .75, side * .75}, stops);
-                                layer.target->FillEllipse(D2D1::Ellipse(D2D1::Point2F(float(cx), float(cy)),
-                                                                        float(side / 2), float(side / 2)),
-                                                          light.Get());
-                                layer.oval(cx - side * .16, cy - side * .18, side * .10, side * .075,
-                                           active ? 0xffffff70 : 0xffffff18);
-                            } else {
-                                const Rect chip{cx - side / 2, cy - side / 2, side, side};
-                                layer.gradientBox(chip, side * .045, active ? color : 0x173f60ff, dim(color, .58));
-                                layer.strokeBox(chip, side * .045, active ? (color & 0xffffff00) | 0x88 : 0x7298b988,
-                                                {.width = side * .045});
-                                layer.line(chip.x + side * .12, chip.y + side * .12, chip.x + side * .88,
-                                           chip.y + side * .12, 0xffffff33, side * .05);
+            beads_.prepare(canvas, {tile * 3, tile * rows, 1}, 0, [&](Canvas& layer) {
+                for (unsigned y = 0; y < rows; ++y) {
+                    for (unsigned style = 0; style < 3; ++style) {
+                        const bool active = style != 0;
+                        const uint32_t color = active ? colors[y][style - 1] : 0x153b5dff;
+                        const double side = size * density, cx = (style + .5) * tile, cy = (y + .5) * tile;
+                        if (isRound(kind)) {
+                            if (active && glow > 0) {
+                                layer.oval(cx, cy, side * (.5 + glow * .2), side * (.5 + glow * .2),
+                                           (color & 0xffffff00) | uint32_t(glow * 45));
                             }
+                            const D2D1_GRADIENT_STOP stops[]{
+                                {0, cybercanvas::color(active ? dim(color, 1.08) : 0x285776ff)},
+                                {.58f, cybercanvas::color(color)},
+                                {1, cybercanvas::color(dim(color, .45))}};
+                            const auto light = layer.radialGradient({cx - side * .16, cy - side * .19},
+                                                                    {side * .75, side * .75}, stops);
+                            layer.target->FillEllipse(
+                                D2D1::Ellipse(D2D1::Point2F(float(cx), float(cy)), float(side / 2), float(side / 2)),
+                                light.Get());
+                            layer.oval(cx - side * .16, cy - side * .18, side * .10, side * .075,
+                                       active ? 0xffffff70 : 0xffffff18);
+                        } else {
+                            const Rect chip{cx - side / 2, cy - side / 2, side, side};
+                            layer.gradientBox(chip, side * .045, active ? color : 0x173f60ff, dim(color, .58));
+                            layer.strokeBox(chip, side * .045, active ? (color & 0xffffff00) | 0x88 : 0x7298b988,
+                                            {.width = side * .045});
+                            layer.line(chip.x + side * .12, chip.y + side * .12, chip.x + side * .88,
+                                       chip.y + side * .12, 0xffffff33, side * .05);
                         }
                     }
-                });
-                const unsigned width = unsigned(std::max(1., std::ceil(r.width * density)));
-                const unsigned height = unsigned(std::max(1., std::ceil(r.height * density)));
-                canvas.renderLayer(dimGrid_, {width, height, 1}, [&](Canvas& layer) {
+                }
+            });
+            const unsigned width = unsigned(std::max(1., std::ceil(r.width * density)));
+            const unsigned height = unsigned(std::max(1., std::ceil(r.height * density)));
+            const cybercanvas::SurfaceSize gridSize{width, height, 1};
+            if (!dimGrid_.matches(canvas.target.Get(), gridSize)) {
+                canvas.renderLayer(dimGrid_, gridSize, [&](Canvas& layer) {
                     for (unsigned x = 0; x < cols; ++x) {
                         for (unsigned y = 0; y < rows; ++y) {
                             const double cx = (left - r.x + (x + .5) * pitch) * density;

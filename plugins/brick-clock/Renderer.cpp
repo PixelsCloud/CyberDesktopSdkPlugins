@@ -31,7 +31,6 @@ void Renderer::prepare(Canvas& canvas) {
         return;
     }
     factory_ = canvas.factory;
-    owner_ = nullptr;
     wall_.reset();
     for (size_t i = 0; i < glyphs_.size(); ++i) {
         auto path = std::make_unique<Path>(factory_.Get());
@@ -123,22 +122,19 @@ void Renderer::draw(Canvas& canvas, const Model& model, const std::string& name,
     // Cache at the actual widget DPI, without enlarging the plugin texture. Oversized layouts draw directly.
     if (pixelWidth >= 1 && pixelHeight >= 1 && pixelWidth <= 4096 && pixelHeight <= 4096 &&
         pixelWidth * pixelHeight <= 2 * 1024 * 1024) {
-        if (!wall_.bitmap() || owner_ != canvas.target.Get() || width_ != pixelWidth || height_ != pixelHeight ||
-            dpi_ != dpi || scale_ != scale || palette_ != name) {
-            canvas.renderLayer(wall_, {uint32_t(pixelWidth), uint32_t(pixelHeight), dpi}, [&](auto& cached) {
+        const cybercanvas::SurfaceSize size{uint32_t(pixelWidth), uint32_t(pixelHeight), dpi};
+        if (!wall_.matches(canvas.target.Get(), size) || scale_ != scale || palette_ != name) {
+            canvas.renderLayer(wall_, size, [&](auto& cached) {
                 cached.scale(scale, scale);
                 wall(cached, colors, panelHeight);
             });
-            owner_ = canvas.target.Get();
-            width_ = uint32_t(pixelWidth);
-            height_ = uint32_t(pixelHeight);
-            dpi_ = dpi;
             scale_ = scale;
             palette_ = name;
         }
         canvas.target->DrawBitmap(wall_.bitmap(), D2D1::RectF(0, float(-top), float(kWidth), float(kHeight)), 1,
                                   D2D1_BITMAP_INTERPOLATION_MODE_LINEAR);
     } else {
+        wall_.reset();
         canvas.saved([&] {
             canvas.translate(0, -top);
             wall(canvas, colors, panelHeight);

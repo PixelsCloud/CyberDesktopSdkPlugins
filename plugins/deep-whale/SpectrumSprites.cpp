@@ -16,36 +16,29 @@ auto SpectrumSprites::begin(cybercanvas::Canvas& c, double width, uint32_t edge,
     cap_ = std::clamp(unsigned(std::ceil((padding_ + width * .13) * density_)), 1u, tile / 2);
     tile_ = tile;
     const auto key = std::make_tuple(width, density_, edge, middle, top, glow, radial);
-    if (!key_ || *key_ != key || owner_ != c.target.Get()) {
+    if (!key_ || *key_ != key) {
         atlas_.reset();
         key_ = key;
-        owner_ = c.target.Get();
     }
-    if (!atlas_.bitmap()) {
-        atlas_.prepare(c, {tile * 2, tile, 1}, 0, [&](auto& layer) {
-            const double pad = padding_ * density_, body = width * density_;
-            if (glow > 0) {
-                layer.box(pad - density_, pad - density_, body + 2 * density_, body + 2 * density_, density_,
-                          (middle & 0xffffff00) | uint32_t(glow * 90));
-            }
-            const D2D1_GRADIENT_STOP stops[]{
-                {0, cybercanvas::color(edge)}, {.48f, cybercanvas::color(middle)}, {1, cybercanvas::color(edge)}};
-            const auto brush = layer.linearGradient({pad, pad}, {pad + body, pad}, stops);
-            layer.target->FillRoundedRectangle(
-                D2D1::RoundedRect(D2D1::RectF(float(pad), float(pad), float(pad + body), float(pad + body)),
-                                  float(body * .13), float(body * .13)),
-                brush.Get());
-            const double cx = tile * 1.5, cy = tile * .5, side = width * (radial ? .8 : .6) * density_;
-            auto peak = layer.path();
-            peak.moveTo({cx, cy - side})
-                .lineTo({cx + side, cy})
-                .lineTo({cx, cy + side})
-                .lineTo({cx - side, cy})
-                .close();
-            layer.fill(peak, top);
-            layer.stroke(peak, edge, {.width = .35 * density_});
-        });
-    }
+    atlas_.prepare(c, {tile * 2, tile, 1}, 0, [&](auto& layer) {
+        const double pad = padding_ * density_, body = width * density_;
+        if (glow > 0) {
+            layer.box(pad - density_, pad - density_, body + 2 * density_, body + 2 * density_, density_,
+                      (middle & 0xffffff00) | uint32_t(glow * 90));
+        }
+        const D2D1_GRADIENT_STOP stops[]{
+            {0, cybercanvas::color(edge)}, {.48f, cybercanvas::color(middle)}, {1, cybercanvas::color(edge)}};
+        const auto brush = layer.linearGradient({pad, pad}, {pad + body, pad}, stops);
+        layer.target->FillRoundedRectangle(
+            D2D1::RoundedRect(D2D1::RectF(float(pad), float(pad), float(pad + body), float(pad + body)),
+                              float(body * .13), float(body * .13)),
+            brush.Get());
+        const double cx = tile * 1.5, cy = tile * .5, side = width * (radial ? .8 : .6) * density_;
+        auto peak = layer.path();
+        peak.moveTo({cx, cy - side}).lineTo({cx + side, cy}).lineTo({cx, cy + side}).lineTo({cx - side, cy}).close();
+        layer.fill(peak, top);
+        layer.stroke(peak, edge, {.width = .35 * density_});
+    });
     sprites_.begin(c);
 }
 

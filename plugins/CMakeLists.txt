@@ -37,3 +37,6 @@ if(CD_PLUGINS_SDK_ONLY)
 endif()
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/common/Selection.cmake")
+if(TARGET cd_brick_clock_core AND TARGET cd_marble_clock_core AND TARGET cd_precision_clocks_core)
+    add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tests/render-cache" render-cache-tests)
+endif()

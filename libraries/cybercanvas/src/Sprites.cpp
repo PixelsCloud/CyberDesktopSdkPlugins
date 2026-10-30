@@ -92,16 +92,9 @@ class SpriteAtlas::Impl {
 public:
     template <typename Paint>
     void prepare(Canvas& canvas, SurfaceSize size, uint64_t revision, Paint&& paint) {
-        if (owner_.Get() != canvas.target.Get() || width_ != size.width || height_ != size.height ||
-            dpi_ != size.devicePixelRatio || revision_ != revision) {
+        if (!surface_.matches(canvas.target.Get(), size) || revision_ != revision) {
             surface_.reset();
-        }
-        if (!surface_.bitmap()) {
             canvas.renderLayer(surface_, size, std::forward<Paint>(paint));
-            owner_ = canvas.target.Get();
-            width_ = size.width;
-            height_ = size.height;
-            dpi_ = size.devicePixelRatio;
             revision_ = revision;
         }
     }
@@ -112,14 +105,10 @@ public:
 
     void reset() {
         surface_.reset();
-        owner_.Reset();
     }
 
 private:
     OffscreenSurface surface_;
-    ComPtr<ID2D1RenderTarget> owner_;
-    uint32_t width_ = 0, height_ = 0;
-    double dpi_ = 0;
     uint64_t revision_ = 0;
 };
 

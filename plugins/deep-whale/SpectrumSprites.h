@@ -22,7 +22,6 @@ private:
     cybercanvas::SpriteAtlas atlas_;
     cybercanvas::SpriteList sprites_;
     std::optional<std::tuple<double, double, uint32_t, uint32_t, uint32_t, double, bool>> key_;
-    ID2D1RenderTarget* owner_ = nullptr;
     D2D1_MATRIX_3X2_F base_{};
     double density_ = 1, span_ = 1, padding_ = 0;
     unsigned tile_ = 2, cap_ = 1;

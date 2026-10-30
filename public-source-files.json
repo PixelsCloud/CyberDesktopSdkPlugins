@@ -5050,6 +5050,8 @@
     "sdk/triplets/x64-windows-static-release.cmake",
     "sdk/vcpkg-configuration.json",
     "sdk/vcpkg.json",
+    "tests/render-cache/CMakeLists.txt",
+    "tests/render-cache/RenderCacheTest.cpp",
     "tests/sdk-install/CMakeLists.txt",
     "tests/sdk-install/Core.cpp",
     "third_party/sxtwl/LICENSE",

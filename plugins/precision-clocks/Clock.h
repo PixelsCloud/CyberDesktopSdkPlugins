@@ -79,10 +79,9 @@ private:
     std::shared_ptr<const cybercanvas::ImageData> face_, brass_;
     cybercanvas::OffscreenSurface backdrop_;
     std::array<cybercanvas::OffscreenSurface, 6> wheels_;
-    ID2D1RenderTarget* owner_ = nullptr;
     uint64_t revision_ = 0, cachedRevision_ = 0;
     uint32_t edge_ = 0, pixels_ = 0;
-    double dpi_ = 0;
+    double scale_ = 0;
     bool background_ = true;
 };
 

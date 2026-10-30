@@ -333,18 +333,14 @@ void Renderer::draw(Canvas& c, const Model& model, Appearance appearance, double
     const auto width = uint32_t(std::clamp(std::ceil(shape.width * scale * dpi), 1., 4096.));
     const auto height = uint32_t(std::clamp(std::ceil(kHeight * scale * dpi), 1., 4096.));
     if (uint64_t(width) * height <= 2 * 1024 * 1024) {
-        if (!backdrop_.bitmap() || owner_ != c.target.Get() || width != pixelWidth_ || height != pixelHeight_ ||
-            dpi != dpi_ || scale != scale_ || appearance.light != appearance_.light ||
+        const cybercanvas::SurfaceSize size{width, height, dpi};
+        if (!backdrop_.matches(c.target.Get(), size) || scale != scale_ || appearance.light != appearance_.light ||
             appearance.background != appearance_.background || appearance.english != appearance_.english ||
             cachedAssetRevision_ != assetRevision_) {
-            c.renderLayer(backdrop_, {width, height, dpi}, [&](auto& cached) {
+            c.renderLayer(backdrop_, size, [&](auto& cached) {
                 cached.scale(scale, scale);
                 stationary(cached, shape, appearance);
             });
-            owner_ = c.target.Get();
-            pixelWidth_ = width;
-            pixelHeight_ = height;
-            dpi_ = dpi;
             scale_ = scale;
             appearance_ = appearance;
             cachedAssetRevision_ = assetRevision_;
@@ -352,10 +348,11 @@ void Renderer::draw(Canvas& c, const Model& model, Appearance appearance, double
         c.target->DrawBitmap(backdrop_.bitmap(), D2D1::RectF(0, 0, float(shape.width), float(kHeight)), 1,
                              D2D1_BITMAP_INTERPOLATION_MODE_LINEAR);
     } else {
+        backdrop_.reset();
         stationary(c, shape, appearance);
     }
 
-    if (!gearOutline_ || gearFactory_ != c.factory.Get()) {
+    if (!gearOutline_ || gearFactory_.Get() != c.factory.Get()) {
         gearOutline_ = gearOutline(c);
         gearFactory_ = c.factory.Get();
     }

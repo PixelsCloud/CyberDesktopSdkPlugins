@@ -1,6 +1,7 @@
 #include "tests/SurfaceTest.h"
 
 #include <CyberCanvas/Image.h>
+#include <CyberCanvas/Sprites.h>
 
 #include <limits>
 
@@ -37,6 +38,12 @@ void surfaceTests(cybercanvas::Canvas& canvas, const Check& check) {
                 firstTarget = target;
                 paint(target);
             });
+            check("surface matches its successful target, physical size and DPI",
+                  surface.matches(draw.target.Get(), size));
+            check("surface rejects a different physical size",
+                  !surface.matches(draw.target.Get(), {size.width + 1, size.height, dpi}));
+            check("surface rejects a different DPI",
+                  !surface.matches(draw.target.Get(), {size.width, size.height, dpi + .25}));
             check("offscreen dimensions follow physical DPI",
                   surface.bitmap()->GetPixelSize().width == scaled.frame.width && surface.logicalSize().width == 96);
             surface.render(draw.target.Get(), size, [&](auto* target) {
@@ -133,6 +140,8 @@ void surfaceTests(cybercanvas::Canvas& canvas, const Check& check) {
     // Another Canvas with the same pixel dimensions still needs a new compatible target.
     Canvas other;
     other.render(output.frame, {}, [&](auto& draw, auto) {
+        check("surface rejects another target with identical dimensions",
+              !surface.matches(draw.target.Get(), {96, 80, 1}));
         surface.render(draw.target.Get(), {96, 80, 1}, [&](auto* target) {
             check("surface recreates when owner changes", target != firstTarget.Get());
             target->Clear(color(0x0000FFFF));
@@ -141,6 +150,43 @@ void surfaceTests(cybercanvas::Canvas& canvas, const Check& check) {
     });
     check("surface can draw on a new owner", output.pixel(20, 20)[2] == 255);
     surface.reset();
+
+    SpriteAtlas atlas;
+    unsigned paints = 0;
+    const auto renderAtlas = [&](Canvas& owner, SurfaceSize size, uint64_t revision) {
+        owner.render(output.frame, {}, [&](auto& draw, auto) {
+            atlas.prepare(draw, size, revision, [&](auto& layer) {
+                ++paints;
+                layer.box(0, 0, 12, 12, 0, revision == 1 ? 0xFF0000FF : 0x0000FFFF);
+            });
+            draw.target->DrawBitmap(atlas.bitmap());
+        });
+    };
+    renderAtlas(canvas, {16, 16, 1}, 1);
+    renderAtlas(canvas, {16, 16, 1}, 1);
+    check("stable sprite atlas skips its paint callback", paints == 1);
+    renderAtlas(canvas, {16, 16, 1}, 2);
+    check("sprite dependency revision refreshes pixels", paints == 2 && output.pixel(4, 4)[2] == 255);
+    renderAtlas(other, {16, 16, 1}, 2);
+    renderAtlas(canvas, {16, 16, 1}, 2);
+    check("sprite atlas follows target changes in both directions", paints == 4);
+    renderAtlas(canvas, {24, 16, 1}, 2);
+    renderAtlas(canvas, {24, 16, 2}, 2);
+    check("sprite atlas rebuilds for size and DPI changes", paints == 6);
+    atlas.reset();
+    check("sprite reset releases visible cached bitmap", !atlas.bitmap());
+    renderAtlas(canvas, {24, 16, 2}, 2);
+    check("sprite reset permits a fresh render", paints == 7);
+    canvas.render(output.frame, {}, [&](auto& draw, auto) {
+        check("sprite paint failure propagates", rejected([&] {
+                  atlas.prepare(draw, {24, 16, 2}, 3, [](auto&) {
+                      throw std::runtime_error("injected atlas paint failure");
+                  });
+              }));
+        check("sprite paint failure discards partial cached image", !atlas.bitmap());
+    });
+    renderAtlas(canvas, {24, 16, 2}, 3);
+    check("sprite paint failure can recover", paints == 8);
 
     // Sprite caches retain the bitmap after the temporary compatible target dies.
     // Each row must stay independent when another surface is rendered afterward.

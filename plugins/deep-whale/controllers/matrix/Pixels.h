@@ -32,7 +32,6 @@ private:
     cybercanvas::OffscreenSurface dimGrid_;
     cybercanvas::SpriteList dots_;
     std::string beadKey_;
-    ID2D1RenderTarget* beadOwner_ = nullptr;
 };
 
 // Theme construction supplies only artwork and defaults. Subscription, clock,

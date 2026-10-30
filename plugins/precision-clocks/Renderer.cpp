@@ -234,30 +234,34 @@ void Renderer::prepare(Canvas& c, const Options& value, double scale) {
     }
     poll();
     const bool cache = uint64_t(pixels) * pixels <= 2 * 1024 * 1024;
-    if (owner_ == c.target.Get() && pixels_ == pixels && dpi_ == dpi && cachedRevision_ == revision_ &&
-        background_ == value.background && (!cache || backdrop_.bitmap())) {
-        return;
-    }
+    const bool contentChanged = cachedRevision_ != revision_ || background_ != value.background || scale_ != scale;
     if (cache) {
-        c.renderLayer(backdrop_, {pixels, pixels, dpi}, [&](auto& layer) {
-            layer.scale(scale, scale);
-            base(layer, value);
-        });
+        const cybercanvas::SurfaceSize size{pixels, pixels, dpi};
+        if (contentChanged || !backdrop_.matches(c.target.Get(), size)) {
+            c.renderLayer(backdrop_, size, [&](auto& layer) {
+                layer.scale(scale, scale);
+                base(layer, value);
+            });
+        }
+    } else {
+        backdrop_.reset();
     }
     if (spec_.kind == Kind::Skeleton) {
         for (size_t i = 0; i < kGears.size(); ++i) {
             const double span = kGears[i].radius * 2 + 8;
             const auto edge = uint32_t(std::clamp(std::ceil(span * scale * dpi), 8., 1024.));
-            c.renderLayer(wheels_[i], {edge, edge, dpi}, [&](auto& layer) {
-                layer.scale(double(edge) / dpi / span, double(edge) / dpi / span);
-                layer.translate(span / 2, span / 2);
-                cog(layer, kGears[i], i, brass_);
-            });
+            const cybercanvas::SurfaceSize size{edge, edge, dpi};
+            if (contentChanged || !wheels_[i].matches(c.target.Get(), size)) {
+                c.renderLayer(wheels_[i], size, [&](auto& layer) {
+                    layer.scale(double(edge) / dpi / span, double(edge) / dpi / span);
+                    layer.translate(span / 2, span / 2);
+                    cog(layer, kGears[i], i, brass_);
+                });
+            }
         }
     }
-    owner_ = c.target.Get();
     pixels_ = pixels;
-    dpi_ = dpi;
+    scale_ = scale;
     cachedRevision_ = revision_;
     background_ = value.background;
 }
