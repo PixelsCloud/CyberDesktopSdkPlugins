@@ -24,7 +24,7 @@ PhysicalSand::PhysicalSand() {
 }
 
 void PhysicalSand::reset() {
-    world_ = std::make_unique<ph::World>();
+    world_ = std::make_unique<ph::World>(ph::WorldOptions{.collectEvents = false});
     jar_ = world_->createBody({.type = ph::BodyType::Kinematic, .position = center});
     grains_.clear();
     angle_ = 0;
@@ -112,7 +112,6 @@ void PhysicalSand::advance(double seconds, const Model& timer, bool projectedFli
         world_->teleport(jar_, center, previous);
         world_->velocity(jar_, {}, (nextAngle - start) / seconds);
         world_->advance(dt);
-        world_->takeEvents();
     }
     world_->teleport(jar_, center, nextAngle);
     world_->velocity(jar_, {});

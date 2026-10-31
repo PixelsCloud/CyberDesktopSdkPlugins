@@ -13,6 +13,8 @@
 #include <memory>
 #include <optional>
 #include <set>
+#include <span>
+#include <string_view>
 
 #include "sdk/Environment.h"
 #include "sdk/PluginApi.h"
@@ -106,6 +108,8 @@ struct MockHost {
     std::vector<std::pair<std::string, std::string>> semanticStrings;
     DiagnosticHost diagnostics;
     std::vector<std::string> openedUrls;
+    std::function<void(uint32_t, std::string_view)> onLog;
+    std::function<void(double, std::span<float>)> onAudio;
 
     static CdResult CD_CALL registerDiagnostic(void* context, CdDiagnosticCallback callback, void* user,
                                                uint64_t* token);

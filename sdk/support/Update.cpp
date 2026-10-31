@@ -1,5 +1,7 @@
 #include "sdk/Update.h"
 
+#include <exception>
+
 namespace cdsdk {
 Timer::operator bool() const {
     return token_ != 0;
@@ -147,6 +149,9 @@ UpdateLoop::~UpdateLoop() {
 auto UpdateLoop::bind(const CdCreateContext& context) -> void {
     timer_.bind(context);
     redraw_.bind(context);
+    host_ = context.host && context.host->struct_size >= sizeof(CdHostApi) ? *context.host : CdHostApi{};
+    hostContext_ = context.host_context;
+    failed_ = false;
     desired_ = 0;
     paused_ = false;
     clock_.setPaused(false);
@@ -155,6 +160,7 @@ auto UpdateLoop::bind(const CdCreateContext& context) -> void {
 
 auto UpdateLoop::onUpdate(Callback callback) -> void {
     callback_ = std::move(callback);
+    failed_ = false;
     ++generation_;
 }
 
@@ -163,6 +169,9 @@ auto UpdateLoop::onInvalidate(std::function<void()> callback) -> void {
 }
 
 auto UpdateLoop::start(uint32_t interval, std::optional<uint64_t> now) -> CdResult {
+    if (failed_) {
+        return CD_ERROR_INTERNAL;
+    }
     if (!interval) {
         stop();
         return CD_OK;
@@ -238,6 +247,31 @@ auto UpdateLoop::interval() const -> uint32_t {
     return timer_.interval();
 }
 
+bool UpdateLoop::failed() const {
+    return failed_;
+}
+
+void UpdateLoop::resetFailure() {
+    failed_ = false;
+    clock_.resetAnchor();
+}
+
+void UpdateLoop::fail(const char* message) noexcept {
+    failed_ = true;
+    try {
+        stop();
+        if (host_.log && message) {
+            uint32_t length = 0;
+            while (length < 1024 && message[length]) {
+                ++length;
+            }
+            host_.log(hostContext_, 3, message, length);
+        }
+    } catch (...) {
+        // Diagnostics must not escape the timer's C ABI boundary.
+    }
+}
+
 void CD_CALL UpdateLoop::tick(void* user, uint64_t now) noexcept {
     auto& self = *static_cast<UpdateLoop*>(user);
     try {
@@ -257,8 +291,10 @@ void CD_CALL UpdateLoop::tick(void* user, uint64_t now) noexcept {
         if (!result.active && self.generation_ == generation) {
             self.stop();
         }
+    } catch (const std::exception& error) {
+        self.fail(error.what());
     } catch (...) {
-        self.stop();
+        self.fail("Unknown animation update failure");
     }
 }
 }  // namespace cdsdk

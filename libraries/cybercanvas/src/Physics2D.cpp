@@ -3,12 +3,15 @@
 
 #include <algorithm>
 #include <atomic>
+#include <chrono>
 #include <cmath>
+#include <cstdlib>
 #include <deque>
 #include <map>
 #include <mutex>
 #include <numbers>
 #include <stdexcept>
+#include <string_view>
 #include <thread>
 
 namespace cybercanvas::physics {
@@ -40,7 +43,33 @@ Point point(b2Vec2 value) {
     return {value.x, value.y};
 }
 
-b2ShapeDef shapeDefinition(Material value) {
+class AdvanceTiming {
+public:
+    AdvanceTiming(bool enabled, uint64_t& total, uint64_t& maximum)
+        : enabled_(enabled), total_(total), maximum_(maximum) {
+        if (enabled_) {
+            started_ = std::chrono::steady_clock::now();
+        }
+    }
+
+    ~AdvanceTiming() {
+        if (enabled_) {
+            const auto elapsed = uint64_t(
+                std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - started_)
+                    .count());
+            total_ += elapsed;
+            maximum_ = std::max(maximum_, elapsed);
+        }
+    }
+
+private:
+    bool enabled_;
+    uint64_t& total_;
+    uint64_t& maximum_;
+    std::chrono::steady_clock::time_point started_;
+};
+
+b2ShapeDef shapeDefinition(Material value, bool collectEvents) {
     auto result = b2DefaultShapeDef();
     result.density = number(value.density, 0, 1e4);
     result.material.friction = number(value.friction, 0, 10);
@@ -52,7 +81,7 @@ b2ShapeDef shapeDefinition(Material value) {
     result.filter.maskBits = value.mask;
     result.filter.groupIndex = value.group;
     result.isSensor = value.sensor;
-    result.enableSensorEvents = result.enableContactEvents = result.enableHitEvents = true;
+    result.enableSensorEvents = result.enableContactEvents = result.enableHitEvents = collectEvents;
     return result;
 }
 }  // namespace
@@ -85,11 +114,16 @@ struct World::Impl {
     std::map<uint64_t, JointRecord> joints;
     std::deque<std::function<void(World&)>> commands;
     std::vector<Event> events;
+    size_t kinematicBodies = 0;
     double accumulator = 0, rate = 1, dropped = 0;
     uint64_t steps = 0;
+    uint64_t advanceNanoseconds = 0;
+    uint64_t maximumAdvanceNanoseconds = 0;
     bool paused = false, advancing = false;
 
     explicit Impl(WorldOptions value) : options(value) {
+        const auto* profile = std::getenv("CYBERDESKTOP_PHYSICS_PROFILE");
+        options.measureTimings |= profile && std::string_view(profile) == "1";
         auto definition = b2DefaultWorldDef();
         definition.gravity = vector(value.gravity);
         number(value.fixedStep, 1. / 240, 1. / 30);
@@ -204,6 +238,9 @@ struct World::Impl {
     }
 
     void collect() {
+        if (!options.collectEvents) {
+            return;
+        }
         const auto append = [&](EventKind kind, b2ShapeId first, b2ShapeId second, Point position = {},
                                 Point normal = {}, double speed = 0) {
             const auto a = shape(first), b = shape(second);
@@ -278,13 +315,16 @@ Body World::createBody(BodyOptions options) {
         throw;
     }
     impl_->bodies.at(value.id).previous = impl_->state(value);
+    if (options.type == BodyType::Kinematic) {
+        ++impl_->kinematicBodies;
+    }
     return value;
 }
 
 Shape World::circle(Body body, Point center, double radius, Material material) {
     const auto native = impl_->body(body).native;
     impl_->shapeCapacity();
-    const auto definition = shapeDefinition(material);
+    const auto definition = shapeDefinition(material, impl_->options.collectEvents);
     const b2Circle shape{vector(center), number(radius, .005, 1000)};
     std::vector<Point> vertices{center};
     return impl_->registerShape(b2CreateCircleShape(native, &definition, &shape), body, std::move(vertices), radius,
@@ -294,7 +334,7 @@ Shape World::circle(Body body, Point center, double radius, Material material) {
 Shape World::box(Body body, Size halfExtent, Point center, double angle, Material material) {
     const auto native = impl_->body(body).native;
     impl_->shapeCapacity();
-    const auto definition = shapeDefinition(material);
+    const auto definition = shapeDefinition(material, impl_->options.collectEvents);
     const auto shape = b2MakeOffsetBox(number(halfExtent.width, .005, 1000), number(halfExtent.height, .005, 1000),
                                        vector(center), b2MakeRot(number(angle)));
     std::vector<Point> vertices;
@@ -308,7 +348,7 @@ Shape World::box(Body body, Size halfExtent, Point center, double angle, Materia
 Shape World::capsule(Body body, Point first, Point second, double radius, Material material) {
     const auto native = impl_->body(body).native;
     impl_->shapeCapacity();
-    const auto definition = shapeDefinition(material);
+    const auto definition = shapeDefinition(material, impl_->options.collectEvents);
     const b2Capsule shape{vector(first), vector(second), number(radius, .005, 1000)};
     if (std::hypot(first.x - second.x, first.y - second.y) < .005) {
         throw std::invalid_argument("Capsule endpoints must be distinct");
@@ -321,7 +361,7 @@ Shape World::capsule(Body body, Point first, Point second, double radius, Materi
 Shape World::polygon(Body body, std::span<const Point> vertices, Material material) {
     const auto native = impl_->body(body).native;
     impl_->shapeCapacity();
-    const auto definition = shapeDefinition(material);
+    const auto definition = shapeDefinition(material, impl_->options.collectEvents);
     if (vertices.size() < 3 || vertices.size() > B2_MAX_POLYGON_VERTICES) {
         throw std::invalid_argument("Convex polygon needs 3..8 vertices");
     }
@@ -348,7 +388,7 @@ std::vector<Shape> World::chain(Body body, std::span<const Point> vertices, bool
         throw std::invalid_argument("Chain needs a static body, 4..256 points and a solid material");
     }
     impl_->shapeCapacity(loop ? vertices.size() : vertices.size() - 3);
-    const auto shape = shapeDefinition(material);
+    const auto shape = shapeDefinition(material, impl_->options.collectEvents);
     std::vector<b2Vec2> points;
     for (const auto vertex : vertices) {
         points.push_back(vector(vertex));
@@ -387,7 +427,7 @@ std::vector<Shape> World::chain(Body body, std::span<const Point> vertices, bool
     definition.filter = shape.filter;
     definition.materials = &shape.material;
     definition.materialCount = 1;
-    definition.enableSensorEvents = true;
+    definition.enableSensorEvents = impl_->options.collectEvents;
     const auto native = b2CreateChain(record.native, &definition);
     std::vector<Shape> result;
     try {
@@ -529,6 +569,7 @@ void World::mouseTarget(Joint joint, Point target) {
 
 void World::destroy(Body body) {
     const auto native = impl_->body(body).native;
+    const bool kinematic = impl_->body(body).type == BodyType::Kinematic;
     for (auto it = impl_->shapes.begin(); it != impl_->shapes.end();) {
         if (it->second.body == body) {
             impl_->nativeShapes.erase(b2StoreShapeId(it->second.native));
@@ -542,6 +583,9 @@ void World::destroy(Body body) {
     });
     b2DestroyBody(native);
     impl_->bodies.erase(body.id);
+    if (kinematic) {
+        --impl_->kinematicBodies;
+    }
 }
 
 void World::destroy(Joint joint) {
@@ -621,6 +665,8 @@ BodyState World::interpolated(Body body) const {
 
 StepResult World::advance(double elapsed) {
     impl_->check();
+    const AdvanceTiming timing(impl_->options.measureTimings, impl_->advanceNanoseconds,
+                               impl_->maximumAdvanceNanoseconds);
     number(elapsed, 0, 1e6);
     if (impl_->advancing) {
         throw std::logic_error("Physics advance cannot reenter");
@@ -696,10 +742,22 @@ bool World::active() const {
     if (impl_->paused || impl_->rate == 0) {
         return false;
     }
-    if (!impl_->commands.empty() || b2World_GetAwakeBodyCount(impl_->world) > 0) {
+    if (!impl_->commands.empty()) {
         return true;
     }
+    const auto awake = size_t(b2World_GetAwakeBodyCount(impl_->world));
+    if (awake > impl_->kinematicBodies) {
+        return true;
+    }
+    if (awake == 0) {
+        return false;
+    }
     for (const auto& [id, record] : impl_->bodies) {
+        // Box2D's awake set also contains stationary kinematic bodies. Only
+        // awake dynamics or a moving kinematic body require another step.
+        if (record.type == BodyType::Dynamic && b2Body_IsAwake(record.native)) {
+            return true;
+        }
         if (record.type == BodyType::Kinematic) {
             const auto state = impl_->state({id});
             if (state.velocity.x != 0 || state.velocity.y != 0 || state.angularVelocity != 0) {
@@ -723,6 +781,11 @@ std::vector<Event> World::takeEvents() {
     auto result = std::move(impl_->events);
     impl_->events.clear();
     return result;
+}
+
+void World::discardEvents() {
+    impl_->check();
+    impl_->events.clear();
 }
 
 std::vector<Shape> World::query(Rect area, uint64_t mask) const {
@@ -795,9 +858,15 @@ std::vector<DebugShape> World::debugShapes() const {
 
 PhysicsStats World::stats() const {
     impl_->check();
-    return {impl_->bodies.size(), impl_->shapes.size(),
-            impl_->joints.size(), size_t(b2World_GetAwakeBodyCount(impl_->world)),
-            impl_->steps,         impl_->dropped};
+    return {impl_->bodies.size(),
+            impl_->shapes.size(),
+            impl_->joints.size(),
+            size_t(b2World_GetAwakeBodyCount(impl_->world)),
+            impl_->steps,
+            impl_->dropped,
+            impl_->advanceNanoseconds,
+            impl_->maximumAdvanceNanoseconds,
+            impl_->options.measureTimings};
 }
 
 std::vector<DebugBody> World::debugBodies() const {

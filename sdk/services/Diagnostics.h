@@ -72,7 +72,13 @@ typedef enum CdDiagnosticMetric {
     CD_DIAG_IMAGE_POLLS,
     CD_DIAG_LIST_UPDATES,
     CD_DIAG_BITMAP_ENTRIES,
-    CD_DIAG_TRANSIENT_BYTES
+    CD_DIAG_TRANSIENT_BYTES,
+    /* Physics counters are per World. NS/MAX_NS are optional CPU-side wall
+       timings, never GPU time. Maximums must not be summed across Worlds. */
+    CD_DIAG_PHYSICS_STEPS,
+    CD_DIAG_PHYSICS_NS,
+    CD_DIAG_PHYSICS_AWAKE,
+    CD_DIAG_PHYSICS_MAX_NS
 } CdDiagnosticMetric;
 
 #pragma pack(push, 8)

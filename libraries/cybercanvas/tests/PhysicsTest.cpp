@@ -3,6 +3,7 @@
 #include <array>
 #include <cmath>
 #include <iostream>
+#include <stdexcept>
 #include <thread>
 
 namespace {
@@ -22,12 +23,102 @@ bool rejects(Action action) {
         return true;
     }
 }
+
+void checkDiscardEvents() {
+    using namespace cybercanvas::physics;
+    World world({.gravity = {}});
+    const auto detector = world.createBody({.type = BodyType::Static});
+    world.box(detector, {1, 1}, {}, 0, {.sensor = true});
+    const auto visitor = world.createBody({.sleepingAllowed = false});
+    world.circle(visitor, {}, .1);
+    world.advance(1. / 30);
+    check("event consumer still receives contacts", !world.takeEvents().empty());
+    world.teleport(visitor, {5, 0});
+    world.advance(1. / 30);
+    world.discardEvents();
+    check("visual-only scene drains copied events", world.takeEvents().empty());
+    world.teleport(visitor, {});
+    world.advance(1. / 30);
+    check("discard does not disable future events", !world.takeEvents().empty());
+    bool rejected = false;
+    std::thread foreign([&] {
+        rejected = rejects([&] {
+            world.discardEvents();
+        });
+    });
+    foreign.join();
+    check("discard enforces world thread ownership", rejected);
+}
+
+void checkVisualEvents() {
+    using namespace cybercanvas::physics;
+    World observed;
+    World visual({.collectEvents = false});
+    const auto configure = [](World& world) {
+        const auto floor = world.createBody({.type = BodyType::Static, .position = {0, 2}});
+        world.box(floor, {4, .1}, {}, 0, {.restitution = .8});
+        const auto ball = world.createBody();
+        world.circle(ball, {}, .2, {.restitution = .8});
+        return ball;
+    };
+    const auto first = configure(observed), second = configure(visual);
+    size_t delivered = 0;
+    bool same = true;
+    for (int frame = 0; frame < 18000; ++frame) {
+        if (frame % 120 == 0) {
+            observed.impulse(first, {0, -.5});
+            visual.impulse(second, {0, -.5});
+        }
+        observed.advance(1. / 60);
+        visual.advance(1. / 60);
+        delivered += observed.takeEvents().size();
+        const auto a = observed.state(first), b = visual.state(second);
+        same &= std::abs(a.position.y - b.position.y) < 1e-7 && std::abs(a.velocity.y - b.velocity.y) < 1e-7;
+    }
+    check("disabling copied events preserves collision trajectories", same && delivered > 0);
+    check("visual-only world does not accumulate notification events", visual.takeEvents().empty());
+}
+
+void checkSleepingBoundary() {
+    using namespace cybercanvas::physics;
+    World world({.collectEvents = false});
+    const auto floor = world.createBody({.type = BodyType::Kinematic, .position = {0, 2}});
+    world.box(floor, {2, .1});
+    const auto ball = world.createBody();
+    world.circle(ball, {}, .1);
+    for (unsigned frame = 0; frame < 1200; ++frame) {
+        world.advance(1. / 60);
+    }
+    check("resting body and stationary boundary become idle", !world.active());
+    const auto resting = world.state(ball).position.y;
+    world.teleport(floor, {0, 1.85});
+    check("moving a resting boundary reactivates collision discovery", world.active());
+    for (unsigned frame = 0; frame < 60; ++frame) {
+        world.advance(1. / 60);
+    }
+    check("teleported boundary pushes the sleeping body", world.state(ball).position.y < resting - .1);
+}
 }  // namespace
 
 int main() {
     using namespace cybercanvas;
     using namespace cybercanvas::physics;
     try {
+        checkDiscardEvents();
+        checkVisualEvents();
+        checkSleepingBoundary();
+        {
+            World plain({.gravity = {}, .collectEvents = false});
+            World profiled({.gravity = {}, .collectEvents = false, .measureTimings = true});
+            for (int frame = 0; frame < 100; ++frame) {
+                plain.advance(1. / 60);
+                profiled.advance(1. / 60);
+            }
+            check("physics profiling is opt-in",
+                  !plain.stats().timingsMeasured && plain.stats().advanceNanoseconds == 0);
+            check("opt-in profiling records advance wall time",
+                  profiled.stats().timingsMeasured && profiled.stats().advanceNanoseconds > 0);
+        }
         for (int fps : {30, 60, 120, 144}) {
             World world({.gravity = {0, 10}});
             const auto ball = world.createBody();
@@ -301,6 +392,15 @@ int main() {
             kinematics.advance(1. / 60);
             check("double speed advances two fixed steps",
                   std::abs(kinematics.state(moving).position.x - before - 4. / 60) < 1e-4);
+            kinematics.velocity(moving, {});
+            const auto stopped = kinematics.stats().steps;
+            for (int i = 0; i < 600; ++i) {
+                kinematics.advance(1. / 60);
+            }
+            check("stationary kinematic body does not keep an idle world running",
+                  !kinematics.active() && kinematics.stats().steps == stopped);
+            kinematics.velocity(moving, {1, 0});
+            check("new kinematic velocity wakes scheduling", kinematics.active());
         }
         {
             World ccd({.gravity = {}});

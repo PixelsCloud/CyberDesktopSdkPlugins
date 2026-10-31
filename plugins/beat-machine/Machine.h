@@ -11,6 +11,7 @@
 #include <wrl/client.h>
 
 #include <array>
+#include <cstdint>
 #include <memory>
 #include <span>
 #include <vector>
@@ -57,6 +58,8 @@ public:
     void setPaused(bool paused);
     CdResult applySettings(const CdSettingValue* values, uint32_t count);
     void invalidate();
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     void subscribe();

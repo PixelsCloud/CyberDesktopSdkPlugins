@@ -69,6 +69,14 @@ local to one linked module. They cannot cross worlds or DLLs. Body destruction i
 Distance/revolute anchors are body-local; mouse targets are world coordinates. Contacts/sensors are copied events;
 no cross-version event ordering is promised. Use `enqueue()` for mutations originating from event handling.
 
+Drain copied events after each `advance()`: use `takeEvents()` when the model needs them, or `discardEvents()` for
+visual-only scenes. Discard retains the buffer capacity for reuse and enforces the same owning-thread rule.
+Unconsumed events accumulate up to 65,536 entries; advancing beyond that limit throws, rather than growing memory
+without a bound. An SDK `UpdateLoop` stops after an update exception, so failing to drain events can stop animation
+even while audio callbacks continue. `discardEvents()` requires matching updated headers and the Physics2D library;
+the plugin C ABI remains 1. Use `active()` to stop idle scheduling; a stationary kinematic body alone is inactive,
+while a new velocity, awake dynamic body or queued command can resume simulation.
+
 The optional `RevoluteOptions` overload adds relative angle limits (radians), a motor speed (radians/second),
 and a maximum torque (N*m). Limits are relative to the pose when the joint is created. The original four-argument
 overload remains available. `revoluteMotor(joint, speed, maximumTorque)` changes the drive atomically; zero speed
@@ -306,6 +314,50 @@ The repository's `cybercanvas_noise_tests` covers bounds, continuity, determinis
 refresh-rate-independent particles and pause/visibility/reduced-motion behavior.
 
 ## Examples, validation and distribution
+
+### Physics scheduling, events and diagnostics
+
+Each instance retains its own World, created, advanced, queried and destroyed on
+one owner thread. A host may share deadline scheduling between UI subscriptions;
+this preserves the existing UI callback contract and does not combine Worlds.
+Pause excludes hidden elapsed time. An already-running UpdateLoop must not be
+restarted on each audio callback, because that can postpone updates indefinitely.
+
+`WorldOptions::collectEvents` defaults to true. Consumers must regularly call
+`takeEvents()`; `discardEvents()` clears already-copied notifications while
+retaining capacity. Visual-only scenes should set `collectEvents=false`, which
+avoids creating unused contact, sensor and hit notifications without changing
+collision response. `PhysicsParticleSettings::collisionEvents` defaults to false;
+set it explicitly to true before construction when consuming emitter collision
+events through `world().takeEvents()`. Advancing the emitter's World separately
+is still forbidden. Brick, marble and percussion gameplay event consumers retain
+event collection and their existing processing.
+
+UpdateLoop exceptions stop only that loop and produce one bounded error log.
+`failed()` exposes the fault; repeated `start()` calls do not retry it. After
+correcting or rebuilding the model, explicitly call `resetFailure()` and then
+start it again. Resetting alone does not start a timer.
+
+Optional physics diagnostics occupy previously unused `dev.diagnostics/v1`
+slots, without changing its struct size. A PluginAdapter implementation can
+provide `physicsCounters()` returning `std::array<uint64_t,4>`: completed fixed
+steps, cumulative advance wall nanoseconds, awake bodies and maximum advance
+wall nanoseconds. Registration belongs to the adapter and is removed before
+the plugin object is destroyed. No callbacks may outlive module unload.
+Manual adapters can use `plugin_detail::PluginDiagnostics` with the same
+lifetime order. Sampling occurs only on request on the owner thread.
+
+Timing requires `WorldOptions::measureTimings=true` or the explicit test process
+environment `CYBERDESKTOP_PHYSICS_PROFILE=1` before World creation. Otherwise
+duration counters stay zero and no per-advance clocks are read. These measure
+CPU-side wall time including possible preemption, not process CPU or GPU time;
+maximums must not be summed across Worlds.
+
+`tests/physics/inventory.py` resolves official catalogs through source/family
+models and separates inactive design-only entries. `cd_physics_plugins_tests`
+loads real DLLs and verifies progress, audio pulses, pause/resume, image loading
+and teardown. Its optional 1/2/4 worker argument is a headless execution-lane
+experiment; it does not make production UI callbacks asynchronous.
 
 `examples/physics-sandbox` is an installable 4×4 playground with dragging, count/speed, pause, reduced motion, debug draw
 and versioned state. Its optional spring mode suspends the first ball from a visible damped distance joint; switching

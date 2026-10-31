@@ -3,6 +3,7 @@
 #include <sdk/Images.h>
 
 #include <array>
+#include <cstdint>
 #include <filesystem>
 #include <functional>
 #include <memory>
@@ -69,6 +70,8 @@ public:
     const marbleclock::Model& model() const;
     uint64_t cacheBuilds() const;
     cdsdk::Settings settings;
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     bool frozen(const cdsdk::Settings& values) const;

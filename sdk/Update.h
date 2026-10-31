@@ -112,8 +112,15 @@ public:
 
     uint32_t interval() const;
 
+    bool failed() const;
+
+    // Reset only after correcting the model or explicitly rebuilding its state.
+    void resetFailure();
+
 private:
     static void CD_CALL tick(void* user, uint64_t now) noexcept;
+
+    void fail(const char* message) noexcept;
 
     Timer timer_;
     RedrawRequests redraw_;
@@ -124,5 +131,8 @@ private:
     uint64_t generation_ = 0;
     double speed_ = 1;
     bool paused_ = false;
+    bool failed_ = false;
+    CdHostApi host_{};
+    void* hostContext_ = nullptr;
 };
 }  // namespace cdsdk

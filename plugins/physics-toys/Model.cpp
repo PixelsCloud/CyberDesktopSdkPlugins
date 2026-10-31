@@ -102,7 +102,7 @@ void Model::reset(bool compact) {
     time_ = 0;
     accumulator_ = 0;
     pieces_.clear();
-    world_ = std::make_unique<physics::World>(physics::WorldOptions{.gravity = {0, 5}});
+    world_ = std::make_unique<physics::World>(physics::WorldOptions{.gravity = {0, 5}, .collectEvents = false});
     ground_ = world_->createBody({.type = physics::BodyType::Static});
     const auto enclosure =
         options_.separateEnclosure ? world_->createBody({.type = physics::BodyType::Static}) : ground_;
@@ -295,7 +295,6 @@ bool Model::advance(double seconds, double wind, double speed) {
         }
         const auto result = world_->advance(1. / 60);
         changed |= result.steps && (moving || result.active);
-        world_->takeEvents();
     }
     return changed;
 }

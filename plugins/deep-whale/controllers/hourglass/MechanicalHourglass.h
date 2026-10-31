@@ -1,6 +1,8 @@
 // Controller binding reused from plugins/vampire-alice/controllers/hourglass/MechanicalHourglass.h.
 #pragma once
 
+#include <array>
+#include <cstdint>
 #include <memory>
 
 #include "plugins/mechanical-hourglass/MechanicalHourglass.h"
@@ -40,6 +42,8 @@ public:
     void setPaused(bool paused);
     void invalidate();
     const Model& model() const;
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     const Spec& spec_;

@@ -9,6 +9,7 @@
 #include "plugins/hourglass-suite/PhysicalSand.h"
 #include "sdk/Environment.h"
 #include "sdk/Update.h"
+#include "sdk/cpp/PluginDiagnostics.h"
 
 namespace hourglassplugin {
 cdsdk::Settings defaults(Spec spec) {
@@ -54,6 +55,7 @@ struct Instance {
     uint64_t lastTick = 0;
     bool hidden = false, dark = true, pressed = false;
     double pressX = 0, pressY = 0;
+    cdsdk::plugin_detail::PluginDiagnostics diagnostics;
 
     void redraw() {
         host.request_redraw(context);
@@ -304,6 +306,11 @@ CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* output
         cdsdk::bindOutputIfSupported(self->renderer, *context);
         self->context = context->host_context;
         self->environment.bind(*context);
+        self->diagnostics.bind(*context, self.get(), [](void* pointer) {
+            const auto value = static_cast<Instance*>(pointer)->sand.stats();
+            return cdsdk::plugin_detail::PhysicsCounters{value.steps, value.advanceNanoseconds, value.awakeBodies,
+                                                         value.maximumAdvanceNanoseconds};
+        });
         self->lastTick = self->environment.snapshot().monotonic_ms;
         const auto subscribed = subscribe(*self, self->settings, false, self->timer);
         if (subscribed != CD_OK) {

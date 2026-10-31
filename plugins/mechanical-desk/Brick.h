@@ -1,5 +1,8 @@
 #pragma once
 
+#include <array>
+#include <cstdint>
+
 #include "plugins/brick-clock/Clock.h"
 #include "plugins/mechanical-desk/BasicClock.h"
 
@@ -20,6 +23,8 @@ public:
     void setPaused(bool paused);
     CdResult applySettings(const CdSettingValue* values, uint32_t count);
     void invalidate();
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     bool synchronize(bool animate);

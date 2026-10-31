@@ -54,6 +54,7 @@ int main() {
                 bounced |= world.state(physical.body(id)).velocity.y < -1e-3;
             }
             check("real floor contact produces rebound", bounced);
+            check("visual particle defaults do not retain collision events", world.takeEvents().empty());
             check("one shared 120Hz clock", emitter.stats().steps == 240 && world.stats().steps == 240);
             check("sprite rotation follows body", std::abs(emitter.particles()[0].rotation) > 20);
             if (reference.empty()) {
@@ -80,6 +81,19 @@ int main() {
             check("pause and reduced motion freeze physics", emitter.stats().steps == count);
         }
         auto options = settings();
+        {
+            options.collisionEvents = true;
+            PhysicsParticleEmitter observed(options);
+            const auto floor = observed.world().createBody({.type = physics::BodyType::Static, .position = {.5, 1.}});
+            observed.world().box(floor, {2., .05});
+            observed.emitter().origin({20, 10});
+            observed.emitter().burst(1);
+            for (int frame = 0; frame < 240; ++frame) {
+                observed.emitter().advance(1. / 120);
+            }
+            check("particle callers can opt into readable collision events", !observed.world().takeEvents().empty());
+            options.collisionEvents = false;
+        }
         options.particles.maximum = 4;
         options.particles.minimumLife = options.particles.maximumLife = .1;
         PhysicsParticleEmitter physical(options);

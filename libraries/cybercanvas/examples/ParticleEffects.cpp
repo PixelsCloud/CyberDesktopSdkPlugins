@@ -388,7 +388,7 @@ private:
         fluid_->add(drops);
         if (is("stirred")) {
             world_ = std::make_unique<physics::World>(
-                physics::WorldOptions{.gravity = {}, .fixedStep = kStep, .maximumSteps = 1});
+                physics::WorldOptions{.gravity = {}, .fixedStep = kStep, .maximumSteps = 1, .collectEvents = false});
             const auto ground = world_->createBody({.type = physics::BodyType::Static});
             rotor_ = world_->createBody({.position = {1.8, 1.42}, .sleepingAllowed = false});
             world_->box(rotor_, {.48, .025}, {}, 0, {.density = 10000});

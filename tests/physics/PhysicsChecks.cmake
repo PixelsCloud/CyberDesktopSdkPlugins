@@ -1,0 +1,10 @@
+include_guard(GLOBAL)
+if(TARGET cd_sdk_tool_support)
+    add_executable(cd_physics_plugins_tests EXCLUDE_FROM_ALL "${CMAKE_CURRENT_LIST_DIR}/PluginPhysicsTests.cpp")
+    target_link_libraries(cd_physics_plugins_tests PRIVATE cd_sdk_tool_support nlohmann_json::nlohmann_json)
+    get_filename_component(cd_physics_public_root "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+    target_include_directories(cd_physics_plugins_tests PRIVATE "${cd_physics_public_root}")
+    target_compile_options(cd_physics_plugins_tests PRIVATE /utf-8 /W4)
+    set_target_properties(cd_physics_plugins_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+endif()

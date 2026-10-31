@@ -7,6 +7,7 @@
 #include <sdk/Update.h>
 
 #include <array>
+#include <cstdint>
 #include <filesystem>
 #include <functional>
 #include <memory>
@@ -75,6 +76,8 @@ public:
     void setPaused(bool paused);
     void invalidate();
     const Model& model() const;
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     const Spec& spec_;

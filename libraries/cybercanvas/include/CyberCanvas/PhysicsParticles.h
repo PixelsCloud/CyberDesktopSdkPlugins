@@ -16,6 +16,9 @@ struct PhysicsParticleSettings {
     ParticleCollider collider = ParticleCollider::Circle;
     Size halfExtent{2, 2};
     bool collideWithParticles = true, continuousCollision = true, sleepingAllowed = true;
+    // Particle visuals do not retain collision notifications by default. Set
+    // true only when consuming world().takeEvents() after emitter updates.
+    bool collisionEvents = false;
 };
 
 // Owns one Box2D world and its clock; never advance world() separately. Add

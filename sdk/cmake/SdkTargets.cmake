@@ -12,7 +12,7 @@ target_include_directories(cd_sdk_abi INTERFACE
 target_compile_definitions(cd_sdk_abi INTERFACE NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)
 
 add_library(cd_sdk_core STATIC support/Settings.cpp support/Environment.cpp support/DiagnosticHost.cpp
-    support/Services.cpp support/Snapshots.cpp support/Plugin.cpp support/WeatherPresentation.cpp)
+    support/Services.cpp support/Snapshots.cpp support/Plugin.cpp support/PluginDiagnostics.cpp support/WeatherPresentation.cpp)
 add_library(CyberDesktopSDK::Core ALIAS cd_sdk_core)
 set_target_properties(cd_sdk_core PROPERTIES EXPORT_NAME Core)
 target_link_libraries(cd_sdk_core PUBLIC cd_sdk_abi)

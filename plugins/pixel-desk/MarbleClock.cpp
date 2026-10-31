@@ -332,6 +332,11 @@ void MarbleRenderer::draw(Canvas& canvas, const marbleclock::Model& model, const
     }
 }
 
+std::array<uint64_t, 4> MarbleInstance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 MarbleInstance::MarbleInstance(const CdCreateContext& context)
     : settings(marbleDefaults()),
       model_(marbleSpec(context.plugin_id).compact, marbleclock::GeometryStyle::Pixels),

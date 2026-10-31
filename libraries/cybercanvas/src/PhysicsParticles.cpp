@@ -23,6 +23,7 @@ physics::WorldOptions worldOptions(const PhysicsParticleSettings& settings) {
     physics::WorldOptions options;
     options.gravity = {settings.particles.gravity.x / settings.pixelsPerMeter,
                        settings.particles.gravity.y / settings.pixelsPerMeter};
+    options.collectEvents = settings.collisionEvents;
     options.fixedStep = 1. / 120;
     options.maximumSteps = 1;
     options.maximumBodies = settings.particles.maximum + 64;

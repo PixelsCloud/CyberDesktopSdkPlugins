@@ -6,6 +6,11 @@
 namespace deepwhale {
 using cybercanvas::Point;
 
+std::array<uint64_t, 4> SpringInstance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 SpringInstance::SpringInstance(const CdCreateContext& context)
     : settings(springDefaults(springSpec(context.plugin_id).compact)),
       model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true,

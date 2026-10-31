@@ -44,3 +44,4 @@ endif()
 include("${CMAKE_CURRENT_LIST_DIR}/../tests/architecture/ArchitectureChecks.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/../tests/architecture/PhysicsBaseline.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/../tests/physics/PhysicsChecks.cmake")

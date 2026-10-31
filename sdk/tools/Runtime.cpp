@@ -104,7 +104,18 @@ void CD_CALL MockHost::redraw(void* context) {
     static_cast<MockHost*>(context)->dirty = true;
 }
 
-void CD_CALL MockHost::log(void*, uint32_t, const char*, uint32_t) {}
+void CD_CALL MockHost::log(void* context, uint32_t level, const char* text, uint32_t length) {
+    if (context && text) {
+        auto& host = *static_cast<MockHost*>(context);
+        if (host.onLog) {
+            try {
+                host.onLog(level, std::string_view(text, length));
+            } catch (...) {
+                // Test/preview log observers cannot throw through the C ABI.
+            }
+        }
+    }
+}
 
 void CD_CALL MockHost::unsubscribe(void* context, uint64_t token) {
     if (context) {
@@ -781,6 +792,9 @@ auto MockHost::tick(double seconds) -> void {
                 data[i] = !hasAudioDevice      ? 0
                           : subscription.bands ? float(.45 + .4 * std::sin(seconds * 2 + i * .3))
                                                : float(std::sin(seconds * 4 + i * .1) * .5);
+            if (hasAudioDevice && subscription.bands && onAudio) {
+                onAudio(seconds, data);
+            }
             subscription.audio(subscription.user, data.data(), subscription.bands ? uint32_t(data.size()) : 512,
                                subscription.bands ? 0 : 48000, subscription.bands ? 0 : 2);
         }

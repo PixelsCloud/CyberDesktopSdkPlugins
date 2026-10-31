@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "sdk/PluginApi.h"
+#include "sdk/cpp/PluginDiagnostics.h"
 
 namespace cdsdk {
 namespace plugin_detail {
@@ -29,12 +30,19 @@ public:
 private:
     struct Box {
         explicit Box(const CdCreateContext& context)
-            : plugin(context), host(*context.host), context(context.host_context) {}
+            : plugin(context), host(*context.host), context(context.host_context) {
+            if constexpr (requires { plugin.physicsCounters(); }) {
+                diagnostics.bind(context, this, [](void* pointer) {
+                    return static_cast<Box*>(pointer)->plugin.physicsCounters();
+                });
+            }
+        }
 
         T plugin;
         CdHostApi host;
         void* context = nullptr;
         bool paused = false;
+        plugin_detail::PluginDiagnostics diagnostics;
     };
 
     static void invalidate(Box& box) {

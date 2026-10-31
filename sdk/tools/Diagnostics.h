@@ -69,7 +69,11 @@ inline constexpr const char* diagnosticNames[]{"frames",
                                                "imagePolls",
                                                "listUpdates",
                                                "bitmapEntries",
-                                               "transientBytes"};
+                                               "transientBytes",
+                                               "physicsSteps",
+                                               "physicsAdvanceNs",
+                                               "physicsAwake",
+                                               "physicsMaximumAdvanceNs"};
 
 bool sampleDiagnostics(MockHost& host, std::vector<DiagnosticSample>* output, Error* error);
 

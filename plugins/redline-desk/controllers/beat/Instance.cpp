@@ -8,6 +8,11 @@
 #include "plugins/redline-desk/controllers/beat/Machine.h"
 
 namespace redline_beat {
+std::array<uint64_t, 4> Instance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 Instance::Instance(const CdCreateContext& context)
     : settings{{"theme", CD_SETTING_CHOICE, 0, 0, "dark", 0, 0, {"dark", "light", "system"}},
                {"show_background", CD_SETTING_TOGGLE, 1},

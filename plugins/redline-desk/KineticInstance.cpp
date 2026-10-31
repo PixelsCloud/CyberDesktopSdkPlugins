@@ -199,6 +199,8 @@ public:
         return CD_OK;
     }
 
+    std::array<uint64_t, 4> physicsCounters() const;
+
 private:
     bool frozen() const {
         return hidden_ || !settings.at("running").integer || settings.at("reduced_motion").integer;
@@ -247,6 +249,11 @@ private:
     uint64_t lastAudio_ = 0;
     bool hidden_ = false;
 };
+
+std::array<uint64_t, 4> KineticInstance::physicsCounters() const {
+    const auto value = model_->stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
 }  // namespace
 
 CdResult createKinetic(int, const CdCreateContext* context, CdInstanceApi* output, uint32_t size) {

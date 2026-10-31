@@ -4,6 +4,9 @@
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
 
+#include <array>
+#include <cstdint>
+
 #include "plugins/beat-machine/Machine.h"
 #include "plugins/deep-whale/Skin.h"
 
@@ -18,6 +21,7 @@ public:
     void layoutChanged(const CdLayout&);
     void setPaused(bool);
     CdResult applySettings(const CdSettingValue*, uint32_t);
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     struct Impl;

@@ -131,7 +131,23 @@ foreach(index RANGE 0 ${last})
 endforeach()
 add_custom_target(cd_deep_whale_packages DEPENDS ${packages})
 
-target_sources(cd_deep_whale_runtime PRIVATE BasicClock.cpp BeatScene.cpp SpectrumSprites.cpp)
+add_library(cd_deep_whale_beat_scene STATIC BeatScene.cpp)
+target_link_libraries(cd_deep_whale_beat_scene PUBLIC CyberCanvas::Physics2D)
+target_include_directories(cd_deep_whale_beat_scene PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../..")
+target_compile_options(cd_deep_whale_beat_scene PRIVATE /utf-8 /W4)
+set_target_properties(cd_deep_whale_beat_scene PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+target_link_libraries(cd_deep_whale_runtime PRIVATE cd_deep_whale_beat_scene)
+target_sources(cd_deep_whale_runtime PRIVATE BasicClock.cpp SpectrumSprites.cpp)
+
+add_executable(cd_deep_whale_beat_endurance_tests EXCLUDE_FROM_ALL tools/BeatEnduranceTests.cpp)
+target_link_libraries(cd_deep_whale_beat_endurance_tests PRIVATE cd_deep_whale_beat_scene cd_beat_machine_core
+    nlohmann_json::nlohmann_json)
+target_compile_options(cd_deep_whale_beat_endurance_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_deep_whale_beat_endurance_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+add_test(NAME deep_whale_beat_endurance COMMAND cd_deep_whale_beat_endurance_tests "${CMAKE_CURRENT_SOURCE_DIR}/assets")
+set_tests_properties(deep_whale_beat_endurance PROPERTIES TIMEOUT 120)
 
 
 set_property(TARGET cd_deep_whale_shared_fonts PROPERTY CD_DISTRIBUTION_ASSETS "assets/fonts/DeepWhale")

@@ -30,6 +30,10 @@ struct WorldOptions {
     double fixedStep = 1. / 60;
     unsigned substeps = 4, maximumSteps = 5;
     size_t maximumBodies = 160, maximumDynamicBodies = 128, maximumShapes = 256, maximumJoints = 64;
+    // Disable copied contact/sensor/hit notifications for visual-only worlds.
+    // This does not disable collision detection or physical response.
+    bool collectEvents = true;
+    bool measureTimings = false;
 };
 
 struct BodyOptions {
@@ -94,6 +98,9 @@ struct PhysicsStats {
     size_t bodies = 0, shapes = 0, joints = 0, awakeBodies = 0;
     uint64_t steps = 0;
     double droppedSeconds = 0;
+    uint64_t advanceNanoseconds = 0;
+    uint64_t maximumAdvanceNanoseconds = 0;
+    bool timingsMeasured = false;
 };
 
 struct DebugShape {
@@ -170,6 +177,9 @@ public:
     // sleeping world's next advance. Paused worlds retain their command queue.
     void enqueue(std::function<void(World&)> command);
     std::vector<Event> takeEvents();
+    // Visual-only scenes must drain events too. Retain the storage for reuse
+    // instead of moving and reallocating the event vector every update.
+    void discardEvents();
     std::vector<Shape> point(Point position, uint64_t mask = ~uint64_t(0)) const;
     std::vector<Shape> query(Rect area, uint64_t mask = ~uint64_t(0)) const;
     std::optional<RayHit> ray(Point origin, Point translation, uint64_t mask = ~uint64_t(0)) const;

@@ -266,6 +266,11 @@ uint64_t SpringRenderer::cacheBuilds() const {
     return impl_->builds;
 }
 
+std::array<uint64_t, 4> SpringInstance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 SpringInstance::SpringInstance(const CdCreateContext& context)
     : settings(springDefaults()),
       model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true, pixelToysOptions()) {

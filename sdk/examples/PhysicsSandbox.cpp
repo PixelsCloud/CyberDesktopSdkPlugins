@@ -7,6 +7,9 @@
 #include <sdk/Update.h>
 #include <sdk/cpp/Plugin.h>
 
+#include <array>
+#include <cstdint>
+
 namespace {
 using namespace cybercanvas;
 namespace physics = cybercanvas::physics;
@@ -68,7 +71,6 @@ public:
             bool moved = false;
             if (world_ && !scene_.needsLayout()) {
                 moved = world_->advance(tick.delta).steps != 0;
-                world_->takeEvents();
                 binding_->update();
             }
             return cdsdk::UpdateStep{feedback || moved, scene_.active() || (world_ && world_->active())};
@@ -198,6 +200,14 @@ public:
         return CD_OK;
     }
 
+    std::array<uint64_t, 4> physicsCounters() const {
+        if (!world_) {
+            return {};
+        }
+        const auto value = world_->stats();
+        return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+    }
+
 private:
     cdsdk::Canvas canvas_;
     cdsdk::Environment environment_;
@@ -277,7 +287,7 @@ private:
     void rebuild(Rect area) {
         scene_.cancel();
         binding_.reset();
-        world_ = std::make_unique<physics::World>();
+        world_ = std::make_unique<physics::World>(physics::WorldOptions{.collectEvents = false});
         springBody_ = {};
         scene_.clear(arena_);
         arenaSize_ = {area.width, area.height};

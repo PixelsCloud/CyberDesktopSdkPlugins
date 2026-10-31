@@ -5,6 +5,7 @@
 #include <sdk/Interaction.h>
 
 #include <array>
+#include <cstdint>
 #include <filesystem>
 #include <memory>
 #include <optional>
@@ -87,6 +88,8 @@ public:
     uint64_t cacheBuilds() const;
     bool ready() const;
     cdsdk::Settings settings;
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     bool synchronize(bool animate);

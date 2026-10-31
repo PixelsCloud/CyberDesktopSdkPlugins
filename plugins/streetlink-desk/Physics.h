@@ -3,6 +3,8 @@
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
+#include <array>
+#include <cstdint>
 #include <memory>
 
 namespace streetlink {
@@ -18,6 +20,7 @@ public:
     void layoutChanged(const CdLayout& layout);
     void input(const CdInput& event);
     void setPaused(bool paused);
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     struct Impl;

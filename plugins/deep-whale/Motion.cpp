@@ -180,8 +180,9 @@ struct Instance::Impl : BeatScene {
     }
 
     void schedule() {
-        if (hidden ||
-            (!skin.pending() && (frozen() || (chime && !chimeModel->active() && settings.at("wind").number == 0)))) {
+        const bool active =
+            chime ? chimeModel->active() || settings.at("wind").number > 0 : world->active() || motion.active();
+        if (hidden || (!skin.pending() && (frozen() || !active))) {
             updates.stop();
         } else {
             updates.start(33, environment.snapshot().monotonic_ms);
@@ -252,6 +253,11 @@ struct Instance::Impl : BeatScene {
         interaction.regions(std::move(regions));
     }
 };
+
+std::array<uint64_t, 4> Instance::physicsCounters() const {
+    const auto value = impl_->chime ? impl_->chimeModel->stats() : impl_->world->stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
 
 Instance::Instance(const CdCreateContext& c)
     : settings(defaults(std::string_view(c.plugin_id).find("windchime") != std::string_view::npos,

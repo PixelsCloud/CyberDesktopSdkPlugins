@@ -202,7 +202,7 @@ struct Physics::Impl {
     void reset() {
         cancel();
         particles.clear();
-        world = std::make_unique<ph::World>(ph::WorldOptions{.gravity = {0, 0}, .substeps = 2});
+        world = std::make_unique<ph::World>(ph::WorldOptions{.gravity = {0, 0}, .substeps = 2, .collectEvents = false});
         ground = world->createBody({.type = ph::BodyType::Static});
         for (const auto r : chambers) {
             for (unsigned i = 0; i < 64; ++i) {
@@ -554,6 +554,11 @@ void Physics::layoutChanged(const CdLayout& layout) {
         s.safe = r;
     }
     s.redraw.invalidate();
+}
+
+std::array<uint64_t, 4> Physics::physicsCounters() const {
+    const auto value = impl_->world->stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
 }
 
 void Physics::setPaused(bool paused) {

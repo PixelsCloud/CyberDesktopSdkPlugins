@@ -4,6 +4,11 @@
 #include "plugins/physics-toys/Toys.h"
 
 namespace toys {
+std::array<uint64_t, 4> Instance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 Instance::Instance(const CdCreateContext& context, Kind kind, bool mechanical)
     : settings{{"speed", CD_SETTING_NUMBER, 0, .75, {}, .25, 2},
                {"wind", CD_SETTING_NUMBER, 0, .35, {}, 0, 1},

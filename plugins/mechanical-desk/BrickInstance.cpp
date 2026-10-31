@@ -6,6 +6,11 @@
 
 namespace mechanicaldesk {
 
+std::array<uint64_t, 4> BrickInstance::physicsCounters() const {
+    const auto value = model_.stats();
+    return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
+}
+
 BrickInstance::BrickInstance(const CdCreateContext& context)
     : settings{{"palette", CD_SETTING_CHOICE, 0, 0, "clay", 0, 0, {"clay", "sand", "slate"}},
                {"animate", CD_SETTING_TOGGLE, 1},

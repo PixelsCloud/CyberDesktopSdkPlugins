@@ -26,12 +26,18 @@ struct Host {
     uint64_t next = 1;
     int subscriptions = 0, redraws = 0;
     bool fail = false, partial = false;
+    int errors = 0;
 
     Host() {
         api.struct_size = sizeof(api);
         api.abi_version = CD_PLUGIN_ABI_VERSION;
         api.request_redraw = [](void* pointer) {
             ++static_cast<Host*>(pointer)->redraws;
+        };
+        api.log = [](void* pointer, uint32_t level, const char*, uint32_t) {
+            if (level >= 3) {
+                ++static_cast<Host*>(pointer)->errors;
+            }
         };
         api.subscribe_timer = [](void* pointer, uint32_t interval, CdTimerCallback callback, void* user,
                                  uint64_t* output) -> CdResult {
@@ -155,6 +161,10 @@ int main() {
         loop.start(20);
         host.tick(200400);
         check(!loop.active() && host.timers.empty(), "callback exceptions stop work at the C boundary");
+        check(loop.failed() && host.errors == 1 && loop.start(20) == CD_ERROR_INTERNAL && host.timers.empty(),
+              "failed work reports once and audio-style retries cannot restart it");
+        loop.resetFailure();
+        check(!loop.failed(), "explicit recovery clears failure without silently restarting");
         loop.onUpdate([&](auto) {
             loop.start(80);
             return cdsdk::UpdateStep{false, false};

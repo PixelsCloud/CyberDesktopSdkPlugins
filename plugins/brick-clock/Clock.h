@@ -7,6 +7,7 @@
 #include <sdk/Update.h>
 
 #include <array>
+#include <cstdint>
 #include <memory>
 #include <optional>
 #include <random>
@@ -115,6 +116,8 @@ public:
     void setPaused(bool paused);
     CdResult applySettings(const CdSettingValue* values, uint32_t count);
     void invalidate();
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     bool synchronize(bool animate);

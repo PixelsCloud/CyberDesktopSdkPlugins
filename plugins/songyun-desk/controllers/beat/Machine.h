@@ -1,5 +1,8 @@
 #pragma once
 
+#include <array>
+#include <cstdint>
+
 #include "plugins/beat-machine/Machine.h"
 #include "plugins/songyun-desk/Skin.h"
 
@@ -41,6 +44,8 @@ public:
     void setPaused(bool paused);
     CdResult applySettings(const CdSettingValue* values, uint32_t count);
     void invalidate();
+
+    std::array<uint64_t, 4> physicsCounters() const;
 
 private:
     void subscribe();

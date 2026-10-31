@@ -5,12 +5,12 @@
 #include <cmath>
 #include <numbers>
 
-#include "plugins/beat-machine/Machine.h"
+#include "plugins/beat-machine/Model.h"
 
 namespace deep_motion {
 auto BeatScene::resetBeat(Rect area, unsigned count, bool compact) -> void {
     field = area;
-    world = std::make_unique<ph::World>(ph::WorldOptions{.gravity = {0, 10.}});
+    world = std::make_unique<ph::World>(ph::WorldOptions{.gravity = {0, 10.}, .collectEvents = false});
     ground = world->createBody({.type = ph::BodyType::Static});
     balls.clear();
     pendulums.clear();
@@ -96,5 +96,6 @@ auto BeatScene::stepBeat(double dt, const beatmachine::Signal& signal) -> void {
     const double error = floorY - pulse * .72 - y;
     world->velocity(floor, {0, std::abs(error) < .0001 ? 0 : std::clamp(error * 24, -4.5, 2.4)});
     world->advance(dt);
+    world->discardEvents();
 }
 }  // namespace deep_motion
