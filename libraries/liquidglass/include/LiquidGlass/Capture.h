@@ -37,6 +37,12 @@ struct CaptureStatistics {
 
 struct ShadowImage;
 
+struct CaptureCapabilities {
+    bool exclusion = false, cursor = false, border = false, interval = false, dirty = false, iteration = false;
+    bool publishedGpu = false;
+    bool operator==(const CaptureCapabilities&) const = default;
+};
+
 class CaptureCoordinator;
 
 class CaptureSource final {
@@ -47,6 +53,8 @@ public:
     void setActive(bool active);
     void* brush() const;
     std::string error() const;
+    std::string backend() const;
+    CaptureCapabilities capabilities() const;
     std::shared_ptr<const ShadowImage> shadowImage() const;
     // Disabled by default. Reset counters and sample at most 1024 attempts;
     // zero stops measurement. Wall time measures submission, not actual GPU time.
@@ -62,7 +70,9 @@ private:
 
 // One background worker owns GPU resources and cropped surface copies. Visible
 // consumers share one capture-session frame pool per output; there is no CPU
-// desktop readback. Requires capture-session window exclusion on this Windows.
+// desktop readback. Uses session-local exclusion when available, otherwise a
+// bounded window stack plus application-published desktop GPU frames. A source
+// the OS refuses to capture is reported explicitly instead of self-sampling.
 // Exclusions apply to this sampler only and never change screenshot/recording
 // visibility of the application's real windows.
 class CaptureCoordinator final {

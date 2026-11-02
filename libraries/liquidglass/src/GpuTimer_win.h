@@ -16,6 +16,8 @@ public:
     explicit GpuTimer(void* device);
     ~GpuTimer();
     void begin();
+    void seal();
+    GpuInterval resolve();
     GpuInterval end();
 
 private:

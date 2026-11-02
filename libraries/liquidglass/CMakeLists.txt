@@ -30,10 +30,13 @@ if(WIN32)
     target_sources(cyber_liquid_glass PRIVATE "${cd_react_shader_header}")
     target_include_directories(cyber_liquid_glass PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
     target_sources(cyber_liquid_glass PRIVATE src/DisplayCapture_win.cpp src/Changes_win.cpp
+        src/CaptureSession_win.cpp src/CaptureSession_win.h
+        src/WindowStack_win.cpp src/WindowStack_win.h
+        src/FramePublisher_win.cpp src/FrameConsumer_win.h
         src/GpuTimer_win.cpp src/GpuTimer_win.h src/react/Displacement.cpp src/react/Displacement.h
         src/react/ReactEffect_win.cpp)
     target_include_directories(cyber_liquid_glass PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../..")
-    target_link_libraries(cyber_liquid_glass PRIVATE windowsapp dxguid d3d11 d3dcompiler d2d1 Magnification ole32)
+    target_link_libraries(cyber_liquid_glass PRIVATE windowsapp dxguid d3d11 d3dcompiler d2d1 Magnification ole32 dwmapi)
     target_compile_definitions(cyber_liquid_glass PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)
 endif()
 if(MSVC)

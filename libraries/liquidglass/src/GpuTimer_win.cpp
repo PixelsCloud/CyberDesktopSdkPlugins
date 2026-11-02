@@ -34,10 +34,19 @@ void GpuTimer::begin() {
     m_impl->context->End(m_impl->start.Get());
 }
 
-GpuInterval GpuTimer::end() {
+void GpuTimer::seal() {
     auto& self = *m_impl;
     self.context->End(self.finish.Get());
     self.context->End(self.disjoint.Get());
+}
+
+GpuInterval GpuTimer::end() {
+    seal();
+    return resolve();
+}
+
+GpuInterval GpuTimer::resolve() {
+    auto& self = *m_impl;
     self.context->Flush();
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(50);
     do {

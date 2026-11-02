@@ -34,7 +34,9 @@
 
 #include "LiquidGlass/Capture.h"
 #include "LiquidGlass/Effect.h"
+#include "libraries/liquidglass/src/CaptureSession_win.h"
 #include "libraries/liquidglass/src/GpuTimer_win.h"
+#include "libraries/liquidglass/src/WindowStack_win.h"
 
 namespace liquidglass {
 namespace {
@@ -119,7 +121,11 @@ public:
         winrt::check_hresult(device.CreateBuffer(&description, nullptr, &m_readback));
     }
 
-    bool probe(ID3D11ShaderResourceView& current, ID3D11ShaderResourceView* previous, Region area) {
+    bool probe(ID3D11ShaderResourceView& current, ID3D11ShaderResourceView* previous, Region area,
+               detail::GpuTimer* timer, detail::GpuInterval* measured) {
+        if (timer) {
+            timer->begin();
+        }
         const std::array<UINT, 4> constants{UINT(area.x), UINT(area.y), UINT(area.width), UINT(area.height)};
         m_context->UpdateSubresource(m_constants.Get(), 0, nullptr, constants.data(), 0, 0);
         const UINT clear[4]{};
@@ -138,6 +144,9 @@ public:
         m_context->CSSetUnorderedAccessViews(0, 1, emptyOutputs, nullptr);
         m_context->CSSetShader(nullptr, nullptr, 0);
         m_context->CopyResource(m_readback.Get(), m_flag.Get());
+        if (timer) {
+            timer->seal();
+        }
         const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(50);
         if (m_fence) {
             winrt::check_hresult(m_context4->Signal(m_fence.Get(), ++m_fenceValue));
@@ -168,6 +177,9 @@ public:
         }
         const UINT flags = *static_cast<const UINT*>(mapped.pData);
         m_context->Unmap(m_readback.Get(), 0);
+        if (timer && measured) {
+            *measured = timer->resolve();
+        }
         return bool(flags & 1);
     }
 
@@ -206,227 +218,110 @@ struct Wake {
     std::mutex mutex;
     std::condition_variable_any condition;
     bool pending = true;
+    bool framePending = false;
     std::atomic_uint64_t framePoolBytes{0};
     std::atomic_uint64_t recoveryRevision{0};
     std::atomic_bool resetRequested{false};
     std::atomic_bool suspended{false};
 
-    void post() {
+    void post(bool frame = false) {
         {
             std::lock_guard lock(mutex);
-            pending = true;
+            if (frame) {
+                framePending = true;
+            } else {
+                pending = true;
+            }
         }
         condition.notify_one();
     }
 };
 
-struct Frame {
-    explicit Frame(capture::Direct3D11CaptureFrame frame) : value(std::move(frame)) {}
-
-    Frame(Frame&& other) noexcept : value(std::move(other.value)) {}
-
-    Frame& operator=(Frame&& other) noexcept {
-        std::swap(value, other.value);
-        return *this;
-    }
-
-    ~Frame() {
-        try {
-            if (value) {
-                value.Close();
-            }
-        } catch (...) {
-        }
-    }
-
-    capture::Direct3D11CaptureFrame value{nullptr};
-};
-
-struct FrameMailbox {
-    std::mutex mutex;
-    std::optional<Frame> latest;
-    std::string error;
-    std::weak_ptr<Wake> wake;
-    std::atomic_bool active{true};
-};
-
-// Each output owns one two-buffer GPU frame pool. Its callback only transfers
-// the latest frame; all texture work is serialized on the coordinator worker.
+// Shared modern display session or a bounded, event-driven window stack.
 class Output final {
 public:
     Output(uintptr_t monitor, const winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DDevice& device,
-           std::weak_ptr<Wake> wake)
-        : m_mailbox(std::make_shared<FrameMailbox>()) {
-        m_mailbox->wake = std::move(wake);
-        regions.reserve(1024);
+           std::weak_ptr<Wake> wake) {
         MONITORINFO information{sizeof(information)};
         winrt::check_bool(GetMonitorInfoW(reinterpret_cast<HMONITOR>(monitor), &information));
         const auto& area = information.rcMonitor;
         bounds = {area.left, area.top, area.right - area.left, area.bottom - area.top};
-        const auto factory = winrt::get_activation_factory<capture::GraphicsCaptureItem, IGraphicsCaptureItemInterop>();
-        winrt::check_hresult(factory->CreateForMonitor(reinterpret_cast<HMONITOR>(monitor),
-                                                       winrt::guid_of<capture::GraphicsCaptureItem>(),
-                                                       winrt::put_abi(m_item)));
-        const auto size = m_item.Size();
-        if (size.Width < 1 || size.Height < 1 || uint64_t(size.Width) * size.Height * 8 > kFramePoolBytes) {
-            throw std::runtime_error("Display capture exceeds the 256 MiB shared GPU frame-pool budget");
+        const auto notify = [wake] {
+            if (const auto receiver = wake.lock()) {
+                receiver->post(true);
+            }
+        };
+        {
+            detail::CaptureSession probe(winrt::get_abi(device), monitor, true, notify, true);
+            m_capabilities = probe.capabilities();
         }
-        bytes = uint64_t(size.Width) * size.Height * 8;
-        m_pool = capture::Direct3D11CaptureFramePool::CreateFreeThreaded(
-            device, winrt::Windows::Graphics::DirectX::DirectXPixelFormat::B8G8R8A8UIntNormalized, 2, size);
-        m_session = m_pool.CreateCaptureSession(m_item);
-        m_display = m_session.try_as<capture::IDisplayGraphicsCaptureSession>();
-        if (!m_display) {
-            throw std::runtime_error("This Windows version does not support capture-session window exclusion");
-        }
-        m_session.IsCursorCaptureEnabled(false);
-        m_session.IsBorderRequired(false);
-        m_session.MinUpdateInterval(std::chrono::milliseconds(125));
-        m_session.DirtyRegionMode(capture::GraphicsCaptureDirtyRegionMode::ReportOnly);
-        const std::weak_ptr<FrameMailbox> weak = m_mailbox;
-        m_arrived = m_pool.FrameArrived(winrt::auto_revoke, [weak](const auto& sender, const auto&) {
-            const auto mailbox = weak.lock();
-            if (!mailbox || !mailbox->active.load()) {
-                return;
-            }
-            try {
-                auto value = sender.TryGetNextFrame();
-                if (!value) {
-                    return;
-                }
-                {
-                    std::lock_guard lock(mailbox->mutex);
-                    mailbox->latest.emplace(std::move(value));
-                }
-            } catch (const winrt::hresult_error& error) {
-                std::lock_guard lock(mailbox->mutex);
-                mailbox->error = winrt::to_string(error.message());
-            }
-            if (auto wake = mailbox->wake.lock()) {
-                wake->post();
-            }
-        });
-        m_closed = m_item.Closed(winrt::auto_revoke, [weak](const auto&, const auto&) {
-            const auto mailbox = weak.lock();
-            if (!mailbox || !mailbox->active.load()) {
-                return;
-            }
-            {
-                std::lock_guard lock(mailbox->mutex);
-                mailbox->error = "Captured display became unavailable";
-            }
-            if (auto wake = mailbox->wake.lock()) {
-                wake->post();
-            }
-        });
-    }
-
-    ~Output() {
-        m_mailbox->active.store(false);
-        m_arrived.revoke();
-        m_closed.revoke();
-        try {
-            m_session.Close();
-            m_pool.Close();
-        } catch (...) {
+        if (!m_capabilities.exclusion || GetEnvironmentVariableW(L"CYBER_LIQUID_FORCE_WINDOW_STACK", nullptr, 0)) {
+            m_session.reset();
+            m_stack = std::make_unique<detail::WindowStack>(winrt::get_abi(device), bounds, notify);
+        } else {
+            m_session = std::make_unique<detail::CaptureSession>(winrt::get_abi(device), monitor, true, notify);
+            bytes = m_session->bytes();
         }
     }
 
     void exclude(const std::vector<uintptr_t>& windows, uint64_t revision) {
-        if (m_started && m_exclusions == windows && m_exclusionRevision == revision) {
-            return;
+        if (m_exclusions != windows || m_revision != revision) {
+            m_exclusions = windows;
+            m_revision = revision;
         }
-        std::vector<winrt::Windows::UI::WindowId> values;
-        values.reserve(windows.size());
-        for (auto window : windows) {
-            if (IsWindow(reinterpret_cast<HWND>(window))) {
-                values.push_back({uint64_t(window)});
-            }
-        }
-        m_iteration = m_display.SetWindowExclusionList(values);
-        static const bool trace = GetEnvironmentVariableW(L"CYBER_LIQUID_TRACE", nullptr, 0) > 0;
-        static std::atomic_int tracesRemaining{8};
-        if (trace && tracesRemaining.fetch_sub(1) > 0) {
-            std::fprintf(stderr, "GPU exclusions %zu configuration %llu\n", values.size(), m_iteration);
-            for (const auto& value : values) {
-                const auto window = reinterpret_cast<HWND>(uintptr_t(value.Value));
-                RECT placement{};
-                GetWindowRect(window, &placement);
-                std::fprintf(stderr, "excluded %llx at %ld,%ld %ldx%ld\n", value.Value, placement.left, placement.top,
-                             placement.right - placement.left, placement.bottom - placement.top);
-            }
-        }
-        m_exclusions = windows;
-        m_exclusionRevision = revision;
-        if (!m_started) {
-            m_session.StartCapture();
-            m_started = true;
+        if (m_session) {
+            m_session->start(windows);
         }
     }
 
-    bool take(ID2D1DeviceContext& context, ID3D11Device& device) {
-        std::optional<Frame> next;
-        {
-            std::lock_guard lock(m_mailbox->mutex);
-            if (!m_mailbox->error.empty()) {
-                throw std::runtime_error(m_mailbox->error);
-            }
-            next = std::exchange(m_mailbox->latest, std::nullopt);
+    void configureRegions(std::vector<Region> areas) {
+        m_regions = std::move(areas);
+    }
+
+    bool take(ID2D1DeviceContext& context, ID3D11Device& device, bool consumeFrame, uint64_t budget) {
+        if (m_stack) {
+            m_stack->configure(m_regions, m_exclusions);
+            const bool fresh = m_stack->take(context, device, consumeFrame, budget);
+            bytes = m_stack->bytes();
+            regions = fresh ? m_regions : std::vector<Region>{};
+            return fresh;
         }
-        if (!next || next->value.ConfigurationIteration() < m_iteration) {
-            return false;
-        }
-        const auto size = next->value.ContentSize();
-        if (size.Width != bounds.width || size.Height != bounds.height) {
-            throw std::runtime_error("Display capture size changed; recreate its output resources");
-        }
-        ComPtr<Windows::Graphics::DirectX::Direct3D11::IDirect3DDxgiInterfaceAccess> access;
-        winrt::check_hresult(
-            static_cast<IUnknown*>(winrt::get_abi(next->value.Surface()))->QueryInterface(IID_PPV_ARGS(&access)));
-        ComPtr<IDXGISurface> surface;
-        winrt::check_hresult(access->GetInterface(IID_PPV_ARGS(&surface)));
-        ComPtr<IUnknown> identity;
-        winrt::check_hresult(surface.As(&identity));
-        auto found = std::find_if(m_cache.begin(), m_cache.end(), [&identity](const auto& entry) {
-            return entry.identity.Get() == identity.Get();
-        });
-        if (found == m_cache.end()) {
-            found = m_cache.begin() + m_cacheIndex;
-            m_cacheIndex = (m_cacheIndex + 1) % m_cache.size();
-            *found = {};
-            found->identity = std::move(identity);
-            const auto properties = D2D1::BitmapProperties1(
-                D2D1_BITMAP_OPTIONS_NONE, D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_IGNORE));
-            winrt::check_hresult(context.CreateBitmapFromDxgiSurface(surface.Get(), &properties, &found->bitmap));
-            winrt::check_hresult(surface.As(&found->texture));
-            winrt::check_hresult(device.CreateShaderResourceView(found->texture.Get(), nullptr, &found->view));
-        }
+        const bool fresh = consumeFrame && m_session->take(context, device);
         regions.clear();
-        const auto dirty = next->value.DirtyRegions();
-        if (dirty.Size() > 1024) {
-            regions.push_back(bounds);
-        } else {
-            for (const auto& area : dirty) {
-                regions.push_back({bounds.x + area.X, bounds.y + area.Y, area.Width, area.Height});
+        if (fresh) {
+            for (auto area : m_session->changes()) {
+                area.x += bounds.x;
+                area.y += bounds.y;
+                regions.push_back(area);
             }
         }
-        m_bitmap = found->bitmap;
-        m_texture = found->texture;
-        m_view = found->view;
-        m_frame = std::move(next);
-        return true;
+        return fresh;
     }
 
     ID2D1Bitmap1* bitmap() const {
-        return m_frame && m_frame->value.ConfigurationIteration() >= m_iteration ? m_bitmap.Get() : nullptr;
+        return m_stack ? m_stack->bitmap() : m_session->bitmap();
     }
 
     ID3D11ShaderResourceView& view() const {
-        return *m_view.Get();
+        return *(m_stack ? m_stack->view() : m_session->view());
     }
 
     ID3D11Texture2D& texture() const {
-        return *m_texture.Get();
+        return *(m_stack ? m_stack->texture() : m_session->texture());
+    }
+
+    const char* backend() const {
+        return m_stack ? m_stack->backend() : "windows-display-wgc-session-exclusion";
+    }
+
+    std::string error() const {
+        return m_stack ? m_stack->error() : std::string{};
+    }
+
+    CaptureCapabilities capabilities() const {
+        auto value = m_session ? m_session->capabilities() : m_capabilities;
+        value.publishedGpu = m_stack && m_stack->usesPublishedFrames();
+        return value;
     }
 
     Region bounds;
@@ -434,31 +329,12 @@ public:
     std::vector<Region> regions;
 
 private:
-    std::shared_ptr<FrameMailbox> m_mailbox;
-    capture::GraphicsCaptureItem m_item{nullptr};
-    capture::Direct3D11CaptureFramePool m_pool{nullptr};
-    capture::GraphicsCaptureSession m_session{nullptr};
-    capture::IDisplayGraphicsCaptureSession m_display{nullptr};
-    capture::Direct3D11CaptureFramePool::FrameArrived_revoker m_arrived;
-    capture::GraphicsCaptureItem::Closed_revoker m_closed;
-    std::optional<Frame> m_frame;
-    ComPtr<ID2D1Bitmap1> m_bitmap;
-    ComPtr<ID3D11Texture2D> m_texture;
-    ComPtr<ID3D11ShaderResourceView> m_view;
-
-    struct CachedTexture {
-        ComPtr<IUnknown> identity;
-        ComPtr<ID2D1Bitmap1> bitmap;
-        ComPtr<ID3D11Texture2D> texture;
-        ComPtr<ID3D11ShaderResourceView> view;
-    };
-
-    std::array<CachedTexture, 2> m_cache;
-    size_t m_cacheIndex = 0;
+    std::unique_ptr<detail::CaptureSession> m_session;
+    std::unique_ptr<detail::WindowStack> m_stack;
     std::vector<uintptr_t> m_exclusions;
-    uint64_t m_iteration = 0;
-    uint64_t m_exclusionRevision = 0;
-    bool m_started = false;
+    std::vector<Region> m_regions;
+    uint64_t m_revision = 0;
+    CaptureCapabilities m_capabilities;
 };
 }  // namespace
 
@@ -485,6 +361,8 @@ struct CaptureSource::Impl {
     std::shared_ptr<const ShadowImage> shadow;
     std::unique_ptr<detail::GpuTimer> timer;
     CaptureStatistics statistics;
+    std::string backend;
+    CaptureCapabilities capabilities;
     uint32_t statisticsRemaining = 0;
     uint64_t statisticsRevision = 0;
 
@@ -502,7 +380,6 @@ struct CaptureSource::Impl {
             revision = source.statisticsRevision;
             if (enabled) {
                 --source.statisticsRemaining;
-                ++source.statistics.captures;
                 began = std::chrono::steady_clock::now();
             }
         }
@@ -513,6 +390,7 @@ struct CaptureSource::Impl {
             }
             std::lock_guard lock(source.mutex);
             if (revision == source.statisticsRevision) {
+                ++source.statistics.captures;
                 source.statistics.gpuCopyBytes += copiedBytes;
                 source.statistics.unchanged += !changed;
                 source.statistics.failed += !succeeded;
@@ -760,6 +638,8 @@ struct CaptureCoordinator::Impl {
             source.allocatedBytes = uint64_t(region.width) * region.height * 4 + uint64_t(width) * height * 4 +
                                     source.optical->allocatedBytes();
             source.error.clear();
+            source.backend = output.backend();
+            source.capabilities = output.capabilities();
         }
         const bool wasReady = source.ready.exchange(true);
         if (source.active.load() &&
@@ -770,7 +650,7 @@ struct CaptureCoordinator::Impl {
         return copiedBytes;
     }
 
-    bool update(const std::vector<std::shared_ptr<CaptureSource::Impl>>& consumers) {
+    bool update(const std::vector<std::shared_ptr<CaptureSource::Impl>>& consumers, bool consumeFrame) {
         std::set<uintptr_t> needed;
         std::vector<std::shared_ptr<CaptureSource::Impl>> visible;
         uint64_t pixels = 0;
@@ -830,18 +710,53 @@ struct CaptureCoordinator::Impl {
             revision = exclusionRevision;
         }
         uint64_t outputBytes = 0;
+        uint64_t retainedBytes = 0;
+        for (const auto& [monitor, output] : outputs) {
+            if (output) {
+                retainedBytes += output->bytes;
+            }
+        }
         for (auto monitor : needed) {
             auto& output = outputs[monitor];
             if (!output) {
                 output = std::make_unique<Output>(monitor, native, wake);
             }
+            output->exclude(excluded, revision);
+            std::vector<Region> areas;
+            for (const auto& source : visible) {
+                std::lock_guard lock(source->mutex);
+                if (contains(output->bounds, source->panel)) {
+                    areas.push_back(clipped(padded(source->panel, source->halo), output->bounds));
+                }
+            }
+            output->configureRegions(std::move(areas));
+            const auto otherBytes = retainedBytes - std::min(retainedBytes, output->bytes);
+            const bool fresh = output->take(*d2d.Get(), *device.Get(), consumeFrame,
+                                            otherBytes < kFramePoolBytes ? kFramePoolBytes - otherBytes : 0);
+            retainedBytes = otherBytes + output->bytes;
             outputBytes += output->bytes;
             if (outputBytes > kFramePoolBytes) {
-                throw std::runtime_error("Shared display capture exceeds the 256 MiB GPU frame-pool budget");
+                throw std::runtime_error("Shared background capture exceeds the 256 MiB GPU budget");
             }
-            output->exclude(excluded, revision);
-            const bool fresh = output->take(*d2d.Get(), *device.Get());
             if (!output->bitmap()) {
+                const auto error = output->error();
+                if (!error.empty()) {
+                    for (const auto& source : visible) {
+                        Region panel;
+                        {
+                            std::lock_guard lock(source->mutex);
+                            panel = source->panel;
+                        }
+                        if (contains(output->bounds, panel)) {
+                            {
+                                std::lock_guard lock(source->mutex);
+                                source->capabilities = output->capabilities();
+                            }
+                            release(*source);
+                            fail(*source, error);
+                        }
+                    }
+                }
                 continue;
             }
             for (const auto& source : visible) {
@@ -885,7 +800,6 @@ struct CaptureCoordinator::Impl {
                         if (!source->timer) {
                             source->timer = std::make_unique<detail::GpuTimer>(device.Get());
                         }
-                        source->timer->begin();
                     }
                     sample.changed = dirty || changed;
                     const bool canCompare = !dirty && source->cachedView && previous == region;
@@ -895,7 +809,9 @@ struct CaptureCoordinator::Impl {
                                               region.height};
                         const auto began =
                             sample.enabled ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
-                        sample.changed = comparison->probe(output->view(), source->cachedView.Get(), relative);
+                        sample.changed = comparison->probe(output->view(), source->cachedView.Get(), relative,
+                                                           sample.enabled ? source->timer.get() : nullptr,
+                                                           sample.enabled ? &sample.gpu : nullptr);
                         if (sample.enabled) {
                             sample.compareWall = uint64_t(std::chrono::duration_cast<std::chrono::microseconds>(
                                                               std::chrono::steady_clock::now() - began)
@@ -904,6 +820,9 @@ struct CaptureCoordinator::Impl {
                     }
                     const auto drawBegan =
                         sample.enabled ? std::chrono::steady_clock::now() : std::chrono::steady_clock::time_point{};
+                    if (sample.enabled && (sample.changed || opticalDirty)) {
+                        source->timer->begin();
+                    }
                     if (sample.changed) {
                         sample.copiedBytes = draw(*source, *output, region, panel, parameters, dpi, corner, attachedTop,
                                                   true, sample.enabled ? &sample : nullptr);
@@ -916,7 +835,13 @@ struct CaptureCoordinator::Impl {
                         sample.drawWall = uint64_t(std::chrono::duration_cast<std::chrono::microseconds>(
                                                        std::chrono::steady_clock::now() - drawBegan)
                                                        .count());
-                        sample.gpu = source->timer->end();
+                        if (sample.changed) {
+                            const auto drawing = source->timer->end();
+                            sample.gpu = {sample.gpu.nanoseconds + drawing.nanoseconds,
+                                          drawing.valid && (!sample.compared || sample.gpu.valid),
+                                          sample.gpu.disjoint || drawing.disjoint,
+                                          sample.gpu.timedOut || drawing.timedOut};
+                        }
                     }
                     sample.succeeded = true;
                 }
@@ -924,7 +849,8 @@ struct CaptureCoordinator::Impl {
         }
         wake->framePoolBytes.store(outputBytes);
         return !visible.empty() && std::all_of(visible.begin(), visible.end(), [](const auto& source) {
-            return source->ready.load();
+            std::lock_guard lock(source->mutex);
+            return source->ready.load() || !source->error.empty();
         });
     }
 
@@ -954,20 +880,31 @@ struct CaptureCoordinator::Impl {
         uint64_t recoveryRevision = 0;
         using Clock = std::chrono::steady_clock;
         std::optional<Clock::time_point> retryAt, startupBy;
+        auto nextFrame = Clock::time_point::min();
         while (!stop.stop_requested()) {
+            bool consumeFrame = false;
             {
                 std::unique_lock lock(wake->mutex);
-                const auto deadline = retryAt ? retryAt : startupBy;
+                auto deadline = retryAt ? retryAt : startupBy;
+                if (wake->framePending && (!deadline || nextFrame < *deadline)) {
+                    deadline = nextFrame;
+                }
+                const auto pending = [&] {
+                    return wake->pending || (wake->framePending && Clock::now() >= nextFrame);
+                };
                 if (deadline) {
-                    wake->condition.wait_until(lock, stop, *deadline, [this] {
-                        return wake->pending;
-                    });
+                    wake->condition.wait_until(lock, stop, *deadline, pending);
                 } else {
-                    wake->condition.wait(lock, stop, [this] {
-                        return wake->pending;
+                    wake->condition.wait(lock, stop, [&] {
+                        return wake->pending || wake->framePending;
                     });
                 }
                 wake->pending = false;
+                if (wake->framePending && Clock::now() >= nextFrame) {
+                    consumeFrame = true;
+                    wake->framePending = false;
+                    nextFrame = Clock::now() + std::chrono::milliseconds(125);
+                }
             }
             if (stop.stop_requested()) {
                 break;
@@ -1003,7 +940,7 @@ struct CaptureCoordinator::Impl {
             std::string error;
             try {
                 winrt::check_hresult(apartment);
-                if (update(active)) {
+                if (update(active, consumeFrame)) {
                     // Initialization and empty frame callbacks are not recovery.
                     failures = 0;
                     startupBy.reset();
@@ -1148,6 +1085,16 @@ void* CaptureSource::brush() const {
 std::string CaptureSource::error() const {
     std::lock_guard lock(m_impl->mutex);
     return m_impl->error;
+}
+
+std::string CaptureSource::backend() const {
+    std::lock_guard lock(m_impl->mutex);
+    return m_impl->backend;
+}
+
+CaptureCapabilities CaptureSource::capabilities() const {
+    std::lock_guard lock(m_impl->mutex);
+    return m_impl->capabilities;
 }
 
 void CaptureSource::sampleStatistics(uint32_t attemptLimit) {
