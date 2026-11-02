@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "吸血鬼.Alice 系列，支持当前实例独立设置。"
 layouts {
     id: "2x4"

@@ -28,7 +28,7 @@ public:
         const auto art = skin_.size();
         logical_ = {kind_ == 0 || kind_ == 2 ? 308. : 468., 0};
         logical_.height = logical_.width * art.height / art.width;
-        model_ = std::make_unique<KineticModel>(kind_, logical_);
+        model_ = std::make_unique<KineticModel>(context, kind_, logical_);
         environment_.bind(context);
         redraw_.bind(context);
         interaction_.bind(context);
@@ -58,12 +58,12 @@ public:
         watch_.reset();
         updates_.stop();
         interaction_.cancel();
-        model_->cancelDrag();
     }
 
     cdsdk::Settings settings;
 
     CdResult render(const CdFrame& frame) {
+        model_->consumeBackground();
         updates_.beginFrame();
         redraw_.beginFrame();
         const bool okay = skin_.render(frame, safe_, [&](Canvas& canvas) {
@@ -143,7 +143,9 @@ public:
         local.y = point.y;
         const auto result = interaction_.input(local);
         if (result.drag == cybercanvas::DragPhase::Begin) {
-            model_->beginDrag(point);
+            if (!model_->tryBeginDrag(point)) {
+                interaction_.cancel();
+            }
         } else if (result.drag == cybercanvas::DragPhase::Update) {
             model_->drag(point);
         } else if (result.drag == cybercanvas::DragPhase::End || result.drag == cybercanvas::DragPhase::Cancel) {
@@ -175,6 +177,7 @@ public:
         lastAudio_ = 0;
         subscribe();
         if (value) {
+            model_->pauseBackground(true);
             updates_.stop();
         } else {
             schedule();
@@ -229,8 +232,20 @@ private:
     }
 
     void schedule() {
+        model_->pauseBackground(frozen());
+        if (!model_->backgrounded()) {
+            if (!hidden_) {
+                updates_.start(frozen() && kind_ < 2 ? 1000 : 16, environment_.snapshot().monotonic_ms);
+            }
+            return;
+        }
         if (!hidden_) {
-            updates_.start(frozen() && kind_ < 2 ? 1000 : 16, environment_.snapshot().monotonic_ms);
+            if (frozen() && kind_ >= 2 && !skin_.pending()) {
+                updates_.stop();
+            } else {
+                const unsigned interval = skin_.pending() || kind_ >= 2 ? 16 : 1000;
+                updates_.start(interval, environment_.snapshot().monotonic_ms);
+            }
         }
     }
 

@@ -8,7 +8,14 @@ target_compile_options(cd_streetlink_rendering PRIVATE /utf-8 /W4)
 set_target_properties(cd_streetlink_rendering PROPERTIES
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 
+add_library(cd_streetlink_physics_model STATIC PhysicsModel.cpp PhysicsBackground.cpp)
+target_link_libraries(cd_streetlink_physics_model PUBLIC CyberDesktopSDK::SDK CyberCanvas::Physics2D)
+target_include_directories(cd_streetlink_physics_model PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../..")
+target_compile_options(cd_streetlink_physics_model PRIVATE /utf-8 /W4)
+set_target_properties(cd_streetlink_physics_model PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 add_library(cd_streetlink_runtime SHARED Runtime.cpp Physics.cpp)
+target_link_libraries(cd_streetlink_runtime PRIVATE cd_streetlink_physics_model)
 target_compile_definitions(cd_streetlink_runtime PRIVATE CD_STREETLINK_RUNTIME_BUILD)
 target_compile_options(cd_streetlink_runtime PRIVATE /utf-8 /W4)
 target_link_libraries(cd_streetlink_runtime PRIVATE cd_streetlink_rendering cd_artwork_rendering cd_beat_machine_core nlohmann_json::nlohmann_json)

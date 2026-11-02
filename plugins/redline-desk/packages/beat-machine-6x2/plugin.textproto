@@ -34,3 +34,6 @@ settings_page {
 }
 required_services { id: "audio.spectrum" version: 1 }
 tags: "RedLine"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

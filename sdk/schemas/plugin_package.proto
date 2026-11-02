@@ -74,6 +74,7 @@ enum Capability {
     CONTENT = 9;
     MEDIA_LIBRARY = 10;
     IMAGE_SKINS = 11;
+    BACKGROUND_COMPUTE = 12;
 }
 
 message Dependency {

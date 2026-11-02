@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <thread>
@@ -326,6 +327,12 @@ void circulationTests(bool compact) {
 }
 
 int main(int argc, char** argv) try {
+    // These legacy fixtures assert immediate owner-thread UI semantics. The
+    // background path is verified separately by the SDK/Native DLL matrix.
+    if (_putenv_s("CD_PHYSICS_EXECUTION_MODE", "owner-reference") != 0) {
+        return 2;
+    }
+    std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     if (argc > 1 && std::string_view(argv[1]) == "--circulation") {
         circulationTests(false);
         circulationTests(true);

@@ -40,7 +40,8 @@ cdsdk::Settings defaults(Spec spec) {
 
 namespace {
 struct Instance {
-    explicit Instance(Spec value) : spec(value), settings(defaults(value)) {}
+    Instance(Spec value, const CdCreateContext& createContext)
+        : spec(value), settings(defaults(value)), sand(createContext) {}
 
     Spec spec;
     cdsdk::Settings settings;
@@ -85,7 +86,7 @@ void CD_CALL tick(void* pointer, uint64_t now) noexcept {
         if (self.model.phase() == Phase::Finished) {
             self.stop();
         }
-        if (seconds > 0) {
+        if (seconds > 0 && (!self.settings.at("physics").integer || !self.sand.backgrounded())) {
             self.redraw();
         }
     } catch (...) {
@@ -93,6 +94,7 @@ void CD_CALL tick(void* pointer, uint64_t now) noexcept {
 }
 
 CdResult subscribe(Instance& self, const cdsdk::Settings& settings, bool restarting, cdsdk::Timer& token) {
+    self.sand.pauseBackground(self.hidden || !settings.at("running").integer || !settings.at("physics").integer);
     token.bind(self.host, self.context);
     if (self.hidden || !settings.at("running").integer || (!restarting && self.model.phase() == Phase::Finished)) {
         return CD_OK;
@@ -114,6 +116,7 @@ CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
             return CD_ERROR_ARGUMENT;
         }
         auto& self = *static_cast<Instance*>(pointer);
+        self.sand.consumeBackground();
         const auto& lighting = self.settings.at("lighting").text;
         const Options options{lighting == "night" || lighting == "theme" && self.dark,
                               self.settings.at("running").integer != 0,
@@ -265,6 +268,8 @@ void CD_CALL pause(void* pointer, uint32_t hidden) noexcept {
             return;
         }
         self.hidden = hidden != 0;
+        self.sand.pauseBackground(self.hidden || !self.settings.at("running").integer ||
+                                  !self.settings.at("physics").integer);
         self.pressed = false;
         self.stop();
         self.lastTick = self.environment.snapshot().monotonic_ms;
@@ -301,7 +306,7 @@ CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* output
             !output || size < sizeof(CdInstanceApi)) {
             return CD_ERROR_ARGUMENT;
         }
-        auto self = std::make_unique<Instance>(spec);
+        auto self = std::make_unique<Instance>(spec, *context);
         self->host = *context->host;
         cdsdk::bindOutputIfSupported(self->renderer, *context);
         self->context = context->host_context;

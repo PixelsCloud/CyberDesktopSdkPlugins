@@ -4,6 +4,9 @@ namespace alice_beat {
 Model::Model(unsigned count, bool compact)
     : beatmachine::Model(count, compact, beatmachine::GeometryStyle::Illustrated) {}
 
+Model::Model(const CdCreateContext& context, unsigned count, bool compact)
+    : beatmachine::Model(context, count, compact, beatmachine::GeometryStyle::Illustrated) {}
+
 double laneHeight(double x, bool compact) {
     return beatmachine::illustratedLaneHeight(x, compact);
 }

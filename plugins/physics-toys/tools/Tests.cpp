@@ -5,6 +5,7 @@
 #include <map>
 
 #include "plugins/physics-toys/Toys.h"
+#include "sdk/cpp/BackgroundReference.h"
 
 namespace {
 void check(bool condition, const char* message) {
@@ -15,6 +16,8 @@ void check(bool condition, const char* message) {
 }
 
 struct Host {
+    cdsdk::BackgroundReferenceHost background{cdsdk::BackgroundReferenceHost::Mode::Deterministic};
+
     struct Timer {
         CdTimerCallback callback;
         void* user;
@@ -49,6 +52,10 @@ struct Host {
             if (version != 1) {
                 return CD_ERROR_VERSION;
             }
+            if (std::string_view(service) == CD_SERVICE_BACKGROUND && size >= sizeof(CdBackgroundApi)) {
+                *static_cast<CdBackgroundApi*>(result) = static_cast<Host*>(context)->background.api();
+                return CD_OK;
+            }
             if (std::string_view(service) == CD_SERVICE_ENVIRONMENT && size >= sizeof(CdEnvironmentApi)) {
                 *static_cast<CdEnvironmentApi*>(result) = {sizeof(CdEnvironmentApi), 1,
                                                            [](void* context, CdEnvironmentSnapshot* value) -> CdResult {
@@ -82,6 +89,10 @@ struct Host {
                 timer.callback(timer.user, now);
             }
         }
+        background.tick(double(now) / 1000);
+        if (background.takeChanged()) {
+            ++redraws;
+        }
     }
 };
 
@@ -100,7 +111,10 @@ void lifecycle() {
             layout.logical_height = h;
             layout.safe_content = {0, 0, double(w), double(h)};
             instance.layoutChanged(layout);
-            check(instance.render(frame) == CD_OK, "real instance renders");
+            for (unsigned warm = 0; warm < 3; ++warm) {
+                host.advance(0);
+                check(instance.render(frame) == CD_OK, "real instance renders");
+            }
             const auto first = rgba;
             instance.render(frame);
             check(rgba == first, "paint does not advance physics");
@@ -211,6 +225,7 @@ void mechanicalWindLifecycle() {
         std::vector<uint8_t> pixels(260 * 290 * 4);
         CdFrame frame{sizeof(CdFrame), 260, 290, 1040, pixels.size(), pixels.data(), 1};
         for (int i = 0; i < 50; ++i) {
+            host.advance(0);
             check(instance.render(frame) == CD_OK, "mechanical chime renders its actual packaged materials");
             Sleep(5);
         }

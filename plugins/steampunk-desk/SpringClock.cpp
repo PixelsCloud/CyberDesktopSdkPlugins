@@ -7,6 +7,7 @@
 #include <tuple>
 
 #include "plugins/mechanical-pixels/Pixels.h"
+#include "plugins/physics-toys/BackgroundController.h"
 #include "plugins/steampunk-desk/SteamParts.h"
 #include "plugins/steampunk-desk/SteamSprite.h"
 
@@ -288,7 +289,7 @@ std::array<uint64_t, 4> SpringInstance::physicsCounters() const {
 
 SpringInstance::SpringInstance(const CdCreateContext& context)
     : settings(springDefaults(springSpec(context.plugin_id).compact)),
-      model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true),
+      model_(context, toys::Kind::Clock, springSpec(context.plugin_id).compact, true),
       renderer_(context) {
     renderer_.onChange([this] {
         invalidate();
@@ -330,6 +331,10 @@ bool SpringInstance::synchronize(bool animate) {
 }
 
 CdResult SpringInstance::schedule(const cdsdk::Settings& values) {
+    if (model_.backgrounded()) {
+        return toys::scheduleBackgroundClock(model_, updates_, frozen(values), hidden_, values.at("speed").number,
+                                             environment_.snapshot().monotonic_ms);
+    }
     if (hidden_) {
         updates_.stop();
         return CD_OK;
@@ -341,6 +346,7 @@ CdResult SpringInstance::render(const CdFrame& frame) {
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }
+    model_.consumeBackground();
     updates_.beginFrame();
     redraw_.beginFrame();
     canvas_.render(frame, safe_, [&](auto& canvas, CdRect safe) {

@@ -3,6 +3,18 @@
     "abi": 1,
     "services": [
         {
+            "id": "host.background",
+            "version": 1,
+            "header": "sdk/services/Background.h",
+            "capability": "BACKGROUND_COMPUTE",
+            "thread": "Owner UI thread for API operations; fixed owner lane for model callbacks; release on any thread",
+            "previewProfile": "basic",
+            "preview": "One process-wide threaded reference lane for interactive previews; explicit deterministic execution for screenshots/tests; asynchronous DLL reload retirement",
+            "test": "background ABI, deterministic/threaded reference, read-lease retirement and native lifecycle",
+            "ownership": "Context transfers only after successful create; immutable snapshot leases independently retain module/storage",
+            "cancellation": "Nonblocking control; destroy runs exactly once on owner lane after in-flight work returns"
+        },
+        {
             "id": "ai.character_chat",
             "version": 1,
             "header": "sdk/services/CharacterChat.h",

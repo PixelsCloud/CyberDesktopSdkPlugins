@@ -1,3 +1,7 @@
+#include <algorithm>
+#include <chrono>
+#include <cstdlib>
+#include <fstream>
 #include <iostream>
 
 #include "tools/PreviewImages.h"
@@ -166,6 +170,50 @@ int wmain(int argc, wchar_t** argv) {
             }
         }
         check("120 physical scene spring theme DPI and size renders", true);
+        if (const auto* measure = std::getenv("CD_SDK_REFERENCE_COSTS"); measure && std::string_view(measure) == "1") {
+            std::ofstream report(output / "owner-reference-cost.json");
+            report << "{\"executionMode\":\"explicit-owner-reference\",\"uiIsolation\":false,"
+                      "\"scope\":\"PhysicsSandbox and SceneBinding; max 48 balls; host tick including scene "
+                      "synchronization; render excluded\",\"cases\":[";
+            bool first = true;
+            for (const bool springMode : {false, true}) {
+                const CdSettingValue values[]{
+                    {sizeof(CdSettingValue), CD_SETTING_INTEGER, "count", 48},
+                    {sizeof(CdSettingValue), CD_SETTING_TOGGLE, "spring", int64_t(springMode)},
+                    {sizeof(CdSettingValue), CD_SETTING_TOGGLE, "reduced_motion", 0}};
+                check("maximum-density reference cost settings",
+                      instance.api.apply_settings(instance.api.instance, values, uint32_t(std::size(values))) == CD_OK);
+                instance.api.layout_changed(instance.api.instance, &layout);
+                instance.pause(false);
+                render();
+                const auto base = instance.host.virtualTime;
+                std::vector<double> durations;
+                durations.reserve(1200);
+                for (unsigned frame = 1; frame <= 1320; ++frame) {
+                    const auto started = std::chrono::steady_clock::now();
+                    instance.host.tick(base + double(frame) / 60);
+                    const auto elapsed =
+                        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - started).count();
+                    if (frame > 120) {
+                        durations.push_back(elapsed);
+                    }
+                    if (frame % 60 == 0) {
+                        render();
+                    }
+                }
+                std::sort(durations.begin(), durations.end());
+                if (!first) {
+                    report << ',';
+                }
+                first = false;
+                report << "{\"spring\":" << (springMode ? "true" : "false") << ",\"samples\":" << durations.size()
+                       << ",\"tickP50Ms\":" << durations[durations.size() / 2]
+                       << ",\"tickP95Ms\":" << durations[durations.size() * 95 / 100]
+                       << ",\"tickP99Ms\":" << durations[durations.size() * 99 / 100]
+                       << ",\"tickMaximumMs\":" << durations.back() << '}';
+            }
+            report << "]}\n";
+        }
         instance.api.destroy(instance.api.instance);
         instance.api.instance = nullptr;
         check("unload releases timers keyboard diagnostics", instance.host.subscriptions.empty() &&

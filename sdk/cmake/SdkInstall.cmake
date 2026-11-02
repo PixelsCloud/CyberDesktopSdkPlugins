@@ -1,4 +1,4 @@
-install(TARGETS cd_sdk_abi cd_sdk_core cd_sdk_runtime EXPORT CyberDesktopSDKTargets
+install(TARGETS cd_sdk_abi cd_sdk_core cd_sdk_runtime cd_sdk_background_reference EXPORT CyberDesktopSDKTargets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS cd_public_sdk cd_sdk_rendering cd_sdk_images cd_sdk_layout EXPORT CyberDesktopSDKRenderingTargets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

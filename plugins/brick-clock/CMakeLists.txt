@@ -10,7 +10,7 @@ cd_plugin_sdk_tool(cd_brick_sdk_tool BRICK_LICENSE)
 cd_plugin_canvas_license(box2d BRICK_BOX_LICENSE)
 set(BRICK_TOOL cd_brick_sdk_tool)
 
-add_library(cd_brick_clock_core STATIC Model.cpp Renderer.cpp Instance.cpp)
+add_library(cd_brick_clock_core STATIC Model.cpp Background.cpp Renderer.cpp Instance.cpp)
 target_include_directories(cd_brick_clock_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_link_libraries(cd_brick_clock_core PUBLIC CyberDesktopSDK::SDK CyberCanvas::Physics2D)
 set(id "com.cyberdesktop.clock.brick.1x4")

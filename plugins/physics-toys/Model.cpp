@@ -1,11 +1,16 @@
 #include "plugins/physics-toys/Model.h"
 
+#include <charconv>
 #include <cmath>
+#include <cstdlib>
 #include <fstream>
 #include <nlohmann/json.hpp>
 #include <numbers>
 #include <stdexcept>
 #include <utility>
+
+#include "plugins/physics-toys/Background.h"
+#include "sdk/cpp/Background.h"
 
 namespace toys {
 namespace {
@@ -18,6 +23,51 @@ Point transformed(const physics::BodyState& state, Point local) {
 Model::Model(Kind kind, bool compact, bool mechanical, ModelOptions options)
     : kind_(kind), options_(options), mechanical_(mechanical) {
     reset(compact);
+}
+
+Model::~Model() = default;
+
+Model::Model(const CdCreateContext& context, Kind kind, bool compact, bool mechanical, ModelOptions options)
+    : kind_(kind), options_(options), compact_(compact), mechanical_(mechanical) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset(compact);
+    } else {
+        background_ = std::make_unique<Background>(context, kind, compact, mechanical, options);
+    }
+}
+
+Model::Model(const CdCreateContext& context, Kind kind, bool compact, bool mechanical, const ClockLayout& layout)
+    : kind_(kind), clockLayout_(layout), compact_(compact), mechanical_(mechanical) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset(compact);
+    } else {
+        background_ = std::make_unique<Background>(context, kind, compact, mechanical, ModelOptions{}, &layout);
+    }
+}
+
+Model::Model(const CdCreateContext& context, const ChimeLayout& layout)
+    : kind_(Kind::Chime), chimeLayout_(layout), mechanical_(true) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset(false);
+    } else {
+        background_ = std::make_unique<Background>(context, Kind::Chime, false, true, ModelOptions{}, nullptr, &layout);
+    }
+}
+
+bool Model::backgrounded() const {
+    return bool(background_);
+}
+
+void Model::consumeBackground() {
+    if (background_) {
+        background_->consume();
+    }
+}
+
+void Model::pauseBackground(bool paused) {
+    if (background_) {
+        background_->pause(paused);
+    }
 }
 
 Model::Model(Kind kind, bool compact, bool mechanical, const ClockLayout& layout)
@@ -57,6 +107,10 @@ Model::Model(const ChimeLayout& layout) : kind_(Kind::Chime), chimeLayout_(layou
 }
 
 void Model::configure(const std::filesystem::path& assets) {
+    if (background_) {
+        background_->configure(assets);
+        return;
+    }
     std::ifstream file(assets / "skin.json");
     const auto document = nlohmann::json::parse(file);
     if (!document.contains("toyGeometry")) {
@@ -83,6 +137,14 @@ void Model::configure(const std::filesystem::path& assets) {
 }
 
 bool Model::fit(Size size, cybercanvas::Rect limits, std::function<Point(Point)> map) {
+    if (background_) {
+        const bool changed = background_->fit(size, limits, map);
+        if (changed) {
+            fittedSize_ = size;
+            limits_ = limits;
+        }
+        return changed;
+    }
     if (std::abs(size.width - fittedSize_.width) + std::abs(size.height - fittedSize_.height) +
             std::abs(limits.x - limits_.x) + std::abs(limits.y - limits_.y) + std::abs(limits.width - limits_.width) +
             std::abs(limits.height - limits_.height) <
@@ -97,6 +159,11 @@ bool Model::fit(Size size, cybercanvas::Rect limits, std::function<Point(Point)>
 }
 
 void Model::reset(bool compact) {
+    if (background_) {
+        compact_ = compact;
+        background_->reset(compact);
+        return;
+    }
     compact_ = compact;
     drag_ = {};
     time_ = 0;
@@ -255,6 +322,12 @@ void Model::reset(bool compact) {
 }
 
 bool Model::advance(double seconds, double wind, double speed) {
+    if (background_) {
+        if (std::isfinite(wind) && std::isfinite(speed)) {
+            background_->parameters(wind, speed);
+        }
+        return false;
+    }
     if (!std::isfinite(seconds) || seconds <= 0 || !std::isfinite(wind) || !std::isfinite(speed)) {
         return false;
     }
@@ -303,6 +376,7 @@ bool Model::setTime(int hour, int minute, int second, bool twelve, bool animate)
     hour = std::clamp(hour, 0, 23);
     minute = std::clamp(minute, 0, 59);
     second = std::clamp(second, 0, 59);
+    const int absoluteHour = hour;
     const bool pm = hour >= 12;
     if (twelve) {
         hour = hour % 12 ? hour % 12 : 12;
@@ -310,7 +384,9 @@ bool Model::setTime(int hour, int minute, int second, bool twelve, bool animate)
     const std::wstring next{wchar_t(L'0' + hour / 10),   wchar_t(L'0' + hour % 10),   wchar_t(L'0' + minute / 10),
                             wchar_t(L'0' + minute % 10), wchar_t(L'0' + second / 10), wchar_t(L'0' + second % 10)};
     const bool changed = digits_ != next || afternoon_ != pm;
-    if (kind_ == Kind::Clock && !digits_.empty() && animate) {
+    if (background_) {
+        background_->setTime(absoluteHour, minute, second, twelve, animate);
+    } else if (kind_ == Kind::Clock && !digits_.empty() && animate) {
         for (size_t i = 0; i < pieces_.size(); ++i) {
             if (digits_[i] != next[i]) {
                 const auto half = pieces_[i].half;
@@ -324,6 +400,10 @@ bool Model::setTime(int hour, int minute, int second, bool twelve, bool animate)
 }
 
 void Model::pluck() {
+    if (background_) {
+        background_->pluck();
+        return;
+    }
     for (size_t i = 0; i < pieces_.size(); ++i) {
         const double strength = mechanical_ ? (i % 2 ? .006 : .018) : .035;
         world_->impulse(pieces_[i].body,
@@ -332,6 +412,10 @@ void Model::pluck() {
 }
 
 void Model::beginDrag(size_t index, Point target) {
+    if (background_) {
+        background_->beginDrag(index, target);
+        return;
+    }
     cancelDrag();
     if (index < pieces_.size()) {
         draggedPiece_ = index;
@@ -343,6 +427,10 @@ void Model::beginDrag(size_t index, Point target) {
 }
 
 void Model::drag(Point target) {
+    if (background_) {
+        background_->drag(target);
+        return;
+    }
     if (drag_.id) {
         const auto area = size();
         if (chimeLayout_ && draggedPiece_) {
@@ -362,6 +450,10 @@ void Model::drag(Point target) {
 }
 
 void Model::cancelDrag() {
+    if (background_) {
+        background_->cancelDrag();
+        return;
+    }
     if (world_ && drag_.id) {
         world_->destroy(drag_);
     }
@@ -370,10 +462,19 @@ void Model::cancelDrag() {
 }
 
 bool Model::active() const {
+    if (background_) {
+        return background_->active();
+    }
     return world_->active();
 }
 
 Size Model::size() const {
+    if (background_) {
+        const auto size = background_->size();
+        if (size.width > 0 && size.height > 0) {
+            return size;
+        }
+    }
     if (fittedSize_.width > 0) {
         return fittedSize_;
     }
@@ -395,22 +496,37 @@ Size Model::size() const {
 }
 
 Point Model::anchor(const Piece& piece) const {
+    if (background_) {
+        return background_->anchor(piece);
+    }
     return transformed(world_->interpolated(piece.parent), piece.anchor);
 }
 
 Point Model::attachment(const Piece& piece) const {
+    if (background_) {
+        return background_->attachment(piece);
+    }
     return transformed(world_->interpolated(piece.body), piece.attachment);
 }
 
 const std::vector<Piece>& Model::pieces() const {
+    if (background_) {
+        return background_->pieces();
+    }
     return pieces_;
 }
 
 physics::BodyState Model::state(size_t index) const {
+    if (background_) {
+        return background_->state(index);
+    }
     return world_->interpolated(pieces_.at(index).body);
 }
 
 physics::PhysicsStats Model::stats() const {
+    if (background_) {
+        return background_->stats();
+    }
     return world_->stats();
 }
 
@@ -431,6 +547,19 @@ bool Model::mechanical() const {
 }
 
 void Model::setWindSeed(uint32_t seed) {
+    if (background_) {
+        background_->setWindSeed(seed);
+        return;
+    }
+    // Explicit metrology fixture: production keeps its per-instance entropy.
+    // Read once when configuring the model, never on the step/render hot path.
+    if (const auto* fixture = std::getenv("CD_PHYSICS_TEST_WIND_SEED")) {
+        const std::string_view value(fixture);
+        const auto parsed = std::from_chars(value.data(), value.data() + value.size(), seed);
+        if (parsed.ec != std::errc{} || parsed.ptr != value.data() + value.size()) {
+            throw std::invalid_argument("Invalid CD_PHYSICS_TEST_WIND_SEED");
+        }
+    }
     breeze_ = cybercanvas::NoiseField({.seed = int32_t(seed & 0x7fffffff), .frequency = .6});
 }
 }  // namespace toys

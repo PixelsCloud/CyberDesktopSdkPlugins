@@ -1,3 +1,15 @@
+add_executable(cd_sdk_background_tests EXCLUDE_FROM_ALL tests/BackgroundTest.cpp tests/BackgroundAbiTest.c)
+add_executable(cd_sdk_background_reference_tests EXCLUDE_FROM_ALL tests/BackgroundReferenceTest.cpp)
+target_link_libraries(cd_sdk_background_reference_tests PRIVATE CyberDesktopSDK::Core CyberDesktopSDK::BackgroundReference)
+target_compile_options(cd_sdk_background_reference_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_sdk_background_reference_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+target_link_libraries(cd_sdk_background_tests PRIVATE CyberDesktopSDK::Core)
+target_compile_options(cd_sdk_background_tests PRIVATE /utf-8 /W4)
+set_source_files_properties(tests/BackgroundAbiTest.c PROPERTIES COMPILE_OPTIONS "/std:c11")
+set_target_properties(cd_sdk_background_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+
 add_executable(cd_sdk_bundled_fonts_tests EXCLUDE_FROM_ALL tests/BundledFontsTest.cpp)
 target_link_libraries(cd_sdk_bundled_fonts_tests PRIVATE cd_sdk_rendering dwrite)
 target_compile_options(cd_sdk_bundled_fonts_tests PRIVATE /utf-8 /W4)

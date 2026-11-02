@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "sdk/cpp/BackgroundReference.h"
 #include "tools/NativeSettings.h"
 #include "tools/PreviewImages.h"
 #include "tools/PreviewOptions.h"
@@ -15,6 +16,7 @@ struct Preview {
     cdsdk::PreviewOptions options;
     std::unique_ptr<cdsdk::NativeModule> module;
     std::unique_ptr<cdsdk::NativeInstance> instance;
+    std::unique_ptr<cdsdk::BackgroundReferenceHost> retiringBackground;
     cdsdk::pb::PluginDescriptor descriptor;
     std::optional<cdsdk::pb::PreviewState> saved;
     std::unique_ptr<cdsdk::ResourceWatcher> watcher;
@@ -27,6 +29,7 @@ struct Preview {
     uint64_t reloads = 0;
     double seconds = 0, dpr = 1;
     bool paused = false, windowFocused = false;
+    bool reloadPending = false, retirementReported = false;
     int layoutIndex = 0;
     HWND window = nullptr;
     HMENU scenarioMenu = nullptr, sizeMenu = nullptr;
@@ -35,6 +38,7 @@ struct Preview {
     std::string failure, lastState;
     std::vector<std::vector<std::pair<double, double>>> polygons;
     std::chrono::steady_clock::time_point lastSave;
+    std::chrono::steady_clock::time_point retirementStarted;
     std::filesystem::path lastExport;
 
     bool chinese() const {
@@ -214,10 +218,26 @@ struct Preview {
         if (settingsOpen) {
             return false;
         }
+        if (retiringBackground) {
+            reloadPending |= reload;
+            return true;
+        }
         try {
             if (reload && instance) {
                 saved = cdsdk::capturePreviewState(*instance, descriptor);
                 save();
+                retiringBackground = std::move(instance->host.background);
+                instance.reset();
+                if (retiringBackground) {
+                    retiringBackground->cancel();
+                    if (!retiringBackground->retire()) {
+                        reloadPending = true;
+                        retirementReported = false;
+                        retirementStarted = std::chrono::steady_clock::now();
+                        return true;
+                    }
+                    retiringBackground.reset();
+                }
             }
             instance.reset();
             module.reset();
@@ -249,6 +269,10 @@ struct Preview {
                 throw std::runtime_error(cdsdk::errorText(error));
             }
             instance = std::make_unique<cdsdk::NativeInstance>();
+            if (!options.screenshot.empty()) {
+                instance->host.background = std::make_unique<cdsdk::BackgroundReferenceHost>(
+                    cdsdk::BackgroundReferenceHost::Mode::Deterministic);
+            }
             options.configure(instance->host);
             instance->host.virtualTime = seconds;
             if (!instance->create(*module, root, "preview-1", &error)) {
@@ -299,8 +323,18 @@ struct Preview {
             caption();
             return true;
         } catch (const std::exception& error) {
+            if (instance && instance->host.background) {
+                retiringBackground = std::move(instance->host.background);
+            }
             instance.reset();
-            module.reset();
+            if (retiringBackground && !retiringBackground->retire()) {
+                reloadPending = false;
+                retirementReported = false;
+                retirementStarted = std::chrono::steady_clock::now();
+            } else {
+                retiringBackground.reset();
+                module.reset();
+            }
             report(error.what());
             return false;
         }
@@ -468,6 +502,20 @@ struct Preview {
         if (stopEvent && WaitForSingleObject(stopEvent, 0) == WAIT_OBJECT_0) {
             stopRequested = true;
             return false;
+        }
+        if (retiringBackground) {
+            if (retiringBackground->retire()) {
+                retiringBackground.reset();
+                module.reset();
+                const bool reopen = std::exchange(reloadPending, false);
+                if (reopen) {
+                    open(true);
+                }
+            } else if (!retirementReported &&
+                       std::chrono::steady_clock::now() - retirementStarted > std::chrono::seconds(2)) {
+                retirementReported = true;
+                report("Background model has not stopped; DLL reload remains deferred");
+            }
         }
         if (watcher && !settingsOpen) {
             const auto changes = watcher->drain();

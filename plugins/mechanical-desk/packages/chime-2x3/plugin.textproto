@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "精密机械独立组件；拉丝钢与黄铜结构，设置仅影响当前实例。"
 layouts {
     id: "3x2"

@@ -24,6 +24,7 @@ using marbleclock::floorHeight;
 class Model final : public marbleclock::Model {
 public:
     explicit Model(bool compact = false);
+    Model(const CdCreateContext& context, bool compact = false);
 };
 
 using marbleclock::Appearance;

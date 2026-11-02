@@ -1,7 +1,9 @@
 #include <algorithm>
 #include <cmath>
 
+#include "plugins/brick-clock/Background.h"
 #include "plugins/brick-clock/Clock.h"
+#include "sdk/cpp/Background.h"
 
 namespace brickclock {
 
@@ -77,14 +79,45 @@ Point digitOrigin(size_t index) {
 
 Model::Model(uint32_t seed) : Model(EnclosureGeometry{}, seed) {}
 
-Model::Model(EnclosureGeometry enclosure, uint32_t seed) : random_(seed) {
-    const auto ground = world_.createBody({.type = physics::BodyType::Static});
+Model::Model(EnclosureGeometry enclosure, uint32_t seed) : world_(std::make_unique<physics::World>()), random_(seed) {
+    initialize(enclosure);
+}
+
+void Model::initialize(EnclosureGeometry enclosure) {
+    const auto ground = world_->createBody({.type = physics::BodyType::Static});
     const physics::Material stone{.friction = .7, .restitution = .18};
-    world_.box(ground, {enclosure.halfWidth, .05}, {5, kFloor / 100 + .05}, 0, stone);
-    world_.box(ground, {.05, 1.3}, {enclosure.left, 1.25}, 0, stone);
-    world_.box(ground, {.05, 1.3}, {enclosure.right, 1.25}, 0, stone);
-    world_.box(ground, {enclosure.halfWidth, .05}, {5, -.05}, 0, stone);
+    world_->box(ground, {enclosure.halfWidth, .05}, {5, kFloor / 100 + .05}, 0, stone);
+    world_->box(ground, {.05, 1.3}, {enclosure.left, 1.25}, 0, stone);
+    world_->box(ground, {.05, 1.3}, {enclosure.right, 1.25}, 0, stone);
+    world_->box(ground, {enclosure.halfWidth, .05}, {5, -.05}, 0, stone);
     chips_.reserve(kMaximumChips);
+}
+
+Model::Model(const CdCreateContext& context, EnclosureGeometry enclosure, uint32_t seed) : random_(seed) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        world_ = std::make_unique<physics::World>();
+        initialize(enclosure);
+    } else {
+        background_ = std::make_unique<Background>(context, enclosure, seed);
+    }
+}
+
+Model::~Model() = default;
+
+void Model::consumeBackground() {
+    if (background_) {
+        background_->consume(*this);
+    }
+}
+
+void Model::pauseBackground(bool paused) {
+    if (background_) {
+        background_->pause(paused);
+    }
+}
+
+bool Model::backgrounded() const {
+    return bool(background_);
 }
 
 double Model::random(double low, double high) {
@@ -100,6 +133,12 @@ bool Model::setTime(int hour, int minute, int second, bool animate) {
         return false;
     }
     const bool continuous = previousSecond_ >= 0 && (nextSecond - previousSecond_ + 86400) % 86400 == 1;
+    if (background_) {
+        digits_ = {hour / 10, hour % 10, minute / 10, minute % 10, second / 10, second % 10};
+        previousSecond_ = nextSecond;
+        background_->setTime(nextSecond, animate, continuous);
+        return true;
+    }
     if (!animate || !continuous) {
         settle();
     }
@@ -146,32 +185,35 @@ void Model::emitChip(size_t index, Point sample) {
                                 {.8 * radius, -.65 * radius},
                                 {radius, .45 * radius},
                                 {-.2 * radius, .8 * radius}};
-    const auto body = world_.createBody({.position = {source.x / 100, source.y / 100},
-                                         .velocity = {random(-.85, .85), random(-.7, -.35)},
-                                         .angle = random(-.8, .8),
-                                         .angularVelocity = random(-5, 5),
-                                         .linearDamping = .15,
-                                         .angularDamping = .6,
-                                         .gravityScale = .65});
+    const auto body = world_->createBody({.position = {source.x / 100, source.y / 100},
+                                          .velocity = {random(-.85, .85), random(-.7, -.35)},
+                                          .angle = random(-.8, .8),
+                                          .angularVelocity = random(-5, 5),
+                                          .linearDamping = .15,
+                                          .angularDamping = .6,
+                                          .gravityScale = .65});
     std::vector<Point> meters;
     for (Point vertex : vertices) {
         meters.push_back({vertex.x / 100, vertex.y / 100});
     }
     try {
-        world_.polygon(body, meters, {.density = 1, .friction = .65, .restitution = .38});
+        world_->polygon(body, meters, {.density = 1, .friction = .65, .restitution = .38});
         chips_.push_back({body, std::move(vertices), source, index, time_});
     } catch (...) {
-        world_.destroy(body);
+        world_->destroy(body);
         throw;
     }
 }
 
 void Model::removeChip(size_t index) {
-    world_.destroy(chips_[index].body);
+    world_->destroy(chips_[index].body);
     chips_.erase(chips_.begin() + index);
 }
 
 bool Model::advance(double seconds) {
+    if (background_) {
+        return false;
+    }
     if (!std::isfinite(seconds) || seconds <= 0 || !active()) {
         return false;
     }
@@ -186,8 +228,8 @@ bool Model::advance(double seconds) {
             emitChip(i, carving.samples[carving.emitted++]);
         }
     }
-    world_.advance(delta);
-    for (const auto& event : world_.takeEvents()) {
+    world_->advance(delta);
+    for (const auto& event : world_->takeEvents()) {
         contacts_ += event.kind == physics::EventKind::ContactBegin;
     }
     for (size_t i = chips_.size(); i-- > 0;) {
@@ -199,6 +241,10 @@ bool Model::advance(double seconds) {
 }
 
 void Model::settle() {
+    if (background_) {
+        background_->settle();
+        return;
+    }
     while (!chips_.empty()) {
         removeChip(chips_.size() - 1);
     }
@@ -206,20 +252,31 @@ void Model::settle() {
         carving = {};
     }
     time_ = 0;
-    world_.takeEvents();
+    world_->takeEvents();
 }
 
 void Model::replay() {
+    if (background_) {
+        background_->replay();
+        return;
+    }
     if (previousSecond_ >= 0) {
         beginCarving(5, digits_[5]);
     }
 }
 
 void Model::setChipCount(unsigned count) {
+    if (background_) {
+        background_->setChipCount(count);
+        return;
+    }
     chipCount_ = std::clamp(count, 8u, 20u);
 }
 
 bool Model::active() const {
+    if (background_) {
+        return background_->active();
+    }
     return !chips_.empty() || std::any_of(carvings_.begin(), carvings_.end(), [](const auto& carving) {
         return carving.elapsed < .36;
     });
@@ -234,15 +291,24 @@ const std::array<Carving, 6>& Model::carvings() const {
 }
 
 const std::vector<Chip>& Model::chips() const {
+    if (background_) {
+        return background_->chips();
+    }
     return chips_;
 }
 
 physics::BodyState Model::state(const Chip& chip) const {
-    return world_.interpolated(chip.body);
+    if (background_) {
+        return background_->state(chip);
+    }
+    return world_->interpolated(chip.body);
 }
 
 physics::PhysicsStats Model::stats() const {
-    return world_.stats();
+    if (background_) {
+        return background_->stats();
+    }
+    return world_->stats();
 }
 
 double Model::chipAge(const Chip& chip) const {

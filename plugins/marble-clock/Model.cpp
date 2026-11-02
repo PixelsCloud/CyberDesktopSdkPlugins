@@ -7,6 +7,9 @@
 #include <nlohmann/json.hpp>
 #include <numbers>
 
+#include "plugins/marble-clock/Background.h"
+#include "sdk/cpp/Background.h"
+
 namespace marbleclock {
 namespace {
 Point meters(Point p) {
@@ -94,7 +97,44 @@ Model::Model(bool compact, GeometryStyle style)
     reset();
 }
 
+Model::Model(const CdCreateContext& context, bool compact, GeometryStyle style)
+    : geometry_(geometry(compact, style)),
+      style_(style),
+      radius_(style == GeometryStyle::Pixels ? kPixelRadius : (style == GeometryStyle::Classic ? kRadius : 10.5)),
+      closedAngle_(geometry_.closedAngle),
+      openAngle_(style == GeometryStyle::Pixels ? -std::atan(43.0 / (geometry_.pivot - geometry_.left)) : kOpenAngle) {
+    marbles_.reserve(kMaximumMarbles);
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset();
+    } else {
+        background_ = std::make_unique<Background>(context, compact, style);
+    }
+}
+
+Model::~Model() = default;
+
+void Model::consumeBackground() {
+    if (background_) {
+        background_->consume(*this);
+    }
+}
+
+void Model::pauseBackground(bool paused) {
+    if (background_) {
+        background_->pause(paused);
+    }
+}
+
+bool Model::backgrounded() const {
+    return bool(background_);
+}
+
 void Model::configure(const std::filesystem::path& assets) {
+    if (background_) {
+        marbles_.clear();
+        background_->configure(assets);
+        return;
+    }
     std::ifstream file(assets / "skin.json");
     const auto document = nlohmann::json::parse(file);
     if (!document.contains("marbleGeometry")) {
@@ -203,6 +243,9 @@ bool Model::spawn() {
 }
 
 bool Model::release() {
+    if (background_) {
+        return background_->release();
+    }
     if (phase_ != Phase::Collecting || pending_) {
         if (pending_ >= (style_ == GeometryStyle::Pixels ? 16u : 8u)) {
             return false;
@@ -214,6 +257,10 @@ bool Model::release() {
 }
 
 void Model::drain() {
+    if (background_) {
+        background_->drain();
+        return;
+    }
     if (phase_ != Phase::Collecting) {
         return;
     }
@@ -232,6 +279,14 @@ bool Model::setTime(int hour, int minute, int secondValue, bool animate) {
         return false;
     }
     const bool continuous = clock_ >= 0 && (next - clock_ + 86400) % 86400 == 1;
+    if (background_) {
+        clock_ = next;
+        if (!animate || !continuous) {
+            marbles_.clear();
+        }
+        background_->setTime(next, animate, continuous);
+        return true;
+    }
     clockChanged_ = animate && continuous ? time_ : time_ - 1;
     clock_ = next;
     if (!animate || !continuous) {
@@ -288,6 +343,9 @@ void Model::phaseStep(double delta) {
 }
 
 bool Model::advance(double secondsValue) {
+    if (background_) {
+        return false;
+    }
     if (!std::isfinite(secondsValue) || secondsValue <= 0 || !active()) {
         return false;
     }
@@ -346,10 +404,18 @@ void Model::remove(size_t index, bool recovered) {
 }
 
 void Model::quiet() {
+    if (background_) {
+        marbles_.clear();
+        background_->quiet();
+        return;
+    }
     reset();
 }
 
 bool Model::beginDrag(uint32_t token, Point logical) {
+    if (background_) {
+        return background_->beginDrag(token, logical);
+    }
     cancelDrag();
     const auto found = std::find_if(marbles_.begin(), marbles_.end(), [=](const Marble& marble) {
         return marble.token == token;
@@ -363,6 +429,10 @@ bool Model::beginDrag(uint32_t token, Point logical) {
 }
 
 void Model::drag(Point logical) {
+    if (background_) {
+        background_->drag(logical);
+        return;
+    }
     if (mouse_.id && std::isfinite(logical.x) && std::isfinite(logical.y)) {
         const bool classic = style_ == GeometryStyle::Classic || style_ == GeometryStyle::Pixels;
         logical.x = std::clamp(logical.x, classic ? 42. : 22., geometry_.width - (classic ? 42 : 22));
@@ -372,6 +442,10 @@ void Model::drag(Point logical) {
 }
 
 void Model::cancelDrag() {
+    if (background_) {
+        background_->cancelDrag();
+        return;
+    }
     if (world_ && mouse_.id && world_->valid(mouse_)) {
         world_->destroy(mouse_);
     }
@@ -380,10 +454,16 @@ void Model::cancelDrag() {
 }
 
 bool Model::dragging() const {
+    if (background_) {
+        return background_->dragging();
+    }
     return mouse_.id != 0;
 }
 
 bool Model::active() const {
+    if (background_) {
+        return background_->active();
+    }
     return phase_ != Phase::Collecting || pending_ || mouse_.id ||
            std::any_of(marbles_.begin(), marbles_.end(), [&](const Marble& marble) {
                return world_->state(marble.body).awake;
@@ -399,10 +479,16 @@ const std::vector<Marble>& Model::marbles() const {
 }
 
 physics::BodyState Model::state(const Marble& marble) const {
+    if (background_) {
+        return background_->state(marble);
+    }
     return world_->interpolated(marble.body);
 }
 
 double Model::flapAngle() const {
+    if (background_) {
+        return background_->flapAngle();
+    }
     return world_->interpolated(flap_).angle;
 }
 
@@ -452,6 +538,9 @@ std::wstring Model::timeText() const {
 }
 
 physics::PhysicsStats Model::stats() const {
+    if (background_) {
+        return background_->stats();
+    }
     return world_->stats();
 }
 

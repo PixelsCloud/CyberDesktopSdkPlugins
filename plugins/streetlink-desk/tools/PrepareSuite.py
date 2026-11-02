@@ -194,6 +194,12 @@ def main():
                     )
                 descriptor = text_format.MessageToString(metadata, as_utf8=True)
             metadata = text_format.Parse(descriptor, descriptor_class())
+            if native_physics:
+                background = metadata.DESCRIPTOR.fields_by_name["capabilities"].enum_type.values_by_name["BACKGROUND_COMPUTE"].number
+                if background not in metadata.capabilities:
+                    text_format.Merge("capabilities: BACKGROUND_COMPUTE", metadata)
+                if not any(service.id == "host.background" for service in metadata.required_services):
+                    text_format.Merge('required_services { id: "host.background" version: 1 }', metadata)
             if native_physics and entry["order"] in (5, 6):
                 text_format.Merge("capabilities: AUDIO_FFT", metadata)
                 metadata.description = "每秒增加粒子并显示时间；系统音频驱动粒子和实时频谱，静音后频谱归零。"

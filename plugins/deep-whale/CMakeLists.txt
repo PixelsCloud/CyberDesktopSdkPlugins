@@ -131,8 +131,8 @@ foreach(index RANGE 0 ${last})
 endforeach()
 add_custom_target(cd_deep_whale_packages DEPENDS ${packages})
 
-add_library(cd_deep_whale_beat_scene STATIC BeatScene.cpp)
-target_link_libraries(cd_deep_whale_beat_scene PUBLIC CyberCanvas::Physics2D)
+add_library(cd_deep_whale_beat_scene STATIC BeatScene.cpp BeatBackground.cpp)
+target_link_libraries(cd_deep_whale_beat_scene PUBLIC CyberCanvas::Physics2D CyberDesktopSDK::SDK)
 target_include_directories(cd_deep_whale_beat_scene PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_compile_options(cd_deep_whale_beat_scene PRIVATE /utf-8 /W4)
 set_target_properties(cd_deep_whale_beat_scene PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF

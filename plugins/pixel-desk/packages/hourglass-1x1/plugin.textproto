@@ -65,3 +65,6 @@ tags: "沙漏"
 tags: "计时"
 
 capabilities: IMAGE_SKINS
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

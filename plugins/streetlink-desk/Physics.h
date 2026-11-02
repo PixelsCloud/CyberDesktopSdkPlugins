@@ -7,6 +7,10 @@
 #include <cstdint>
 #include <memory>
 
+namespace cybercanvas::physics {
+struct PhysicsStats;
+}
+
 namespace streetlink {
 // Lifecycle and input adapter for the authored channel / magnetic-drum scenes.
 // Box2D and the shared audio onset detector own the actual motion.
@@ -21,6 +25,7 @@ public:
     void input(const CdInput& event);
     void setPaused(bool paused);
     std::array<uint64_t, 4> physicsCounters() const;
+    cybercanvas::physics::PhysicsStats physicsStats() const;
 
 private:
     struct Impl;

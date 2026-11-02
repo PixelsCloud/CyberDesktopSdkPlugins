@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <map>
@@ -51,6 +52,9 @@ struct Host {
         base.subscribe_timer = [](void* host, uint32_t interval, CdTimerCallback callback, void* user,
                                   uint64_t* output) -> CdResult {
             auto& self = *static_cast<Host*>(host);
+            if (interval < 16 || interval > 3600000) {
+                return CD_ERROR_ARGUMENT;
+            }
             *output = ++self.token;
             self.timers.emplace(*output, Timer{interval, self.now + interval, callback, user});
             return CD_OK;
@@ -189,6 +193,20 @@ void modelTests() {
 }
 
 void lifecycleTests() {
+    Host boundaryHost;
+    boundaryHost.environment.unix_ms += 999;
+    {
+        Instance boundary(boundaryHost.context());
+        check(boundaryHost.timers.size() == 1 && boundaryHost.timers.begin()->second.interval == 16,
+              "one millisecond before a second uses the minimum supported timer interval");
+        boundary.setPaused(true);
+        check(boundaryHost.timers.empty(), "second-boundary pause removes the subscription");
+        boundary.setPaused(false);
+        check(boundaryHost.timers.size() == 1, "second-boundary resume restores a supported subscription");
+        boundaryHost.advance(16);
+        check(boundaryHost.timers.size() == 1 && boundaryHost.timers.begin()->second.interval == 33,
+              "resumed second-boundary clock starts the next digit animation");
+    }
     Host host;
     {
         Instance instance(host.context());
@@ -277,6 +295,12 @@ void abiTest(const wchar_t* filename) {
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) try {
+    // These legacy fixtures assert immediate owner-thread UI semantics. The
+    // background path is verified separately by the SDK/Native DLL matrix.
+    if (_putenv_s("CD_PHYSICS_EXECUTION_MODE", "owner-reference") != 0) {
+        return 2;
+    }
+    std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     modelTests();
     lifecycleTests();
     if (argc > 1) {

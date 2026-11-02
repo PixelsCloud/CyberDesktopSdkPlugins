@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "显示时、分、秒，变化的数字每秒弹动；拖动数字牌，松手自然回弹。精密金属零件独立运动，支持暂停和减少动态。"
 layouts {
     id: "1x4"

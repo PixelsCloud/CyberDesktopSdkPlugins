@@ -11,7 +11,7 @@ cd_plugin_canvas_license(box2d BEAT_BOX_LICENSE)
 cd_plugin_json_license(BEAT_JSON_LICENSE)
 set(BEAT_TOOL cd_beat_sdk_tool)
 
-add_library(cd_beat_machine_core STATIC AudioMotion.cpp Model.cpp Renderer.cpp Instance.cpp)
+add_library(cd_beat_machine_core STATIC AudioMotion.cpp Model.cpp Background.cpp Renderer.cpp Instance.cpp)
 target_include_directories(cd_beat_machine_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_link_libraries(cd_beat_machine_core PUBLIC CyberDesktopSDK::SDK CyberCanvas::Physics2D)
 add_custom_target(cd_beat_machine_assets)

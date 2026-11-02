@@ -70,6 +70,10 @@ def inventory(root):
                            "columns": spec.get("columns"), "rows": spec.get("rows"),
                            "music": "beat" in identifier or spec.get("family") == "kinetic",
                            "continuousMusic": "beat" in identifier and resolved != "redline-kinetics"})
+            result[-1]["executionMode"] = "host.background/v1" if result[-1]["box2d"] else "ui-animation"
+            result[-1]["scheduling"] = ("ordered business/audio checkpoints" if resolved in
+                                       {"beat-machine", "physical-sand", "streetlink-physics", "deep-whale-beat"}
+                                       else "fixed owner-lane deadline" if result[-1]["box2d"] else "UI animation timer")
     if not result:
         raise ValueError("No official physics specifications found")
     return {"version": 1, "packages": result, "designOnly": inactive, "backendModels": ["physics-particles"]}

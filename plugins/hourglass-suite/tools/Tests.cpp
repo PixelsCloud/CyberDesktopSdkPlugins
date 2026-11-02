@@ -1,6 +1,7 @@
 #include <Windows.h>
 
 #include <cmath>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -378,6 +379,12 @@ void rendering() {
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) {
+    // These legacy fixtures assert immediate owner-thread UI semantics. The
+    // background path is verified separately by the SDK/Native DLL matrix.
+    if (_putenv_s("CD_PHYSICS_EXECUTION_MODE", "owner-reference") != 0) {
+        return 2;
+    }
+    std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     try {
         simulation();
         physicalSimulation();

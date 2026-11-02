@@ -118,3 +118,6 @@ required_services { id: "audio.spectrum" version: 1 }
 tags: "机械"
 tags: "金属"
 tags: "仪表"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

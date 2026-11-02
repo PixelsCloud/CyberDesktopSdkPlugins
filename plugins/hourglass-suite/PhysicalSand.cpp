@@ -4,6 +4,9 @@
 #include <cmath>
 #include <numbers>
 
+#include "plugins/hourglass-suite/SandBackground.h"
+#include "sdk/cpp/Background.h"
+
 namespace hourglassplugin {
 namespace {
 namespace ph = cybercanvas::physics;
@@ -23,7 +26,37 @@ PhysicalSand::PhysicalSand() {
     reset();
 }
 
+PhysicalSand::PhysicalSand(const CdCreateContext& context) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset();
+    } else {
+        background_ = std::make_unique<SandBackground>(context);
+    }
+}
+
+bool PhysicalSand::backgrounded() const {
+    return bool(background_);
+}
+
+PhysicalSand::~PhysicalSand() = default;
+
+void PhysicalSand::consumeBackground() {
+    if (background_) {
+        background_->consume();
+    }
+}
+
+void PhysicalSand::pauseBackground(bool paused) {
+    if (background_) {
+        background_->pause(paused);
+    }
+}
+
 void PhysicalSand::reset() {
+    if (background_) {
+        background_->reset();
+        return;
+    }
     world_ = std::make_unique<ph::World>(ph::WorldOptions{.collectEvents = false});
     jar_ = world_->createBody({.type = ph::BodyType::Kinematic, .position = center});
     grains_.clear();
@@ -52,11 +85,20 @@ void PhysicalSand::reset() {
 }
 
 void PhysicalSand::advance(double seconds, const Model& timer, bool projectedFlip) {
+    const SandTiming timing{timer.angle(), timer.sample().upper.size(), timer.cycles()};
+    if (background_) {
+        background_->advance(seconds, timing, projectedFlip);
+        return;
+    }
+    advanceTiming(seconds, timing, projectedFlip);
+}
+
+void PhysicalSand::advanceTiming(double seconds, const SandTiming& timer, bool projectedFlip) {
     if (!std::isfinite(seconds) || seconds <= 0) {
         return;
     }
     seconds = std::min(seconds, .1);
-    if (timer.cycles() != cycle_) {
+    if (timer.cycles != cycle_) {
         // A rotating jar can carry the pile with it, so rotating its poses again
         // does not guarantee an upper-chamber refill. Reuse the same grains in the
         // initial upper layout when the timer begins its next metered cycle.
@@ -73,13 +115,13 @@ void PhysicalSand::advance(double seconds, const Model& timer, bool projectedFli
             world_->velocity(grain.body, {});
             grain.released = false;
         }
-        cycle_ = timer.cycles();
+        cycle_ = timer.cycles;
         angle_ = 0;
         world_->teleport(jar_, center);
         world_->velocity(jar_, {});
     }
-    const double nextAngle = projectedFlip ? 0 : timer.angle() * std::numbers::pi / 180;
-    const size_t target = grains_.size() - timer.sample().upper.size();
+    const double nextAngle = projectedFlip ? 0 : timer.angle * std::numbers::pi / 180;
+    const size_t target = grains_.size() - std::min(grains_.size(), timer.upper);
     size_t burst = 0;
     while (released() < target) {
         Grain* selected = nullptr;
@@ -146,6 +188,9 @@ void PhysicalSand::advance(double seconds, const Model& timer, bool projectedFli
 }
 
 std::vector<cybercanvas::Point> PhysicalSand::sample() const {
+    if (background_) {
+        return background_->sample();
+    }
     std::vector<cybercanvas::Point> result;
     result.reserve(grains_.size());
     for (const auto& grain : grains_) {
@@ -156,16 +201,25 @@ std::vector<cybercanvas::Point> PhysicalSand::sample() const {
 }
 
 size_t PhysicalSand::count() const {
+    if (background_) {
+        return background_->count();
+    }
     return grains_.size();
 }
 
 size_t PhysicalSand::released() const {
+    if (background_) {
+        return background_->released();
+    }
     return std::count_if(grains_.begin(), grains_.end(), [](const auto& grain) {
         return grain.released;
     });
 }
 
 cybercanvas::physics::PhysicsStats PhysicalSand::stats() const {
+    if (background_) {
+        return background_->stats();
+    }
     return world_->stats();
 }
 }  // namespace hourglassplugin

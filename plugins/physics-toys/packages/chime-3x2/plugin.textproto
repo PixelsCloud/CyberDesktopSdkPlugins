@@ -4,6 +4,8 @@ version: "1.2.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "拖动挂件，松手自然回摆；双击轻拨。支持昼夜主题、透明背景、暂停和减少动态。"
 layouts {
     id: "3x2"

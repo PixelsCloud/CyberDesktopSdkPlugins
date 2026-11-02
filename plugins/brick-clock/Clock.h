@@ -46,11 +46,18 @@ struct EnclosureGeometry {
 };
 
 inline constexpr uint32_t kDefaultSeed = 0x42524943;
+class Background;
+class BackgroundState;
 
 class Model {
 public:
     explicit Model(uint32_t seed = kDefaultSeed);
     explicit Model(EnclosureGeometry enclosure, uint32_t seed = kDefaultSeed);
+    Model(const CdCreateContext& context, EnclosureGeometry enclosure = {}, uint32_t seed = kDefaultSeed);
+    ~Model();
+    void consumeBackground();
+    void pauseBackground(bool paused);
+    bool backgrounded() const;
     bool setTime(int hour, int minute, int second, bool animate = true);
     bool advance(double seconds);
     void settle();
@@ -66,11 +73,15 @@ public:
     uint64_t contacts() const;
 
 private:
+    friend class Background;
+    friend class BackgroundState;
+    std::unique_ptr<Background> background_;
+    void initialize(EnclosureGeometry enclosure);
     void beginCarving(size_t index, int previous);
     void emitChip(size_t index, Point sample);
     void removeChip(size_t index);
     double random(double low, double high);
-    physics::World world_;
+    std::unique_ptr<physics::World> world_;
     std::array<int, 6> digits_{};
     std::array<Carving, 6> carvings_;
     std::vector<Chip> chips_;

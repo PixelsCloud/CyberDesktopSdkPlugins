@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "独立Deep鲸风外观，蓝白瓷器、海蓝珐琅与鲸鱼娘插画；设置仅影响当前组件。"
 layouts {
     id: "1x4"

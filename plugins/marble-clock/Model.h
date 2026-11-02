@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+struct CdCreateContext;
+
 namespace marbleclock {
 namespace physics = cybercanvas::physics;
 using cybercanvas::Point;
@@ -40,10 +42,17 @@ struct Marble {
     uint64_t generation = 0;
     double born = 0;
 };
+class Background;
+class BackgroundState;
 
 class Model {
 public:
     explicit Model(bool compact = false, GeometryStyle style = GeometryStyle::Classic);
+    Model(const CdCreateContext& context, bool compact = false, GeometryStyle style = GeometryStyle::Classic);
+    ~Model();
+    void consumeBackground();
+    void pauseBackground(bool paused);
+    bool backgrounded() const;
     void configure(const std::filesystem::path& assets);
     bool setTime(int hour, int minute, int second, bool animate = true);
     bool advance(double seconds);
@@ -75,6 +84,9 @@ public:
     uint64_t releases() const;
 
 private:
+    friend class Background;
+    friend class BackgroundState;
+    std::unique_ptr<Background> background_;
     void reset();
     bool spawn();
     void add(Point logical, bool launched);

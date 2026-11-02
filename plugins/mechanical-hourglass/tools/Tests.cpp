@@ -1,4 +1,5 @@
 #include <chrono>
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <thread>
@@ -202,6 +203,12 @@ void rendering(const Spec& spec, const std::filesystem::path& root) {
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) try {
+    // These legacy fixtures assert immediate owner-thread UI semantics. The
+    // background path is verified separately by the SDK/Native DLL matrix.
+    if (_putenv_s("CD_PHYSICS_EXECUTION_MODE", "owner-reference") != 0) {
+        return 2;
+    }
+    std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     check(argc == 2, "Fixed repository path supplied");
     simulation();
     for (const auto& spec : mechanicalhourglass::kCatalog) {

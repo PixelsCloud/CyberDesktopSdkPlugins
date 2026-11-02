@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "拖动挂件，松手自然回摆；双击轻拨。支持微风调节、暂停和减少动态。"
 settings_page {
     title: "悬挂风铃 2×3"

@@ -121,3 +121,6 @@ content_padding: 0.0
 preview: "preview.png"
 required_services { id: "audio.spectrum" version: 1 }
 tags: "Deep鲸"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

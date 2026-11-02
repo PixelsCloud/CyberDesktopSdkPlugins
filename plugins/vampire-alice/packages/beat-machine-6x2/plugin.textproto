@@ -121,3 +121,6 @@ preview: "preview.png"
 required_services { id: "audio.spectrum" version: 1 }
 tags: "吸血鬼"
 tags: "Alice"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

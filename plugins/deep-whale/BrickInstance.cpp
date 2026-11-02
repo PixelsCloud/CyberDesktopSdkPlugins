@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 
 #include "plugins/deep-whale/BrickClock.h"
@@ -14,6 +15,7 @@ Instance::Instance(const CdCreateContext& context)
                {"animate", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"debris_count", CD_SETTING_INTEGER, 12, 0, {}, 8, 20}},
+      model_(context),
       renderer_(context) {
     canvas_.bindGpu(context);
     environment_.bind(context);
@@ -55,16 +57,20 @@ bool Instance::synchronize(bool animate) {
 }
 
 void Instance::schedule() {
+    model_.pauseBackground(frozen());
     if (hidden_) {
         updates_.stop();
         return;
     }
     const auto now = environment_.snapshot();
-    const auto interval = !frozen() && model_.active() ? 33u : uint32_t(1000 - now.unix_ms % 1000);
+    const auto interval = !model_.backgrounded() && !frozen() && model_.active()
+                              ? 33u
+                              : std::max(16u, uint32_t(1000 - now.unix_ms % 1000));
     updates_.start(interval, now.monotonic_ms);
 }
 
 CdResult Instance::render(const CdFrame& frame) {
+    model_.consumeBackground();
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }

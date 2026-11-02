@@ -14,6 +14,7 @@ double laneHeight(double x, bool compact = false);
 class Model final : public beatmachine::Model {
 public:
     explicit Model(unsigned count = 36, bool compact = false);
+    Model(const CdCreateContext& context, unsigned count = 36, bool compact = false);
 };
 
 class Renderer {

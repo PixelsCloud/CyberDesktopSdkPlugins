@@ -64,3 +64,6 @@ layouts {
     is_default: true
 }
 footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

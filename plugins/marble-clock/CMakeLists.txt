@@ -11,7 +11,7 @@ cd_plugin_canvas_license(box2d MARBLE_BOX_LICENSE)
 cd_plugin_json_license(MARBLE_JSON_LICENSE)
 set(MARBLE_TOOL cd_marble_sdk_tool)
 
-add_library(cd_marble_clock_core STATIC Model.cpp Renderer.cpp Instance.cpp)
+add_library(cd_marble_clock_core STATIC Model.cpp Background.cpp Renderer.cpp Instance.cpp)
 target_include_directories(cd_marble_clock_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_link_libraries(cd_marble_clock_core PUBLIC CyberDesktopSDK::SDK CyberCanvas::Physics2D)
 add_custom_target(cd_marble_clock_package)

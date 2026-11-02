@@ -15,6 +15,7 @@ Instance::Instance(const CdCreateContext& context)
       spec_(specification(context.plugin_id)),
       host_(*context.host),
       context_(context.host_context),
+      sand_(context),
       renderer_(context) {
     const CdSettingValue palette[]{{sizeof(CdSettingValue), CD_SETTING_COLOR, "sand_color", 0xe8c67dff},
                                    {sizeof(CdSettingValue), CD_SETTING_COLOR, "text_color", songyun::kIvory}};
@@ -37,6 +38,7 @@ Instance::~Instance() {
 }
 
 CdResult Instance::subscribe(const cdsdk::Settings& next, bool restarting, cdsdk::Timer& token) {
+    sand_.pauseBackground(paused_ || !next.at("running").integer || !next.at("physics").integer);
     token.bind(host_, context_);
     if (paused_ || !next.at("running").integer || (!restarting && model_.phase() == Phase::Finished)) {
         return CD_OK;
@@ -72,10 +74,13 @@ void Instance::tick(uint64_t now) {
     if (model_.phase() == Phase::Finished) {
         timer_.stop();
     }
-    invalidate();
+    if ((!settings.at("physics").integer || !sand_.backgrounded())) {
+        invalidate();
+    }
 }
 
 CdResult Instance::render(const CdFrame& frame) {
+    sand_.consumeBackground();
     redraw_.beginFrame();
     return renderer_.render(spec_.columns == 2, model_, settings.at("physics").integer ? &sand_ : nullptr, settings,
                             frame, safe_)
@@ -183,6 +188,7 @@ void Instance::setPaused(bool paused) {
         return;
     }
     paused_ = paused;
+    sand_.pauseBackground(paused || !settings.at("running").integer || !settings.at("physics").integer);
     pressed_ = false;
     timer_.stop();
     renderer_.pause(paused);

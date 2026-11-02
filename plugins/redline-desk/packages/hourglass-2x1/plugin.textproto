@@ -64,3 +64,6 @@ settings_page {
 preview: "preview.png"
 
 tags: "RedLine"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

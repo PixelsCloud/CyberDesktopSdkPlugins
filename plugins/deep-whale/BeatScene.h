@@ -5,6 +5,8 @@
 #include <memory>
 #include <vector>
 
+struct CdCreateContext;
+
 namespace beatmachine {
 struct Signal;
 }
@@ -13,9 +15,15 @@ namespace deep_motion {
 using namespace cybercanvas;
 namespace ph = cybercanvas::physics;
 inline constexpr double kUnits = 20;
+class BeatBackground;
+class BeatBackgroundState;
 
 // One Box2D scene is shared by the runtime and the motion regression verifier.
 struct BeatScene {
+    BeatScene();
+    explicit BeatScene(const CdCreateContext& context);
+    ~BeatScene();
+
     struct Piece {
         ph::Body body;
         double radius = 0, length = 0;
@@ -34,5 +42,22 @@ struct BeatScene {
     void resetBeat(Rect area, unsigned count, bool compact);
 
     void stepBeat(double dt, const beatmachine::Signal& signal);
+    void consumeBackground();
+    void pauseBackground(bool paused);
+    bool backgrounded() const;
+    bool active() const;
+    ph::PhysicsStats stats() const;
+    ph::BodyState state(ph::Body body) const;
+    bool beginDrag(ph::Body body, Point target);
+    void drag(Point target);
+    void cancelDrag();
+    void scatter(Point point);
+
+private:
+    friend class BeatBackground;
+    friend class BeatBackgroundState;
+    std::unique_ptr<BeatBackground> background_;
+    ph::Joint mouse_;
+    bool referencePaused_ = false;
 };
 }  // namespace deep_motion

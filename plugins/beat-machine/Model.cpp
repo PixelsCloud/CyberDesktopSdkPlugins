@@ -5,6 +5,9 @@
 #include <fstream>
 #include <nlohmann/json.hpp>
 
+#include "plugins/beat-machine/Background.h"
+#include "sdk/cpp/Background.h"
+
 namespace beatmachine {
 namespace {
 Point meters(Point p) {
@@ -43,7 +46,41 @@ Model::Model(unsigned count, bool compact, GeometryStyle style, double radius)
     reset(count);
 }
 
+Model::Model(const CdCreateContext& context, unsigned count, bool compact, GeometryStyle style, double radius)
+    : compact_(compact),
+      style_(style),
+      radius_(radius),
+      mass_(.25 * 3.141592653589793 * (radius / kUnits) * (radius / kUnits)) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        reset(count);
+    } else {
+        background_ = std::make_unique<Background>(context, count, compact, style, radius);
+    }
+}
+
+Model::~Model() = default;
+
+void Model::consumeBackground() {
+    if (background_) {
+        background_->consume(*this);
+    }
+}
+
+void Model::pauseBackground(bool paused) {
+    if (background_) {
+        background_->pause(paused);
+    }
+}
+
+bool Model::backgrounded() const {
+    return bool(background_);
+}
+
 void Model::configure(const std::filesystem::path& assets) {
+    if (background_) {
+        background_->configure(assets);
+        return;
+    }
     std::ifstream file(assets / "skin.json");
     const auto document = nlohmann::json::parse(file);
     if (!document.contains("physicsGeometry")) {
@@ -87,6 +124,11 @@ double Model::floorHeight(double x) const {
 }
 
 void Model::reset(unsigned count) {
+    if (background_) {
+        balls_.clear();
+        background_->reset(count);
+        return;
+    }
     cancelDrag();
     balls_.clear();
     world_ = std::make_unique<physics::World>(physics::WorldOptions{.gravity = {0, 12},
@@ -246,6 +288,10 @@ void Model::reset(unsigned count) {
 }
 
 void Model::strike(unsigned index, double strength) {
+    if (background_) {
+        background_->strike(index, strength);
+        return;
+    }
     if (index >= pistons_.size() || !std::isfinite(strength)) {
         return;
     }
@@ -266,6 +312,10 @@ void Model::strike(unsigned index, double strength) {
 }
 
 void Model::nudge(unsigned index) {
+    if (background_) {
+        background_->nudge(index);
+        return;
+    }
     if (index < paddles_.size()) {
         paddles_[index].until = time_ + .2;
         world_->wake(paddles_[index].body);
@@ -394,6 +444,10 @@ void Model::step(const Signal& signal) {
 }
 
 bool Model::advance(double seconds, const Signal& signal) {
+    if (background_) {
+        background_->advance(seconds, signal);
+        return false;
+    }
     if (!std::isfinite(seconds) || seconds < 0) {
         return false;
     }
@@ -415,6 +469,10 @@ bool Model::advance(double seconds, const Signal& signal) {
 }
 
 void Model::quiet() {
+    if (background_) {
+        background_->quiet();
+        return;
+    }
     cancelDrag();
     accumulator_ = 0;
     bass_ = middle_ = 0;
@@ -429,6 +487,9 @@ void Model::quiet() {
 }
 
 bool Model::beginDrag(uint32_t token, Point point) {
+    if (background_) {
+        return background_->beginDrag(token, point);
+    }
     cancelDrag();
     for (const auto& ball : balls_) {
         if (ball.token == token) {
@@ -441,12 +502,20 @@ bool Model::beginDrag(uint32_t token, Point point) {
 }
 
 void Model::drag(Point point) {
+    if (background_) {
+        background_->drag(point);
+        return;
+    }
     if (dragging() && std::isfinite(point.x) && std::isfinite(point.y)) {
         world_->mouseTarget(mouse_, meters({std::clamp(point.x, 44., width() - 44), std::clamp(point.y, 80., 320.)}));
     }
 }
 
 void Model::cancelDrag() {
+    if (background_) {
+        background_->cancelDrag();
+        return;
+    }
     if (world_ && world_->valid(mouse_)) {
         world_->destroy(mouse_);
     }
@@ -455,6 +524,9 @@ void Model::cancelDrag() {
 }
 
 bool Model::active() const {
+    if (background_) {
+        return background_->active();
+    }
     return world_->active() ||
            std::any_of(flashes_.begin(), flashes_.end(),
                        [](double value) {
@@ -470,14 +542,23 @@ bool Model::active() const {
 }
 
 bool Model::dragging() const {
+    if (background_) {
+        return background_->dragging();
+    }
     return world_->valid(mouse_);
 }
 
 physics::BodyState Model::state(physics::Body body) const {
+    if (background_) {
+        return background_->state(body);
+    }
     return world_->state(body);
 }
 
 physics::PhysicsStats Model::stats() const {
+    if (background_) {
+        return background_->stats();
+    }
     return world_->stats();
 }
 

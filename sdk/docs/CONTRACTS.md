@@ -4,6 +4,55 @@ This document describes the supported source API and the existing native C bound
 
 ## Versions and compatibility
 
+The background execution additions below are under acceptance. All 89 official
+Box2D specifications use the new service; independent source/installed consumers
+and preview reload checks pass. Production performance and endurance acceptance
+remain pending; the existing release is not an asynchronous-physics acceptance result.
+
+### Optional background model service (development)
+
+`host.background/v1` requires `BACKGROUND_COMPUTE`. Its C header is
+`sdk/services/Background.h`; `sdk/cpp/Background.h` supplies Qt-free move-only
+task/read-lease handles and a plugin-local shared-state adapter. Transfer context
+ownership only after successful registration. Create, update, reset and dispose
+the actual World on its fixed owner lane. UI, rendering and host-service work
+must remain outside those callbacks. Keep immutable geometry separate from POD
+frame bytes; plugin-local C++ geometry/state never crosses the host's C ABI.
+
+Ordinary commands share 64 entries/64 KiB including an executing batch. Continuous
+values can coalesce only within the segment after the last discrete command.
+`BUSY` must be handled as backpressure or an explicit fault. Pause/reset/cancel
+use reserved control storage. Pause revokes queued input, then acknowledges after
+in-flight work and a zero-capacity `SUSPEND` callback that cancels model input.
+Suspend must not advance the World. Reset invalidates old generations. Resume
+anchors time again; hidden time must not be replayed.
+An initially paused task or an explicit paused reset may publish one static frame
+with zero elapsed time. Ordinary input and periodic simulation remain disabled.
+
+Four bounded snapshot slots have independent read leases. Do not mutate leased
+bytes, put owned pointers in them, or retain the UI host context for release.
+`output.slot` and the acquired snapshot's `slot` identify the same host-owned
+slot. Keep matching plugin-local immutable geometry in four corresponding slots,
+and retain the read lease until both frame bytes and that geometry have been read.
+The currently published slot and all leased slots are excluded from worker writes.
+Snapshot pressure postpones normal work; control still executes. Independent
+statistics expose host-assigned submitted/completed/acquired/revoked command
+serials, allowing measurements to attribute input to the snapshot actually read
+by a new frame. These serials are distinct from application command sequence IDs.
+Existing diagnostics/v1 metric slots are unchanged.
+
+Logical cancellation is nonblocking. An in-flight callback and all readers keep
+genuine module ownership, including forwarding runtime callback code. A destroy
+failure enters `RETAINED`: do not retry unknown partial destruction, unload its
+code or refund its budgets. The process boundary ends such retention. Native
+crash/corruption and an unreturning callback are not general isolation guarantees
+of a thread-based service. Unavailable hosts require an explicitly supported
+reference execution mode or an unsupported result; do not silently add threads.
+The optional `CyberDesktopSDK::BackgroundReference` target provides a Qt-free
+single-lane threaded preview host and explicit deterministic test host. Its
+nonblocking `retire()` completes only after disposal and the last read lease,
+then releases callback-module ownership for a safe entry-DLL reload.
+
 | Layer | Version | Compatibility rule |
 | --- | --- | --- |
 | CyberCanvas | 1.2.0 | Source APIs remain compatible within 1.x. Rebuild C++ users with one matching set of headers and static libraries; do not mix libraries from different kits. |

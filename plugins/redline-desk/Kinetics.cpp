@@ -1,8 +1,15 @@
 #include "plugins/redline-desk/Kinetics.h"
 
 #include <algorithm>
+#include <array>
 #include <cmath>
+#include <cstring>
 #include <numbers>
+#include <span>
+#include <stdexcept>
+#include <type_traits>
+
+#include "sdk/cpp/Background.h"
 
 namespace redline {
 namespace {
@@ -73,28 +80,229 @@ void hairspring(Canvas& canvas, Point center, double radius, double angle) {
 }
 }  // namespace
 
+namespace {
+enum class KineticCommand : uint32_t { Strike = 1, BeginDrag, Drag, CancelDrag, Quiet };
+
+struct StrikeValue {
+    unsigned channel;
+    double strength;
+};
+
+struct KineticDragValue {
+    physics::Body body;
+    Point target;
+};
+
+struct KineticFrame {
+    physics::PhysicsStats statistics;
+    uint32_t rotorCount = 0, strikerCount = 0, bodyCount = 0;
+    unsigned escapementSteps = 0;
+    bool active = false;
+    std::array<physics::Body, 2> rotors;
+    std::array<Point, 2> pivots;
+    std::array<Striker, 4> strikers;
+    std::array<physics::BodyState, 2> rotorPoses;
+    std::array<physics::BodyState, 4> heads, targets;
+    std::array<physics::DebugBody, 9> bodies;
+};
+
+static_assert(std::is_trivially_copyable_v<KineticFrame> && sizeof(KineticFrame) <= 65536);
+
+template <class Value>
+Value kineticValue(const CdBackgroundCommand& command) {
+    if (command.size != sizeof(Value) || !command.data) {
+        throw std::invalid_argument("Invalid kinetic command payload");
+    }
+    Value result{};
+    std::memcpy(&result, command.data, sizeof(result));
+    return result;
+}
+}  // namespace
+
+class KineticBackgroundState final : public cdsdk::BackgroundModel {
+public:
+    KineticBackgroundState(int kind, Size size) : kind_(kind), size_(size) {}
+
+    CdResult execute(const CdBackgroundWork& work, CdBackgroundOutput& output) override {
+        if (!model_) {
+            model_ = std::make_unique<KineticModel>(kind_, size_);
+        }
+        if (work.flags & CD_BACKGROUND_SUSPEND) {
+            model_->quiet();
+            return CD_OK;
+        }
+        for (uint32_t index = 0; index < work.command_count; ++index) {
+            const auto& command = work.commands[index];
+            switch (KineticCommand(command.kind)) {
+                case KineticCommand::Strike: {
+                    const auto strike = kineticValue<StrikeValue>(command);
+                    model_->strike(strike.channel, strike.strength);
+                    break;
+                }
+                case KineticCommand::BeginDrag: {
+                    const auto drag = kineticValue<KineticDragValue>(command);
+                    model_->beginDragBody(drag.body, drag.target);
+                } break;
+                case KineticCommand::Drag:
+                    model_->drag(kineticValue<Point>(command));
+                    break;
+                case KineticCommand::CancelDrag:
+                    model_->cancelDrag();
+                    break;
+                case KineticCommand::Quiet:
+                    model_->quiet();
+                    break;
+                default:
+                    return CD_ERROR_ARGUMENT;
+            }
+        }
+        model_->advance(double(work.elapsed_ns) / 1e9);
+        KineticFrame frame{};
+        frame.statistics = model_->stats();
+        frame.active = model_->active();
+        frame.escapementSteps = model_->escapementSteps_;
+        frame.rotorCount = uint32_t(model_->rotors_.size());
+        frame.strikerCount = uint32_t(model_->strikers_.size());
+        if (frame.rotorCount > frame.rotors.size() || frame.strikerCount > frame.strikers.size()) {
+            return CD_ERROR_BUFFER;
+        }
+        auto addBody = [&](physics::Body body) {
+            frame.bodies[frame.bodyCount++] = {model_->world_->state(body), model_->world_->centerOfMass(body)};
+        };
+        addBody(model_->ground_);
+        for (uint32_t i = 0; i < frame.rotorCount; ++i) {
+            frame.rotors[i] = model_->rotors_[i];
+            frame.pivots[i] = model_->pivots_[i];
+            frame.rotorPoses[i] = model_->world_->interpolated(frame.rotors[i]);
+            addBody(frame.rotors[i]);
+        }
+        for (uint32_t i = 0; i < frame.strikerCount; ++i) {
+            frame.strikers[i] = model_->strikers_[i];
+            frame.heads[i] = model_->world_->interpolated(frame.strikers[i].body);
+            frame.targets[i] = model_->world_->interpolated(frame.strikers[i].target);
+            addBody(frame.strikers[i].target);
+            addBody(frame.strikers[i].body);
+        }
+        if (output.capacity < sizeof(frame)) {
+            return CD_ERROR_BUFFER;
+        }
+        std::memcpy(output.data, &frame, sizeof(frame));
+        output.size = sizeof(frame);
+        output.flags = frame.active ? CD_BACKGROUND_ACTIVE : 0;
+        return CD_OK;
+    }
+
+    void dispose() noexcept override {
+        model_.reset();
+    }
+
+private:
+    const int kind_;
+    const Size size_;
+    std::unique_ptr<KineticModel> model_;
+};
+
+class KineticModel::Background {
+public:
+    Background(const CdCreateContext& context, int kind, Size size)
+        : channel(context, std::make_shared<KineticBackgroundState>(kind, size), sizeof(KineticFrame), 16000000) {}
+
+    template <class Value>
+    uint64_t send(KineticCommand command, const Value& value, bool latest = false) {
+        return channel.submit(uint32_t(command), std::as_bytes(std::span(&value, 1)), latest, uint32_t(command));
+    }
+
+    void send(KineticCommand command) {
+        channel.submit(uint32_t(command));
+    }
+
+    cdsdk::BackgroundChannel channel;
+    KineticFrame frame{};
+};
+
+KineticModel::KineticModel(const CdCreateContext& context, int kind, Size size) : kind_(kind), size_(size) {
+    if (cdsdk::ownerThreadPhysicsReference()) {
+        world_ = std::make_unique<physics::World>(physics::WorldOptions{.gravity = {0, kind == 0 ? 9.8 : 0}});
+        initialize();
+    } else {
+        background_ = std::make_unique<Background>(context, kind, size);
+    }
+}
+
+KineticModel::~KineticModel() = default;
+
+void KineticModel::consumeBackground() {
+    if (!background_ || !background_->channel.consume(&background_->frame, sizeof(KineticFrame))) {
+        return;
+    }
+    const auto& frame = background_->frame;
+    rotors_.assign(frame.rotors.begin(), frame.rotors.begin() + frame.rotorCount);
+    pivots_.assign(frame.pivots.begin(), frame.pivots.begin() + frame.rotorCount);
+    strikers_.assign(frame.strikers.begin(), frame.strikers.begin() + frame.strikerCount);
+    escapementSteps_ = frame.escapementSteps;
+}
+
+void KineticModel::pauseBackground(bool paused) {
+    if (background_) {
+        background_->channel.pause(paused);
+    }
+}
+
+bool KineticModel::backgrounded() const {
+    return bool(background_);
+}
+
+physics::BodyState KineticModel::drawState(physics::Body body) const {
+    if (!background_) {
+        return world_->interpolated(body);
+    }
+    const auto& frame = background_->frame;
+    for (uint32_t i = 0; i < frame.rotorCount; ++i) {
+        if (frame.rotors[i] == body) {
+            return frame.rotorPoses[i];
+        }
+    }
+    for (uint32_t i = 0; i < frame.strikerCount; ++i) {
+        if (frame.strikers[i].body == body) {
+            return frame.heads[i];
+        }
+        if (frame.strikers[i].target == body) {
+            return frame.targets[i];
+        }
+    }
+    return {};
+}
+
 KineticModel::KineticModel(int kind, Size size)
-    : kind_(kind), size_(size), world_(physics::WorldOptions{.gravity = {0, kind == 0 ? 9.8 : 0}}) {
-    ground_ = world_.createBody({.type = physics::BodyType::Static});
+    : kind_(kind),
+      size_(size),
+      world_(std::make_unique<physics::World>(physics::WorldOptions{.gravity = {0, kind == 0 ? 9.8 : 0}})) {
+    initialize();
+}
+
+void KineticModel::initialize() {
+    const auto kind = kind_;
+    const auto size = size_;
+    ground_ = world_->createBody({.type = physics::BodyType::Static});
     if (kind < 2) {
         const unsigned count = kind == 0 ? 1 : 2;
         for (unsigned i = 0; i < count; ++i) {
             const Point pivot{size.width * (kind == 0 ? .34 : kFanCenters[i].x),
                               size.height * (kind == 0 ? .20 : kFanCenters[i].y)};
-            const auto body = world_.createBody({.position = meters(pivot), .angularDamping = .08});
+            const auto body = world_->createBody({.position = meters(pivot), .angularDamping = .08});
             if (kind == 0) {
                 const double length = size.height * .43 / kUnits;
-                world_.capsule(body, {}, {0, length}, .025);
-                world_.box(body, {.075, .12}, {0, length}, 0, {.density = 8});
+                world_->capsule(body, {}, {0, length}, .025);
+                world_->box(body, {.075, .12}, {0, length}, 0, {.density = 8});
             } else {
-                world_.circle(body, {}, size.height * (i ? 180. : 174.) / 615 / kUnits, {.density = 2});
+                world_->circle(body, {}, size.height * (i ? 180. : 174.) / 615 / kUnits, {.density = 2});
             }
-            const auto joint = world_.revolute(ground_, body, meters(pivot), {},
-                                               {.limit = kind == 0, .lowerAngle = -.38, .upperAngle = .38});
+            const auto joint = world_->revolute(ground_, body, meters(pivot), {},
+                                                {.limit = kind == 0, .lowerAngle = -.38, .upperAngle = .38});
             if (kind == 1) {
-                world_.revoluteMotor(joint, kFanSpeed[i], .08);
+                world_->revoluteMotor(joint, kFanSpeed[i], .08);
             } else {
-                world_.velocity(body, {}, .8);
+                world_->velocity(body, {}, .8);
             }
             rotors_.push_back(body);
             rotorJoints_.push_back(joint);
@@ -113,23 +321,26 @@ KineticModel::KineticModel(int kind, Size size)
         part.rest = {x / kUnits, top / kUnits - travel - .045};
         part.contact = {x / kUnits, top / kUnits + .025};
         part.radius = hat ? size.height * .14 : size.height * (i == 0 ? .30 : .24);
-        part.target = world_.createBody(
+        part.target = world_->createBody(
             {.type = hat ? physics::BodyType::Static : physics::BodyType::Dynamic, .position = part.contact});
-        world_.box(part.target, {hat ? .30 : .12, .025}, {}, 0, {.density = 8, .restitution = .08});
+        world_->box(part.target, {hat ? .30 : .12, .025}, {}, 0, {.density = 8, .restitution = .08});
         if (!hat) {
-            world_.prismatic(
+            world_->prismatic(
                 ground_, part.target, part.contact, {}, {0, 1},
                 {.limit = true, .lowerTranslation = 0, .upperTranslation = .045, .hertz = 12, .damping = .8});
         }
-        part.body = world_.createBody({.position = part.rest, .bullet = true});
-        world_.box(part.body, {hat ? .30 : .075, .045}, {}, 0, {.density = 5, .restitution = .08});
-        part.joint = world_.prismatic(ground_, part.body, part.rest, {}, {0, 1},
-                                      {.limit = true, .lowerTranslation = 0, .upperTranslation = travel + .01});
+        part.body = world_->createBody({.position = part.rest, .bullet = true});
+        world_->box(part.body, {hat ? .30 : .075, .045}, {}, 0, {.density = 5, .restitution = .08});
+        part.joint = world_->prismatic(ground_, part.body, part.rest, {}, {0, 1},
+                                       {.limit = true, .lowerTranslation = 0, .upperTranslation = travel + .01});
         strikers_.push_back(part);
     }
 }
 
 bool KineticModel::advance(double seconds) {
+    if (background_) {
+        return false;
+    }
     if (!std::isfinite(seconds) || seconds <= 0) {
         return false;
     }
@@ -145,7 +356,7 @@ bool KineticModel::advance(double seconds) {
 
 void KineticModel::step() {
     if (kind_ == 0) {
-        const auto state = world_.state(rotors_.front());
+        const auto state = world_->state(rotors_.front());
         if (previousAngle_ * state.angle < 0 && std::abs(state.angularVelocity) > .05) {
             ++escapementSteps_;
         }
@@ -154,13 +365,13 @@ void KineticModel::step() {
     for (size_t i = 0; i < rotors_.size(); ++i) {
         const auto body = rotors_[i];
         if (kind_ == 1) {
-            world_.revoluteMotor(rotorJoints_[i], kFanSpeed[i], drag_.id ? 0 : .08);
+            world_->revoluteMotor(rotorJoints_[i], kFanSpeed[i], drag_.id ? 0 : .08);
             continue;
         }
-        const auto state = world_.state(body);
+        const auto state = world_->state(body);
         if (!drag_.id && std::abs(state.angle) < .08 && std::abs(state.angularVelocity) < (kind_ == 0 ? .8 : 2.4)) {
             const double impulse = kind_ == 0 ? .0015 : .03;
-            world_.angularImpulse(body, state.angularVelocity >= 0 ? impulse : -impulse);
+            world_->angularImpulse(body, state.angularVelocity >= 0 ? impulse : -impulse);
         }
     }
     for (auto& part : strikers_) {
@@ -170,36 +381,40 @@ void KineticModel::step() {
             part.phase = 2;
         }
         if (part.phase == 2) {
-            const double offset = world_.state(part.body).position.y - part.rest.y;
-            world_.prismaticMotor(part.joint, std::clamp(-offset * (part.hat ? 300 : 45), part.hat ? -15. : -5., 0.),
-                                  part.hat ? 160 : 20);
+            const double offset = world_->state(part.body).position.y - part.rest.y;
+            world_->prismaticMotor(part.joint, std::clamp(-offset * (part.hat ? 300 : 45), part.hat ? -15. : -5., 0.),
+                                   part.hat ? 160 : 20);
             // Box2D permits about 5 mm of linear constraint slop. A tighter
             // threshold can leave the return controller permanently armed.
             if (offset < (part.hat ? .012 : .008)) {
-                world_.prismaticMotor(part.joint, 0, 10);
+                world_->prismaticMotor(part.joint, 0, 10);
                 part.phase = 0;
             }
         }
     }
-    world_.advance(1. / 60);
-    for (const auto& event : world_.takeEvents()) {
+    world_->advance(1. / 60);
+    for (const auto& event : world_->takeEvents()) {
         if (event.kind != physics::EventKind::ContactBegin) {
             continue;
         }
-        const auto first = world_.owner(event.first), second = world_.owner(event.second);
+        const auto first = world_->owner(event.first), second = world_->owner(event.second);
         for (auto& part : strikers_) {
             if (part.phase == 1 &&
                 ((first == part.body && second == part.target) || (second == part.body && first == part.target))) {
                 ++part.hits;
                 part.flash = .10;
                 part.phase = 2;
-                world_.prismaticMotor(part.joint, part.hat ? -15 : -4, part.hat ? 160 : 20);
+                world_->prismaticMotor(part.joint, part.hat ? -15 : -4, part.hat ? 160 : 20);
             }
         }
     }
 }
 
 void KineticModel::strike(unsigned channel, double strength) {
+    if (background_) {
+        background_->send(KineticCommand::Strike, StrikeValue{channel, strength});
+        return;
+    }
     if (kind_ < 2 || !std::isfinite(strength)) {
         return;
     }
@@ -215,36 +430,81 @@ void KineticModel::strike(unsigned channel, double strength) {
     auto& part = strikers_[index];
     part.phase = 1;
     part.phaseTime = 0;
-    world_.prismaticMotor(part.joint, 6 + std::clamp(strength, 0., 1.) * (part.hat ? 8 : 3), part.hat ? 160 : 25);
+    world_->prismaticMotor(part.joint, 6 + std::clamp(strength, 0., 1.) * (part.hat ? 8 : 3), part.hat ? 160 : 25);
 }
 
 void KineticModel::beginDrag(Point position) {
+    if (background_) {
+        tryBeginDrag(position);
+        return;
+    }
     cancelDrag();
     const auto point = meters(position);
-    for (const auto shape : world_.point(point)) {
-        const auto body = world_.owner(shape);
+    for (const auto shape : world_->point(point)) {
+        const auto body = world_->owner(shape);
         if (body != ground_ && std::find(rotors_.begin(), rotors_.end(), body) != rotors_.end()) {
-            drag_ = world_.mouse(ground_, body, point, 15, 4, .8);
+            drag_ = world_->mouse(ground_, body, point, 15, 4, .8);
             return;
         }
     }
 }
 
+bool KineticModel::tryBeginDrag(Point position) {
+    if (!background_) {
+        beginDrag(position);
+        return drag_.id != 0;
+    }
+    const auto& frame = background_->frame;
+    for (uint32_t i = 0; i < frame.rotorCount; ++i) {
+        const auto pivot = frame.pivots[i];
+        const double dx = position.x - pivot.x, dy = position.y - pivot.y;
+        const double angle = frame.rotorPoses[i].angle;
+        const double x = dx * std::cos(angle) + dy * std::sin(angle);
+        const double y = -dx * std::sin(angle) + dy * std::cos(angle);
+        const double radius = size_.height * (i ? 180. : 174.) / 615;
+        const bool hit =
+            kind_ == 0 ? std::abs(x) <= 11 && y >= -3 && y <= size_.height * .55 : std::hypot(dx, dy) <= radius;
+        if (hit) {
+            return background_->send(KineticCommand::BeginDrag, KineticDragValue{frame.rotors[i], position}) != 0;
+        }
+    }
+    return false;
+}
+
+void KineticModel::beginDragBody(physics::Body body, Point position) {
+    cancelDrag();
+    if (std::find(rotors_.begin(), rotors_.end(), body) != rotors_.end()) {
+        drag_ = world_->mouse(ground_, body, meters(position), 15, 4, .8);
+    }
+}
+
 void KineticModel::drag(Point position) {
+    if (background_) {
+        background_->send(KineticCommand::Drag, position, true);
+        return;
+    }
     if (drag_.id) {
-        world_.mouseTarget(
+        world_->mouseTarget(
             drag_, meters({std::clamp(position.x, 2., size_.width - 2), std::clamp(position.y, 2., size_.height - 2)}));
     }
 }
 
 void KineticModel::cancelDrag() {
+    if (background_) {
+        background_->send(KineticCommand::CancelDrag);
+        return;
+    }
     if (drag_.id) {
-        world_.destroy(drag_);
+        world_->destroy(drag_);
         drag_ = {};
     }
 }
 
 void KineticModel::quiet() {
+    if (background_) {
+        background_->send(KineticCommand::Quiet);
+        return;
+    }
     cancelDrag();
     for (auto& part : strikers_) {
         if (part.phase) {
@@ -254,13 +514,19 @@ void KineticModel::quiet() {
 }
 
 bool KineticModel::active() const {
-    return !rotors_.empty() || world_.active() || std::any_of(strikers_.begin(), strikers_.end(), [](const auto& p) {
+    if (background_) {
+        return background_->frame.active;
+    }
+    return !rotors_.empty() || world_->active() || std::any_of(strikers_.begin(), strikers_.end(), [](const auto& p) {
         return p.phase || p.flash > 0;
     });
 }
 
 physics::PhysicsStats KineticModel::stats() const {
-    return world_.stats();
+    if (background_) {
+        return background_->frame.statistics;
+    }
+    return world_->stats();
 }
 
 unsigned KineticModel::hits() const {
@@ -272,7 +538,11 @@ unsigned KineticModel::hits() const {
 }
 
 std::vector<physics::DebugBody> KineticModel::debugBodies() const {
-    return world_.debugBodies();
+    if (background_) {
+        const auto& frame = background_->frame;
+        return {frame.bodies.begin(), frame.bodies.begin() + frame.bodyCount};
+    }
+    return world_->debugBodies();
 }
 
 const std::vector<Striker>& KineticModel::strikers() const {
@@ -281,7 +551,7 @@ const std::vector<Striker>& KineticModel::strikers() const {
 
 void KineticModel::draw(Canvas& canvas, const std::function<void(std::string_view, Rect)>& sprite) {
     for (unsigned i = 0; i < rotors_.size(); ++i) {
-        const auto state = world_.interpolated(rotors_[i]);
+        const auto state = drawState(rotors_[i]);
         const auto pivot = pivots_[i];
         if (kind_ == 1) {
             fan(canvas, pivot, size_.height * (i ? 180. : 174.) / 615, state.angle);
@@ -333,13 +603,13 @@ void KineticModel::draw(Canvas& canvas, const std::function<void(std::string_vie
         if (!(kind_ == 3 && i == 2)) {
             const double x = part.contact.x * kUnits, top = part.contact.y * kUnits;
             if (!hat && sprite) {
-                const auto state = world_.interpolated(part.target);
+                const auto state = drawState(part.target);
                 // The skin knows the exact elliptical membrane region. Pass only its
                 // physical retreat; rescaling an approximate circle would duplicate rims.
                 sprite(i == 0 ? "drumFace0" : "drumFace1",
                        {0, (state.position.y - part.contact.y) * kUnits, part.flash > 0 ? 1. : 0., 0});
             } else if (!hat && !sprite) {
-                const auto position = world_.interpolated(part.target).position;
+                const auto position = drawState(part.target).position;
                 const double y = top + part.radius;
                 canvas.oval(x, y, part.radius, part.radius, 0x151a1eff);
                 canvas.oval(x, y, part.radius, part.radius, kSilver, 2);
@@ -351,7 +621,7 @@ void KineticModel::draw(Canvas& canvas, const std::function<void(std::string_vie
                 canvas.line(x, top, x, size_.height * .91, kSilver, 2);
             }
         }
-        const auto position = world_.interpolated(part.body).position;
+        const auto position = drawState(part.body).position;
         canvas.line(part.rest.x * kUnits, size_.height * (hat ? .58 : .05), position.x * kUnits, position.y * kUnits,
                     kSilver, 2);
         const Rect head{position.x * kUnits - (hat ? 54 : 10), position.y * kUnits - (hat ? 24 : 6), hat ? 108. : 20.,

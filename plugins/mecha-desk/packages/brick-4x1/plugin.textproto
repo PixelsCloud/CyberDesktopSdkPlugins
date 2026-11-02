@@ -89,3 +89,6 @@ content_padding: 0
 preview: "preview.png"
 
 tags: "机甲"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

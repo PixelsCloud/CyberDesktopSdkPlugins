@@ -94,3 +94,6 @@ tags: "赛博朋克"
 tags: "金属"
 tags: "仪表"
 tags: "STREETLINK"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 
 #include "plugins/pixel-desk/PixelBrick.h"
@@ -15,7 +16,7 @@ BrickInstance::BrickInstance(const CdCreateContext& context)
                {"animate", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"debris_count", CD_SETTING_INTEGER, 12, 0, {}, 8, 20}},
-      model_(brickclock::EnclosureGeometry{8.85, -3.85, 13.85}),
+      model_(context, brickclock::EnclosureGeometry{8.85, -3.85, 13.85}),
       renderer_(context, kPixelBrick) {
     environment_.bind(context);
     redraw_.bind(context);
@@ -60,16 +61,20 @@ bool BrickInstance::synchronize(bool animate) {
 }
 
 void BrickInstance::schedule() {
+    model_.pauseBackground(frozen());
     if (hidden_) {
         updates_.stop();
         return;
     }
     const auto now = environment_.snapshot();
-    const auto interval = !frozen() && model_.active() ? 33u : uint32_t(1000 - now.unix_ms % 1000);
+    const auto interval = !model_.backgrounded() && !frozen() && model_.active()
+                              ? 33u
+                              : std::max(16u, uint32_t(1000 - now.unix_ms % 1000));
     updates_.start(interval, now.monotonic_ms);
 }
 
 CdResult BrickInstance::render(const CdFrame& frame) {
+    model_.consumeBackground();
     updates_.beginFrame();
     redraw_.beginFrame();
     return drawPixelBrick(renderer_, model_, settings, frame, safe_) ? CD_OK : CD_ERROR_ARGUMENT;

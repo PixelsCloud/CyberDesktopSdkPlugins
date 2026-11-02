@@ -2,6 +2,7 @@
 
 #include <string_view>
 
+#include "sdk/cpp/BackgroundReference.h"
 #include "tools/PreviewServices.h"
 #include "tools/WindowsApartment.h"
 
@@ -9,7 +10,8 @@ namespace cdsdk {
 MockHost::MockHost()
     : lifetime(std::make_shared<const bool>(true)),
       apartment(std::make_unique<WindowsApartment>()),
-      preview(std::make_unique<PreviewServices>(*this)) {}
+      preview(std::make_unique<PreviewServices>(*this)),
+      background(std::make_unique<BackgroundReferenceHost>()) {}
 
 MockHost::~MockHost() = default;
 
@@ -187,6 +189,11 @@ CdResult CD_CALL MockHost::queryService(void* context, const char* id, uint32_t 
         return CD_ERROR_ARGUMENT;
     if (version != CD_SERVICE_VERSION)
         return CD_ERROR_VERSION;
+    if (!std::strcmp(id, CD_SERVICE_BACKGROUND)) {
+        auto& host = *static_cast<MockHost*>(context);
+        return host.backgroundServicesEnabled && host.background ? writeService(host.background->api(), buffer, size)
+                                                                 : CD_ERROR_UNSUPPORTED;
+    }
     if (const auto result = static_cast<MockHost*>(context)->preview->query(id, version, buffer, size)) {
         return *result;
     }
@@ -571,6 +578,8 @@ auto MockHost::tick(double seconds) -> void {
         return;
     }
     if (paused) {
+        background->tick(seconds);
+        background->takeChanged();
         uiFocus(false);
         return;
     }
@@ -797,6 +806,12 @@ auto MockHost::tick(double seconds) -> void {
             }
             subscription.audio(subscription.user, data.data(), subscription.bands ? uint32_t(data.size()) : 512,
                                subscription.bands ? 0 : 48000, subscription.bands ? 0 : 2);
+        }
+    }
+    if (!alive.expired()) {
+        background->tick(seconds);
+        if (background->takeChanged()) {
+            dirty = true;
         }
     }
 }

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <map>
@@ -573,6 +574,12 @@ void abiTest(const wchar_t* filename, const char* id) {
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) try {
+    // These legacy fixtures assert immediate owner-thread UI semantics. The
+    // background path is verified separately by the SDK/Native DLL matrix.
+    if (_putenv_s("CD_PHYSICS_EXECUTION_MODE", "owner-reference") != 0) {
+        return 2;
+    }
+    std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     const auto imageStore = cybercanvas::ImageStore::shared();
     assetTests();
     feedingTests();

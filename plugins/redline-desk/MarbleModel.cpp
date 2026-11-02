@@ -3,6 +3,9 @@
 namespace redline_marble {
 Model::Model(bool compact) : marbleclock::Model(compact, marbleclock::GeometryStyle::Illustrated) {}
 
+Model::Model(const CdCreateContext& context, bool compact)
+    : marbleclock::Model(context, compact, marbleclock::GeometryStyle::Illustrated) {}
+
 Geometry geometry(bool compact) {
     return marbleclock::geometry(compact, marbleclock::GeometryStyle::Illustrated);
 }

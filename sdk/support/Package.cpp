@@ -396,13 +396,14 @@ bool validateDescriptor(const pb::PluginDescriptor& descriptor, Error* error) {
             service.id().find_first_not_of("abcdefghijklmnopqrstuvwxyz0123456789._-") != std::string::npos)
             return fail(error, "descriptor.services", "Invalid or duplicate required service");
         const std::map<std::string, pb::Capability> known{
-            {"input.stats", pb::INPUT_STATS},      {"system.telemetry", pb::SYSTEM_INFO},
-            {"media.playback", pb::MEDIA_CONTROL}, {"media.sessions", pb::MEDIA_CONTROL},
-            {"audio.spectrum", pb::AUDIO_FFT},     {"audio.pcm", pb::AUDIO_PCM},
-            {"audio.ambient", pb::MEDIA_CONTROL},  {"location.current", pb::LOCATION},
-            {"weather.forecast", pb::WEATHER},     {"air.quality", pb::AIR_QUALITY},
-            {"storage.volume", pb::SYSTEM_INFO},   {"content.feeds", pb::CONTENT},
-            {"media.library", pb::MEDIA_LIBRARY},  {"render.image_skins", pb::IMAGE_SKINS}};
+            {"input.stats", pb::INPUT_STATS},           {"system.telemetry", pb::SYSTEM_INFO},
+            {"media.playback", pb::MEDIA_CONTROL},      {"media.sessions", pb::MEDIA_CONTROL},
+            {"audio.spectrum", pb::AUDIO_FFT},          {"audio.pcm", pb::AUDIO_PCM},
+            {"audio.ambient", pb::MEDIA_CONTROL},       {"location.current", pb::LOCATION},
+            {"weather.forecast", pb::WEATHER},          {"air.quality", pb::AIR_QUALITY},
+            {"storage.volume", pb::SYSTEM_INFO},        {"content.feeds", pb::CONTENT},
+            {"media.library", pb::MEDIA_LIBRARY},       {"render.image_skins", pb::IMAGE_SKINS},
+            {"host.background", pb::BACKGROUND_COMPUTE}};
         const auto required = known.find(service.id());
         if (required != known.end() && std::find(descriptor.capabilities().begin(), descriptor.capabilities().end(),
                                                  required->second) == descriptor.capabilities().end())

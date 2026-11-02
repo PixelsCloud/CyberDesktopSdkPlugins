@@ -11,13 +11,22 @@ target_include_directories(cd_sdk_abi INTERFACE
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 target_compile_definitions(cd_sdk_abi INTERFACE NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)
 
-add_library(cd_sdk_core STATIC support/Settings.cpp support/Environment.cpp support/DiagnosticHost.cpp
+add_library(cd_sdk_core STATIC support/Settings.cpp support/Environment.cpp support/DiagnosticHost.cpp support/Background.cpp
     support/Services.cpp support/Snapshots.cpp support/Plugin.cpp support/PluginDiagnostics.cpp support/WeatherPresentation.cpp)
 add_library(CyberDesktopSDK::Core ALIAS cd_sdk_core)
 set_target_properties(cd_sdk_core PROPERTIES EXPORT_NAME Core)
 target_link_libraries(cd_sdk_core PUBLIC cd_sdk_abi)
 target_compile_features(cd_sdk_core PUBLIC cxx_std_20)
 target_compile_options(cd_sdk_core PRIVATE /utf-8)
+
+# Independent preview/test host reference; plugins need only Core and the C ABI.
+# This single-lane adapter contains no private desktop scheduling policy.
+add_library(cd_sdk_background_reference STATIC support/BackgroundReference.cpp)
+add_library(CyberDesktopSDK::BackgroundReference ALIAS cd_sdk_background_reference)
+set_target_properties(cd_sdk_background_reference PROPERTIES EXPORT_NAME BackgroundReference)
+target_link_libraries(cd_sdk_background_reference PUBLIC cd_sdk_abi)
+target_compile_features(cd_sdk_background_reference PUBLIC cxx_std_20)
+target_compile_options(cd_sdk_background_reference PRIVATE /utf-8)
 
 add_library(cd_sdk_rendering STATIC support/Canvas.cpp support/RenderOutput.cpp support/Language.cpp
     support/WindowsFonts.cpp support/WindowsRendering.cpp support/Update.cpp support/Interaction.cpp

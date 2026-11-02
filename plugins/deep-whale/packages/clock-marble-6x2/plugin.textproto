@@ -98,3 +98,6 @@ preview: "preview.png"
 tags: "Deep鲸"
 tags: "时钟"
 tags: "互动"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

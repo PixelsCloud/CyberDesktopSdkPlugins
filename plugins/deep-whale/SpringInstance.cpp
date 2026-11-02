@@ -2,6 +2,7 @@
 #include <numbers>
 
 #include "plugins/deep-whale/SpringClock.h"
+#include "plugins/physics-toys/BackgroundController.h"
 
 namespace deepwhale {
 using cybercanvas::Point;
@@ -13,7 +14,7 @@ std::array<uint64_t, 4> SpringInstance::physicsCounters() const {
 
 SpringInstance::SpringInstance(const CdCreateContext& context)
     : settings(springDefaults(springSpec(context.plugin_id).compact)),
-      model_(toys::Kind::Clock, springSpec(context.plugin_id).compact, true,
+      model_(context, toys::Kind::Clock, springSpec(context.plugin_id).compact, true,
              springLayout(springSpec(context.plugin_id).compact)),
       renderer_(context) {
     renderer_.onChange([this] {
@@ -56,6 +57,10 @@ bool SpringInstance::synchronize(bool animate) {
 }
 
 CdResult SpringInstance::schedule(const cdsdk::Settings& values) {
+    if (model_.backgrounded()) {
+        return toys::scheduleBackgroundClock(model_, updates_, frozen(values), hidden_, values.at("speed").number,
+                                             environment_.snapshot().monotonic_ms);
+    }
     if (hidden_) {
         updates_.stop();
         return CD_OK;
@@ -67,6 +72,7 @@ CdResult SpringInstance::render(const CdFrame& frame) {
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }
+    model_.consumeBackground();
     updates_.beginFrame();
     redraw_.beginFrame();
     canvas_.render(frame, safe_, [&](auto& canvas, CdRect safe) {

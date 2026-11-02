@@ -4,6 +4,8 @@ version: "1.1.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "独立像素风外观，奶油白与薄荷绿机框；设置仅影响当前组件。"
 layouts {
     id: "1x4"

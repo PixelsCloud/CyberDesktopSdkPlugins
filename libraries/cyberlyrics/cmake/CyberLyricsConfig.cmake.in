@@ -1,0 +1,13 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+find_dependency(Qt6 6.5 COMPONENTS Core)
+if(@CYBERLYRICS_WITH_WINDOWS_MEDIA@ OR @CYBERLYRICS_WITH_QT_VIEW@)
+    find_dependency(Qt6 6.5 COMPONENTS Gui)
+endif()
+if(@CYBERLYRICS_WITH_WIDGET_VIEW@)
+    find_dependency(Qt6 6.5 COMPONENTS Widgets)
+endif()
+if(@CYBERLYRICS_WITH_PARSER@)
+    find_dependency(cpr CONFIG)
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/CyberLyricsTargets.cmake")

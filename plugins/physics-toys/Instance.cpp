@@ -1,6 +1,7 @@
 #include <ctime>
 #include <numbers>
 
+#include "plugins/physics-toys/BackgroundController.h"
 #include "plugins/physics-toys/Toys.h"
 
 namespace toys {
@@ -17,7 +18,7 @@ Instance::Instance(const CdCreateContext& context, Kind kind, bool mechanical)
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"twelve_hour", CD_SETTING_TOGGLE, 0},
                {"palette", CD_SETTING_CHOICE, 0, 0, "pastel", 0, 0, {"pastel", "ocean"}}},
-      model_(kind, mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".1x4"),
+      model_(context, kind, mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".1x4"),
              mechanical) {
     compact_ = mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".1x4");
     canvas_.bindGpu(context);
@@ -74,6 +75,10 @@ void Instance::synchronizeTime() {
 }
 
 void Instance::schedule() {
+    if (toys::scheduleBackground(model_, updates_, frozen(), hidden_, settings.at("wind").number,
+                                 settings.at("speed").number)) {
+        return;
+    }
     if (hidden_) {
         updates_.stop();
         return;
@@ -93,6 +98,7 @@ CdResult Instance::render(const CdFrame& frame) {
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }
+    model_.consumeBackground();
     updates_.beginFrame();
     redraw_.beginFrame();
     synchronizeTime();

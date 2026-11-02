@@ -33,6 +33,7 @@
 namespace cdsdk {
 class PreviewServices;
 class WindowsApartment;
+class BackgroundReferenceHost;
 enum class MockScenario { Normal, Loading, Empty, Error };
 
 struct MockHost {
@@ -41,6 +42,8 @@ struct MockHost {
     std::shared_ptr<const bool> lifetime;
     std::unique_ptr<WindowsApartment> apartment;
     std::unique_ptr<PreviewServices> preview;
+    std::unique_ptr<BackgroundReferenceHost> background;
+    bool backgroundServicesEnabled = true;
 
     struct Subscription {
         CdSystemCallback system = nullptr;

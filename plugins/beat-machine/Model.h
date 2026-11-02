@@ -9,6 +9,8 @@
 #include <span>
 #include <vector>
 
+struct CdCreateContext;
+
 namespace beatmachine {
 namespace physics = cybercanvas::physics;
 using cybercanvas::Point;
@@ -71,11 +73,19 @@ struct Actuator {
 };
 
 enum class GeometryStyle { Classic, Illustrated, Pixels };
+class Background;
+class BackgroundState;
 
 class Model {
 public:
     explicit Model(unsigned count = 36, bool compact = false, GeometryStyle style = GeometryStyle::Classic,
                    double radius = kRadius);
+    Model(const CdCreateContext& context, unsigned count = 36, bool compact = false,
+          GeometryStyle style = GeometryStyle::Classic, double radius = kRadius);
+    ~Model();
+    void consumeBackground();
+    void pauseBackground(bool paused);
+    bool backgrounded() const;
     void configure(const std::filesystem::path& assets);
     void reset(unsigned count);
     bool advance(double seconds, const Signal& signal = {});
@@ -105,6 +115,9 @@ public:
     double width() const;
 
 private:
+    friend class Background;
+    friend class BackgroundState;
+    std::unique_ptr<Background> background_;
     void step(const Signal& signal);
     void controls();
     std::unique_ptr<physics::World> world_;

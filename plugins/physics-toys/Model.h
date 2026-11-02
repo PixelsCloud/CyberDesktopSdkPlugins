@@ -2,6 +2,7 @@
 
 #include <CyberCanvas/Noise.h>
 #include <CyberCanvas/Physics2D.h>
+#include <CyberCanvas/Types.h>
 
 #include <array>
 #include <cstdint>
@@ -12,7 +13,11 @@
 #include <string>
 #include <vector>
 
+struct CdCreateContext;
+
 namespace toys {
+class Background;
+class BackgroundModelState;
 namespace physics = cybercanvas::physics;
 using cybercanvas::Point;
 using cybercanvas::Size;
@@ -54,7 +59,15 @@ struct ModelOptions {
 
 class Model {
 public:
+    ~Model();
     explicit Model(Kind kind, bool compact = false, bool mechanical = false, ModelOptions options = {});
+    Model(const CdCreateContext& context, Kind kind, bool compact = false, bool mechanical = false,
+          ModelOptions options = {});
+    Model(const CdCreateContext& context, Kind kind, bool compact, bool mechanical, const ClockLayout& layout);
+    Model(const CdCreateContext& context, const ChimeLayout& layout);
+    bool backgrounded() const;
+    void consumeBackground();
+    void pauseBackground(bool paused);
     void configure(const std::filesystem::path& assets);
     bool fit(Size size, cybercanvas::Rect limits, std::function<Point(Point)> map);
     Model(Kind kind, bool compact, bool mechanical, const ClockLayout& layout);
@@ -80,6 +93,8 @@ public:
     void setWindSeed(uint32_t seed);
 
 private:
+    friend class BackgroundModelState;
+    std::unique_ptr<Background> background_;
     Kind kind_;
     ModelOptions options_;
     std::optional<ClockLayout> clockLayout_;

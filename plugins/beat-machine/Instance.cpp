@@ -21,7 +21,7 @@ Instance::Instance(const CdCreateContext& context)
                {"running", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0}},
       context_(context),
-      model_(36, context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2")),
+      model_(context, 36, context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2")),
       renderer_(std::filesystem::path(std::u8string_view(reinterpret_cast<const char8_t*>(context.plugin_directory))) /
                     "assets",
                 model_.compact()) {
@@ -39,7 +39,8 @@ Instance::Instance(const CdCreateContext& context)
         const auto now = environment_.snapshot().monotonic_ms;
         const bool stale = !lastAudio_ || now < lastAudio_ || now - lastAudio_ > 250 || status_ != CD_DATA_READY;
         if (!frozen()) {
-            changed |= audio_.advance(tick.delta, stale, settings.at("gain").number);
+            const bool audioChanged = audio_.advance(tick.delta, stale, settings.at("gain").number);
+            changed |= !model_.backgrounded() && audioChanged;
             changed |= model_.advance(tick.delta, audio_.signal());
         }
         const bool active = renderer_.pendingAssets() || (!frozen() && (model_.active() || audio_.active()));
@@ -96,6 +97,7 @@ void Instance::subscribe() {
 }
 
 void Instance::schedule() {
+    model_.pauseBackground(frozen());
     if (hidden_ || (!renderer_.pendingAssets() && (frozen() || (!model_.active() && !audio_.active())))) {
         updates_.stop();
         return;
@@ -113,6 +115,7 @@ void Instance::arrange() {
 }
 
 CdResult Instance::render(const CdFrame& frame) {
+    model_.consumeBackground();
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }
@@ -159,7 +162,7 @@ CdResult Instance::render(const CdFrame& frame) {
         }
         arranged_ = true;
     });
-    if (renderer_.pendingAssets()) {
+    if (renderer_.pendingAssets() || model_.backgrounded()) {
         schedule();
     }
     return CD_OK;

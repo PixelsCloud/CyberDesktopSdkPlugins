@@ -354,7 +354,7 @@ std::array<uint64_t, 4> MarbleInstance::physicsCounters() const {
 
 MarbleInstance::MarbleInstance(const CdCreateContext& context)
     : settings(marbleDefaults()),
-      model_(marbleSpec(context.plugin_id).compact),
+      model_(context, marbleSpec(context.plugin_id).compact),
       renderer_(context, marbleSpec(context.plugin_id)) {
     canvas_.bindGpu(context);
     environment_.bind(context);
@@ -407,16 +407,20 @@ bool MarbleInstance::synchronize(bool animate) {
 }
 
 CdResult MarbleInstance::schedule(const cdsdk::Settings& values) {
+    model_.pauseBackground(frozen(values));
     if (hidden_) {
         updates_.stop();
         return CD_OK;
     }
     const auto now = environment_.snapshot();
     const auto boundary = std::max(16u, uint32_t(1000 - now.unix_ms % 1000));
-    return updates_.start(!frozen(values) && model_.active() ? std::min(33u, boundary) : boundary, now.monotonic_ms);
+    return updates_.start(
+        !model_.backgrounded() && !frozen(values) && model_.active() ? std::min(33u, boundary) : boundary,
+        now.monotonic_ms);
 }
 
 CdResult MarbleInstance::render(const CdFrame& frame) {
+    model_.consumeBackground();
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }

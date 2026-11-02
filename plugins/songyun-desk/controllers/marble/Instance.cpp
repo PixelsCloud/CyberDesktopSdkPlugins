@@ -1,5 +1,6 @@
 #include <CyberCanvas/PanelLayout.h>
 
+#include <algorithm>
 #include <cmath>
 #include <string_view>
 
@@ -18,7 +19,7 @@ Instance::Instance(const CdCreateContext& context)
                {"show_background", CD_SETTING_TOGGLE, 1},
                {"running", CD_SETTING_TOGGLE, 1},
                {"reduced_motion", CD_SETTING_TOGGLE, 0}},
-      model_(context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2")),
+      model_(context, context.plugin_id && std::string_view(context.plugin_id).ends_with(".4x2")),
       renderer_(
           context.plugin_directory && *context.plugin_directory
               ? std::filesystem::path(std::u8string_view(reinterpret_cast<const char8_t*>(context.plugin_directory))) /
@@ -72,13 +73,15 @@ bool Instance::synchronize(bool animate) {
 }
 
 void Instance::schedule() {
+    model_.pauseBackground(frozen());
     if (hidden_) {
         updates_.stop();
         return;
     }
     const auto now = environment_.snapshot();
-    const auto interval =
-        renderer_.pendingAssets() || (!frozen() && model_.active()) ? 33u : uint32_t(1000 - now.unix_ms % 1000);
+    const auto interval = renderer_.pendingAssets() || (!model_.backgrounded() && !frozen() && model_.active())
+                              ? 33u
+                              : std::max(16u, uint32_t(1000 - now.unix_ms % 1000));
     updates_.start(interval, now.monotonic_ms);
 }
 
@@ -89,6 +92,7 @@ void Instance::arrange() {
 }
 
 CdResult Instance::render(const CdFrame& frame) {
+    model_.consumeBackground();
     if (!canvas_.valid(frame)) {
         return CD_ERROR_ARGUMENT;
     }

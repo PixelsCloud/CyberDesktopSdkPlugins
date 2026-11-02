@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "月亮、铃铛、星星与独立尾饰随风轻摆；支持拖动和双击轻拨。"
 layouts {
     id: "3x2"

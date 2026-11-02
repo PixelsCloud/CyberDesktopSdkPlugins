@@ -15,7 +15,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/../common/SdkTool.cmake")
 cd_plugin_sdk_tool(cd_hourglass_sdk_tool CD_HOURGLASS_LICENSE)
 cd_plugin_canvas_license(box2d CD_HOURGLASS_BOX_LICENSE)
 
-add_library(cd_hourglass_core STATIC Model.cpp Renderer.cpp Instance.cpp PhysicalSand.cpp)
+add_library(cd_hourglass_core STATIC Model.cpp Renderer.cpp Instance.cpp PhysicalSand.cpp SandBackground.cpp)
 target_link_libraries(cd_hourglass_core PUBLIC CyberDesktopSDK::SDK CyberCanvas::Physics2D PRIVATE d2d1 dwrite windowscodecs ole32)
 target_include_directories(cd_hourglass_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 target_compile_definitions(cd_hourglass_core PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)

@@ -3,7 +3,7 @@ add_library(cd_sdk_tool_support STATIC EXCLUDE_FROM_ALL
     tools/Runtime.cpp tools/SettingsProbe.cpp tools/PreviewOptions.cpp tools/ResourceWatcher.cpp
     tools/PreviewImages.cpp tools/Diagnostics.cpp tools/PreviewState.cpp tools/PreviewReplay.cpp tools/PreviewPresets.cpp
     tools/PreviewServices.cpp tools/PreviewTextInput.cpp tools/WindowsApartment.cpp tools/PreviewOutput.cpp)
-target_link_libraries(cd_sdk_tool_support PUBLIC cd_sdk_support CyberCanvas::Native
+target_link_libraries(cd_sdk_tool_support PUBLIC cd_sdk_support CyberCanvas::Native CyberDesktopSDK::BackgroundReference
     PRIVATE CyberCanvas::CyberCanvas CyberCanvas::Resources nlohmann_json::nlohmann_json user32 gdi32 shell32 uuid comctl32)
 target_compile_options(cd_sdk_tool_support PRIVATE /utf-8)
 target_include_directories(cd_sdk_tool_support PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")

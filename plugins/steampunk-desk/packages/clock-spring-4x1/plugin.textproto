@@ -4,6 +4,8 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }
 description: "CyberDesktop 蒸汽工坊；做旧黄铜、铜管、铸铁与搪瓷，保留实时服务和原有物理交互。"
 layouts {
     id: "1x4"

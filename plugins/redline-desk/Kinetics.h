@@ -10,6 +10,7 @@
 
 namespace redline {
 namespace physics = cybercanvas::physics;
+class KineticBackgroundState;
 
 struct Striker {
     physics::Body body, target;
@@ -23,9 +24,15 @@ struct Striker {
 class KineticModel {
 public:
     KineticModel(int kind, Size size);
+    KineticModel(const CdCreateContext& context, int kind, Size size);
+    ~KineticModel();
+    void consumeBackground();
+    void pauseBackground(bool paused);
+    bool backgrounded() const;
     bool advance(double seconds);
     void strike(unsigned channel, double strength = 1);
     void beginDrag(Point position);
+    bool tryBeginDrag(Point position);
     void drag(Point position);
     void cancelDrag();
     void quiet();
@@ -37,10 +44,16 @@ public:
     const std::vector<Striker>& strikers() const;
 
 private:
+    friend class KineticBackgroundState;
+    class Background;
+    std::unique_ptr<Background> background_;
+    void initialize();
+    void beginDragBody(physics::Body body, Point position);
+    physics::BodyState drawState(physics::Body body) const;
     void step();
     int kind_;
     Size size_;
-    physics::World world_;
+    std::unique_ptr<physics::World> world_;
     physics::Body ground_;
     std::vector<physics::Body> rotors_;
     std::vector<physics::Joint> rotorJoints_;

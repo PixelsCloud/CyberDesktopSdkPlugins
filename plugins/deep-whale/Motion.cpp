@@ -7,6 +7,7 @@
 #include <numbers>
 
 #include "plugins/deep-whale/BeatScene.h"
+#include "plugins/physics-toys/BackgroundController.h"
 #include "plugins/physics-toys/Toys.h"
 
 namespace deep_motion {
@@ -48,14 +49,13 @@ struct Instance::Impl : BeatScene {
     std::vector<std::pair<std::string, Size>> chimeArt;
     std::array<Point, 3> chimePins;
 
-    ph::Joint mouse;
     CdRect safe{};
     uint64_t lastAudio = 0;
     bool chime = false, hidden = false;
     unsigned status = CD_DATA_LOADING;
     std::filesystem::path directory;
 
-    Impl(const CdCreateContext& c, cdsdk::Settings& s) : context(c), settings(s) {
+    Impl(const CdCreateContext& c, cdsdk::Settings& s) : BeatScene(c), context(c), settings(s) {
         directory = std::filesystem::u8path(c.plugin_directory);
         skin.bind(c);
         chime = skin.folder().starts_with("chime");
@@ -76,11 +76,11 @@ struct Instance::Impl : BeatScene {
                                    settings.at("gain").number);
                 }
                 step(t.delta);
-                changed = true;
+                changed |= chime || !backgrounded();
             }
             return cdsdk::UpdateStep{
                 changed, skin.pending() || (!frozen() && (chime ? chimeModel->active() || settings.at("wind").number > 0
-                                                                : world->active() || motion.active()))};
+                                                                : BeatScene::active() || motion.active()))};
         });
         reset();
         subscribe();
@@ -104,10 +104,7 @@ struct Instance::Impl : BeatScene {
         if (chimeModel) {
             chimeModel->cancelDrag();
         }
-        if (world && mouse.id) {
-            world->destroy(mouse);
-        }
-        mouse = {};
+        cancelDrag();
     }
 
     void reset() {
@@ -139,7 +136,7 @@ struct Instance::Impl : BeatScene {
                 chimeArt.emplace_back(e.at("name").get<std::string>(), Size{r.width, r.height});
                 ++i;
             }
-            chimeModel = std::make_unique<toys::Model>(layout);
+            chimeModel = std::make_unique<toys::Model>(context, layout);
             chimeModel->setWindSeed(uint32_t(environment.snapshot().monotonic_ms ^ reinterpret_cast<uintptr_t>(this)));
             return;
         }
@@ -180,8 +177,18 @@ struct Instance::Impl : BeatScene {
     }
 
     void schedule() {
+        if (!chime) {
+            pauseBackground(frozen());
+        }
+        if (chime && toys::scheduleBackground(*chimeModel, updates, frozen(), hidden, settings.at("wind").number,
+                                              settings.at("speed").number)) {
+            if (!hidden && skin.pending()) {
+                updates.start(33, environment.snapshot().monotonic_ms);
+            }
+            return;
+        }
         const bool active =
-            chime ? chimeModel->active() || settings.at("wind").number > 0 : world->active() || motion.active();
+            chime ? chimeModel->active() || settings.at("wind").number > 0 : BeatScene::active() || motion.active();
         if (hidden || (!skin.pending() && (frozen() || !active))) {
             updates.stop();
         } else {
@@ -201,7 +208,7 @@ struct Instance::Impl : BeatScene {
         if (!frozen()) {
             unsigned i = 0;
             auto add = [&](const Piece& p) {
-                const auto s = world->state(p.body);
+                const auto s = state(p.body);
                 Rect r;
                 if (chime) {
                     r = {s.position.x * kUnits + p.art.x, s.position.y * kUnits + p.art.y, p.art.width, p.art.height};
@@ -223,7 +230,7 @@ struct Instance::Impl : BeatScene {
                 const auto size = skin.size();
                 const double scale =
                     std::min((safe.width - 14) / (size.width - 14), (safe.height - 14) / (size.height - 14));
-                for (size_t index = 0; index < chimeArt.size(); ++index) {
+                for (size_t index = 0; index < std::min(chimeArt.size(), chimeModel->pieces().size()); ++index) {
                     const auto state = chimeModel->state(index);
                     const auto art = chimeArt[index].second;
                     const auto transform =
@@ -255,7 +262,7 @@ struct Instance::Impl : BeatScene {
 };
 
 std::array<uint64_t, 4> Instance::physicsCounters() const {
-    const auto value = impl_->chime ? impl_->chimeModel->stats() : impl_->world->stats();
+    const auto value = impl_->chime ? impl_->chimeModel->stats() : impl_->stats();
     return {value.steps, value.advanceNanoseconds, value.awakeBodies, value.maximumAdvanceNanoseconds};
 }
 
@@ -268,12 +275,17 @@ Instance::~Instance() = default;
 
 CdResult Instance::render(const CdFrame& frame) {
     auto& p = *impl_;
+    if (p.chime) {
+        p.chimeModel->consumeBackground();
+    } else {
+        p.consumeBackground();
+    }
     p.updates.beginFrame();
     p.redraw.beginFrame();
     p.skin.appearance(settings);
     const bool ok = p.skin.render(frame, p.safe, [&](auto& c) {
         if (p.chime) {
-            for (size_t i = 0; i < p.chimeArt.size(); ++i) {
+            for (size_t i = 0; i < std::min(p.chimeArt.size(), p.chimeModel->pieces().size()); ++i) {
                 const auto state = p.chimeModel->state(i);
                 const auto& piece = p.chimeModel->pieces()[i];
                 const auto anchor = p.chimeModel->anchor(piece), attachment = p.chimeModel->attachment(piece);
@@ -294,14 +306,14 @@ CdResult Instance::render(const CdFrame& frame) {
             c.clipped(p.field, [&] {
                 c.translate(p.field.x, p.field.y);
                 for (const auto& b : p.pendulums) {
-                    const auto s = p.world->interpolated(b.body);
+                    const auto s = p.state(b.body);
                     Point bob{(s.position.x - std::sin(s.angle) * b.length) * kUnits,
                               (s.position.y + std::cos(s.angle) * b.length) * kUnits};
                     c.line(b.anchor.x * kUnits, b.anchor.y * kUnits, bob.x, bob.y, 0x466c8fff, 1.2);
                     p.orb(c, {b.anchor.x * kUnits, b.anchor.y * kUnits}, 2, 1);
                     p.orb(c, bob, b.radius * kUnits, b.color);
                 }
-                const double y = p.world->interpolated(p.floor).position.y * kUnits, w = p.field.width;
+                const double y = p.state(p.floor).position.y * kUnits, w = p.field.width;
                 for (unsigned i = 0; i < 3; ++i) {
                     const double x = w * (.28 + .22 * i), half = w * .095;
                     c.saved([&] {
@@ -329,13 +341,16 @@ CdResult Instance::render(const CdFrame& frame) {
                     });
                 }
                 for (const auto& b : p.balls) {
-                    const auto s = p.world->interpolated(b.body);
+                    const auto s = p.state(b.body);
                     p.orb(c, {s.position.x * kUnits, s.position.y * kUnits}, b.radius * kUnits, b.color);
                 }
             });
         }
     });
     p.targets();
+    if (!p.chime) {
+        p.schedule();
+    }
     if (p.skin.pending()) {
         p.schedule();
     }
@@ -375,23 +390,19 @@ void Instance::input(const CdInput& e) {
     }
     q.x /= kUnits;
     q.y /= kUnits;
-    if (r.drag == DragPhase::Begin && r.target > 0 && r.target < 1000) {
+    if (r.drag == DragPhase::Begin && r.target > 0 && r.target <= p.balls.size() + p.pendulums.size()) {
         size_t i = r.target - 1;
         const auto body = i < p.balls.size() ? p.balls[i].body : p.pendulums.at(i - p.balls.size()).body;
-        p.mouse = p.world->mouse(p.ground, body, q, 12, 4, .75);
-    } else if (r.drag == DragPhase::Update && p.mouse.id) {
-        p.world->mouseTarget(p.mouse, q);
+        if (!p.beginDrag(body, q)) {
+            p.interaction.cancel();
+        }
+    } else if (r.drag == DragPhase::Update) {
+        p.drag(q);
     } else if (r.drag == DragPhase::End || r.drag == DragPhase::Cancel || e.kind == CD_INPUT_CANCEL) {
         p.cancel();
     }
     if (r.clicked == 1000) {
-        for (const auto& b : p.balls) {
-            const auto s = p.world->interpolated(b.body);
-            const double dx = s.position.x - q.x, dy = s.position.y - q.y, d = std::max(.35, std::hypot(dx, dy));
-            if (d < 3.5) {
-                p.world->impulse(b.body, {dx / d * .025, -.045});
-            }
-        }
+        p.scatter(q);
     }
     p.schedule();
     p.redraw.invalidate();
@@ -414,9 +425,6 @@ void Instance::setPaused(bool v) {
     p.cancel();
     p.audio.reset();
     p.audioStatus.reset();
-    if (p.world) {
-        p.world->paused(v);
-    }
     p.skin.pause(v);
     p.updates.pause(v);
     p.redraw.pause(v);

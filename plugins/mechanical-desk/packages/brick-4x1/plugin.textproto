@@ -65,3 +65,6 @@ content_padding: 0
 preview: "preview.png"
 tags: "机械"
 tags: "精密机械"
+
+capabilities: BACKGROUND_COMPUTE
+required_services { id: "host.background" version: 1 }

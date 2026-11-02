@@ -12,6 +12,7 @@
 #include <thread>
 #include <vector>
 
+#include "sdk/cpp/BackgroundReference.h"
 #include "sdk/support/Package.h"
 #include "sdk/tools/Runtime.h"
 
@@ -64,6 +65,10 @@ Json run(const std::filesystem::path& root, const Json& spec, double seconds) {
     requireSdk(module.open(package, descriptor, &error), error, "module");
     std::vector<std::string> errors;
     cdsdk::NativeInstance instance;
+    // Accelerated model checks explicitly use the reference execution mode.
+    // Production UI isolation is measured separately through the Native host.
+    instance.host.background =
+        std::make_unique<cdsdk::BackgroundReferenceHost>(cdsdk::BackgroundReferenceHost::Mode::Deterministic);
     instance.host.onLog = [&](uint32_t level, std::string_view message) {
         if (level >= 3 && errors.size() < 16) {
             errors.emplace_back(message);
@@ -144,6 +149,74 @@ Json run(const std::filesystem::path& root, const Json& spec, double seconds) {
             previousPhysics = current;
         }
     }
+    requireSdk(instance.render(width, height, 1, &pixels, &error), error, "final running render");
+    const double musicSeconds = seconds;
+    bool idleVerified = false, naturalRest = false;
+    uint64_t silentStepDelta = 0, silentAwake = 0;
+    if (spec.value("continuousMusic", false) && spec.value("box2d", true)) {
+        const auto audio = instance.host.onAudio;
+        instance.host.onAudio = [](double, std::span<float> samples) {
+            std::fill(samples.begin(), samples.end(), 0.F);
+        };
+        for (unsigned frame = 1; frame <= 7200; ++frame) {
+            instance.host.tick(seconds + double(frame) / 60);
+            if (frame % 6 == 0) {
+                requireSdk(instance.render(width, height, 1, &pixels, &error), error, "silent settling render");
+            }
+        }
+        seconds += 120;
+        const auto settled = physics(instance);
+        unsigned idleRedraws = 0;
+        instance.host.dirty = false;
+        for (unsigned frame = 1; frame <= 1800; ++frame) {
+            instance.host.tick(seconds + double(frame) / 60);
+            idleRedraws += instance.host.dirty.exchange(false);
+            if (frame % 6 == 0) {
+                requireSdk(instance.render(width, height, 1, &pixels, &error), error, "silent idle render");
+            }
+        }
+        seconds += 30;
+        const auto idle = physics(instance);
+        silentStepDelta = idle[0] - settled[0];
+        silentAwake = idle[2];
+        naturalRest = silentStepDelta == 0;
+        if (naturalRest) {
+            require(idleRedraws == 0, "Naturally settled silent model continued requesting redraws");
+        } else {
+            // Silence does not remove existing angular/pendulum energy. The
+            // direct-reference Deep Whale/Streetlink worlds also remain awake.
+            // Preserve their solver behavior and verify actual static mode below.
+            require(silentAwake > 0, "Silent world stepped after all bodies became inactive");
+        }
+        toggle(instance, "reduced_motion", 1);
+        for (unsigned frame = 1; frame <= 30; ++frame) {
+            instance.host.tick(seconds + double(frame) / 60);
+            requireSdk(instance.render(width, height, 1, &pixels, &error), error, "static acknowledgement render");
+        }
+        seconds += .5;
+        const auto staticSteps = physics(instance)[0];
+        instance.host.dirty = false;
+        for (unsigned frame = 1; frame <= 1800; ++frame) {
+            instance.host.tick(seconds + double(frame) / 60);
+            require(!instance.host.dirty.exchange(false), "Static mode continued requesting redraws");
+            if (frame % 60 == 0) {
+                requireSdk(instance.render(width, height, 1, &pixels, &error), error, "static cached render");
+            }
+        }
+        seconds += 30;
+        require(physics(instance)[0] == staticSteps, "Static mode continued stepping");
+        idleVerified = true;
+        instance.host.onAudio = audio;
+        toggle(instance, "reduced_motion", 0);
+        for (unsigned frame = 1; frame <= 60; ++frame) {
+            instance.host.tick(seconds + double(frame) / 60);
+            if (frame % 6 == 0) {
+                requireSdk(instance.render(width, height, 1, &pixels, &error), error, "music restart render");
+            }
+        }
+        seconds += 1;
+        require(physics(instance)[0] > 0, "Music did not wake the model after static mode");
+    }
     const auto beforePause = physics(instance);
     if (spec.value("box2d", true)) {
         require(beforePause[0] > 0, "No actual Box2D steps were observed");
@@ -184,6 +257,11 @@ Json run(const std::filesystem::path& root, const Json& spec, double seconds) {
             {"model", spec.at("model")},
             {"status", "passed"},
             {"simulatedSeconds", seconds},
+            {"musicSimulatedSeconds", musicSeconds},
+            {"staticThirtySecondsVerified", idleVerified},
+            {"silentNaturalRest", naturalRest},
+            {"silentResidualStepDelta", silentStepDelta},
+            {"silentResidualAwakeBodies", silentAwake},
             {"wallSeconds", elapsed},
             {"missedTimers", missedTimers},
             {"physicsSteps", beforePause[0]},

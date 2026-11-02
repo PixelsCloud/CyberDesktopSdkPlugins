@@ -12,6 +12,7 @@ using namespace toys;
 class Model final : public toys::Model {
 public:
     explicit Model(Kind kind, bool compact = false, bool mechanical = false);
+    Model(const CdCreateContext& context, Kind kind, bool compact = false, bool mechanical = false);
 };
 
 class MechanicalRenderer {
