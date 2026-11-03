@@ -1,2 +1,7 @@
 @PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+if(WIN32)
+    find_dependency(Boost CONFIG COMPONENTS asio)
+    find_dependency(wil CONFIG)
+endif()
 include("${CMAKE_CURRENT_LIST_DIR}/CyberLiquidGlassTargets.cmake")

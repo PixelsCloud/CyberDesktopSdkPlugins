@@ -10,6 +10,8 @@ struct ShadowImage;
 }
 
 namespace liquidglass::react {
+enum class LightBackgroundBlend { React, Adaptive };
+
 struct EffectGeometry {
     int width = 0, height = 0;
     float sourceX = 0, sourceY = 0, dpiScale = 1, corner = 24;
@@ -42,7 +44,8 @@ public:
     ~Effect();
     void initialize(void* d3dDevice, void* d2dContext);
     void render(EffectTarget& target, void* sourceTexture, EffectGeometry geometry, Parameters parameters,
-                uint64_t contentRevision);
+                uint64_t contentRevision, bool exportShadow = true,
+                LightBackgroundBlend lightBlend = LightBackgroundBlend::React);
 
 private:
     struct Impl;

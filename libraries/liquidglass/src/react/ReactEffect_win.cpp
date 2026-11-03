@@ -2,7 +2,6 @@
 #include <d2d1_1.h>
 #include <d2d1effects.h>
 #include <d3d11.h>
-#include <d3dcompiler.h>
 #include <winrt/base.h>
 #include <wrl/client.h>
 
@@ -24,7 +23,7 @@ namespace liquidglass::react {
 namespace {
 using Microsoft::WRL::ComPtr;
 #include "ReactDisplacement.h"
-#include "ReactMaterialShader.h"
+#include "ReactMaterialBytecode.h"
 
 struct alignas(16) Constants {
     std::array<float, 4> input, panel, optics, pose, pointer, glow, frame, mask, slice, texel;
@@ -211,20 +210,9 @@ struct Effect::Impl {
     ComPtr<ID3D11SamplerState> sampler;
     std::array<ComPtr<ID3D11ShaderResourceView>, 3> maps;
 
-    ComPtr<ID3D11ComputeShader> compile(const char* entry) {
-        ComPtr<ID3DBlob> shader, errors;
-        const auto result =
-            D3DCompile(kReactMaterialShader, sizeof(kReactMaterialShader) - 1, "LiquidGlass.React", nullptr, nullptr,
-                       entry, "cs_5_0", D3DCOMPILE_OPTIMIZATION_LEVEL3, 0, &shader, &errors);
-        if (FAILED(result)) {
-            const std::string detail =
-                errors ? std::string(static_cast<const char*>(errors->GetBufferPointer()), errors->GetBufferSize())
-                       : "React material shader compilation failed";
-            throw winrt::hresult_error(result, winrt::to_hstring(detail));
-        }
+    ComPtr<ID3D11ComputeShader> createShader(const void* bytecode, size_t size) {
         ComPtr<ID3D11ComputeShader> value;
-        winrt::check_hresult(
-            device->CreateComputeShader(shader->GetBufferPointer(), shader->GetBufferSize(), nullptr, &value));
+        winrt::check_hresult(device->CreateComputeShader(bytecode, size, nullptr, &value));
         return value;
     }
 
@@ -296,11 +284,11 @@ void Effect::initialize(void* d3dDevice, void* d2dContext) {
     self.device = static_cast<ID3D11Device*>(d3dDevice);
     self.d2d = static_cast<ID2D1DeviceContext*>(d2dContext);
     self.device->GetImmediateContext(&self.context);
-    self.underlay = self.compile("Underlay");
-    self.raster = self.compile("RasterSource");
-    self.warp = self.compile("Warp");
-    self.composite = self.compile("Composite");
-    self.mask = self.compile("MaskImage");
+    self.underlay = self.createShader(kReactUnderlay, sizeof(kReactUnderlay));
+    self.raster = self.createShader(kReactRasterSource, sizeof(kReactRasterSource));
+    self.warp = self.createShader(kReactWarp, sizeof(kReactWarp));
+    self.composite = self.createShader(kReactComposite, sizeof(kReactComposite));
+    self.mask = self.createShader(kReactMaskImage, sizeof(kReactMaskImage));
     D3D11_BUFFER_DESC description{};
     description.ByteWidth = sizeof(Constants);
     description.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -316,7 +304,8 @@ void Effect::initialize(void* d3dDevice, void* d2dContext) {
     }
 }
 
-void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry, Parameters p, uint64_t revision) {
+void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry, Parameters p, uint64_t revision,
+                    bool exportShadow, LightBackgroundBlend lightBlend) {
     auto& self = *m_impl;
     auto& out = *target.m_impl;
     p.normalize();
@@ -362,7 +351,8 @@ void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry
                  float(p.mode)},
                 {p.scaleX, p.scaleY, p.offsetX * dpi, p.offsetY * dpi},
                 {p.mouseOffsetX, p.mouseOffsetY, p.hoverGlowOpacity, p.pressGlowOpacity},
-                {p.interactionGlowOpacity, p.overLight ? 1.f : 0.f, 0, 0},
+                {p.interactionGlowOpacity, p.overLight ? 1.f : 0.f,
+                 lightBlend == LightBackgroundBlend::Adaptive ? 1.f : 0.f, 0},
                 {float(geometry.width), float(geometry.height), float(svgPadX), float(svgPadY)},
                 {float(templateWidth), float(templateHeight), float(pad), geometry.attachedTop ? 1.f : 0.f},
                 {float(std::min(cap, templateWidth / 2)), float(std::min(cap, templateHeight / 2)),
@@ -370,7 +360,8 @@ void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry
                 {float(out.warped.width), float(out.warped.height), float(out.sourceImage.width),
                  float(out.sourceImage.height)}};
     const std::array<float, 8> maskKey{
-        float(templateWidth), float(templateHeight), radius, dpi, shadowSigma, float(pad), c.mask[3], 0};
+        float(templateWidth),    float(templateHeight), radius, dpi, shadowSigma, float(pad), c.mask[3],
+        exportShadow ? 1.f : 0.f};
     if (!out.hasMask || out.maskKey != maskKey) {
         ensure(out.mask, *self.device.Get(), *self.d2d.Get(), templateWidth + pad * 2, templateHeight + pad * 2, true);
         self.dispatch(*self.mask.Get(), out.mask, c, {}, out.mask.width, out.mask.height);
@@ -380,20 +371,24 @@ void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry
         out.edge.render(*self.device.Get(), *self.d2d.Get(), *out.mask.bitmap.Get(), 2 * dpi, 2 * dpi, maskRevision);
         out.shadowBlur.render(*self.device.Get(), *self.d2d.Get(), *out.mask.bitmap.Get(), shadowSigma, shadowSigma,
                               maskRevision);
-        auto shadow = std::make_shared<ShadowImage>();
-        shadow->width = out.shadowBlur.output.width;
-        shadow->height = out.shadowBlur.output.height;
-        shadow->bodyWidth = templateWidth;
-        shadow->bodyHeight = templateHeight;
-        shadow->padding = pad;
-        shadow->capX = pad + std::min(cap, templateWidth / 2);
-        shadow->capY = pad + std::min(cap, templateHeight / 2);
-        shadow->dpi = dpi;
-        shadow->offsetY = p.overLight ? 16.f : 12.f;
-        shadow->opacity = p.overLight ? .75f : .25f;
-        shadow->bgra = readMask(*self.device.Get(), *self.context.Get(), out.shadowBlur.output);
-        out.assetReadback = shadow->bgra.size();
-        out.shadow = std::move(shadow);
+        if (exportShadow) {
+            auto shadow = std::make_shared<ShadowImage>();
+            shadow->width = out.shadowBlur.output.width;
+            shadow->height = out.shadowBlur.output.height;
+            shadow->bodyWidth = templateWidth;
+            shadow->bodyHeight = templateHeight;
+            shadow->padding = pad;
+            shadow->capX = pad + std::min(cap, templateWidth / 2);
+            shadow->capY = pad + std::min(cap, templateHeight / 2);
+            shadow->dpi = dpi;
+            shadow->offsetY = p.overLight ? 16.f : 12.f;
+            shadow->opacity = p.overLight ? .75f : .25f;
+            shadow->bgra = readMask(*self.device.Get(), *self.context.Get(), out.shadowBlur.output);
+            out.assetReadback = shadow->bgra.size();
+            out.shadow = std::move(shadow);
+        } else {
+            out.shadow.reset();
+        }
         out.maskKey = maskKey;
         out.hasMask = true;
     }
@@ -402,7 +397,7 @@ void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry
     uint64_t backgroundRevision = revision;
     const std::array<float, 16> underlayKey{c.panel[0], c.panel[1], c.panel[2], c.panel[3], c.pose[0], c.pose[1],
                                             c.pose[2],  c.pose[3],  c.input[2], c.input[3], c.mask[3], c.glow[1],
-                                            0,          0,          0,          0};
+                                            c.glow[2],  0,          0,          0};
     {
         const bool resized = ensure(out.underlay, *self.device.Get(), *self.d2d.Get(), int(sourceDescription.Width),
                                     int(sourceDescription.Height), true);

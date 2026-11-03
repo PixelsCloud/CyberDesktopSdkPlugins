@@ -1,0 +1,7 @@
+#include "@cd_openglass_source@/resource.h"
+IDB_REFLECTION PNG "@cd_openglass_source@/reflection.png"
+IDR_RCDATA_AEROCOLORIZATION_PS RCDATA "@cd_projection_output@/AeroColorizationEffect.cso"
+IDR_RCDATA_BLUR_VS RCDATA "@cd_projection_output@/Blur.VS.cso"
+IDR_RCDATA_BLUR_PS_BLURH RCDATA "@cd_projection_output@/Blur.PS_BlurH.cso"
+IDR_RCDATA_BLUR_PS_BLURV RCDATA "@cd_projection_output@/Blur.PS_BlurV.cso"
+IDR_RCDATA_BLUR_PS_BLURV_VISTA RCDATA "@cd_projection_output@/Blur.PS_BlurV_Vista.cso"

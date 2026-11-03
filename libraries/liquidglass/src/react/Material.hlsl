@@ -7,7 +7,7 @@ cbuffer Settings : register(b0) {
     float4 Optics;  // displacement in pixels, saturation factor, aberration, mode
     float4 Pose;    // CSS scale XY, fractional body origin XY
     float4 Pointer;// mouseOffset percentages XY, hover/press glow opacity
-    float4 Glow;   // third radial opacity, overLight, unused
+    float4 Glow;   // third radial opacity, overLight, adaptive light-background blend, unused
     float4 Frame;  // output dimensions, SVG blur padding XY
     float4 Mask;   // template body dimensions, padding, attached-top
     float4 Slice;  // nine-slice body caps XY, mask texture dimensions
@@ -74,6 +74,15 @@ float3 Saturated(float3 rgb) {
     return saturate(lerp(luminance.xxx, rgb, Optics.y));
 }
 
+float LightBackgroundMix(float3 rgb) {
+    // The upstream black overlay is intended for light backgrounds. Applying
+    // it at full strength to a dark desktop maps every channel below .5 to 0.
+    // Native composition adapts locally on the GPU, preserving dark transmission.
+    if (Glow.y < .5 || Glow.z < .5) return Glow.y;
+    float luminance = dot(rgb, float3(.213, .715, .072));
+    return Glow.y * smoothstep(.45, .85, luminance);
+}
+
 float4 RasterBounds() {
     float2 first = floor(Pose.zw);
     float2 last = ceil(Pose.zw + Panel.xy * Pose.xy);
@@ -136,7 +145,7 @@ void Underlay(uint3 id : SV_DispatchThreadID) {
     }
     float shadowAlpha = EdgeMask.SampleLevel(LinearClamp,
         MaskUv(localPx - float2(0, (Glow.y > .5 ? 16 : 12) * Panel.w)), 0).a;
-    float coverage = shapeCoverage * Glow.y;
+    float coverage = shapeCoverage * LightBackgroundMix(rgb);
     // Literal bg-black opacity-20, then a black mix-blend-overlay layer.
     rgb = Stored(rgb * (1 - .2 * coverage));
     rgb = Stored(rgb - coverage * min(rgb, 1 - rgb));
@@ -223,7 +232,7 @@ void Composite(uint3 id : SV_DispatchThreadID) {
     float4 center = SourceGraphic(localPx) * (1 - edge);
     float4 glass = warped + center * (1 - warped.a);
     float3 raw = OriginalBackdrop.SampleLevel(LinearClamp, (screenPx + Input.zw) / Input.xy, 0).rgb;
-    float coverage = outer * Glow.y;
+    float coverage = outer * LightBackgroundMix(raw);
     float3 base = Stored(raw * (1 - .2 * coverage));
     base = Stored(base - coverage * min(base, 1 - base));
     float3 rgb = Stored(glass.rgb * outer + base * (1 - glass.a * outer));
