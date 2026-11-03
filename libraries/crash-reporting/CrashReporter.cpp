@@ -233,8 +233,16 @@ const std::filesystem::path& CrashReporter::directory() const {
 }
 
 bool CrashReporter::snapshot() {
+    // Supply a stable requester context for an in-process diagnostic dump.
+    // DbgHelp can reject a null exception context on live, changing threads.
+    CONTEXT context{};
+    RtlCaptureContext(&context);
+    EXCEPTION_RECORD record{};
+    record.ExceptionCode = 0xe043cd03;
+    record.ExceptionAddress = reinterpret_cast<void*>(context.Rip);
+    EXCEPTION_POINTERS exception{&record, &context};
     for (int attempt = 0; attempt < 3; ++attempt) {
-        if (impl_->handler->WriteMinidump()) {
+        if (impl_->handler->WriteMinidumpForException(&exception)) {
             return true;
         }
         const auto recorded = impl_->writeError.load();

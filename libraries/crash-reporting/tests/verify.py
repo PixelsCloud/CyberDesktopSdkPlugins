@@ -31,6 +31,8 @@ def run(name, mode):
     binary = root / "bin" / (name + ".exe")
     if name == "cd_crash_probe_nested":
         binary = root / "nested/build/dist/sdk/bin" / (name + ".exe")
+    elif name == "cd_sdk_cli":
+        binary = root.parent.parent / "cd-sdk.exe"
     proc = subprocess.Popen([str(binary), mode],
                             creationflags=subprocess.CREATE_NO_WINDOW, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
@@ -142,17 +144,28 @@ try:
             unavailable.rename(directory)
     check(set(directory.glob("*.dmp")) == before, "write failure preserves previous dumps")
 
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+        results = list(pool.map(lambda _: run("cd_crash_probe_a", "startup"), range(64)))
+    samples.extend(results)
+    check(all(r["code"] == 0 for r in results), "64 concurrent short-lived processes shut down without loader-lock hangs")
+    if (root.parent.parent / "cd-sdk.exe").is_file():
+        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+            results = list(pool.map(lambda _: run("cd_sdk_cli", "--version"), range(32)))
+        samples.extend(results)
+        check(all(r["code"] == 0 for r in results), "32 real SDK CLI processes exit normally without input windows")
+
     for index in range(10):
         for name in ("cd_crash_probe_baseline", "cd_crash_probe_a"):
             result = run(name, "startup")
+            result["startup_exit_benchmark"] = True
             check(result["code"] == 0, f"{name}: startup sample {index}")
             samples.append(result)
 finally:
     report = {"checks": checks, "samples": samples, "long_duration_validation": False,
               "input_injection": False, "native_windows_created": False}
-    report["startup_median_ms"] = {
-        name: statistics.median(r["elapsed_ms"] for r in samples if r["mode"] == "startup" and r["name"] == name)
-        for name in sorted({r["name"] for r in samples if r["mode"] == "startup"})}
+    report["startup_exit_median_ms"] = {
+        name: statistics.median(r["elapsed_ms"] for r in samples if r.get("startup_exit_benchmark") and r["name"] == name)
+        for name in sorted({r["name"] for r in samples if r.get("startup_exit_benchmark")})}
     (root / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 print(json.dumps({"checks": len(checks), "passed": sum(c["passed"] for c in checks),
-                  "startup_median_ms": report["startup_median_ms"]}))
+                  "startup_exit_median_ms": report["startup_exit_median_ms"]}))

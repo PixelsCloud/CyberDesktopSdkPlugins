@@ -2,7 +2,11 @@
 
 This MIT-licensed adapter uses Google's Breakpad Windows client, statically
 linked with the MSVC `/MT` runtime. Install vcpkg `breakpad:x64-windows-static-release`
-(the tested port is `2024-02-16#1`). The upstream BSD license is in
+using the pinned SDK overlay port (`2024-02-16#2`). This enables upstream
+`BREAKPAD_NO_TERMINATE_THREAD`; the adapter rejects unmarked default builds.
+Default Breakpad destruction can abandon the loader lock by killing its handler
+thread during short-lived process startup. The overlay changes the build option,
+not upstream C++ sources; it joins the handler outside `DllMain`. The upstream BSD license is in
 `Breakpad.LICENSE`; distribute it with binaries using this adapter. Breakpad's
 upstream source is https://github.com/google/breakpad.
 
@@ -28,7 +32,8 @@ Windows unhandled exceptions, CRT invalid parameters/pure virtual calls,
 `std::terminate` and `abort` are covered. Terminate/abort use exception code
 `0xe043cd01`; pure virtual calls use `0xe043cd02`; invalid parameters retain
 `0xc000000d`. `snapshot()` writes diagnostic thread/module/context information
-without requiring a crash. Standard `MiniDumpNormal` retains contexts, stacks
+without requiring a crash. It supplies an explicit captured context with diagnostic code
+`0xe043cd03`; this code identifies a requested snapshot, not a real exception. Standard `MiniDumpNormal` retains contexts, stacks
 and current modules. Optional indirect-memory, unloaded-module and thread-info
 streams are disabled: enriched dumps intermittently returned Windows error
 `0x800706f8` during short fault verification. Diagnostic snapshots retry transient
