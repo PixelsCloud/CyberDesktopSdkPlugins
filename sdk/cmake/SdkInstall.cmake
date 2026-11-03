@@ -25,6 +25,11 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/CyberDesktopSDKConfig.cmake"
 install(DIRECTORY schemas docs templates examples DESTINATION "${CMAKE_INSTALL_DATADIR}/cyberdesktop-sdk"
     PATTERN "clock" EXCLUDE PATTERN "counter" EXCLUDE PATTERN "sysinfo" EXCLUDE)
 install(FILES LICENSE README.md CHANGELOG.md release.json public-source.json services.json DESTINATION "${CMAKE_INSTALL_DATADIR}/cyberdesktop-sdk")
+if(CD_SDK_BUILD_TOOLS AND TARGET cyber_crash_reporting)
+    get_target_property(cd_crash_source cyber_crash_reporting SOURCE_DIR)
+    install(FILES "${cd_crash_source}/Breakpad.LICENSE"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/cyberdesktop-sdk/licenses")
+endif()
 
 install(DIRECTORY third_party DESTINATION "${CMAKE_INSTALL_DATADIR}/cyberdesktop-sdk")
 

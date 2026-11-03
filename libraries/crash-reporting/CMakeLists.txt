@@ -20,6 +20,12 @@ foreach(probe IN ITEMS a b)
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Testing/crash/bin" MSVC_RUNTIME_LIBRARY MultiThreaded)
 endforeach()
 
+add_executable(cd_crash_probe_nested EXCLUDE_FROM_ALL tests/CrashProbe.cpp Bootstrap.cpp)
+target_link_libraries(cd_crash_probe_nested PRIVATE cyber_crash_reporting)
+target_compile_options(cd_crash_probe_nested PRIVATE /utf-8 /W4)
+set_target_properties(cd_crash_probe_nested PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Testing/crash/nested/build/dist/sdk/bin" MSVC_RUNTIME_LIBRARY MultiThreaded)
+
 add_executable(cd_crash_probe_baseline EXCLUDE_FROM_ALL tests/CrashProbe.cpp)
 target_link_libraries(cd_crash_probe_baseline PRIVATE cyber_crash_reporting)
 target_compile_options(cd_crash_probe_baseline PRIVATE /utf-8 /W4)
@@ -30,7 +36,8 @@ function(cyber_enable_crash_reporting directory)
     get_property(targets DIRECTORY "${directory}" PROPERTY BUILDSYSTEM_TARGETS)
     foreach(target IN LISTS targets)
         get_target_property(type ${target} TYPE)
-        if(type STREQUAL "EXECUTABLE" AND (target MATCHES "^cyber(_|desktop_)" OR target STREQUAL "cyberimage"))
+        if(type STREQUAL "EXECUTABLE" AND (target MATCHES "^cyber(_|desktop_)" OR target STREQUAL "cyberimage"
+            OR target STREQUAL "cd_sdk_cli" OR target STREQUAL "cd_sdk_preview"))
             get_target_property(enabled ${target} CYBER_CRASH_ENABLED)
             if(NOT enabled)
                 target_sources(${target} PRIVATE "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/Bootstrap.cpp")

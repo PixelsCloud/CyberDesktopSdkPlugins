@@ -1,7 +1,9 @@
 #include <Windows.h>
 
+#include <cstdio>
 #include <cstdlib>
 #include <exception>
+#include <filesystem>
 #include <string_view>
 
 #include "libraries/crash-reporting/CrashReporter.h"
@@ -25,7 +27,11 @@ int wmain(int argc, wchar_t** argv) {
     } else if (mode == L"purecall") {
         _purecall();
     } else if (mode == L"snapshot") {
-        return cybercrash::processReporter().snapshot() ? 0 : 4;
+        if (!cybercrash::processReporter().snapshot()) {
+            std::fprintf(stderr, "Snapshot failed: %lu\n", GetLastError());
+            return 4;
+        }
+        return 0;
     } else if (mode == L"watchdog") {
         cybercrash::ProcessWatchdog watchdog(std::chrono::milliseconds(200));
         watchdog.arm();
@@ -44,7 +50,31 @@ int wmain(int argc, wchar_t** argv) {
         watchdog.disarm();
     } else if (mode == L"idle") {
         cybercrash::ProcessWatchdog watchdog(std::chrono::milliseconds(50));
+        const auto cpuTime = [] {
+            FILETIME created{}, exited{}, kernel{}, user{};
+            GetProcessTimes(GetCurrentProcess(), &created, &exited, &kernel, &user);
+            return (ULONGLONG(kernel.dwHighDateTime) << 32) + kernel.dwLowDateTime +
+                   (ULONGLONG(user.dwHighDateTime) << 32) + user.dwLowDateTime;
+        };
+        const auto before = cpuTime();
         Sleep(1000);
+        std::printf("{\"idle_cpu_ms\":%.3f}\n", double(cpuTime() - before) / 10000.0);
+    } else if (mode == L"write-failure" || mode == L"watchdog-write-failure") {
+        const auto directory = cybercrash::processReporter().directory();
+        if (directory.parent_path().parent_path().filename() != L"crash" ||
+            directory.parent_path().parent_path().parent_path().filename() != L"Testing") {
+            return 5;
+        }
+        const auto unavailable = directory.parent_path() / (directory.filename().wstring() + L".unavailable");
+        std::filesystem::rename(directory, unavailable);
+        if (mode == L"watchdog-write-failure") {
+            cybercrash::ProcessWatchdog watchdog(std::chrono::milliseconds(200));
+            watchdog.arm();
+            Sleep(INFINITE);
+        }
+        const bool failed = !cybercrash::processReporter().snapshot();
+        std::filesystem::rename(unavailable, directory);
+        return failed ? 0 : 6;
     } else if (mode != L"startup") {
         return 2;
     }

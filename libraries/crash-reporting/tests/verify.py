@@ -28,10 +28,14 @@ def check(ok, name):
 
 def run(name, mode):
     started = time.perf_counter()
-    proc = subprocess.Popen([str(root / "bin" / (name + ".exe")), mode],
-                            creationflags=subprocess.CREATE_NO_WINDOW)
+    binary = root / "bin" / (name + ".exe")
+    if name == "cd_crash_probe_nested":
+        binary = root / "nested/build/dist/sdk/bin" / (name + ".exe")
+    proc = subprocess.Popen([str(binary), mode],
+                            creationflags=subprocess.CREATE_NO_WINDOW, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
-        code = proc.wait(timeout=8)
+        stdout, stderr = proc.communicate(timeout=8)
+        code = proc.returncode
         times = [wintypes.FILETIME() for _ in range(4)]
         assert kernel.GetProcessTimes(int(proc._handle), *(ctypes.byref(v) for v in times))
         cpu = sum((v.dwHighDateTime << 32) | v.dwLowDateTime for v in times[2:]) / 10000
@@ -40,7 +44,8 @@ def run(name, mode):
         proc.wait()
         raise AssertionError(f"probe timed out: {name} {mode}")
     return {"pid": proc.pid, "code": code, "elapsed_ms": (time.perf_counter() - started) * 1000,
-            "cpu_ms": cpu, "mode": mode, "name": name}
+            "cpu_ms": cpu, "mode": mode, "name": name, "stderr": stderr.decode(errors="replace"),
+            "idle_window_cpu_ms": json.loads(stdout)["idle_cpu_ms"] if mode == "idle" else None}
 
 
 def dumps(name):
@@ -58,10 +63,14 @@ def validate(path, pid, exception=None):
         streams[kind] = offset
     assert struct.unpack_from("<I", content, streams[3])[0] > 0  # threads
     assert struct.unpack_from("<I", content, streams[4])[0] > 0  # modules
+    context_size, context_offset = struct.unpack_from("<II", content, streams[3] + 44)
+    assert context_size > 0 and context_offset + context_size <= len(content)
     assert struct.unpack_from("<I", content, streams[15] + 8)[0] == pid
     if exception is not None:
         actual = struct.unpack_from("<I", content, streams[6] + 8)[0]
         assert actual == exception, hex(actual)
+        context_size, context_offset = struct.unpack_from("<II", content, streams[6] + 160)
+        assert context_size > 0 and context_offset + context_size <= len(content)
 
 
 try:
@@ -93,7 +102,7 @@ try:
             samples.append(result)
             check(result["code"] == 0, f"{name}: watchdog {mode} exits normally")
             if mode == "idle":
-                check(result["cpu_ms"] <= 100, f"{name}: idle watchdog has bounded CPU cost")
+                check(result["idle_window_cpu_ms"] <= 20, f"{name}: idle watchdog has bounded CPU cost")
 
     before_b = dumps("cd_crash_probe_b")
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
@@ -109,6 +118,29 @@ try:
                     for i in range(count) if struct.unpack_from("<I", content, directory + i * 12)[0] == 15)
         validate(path, struct.unpack_from("<I", content, misc + 8)[0])
     check(dumps("cd_crash_probe_b") == before_b, "retention never removes another executable's dumps")
+
+    nested_root = root / "nested/build/crashes/cd_crash_probe_nested"
+    before = set(nested_root.glob("*.dmp"))
+    result = run("cd_crash_probe_nested", "snapshot")
+    samples.append(result)
+    new = set(nested_root.glob("*.dmp")) - before
+    check(result["code"] == 0 and len(new) == 1, "nested SDK executable writes to build/crashes")
+    validate(next(iter(new)), result["pid"])
+    check(not list((root / "nested/build/dist").rglob("*.dmp")), "nested executable keeps distribution free of dumps")
+
+    check(run("cd_crash_probe_b", "write-failure")["code"] == 0, "write failure is reported instead of false success")
+    directory = root / "crashes/cd_crash_probe_b"
+    unavailable = directory.with_name(directory.name + ".unavailable")
+    before = set(directory.glob("*.dmp"))
+    try:
+        result = run("cd_crash_probe_b", "watchdog-write-failure")
+        samples.append(result)
+        check(result["code"] == 1460 and result["elapsed_ms"] < 3000,
+              "failed dump cannot prevent watchdog termination")
+    finally:
+        if unavailable.exists() and not directory.exists():
+            unavailable.rename(directory)
+    check(set(directory.glob("*.dmp")) == before, "write failure preserves previous dumps")
 
     for index in range(10):
         for name in ("cd_crash_probe_baseline", "cd_crash_probe_a"):

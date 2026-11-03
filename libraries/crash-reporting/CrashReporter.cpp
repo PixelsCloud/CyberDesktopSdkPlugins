@@ -6,9 +6,13 @@
 #include <process.h>
 
 #include <algorithm>
+#include <array>
+#include <atomic>
 #include <csignal>
 #include <cstdint>
+#include <cstdio>
 #include <cstdlib>
+#include <cwchar>
 #include <cwctype>
 #include <exception>
 #include <stdexcept>
@@ -122,13 +126,16 @@ void pureCallFailure() {
 struct CrashReporter::Impl {
     std::filesystem::path directory;
     std::filesystem::path lockPath;
+    std::filesystem::path errorPath;
     Handle dumpLock;
+    std::atomic<DWORD> writeError{ERROR_SUCCESS};
     std::unique_ptr<google_breakpad::ExceptionHandler> handler;
     std::terminate_handler previousTerminate = nullptr;
     void (*previousAbort)(int) = SIG_DFL;
     unsigned previousAbortBehavior = 0;
     _invalid_parameter_handler previousInvalid = nullptr;
     _purecall_handler previousPureCall = nullptr;
+    DWORD previousErrorMode = 0;
 
     static bool filter(void* context, EXCEPTION_POINTERS*, MDRawAssertionInfo*) noexcept {
         auto& self = *static_cast<Impl*>(context);
@@ -138,12 +145,30 @@ struct CrashReporter::Impl {
         return true;
     }
 
-    static bool completed(const wchar_t*, const wchar_t*, void* context, EXCEPTION_POINTERS*, MDRawAssertionInfo*,
-                          bool succeeded) noexcept {
+    static bool completed(const wchar_t* directory, const wchar_t* id, void* context, EXCEPTION_POINTERS*,
+                          MDRawAssertionInfo*, bool succeeded) noexcept {
         auto& self = *static_cast<Impl*>(context);
-        if (succeeded) {
-            retainNewest(self.directory, self.dumpLock.get() != INVALID_HANDLE_VALUE && self.dumpLock != nullptr);
+        self.writeError.store(succeeded ? ERROR_SUCCESS : GetLastError());
+        if (!succeeded) {
+            // Breakpad has closed the failed file. Preserve the failure reason,
+            // not an incomplete file that looks like a usable crash dump.
+            std::array<wchar_t, MAX_PATH> path{};
+            if (directory && id && wcsnlen_s(id, 37) == 36 &&
+                _snwprintf_s(path.data(), path.size(), _TRUNCATE, L"%ls\\%ls.dmp", directory, id) > 0) {
+                DeleteFileW(path.data());
+            }
+            std::array<char, 128> message{};
+            const int length = std::snprintf(message.data(), message.size(), "Breakpad write failed: 0x%08lX\r\n",
+                                             self.writeError.load());
+            OutputDebugStringA(message.data());
+            Handle file(CreateFileW(self.errorPath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, nullptr, CREATE_ALWAYS,
+                                    FILE_ATTRIBUTE_NORMAL, nullptr));
+            if (file.get() != INVALID_HANDLE_VALUE && length > 0) {
+                DWORD written = 0;
+                WriteFile(file.get(), message.data(), DWORD(length), &written, nullptr);
+            }
         }
+        retainNewest(self.directory, self.dumpLock.get() != INVALID_HANDLE_VALUE && self.dumpLock != nullptr);
         self.dumpLock.reset();
         return succeeded;
     }
@@ -152,7 +177,23 @@ struct CrashReporter::Impl {
 CrashReporter::CrashReporter(std::filesystem::path root) : impl_(std::make_unique<Impl>()) {
     const auto image = executable();
     if (root.empty()) {
-        root = image.parent_path().parent_path() / L"crashes";
+        // SDK tools live below dist/sdk/bin. All suite processes must write
+        // outside the clean distribution, including those nested executables.
+        auto ancestor = image.parent_path();
+        while (!ancestor.empty()) {
+            if (_wcsicmp(ancestor.filename().c_str(), L"dist") == 0) {
+                root = ancestor.parent_path() / L"crashes";
+                break;
+            }
+            const auto parent = ancestor.parent_path();
+            if (parent == ancestor) {
+                break;
+            }
+            ancestor = parent;
+        }
+        if (root.empty()) {
+            root = image.parent_path().parent_path() / L"crashes";
+        }
     }
     auto name = image.stem().wstring();
     std::transform(name.begin(), name.end(), name.begin(), [](wchar_t value) {
@@ -160,6 +201,7 @@ CrashReporter::CrashReporter(std::filesystem::path root) : impl_(std::make_uniqu
     });
     impl_->directory = std::filesystem::absolute(root / name).lexically_normal();
     impl_->lockPath = impl_->directory / L".retention.lock";
+    impl_->errorPath = impl_->directory / L"last-error.txt";
     std::filesystem::create_directories(impl_->directory);
     if (std::filesystem::is_symlink(impl_->directory)) {
         throw std::runtime_error("Crash directory must not be a symbolic link");
@@ -167,18 +209,18 @@ CrashReporter::CrashReporter(std::filesystem::path root) : impl_(std::make_uniqu
     retainNewest(impl_->directory);
     impl_->handler = std::make_unique<google_breakpad::ExceptionHandler>(
         impl_->directory.wstring(), &Impl::filter, &Impl::completed, impl_.get(),
-        google_breakpad::ExceptionHandler::HANDLER_ALL,
-        MINIDUMP_TYPE(MiniDumpNormal | MiniDumpWithThreadInfo | MiniDumpWithUnloadedModules |
-                      MiniDumpWithIndirectlyReferencedMemory | MiniDumpIgnoreInaccessibleMemory),
-        static_cast<const wchar_t*>(nullptr), nullptr);
+        google_breakpad::ExceptionHandler::HANDLER_ALL, MiniDumpNormal, static_cast<const wchar_t*>(nullptr), nullptr);
     impl_->previousTerminate = std::set_terminate(&terminateFailure);
     impl_->previousAbort = std::signal(SIGABRT, &abortFailure);
     impl_->previousAbortBehavior = _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
     impl_->previousInvalid = _set_invalid_parameter_handler(&invalidFailure);
     impl_->previousPureCall = _set_purecall_handler(&pureCallFailure);
+    impl_->previousErrorMode = GetErrorMode();
+    SetErrorMode(impl_->previousErrorMode | SEM_NOGPFAULTERRORBOX);
 }
 
 CrashReporter::~CrashReporter() {
+    SetErrorMode(impl_->previousErrorMode);
     _set_purecall_handler(impl_->previousPureCall);
     _set_invalid_parameter_handler(impl_->previousInvalid);
     std::set_terminate(impl_->previousTerminate);
@@ -191,7 +233,19 @@ const std::filesystem::path& CrashReporter::directory() const {
 }
 
 bool CrashReporter::snapshot() {
-    return impl_->handler->WriteMinidump();
+    for (int attempt = 0; attempt < 3; ++attempt) {
+        if (impl_->handler->WriteMinidump()) {
+            return true;
+        }
+        const auto recorded = impl_->writeError.load();
+        const auto error = recorded ? recorded : ERROR_GEN_FAILURE;
+        if (attempt == 2 || ((error & 0xffff) != ERROR_INVALID_USER_BUFFER && (error & 0xffff) != ERROR_PARTIAL_COPY)) {
+            SetLastError(error);
+            return false;
+        }
+        Sleep(10);
+    }
+    return false;
 }
 
 CrashReporter& processReporter() {

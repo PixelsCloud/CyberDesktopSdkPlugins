@@ -3,6 +3,7 @@
 #include <Windows.h>
 
 #include <condition_variable>
+#include <exception>
 #include <mutex>
 #include <stdexcept>
 #include <thread>
@@ -15,11 +16,12 @@ namespace {
     // Dump writing also has a hard deadline. A blocked dump must not keep
     // global input hooks alive indefinitely. This branch always exits.
     OutputDebugStringW(L"CyberDesktop process watchdog expired\n");
+    std::jthread dumpThread;
     try {
-        std::thread([] {
+        dumpThread = std::jthread([] {
             processReporter().snapshot();
             TerminateProcess(GetCurrentProcess(), ERROR_TIMEOUT);
-        }).detach();
+        });
     } catch (...) {
     }
     Sleep(2000);
