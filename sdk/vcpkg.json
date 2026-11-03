@@ -34,6 +34,12 @@
           ]
         }
       ]
+    },
+    "crash-reporting": {
+      "description": "Optional Windows Breakpad crash dump adapter and process watchdog",
+      "dependencies": [
+        "breakpad"
+      ]
     }
   },
   "overrides": [
