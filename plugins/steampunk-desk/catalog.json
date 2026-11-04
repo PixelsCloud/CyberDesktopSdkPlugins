@@ -153,14 +153,6 @@
     "family": "air"
   },
   {
-    "id": "com.cyberdesktop.steamdesk.monitor.1x1",
-    "folder": "monitor-1x1",
-    "name": "蒸汽朋克系统监控 1×1",
-    "art": "monitor",
-    "order": 20,
-    "family": "monitor"
-  },
-  {
     "id": "com.cyberdesktop.steamdesk.monitor.2x1",
     "folder": "monitor-2x1",
     "name": "蒸汽朋克系统监控 2×1",
@@ -336,15 +328,6 @@
     "art": "spectrum-frame",
     "order": 42,
     "family": "sign"
-  },
-  {
-    "id": "com.cyberdesktop.steamdesk.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "name": "蒸汽朋克沙漏 1×1",
-    "art": "procedural",
-    "order": 43,
-    "family": "hourglass",
-    "renderer": "procedural"
   },
   {
     "id": "com.cyberdesktop.steamdesk.hourglass.2x1",

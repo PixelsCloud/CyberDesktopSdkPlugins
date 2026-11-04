@@ -1,21 +1,5 @@
 [
   {
-    "id": "com.cyberdesktop.systeminfo.mechanical.1x1",
-    "name": "机械系统监控 1×1",
-    "folder": "monitor-1x1",
-    "family": "monitor",
-    "suite": "system-info-suite",
-    "kind": 0,
-    "rows": 1,
-    "columns": 1,
-    "version": "1.1.0",
-    "tags": [
-      "机械",
-      "金属",
-      "仪表"
-    ]
-  },
-  {
     "id": "com.cyberdesktop.systeminfo.mechanical.1x2",
     "name": "机械系统监控 2×1",
     "folder": "monitor-1x2",
@@ -302,7 +286,12 @@
     "rows": 2,
     "columns": 4,
     "version": "1.0.2",
-    "tags": ["机械", "金属", "相册", "照片"]
+    "tags": [
+      "机械",
+      "金属",
+      "相册",
+      "照片"
+    ]
   },
   {
     "id": "com.cyberdesktop.input.stats.mechanical.1x4",

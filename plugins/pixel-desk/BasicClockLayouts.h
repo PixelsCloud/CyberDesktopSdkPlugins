@@ -3,18 +3,8 @@
 #include "plugins/pixel-desk/BasicClock.h"
 
 namespace pixeldesk {
-inline constexpr std::array<BasicSpec, 13> kBasicClocks{{
-    {"com.cyberdesktop.pixeldesk.clock.analog.1x1",
-     "clock-analog-1x1",
-     BasicKind::Analog,
-     1,
-     1,
-     {264, 277},
-     {2, 2, 260, 273},
-     {132, 138},
-     88,
-     {{{}, {}, {}, {}, {}, {}}},
-     0},
+inline constexpr std::array<BasicSpec, 11> kBasicClocks{{
+
     {"com.cyberdesktop.pixeldesk.clock.analog.2x1",
      "clock-analog-2x1",
      BasicKind::Analog,
@@ -48,17 +38,7 @@ inline constexpr std::array<BasicSpec, 13> kBasicClocks{{
      119,
      {{{}, {}, {}, {}, {}, {}}},
      0},
-    {"com.cyberdesktop.pixeldesk.clock.digital.1x1",
-     "clock-digital-1x1",
-     BasicKind::Digital,
-     1,
-     1,
-     {248, 301},
-     {2, 2, 244, 297},
-     {0, 0},
-     0,
-     {{{62.000000, 87.000000, 101.000000, 120.000000}, {}, {}, {}, {}, {}}},
-     1},
+
     {"com.cyberdesktop.pixeldesk.clock.digital.2x1",
      "clock-digital-2x1",
      BasicKind::Digital,

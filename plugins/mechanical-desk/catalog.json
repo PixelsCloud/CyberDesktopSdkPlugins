@@ -108,24 +108,6 @@
     ]
   },
   {
-    "id": "com.cyberdesktop.mechanicaldesk.clock.analog.1x1",
-    "folder": "clock-analog-1x1",
-    "name": "机械基础模拟钟 1×1",
-    "family": "clock",
-    "kind": "analog",
-    "columns": 1,
-    "rows": 1,
-    "version": "1.0.0",
-    "source": "plugins/clock-suite/packages/analog-1x1/plugin.textproto",
-    "sourceId": "com.cyberdesktop.clock.analog.1x1",
-    "board": 10,
-    "slot": 1,
-    "tags": [
-      "机械",
-      "精密机械"
-    ]
-  },
-  {
     "id": "com.cyberdesktop.mechanicaldesk.clock.analog.2x1",
     "folder": "clock-analog-2x1",
     "name": "机械基础模拟钟 2×1",
@@ -174,24 +156,6 @@
     "sourceId": "com.cyberdesktop.clock.analog.2x2",
     "board": 10,
     "slot": 4,
-    "tags": [
-      "机械",
-      "精密机械"
-    ]
-  },
-  {
-    "id": "com.cyberdesktop.mechanicaldesk.clock.digital.1x1",
-    "folder": "clock-digital-1x1",
-    "name": "机械数字时钟 1×1",
-    "family": "clock",
-    "kind": "digital",
-    "columns": 1,
-    "rows": 1,
-    "version": "1.0.0",
-    "source": "plugins/clock-suite/packages/digital-1x1/plugin.textproto",
-    "sourceId": "com.cyberdesktop.clock.digital.1x1",
-    "board": 10,
-    "slot": 5,
     "tags": [
       "机械",
       "精密机械"
@@ -408,24 +372,6 @@
     "sourceId": "com.cyberdesktop.koi.2x4",
     "board": 12,
     "slot": 5,
-    "tags": [
-      "机械",
-      "精密机械"
-    ]
-  },
-  {
-    "id": "com.cyberdesktop.mechanicaldesk.plant.1x1",
-    "folder": "plant-1x1",
-    "name": "机械盆栽 1×1",
-    "family": "ambience",
-    "kind": "plant",
-    "columns": 1,
-    "rows": 1,
-    "version": "1.0.0",
-    "source": "plugins/ambience-suite/packages/plant-1x1/plugin.textproto",
-    "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
-    "board": 12,
-    "slot": 6,
     "tags": [
       "机械",
       "精密机械"

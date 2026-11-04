@@ -27,8 +27,8 @@ struct Spec {
     unsigned columns;
 };
 
-inline constexpr std::array<Spec, 2> kCatalog{{
-    {"com.cyberdesktop.hourglass.mechanical.1x1", "1x1", 1},
+inline constexpr std::array<Spec, 1> kCatalog{{
+
     {"com.cyberdesktop.hourglass.mechanical.2x1", "2x1", 2},
 }};
 

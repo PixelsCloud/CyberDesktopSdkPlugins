@@ -1426,50 +1426,6 @@
     "nativeTicks": false
   },
   {
-    "id": "com.cyberdesktop.vampire.alice.monitor.1x1",
-    "folder": "monitor-1x1",
-    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
-    "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
-    "family": "monitor",
-    "kind": 0,
-    "rows": 1,
-    "columns": 1,
-    "board": 4,
-    "slot": 2,
-    "character": false,
-    "imageSize": [
-      1536,
-      1024
-    ],
-    "crop": [
-      688,
-      178,
-      292,
-      315
-    ],
-    "art": "design/vampire-muse-suite/04-system-instruments.runtime.png",
-    "artSha256": "2c15e8146b83242fa0475c1a1707c882bed31fd951766dd5304411f6fab30a66",
-    "minimumInset": 6,
-    "version": "1.0.0",
-    "tags": [
-      "吸血鬼",
-      "Alice"
-    ],
-    "name": "吸血鬼.Alice · 系统监控 1×1",
-    "regions": {
-      "gauge0": [
-        0.1815068493150685,
-        0.20317460317460317,
-        0.636986301369863,
-        0.5904761904761905
-      ]
-    },
-    "approvedArt": "design/vampire-muse-suite/04-system-instruments.art.png",
-    "approvedArtSha256": "54467f37b62abd1425b01d84e2a633a4bad3576775652911d5fbdb941fdbd28b",
-    "runtimePlate": true,
-    "nativeTicks": true
-  },
-  {
     "id": "com.cyberdesktop.vampire.alice.monitor.2x1",
     "folder": "monitor-2x1",
     "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
@@ -2838,50 +2794,6 @@
     },
     "approvedArt": "design/vampire-muse-suite/width-02-controls.art.png",
     "approvedArtSha256": "69f8edc0459d607a4d2b344c5fa8acdfe628f749afa581a42c81af959f552561",
-    "runtimePlate": true,
-    "nativeTicks": false
-  },
-  {
-    "id": "com.cyberdesktop.vampire.alice.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
-    "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
-    "family": "hourglass",
-    "kind": 0,
-    "rows": 1,
-    "columns": 1,
-    "board": 8,
-    "slot": 1,
-    "character": false,
-    "imageSize": [
-      1536,
-      1024
-    ],
-    "crop": [
-      91,
-      68,
-      267,
-      429
-    ],
-    "art": "design/vampire-muse-suite/08-timers.runtime.png",
-    "artSha256": "ca48ad1099559db8937352bd99a96e259ffc6a0434fc6ab41d25dca49781d818",
-    "minimumInset": 6,
-    "version": "1.0.0",
-    "tags": [
-      "吸血鬼",
-      "Alice"
-    ],
-    "name": "吸血鬼.Alice · 沙漏 1×1",
-    "regions": {
-      "glass": [
-        0.20224719101123595,
-        0.1282051282051282,
-        0.5730337078651685,
-        0.7855477855477856
-      ]
-    },
-    "approvedArt": "design/vampire-muse-suite/08-timers.art.png",
-    "approvedArtSha256": "ca890020afbf2dc60320d81f7b01ebd63c774cf92b23fa314f52ad1e8c1cad57",
     "runtimePlate": true,
     "nativeTicks": false
   },

@@ -228,18 +228,6 @@
     "nativePhysics": false
   },
   {
-    "id": "com.cyberdesktop.streetlink.monitor.1x1",
-    "folder": "monitor-1x1",
-    "name": "神经接入微芯",
-    "columns": 1,
-    "rows": 1,
-    "family": "monitor",
-    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
-    "kind": 0,
-    "nativeClock": false,
-    "nativePhysics": false
-  },
-  {
     "id": "com.cyberdesktop.streetlink.monitor.2x1",
     "folder": "monitor-2x1",
     "name": "双通道诊断器",
@@ -504,18 +492,6 @@
     "nativePhysics": false
   },
   {
-    "id": "com.cyberdesktop.streetlink.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "name": "微型能量计时舱",
-    "columns": 1,
-    "rows": 1,
-    "family": "hourglass",
-    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
-    "kind": 0,
-    "nativeClock": false,
-    "nativePhysics": false
-  },
-  {
     "id": "com.cyberdesktop.streetlink.hourglass.2x1",
     "folder": "hourglass-2x1",
     "name": "能量计量终端",
@@ -612,18 +588,6 @@
     "nativePhysics": false
   },
   {
-    "id": "com.cyberdesktop.streetlink.clock.analog.1x1",
-    "folder": "clock-analog-1x1",
-    "name": "微型矢量授时器",
-    "columns": 1,
-    "rows": 1,
-    "family": "basic",
-    "sourceId": "com.cyberdesktop.clock.analog.1x1",
-    "kind": 0,
-    "nativeClock": false,
-    "nativePhysics": false
-  },
-  {
     "id": "com.cyberdesktop.streetlink.clock.analog.2x1",
     "folder": "clock-analog-2x1",
     "name": "矢量时间接入器",
@@ -656,18 +620,6 @@
     "family": "basic",
     "sourceId": "com.cyberdesktop.clock.analog.2x2",
     "kind": 0,
-    "nativeClock": false,
-    "nativePhysics": false
-  },
-  {
-    "id": "com.cyberdesktop.streetlink.clock.digital.1x1",
-    "folder": "clock-digital-1x1",
-    "name": "微型时间身份牌",
-    "columns": 1,
-    "rows": 1,
-    "family": "basic",
-    "sourceId": "com.cyberdesktop.clock.digital.1x1",
-    "kind": 1,
     "nativeClock": false,
     "nativePhysics": false
   },
@@ -811,18 +763,6 @@
     "rows": 2,
     "family": "pond",
     "sourceId": "com.cyberdesktop.koi.2x4",
-    "kind": 0,
-    "nativeClock": false,
-    "nativePhysics": false
-  },
-  {
-    "id": "com.cyberdesktop.streetlink.plant.1x1",
-    "folder": "plant-1x1",
-    "name": "微型生物电池",
-    "columns": 1,
-    "rows": 1,
-    "family": "ambience",
-    "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
     "kind": 0,
     "nativeClock": false,
     "nativePhysics": false

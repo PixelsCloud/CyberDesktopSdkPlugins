@@ -31,6 +31,6 @@
 assets/koi-4x2/water.png、water.prompt.txt：去除设计图静态鱼的池底。
 assets/koi-4x4/water.png 与 assets/koi-6x3/water.png、各自 water.prompt.txt：两种异形池底。
 assets/plant-2x2/vessel.png 与 assets/plant-4x2/vessel.png、各自 vessel.prompt.txt：独立机械容器。
-assets/plant-1x1/foliage.png、foliage.prompt.txt：三种植物各三阶段，其他盆栽共享相同原生图稿。
+assets/plant-2x2/foliage.png、foliage.prompt.txt：三种植物各三阶段，其他盆栽共享相同原生图稿。
 assets/noise-2x1/tracks.png 与 assets/noise-4x2/tracks.png、各自 tracks.prompt.txt：不含静态滑块的原生槽口。
 这些 PNG 按原生字节保存；外壳使用确认设计的原始 PNG，活动区域通过实际 DPI 的区域解码独立绘制。

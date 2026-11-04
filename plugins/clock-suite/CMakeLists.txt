@@ -21,25 +21,6 @@ target_compile_definitions(cd_clock_core PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN UNI
 target_compile_options(cd_clock_core PRIVATE /utf-8)
 set_target_properties(cd_clock_core PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 set(CD_CLOCK_PLUGIN_IDS "")
-add_library(cd_clock_digital_1x1 MODULE Plugin.cpp)
-target_link_libraries(cd_clock_digital_1x1 PRIVATE cd_clock_core)
-target_compile_definitions(cd_clock_digital_1x1 PRIVATE CD_PLUGIN_BUILD CD_CLOCK_ID="com.cyberdesktop.clock.digital.1x1" CD_CLOCK_ANALOG=0 CD_CLOCK_ROWS=1 CD_CLOCK_COLUMNS=1)
-target_compile_options(cd_clock_digital_1x1 PRIVATE /utf-8)
-target_link_options(cd_clock_digital_1x1 PRIVATE /INCREMENTAL:NO)
-set_target_properties(cd_clock_digital_1x1 PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF PREFIX "" OUTPUT_NAME plugin
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.clock.digital.1x1" RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.clock.digital.1x1"
-  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/objects/digital-1x1" PDB_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/symbols/digital-1x1")
-cd_asset_target(cd_clock_digital_1x1_package ALL
-  COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/licenses"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-1x1/plugin.textproto" "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/plugin.textproto"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-1x1/README.txt" "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/README.txt"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CD_CLOCK_SDK_LICENSE}" "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/licenses/CyberDesktopSDK-MIT.txt"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-1x1/preview.png" "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/preview.png"
-  COMMAND $<TARGET_FILE:cd_clock_sdk_tool> descriptor "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-1x1/plugin.textproto" "$<TARGET_FILE_DIR:cd_clock_digital_1x1>/descriptor.pb"
-  COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/clock-packages"
-  COMMAND $<TARGET_FILE:cd_clock_sdk_tool> pack "$<TARGET_FILE_DIR:cd_clock_digital_1x1>" "${CMAKE_BINARY_DIR}/clock-packages/com.cyberdesktop.clock.digital.1x1.cdpkg"
-  DEPENDS cd_clock_digital_1x1 cd_clock_sdk_tool "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-1x1/plugin.textproto" VERBATIM)
-list(APPEND CD_CLOCK_PLUGIN_IDS "com.cyberdesktop.clock.digital.1x1")
 add_library(cd_clock_digital_1x2 MODULE Plugin.cpp)
 target_link_libraries(cd_clock_digital_1x2 PRIVATE cd_clock_core)
 target_compile_definitions(cd_clock_digital_1x2 PRIVATE CD_PLUGIN_BUILD CD_CLOCK_ID="com.cyberdesktop.clock.digital.1x2" CD_CLOCK_ANALOG=0 CD_CLOCK_ROWS=1 CD_CLOCK_COLUMNS=2)
@@ -97,25 +78,6 @@ cd_asset_target(cd_clock_digital_2x2_package ALL
   COMMAND $<TARGET_FILE:cd_clock_sdk_tool> pack "$<TARGET_FILE_DIR:cd_clock_digital_2x2>" "${CMAKE_BINARY_DIR}/clock-packages/com.cyberdesktop.clock.digital.2x2.cdpkg"
   DEPENDS cd_clock_digital_2x2 cd_clock_sdk_tool "${CMAKE_CURRENT_SOURCE_DIR}/packages/digital-2x2/plugin.textproto" VERBATIM)
 list(APPEND CD_CLOCK_PLUGIN_IDS "com.cyberdesktop.clock.digital.2x2")
-add_library(cd_clock_analog_1x1 MODULE Plugin.cpp)
-target_link_libraries(cd_clock_analog_1x1 PRIVATE cd_clock_core)
-target_compile_definitions(cd_clock_analog_1x1 PRIVATE CD_PLUGIN_BUILD CD_CLOCK_ID="com.cyberdesktop.clock.analog.1x1" CD_CLOCK_ANALOG=1 CD_CLOCK_ROWS=1 CD_CLOCK_COLUMNS=1)
-target_compile_options(cd_clock_analog_1x1 PRIVATE /utf-8)
-target_link_options(cd_clock_analog_1x1 PRIVATE /INCREMENTAL:NO)
-set_target_properties(cd_clock_analog_1x1 PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF PREFIX "" OUTPUT_NAME plugin
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.clock.analog.1x1" RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins/com.cyberdesktop.clock.analog.1x1"
-  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/objects/analog-1x1" PDB_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/symbols/analog-1x1")
-cd_asset_target(cd_clock_analog_1x1_package ALL
-  COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/licenses"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/analog-1x1/plugin.textproto" "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/plugin.textproto"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/analog-1x1/README.txt" "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/README.txt"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CD_CLOCK_SDK_LICENSE}" "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/licenses/CyberDesktopSDK-MIT.txt"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_SOURCE_DIR}/packages/analog-1x1/preview.png" "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/preview.png"
-  COMMAND $<TARGET_FILE:cd_clock_sdk_tool> descriptor "${CMAKE_CURRENT_SOURCE_DIR}/packages/analog-1x1/plugin.textproto" "$<TARGET_FILE_DIR:cd_clock_analog_1x1>/descriptor.pb"
-  COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/clock-packages"
-  COMMAND $<TARGET_FILE:cd_clock_sdk_tool> pack "$<TARGET_FILE_DIR:cd_clock_analog_1x1>" "${CMAKE_BINARY_DIR}/clock-packages/com.cyberdesktop.clock.analog.1x1.cdpkg"
-  DEPENDS cd_clock_analog_1x1 cd_clock_sdk_tool "${CMAKE_CURRENT_SOURCE_DIR}/packages/analog-1x1/plugin.textproto" VERBATIM)
-list(APPEND CD_CLOCK_PLUGIN_IDS "com.cyberdesktop.clock.analog.1x1")
 add_library(cd_clock_analog_1x2 MODULE Plugin.cpp)
 target_link_libraries(cd_clock_analog_1x2 PRIVATE cd_clock_core)
 target_compile_definitions(cd_clock_analog_1x2 PRIVATE CD_PLUGIN_BUILD CD_CLOCK_ID="com.cyberdesktop.clock.analog.1x2" CD_CLOCK_ANALOG=1 CD_CLOCK_ROWS=1 CD_CLOCK_COLUMNS=2)

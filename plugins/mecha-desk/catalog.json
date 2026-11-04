@@ -228,18 +228,6 @@
     "slot": 1
   },
   {
-    "id": "com.cyberdesktop.mecha.monitor.1x1",
-    "folder": "monitor-1x1",
-    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
-    "source": "plugins/mechanical-instruments/packages/monitor-1x1/plugin.textproto",
-    "family": "monitor",
-    "kind": 0,
-    "columns": 1,
-    "rows": 1,
-    "board": 4,
-    "slot": 2
-  },
-  {
     "id": "com.cyberdesktop.mecha.monitor.2x1",
     "folder": "monitor-2x1",
     "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x2",
@@ -504,18 +492,6 @@
     "slot": 6
   },
   {
-    "id": "com.cyberdesktop.mecha.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
-    "source": "plugins/mechanical-hourglass/packages/1x1/plugin.textproto",
-    "family": "hourglass",
-    "kind": 0,
-    "columns": 1,
-    "rows": 1,
-    "board": 8,
-    "slot": 1
-  },
-  {
     "id": "com.cyberdesktop.mecha.hourglass.2x1",
     "folder": "hourglass-2x1",
     "sourceId": "com.cyberdesktop.hourglass.mechanical.2x1",
@@ -612,18 +588,6 @@
     "slot": 6
   },
   {
-    "id": "com.cyberdesktop.mecha.analog.1x1",
-    "folder": "analog-1x1",
-    "sourceId": "com.cyberdesktop.clock.analog.1x1",
-    "source": "plugins/clock-suite/packages/analog-1x1/plugin.textproto",
-    "family": "basic",
-    "kind": 0,
-    "columns": 1,
-    "rows": 1,
-    "board": 11,
-    "slot": 1
-  },
-  {
     "id": "com.cyberdesktop.mecha.analog.2x1",
     "folder": "analog-2x1",
     "sourceId": "com.cyberdesktop.clock.analog.1x2",
@@ -658,18 +622,6 @@
     "rows": 2,
     "board": 11,
     "slot": 4
-  },
-  {
-    "id": "com.cyberdesktop.mecha.digital.1x1",
-    "folder": "digital-1x1",
-    "sourceId": "com.cyberdesktop.clock.digital.1x1",
-    "source": "plugins/clock-suite/packages/digital-1x1/plugin.textproto",
-    "family": "basic",
-    "kind": 1,
-    "columns": 1,
-    "rows": 1,
-    "board": 11,
-    "slot": 5
   },
   {
     "id": "com.cyberdesktop.mecha.digital.2x1",
@@ -814,18 +766,6 @@
     "rows": 2,
     "board": 13,
     "slot": 5
-  },
-  {
-    "id": "com.cyberdesktop.mecha.plant.1x1",
-    "folder": "plant-1x1",
-    "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
-    "source": "plugins/ambience-suite/packages/plant-1x1/plugin.textproto",
-    "family": "ambience",
-    "kind": 0,
-    "columns": 1,
-    "rows": 1,
-    "board": 13,
-    "slot": 6
   },
   {
     "id": "com.cyberdesktop.mecha.koi.4x4",

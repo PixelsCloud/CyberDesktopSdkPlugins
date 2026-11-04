@@ -10,7 +10,7 @@ set_target_properties(cd_mechanical_hourglass_core PROPERTIES
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 
 set(packages)
-foreach(size IN ITEMS 1x1 2x1)
+foreach(size IN ITEMS 2x1)
   set(id "com.cyberdesktop.hourglass.mechanical.${size}")
   set(target "cd_mechanical_hourglass_${size}")
   set(input "${CMAKE_CURRENT_BINARY_DIR}/package-input/${id}")

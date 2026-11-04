@@ -13,8 +13,8 @@ struct MonitorSpec {
     unsigned columns, rows;
 };
 
-inline constexpr std::array<MonitorSpec, 4> kMonitorCatalog{{
-    {"com.cyberdesktop.pixeldesk.monitor.1x1", "monitor-1x1", 1, 1},
+inline constexpr std::array<MonitorSpec, 3> kMonitorCatalog{{
+
     {"com.cyberdesktop.pixeldesk.monitor.2x1", "monitor-2x1", 2, 1},
     {"com.cyberdesktop.pixeldesk.monitor.4x1", "monitor-4x1", 4, 1},
     {"com.cyberdesktop.pixeldesk.monitor.2x2", "monitor-2x2", 2, 2},

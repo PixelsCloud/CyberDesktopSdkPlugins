@@ -64,10 +64,6 @@ int wmain(int argc, wchar_t** argv) {
             if (!renderer.render(model, options, frame, {}) || !renderer.savePng((output / name).wstring(), frame)) {
                 return 2;
             }
-            if (dark && options.color == "amber") {
-                std::filesystem::copy_file(output / name, source / "packages/1x2/preview.png",
-                                           std::filesystem::copy_options::overwrite_existing);
-            }
         }
     }
     Model model;
@@ -125,10 +121,6 @@ int wmain(int argc, wchar_t** argv) {
             if (!renderer.render(squareModel, options, squareFrame, {}) ||
                 !renderer.savePng((output / name).wstring(), squareFrame)) {
                 return 7;
-            }
-            if (dark && options.color == "amber") {
-                std::filesystem::copy_file(output / name, source / "packages/1x1/preview.png",
-                                           std::filesystem::copy_options::overwrite_existing);
             }
         }
     }

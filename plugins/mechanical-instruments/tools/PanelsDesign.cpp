@@ -29,7 +29,6 @@ struct Panel {
 
 constexpr Panel kPanels[]{{"monitor-2x2", "com.cyberdesktop.systeminfo.mechanical.2x2", 2, 2},
                           {"monitor-1x2", "com.cyberdesktop.systeminfo.mechanical.1x2", 2, 1},
-                          {"monitor-1x1", "com.cyberdesktop.systeminfo.mechanical.1x1", 1, 1},
                           {"monitor-1x4", "com.cyberdesktop.systeminfo.mechanical.1x4", 4, 1},
                           {"network-1x4", "com.cyberdesktop.network.mechanical.1x4", 4, 1},
                           {"sign-4x1", "com.cyberdesktop.sign.mechanical.6x2", 4, 1}};

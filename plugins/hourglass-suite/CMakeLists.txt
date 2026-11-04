@@ -22,13 +22,10 @@ target_compile_definitions(cd_hourglass_core PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN
 target_compile_options(cd_hourglass_core PRIVATE /utf-8 /W4)
 set_target_properties(cd_hourglass_core PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
 
-foreach(size IN ITEMS 1x2 1x1)
+foreach(size IN ITEMS 1x2)
     set(id "com.cyberdesktop.hourglass.pixel.${size}")
     set(target "cd_hourglass_${size}")
     set(show_timer 1)
-    if(size STREQUAL "1x1")
-        set(show_timer 0)
-    endif()
     set(input "${CMAKE_CURRENT_BINARY_DIR}/package-input/${id}")
     add_library(${target} MODULE Plugin.cpp)
     target_link_libraries(${target} PRIVATE cd_hourglass_core)
@@ -51,7 +48,7 @@ foreach(size IN ITEMS 1x2 1x1)
         COMMAND $<TARGET_FILE:cd_hourglass_sdk_tool> pack "${input}" "${CMAKE_BINARY_DIR}/hourglass-packages/${id}.cdpkg"
         DEPENDS ${target} cd_hourglass_sdk_tool "${CMAKE_CURRENT_SOURCE_DIR}/packages/${size}/plugin.textproto" VERBATIM)
 endforeach()
-add_custom_target(cd_hourglass_package DEPENDS cd_hourglass_1x2_package cd_hourglass_1x1_package)
+add_custom_target(cd_hourglass_package DEPENDS cd_hourglass_1x2_package)
 
 add_executable(cd_hourglass_tests EXCLUDE_FROM_ALL tools/Tests.cpp)
 add_executable(cd_hourglass_design EXCLUDE_FROM_ALL tools/Design.cpp)

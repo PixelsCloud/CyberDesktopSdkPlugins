@@ -1,13 +1,5 @@
 [
   {
-    "id": "com.cyberdesktop.systeminfo.1x1",
-    "name": "系统监控 1×1",
-    "rows": 1,
-    "columns": 1,
-    "folder": "1x1",
-    "version": "1.0.0"
-  },
-  {
     "id": "com.cyberdesktop.systeminfo.1x2",
     "name": "系统监控 2×1",
     "rows": 1,

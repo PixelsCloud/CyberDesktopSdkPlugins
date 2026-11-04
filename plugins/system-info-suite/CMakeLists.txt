@@ -23,7 +23,7 @@ target_include_directories(cd_monitor_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" 
 target_compile_definitions(cd_monitor_core PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE)
 target_compile_options(cd_monitor_core PRIVATE /utf-8)
 set_target_properties(cd_monitor_core PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" AUTOMOC OFF AUTOUIC OFF AUTORCC OFF)
-foreach(size 1x1 1x2 1x4 2x2)
+foreach(size 1x2 1x4 2x2)
     string(SUBSTRING "${size}" 0 1 rows)
     string(SUBSTRING "${size}" 2 1 columns)
     set(id "com.cyberdesktop.systeminfo.${size}")

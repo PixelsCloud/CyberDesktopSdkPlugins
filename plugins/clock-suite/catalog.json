@@ -1,14 +1,5 @@
 [
   {
-    "id": "com.cyberdesktop.clock.digital.1x1",
-    "name": "数字时钟 1×1",
-    "family": "digital",
-    "rows": 1,
-    "columns": 1,
-    "folder": "digital-1x1",
-    "version": "1.0.0"
-  },
-  {
     "id": "com.cyberdesktop.clock.digital.1x2",
     "name": "数字时钟 2×1",
     "family": "digital",
@@ -33,15 +24,6 @@
     "rows": 2,
     "columns": 2,
     "folder": "digital-2x2",
-    "version": "1.0.0"
-  },
-  {
-    "id": "com.cyberdesktop.clock.analog.1x1",
-    "name": "模拟时钟 1×1",
-    "family": "analog",
-    "rows": 1,
-    "columns": 1,
-    "folder": "analog-1x1",
     "version": "1.0.0"
   },
   {

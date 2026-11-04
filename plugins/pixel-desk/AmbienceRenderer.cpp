@@ -12,16 +12,7 @@
 
 namespace pixeldesk {
 namespace {
-constexpr std::array<BasicSpec, 5> kAmbience{{{"com.cyberdesktop.pixeldesk.plant.1x1",
-                                               "plant-1x1",
-                                               BasicKind::Digital,
-                                               1,
-                                               1,
-                                               {305, 286},
-                                               {-35, -245, 375, 535},
-                                               {},
-                                               0},
-                                              {"com.cyberdesktop.pixeldesk.plant.2x2",
+constexpr std::array<BasicSpec, 4> kAmbience{{{"com.cyberdesktop.pixeldesk.plant.2x2",
                                                "plant-2x2",
                                                BasicKind::Digital,
                                                2,

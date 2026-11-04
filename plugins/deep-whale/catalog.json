@@ -178,16 +178,6 @@
     "rows": 2
   },
   {
-    "id": "com.cyberdesktop.deepwhale.monitor.1x1",
-    "folder": "monitor-1x1",
-    "family": "monitor",
-    "kind": 0,
-    "sourceId": "com.cyberdesktop.systeminfo.mechanical.1x1",
-    "art": "b04-2",
-    "columns": 1,
-    "rows": 1
-  },
-  {
     "id": "com.cyberdesktop.deepwhale.monitor.2x1",
     "folder": "monitor-2x1",
     "family": "monitor",
@@ -428,16 +418,6 @@
     "rows": 1
   },
   {
-    "id": "com.cyberdesktop.deepwhale.analog.1x1",
-    "folder": "analog-1x1",
-    "family": "basic",
-    "kind": 0,
-    "sourceId": "com.cyberdesktop.clock.analog.1x1",
-    "art": "b11-1",
-    "columns": 1,
-    "rows": 1
-  },
-  {
     "id": "com.cyberdesktop.deepwhale.analog.2x1",
     "folder": "analog-2x1",
     "family": "basic",
@@ -466,16 +446,6 @@
     "art": "b11-4",
     "columns": 2,
     "rows": 2
-  },
-  {
-    "id": "com.cyberdesktop.deepwhale.digital.1x1",
-    "folder": "digital-1x1",
-    "family": "basic",
-    "kind": 1,
-    "sourceId": "com.cyberdesktop.clock.digital.1x1",
-    "art": "b11-5",
-    "columns": 1,
-    "rows": 1
   },
   {
     "id": "com.cyberdesktop.deepwhale.digital.2x1",
@@ -588,16 +558,6 @@
     "rows": 1
   },
   {
-    "id": "com.cyberdesktop.deepwhale.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "family": "hourglass",
-    "kind": 0,
-    "sourceId": "com.cyberdesktop.hourglass.mechanical.1x1",
-    "art": "b08-1",
-    "columns": 1,
-    "rows": 1
-  },
-  {
     "id": "com.cyberdesktop.deepwhale.hourglass.2x1",
     "folder": "hourglass-2x1",
     "family": "hourglass",
@@ -666,16 +626,6 @@
     "art": "b13-5",
     "columns": 4,
     "rows": 2
-  },
-  {
-    "id": "com.cyberdesktop.deepwhale.plant.1x1",
-    "folder": "plant-1x1",
-    "family": "ambience",
-    "kind": 0,
-    "sourceId": "com.cyberdesktop.plant.cartoon.1x1",
-    "art": "b13-6",
-    "columns": 1,
-    "rows": 1
   },
   {
     "id": "com.cyberdesktop.deepwhale.koi.4x4",

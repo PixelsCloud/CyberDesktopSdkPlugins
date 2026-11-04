@@ -1,2 +1,0 @@
-Original precision mechanical artwork generated with built-in imagegen.
-Native source colors and transparency preserved. Functional readouts are rendered live.

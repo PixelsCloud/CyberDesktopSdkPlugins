@@ -146,14 +146,6 @@
     "family": "air"
   },
   {
-    "id": "com.cyberdesktop.pixeldesk.monitor.1x1",
-    "folder": "monitor-1x1",
-    "name": "像素系统监控 1×1",
-    "art": "monitor-1x1-normalized",
-    "order": 20,
-    "family": "monitor"
-  },
-  {
     "id": "com.cyberdesktop.pixeldesk.monitor.2x1",
     "folder": "monitor-2x1",
     "name": "像素系统监控 2×1",
@@ -354,20 +346,6 @@
     "family": "sign"
   },
   {
-    "id": "com.cyberdesktop.pixeldesk.hourglass.1x1",
-    "folder": "hourglass-1x1",
-    "name": "像素沙漏 1×1",
-    "art": "hourglass-active-1x1-normalized",
-    "order": 43,
-    "family": "hourglass",
-    "runtimeAssets": {
-      "body.png": "hourglass-active-1x1-normalized/body.png",
-      "provenance.json": "hourglass-active-1x1-normalized/provenance.json",
-      "paused.png": "hourglass-paused-1x1-normalized/body.png",
-      "paused.provenance.json": "hourglass-paused-1x1-normalized/provenance.json"
-    }
-  },
-  {
     "id": "com.cyberdesktop.pixeldesk.hourglass.2x1",
     "folder": "hourglass-2x1",
     "name": "像素沙漏 2×1",
@@ -454,14 +432,6 @@
     }
   },
   {
-    "id": "com.cyberdesktop.pixeldesk.clock.analog.1x1",
-    "folder": "clock-analog-1x1",
-    "art": "clock-analog-1x1-normalized",
-    "family": "basic-clock",
-    "order": 52,
-    "name": "像素模拟钟 1×1"
-  },
-  {
     "id": "com.cyberdesktop.pixeldesk.clock.analog.2x1",
     "folder": "clock-analog-2x1",
     "art": "clock-analog-2x1-normalized",
@@ -484,14 +454,6 @@
     "family": "basic-clock",
     "order": 55,
     "name": "像素基础模拟钟 2×2"
-  },
-  {
-    "id": "com.cyberdesktop.pixeldesk.clock.digital.1x1",
-    "folder": "clock-digital-1x1",
-    "art": "clock-digital-1x1-normalized",
-    "family": "basic-clock",
-    "order": 56,
-    "name": "像素数字时钟 1×1"
   },
   {
     "id": "com.cyberdesktop.pixeldesk.clock.digital.2x1",
@@ -588,34 +550,6 @@
     "family": "koi",
     "order": 68,
     "name": "像素锦鲤池 4×2"
-  },
-  {
-    "id": "com.cyberdesktop.pixeldesk.plant.1x1",
-    "folder": "plant-1x1",
-    "art": "plant-1x1-normalized",
-    "family": "plant",
-    "order": 69,
-    "name": "像素盆栽 1×1",
-    "runtimeAssets": {
-      "foliage-0.png": "plant-foliage-pixel-0/body.png",
-      "foliage-0.provenance.json": "plant-foliage-pixel-0/provenance.json",
-      "foliage-1.png": "plant-foliage-pixel-1/body.png",
-      "foliage-1.provenance.json": "plant-foliage-pixel-1/provenance.json",
-      "foliage-2.png": "plant-foliage-pixel-2/body.png",
-      "foliage-2.provenance.json": "plant-foliage-pixel-2/provenance.json",
-      "foliage-3.png": "plant-foliage-pixel-3/body.png",
-      "foliage-3.provenance.json": "plant-foliage-pixel-3/provenance.json",
-      "foliage-4.png": "plant-foliage-pixel-4/body.png",
-      "foliage-4.provenance.json": "plant-foliage-pixel-4/provenance.json",
-      "foliage-5.png": "plant-foliage-pixel-5/body.png",
-      "foliage-5.provenance.json": "plant-foliage-pixel-5/provenance.json",
-      "foliage-6.png": "plant-foliage-pixel-6/body.png",
-      "foliage-6.provenance.json": "plant-foliage-pixel-6/provenance.json",
-      "foliage-7.png": "plant-foliage-pixel-7/body.png",
-      "foliage-7.provenance.json": "plant-foliage-pixel-7/provenance.json",
-      "foliage-8.png": "plant-foliage-pixel-8/body.png",
-      "foliage-8.provenance.json": "plant-foliage-pixel-8/provenance.json"
-    }
   },
   {
     "id": "com.cyberdesktop.pixeldesk.koi.4x4",

@@ -2,19 +2,8 @@
 #include "plugins/mechanical-desk/BasicClock.h"
 
 namespace mechanicaldesk {
-inline constexpr std::array<BasicSpec, 14> kBasicClocks{
-    {{"com.cyberdesktop.mechanicaldesk.clock.analog.1x1",
-      "clock-analog-1x1",
-      BasicKind::Analog,
-      1,
-      1,
-      {1536, 1024},
-      {41, 115, 264, 258},
-      {161, 238},
-      102,
-      {{}},
-      0},
-     {"com.cyberdesktop.mechanicaldesk.clock.analog.2x1",
+inline constexpr std::array<BasicSpec, 12> kBasicClocks{
+    {{"com.cyberdesktop.mechanicaldesk.clock.analog.2x1",
       "clock-analog-2x1",
       BasicKind::Analog,
       2,
@@ -47,17 +36,7 @@ inline constexpr std::array<BasicSpec, 14> kBasicClocks{
       128,
       {{}},
       0},
-     {"com.cyberdesktop.mechanicaldesk.clock.digital.1x1",
-      "clock-digital-1x1",
-      BasicKind::Digital,
-      1,
-      1,
-      {1536, 1024},
-      {510, 520, 330, 409},
-      {0, 0},
-      0,
-      {{{558, 594, 193, 247}}},
-      1},
+
      {"com.cyberdesktop.mechanicaldesk.clock.digital.2x1",
       "clock-digital-2x1",
       BasicKind::Digital,
