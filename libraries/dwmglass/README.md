@@ -65,3 +65,10 @@ restart or unload to install an update.
 The windowless cd_dwm_lifecycle_tests target reproduces the old lock inversion in its own contained child process
 using the real upstream HookTransaction lock, tests nonblocking compositor access and actual remote-thread timeout/
 argument lifetime using only its own process. No DWM fault injection or desktop input injection is performed.
+
+Pointer-only/IAT transactions now use SlimDetours BeginEx without suspending peer threads. Inline and instruction
+patches retain thread suspension. The pinned upstream source remains unchanged: a build adapter selects the policy
+at its existing transaction begin call and compiles that implementation exactly once. The owned-process test
+demonstrates the default transaction freezing a cooperating thread, verifies the non-suspending alternative, and
+exercises actual lazy pointer install/removal. This is a verified risk correction, not proof of the precise cause of
+the 2026-11-04 DWM hang; native injection remains under the incident safety hold pending isolated compositor checks.

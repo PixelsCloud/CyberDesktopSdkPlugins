@@ -48,7 +48,9 @@ list(APPEND cd_openglass_sources
     "${cd_openglass_source}/Architecture/Legacy/GlassReflectionHandler.cpp"
     "${cd_openglass_source}/Architecture/Legacy/GlassReflectionBrush.cpp"
     "${cd_openglass_source}/Architecture/Legacy/ReflectionRealizer.cpp"
-    "${cd_openglass_root}/Common/HookHelper.cpp" "${cd_openglass_root}/Common/PngAssetValidation.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/HookTransactionAdapter.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/HookTransactionPolicy.cpp"
+    "${cd_openglass_root}/Common/PngAssetValidation.cpp"
     "${cd_openglass_root}/Common/CustomBlurEffect.cpp")
 add_library(cyber_openglass_identity STATIC EXCLUDE_FROM_ALL "${cd_openglass_root}/Common/PeCodeViewIdentity.cpp")
 target_compile_features(cyber_openglass_identity PRIVATE cxx_std_20)
@@ -62,7 +64,7 @@ add_library(cyber_openglass_engine STATIC EXCLUDE_FROM_ALL ${cd_openglass_source
 add_dependencies(cyber_openglass_engine cyber_dwm_projection)
 set(cd_engine_includes "${cd_projection_output}" "${cd_openglass_source}/Architecture/Legacy"
     "${cd_openglass_source}" "${cd_openglass_root}/Common")
-target_include_directories(cyber_openglass_engine PRIVATE ${cd_engine_includes})
+target_include_directories(cyber_openglass_engine PRIVATE ${cd_engine_includes} "${cd_public_root}")
 target_compile_definitions(cyber_openglass_engine PRIVATE OPENGLASS_DWM_LEGACY=1 WIL_LOCK_EXCEPTION_MODE WIL_USE_STL=1
     NOMINMAX UNICODE _UNICODE)
 target_compile_options(cyber_openglass_engine PRIVATE /utf-8 /W4 /Gy /Gw)

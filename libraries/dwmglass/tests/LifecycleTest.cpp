@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include <KNSoft/NDK/NDK.h>
+#include <KNSoft/SlimDetours/SlimDetours.h>
 #include <Windows.h>
 #include <wil/resource.h>
 #include <winrt/base.h>
@@ -14,6 +15,7 @@
 
 #include "libraries/dwmglass/host/RemoteCall.h"
 #include "libraries/dwmglass/src/DwmLifecycleLock.h"
+#include "libraries/dwmglass/src/HookTransactionPolicy.h"
 #include "third_party/OpenGlass/Common/HookHelper.hpp"
 
 namespace {
@@ -39,6 +41,14 @@ DWORD WINAPI finish(void* pointer) {
     Sleep(payload.delay);
     payload.value = 42;
     return 42;
+}
+
+int pointerOriginal() {
+    return 17;
+}
+
+int pointerReplacement() {
+    return 23;
 }
 
 void legacyDeadlock() {
@@ -70,6 +80,40 @@ int wmain(int argc, wchar_t** argv) {
     };
     using cyberglass::dwm::CompositorAccess;
     using cyberglass::dwm::host::RemoteCall;
+    // Reproduce only in this console process: the default transaction freezes
+    // a collaborating thread even when no code is being patched.
+    for (const bool legacy : {true, false}) {
+        wil::unique_handle proceed(CreateEventW(nullptr, TRUE, FALSE, nullptr));
+        wil::unique_handle completed(CreateEventW(nullptr, TRUE, FALSE, nullptr));
+        std::jthread collaborator([&] {
+            WaitForSingleObject(proceed.get(), INFINITE);
+            SetEvent(completed.get());
+        });
+        const HRESULT started = legacy ? SlimDetoursTransactionBegin() : cyberglass::dwm::beginHookTransaction(0, 0);
+        if (SUCCEEDED(started)) {
+            SetEvent(proceed.get());
+            const auto result = WaitForSingleObject(completed.get(), 100);
+            SlimDetoursTransactionAbort();
+            const DWORD expected = legacy ? DWORD(WAIT_TIMEOUT) : DWORD(WAIT_OBJECT_0);
+            check(result == expected, legacy ? "legacy pointer transaction suspends a collaborating thread"
+                                             : "pointer-only transaction leaves collaborating threads running");
+        } else {
+            SetEvent(proceed.get());
+            check(false, "owned transaction starts successfully");
+        }
+    }
+    auto slot = &pointerOriginal;
+    decltype(slot) original = nullptr;
+    OpenGlass::HookHelper::GetHookRundown().Open();
+    OpenGlass::HookHelper::PointerHook<&pointerReplacement> pointerHook;
+    pointerHook.AttachOnce(&slot, &original);
+    check(slot() == 23 && original() == 17, "actual lazy pointer hook installs with the non-suspending policy");
+    {
+        OpenGlass::HookHelper::HookTransaction transaction(OpenGlass::HookHelper::HookMode::Remove);
+        transaction.Apply(pointerHook);
+        transaction.Commit();
+    }
+    check(slot() == 17 && !pointerHook.IsInstalled(), "actual pointer hook removal restores the original function");
     std::array<wchar_t, 32768> path{};
     GetModuleFileNameW(nullptr, path.data(), DWORD(path.size()));
     std::wstring command = L"\"" + std::wstring(path.data()) + L"\" --legacy-deadlock";
