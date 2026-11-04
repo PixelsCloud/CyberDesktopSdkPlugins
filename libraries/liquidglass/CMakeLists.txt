@@ -41,6 +41,7 @@ if(WIN32)
     target_sources(cyber_liquid_glass PRIVATE "${cd_react_shader_header}")
     target_include_directories(cyber_liquid_glass PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
     target_sources(cyber_liquid_glass PRIVATE src/CompositionMaterial_win.cpp
+        src/FilteredRegionCapture_win.cpp
         src/NativeSurfaceProtocol_win.cpp src/NativeSurface_win.cpp src/NativeService_win.cpp
         src/NativeServiceWatcher_win.cpp
         src/DisplayCapture_win.cpp src/Changes_win.cpp
