@@ -19,6 +19,7 @@
 #include "LiquidGlass/CompositionMaterial.h"
 #include "libraries/dwmglass/src/DwmDiagnosticPacket.h"
 #include "libraries/dwmglass/src/DwmDiagnostics.h"
+#include "libraries/dwmglass/src/DwmLifecycleLock.h"
 #include "libraries/liquidglass/src/NativeSurfaceProtocol_win.h"
 #include "third_party/OpenGlass/OpenGlass/Architecture/Legacy/uDwmProjection.hpp"
 #include "third_party/OpenGlass/OpenGlass/Shared.hpp"
@@ -71,12 +72,8 @@ void destroyWindow(uDWM::CTopLevelWindow* window);
 Projection::Detour<uDWM::Symbol_CTopLevelWindow_UpdateClientBlur, &updateClientBlur> updateOriginal;
 Projection::Detour<uDWM::Symbol_CTopLevelWindow__CTopLevelWindow, &destroyWindow> destroyOriginal;
 
-HRESULT updateClientBlur(uDWM::CTopLevelWindow* window) try {
-    sample(Diagnostic::ClientBlur);
-    const auto result = updateOriginal(window);
-    if (FAILED(result)) {
-        return result;
-    }
+HRESULT applyClientBlur(uDWM::CTopLevelWindow* window) {
+    const HRESULT result = S_OK;
     const auto registry = hookRegistry.lock();
     const auto data = window->GetData();
     if (!registry || !data) {
@@ -131,12 +128,33 @@ HRESULT updateClientBlur(uDWM::CTopLevelWindow* window) try {
     winrt::check_hresult(value.canvas->RenderRecursive());
     sample(Diagnostic::Marker);
     return result;
-} catch (const winrt::hresult_error& error) {
-    sample(Diagnostic::Error, uint32_t(error.code()));
-    return error.code();
-} catch (...) {
-    sample(Diagnostic::Error, uint32_t(E_FAIL));
-    return E_FAIL;
+}
+
+HRESULT updateClientBlur(uDWM::CTopLevelWindow* window) {
+    sample(Diagnostic::ClientBlur);
+    const auto nativeResult = updateOriginal(window);
+    if (FAILED(nativeResult)) {
+        return nativeResult;
+    }
+    try {
+        applyClientBlur(window);
+    } catch (const winrt::hresult_error& error) {
+        sample(Diagnostic::Error, uint32_t(error.code()));
+        try {
+            removeVisual(window);
+        } catch (...) {
+        }
+    } catch (...) {
+        sample(Diagnostic::Error, uint32_t(E_FAIL));
+        try {
+            removeVisual(window);
+        } catch (...) {
+        }
+    }
+    // Custom material failures must not become compositor-wide failures.
+    // Best-effort removal restores the native blur subtree after a partial update.
+    // A successfully updated canvas remains registered in brushes.
+    return nativeResult;
 }
 
 void destroyWindow(uDWM::CTopLevelWindow* window) {
@@ -378,7 +396,10 @@ uint16_t decodeSurfaceMarker(uint32_t marker) {
 }
 
 void inspectSurface(std::span<uint64_t> values) {
-    const auto lock = wil::EnterCriticalSection(OpenGlass::uDWM::CDesktopManager::s_csDwmInstance);
+    const CompositorAccess lock(OpenGlass::uDWM::CDesktopManager::s_csDwmInstance);
+    if (!lock) {
+        return;
+    }
     values[0] = brushes.size();
     if (!brushes.empty()) {
         if (const auto visual = brushes.begin()->second.canvas.get()) {
@@ -396,7 +417,10 @@ void inspectSurface(std::span<uint64_t> values) {
 }
 
 uint32_t describeSurfaces(std::span<DiagnosticSurface> surfaces) {
-    const auto lock = wil::EnterCriticalSection(OpenGlass::uDWM::CDesktopManager::s_csDwmInstance);
+    const CompositorAccess lock(OpenGlass::uDWM::CDesktopManager::s_csDwmInstance);
+    if (!lock) {
+        return 0;
+    }
     uint32_t count = 0;
     for (const auto& [window, value] : brushes) {
         if (const auto owner = value.owner.lock(); owner && value.canvas && count < surfaces.size()) {

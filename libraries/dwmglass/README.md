@@ -40,3 +40,28 @@ Live verification on Windows 10 (udwm 10.0.19041.4522, dwmcore 10.0.19041.1) cov
 geometry, actual foreground controls, background transmission and input through the transparent corners. Supported
 Legacy projection metadata also exists for Windows 11, but Windows 11, HDR and the complete multi-monitor matrix have
 not been validated by that Windows 10 run. Exact symbol/projection validation remains mandatory.
+
+## Lifecycle safety (2026-11-04)
+
+The adapter retains the injected native optical path. Lifecycle operations try the compositor critical section
+before entering a HookHelper transaction; the renderer's lazy-hook path uses the same order. A busy compositor
+returns ERROR_BUSY instead of waiting while holding the transaction lock. DwmFlush is not called from the injected
+engine. Sampling the native drawing target uses a local D2D Flush to submit pending drawing, without waiting for a
+future desktop presentation. Custom surface/material exceptions restore native drawing instead of returning their
+failure as a compositor-wide drawing failure.
+
+Remote host operations have a 1000ms deadline and one outstanding operation per attachment. The host retains remote
+arguments while that thread runs; a retry cannot queue another remote thread. An interrupted host leaves at most
+one bounded argument allocation (64KiB limit per attachment) in the target until completion or target exit rather
+than freeing memory still in use. Closing the host does not terminate the remote thread or the compositor.
+
+The injected module is pinned for the compositor lifetime. Service stop closes host transport but does not remove
+live hooks, call upstream's fail-fast WaitForDrain, or unload code under active callbacks. Explicit live detach
+returns ERROR_BUSY while the module is resident. This preserves the running material backend across host reconnects;
+it deliberately does not promise safe hot replacement of a DLL mapped by DWM. Deployment must check residency before
+stopping any application and defer such a replacement until that compositor has exited normally. Never force a DWM
+restart or unload to install an update.
+
+The windowless cd_dwm_lifecycle_tests target reproduces the old lock inversion in its own contained child process
+using the real upstream HookTransaction lock, tests nonblocking compositor access and actual remote-thread timeout/
+argument lifetime using only its own process. No DWM fault injection or desktop input injection is performed.

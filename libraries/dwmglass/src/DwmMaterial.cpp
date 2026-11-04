@@ -188,7 +188,8 @@ HRESULT drawListWin10(dwmcore::CRenderData* data, dwmcore::CDrawingContext* cont
     }
     return originalListWin10(data, context, cache, builder, unknown, type, resources, succeeded);
 } catch (...) {
-    return E_FAIL;
+    return GlassRenderer::g_CRenderData_TryDrawCommandAsDrawList_Win10_Org(data, context, cache, builder, unknown, type,
+                                                                           resources, succeeded);
 }
 
 HRESULT drawListWin11(dwmcore::CRenderData* data, dwmcore::CDrawingContext* context, dwmcore::CDrawListCache* cache,
@@ -200,7 +201,8 @@ HRESULT drawListWin11(dwmcore::CRenderData* data, dwmcore::CDrawingContext* cont
     }
     return originalListWin11(data, context, cache, builder, type, resources, succeeded);
 } catch (...) {
-    return E_FAIL;
+    return GlassRenderer::g_CRenderData_TryDrawCommandAsDrawList_Win11_Org(data, context, cache, builder, type,
+                                                                           resources, succeeded);
 }
 
 HRESULT drawGeometry(dwmcore::IDrawingContext* drawing, dwmcore::CLegacyMilBrush* brush,
@@ -227,10 +229,8 @@ HRESULT drawGeometry(dwmcore::IDrawingContext* drawing, dwmcore::CLegacyMilBrush
         currentSurfaceBounds = previousBounds;
     });
     return originalDraw(drawing, brush, geometry);
-} catch (const winrt::hresult_error& error) {
-    return error.code();
 } catch (...) {
-    return E_FAIL;
+    return GlassRenderer::g_CDrawingContext_DrawGeometry_Org(drawing, brush, geometry);
 }
 
 CAeroParams aeroParameters(const liquidglass::native::SurfaceDescription& description, ID2D1DeviceContext& context) {
@@ -413,6 +413,9 @@ HRESULT render(CGlassRealizer* realizer, ID2D1DeviceContext* context, ID2D1Geome
     if (!count) {
         return S_OK;
     }
+    // Submit DWM's pending D2D commands before sampling its target. This is
+    // a local D2D flush, never the cross-process/presentation wait DwmFlush.
+    winrt::check_hresult(context->Flush());
     cached.material->render(texture.get(), region, optics, p, ++cached.revision,
                             std::span<const CompositionRegion>(updates.data(), count));
     const auto bitmap = static_cast<ID2D1Bitmap1*>(cached.material->bitmap());
@@ -441,19 +444,19 @@ HRESULT render(CGlassRealizer* realizer, ID2D1DeviceContext* context, ID2D1Geome
     if (currentSurface) {
         currentSurface->report(uint32_t(error.code()), false);
     }
-    return error.code();
+    return originalRender(realizer, context, geometry, drawingBounds, rectangles, parameters, type);
 } catch (const std::exception& error) {
     recordFailure(error.what());
     if (currentSurface) {
         currentSurface->report(ERROR_INVALID_DATA, false);
     }
-    return E_FAIL;
+    return originalRender(realizer, context, geometry, drawingBounds, rectangles, parameters, type);
 } catch (...) {
     recordFailure("Unknown native material exception");
     if (currentSurface) {
         currentSurface->report(ERROR_INVALID_DATA, false);
     }
-    return E_FAIL;
+    return originalRender(realizer, context, geometry, drawingBounds, rectangles, parameters, type);
 }
 
 auto drawDetour() {

@@ -18,6 +18,7 @@
 
 #include "libraries/dwmglass/src/DwmDiagnosticPacket.h"
 #include "libraries/dwmglass/src/DwmDiagnostics.h"
+#include "libraries/dwmglass/src/DwmLifecycleLock.h"
 #include "libraries/dwmglass/src/DwmSurfaceRegistry.h"
 #include "libraries/liquidglass/src/NativeServiceProtocol_win.h"
 #include "third_party/OpenGlass/Common/PeCodeViewIdentity.hpp"
@@ -40,6 +41,7 @@ struct EngineState {
 
 std::mutex lifecycle;
 std::unique_ptr<EngineState> running;
+bool projectionsReady = false;
 std::atomic<uint64_t> diagnosticDeadline{0};
 std::array<std::atomic<uint64_t>, size_t(Diagnostic::Count)> diagnosticCounters{};
 std::mutex errorMutex;
@@ -107,14 +109,20 @@ void sample(Diagnostic counter, uint64_t value) {
 }
 
 void recordFailure(const char* text) {
-    std::lock_guard lock(errorMutex);
+    std::unique_lock lock(errorMutex, std::try_to_lock);
+    if (!lock) {
+        return;
+    }
     const auto size = std::min(std::strlen(text), lastError.size() - 1);
     std::memcpy(lastError.data(), text, size);
     lastError[size] = 0;
 }
 
 DWORD inspect(DiagnosticPacket* packet) {
-    std::lock_guard lifecycleLock(lifecycle);
+    std::unique_lock lifecycleLock(lifecycle, std::try_to_lock);
+    if (!lifecycleLock) {
+        return ERROR_BUSY;
+    }
     if (!packet || packet->magic != 0x43474431 || packet->version != 1 || packet->size != sizeof(DiagnosticPacket)) {
         return ERROR_INVALID_PARAMETER;
     }
@@ -137,7 +145,10 @@ DWORD inspect(DiagnosticPacket* packet) {
 }
 
 DWORD start(liquidglass::native::BootRequest* request) try {
-    std::lock_guard lifecycleLock(lifecycle);
+    std::unique_lock lifecycleLock(lifecycle, std::try_to_lock);
+    if (!lifecycleLock) {
+        return ERROR_BUSY;
+    }
     if (!request || request->magic != liquidglass::native::kBootMagic || request->version != 1 ||
         !request->generation || request->reserved || request->pathCharacters > 32767) {
         return ERROR_INVALID_DATA;
@@ -154,9 +165,11 @@ DWORD start(liquidglass::native::BootRequest* request) try {
     if (!GetModuleHandleW(L"dwm.exe") || !uDWM::g_moduleHandle || !dwmcore::g_moduleHandle) {
         return ERROR_ACCESS_DENIED;
     }
-    resolveProjections(symbols.c_str());
-    initializeInfrastructure();
-    winrt::check_hresult(DwmFlush());
+    if (!projectionsReady) {
+        resolveProjections(symbols.c_str());
+        initializeInfrastructure();
+        projectionsReady = true;
+    }
     auto candidate = std::make_unique<EngineState>();
     candidate->generation = request->generation;
     candidate->registry = std::make_shared<SurfaceRegistry>(request->generation);
@@ -167,15 +180,23 @@ DWORD start(liquidglass::native::BootRequest* request) try {
     Shared::g_transparencyEnabled = true;
     Shared::g_disableOnBattery = false;
     Shared::g_useD3DRendering = false;
-    HookHelper::GetHookRundown().Open();
+    // Keep callback code valid until DWM exits. A service restart is not a
+    // safe DLL-unload boundary for in-flight upstream hooks.
+    HMODULE pinned = nullptr;
+    winrt::check_bool(GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                                         reinterpret_cast<LPCWSTR>(&start), &pinned));
     {
+        const CompositorAccess compositor(uDWM::CDesktopManager::s_csDwmInstance);
+        if (!compositor) {
+            return ERROR_BUSY;
+        }
+        HookHelper::GetHookRundown().Open();
         HookHelper::HookTransaction transaction(HookHelper::HookMode::Install);
         GlassIntegrity::Startup();
         GlassRenderer::Startup();
         installMaterialHooks(candidate->registry);
         installSurfaceHooks(candidate->registry);
         HookHelper::ApplyInlineHooks(std::initializer_list<HookHelper::DetourInfo>{{&destroyDeviceOriginal}});
-        const auto lock = wil::EnterCriticalSection(uDWM::CDesktopManager::s_csDwmInstance);
         transaction.Commit();
     }
     running = std::move(candidate);
@@ -186,37 +207,15 @@ DWORD start(liquidglass::native::BootRequest* request) try {
     return ERROR_INVALID_DATA;
 }
 
-DWORD stop() try {
-    std::lock_guard lifecycleLock(lifecycle);
-    if (!running) {
-        return ERROR_SUCCESS;
+DWORD stop() {
+    std::unique_lock lifecycleLock(lifecycle, std::try_to_lock);
+    if (!lifecycleLock || running) {
+        // Upstream WaitForDrain fail-fasts on timeout. Do not call it inside
+        // DWM, unpatch active callbacks or unload their code. Effects remain
+        // available; the module's lifetime ends with the compositor process.
+        return ERROR_BUSY;
     }
-    HookHelper::GetHookRundown().BeginShutdown();
-    winrt::check_hresult(DwmFlush());
-    {
-        HookHelper::HookTransaction transaction(HookHelper::HookMode::Remove);
-        const auto lock = wil::EnterCriticalSection(uDWM::CDesktopManager::s_csDwmInstance);
-        removeSurfaceHooks();
-        removeMaterialHooks();
-        HookHelper::ApplyInlineHooks(std::initializer_list<HookHelper::DetourInfo>{{&destroyDeviceOriginal}});
-        GlassRenderer::Shutdown();
-        GlassIntegrity::Shutdown();
-        transaction.Commit();
-    }
-    HookHelper::GetHookRundown().WaitForDrain(std::chrono::seconds(30));
-    {
-        const auto lock = wil::EnterCriticalSection(uDWM::CDesktopManager::s_csDwmInstance);
-        running->registry->clear();
-        clearMaterials();
-        GlassRenderer::Cleanup();
-        GlassIntegrity::Cleanup();
-    }
-    running.reset();
     return ERROR_SUCCESS;
-} catch (const winrt::hresult_error& error) {
-    return uint32_t(error.code());
-} catch (...) {
-    return ERROR_INVALID_DATA;
 }
 
 }  // namespace cyberglass::dwm

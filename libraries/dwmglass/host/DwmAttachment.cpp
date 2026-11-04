@@ -25,6 +25,7 @@
 #include <vector>
 
 #include "libraries/dwmglass/host/DwmSymbols.h"
+#include "libraries/dwmglass/host/RemoteCall.h"
 #include "libraries/dwmglass/src/DwmDiagnosticPacket.h"
 #include "libraries/liquidglass/src/NativeServiceProtocol_win.h"
 
@@ -130,57 +131,6 @@ uintptr_t exportedFunction(HANDLE handle, const std::filesystem::path& library, 
     return remoteBase + reinterpret_cast<uintptr_t>(function) - reinterpret_cast<uintptr_t>(mapped.get());
 }
 
-class RemoteArgument final {
-public:
-    RemoteArgument(HANDLE process, std::span<const std::byte> content) {
-        winrt::check_bool(DuplicateHandle(GetCurrentProcess(), process, GetCurrentProcess(), m_process.put(), 0, FALSE,
-                                          DUPLICATE_SAME_ACCESS));
-        const auto bytes = content.size();
-        m_address = VirtualAllocEx(m_process.get(), nullptr, bytes, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-        winrt::check_pointer(m_address);
-        SIZE_T written = 0;
-        if (!WriteProcessMemory(m_process.get(), m_address, content.data(), bytes, &written) || written != bytes) {
-            const auto error = GetLastError();
-            VirtualFreeEx(m_process.get(), m_address, 0, MEM_RELEASE);
-            m_address = nullptr;
-            throw winrt::hresult_error(HRESULT_FROM_WIN32(error));
-        }
-    }
-
-    ~RemoteArgument() {
-        if (m_address) {
-            VirtualFreeEx(m_process.get(), m_address, 0, MEM_RELEASE);
-        }
-    }
-
-    void* address() const {
-        return m_address;
-    }
-
-    RemoteArgument(const RemoteArgument&) = delete;
-    RemoteArgument& operator=(const RemoteArgument&) = delete;
-
-private:
-    wil::unique_handle m_process;
-    void* m_address = nullptr;
-};
-
-uint32_t invoke(HANDLE process, uintptr_t address, void* argument) {
-    wil::unique_handle thread(CreateRemoteThread(process, nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(address),
-                                                 argument, 0, nullptr));
-    winrt::check_bool(thread != nullptr);
-    const auto completion = wil::scope_exit([&] {
-        WaitForSingleObject(thread.get(), INFINITE);
-    });
-    // Never free an argument or unload the DLL while the compositor still uses
-    // it. This host runs outside the application's UI and waits without polling.
-    const auto waited = WaitForSingleObject(thread.get(), INFINITE);
-    winrt::check_bool(waited == WAIT_OBJECT_0);
-    DWORD result = 0;
-    winrt::check_bool(GetExitCodeThread(thread.get(), &result));
-    return result;
-}
-
 void checkStart(uint32_t result) {
     if (result != ERROR_SUCCESS && result != ERROR_ALREADY_INITIALIZED) {
         const auto error = result & 0x80000000u ? HRESULT(result) : HRESULT_FROM_WIN32(result);
@@ -193,6 +143,7 @@ struct DwmAttachment::Impl {
     uint32_t process = 0;
     uint64_t generation = 0;
     wil::unique_handle handle;
+    std::unique_ptr<RemoteCall> call;
 };
 
 DwmAttachment::DwmAttachment(uint32_t session) : m_impl(std::make_unique<Impl>()) {
@@ -203,6 +154,7 @@ DwmAttachment::DwmAttachment(uint32_t session) : m_impl(std::make_unique<Impl>()
                                        PROCESS_VM_WRITE | PROCESS_VM_READ | SYNCHRONIZE,
                                    FALSE, value.process));
     winrt::check_bool(value.handle != nullptr);
+    value.call = std::make_unique<RemoteCall>(value.handle.get());
 }
 
 DwmAttachment::~DwmAttachment() = default;
@@ -213,9 +165,8 @@ void DwmAttachment::attach(const std::filesystem::path& library, const std::file
     auto remote = moduleAddress(value.process, path, true);
     if (!remote) {
         const auto text = path.wstring();
-        const RemoteArgument argument(value.handle.get(), std::as_bytes(std::span(text.c_str(), text.size() + 1)));
-        invoke(value.handle.get(), systemFunction(value.handle.get(), value.process, "LoadLibraryW"),
-               argument.address());
+        value.call->invoke(systemFunction(value.handle.get(), value.process, "LoadLibraryW"),
+                           std::as_bytes(std::span(text.c_str(), text.size() + 1)));
         remote = moduleAddress(value.process, path, true);
         if (!remote) {
             throw std::runtime_error("The compositor did not load the native glass module");
@@ -231,18 +182,15 @@ void DwmAttachment::attach(const std::filesystem::path& library, const std::file
     std::vector<std::byte> content(sizeof(boot) + (text.size() + 1) * sizeof(wchar_t));
     std::memcpy(content.data(), &boot, sizeof(boot));
     std::memcpy(content.data() + sizeof(boot), text.c_str(), (text.size() + 1) * sizeof(wchar_t));
-    const RemoteArgument argument(value.handle.get(), content);
-    auto result = invoke(value.handle.get(), exportedFunction(value.handle.get(), path, remote, "CyberGlassDwmStart"),
-                         argument.address());
+    auto result = value.call->invoke(exportedFunction(value.handle.get(), path, remote, "CyberGlassDwmStart"), content,
+                                     std::as_writable_bytes(std::span(&boot, 1)));
     if (result == uint32_t(HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)) || result == ERROR_FILE_NOT_FOUND) {
         prepareSymbols(symbols);
-        result = invoke(value.handle.get(), exportedFunction(value.handle.get(), path, remote, "CyberGlassDwmStart"),
-                        argument.address());
+        result = value.call->invoke(exportedFunction(value.handle.get(), path, remote, "CyberGlassDwmStart"), content,
+                                    std::as_writable_bytes(std::span(&boot, 1)));
     }
     checkStart(result);
-    SIZE_T received = 0;
-    winrt::check_bool(ReadProcessMemory(value.handle.get(), argument.address(), &boot, sizeof(boot), &received));
-    if (received != sizeof(boot) || !boot.generation) {
+    if (!boot.generation) {
         throw std::runtime_error("Native compositor did not acknowledge its generation");
     }
     value.generation = boot.generation;
@@ -250,20 +198,10 @@ void DwmAttachment::attach(const std::filesystem::path& library, const std::file
 }
 
 void DwmAttachment::detach(const std::filesystem::path& library) {
-    if (!alive()) {
-        return;
+    if (alive() && moduleAddress(m_impl->process, std::filesystem::absolute(library).lexically_normal(), true)) {
+        throw winrt::hresult_error(HRESULT_FROM_WIN32(ERROR_BUSY),
+                                   L"DWM glass remains resident until the compositor exits; live unload is unsafe");
     }
-    auto& value = *m_impl;
-    const auto path = std::filesystem::absolute(library).lexically_normal();
-    const auto remote = moduleAddress(value.process, path, true);
-    if (!remote) {
-        return;
-    }
-    checkStart(
-        invoke(value.handle.get(), exportedFunction(value.handle.get(), path, remote, "CyberGlassDwmStop"), nullptr));
-    winrt::check_bool(invoke(value.handle.get(), systemFunction(value.handle.get(), value.process, "FreeLibrary"),
-                             reinterpret_cast<void*>(remote)) != FALSE);
-    spdlog::info("Native DWM glass detached: process={}", value.process);
 }
 
 uint32_t DwmAttachment::process() const {
@@ -282,13 +220,9 @@ DiagnosticPacket DwmAttachment::diagnostics(const std::filesystem::path& library
     }
     DiagnosticPacket packet;
     packet.enabled = enabled ? 1 : 0;
-    const RemoteArgument argument(m_impl->handle.get(), std::as_bytes(std::span(&packet, 1)));
-    checkStart(invoke(m_impl->handle.get(),
-                      exportedFunction(m_impl->handle.get(), path, remote, "CyberGlassDwmInspect"),
-                      argument.address()));
-    SIZE_T received = 0;
-    winrt::check_bool(ReadProcessMemory(m_impl->handle.get(), argument.address(), &packet, sizeof(packet), &received));
-    winrt::check_bool(received == sizeof(packet));
+    checkStart(m_impl->call->invoke(exportedFunction(m_impl->handle.get(), path, remote, "CyberGlassDwmInspect"),
+                                    std::as_bytes(std::span(&packet, 1)),
+                                    std::as_writable_bytes(std::span(&packet, 1))));
     return packet;
 }
 

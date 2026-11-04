@@ -302,21 +302,11 @@ struct NativeHost::Impl {
             })) {
             return;
         }
-        // Detach from the worker; no DWM waiting/network work blocks pipe IO.
-        asio::post(worker, [this] {
-            for (const auto& [id, session] : sessions) {
-                if (session->attachment) {
-                    try {
-                        session->attachment->detach(library);
-                    } catch (...) {
-                        spdlog::error("Native session {} detach failed: 0x{:08x}", id, exceptionCode());
-                    }
-                }
-            }
-            asio::post(io, [this] {
-                io.stop();
-            });
-        });
+        // Registered client windows retire their own surfaces. Do not make a
+        // remote stop/unload call while DWM may still execute hooked callbacks.
+        // A later service instance can reconnect to the resident engine.
+        spdlog::info("Native host stopping; DWM modules retain compositor lifetime");
+        io.stop();
     }
 
     void stop() {

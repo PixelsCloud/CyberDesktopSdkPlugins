@@ -99,7 +99,7 @@ endforeach()
 add_custom_target(cyber_dwm_native_shaders DEPENDS ${cd_shader_outputs})
 configure_file(resources/NativeShaders.rc.in "${CMAKE_CURRENT_BINARY_DIR}/NativeShaders.rc" @ONLY)
 add_library(cyber_glass_dwm SHARED EXCLUDE_FROM_ALL
-    src/DwmEngine.cpp src/DwmSurfaceRegistry.cpp src/DwmMaterial.cpp src/DwmInfrastructure.cpp
+    src/DwmEngine.cpp src/DwmLifecycleLock.cpp src/DwmSurfaceRegistry.cpp src/DwmMaterial.cpp src/DwmInfrastructure.cpp
     "${CMAKE_CURRENT_BINARY_DIR}/NativeShaders.rc")
 add_dependencies(cyber_glass_dwm cyber_dwm_projection cyber_dwm_native_shaders)
 target_include_directories(cyber_glass_dwm PRIVATE "${cd_public_root}" ${cd_engine_includes})
@@ -115,7 +115,7 @@ set_target_properties(cyber_glass_dwm PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC
 find_package(cpr CONFIG REQUIRED)
 find_package(Boost CONFIG REQUIRED COMPONENTS asio)
 find_package(spdlog CONFIG REQUIRED)
-add_executable(cyber_glass_host EXCLUDE_FROM_ALL host/main.cpp host/NativeHost.cpp host/DwmAttachment.cpp host/DwmSymbols.cpp)
+add_executable(cyber_glass_host EXCLUDE_FROM_ALL host/main.cpp host/NativeHost.cpp host/DwmAttachment.cpp host/RemoteCall.cpp host/DwmSymbols.cpp)
 target_include_directories(cyber_glass_host PRIVATE "${cd_public_root}")
 target_compile_features(cyber_glass_host PRIVATE cxx_std_20)
 target_compile_definitions(cyber_glass_host PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE
@@ -125,4 +125,14 @@ target_link_libraries(cyber_glass_host PRIVATE cyber_openglass_identity WIL::WIL
     cpr::cpr spdlog::spdlog_header_only dbghelp windowsapp advapi32 wtsapi32 shlwapi shell32 ole32 bcrypt)
 target_link_options(cyber_glass_host PRIVATE /OPT:REF /OPT:ICF /INCREMENTAL:NO)
 set_target_properties(cyber_glass_host PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
+add_executable(cd_dwm_lifecycle_tests EXCLUDE_FROM_ALL tests/LifecycleTest.cpp
+    src/DwmLifecycleLock.cpp host/RemoteCall.cpp)
+target_include_directories(cd_dwm_lifecycle_tests PRIVATE "${cd_public_root}")
+target_compile_features(cd_dwm_lifecycle_tests PRIVATE cxx_std_20)
+target_compile_definitions(cd_dwm_lifecycle_tests PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN UNICODE _UNICODE WIL_LOCK_EXCEPTION_MODE WIL_USE_STL=1)
+target_compile_options(cd_dwm_lifecycle_tests PRIVATE /utf-8 /W4)
+target_link_libraries(cd_dwm_lifecycle_tests PRIVATE cyber_openglass_engine WIL::WIL "${cd_slim_detours}" windowsapp dbghelp onecore ntdll)
+set_target_properties(cd_dwm_lifecycle_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
     MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
