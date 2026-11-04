@@ -204,7 +204,10 @@ struct FilteredRegionCapture::Impl {
         description.Width = unsigned(region.width);
         description.Height = unsigned(region.height);
         description.MipLevels = description.ArraySize = description.SampleDesc.Count = 1;
-        description.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+        // The legacy callback reports the RGBA GUID, but its desktop DIB bytes
+        // are BGRA (also consumed as desktop-frame BGRA by WebRTC). Describe the
+        // actual byte layout to D3D instead of swapping channels on the CPU.
+        description.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
         description.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
         clear.Reset();
         image.Reset();

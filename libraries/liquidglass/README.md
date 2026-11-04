@@ -67,12 +67,12 @@ draw counters must likewise not be presented as whole-pipeline counters.
 
 `FilteredRegionCapture` is a separate, thread-confined local Magnification
 source. Keep `initializeSession()` alive on the capture thread from before its
-message loop/device initialization until after all capture objects are destroyed.
+controls/message loop until after all capture objects are destroyed.
 Pass physical coordinates and explicit owner/output HWND exclusions. Exclusions
 apply only to that magnifier, never to screenshots or remote viewers globally.
 The source never displays its hidden host, changes focus or forwards input.
 
-Only the requested region is retained: a bounded RGBA callback block is copied
+Only the requested region is retained: a bounded desktop DIB callback block is copied
 once and uploaded once to an exact-size D3D11 texture. This is not zero-copy;
 there is no CPU pixel optics loop or full-display texture. Subsequent optics and
 change comparison use the existing GPU implementations. Maximum request size is
@@ -80,6 +80,8 @@ four million pixels, 64 supplied exclusions and 16 simultaneous controls.
 Controls keep immutable dimensions and are recreated on clipped-size changes,
 avoiding live resize with a previous cached source bitmap. Texture storage is
 reused at unchanged dimensions. Offscreen pixels are filled opaque black.
+The legacy callback reports an RGBA GUID while the validated desktop bytes are
+BGRA. The texture uses BGRA directly; there is no CPU channel-swap loop.
 
 This callback API is deprecated by Microsoft. Local capture, independent
 instances, resizing, edge clipping and actual GPU optics were tested on Windows
