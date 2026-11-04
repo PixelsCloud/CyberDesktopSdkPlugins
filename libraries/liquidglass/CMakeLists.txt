@@ -44,6 +44,7 @@ if(WIN32)
         src/NativeSurfaceProtocol_win.cpp src/NativeSurface_win.cpp src/NativeService_win.cpp
         src/NativeServiceWatcher_win.cpp
         src/DisplayCapture_win.cpp src/Changes_win.cpp
+        src/PixelComparison_win.cpp src/PixelComparison_win.h
         src/CaptureSession_win.cpp src/CaptureSession_win.h
         src/WindowStack_win.cpp src/WindowStack_win.h
         src/FramePublisher_win.cpp src/FrameConsumer_win.h
