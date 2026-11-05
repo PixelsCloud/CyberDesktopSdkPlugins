@@ -71,10 +71,10 @@ std::unique_ptr<themed::View> makeView(Spec spec) {
 }  // namespace
 
 cdsdk::Settings defaults(Kind kind, bool mechanical) {
-    return themed::defaults(kind, mechanical, {0x11CADFFF, 0x46E9B1FF, false});
+    return themed::defaults(kind, mechanical, {0x252B24FF, 0x8C9E76FF, true, true});
 }
 
 CdResult create(Spec spec, const CdCreateContext* context, CdInstanceApi* out, uint32_t size) {
-    return themed::create(spec, context, out, size, makeView, {0x11CADFFF, 0x46E9B1FF, false});
+    return themed::create(spec, context, out, size, makeView, {0x252B24FF, 0x8C9E76FF, true, true});
 }
 }  // namespace widgetplugin

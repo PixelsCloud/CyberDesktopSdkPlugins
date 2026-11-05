@@ -2,6 +2,7 @@
 
 #include <CyberCanvas/InstrumentMotion.h>
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/RenderOutput.h>
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
@@ -24,13 +25,15 @@ bool View::poll() {
 
 namespace {
 cdsdk::Settings defaults(bool mechanical = false) {
-    return {{{"interval", CD_SETTING_INTEGER, 1000, 0, "", 500, 5000},
-             {"palette", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "dark", "light"}},
-             {"animate", CD_SETTING_TOGGLE, 1},
-             {"reduced_motion", CD_SETTING_TOGGLE, 0},
-             {"primary", CD_SETTING_CHOICE, 0, 0, "cpu", 0, 0, {"cpu", "ram", "gpu", "temperature"}},
-             {"font_family", CD_SETTING_FONT, 0, 0, mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy"},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+    return cdsdk::modernSettings(
+        {{{"interval", CD_SETTING_INTEGER, 1000, 0, "", 500, 5000},
+          {"palette", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "dark", "light"}},
+          {"animate", CD_SETTING_TOGGLE, 1},
+          {"reduced_motion", CD_SETTING_TOGGLE, 0},
+          {"primary", CD_SETTING_CHOICE, 0, 0, "cpu", 0, 0, {"cpu", "ram", "gpu", "temperature"}},
+          {"font_family", CD_SETTING_FONT, 0, 0, mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy"},
+          {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+        !mechanical, cdsdk::WidgetColorway::Sky);
 }
 
 struct Instance;
@@ -70,6 +73,8 @@ struct Instance {
     }
 
     void sync() {
+        options.modern = cdsdk::modernAppearance(settings);
+        options.appearance = cdsdk::widgetAppearance(settings);
         options.palette = settings.at("palette").text;
         options.primary = settings.at("primary").text;
         options.fontFamily = settings.at("font_family").text;
@@ -261,6 +266,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
             }
             self.systemToken = token;
         }
+        cdsdk::normalizeModernColors(self.settings);
         self.sync();
         self.redraw();
         return CD_OK;

@@ -279,9 +279,7 @@ struct SurfaceRegistry::Impl {
         for (const auto& [window, surface] : windows) {
             const auto description = surface->description();
             const auto p = liquidglass::native::decodeParameters(description.optics);
-            const float amount = description.material == uint32_t(liquidglass::NativeMaterial::AeroGlass)
-                                     ? description.aero.blurSigma * 3
-                                     : liquidglass::opticalExpansion(p, description.dpiScale) / description.dpiScale;
+            const float amount = liquidglass::opticalExpansion(p, description.dpiScale) / description.dpiScale;
             maximum = std::max(maximum, std::max(1.f, std::ceil(amount * description.dpiScale)));
         }
         expansion.store(maximum, std::memory_order_release);

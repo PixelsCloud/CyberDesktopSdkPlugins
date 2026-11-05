@@ -1,6 +1,7 @@
 #include "plugins/ambience-suite/NoiseScene.h"
 
 #include <CyberCanvas/Noise.h>
+#include <sdk/WindowsFonts.h>
 
 namespace atmosphere {
 namespace {
@@ -60,6 +61,10 @@ void NoiseScene::build(bool compact) {
         if (!background_) {
             return;
         }
+        if (modern_) {
+            cdsdk::widgetBackground(canvas, appearance_, {area.x, area.y, area.width, area.height});
+            return;
+        }
         const Rect card{1, 1, std::max(0., area.width - 3), std::max(0., area.height - 4)};
         canvas.gradientBox(card, corner_, dark_ ? 0x2A3941FF : 0xFFFEF9FF, dark_ ? 0x19282FFF : 0xEEEDE4FF);
         canvas.strokeBox(card, corner_, dark_ ? 0x78909A66 : 0xBDBDAF70, {.width = .65});
@@ -98,7 +103,7 @@ void NoiseScene::build(bool compact) {
         art_[0] = scene.add(header_, image);
         auto label = slot(ViewKind::Text);
         label.layout = growing();
-        label.theme.fontSize = 12;
+        label.theme.fontSize = modern_ ? 14 : 12;
         labels_[0] = scene.add(header_, label);
         spacer_ = scene.add(0, slot(ViewKind::Decoration));
         auto bottom = slot(ViewKind::Row);
@@ -198,6 +203,8 @@ cdsdk::Scene& NoiseScene::prepare(Canvas& canvas, Spec spec, const cdsdk::Settin
         build(compact);
     }
     auto& scene = *scene_;
+    modern_ = cdsdk::modernAppearance(settings);
+    appearance_ = cdsdk::widgetAppearance(settings);
     const auto mode = settings.at("lighting").text;
     const bool dark = mode == "night" || mode == "theme" && model.dark;
     const bool background = settings.at("show_background").integer != 0;
@@ -216,9 +223,17 @@ cdsdk::Scene& NoiseScene::prepare(Canvas& canvas, Spec spec, const cdsdk::Settin
     theme.onAccent = 0xFFFEF2FF;
     theme.track = dark ? 0x46585CFF : 0xDAD8CEFF;
     theme.border = dark ? 0x789E9B55 : 0x9BA88B55;
-    theme.font.family = L"Microsoft YaHei";
+    theme.font.family = modern_ ? cdsdk::fontWide(settings.at("font_family").text) : L"Microsoft YaHei";
+    if (modern_) {
+        theme.foreground = appearance_.foreground;
+        theme.muted = appearance_.secondary;
+        theme.accent = appearance_.accent;
+        theme.track = appearance_.track;
+        theme.border = appearance_.track;
+        theme.onAccent = appearance_.surface;
+    }
     theme.font.locale = english ? L"en-US" : L"zh-CN";
-    theme.font.size = 8.5;
+    theme.font.size = modern_ ? 12 : 8.5;
     theme.font.align = TextAlign::Center;
     theme.font.ellipsis = true;
     theme.radius = 4;
@@ -263,13 +278,13 @@ cdsdk::Scene& NoiseScene::prepare(Canvas& canvas, Spec spec, const cdsdk::Settin
         bottom.shrink = 0;
         scene.style(footer_, bottom);
     } else {
-        scene.text(heading_, english ? L"Nature sounds" : L"白噪音");
+        scene.text(heading_, modern_ ? L"" : english ? L"Nature sounds" : L"白噪音");
         ThemePatch heading;
         heading.font = scene.view(heading_).theme.font;
         heading.fontSize = std::clamp(width * .06, 12., 18.);
         scene.theme(heading_, heading);
         scene.text(subtitle_, english ? L"Nature · Mix · Sleep timer" : L"自然声景 · 混音 · 定时关闭");
-        scene.visible(subtitle_, height > 145);
+        scene.visible(subtitle_, !modern_ && height > 145);
         ThemePatch muted;
         muted.foreground = theme.muted;
         muted.fontSize = 8.3;
@@ -295,7 +310,7 @@ cdsdk::Scene& NoiseScene::prepare(Canvas& canvas, Spec spec, const cdsdk::Settin
             scene.style(cells_[i], cell);
             scene.text(labels_[i], english ? kEnglish[i] : kNames[i]);
             ThemePatch label;
-            label.fontSize = std::clamp(width * .037, 9., 11.);
+            label.fontSize = modern_ ? 14 : std::clamp(width * .037, 9., 11.);
             scene.theme(labels_[i], label);
             scene.value(tracks_[i], std::round(model.levels[i] * 100));
         }
@@ -312,7 +327,7 @@ cdsdk::Scene& NoiseScene::prepare(Canvas& canvas, Spec spec, const cdsdk::Settin
         scene.text(timer_, timer);
         scene.text(more_, model.noisePage ? (english ? L"Back" : L"返回") : (english ? L"More" : L"更多"));
         scene.text(volumeLabel_, english ? L"Vol" : L"主音量");
-        muted.fontSize = 7;
+        muted.fontSize = modern_ ? 12 : 7;
         scene.theme(volumeLabel_, muted);
     }
     scene.arrange(canvas, {0, 0, width, height}, dpr);

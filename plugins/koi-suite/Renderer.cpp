@@ -58,6 +58,7 @@ struct Renderer::Impl {
     double dpr = 0;
     ComPtr<ID2D1Factory>& factory = canvas.factory;
     cybercanvas::OffscreenSurface pondSurface;
+    ComPtr<ID2D1RenderTarget> pondGradientTarget;
     cybercanvas::EffectSurface blessingEffects;
     cybercanvas::EffectResult blessingImage;
     cybercanvas::Point blessingOrigin;
@@ -76,6 +77,8 @@ struct Renderer::Impl {
             return;
         }
         blessingImage = {};
+        canvas.releaseGradientTarget(pondGradientTarget.Get());
+        pondGradientTarget.Reset();
         pondSurface.reset();
         // Local aliases may select the independent pond cache. The Canvas retains
         // ownership of its primary target throughout this renderer's frame.
@@ -209,6 +212,20 @@ struct Renderer::Impl {
             return;
         }
         const auto label = kBlessingWords[blessing.word];
+        if (appearance.modern) {
+            canvas.selectFont(appearance.fontFamily);
+            cybercanvas::TextStyle font;
+            font.family = canvas.selectedFont();
+            font.size = blessingFontSize(w, h, label.size());
+            font.align = cybercanvas::TextAlign::Center;
+            font.vertical = cybercanvas::VerticalAlign::Center;
+            const double y =
+                std::clamp(blessing.center.y - blessing.age * 1.1, double(font.size), h - double(font.size));
+            const auto color =
+                (appearance.style.foreground & 0xFFFFFF00u) | uint32_t(opacity * (appearance.style.foreground & 255));
+            canvas.text(std::wstring(label), font, {6, y - font.size, w - 12, font.size * 2}, color);
+            return;
+        }
         const float size = blessingFontSize(w, h, label.size());
         if (label != blessingLabel || size != blessingSize || blessingArea.width != w || blessingArea.height != h) {
             blessingImage = {};
@@ -431,6 +448,10 @@ struct Renderer::Impl {
                         current = previous;
                     }
                 } restore{target, mainTarget};
+                if (pondGradientTarget.Get() != destination) {
+                    canvas.releaseGradientTarget(pondGradientTarget.Get());
+                    pondGradientTarget = destination;
+                }
                 target = destination;
                 target->SetTransform(D2D1::Matrix3x2F::Translation(float(safe.x), float(safe.y)));
                 if (bounds) {
@@ -439,7 +460,13 @@ struct Renderer::Impl {
                         bounds,
                         [&] {
                             if (appearance.background) {
-                                water(motionTime(scene, appearance), appearance.night, w, h);
+                                if (appearance.modern) {
+                                    auto style = appearance.style;
+                                    style.radius = 0;
+                                    cdsdk::widgetBackground(canvas, style, {0, 0, w, h}, target.Get());
+                                } else {
+                                    water(motionTime(scene, appearance), appearance.night, w, h);
+                                }
                             }
                             for (const auto& value : scene.fish()) {
                                 fish(value, appearance.night, appearance.koiColor);

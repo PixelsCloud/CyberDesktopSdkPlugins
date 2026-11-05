@@ -1,6 +1,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <string_view>
 
 #include "plugins/system-info-suite/Monitor.h"
 
@@ -30,8 +31,10 @@ int wmain(int argc, wchar_t** argv) {
                                   pixels.data(),
                                   2};
                     Spec spec{name.c_str(), rows, columns};
-                    spec.mechanical = argc == 3;
+                    const bool modern = argc == 3 && std::wstring_view(argv[2]) == L"modern";
+                    spec.mechanical = argc == 3 && !modern;
                     Options options;
+                    options.modern = modern;
                     options.fontFamily = spec.mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy";
                     options.palette = dark ? "dark" : "light";
                     if (!renderer.render(spec, options, {23, 75, 3, 0, 7}, frame) ||

@@ -50,7 +50,8 @@ void Renderer::prepare(Canvas& canvas) {
     facet_->moveTo({-1, 0}).lineTo({-.35, -1}).lineTo({.8, -.65}).lineTo({0, 0}).close().finish();
 }
 
-void Renderer::wall(Canvas& canvas, const Palette& colors, double height) {
+void Renderer::wall(Canvas& canvas, const Palette& colors, double height, const cdsdk::WidgetAppearance* appearance) {
+    const bool gradient = appearance && appearance->gradient;
     const double floor = height - 18;
     Path border(canvas.factory.Get());
     border.moveTo({12, 0})
@@ -62,14 +63,23 @@ void Renderer::wall(Canvas& canvas, const Palette& colors, double height) {
         .quadraticTo({0, 0}, {12, 0})
         .close();
     canvas.masked(border, [&] {
-        canvas.box(0, 0, kWidth, floor, 0, colors.mortar);
+        if (gradient) {
+            cdsdk::widgetBackground(canvas, *appearance, {0, 0, kWidth, floor});
+        } else {
+            canvas.box(0, 0, kWidth, floor, 0, colors.mortar);
+        }
         const double step = kWidth / 7.2, row = kFloor / 3;
         for (int y = 0; y < int(std::ceil(floor / row)); ++y) {
             for (int x = -1; x < 9; ++x) {
                 const double bx = x * step - (y % 2 ? step / 2 : 0) + 2.5, by = y * row + 2.5;
                 const double width = step - 5, height = row - 5;
                 const bool alternate = (x * 7 + y * 3 + 20) % 3 == 0;
-                canvas.box(bx, by, width, height, 3.5, alternate ? colors.alternate : colors.brick);
+                if (gradient) {
+                    canvas.box(bx, by, width, height, 3.5, alpha(appearance->foreground, alternate ? .05 : .015));
+                    canvas.strokeBox({bx, by, width, height}, 3.5, alpha(appearance->foreground, .13), {.width = 1});
+                } else {
+                    canvas.box(bx, by, width, height, 3.5, alternate ? colors.alternate : colors.brick);
+                }
                 canvas.line(bx + 4, by + 2.5, bx + width - 4, by + 2.5, alpha(colors.edge, .7), 1.7);
                 canvas.line(bx + 3, by + height - 2, bx + width - 3, by + height - 2, colors.shadow, 2.5);
                 if ((x + 9) % 3 == y) {
@@ -113,32 +123,58 @@ void Renderer::number(Canvas& canvas, size_t index, int digit, const Palette& co
     });
 }
 
-void Renderer::draw(Canvas& canvas, const Model& model, const std::string& name, double scale, double panelHeight) {
+void Renderer::draw(Canvas& canvas, const Model& model, const std::string& name, double scale, double panelHeight,
+                    const cdsdk::WidgetAppearance* appearance) {
     prepare(canvas);
-    const auto colors = palette(name);
+    auto colors = palette(name);
+    if (appearance) {
+        if (surfaceColor_ != appearance->surface || inkColor_ != appearance->foreground ||
+            gradient_ != appearance->gradient || gradientEnd_ != appearance->gradientEnd ||
+            gradientAngle_ != appearance->gradientAngle) {
+            wall_.reset();
+            surfaceColor_ = appearance->surface;
+            inkColor_ = appearance->foreground;
+            gradient_ = appearance->gradient;
+            gradientEnd_ = appearance->gradientEnd;
+            gradientAngle_ = appearance->gradientAngle;
+        }
+        colors.brick = appearance->surface;
+        colors.alternate = cdsdk::mixColor(appearance->surface, appearance->foreground, .035);
+        colors.mortar = cdsdk::mixColor(appearance->surface, appearance->foreground, .13);
+        colors.shadow = cdsdk::mixColor(appearance->surface, appearance->foreground, .18);
+        colors.edge = appearance->surface;
+        colors.cut = appearance->foreground;
+        colors.cutShadow = appearance->foreground;
+        colors.cutEdge = appearance->foreground;
+        colors.chip = appearance->foreground;
+    }
     const auto dpi = canvas.devicePixelRatio();
     const double top = panelHeight - kHeight;
     const double pixelWidth = std::ceil(kWidth * scale * dpi), pixelHeight = std::ceil(panelHeight * scale * dpi);
     // Cache at the actual widget DPI, without enlarging the plugin texture. Oversized layouts draw directly.
-    if (pixelWidth >= 1 && pixelHeight >= 1 && pixelWidth <= 4096 && pixelHeight <= 4096 &&
-        pixelWidth * pixelHeight <= 2 * 1024 * 1024) {
-        const cybercanvas::SurfaceSize size{uint32_t(pixelWidth), uint32_t(pixelHeight), dpi};
-        if (!wall_.matches(canvas.target.Get(), size) || scale_ != scale || palette_ != name) {
-            canvas.renderLayer(wall_, size, [&](auto& cached) {
-                cached.scale(scale, scale);
-                wall(cached, colors, panelHeight);
+    if (!appearance || appearance->background) {
+        if (pixelWidth >= 1 && pixelHeight >= 1 && pixelWidth <= 4096 && pixelHeight <= 4096 &&
+            pixelWidth * pixelHeight <= 2 * 1024 * 1024) {
+            const cybercanvas::SurfaceSize size{uint32_t(pixelWidth), uint32_t(pixelHeight), dpi};
+            if (!wall_.matches(canvas.target.Get(), size) || scale_ != scale || palette_ != name) {
+                canvas.renderLayer(wall_, size, [&](auto& cached) {
+                    cached.scale(scale, scale);
+                    wall(cached, colors, panelHeight, appearance);
+                });
+                scale_ = scale;
+                palette_ = name;
+            }
+            canvas.target->DrawBitmap(wall_.bitmap(), D2D1::RectF(0, float(-top), float(kWidth), float(kHeight)), 1,
+                                      D2D1_BITMAP_INTERPOLATION_MODE_LINEAR);
+        } else {
+            wall_.reset();
+            canvas.saved([&] {
+                canvas.translate(0, -top);
+                wall(canvas, colors, panelHeight, appearance);
             });
-            scale_ = scale;
-            palette_ = name;
         }
-        canvas.target->DrawBitmap(wall_.bitmap(), D2D1::RectF(0, float(-top), float(kWidth), float(kHeight)), 1,
-                                  D2D1_BITMAP_INTERPOLATION_MODE_LINEAR);
     } else {
         wall_.reset();
-        canvas.saved([&] {
-            canvas.translate(0, -top);
-            wall(canvas, colors, panelHeight);
-        });
     }
     for (size_t i = 0; i < model.digits().size(); ++i) {
         const auto& carving = model.carvings()[i];

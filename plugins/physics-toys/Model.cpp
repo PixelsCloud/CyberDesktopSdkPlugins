@@ -260,11 +260,16 @@ void Model::reset(bool compact) {
         }
     } else {
         const bool pixels = options_.pixels;
-        const std::array<double, 3> lengths =
+        std::array<double, 3> lengths =
             mechanical_ ? (pixels                 ? (compact_ ? std::array{.90, 1.65, 1.05} : std::array{.85, .65, .95})
                            : options_.illustrated ? std::array{.55, .45, .68}
                                                   : std::array{.58, .42, .66})
                         : std::array{.79, .54, .94};
+        if (options_.tallChime) {
+            for (auto& length : lengths) {
+                length += .85;
+            }
+        }
         const double top = mechanical_ ? (pixels && compact_ ? 1.20 : options_.illustrated ? .62 : .70) : .46;
         for (int i = 0; i < 3; ++i) {
             const double x = mechanical_ ? (pixels ? (compact_ ? std::array{.63, 1.64, 2.58}[i] : .35 + i * .95)
@@ -301,7 +306,8 @@ void Model::reset(bool compact) {
             world_->distance(ground_, body, {x, suspension}, {0, -half.height}, lengths[i]);
             pieces_.push_back({body, ground_, {x, suspension}, {0, -half.height}, half, unsigned(i)});
             const double tailLength =
-                mechanical_ ? (pixels ? (compact_ ? std::array{.85, .85, .78}[i] : .65) : .18) : .32;
+                (options_.tallChime ? 1.0 : 0) +
+                (mechanical_ ? (pixels ? (compact_ ? std::array{.85, .85, .78}[i] : .65) : .18) : .32);
             const Size tailHalf =
                 mechanical_ ? (pixels ? Size{compact_ && i == 1 ? .22 : .16, compact_ ? (i == 1 ? .45 : .40) : .35}
                                : options_.illustrated ? Size{.18, i == 0   ? .42
@@ -490,7 +496,9 @@ Size Model::size() const {
     if (kind_ == Kind::Chime && options_.pixels) {
         return {compact_ ? 313. : 270., compact_ ? 600. : 410.};
     }
-    return kind_ == Kind::Chime ? Size{260, options_.illustrated ? 390. : 290.}
+    return kind_ == Kind::Chime ? Size{260, options_.tallChime     ? 485.
+                                            : options_.illustrated ? 390.
+                                                                   : 290.}
            : mechanical_        ? Size{360, compact_ ? 112. : 216.}
                                 : Size{360, compact_ ? 105. : 185.};
 }

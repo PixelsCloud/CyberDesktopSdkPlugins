@@ -1,6 +1,9 @@
+#include <CyberCanvas/DashboardGauge.h>
 #include <CyberCanvas/DataWidgets.h>
 #include <CyberCanvas/DesktopWidgets.h>
 
+#include <chrono>
+#include <filesystem>
 #include <iostream>
 #include <limits>
 
@@ -90,6 +93,51 @@ int main() {
                     chart.draw(canvas, {8, 145, 220, 25}, theme);
                 });
                 check("unchanged chart reuses geometry at actual DPI", chart.geometryBuilds() == builds);
+            }
+        }
+        DashboardGauge dashboard;
+        auto dashboardTheme = WidgetTheme::dark();
+        dashboardTheme.accent = 0xb099e7ff;
+        dashboardTheme.foreground = 0xf2f5f7ff;
+        dashboardTheme.muted = 0xb8c7d3ff;
+        dashboardTheme.font.family = L"Microsoft YaHei UI";
+        std::filesystem::create_directories("build/relwithdebinfo/Testing/system-info-design/native");
+        for (const double dpi : {1., 1.25, 1.5, 2.}) {
+            const uint32_t side = uint32_t(std::round(70 * dpi));
+            std::vector<uint8_t> dialPixels(size_t(side) * side * 4);
+            FrameBuffer frame{side, side, side * 4, dialPixels.size(), dialPixels.data(), dpi};
+            canvas.render(frame, {}, [&](auto&, auto) {
+                dashboard.draw(canvas, {0, 0, 70, 70}, 0, L"", L"", dashboardTheme);
+            });
+            check("dashboard retains a transparent center and open lower gap at actual DPI",
+                  dialPixels[(size_t(side / 2) * side + side / 2) * 4 + 3] == 0 &&
+                      dialPixels[(size_t(side - 1) * side + side / 2) * 4 + 3] == 0);
+            const auto draw = [&] {
+                canvas.render(frame, {}, [&](auto&, auto) {
+                    canvas.rectangle({0, 0, 70, 70}, 0x202428ff);
+                    dashboard.draw(canvas, {0, 0, 70, 70}, .67, L"67", L"%", dashboardTheme);
+                });
+            };
+            draw();
+            const auto gradientBefore = canvas.gradientCacheStats();
+            const auto uploadsBefore = canvas.stats().uploads.count;
+            draw();
+            const auto gradientAfter = canvas.gradientCacheStats();
+            check("dashboard reuses gradient resources without image uploads",
+                  gradientBefore.stopCreates == gradientAfter.stopCreates &&
+                      gradientBefore.brushCreates == gradientAfter.brushCreates &&
+                      uploadsBefore == canvas.stats().uploads.count);
+            if (dpi == 1) {
+                check("dashboard native 70px reference export",
+                      canvas.save(L"build/relwithdebinfo/Testing/system-info-design/native/native-67.png", frame));
+                const auto start = std::chrono::steady_clock::now();
+                for (int sample = 0; sample < 200; ++sample) {
+                    draw();
+                }
+                std::cout
+                    << "Native 70px cached gauge CPU export average "
+                    << std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count() / 200
+                    << " ms (includes CPU export; not GPU time)\n";
             }
         }
         std::vector<uint8_t> pixels(80 * 40 * 4);

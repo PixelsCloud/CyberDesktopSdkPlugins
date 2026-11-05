@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 
+#include <array>
 #include <cstdint>
 #include <string>
 
@@ -29,7 +30,8 @@ struct SurfaceDescription {
     float dpiScale = 1, corner = 24;
     SurfaceOptics optics;
     uint32_t material = 0;
-    AeroParameters aero;
+    // Retired material payload stays reserved to preserve the native record layout.
+    std::array<uint32_t, 5> reservedMaterial{};
 };
 
 struct alignas(64) SurfaceRecord {

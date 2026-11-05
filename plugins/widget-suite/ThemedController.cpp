@@ -1,6 +1,7 @@
 #include "plugins/widget-suite/ThemedController.h"
 
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Environment.h>
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
@@ -56,84 +57,99 @@ PlayerPointer View::playerPointer(Spec spec, CdRect safe, const cdsdk::Settings&
     }
 
 cdsdk::Settings defaults(Kind kind, bool mechanical, Defaults presentation) {
+    const auto colorway = kind == Kind::Calendar                            ? cdsdk::WidgetColorway::Coral
+                          : kind == Kind::RoundMatrix                       ? cdsdk::WidgetColorway::Teal
+                          : kind == Kind::SquareMatrix                      ? cdsdk::WidgetColorway::Honey
+                          : kind == Kind::Radial                            ? cdsdk::WidgetColorway::Iris
+                          : kind == Kind::Album || kind == Kind::InputStats ? cdsdk::WidgetColorway::Sky
+                                                                            : cdsdk::WidgetColorway::Plum;
     if (kind == Kind::InputStats && mechanical) {
-        return {{{"show_total", CD_SETTING_TOGGLE, 0}, {"reduced_motion", CD_SETTING_TOGGLE, 0}, PRESENTATION}};
+        return cdsdk::modernSettings(
+            {{{"show_total", CD_SETTING_TOGGLE, 0}, {"reduced_motion", CD_SETTING_TOGGLE, 0}, PRESENTATION}},
+            presentation.modern && !mechanical, colorway);
     }
     if (kind == Kind::InputStats) {
-        return {{{"show_background", CD_SETTING_TOGGLE, 1},
-                 {"background", CD_SETTING_COLOR, 0x17232BFF},
-                 {"foreground", CD_SETTING_COLOR, 0xEDF6F5FF},
-                 {"keyboard_color", CD_SETTING_COLOR, 0x4BE3B3FF},
-                 {"mouse_color", CD_SETTING_COLOR, 0x67B6FFFF},
-                 {"show_total", CD_SETTING_TOGGLE, 1},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"show_background", CD_SETTING_TOGGLE, 1},
+                                       {"background", CD_SETTING_COLOR, 0x17232BFF},
+                                       {"foreground", CD_SETTING_COLOR, 0xEDF6F5FF},
+                                       {"keyboard_color", CD_SETTING_COLOR, 0x4BE3B3FF},
+                                       {"mouse_color", CD_SETTING_COLOR, 0x67B6FFFF},
+                                       {"show_total", CD_SETTING_TOGGLE, 1},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
     if (kind == Kind::Player) {
-        return {{{"player",
-                  CD_SETTING_CHOICE,
-                  0,
-                  0,
-                  "auto",
-                  0,
-                  0,
-                  {"auto", "cyber_player", "qqmusic", "cloudmusic", "kugou", "spotify"}},
-                 {"show_background", CD_SETTING_TOGGLE, 1},
-                 {"background", CD_SETTING_COLOR, 0x17232BFF},
-                 {"foreground", CD_SETTING_COLOR, 0xEDF6F5FF},
-                 {"accent", CD_SETTING_COLOR, 0x4BE3B3FF},
-                 {"show_progress", CD_SETTING_TOGGLE, 1},
-                 {"reduced_motion", CD_SETTING_TOGGLE, 0},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"player",
+                                        CD_SETTING_CHOICE,
+                                        0,
+                                        0,
+                                        "auto",
+                                        0,
+                                        0,
+                                        {"auto", "cyber_player", "qqmusic", "cloudmusic", "kugou", "spotify"}},
+                                       {"show_background", CD_SETTING_TOGGLE, 1},
+                                       {"background", CD_SETTING_COLOR, 0x17232BFF},
+                                       {"foreground", CD_SETTING_COLOR, 0xEDF6F5FF},
+                                       {"accent", CD_SETTING_COLOR, 0x4BE3B3FF},
+                                       {"show_progress", CD_SETTING_TOGGLE, 1},
+                                       {"reduced_motion", CD_SETTING_TOGGLE, 0},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
     if (kind == Kind::Album && mechanical) {
-        return {{{"directory", CD_SETTING_TEXT, 0, 0, "", 0, 2048},
-                 {"recursive", CD_SETTING_TOGGLE, 0},
-                 {"interval", CD_SETTING_INTEGER, 8, 0, "", 2, 300},
-                 {"transition", CD_SETTING_NUMBER, 0, .45, "", 0, 2},
-                 {"fit", CD_SETTING_CHOICE, 0, 0, "cover", 0, 0, {"cover", "contain"}},
-                 {"counter", CD_SETTING_TOGGLE, 1},
-                 {"photo_motion", CD_SETTING_TOGGLE, 1},
-                 {"reduced_motion", CD_SETTING_TOGGLE, 0},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"directory", CD_SETTING_TEXT, 0, 0, "", 0, 2048},
+                                       {"recursive", CD_SETTING_TOGGLE, 0},
+                                       {"interval", CD_SETTING_INTEGER, 8, 0, "", 2, 300},
+                                       {"transition", CD_SETTING_NUMBER, 0, .45, "", 0, 2},
+                                       {"fit", CD_SETTING_CHOICE, 0, 0, "cover", 0, 0, {"cover", "contain"}},
+                                       {"counter", CD_SETTING_TOGGLE, 1},
+                                       {"photo_motion", CD_SETTING_TOGGLE, 1},
+                                       {"reduced_motion", CD_SETTING_TOGGLE, 0},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
     if (kind == Kind::Album) {
-        return {{{"directory", CD_SETTING_TEXT, 0, 0, "", 0, 2048},
-                 {"recursive", CD_SETTING_TOGGLE, 0},
-                 {"interval", CD_SETTING_INTEGER, 8, 0, "", 2, 300},
-                 {"transition", CD_SETTING_NUMBER, 0, .45, "", 0, 2},
-                 {"fit", CD_SETTING_CHOICE, 0, 0, "cover", 0, 0, {"cover", "contain"}},
-                 {"counter", CD_SETTING_TOGGLE, 1},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"directory", CD_SETTING_TEXT, 0, 0, "", 0, 2048},
+                                       {"recursive", CD_SETTING_TOGGLE, 0},
+                                       {"interval", CD_SETTING_INTEGER, 8, 0, "", 2, 300},
+                                       {"transition", CD_SETTING_NUMBER, 0, .45, "", 0, 2},
+                                       {"fit", CD_SETTING_CHOICE, 0, 0, "cover", 0, 0, {"cover", "contain"}},
+                                       {"counter", CD_SETTING_TOGGLE, 1},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
     if (kind == Kind::Calendar) {
-        return {{{"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
-                 {"background", CD_SETTING_COLOR, 0xF7F2E9FF},
-                 {"accent", CD_SETTING_COLOR, 0xF97819FF},
-                 {"adjacent_days", CD_SETTING_TOGGLE, 0},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
+                                       {"background", CD_SETTING_COLOR, 0xF7F2E9FF},
+                                       {"accent", CD_SETTING_COLOR, 0xF97819FF},
+                                       {"adjacent_days", CD_SETTING_TOGGLE, 0},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
     if (isMatrix(kind)) {
         const int64_t color = kind == Kind::RoundMatrix ? 0x05DC43FF : 0xFFFF16FF;
-        return {{{"gain", CD_SETTING_NUMBER, 0, 3.5, "", .2, 5},
-                 {"release", CD_SETTING_INTEGER, 160, 0, "", 40, 600},
-                 {"peaks", CD_SETTING_TOGGLE, 1},
-                 {"color", CD_SETTING_COLOR, color},
-                 {"color_top", CD_SETTING_COLOR, color},
-                 {"show_background", CD_SETTING_TOGGLE, 1},
-                 {"background", CD_SETTING_COLOR, 0x171219FF},
-                 {"matrix_rows", CD_SETTING_INTEGER, 9, 0, "", 6, 24},
-                 {"glow_strength", CD_SETTING_NUMBER, 0, 70, "", 0, 100},
-                 PRESENTATION}};
+        return cdsdk::modernSettings({{{"gain", CD_SETTING_NUMBER, 0, 3.5, "", .2, 5},
+                                       {"release", CD_SETTING_INTEGER, 160, 0, "", 40, 600},
+                                       {"peaks", CD_SETTING_TOGGLE, 1},
+                                       {"color", CD_SETTING_COLOR, color},
+                                       {"color_top", CD_SETTING_COLOR, color},
+                                       {"show_background", CD_SETTING_TOGGLE, 1},
+                                       {"background", CD_SETTING_COLOR, 0x171219FF},
+                                       {"matrix_rows", CD_SETTING_INTEGER, 9, 0, "", 6, 24},
+                                       {"glow_strength", CD_SETTING_NUMBER, 0, 70, "", 0, 100},
+                                       PRESENTATION}},
+                                     presentation.modern && !mechanical, colorway);
     }
 
-    return {{{"gain", CD_SETTING_NUMBER, 0, 3.5, "", .2, 5},
-             {"release", CD_SETTING_INTEGER, 160, 0, "", 40, 600},
-             {"peaks", CD_SETTING_TOGGLE, 1},
-             {"color", CD_SETTING_COLOR, presentation.spectrumColor},
-             {"color_top", CD_SETTING_COLOR, presentation.spectrumTop},
-             {"show_background", CD_SETTING_TOGGLE, presentation.spectrumBackground},
-             {"background", CD_SETTING_COLOR, 0x17222CDD},
-             PRESENTATION}};
+    return cdsdk::modernSettings({{{"gain", CD_SETTING_NUMBER, 0, 3.5, "", .2, 5},
+                                   {"release", CD_SETTING_INTEGER, 160, 0, "", 40, 600},
+                                   {"peaks", CD_SETTING_TOGGLE, 1},
+                                   {"color", CD_SETTING_COLOR, presentation.spectrumColor},
+                                   {"color_top", CD_SETTING_COLOR, presentation.spectrumTop},
+                                   {"show_background", CD_SETTING_TOGGLE, presentation.spectrumBackground},
+                                   {"background", CD_SETTING_COLOR, 0x17222CDD},
+                                   PRESENTATION}},
+                                 presentation.modern && !mechanical, colorway);
 }
 
 #undef PRESENTATION
@@ -660,6 +676,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
         if (folderChanged) {
             self.album->request(changed.at("directory").text, changed.at("recursive").integer != 0, 0, true);
         }
+        cdsdk::normalizeModernColors(changed);
         self.settings = std::move(changed);
         if (self.spec.kind == Kind::InputStats && self.spec.mechanical && !recordMotion(self)) {
             self.counterDrums.finish();

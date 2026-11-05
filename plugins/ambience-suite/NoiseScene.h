@@ -1,6 +1,7 @@
 #pragma once
 
 #include <CyberCanvas/Particles.h>
+#include <sdk/Appearance.h>
 #include <sdk/Images.h>
 #include <sdk/Scene.h>
 
@@ -33,6 +34,8 @@ private:
     std::filesystem::path directory_;
     std::unique_ptr<cdsdk::Scene> scene_;
     std::optional<CdCreateContext> context_;
+    cdsdk::WidgetAppearance appearance_;
+    bool modern_ = false;
     bool compact_ = false, dark_ = false, background_ = true;
     double corner_ = 5;
     double footerWidth_ = -1, footerDpr_ = 0, footerHeight_ = 22;

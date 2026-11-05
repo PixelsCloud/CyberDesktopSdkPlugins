@@ -72,7 +72,7 @@ void lcdDigit(int digit, Rect r, const Options& options) {
     target->SetTransform(previous);
 }
 
-void lcdText(const std::wstring& value, Rect box, const Options& options) {
+double lcdText(const std::wstring& value, Rect box, const Options& options) {
     double units = 0;
     for (auto c : value)
         units += c == L':' ? .35 : 1.14;
@@ -80,6 +80,7 @@ void lcdText(const std::wstring& value, Rect box, const Options& options) {
     const double digitWidth = std::min(box.width / std::max(1., units), box.height * .48) * options.sizePercent / 100.,
                  digitHeight = digitWidth * 2;
     double x = box.x + (box.width - units * digitWidth) * .5;
+    const double left = x + digitWidth * .02;
     const double y = box.y + (box.height - digitHeight) * .5;
     for (auto c : value) {
         if (c == L':') {
@@ -93,6 +94,7 @@ void lcdText(const std::wstring& value, Rect box, const Options& options) {
             x += digitWidth * 1.14;
         }
     }
+    return left;
 }
 
 void pixelText(const std::wstring& value, Rect box, const Options& options, bool round = false) {
@@ -103,20 +105,18 @@ void pixelText(const std::wstring& value, Rect box, const Options& options, bool
     int columns = -1;
     for (auto c : value)
         columns += c == L':' ? 2 : 4;
-    const double cell = std::min(box.width / (columns + 2), box.height / 9) * options.sizePercent / 100.;
-    const int gridColumns = std::max(columns + 2, int(std::floor(box.width / cell))),
-              gridRows = std::max(9, int(std::floor(box.height / cell)));
-    // Anchor the dot envelope to all four box edges. Distribute the remaining
-    // space between dots instead of leaving different residual outer margins.
-    const double side = cell * .80, pitchX = (box.width - side) / (gridColumns - 1),
-                 pitchY = (box.height - side) / (gridRows - 1);
-    const double radius = round ? cell * .40 : .15;
-    const auto inactive = CdColor{48, 39, 50, 255};
-    for (int row = 0; row < gridRows; ++row)
-        for (int col = 0; col < gridColumns; ++col)
+    const auto grid = arrangePixelGrid(columns, box, options.sizePercent);
+    const double side = grid.side, pitchX = grid.pitchX, pitchY = grid.pitchY;
+    const double radius = round ? side * .5 : .15;
+    const auto track = options.appearance.track;
+    const auto inactive = options.modern ? CdColor{uint8_t(track >> 24), uint8_t(track >> 16), uint8_t(track >> 8),
+                                                   options.appearance.background ? uint8_t(255) : uint8_t(24)}
+                                         : CdColor{48, 39, 50, 255};
+    for (int row = 0; row < grid.rows; ++row)
+        for (int col = 0; col < grid.columns; ++col)
             panel({box.x + col * pitchX, box.y + row * pitchY, side, side}, inactive, radius);
-    double x = box.x + ((gridColumns - columns) / 2) * pitchX;
-    const double y = box.y + ((gridRows - 7) / 2) * pitchY;
+    double x = box.x + grid.glyphColumn * pitchX;
+    const double y = box.y + grid.glyphRow * pitchY;
     for (auto c : value) {
         const bool colon = c == L':';
         const int width = colon ? 1 : 3;
@@ -134,20 +134,27 @@ void pixelText(const std::wstring& value, Rect box, const Options& options, bool
 void electronic(Spec spec, const Options& options, Time time, double w, double h) {
     const bool pixel = isPixel(spec.display), round = spec.display == Display::PixelRound,
                footer = options.date || options.weekday || options.seconds && spec.columns == 2;
-    const double pad = std::clamp(std::min(w, h) * .055, 3., 7.), bottom = footer ? std::clamp(h * .18, 12., 22.) : 0;
+    const double radius = options.modern ? std::clamp(options.appearance.radius, 0., std::min(w, h) * .25)
+                                         : std::clamp(options.cornerRadius, 0., std::min(w - 4, h - 5) * .5);
+    const double pad = options.modern ? std::max(6., std::ceil(radius * .2928932188134524))
+                                      : std::clamp(std::min(w, h) * .055, 3., 7.),
+                 bottom = footer ? std::clamp(h * .18, 12., 22.) : 0;
     // Match the spectrum plate: face edges (1,1,w-3,h-4), with room
     // below/right for the relief instead of an extra outer margin.
-    const double radius = std::clamp(options.cornerRadius, 0., std::min(w - 4, h - 5) * .5);
-    panel({3, 5, w - 4, h - 6}, CdColor{0, 0, 0, 21}, radius);
-    panel({1, 3, w - 2, h - 4}, CdColor{0, 0, 0, 12}, radius);
+    if (!options.modern) {
+        panel({3, 5, w - 4, h - 6}, CdColor{0, 0, 0, 21}, radius);
+        panel({1, 3, w - 2, h - 4}, CdColor{0, 0, 0, 12}, radius);
+    }
     ComPtr<ID2D1RoundedRectangleGeometry> mask;
-    require(factory->CreateRoundedRectangleGeometry(
-        D2D1::RoundedRect(D2D1::RectF(1, 1, float(w - 3), float(h - 4)), float(radius), float(radius)),
-        mask.GetAddressOf()));
+    const auto face =
+        options.modern ? D2D1::RectF(0, 0, float(w), float(h)) : D2D1::RectF(1, 1, float(w - 3), float(h - 4));
+    require(factory->CreateRoundedRectangleGeometry(D2D1::RoundedRect(face, float(radius), float(radius)),
+                                                    mask.GetAddressOf()));
     canvas.masked(mask.Get(), [&] {
-        panel({1, 1, w - 4, h - 5}, pixel ? options.cardColor : CdColor{240, 240, 224, 255}, radius);
+        if (!options.modern)
+            panel({1, 1, w - 4, h - 5}, pixel ? options.cardColor : CdColor{240, 240, 224, 255}, radius);
         const double innerRadius = std::max(0., radius - pad + 1);
-        if (!pixel) {
+        if (!pixel && !options.modern) {
             panel({pad, pad, w - pad * 2, h - pad * 2}, options.cardColor, innerRadius);
         }
         if (!pixel && options.glowPercent > 0) {
@@ -167,13 +174,16 @@ void electronic(Spec spec, const Options& options, Time time, double w, double h
         }
         const double contentPad = pixel ? 4 : pad + 2;
         const Rect main =
-            pixel ? Rect{1 + contentPad, 1 + contentPad, w - 4 - contentPad * 2,
-                         std::max(1., h - 5 - contentPad * 2 - bottom)}
-                  : Rect{contentPad, contentPad, w - contentPad * 2, std::max(1., h - contentPad * 2 - bottom)};
+            pixel && options.modern
+                ? Rect{pad, pad, w - pad * 2, std::max(1., h - pad * 2 - bottom - (footer ? pad : 0))}
+            : pixel ? Rect{1 + contentPad, 1 + contentPad, w - 4 - contentPad * 2,
+                           std::max(1., h - 5 - contentPad * 2 - bottom)}
+                    : Rect{contentPad, contentPad, w - contentPad * 2, std::max(1., h - contentPad * 2 - bottom)};
+        double captionLeft = pad + 2;
         if (pixel) {
             pixelText(value, main, options, round);
         } else {
-            lcdText(value, main, options);
+            captionLeft = lcdText(value, main, options);
         }
         if (footer) {
             const double y = h - pad - bottom;
@@ -190,11 +200,14 @@ void electronic(Spec spec, const Options& options, Time time, double w, double h
                 caption += weekdayText(time.weekday, options.language == "en");
             }
             const double right = options.seconds && spec.columns == 2 ? std::min(37., w * .23) : 0;
-            label(caption, {pad + 2, y, w - pad * 2 - right - 4, bottom}, color, bottom * .77, family,
-                  DWRITE_FONT_WEIGHT_NORMAL, false);
+            label(caption, {captionLeft, y, std::max(0., w - pad - right - 2 - captionLeft), bottom}, color,
+                  bottom * .77, family, DWRITE_FONT_WEIGHT_NORMAL, false);
             if (right) {
                 if (pixel) {
-                    pixelText(two(time.second), {w - pad - right, y - 1, right, bottom + 2}, options, round);
+                    pixelText(
+                        two(time.second),
+                        {w - pad - right, options.modern ? y : y - 1, right, options.modern ? bottom : bottom + 2},
+                        options, round);
                 } else {
                     lcdText(two(time.second), {w - pad - right, y, right, bottom}, options);
                 }

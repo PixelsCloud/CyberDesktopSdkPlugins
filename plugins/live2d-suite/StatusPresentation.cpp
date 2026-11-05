@@ -1,5 +1,9 @@
 #include "plugins/live2d-suite/StatusPresentation.h"
 
+#include <CyberCanvas/Canvas.h>
+
+#include <algorithm>
+
 namespace live2dplugin {
 FailureExplanation explainFailure(std::string_view detail) {
     const auto contains = [&](std::string_view value) {
@@ -46,7 +50,7 @@ FailureExplanation explainFailure(std::string_view detail) {
 }
 
 StatusPresentation drawFailure(cybercanvas::Canvas& canvas, cybercanvas::Rect area, std::string_view detail,
-                               uint32_t foreground) {
+                               uint32_t foreground, std::wstring_view fontFamily) {
     const auto explanation = explainFailure(detail);
     const auto message = L"模型加载失败\n" + explanation.reason + L"\n" + explanation.advice +
                          L"\n\n在设置中清空模型目录\n可恢复内置角色";
@@ -54,7 +58,7 @@ StatusPresentation drawFailure(cybercanvas::Canvas& canvas, cybercanvas::Rect ar
     const cybercanvas::Rect bounds{area.x + margin, area.y + margin, std::max(1., area.width - margin * 2),
                                    std::max(1., area.height - margin * 2)};
     cybercanvas::TextStyle style;
-    style.family = L"Microsoft YaHei UI";
+    style.family = fontFamily;
     style.locale = L"zh-CN";
     style.size = 13;
     style.align = cybercanvas::TextAlign::Center;

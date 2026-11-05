@@ -21,7 +21,6 @@
 #include <utility>
 
 #include "LiquidGlass/CompositionMaterial.h"
-#include "LiquidGlass/Contour.h"
 #include "libraries/dwmglass/src/DwmDiagnostics.h"
 #include "libraries/dwmglass/src/DwmSurfaceRegistry.h"
 #include "libraries/liquidglass/src/NativeSurfaceProtocol_win.h"
@@ -81,16 +80,6 @@ struct MaterialCache {
     uint64_t revision = 0;
 };
 
-struct ClipCache {
-    std::weak_ptr<Surface> owner;
-    ComPtr<ID2D1Factory> factory;
-    ComPtr<ID2D1PathGeometry> path;
-    float width = 0, height = 0, corner = 0, shoulder = 0;
-    bool attached = false;
-};
-
-std::map<uint16_t, ClipCache> clips;
-
 // Accessed only while the native compositor is drawing. No timer or polling.
 std::map<uint16_t, MaterialCache> materials;
 uint64_t lastRetirement = 0;
@@ -108,12 +97,8 @@ void pruneMaterials() {
     std::erase_if(materials, [](const auto& entry) {
         return entry.second.owner.expired();
     });
-    std::erase_if(clips, [](const auto& entry) {
-        return entry.second.owner.expired();
-    });
     if (registry->empty()) {
         materials.clear();
-        clips.clear();
         GlassRenderer::Cleanup();
     }
     residentCount.store(materials.size(), std::memory_order_release);
@@ -233,83 +218,6 @@ HRESULT drawGeometry(dwmcore::IDrawingContext* drawing, dwmcore::CLegacyMilBrush
     return GlassRenderer::g_CDrawingContext_DrawGeometry_Org(drawing, brush, geometry);
 }
 
-CAeroParams aeroParameters(const liquidglass::native::SurfaceDescription& description, ID2D1DeviceContext& context) {
-    CAeroParams result{};
-    result.blurAmount = description.aero.blurSigma * description.dpiScale;
-    result.optimization = D2D1_GAUSSIANBLUR_OPTIMIZATION_BALANCED;
-    const auto argb = description.aero.color;
-    const float red = float((argb >> 16u) & 255u) / 255;
-    const float green = float((argb >> 8u) & 255u) / 255;
-    const float blue = float(argb & 255u) / 255;
-    const D2D1_COLOR_F srgb = D2D1::ColorF(red, green, blue, 1);
-    winrt::com_ptr<ID2D1Bitmap1> target;
-    winrt::check_hresult(Util::GetTargetBitmapFromD2DContext(&context, target));
-    const auto format = target->GetPixelFormat().format;
-    const auto color = format == DXGI_FORMAT_R16G16B16A16_FLOAT || format == DXGI_FORMAT_R32G32B32A32_FLOAT
-                           ? Color::sRGBToscRGB(srgb, 0)
-                           : srgb;
-    result.color = {color.r * description.aero.colorBalance, color.g * description.aero.colorBalance,
-                    color.b * description.aero.colorBalance, description.aero.colorBalance};
-    // OpenGlass follows Windows 7: afterglow remains sRGB even on scRGB targets.
-    result.afterglow = {srgb.r * description.aero.afterglowBalance, srgb.g * description.aero.afterglowBalance,
-                        srgb.b * description.aero.afterglowBalance, 1};
-    result.blurBalance = description.aero.blurBalance;
-    result.fallback = color;
-    return result;
-}
-
-ComPtr<ID2D1PathGeometry> clipGeometry(ID2D1DeviceContext& context, const std::shared_ptr<Surface>& surface,
-                                       const liquidglass::native::SurfaceDescription& description,
-                                       const D2D1_RECT_F& bounds) {
-    ComPtr<ID2D1Factory> factory;
-    context.GetFactory(&factory);
-    auto& cached = clips[surface->id()];
-    const float width = bounds.right - bounds.left, height = bounds.bottom - bounds.top;
-    const float corner = description.corner * description.dpiScale, shoulder = 12 * description.dpiScale;
-    const bool attached = description.attachedTop != 0;
-    if (cached.owner.lock() == surface && cached.factory.Get() == factory.Get() && cached.width == width &&
-        cached.height == height && cached.corner == corner && cached.shoulder == shoulder &&
-        cached.attached == attached) {
-        return cached.path;
-    }
-    ClipCache candidate;
-    candidate.owner = surface;
-    candidate.factory = factory;
-    candidate.width = width;
-    candidate.height = height;
-    candidate.corner = corner;
-    candidate.shoulder = shoulder;
-    candidate.attached = attached;
-    winrt::check_hresult(factory->CreatePathGeometry(&candidate.path));
-    ComPtr<ID2D1GeometrySink> sink;
-    winrt::check_hresult(candidate.path->Open(&sink));
-    const auto contour = liquidglass::surfaceContour(width, height, corner, attached, shoulder);
-    const auto point = [](double x, double y) {
-        return D2D1::Point2F(float(x), float(y));
-    };
-    for (uint32_t index = 0; index < contour.count; ++index) {
-        const auto& segment = contour.segments[index];
-        const auto& p = segment.points;
-        switch (segment.verb) {
-            case liquidglass::ContourVerb::Move:
-                sink->BeginFigure(point(p[0], p[1]), D2D1_FIGURE_BEGIN_FILLED);
-                break;
-            case liquidglass::ContourVerb::Line:
-                sink->AddLine(point(p[0], p[1]));
-                break;
-            case liquidglass::ContourVerb::Cubic:
-                sink->AddBezier({point(p[0], p[1]), point(p[2], p[3]), point(p[4], p[5])});
-                break;
-            case liquidglass::ContourVerb::Close:
-                sink->EndFigure(D2D1_FIGURE_END_CLOSED);
-                break;
-        }
-    }
-    winrt::check_hresult(sink->Close());
-    cached = std::move(candidate);
-    return cached.path;
-}
-
 HRESULT render(CGlassRealizer* realizer, ID2D1DeviceContext* context, ID2D1Geometry* geometry,
                const D2D1_RECT_F& drawingBounds, const std::span<const D2D1_RECT_F>& rectangles,
                const CAeroParams& parameters, Shared::GlassType type) try {
@@ -319,29 +227,6 @@ HRESULT render(CGlassRealizer* realizer, ID2D1DeviceContext* context, ID2D1Geome
     }
     const auto description = surface->description();
     sample(Diagnostic::Render);
-    if (description.material == uint32_t(liquidglass::NativeMaterial::AeroGlass)) {
-        if (materials.erase(surface->id())) {
-            residentCount.store(materials.size(), std::memory_order_release);
-        }
-        const auto bounds = currentSurfaceBounds;
-        const bool masked = description.corner > 0 || description.attachedTop;
-        const auto clip = masked ? clipGeometry(*context, surface, description, bounds) : ComPtr<ID2D1PathGeometry>{};
-        if (masked) {
-            context->PushLayer(D2D1::LayerParameters1(drawingBounds, clip.Get(), D2D1_ANTIALIAS_MODE_PER_PRIMITIVE,
-                                                      D2D1::Matrix3x2F::Translation(bounds.left, bounds.top), 1,
-                                                      nullptr, D2D1_LAYER_OPTIONS1_INITIALIZE_FROM_BACKGROUND),
-                               nullptr);
-        }
-        const auto restoreClip = wil::scope_exit([&] {
-            if (masked) {
-                context->PopLayer();
-            }
-        });
-        const auto result = originalRender(realizer, context, geometry, drawingBounds, rectangles,
-                                           aeroParameters(description, *context), Shared::GlassType::Aero);
-        surface->report(uint32_t(result), SUCCEEDED(result), description.revision, description.material);
-        return result;
-    }
     winrt::com_ptr<ID2D1Bitmap1> target;
     winrt::com_ptr<ID3D11Texture2D> texture;
     winrt::check_hresult(Util::GetTargetBitmapFromD2DContext(context, target));
@@ -501,7 +386,6 @@ void removeMaterialHooks() {
 
 void clearMaterials() {
     materials.clear();
-    clips.clear();
     currentSurface.reset();
     lastRetirement = 0;
     residentCount.store(0, std::memory_order_release);

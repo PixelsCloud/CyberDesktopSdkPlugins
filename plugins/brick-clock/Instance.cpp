@@ -1,3 +1,5 @@
+#include <sdk/Appearance.h>
+
 #include <algorithm>
 #include <cmath>
 
@@ -16,6 +18,7 @@ Instance::Instance(const CdCreateContext& context)
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"debris_count", CD_SETTING_INTEGER, 12, 0, {}, 8, 20}},
       model_(context) {
+    cdsdk::modernDefaults(settings, cdsdk::WidgetColorway::Coral);
     canvas_.bindGpu(context);
     environment_.bind(context);
     redraw_.bind(context);
@@ -79,7 +82,8 @@ CdResult Instance::render(const CdFrame& frame) {
         const double scale = std::min(safe.width / kWidth, safe.height / kHeight);
         canvas.translate((safe.width - kWidth * scale) / 2, safe.height - kHeight * scale);
         canvas.scale(scale, scale);
-        renderer_.draw(canvas, model_, settings.at("palette").text, scale, safe.height / scale);
+        const auto appearance = cdsdk::widgetAppearance(settings);
+        renderer_.draw(canvas, model_, settings.at("palette").text, scale, safe.height / scale, &appearance);
     });
     return CD_OK;
 }
@@ -125,6 +129,7 @@ CdResult Instance::applySettings(const CdSettingValue* values, uint32_t count) {
     }
     const bool motionChanged = next.at("animate").integer != settings.at("animate").integer ||
                                next.at("reduced_motion").integer != settings.at("reduced_motion").integer;
+    cdsdk::normalizeModernColors(next);
     settings = std::move(next);
     model_.setChipCount(unsigned(settings.at("debris_count").integer));
     if (motionChanged) {

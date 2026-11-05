@@ -2,6 +2,7 @@
 
 #include <CyberCanvas/Noise.h>
 #include <CyberCanvas/Physics2D.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Environment.h>
 #include <sdk/Interaction.h>
@@ -13,6 +14,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include "plugins/physics-toys/Model.h"
@@ -21,6 +23,9 @@ namespace toys {
 struct Appearance {
     bool dark = true, background = true, twelve = false;
     std::string palette = "pastel";
+    bool modern = false;
+    cdsdk::WidgetAppearance style{};
+    std::wstring_view fontFamily = L"Segoe UI";
 };
 
 void draw(cybercanvas::Canvas& canvas, const Model& model, const Appearance& appearance);
@@ -66,6 +71,7 @@ private:
     cdsdk::RedrawRequests redraw_;
     cdsdk::UpdateLoop updates_;
     CdRect safe_{};
+    std::wstring selectedFont_;
     Point origin_{};
     double scale_ = 1;
     bool hidden_ = false, compact_ = false, dark_ = true, laidOut_ = false;

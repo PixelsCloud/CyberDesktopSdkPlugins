@@ -1,10 +1,14 @@
 #pragma once
 
-#include <CyberCanvas/Canvas.h>
+#include <CyberCanvas/Types.h>
 
-#include <algorithm>
+#include <cstdint>
 #include <string>
 #include <string_view>
+
+namespace cybercanvas {
+class Canvas;
+}
 
 namespace live2dplugin {
 struct FailureExplanation {
@@ -21,5 +25,5 @@ struct StatusPresentation {
 };
 
 StatusPresentation drawFailure(cybercanvas::Canvas& canvas, cybercanvas::Rect area, std::string_view detail,
-                               uint32_t foreground);
+                               uint32_t foreground, std::wstring_view fontFamily = L"Microsoft YaHei UI");
 }  // namespace live2dplugin

@@ -1,6 +1,6 @@
 #pragma once
-
 #include <CyberCanvas/Physics2D.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Environment.h>
 #include <sdk/Settings.h>
@@ -101,10 +101,11 @@ Palette palette(const std::string& name);
 class Renderer {
 public:
     void draw(cybercanvas::Canvas& canvas, const Model& model, const std::string& colors, double scale = 1,
-              double panelHeight = kHeight);
+              double panelHeight = kHeight, const cdsdk::WidgetAppearance* appearance = nullptr);
 
 private:
-    void wall(cybercanvas::Canvas& canvas, const Palette& colors, double height);
+    void wall(cybercanvas::Canvas& canvas, const Palette& colors, double height,
+              const cdsdk::WidgetAppearance* appearance);
     void number(cybercanvas::Canvas& canvas, size_t index, int digit, const Palette& colors, double reveal,
                 double opacity = 1);
     void prepare(cybercanvas::Canvas& canvas);
@@ -114,6 +115,10 @@ private:
     cybercanvas::ComPtr<ID2D1Factory> factory_;
     double scale_ = 0;
     std::string palette_;
+    uint32_t surfaceColor_ = 0, inkColor_ = 0;
+    bool gradient_ = false;
+    uint32_t gradientEnd_ = 0;
+    double gradientAngle_ = 90;
 };
 
 class Instance {

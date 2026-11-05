@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 
 #include <algorithm>
 #include <chrono>
@@ -72,17 +73,19 @@ std::wstring weekday(const std::string& date, bool english) {
 }
 
 cdsdk::Settings defaults() {
-    return {{{"location_mode", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "city", "coordinates", "station"}},
-             {"city", CD_SETTING_TEXT, 0, 0, "", 0, 128},
-             {"station", CD_SETTING_TEXT, 0, 0, "", 0, 16},
-             {"latitude", CD_SETTING_NUMBER, 0, 0, "", -90, 90},
-             {"longitude", CD_SETTING_NUMBER, 0, 0, "", -180, 180},
-             {"credentials_file", CD_SETTING_TEXT, 0, 0, "", 0, 1024},
-             {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
-             {"palette", CD_SETTING_CHOICE, 0, 0, "dark", 0, 0, {"dark", "light"}},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
-             {"font_family", CD_SETTING_FONT, 0, 0, "@siyuan-heavy"},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+    return cdsdk::modernSettings(
+        {{{"location_mode", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "city", "coordinates", "station"}},
+          {"city", CD_SETTING_TEXT, 0, 0, "", 0, 128},
+          {"station", CD_SETTING_TEXT, 0, 0, "", 0, 16},
+          {"latitude", CD_SETTING_NUMBER, 0, 0, "", -90, 90},
+          {"longitude", CD_SETTING_NUMBER, 0, 0, "", -180, 180},
+          {"credentials_file", CD_SETTING_TEXT, 0, 0, "", 0, 1024},
+          {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
+          {"palette", CD_SETTING_CHOICE, 0, 0, "dark", 0, 0, {"dark", "light"}},
+          {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
+          {"font_family", CD_SETTING_FONT, 0, 0, "@siyuan-heavy"},
+          {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+        true, cdsdk::WidgetColorway::Fern);
 }
 
 Query queryFrom(const cdsdk::Settings& s) {

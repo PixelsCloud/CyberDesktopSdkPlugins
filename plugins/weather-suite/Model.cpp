@@ -1,4 +1,6 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
+#include <sdk/Settings.h>
 #include <sdk/WeatherPresentation.h>
 
 #include <algorithm>
@@ -58,19 +60,31 @@ double displayTemperature(double celsius, bool imperial) {
 }
 
 cdsdk::Settings defaults(bool mechanical) {
-    return {{{"auto_location", CD_SETTING_TOGGLE, 1},
-             {"city", CD_SETTING_TEXT, 0, 0, "", 0, 128},
-             {"country", CD_SETTING_TEXT, 0, 0, "", 0, 2},
-             {"coordinates", CD_SETTING_TOGGLE, 0},
-             {"latitude", CD_SETTING_NUMBER, 0, 0, "", -90, 90},
-             {"longitude", CD_SETTING_NUMBER, 0, 0, "", -180, 180},
-             {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
-             {"units", CD_SETTING_CHOICE, 0, 0, "metric", 0, 0, {"metric", "imperial"}},
-             {"palette", CD_SETTING_CHOICE, 0, 0, "dark", 0, 0, {"dark", "light"}},
-             {"reduced_motion", CD_SETTING_TOGGLE, 0},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
-             {"font_family", CD_SETTING_FONT, 0, 0, mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy"},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+    auto settings = cdsdk::modernSettings(
+        {{{"auto_location", CD_SETTING_TOGGLE, 1},
+          {"city", CD_SETTING_TEXT, 0, 0, "", 0, 128},
+          {"country", CD_SETTING_TEXT, 0, 0, "", 0, 2},
+          {"coordinates", CD_SETTING_TOGGLE, 0},
+          {"latitude", CD_SETTING_NUMBER, 0, 0, "", -90, 90},
+          {"longitude", CD_SETTING_NUMBER, 0, 0, "", -180, 180},
+          {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
+          {"units", CD_SETTING_CHOICE, 0, 0, "metric", 0, 0, {"metric", "imperial"}},
+          {"palette", CD_SETTING_CHOICE, 0, 0, "dark", 0, 0, {"dark", "light"}},
+          {"reduced_motion", CD_SETTING_TOGGLE, 0},
+          {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
+          {"font_family", CD_SETTING_FONT, 0, 0, mechanical ? "Microsoft YaHei UI" : "@siyuan-heavy"},
+          {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+        !mechanical, cdsdk::WidgetColorway::Sky);
+    if (!mechanical) {
+        settings.define({{"show_background", CD_SETTING_TOGGLE, 1},
+                         {"background", CD_SETTING_COLOR, 0x2E70FFFFu},
+                         {"background_gradient_end", CD_SETTING_COLOR, 0x2E70FFFFu},
+                         {"foreground", CD_SETTING_COLOR, 0xFFFFFFFFu},
+                         {"secondary", CD_SETTING_COLOR, 0xFFFFFFFFu},
+                         {"accent", CD_SETTING_COLOR, 0xE69A45FFu},
+                         {"background_corner_radius", CD_SETTING_INTEGER, 12, 0, "", 0, 32}});
+    }
+    return settings;
 }
 
 Location locationFrom(const cdsdk::Settings& settings) {

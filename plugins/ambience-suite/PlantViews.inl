@@ -136,12 +136,13 @@ void plant(double x, double bottom, double height, int type, const Model& model,
 void plants(Spec spec, const cdsdk::Settings& settings, const Model& model, double w, double h, bool dark) {
     const bool garden = spec.columns >= 4 && settings.at("garden").integer;
     const bool info = spec.rows > 1 && settings.at("show_info").integer;
-    const uint32_t fg = dark ? 0xE3EDDBFF : 0x294B34FF, muted = dark ? 0x8CAAA0FF : 0x748371FF;
+    const auto appearance = cdsdk::widgetAppearance(settings);
+    const uint32_t fg = appearance.foreground, muted = appearance.secondary;
     const double growth = model.growth(wallSeconds(), settings.at("mode").text == "grow");
     const auto species = settings.at("species").text;
     const bool en = settings.at("language").text == "en";
     const int type = species == "succulent" ? 1 : species == "daisy" ? 2 : 0;
-    if (info && h > 110) {
+    if (info && h > 110 && !cdsdk::modernAppearance(settings)) {
         draw.text(garden      ? (en ? L"Little garden" : L"我的小花园")
                   : type == 0 ? (en ? L"Pothos" : L"绿萝")
                   : type == 1 ? (en ? L"Succulent" : L"多肉")
@@ -165,10 +166,11 @@ void plants(Spec spec, const cdsdk::Settings& settings, const Model& model, doub
                             : settings.at("mode").text == "grow"
                                 ? (growth >= .99 ? (en ? L"Mature" : L"已长成") : (en ? L"Growing" : L"生长中"))
                                 : (en ? L"Ornamental" : L"观赏");
-        draw.text(status, 9, {9, h - 23, w - 45, 18}, muted, false);
+        if (model.waterFeedback && model.interaction.seconds() < 2)
+            draw.text(status, 9, {9, h - 23, w - 45, 18}, muted, false);
         auto theme = dark ? cybercanvas::WidgetTheme::dark() : cybercanvas::WidgetTheme::light();
         theme.surface = dark ? 0x456F73FF : 0xD6E8E1FF;
-        theme.foreground = dark ? 0x9ED2DFFF : 0x4D9DB6FF;
+        theme.foreground = appearance.accent;
         theme.accent = theme.surface;
         theme.onAccent = theme.foreground;
         cybercanvas::IconButton water(1, {w - 28, h - 25, 20, 20}, "droplet", L"", cybercanvas::ButtonStyle::Filled);

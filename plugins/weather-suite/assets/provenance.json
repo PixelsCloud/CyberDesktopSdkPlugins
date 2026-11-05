@@ -7,97 +7,97 @@
   "version": "0.1.0",
   "tarball": "https://registry.npmjs.org/@meteocons/svg-static/-/svg-static-0.1.0.tgz",
   "integrity": "sha512-dnuXOkt1W5q+XZbyj54dzjuBcKmsC0eLv51IVaW9kzzvzwnhwv9KgNXHKgpvmdN6cX2stMo+k95iMFbcyM4x5Q==",
-  "style": "fill",
-  "processing": "Static SVG rasterized to 256px transparent PNG, transparent margins cropped; no icon animation or CDN request at runtime.",
+  "style": "flat",
+  "processing": "Static Flat SVG sources; transparent margins cropped for packaged PNG derivatives. No icon animation or runtime CDN requests.",
   "icons": [
     {
       "name": "clear-day",
-      "svgSha256": "48743c29f18f37a844737cddafceb2d6d194090cc59f70c2733d10a70a96218a",
-      "pngSha256": "8208e766fabf9f8923ba752ffad357272e718acd620004549462b7f729739727"
+      "svgSha256": "11b8b9a6fa5c2b4b44601de6227061b55fdf96910a886938bdd626bcf8b16cb9",
+      "pngSha256": "07b4d23c7507008a2bc53a5f0748e475c50c0d9fa5fc8555d3c769c3351c4886"
     },
     {
       "name": "clear-night",
-      "svgSha256": "de9cbec8f7ef5611b693435396be57eb5ea3ea7889c40ca2cf47bfd4577e060a",
-      "pngSha256": "f32de377f432eff8a82b05b6cb506df0d4fd9bf3ca2a56d705185da9553a2087"
+      "svgSha256": "27d58c382bc8d24ce0e413650921eb3a3a2c3c574f675a95e948221072bb4fa3",
+      "pngSha256": "5a6b177674f10ac29ab7071147f261c260c4c1cc6b83646212f9eaefc965225d"
     },
     {
       "name": "mostly-clear-day",
-      "svgSha256": "0c719adc78862cd4a77f20e492f3c196feb6360af1f5a4b4bcbddabd15e542b9",
-      "pngSha256": "ca5808b02552bacf43a22e18190eb8d037fa75d9d2f076e42729b39278aa33b9"
+      "svgSha256": "1c45fa2a361c54a56e81392466f3b565a0aaf9409b6e20ad5227cf67bee9e3e6",
+      "pngSha256": "c1d6e2eb2c24e7cda2d9dbbe7a2433dd9ed6126a727d1c924e622f3af8502808"
     },
     {
       "name": "mostly-clear-night",
-      "svgSha256": "a0a4b4e19120a4e59c6c13aa25aac99615db40104cd67993c981989f328c93f2",
-      "pngSha256": "e95d4af511483bbdf24c5d205137d2cbeced93f7a28a12305a3980eb2dc4cedd"
+      "svgSha256": "354f4ad80a69099f27cac98f1b6f47aabbea093eb20e5b7fc94181b14c18d164",
+      "pngSha256": "c1d6e2eb2c24e7cda2d9dbbe7a2433dd9ed6126a727d1c924e622f3af8502808"
     },
     {
       "name": "partly-cloudy-day",
-      "svgSha256": "630e0fe6e488a53745d5de6b8dc709e665edd1443488ac3782445bdd1376ee9a",
-      "pngSha256": "b3afd4c04427cb0ff40ecc9d76779476ac093c51d9a09fe128050f6cd24adadd"
+      "svgSha256": "d2019b4ff5e5aca2ff494679603b3af7c8b2995fa6b016972e8fed410f675e6c",
+      "pngSha256": "c012bd1c25232da17f260023c0fa607fe574ce8ae22423f843c5ade6c0ad394c"
     },
     {
       "name": "partly-cloudy-night",
-      "svgSha256": "5037008b15f5fb95245dc02cb60e03b5ee8da71497f16f56ec9c0d63c19021b1",
-      "pngSha256": "968cbdda3bfe119c2958d4547aa71d780ee774a7824b8ca67a9f9021b16a4f41"
+      "svgSha256": "c50bd6842f85e7ddea3352b3de1cdb1005bc31fceeab9ebac5c1fb437c15d2c8",
+      "pngSha256": "c012bd1c25232da17f260023c0fa607fe574ce8ae22423f843c5ade6c0ad394c"
     },
     {
       "name": "overcast",
-      "svgSha256": "b6db5c2b7ab6e49dd1661e009f6096c78655b93594c39816f15c09b03ab722c4",
-      "pngSha256": "17da6fe720427a6840344e741624bacf22eb5551f2ad37c3520dec1acbb398f8"
+      "svgSha256": "35508a47876492c35581d7607e4a41f8cf7ad41239e55778e5042b609346520f",
+      "pngSha256": "c012bd1c25232da17f260023c0fa607fe574ce8ae22423f843c5ade6c0ad394c"
     },
     {
       "name": "fog",
-      "svgSha256": "773194ee3c9e92543f69d892208d48ed862eab22f62fa9211b31e4eb4cd877f9",
-      "pngSha256": "3d07219a51c093542f09abc5b384f565914e2219f78546060c8c88caf0c354b7"
+      "svgSha256": "8ecba5dd64c1dc04337ca3b66cf3f4586c3e024174d7b2cd7a91373c3e347e86",
+      "pngSha256": "c796d8d968c4cc74aae3ab94ec75dcd2aa2c98e2cb3389129e8cc8d6d4c99005"
     },
     {
       "name": "drizzle",
-      "svgSha256": "45fca64f036414f4297f920a5da6994dfe2e76182d9e2e1ff1643dcc517b3604",
-      "pngSha256": "4e3703363b2b9fd67f29fff7e3e638d23d580f0a4b157c3c354b1c4bf7eb51b1"
+      "svgSha256": "caad9af5dd6669de1670fcbcf39a28ac0ec9a89caa2a2834bf1e8168b846fdf3",
+      "pngSha256": "e32cac18c075e440f363cb480cb52a220f224bef9578587dadb0576c426d2438"
     },
     {
       "name": "rain",
-      "svgSha256": "bd2300f05bcc4f98751adbda0489dd35cf3ac94761a8ad79f0255cdd9e150e4a",
-      "pngSha256": "2025415896abac54cb0af1b2bc6126ed564b536db6ee736068d507fb6e618c34"
+      "svgSha256": "a4a2f1ab292661105dc8888de02a2c6bcdeca5f74f01fa458784ae3e576b3569",
+      "pngSha256": "7e14095c7bba741884b6cc52be0d4b99c19e7c712b4890b66098dc28d2a87869"
     },
     {
       "name": "sleet",
-      "svgSha256": "d5151b8688ef3f7a2ad3acdebe09e32b40b9b2a7400c53683a95ed54686e781e",
-      "pngSha256": "c8fb15475667dcb00a16ebda86bcabeb3ecb572e0e2450d79ce2e484d5bae80c"
+      "svgSha256": "9f0ffb2fe4b1cd6f4c29d47ecf6b5724acb6a7ea73ec86837e7c8d7545eb5eb2",
+      "pngSha256": "bddbc66915404850231bd1ba175ca34e1a27f5f480c243dcdca1291a458991e0"
     },
     {
       "name": "snow",
-      "svgSha256": "ab7f7a25b852f3d795cf76d6f70ffa47a9086f9f6ddd9d9c32bd05f2bc4f9d41",
-      "pngSha256": "21fe7af03fd63a1abd6e9acee6a7e079cebc1dfb7138f5ba7c767e84166f1251"
+      "svgSha256": "fe6e52bc2517a7c61a44b54edf84a2a11a971be4881f9ca3c3bf384d2b9a6617",
+      "pngSha256": "1c39956003dd532fda1fcf2ecf2147f19d9a5d2a011d6b30b5f21425ba1a97e8"
     },
     {
       "name": "snowflake",
-      "svgSha256": "33c04ea14ca47e12626742cd7a69c469ea4c5bc9bc053ce69edb1da483afb034",
-      "pngSha256": "9e4849880830c4e2c6059f3734d241de07d43e67271df3a78187460aeb853c80"
+      "svgSha256": "609288b39599a05df4406d7c7d1dcc164b49a5d6c74b389f50f1ab6824390fba",
+      "pngSha256": "919fac5d2f0bd7e6bc98fcff9da5c2cce931e2d62d7c2296d50afadc677eb128"
     },
     {
       "name": "thunderstorms-day",
-      "svgSha256": "bb2ba7187fc8cc4ad5ad306140d972b203ecf99ff7af8839d57f48ed279d99a8",
-      "pngSha256": "3d3742f9613c27ee01c5e7062a823fbe5c66bab6d6c5e57de4ae8b9a674cce36"
+      "svgSha256": "58400826ab21ceaedcdaee28af597d3ce1a7741b3924d6c87b4c5f6428564b05",
+      "pngSha256": "cd0016dd97b3fa57c23f2f34d49e360805ecc8ac7829edc6cb36ae75e1704b15"
     },
     {
       "name": "thunderstorms-night",
-      "svgSha256": "ec18999859890835d9fab606d80d2297585d0ed8b2595fa564a5f8b700854954",
-      "pngSha256": "c3ef83b5bb786e735debea03f7a64b3c96971b746be3b46dc0051efce0f75a03"
+      "svgSha256": "ccedb16992cd291aa08783a4d6059fcf4fbef890714fbea06af1fbe481d7c53e",
+      "pngSha256": "cd0016dd97b3fa57c23f2f34d49e360805ecc8ac7829edc6cb36ae75e1704b15"
     },
     {
       "name": "thunderstorms-day-rain",
-      "svgSha256": "901ece625b9530e3b2cd5afb159505769a8b083319f6f7b23598b4c0628760b1",
-      "pngSha256": "e6171c0a336070a29ca3b9773dedecab0723ec14909c6a61ba9a64a7948de480"
+      "svgSha256": "67daa369dfcba989262b0edddcda0b56b3391061dbe9a552083772f4e2e61c1c",
+      "pngSha256": "23c7feadff87c6e7d214db3380e72356e1843b3d178842a2907efa8df4ea49a1"
     },
     {
       "name": "thunderstorms-night-rain",
-      "svgSha256": "1339422eff27329204fada17caa0b394ac3b851db0542e74eaea585a06c13dcd",
-      "pngSha256": "b63a6f7a0683f8ef7ee26099eeae2546d9e1efe6d4486ec4855226058fff31e7"
+      "svgSha256": "733511a747a3185d67a53a7b7a07008dd5e552af6cc41bcc1528bf38f88876a6",
+      "pngSha256": "23c7feadff87c6e7d214db3380e72356e1843b3d178842a2907efa8df4ea49a1"
     },
     {
       "name": "not-available",
-      "svgSha256": "c7cf03ab8e06a5ee1e7c4a394a779070b2297518f2cb61dbc981a059f43adc37",
+      "svgSha256": "8f38cdc708765117522667bf68d89eda446ec318901f7e32a621b5afd8618cfe",
       "pngSha256": "de04f7a7e6f34de068d5447394769a93acd40d593ce41e81b243ec7d9d015a18"
     }
   ]

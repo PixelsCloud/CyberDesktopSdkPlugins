@@ -1,6 +1,7 @@
 // Included inside Canvas::Impl. Cache the static grid and small light textures;
 // live frames only stamp changed spectrum levels into the instance's surface.
-using MatrixKey = std::tuple<Kind, float, float, double, int, bool, uint32_t, uint32_t, uint32_t, float, double>;
+using MatrixKey = std::tuple<Kind, float, float, double, int, bool, uint32_t, uint32_t, uint32_t, float, double, bool,
+                             uint32_t, double>;
 
 struct MatrixCache {
     std::optional<MatrixKey> key;
@@ -43,12 +44,26 @@ static void matrixDot(ID2D1RenderTarget* surface, ID2D1SolidColorBrush* pen, boo
 void prepareMatrix(Spec spec, const cdsdk::Settings& settings, float w, float h) {
     const int rows = int(settings.at("matrix_rows").integer);
     const bool background = settings.at("show_background").integer != 0, round = spec.kind == Kind::RoundMatrix;
-    const auto plate = uint32_t(settings.at("background").integer), base = uint32_t(settings.at("color").integer),
-               top = uint32_t(settings.at("color_top").integer);
-    const float radius =
-        std::clamp(float(settings.at("background_corner_radius").integer), 0.f, std::min(w - 4, h - 5) * .5f);
-    const double glow = settings.at("glow_strength").number / 100;
-    const MatrixKey key{spec.kind, w, h, dpr, rows, background, plate, base, top, radius, glow};
+    const auto plate = uint32_t(settings.at("background").integer),
+               base = modernStyle ? appearance.foreground : uint32_t(settings.at("color").integer),
+               top = modernStyle ? appearance.accent : uint32_t(settings.at("color_top").integer);
+    const float radius = std::clamp(float(settings.at("background_corner_radius").integer), 0.f,
+                                    modernStyle ? std::min(w, h) * .25f : std::min(w - 4, h - 5) * .5f);
+    const double glow = modernStyle ? 0 : settings.at("glow_strength").number / 100;
+    const MatrixKey key{spec.kind,
+                        w,
+                        h,
+                        dpr,
+                        rows,
+                        background,
+                        plate,
+                        base,
+                        top,
+                        radius,
+                        glow,
+                        modernStyle && appearance.gradient,
+                        appearance.gradientEnd,
+                        appearance.gradientAngle};
     if (matrixCache.owner == target && matrixCache.key && *matrixCache.key == key) {
         return;
     }
@@ -56,14 +71,19 @@ void prepareMatrix(Spec spec, const cdsdk::Settings& settings, float w, float h)
     MatrixCache cache;
     cache.owner = target;
     cache.grid = arrangeMatrix(w, h, rows);
+    if (modernStyle) {
+        cache.grid.left = (w - (cache.grid.columns - 1) * cache.grid.pitchX - cache.grid.diameter) * .5f;
+        cache.grid.top = (h - (cache.grid.rows - 1) * cache.grid.pitchY - cache.grid.diameter) * .5f;
+    }
     const auto& grid = cache.grid;
     cache.halo = std::max(1.f, grid.diameter * .38f * float(glow));
     cache.spriteSize = float(std::ceil((grid.diameter + 2 * cache.halo) * dpr) / dpr);
-    require(factory->CreateRoundedRectangleGeometry(D2D1::RoundedRect(D2D1::RectF(1, 1, w - 3, h - 4), radius, radius),
-                                                    cache.mask.GetAddressOf()));
+    const auto face = modernStyle ? D2D1::RectF(0, 0, w, h) : D2D1::RectF(1, 1, w - 3, h - 4);
+    require(
+        factory->CreateRoundedRectangleGeometry(D2D1::RoundedRect(face, radius, radius), cache.mask.GetAddressOf()));
 
     cache.background = matrixBitmap(w, h, [&](auto& offscreen, ID2D1RenderTarget* surface, ID2D1SolidColorBrush* pen) {
-        if (background) {
+        if (background && !modernStyle) {
             pen->SetColor(paint(0x00000015));
             surface->FillRoundedRectangle(D2D1::RoundedRect(D2D1::RectF(3, 5, w - 1, h - 1), radius, radius), pen);
             pen->SetColor(paint(0x0000000C));
@@ -71,11 +91,17 @@ void prepareMatrix(Spec spec, const cdsdk::Settings& settings, float w, float h)
         }
         offscreen.masked(cache.mask.Get(), [&] {
             if (background) {
-                pen->SetColor(paint(plate));
-                surface->FillRectangle(D2D1::RectF(1, 1, w - 3, h - 4), pen);
+                if (modernStyle) {
+                    cdsdk::widgetBackground(canvas, appearance, {0, 0, w, h}, surface);
+                    // The bitmap is retained; the one-off compatible target is not.
+                    canvas.releaseGradientTarget(surface);
+                } else {
+                    pen->SetColor(paint(plate));
+                    surface->FillRectangle(face, pen);
+                }
             }
 
-            pen->SetColor(paint(0x302732FF));
+            pen->SetColor(paint(modernStyle ? appearance.track : 0x302732FF));
             for (int row = 0; row < grid.rows; ++row) {
                 for (int column = 0; column < grid.columns; ++column) {
                     matrixDot(surface, pen, round, grid.left + column * grid.pitchX, grid.top + row * grid.pitchY,

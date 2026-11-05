@@ -6,6 +6,7 @@
 #include <winrt/Windows.Storage.Streams.h>
 
 #include <QBuffer>
+#include <QImage>
 #include <QImageReader>
 #include <QMetaObject>
 #include <QPointer>
@@ -18,6 +19,7 @@
 #include <mutex>
 #include <set>
 #include <thread>
+#include <utility>
 
 #include "CyberLyrics/MediaTimelineClock.h"
 
@@ -128,6 +130,8 @@ struct MediaService::Impl {
         MediaSnapshot snapshot;
         MediaTimelineClock clock;
         bool metadata = true, resetTimeline = false;
+        uint64_t coverRetryAt = 0;
+        unsigned coverRetries = 0;
     };
 
     QPointer<MediaService> owner;
@@ -323,7 +327,11 @@ struct MediaService::Impl {
                                     changed(false);
                                 });
                         }
-                        node->metadata |= dirty.contains(id);
+                        if (dirty.contains(id)) {
+                            node->metadata = true;
+                            node->coverRetries = 0;
+                            node->coverRetryAt = 0;
+                        }
                     }
                     std::erase_if(nodes, [&](const auto& entry) {
                         return !present.contains(entry.first);
@@ -343,19 +351,25 @@ struct MediaService::Impl {
                     for (auto& [id, node] : nodes) {
                         try {
                             auto& snapshot = node->snapshot;
-                            if (node->metadata) {
+                            if (node->metadata || (node->coverRetryAt && GetTickCount64() >= node->coverRetryAt)) {
                                 const auto properties = complete(node->session.TryGetMediaPropertiesAsync(), stop);
                                 const auto title = string(properties.Title()).left(1024);
                                 const auto artist = string(properties.Artist()).left(1024);
                                 const auto album = string(properties.AlbumTitle()).left(1024);
-                                node->resetTimeline |=
+                                const bool trackChanged =
                                     snapshot.title != title || snapshot.artist != artist || snapshot.album != album;
+                                node->resetTimeline |= trackChanged;
+                                if (trackChanged) {
+                                    snapshot.cover = {};
+                                    snapshot.coverGeneration = ++coverGeneration;
+                                    node->coverRetries = 0;
+                                }
                                 snapshot.title = title;
                                 snapshot.artist = artist;
                                 snapshot.album = album;
-                                snapshot.cover = {};
-                                snapshot.coverGeneration = ++coverGeneration;
                                 node->metadata = false;
+                                node->coverRetryAt = 0;
+                                QImage cover;
                                 if (const auto reference = properties.Thumbnail()) {
                                     try {
                                         const auto stream = complete(reference.OpenReadAsync(), stop);
@@ -373,14 +387,23 @@ struct MediaService::Impl {
                                                 const auto size = decoder.size();
                                                 if (size.isValid() && size.width() <= 8192 && size.height() <= 8192) {
                                                     decoder.setScaledSize(size.scaled(256, 256, Qt::KeepAspectRatio));
-                                                    snapshot.cover = decoder.read().convertToFormat(
+                                                    cover = decoder.read().convertToFormat(
                                                         QImage::Format_RGBA8888_Premultiplied);
                                                 }
                                             }
                                         }
                                     } catch (...) {
-                                        snapshot.cover = {};
+                                        // Keep the last cover for this track while its thumbnail is unavailable.
                                     }
+                                }
+                                if (!cover.isNull()) {
+                                    if (snapshot.cover != cover) {
+                                        snapshot.cover = std::move(cover);
+                                        snapshot.coverGeneration = ++coverGeneration;
+                                    }
+                                    node->coverRetries = 0;
+                                } else if (node->coverRetries < 3) {
+                                    node->coverRetryAt = GetTickCount64() + 1000 * ++node->coverRetries;
                                 }
                             }
                             const auto playback = node->session.GetPlaybackInfo();
@@ -417,6 +440,9 @@ struct MediaService::Impl {
                             values.push_back(snapshot);
                         } catch (...) {
                             // Retry transient metadata failures, never block the UI thread.
+                            if (!node->snapshot.title.isEmpty()) {
+                                values.push_back(node->snapshot);
+                            }
                         }
                     }
                     publish(std::move(values), focused);

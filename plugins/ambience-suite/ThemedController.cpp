@@ -1,6 +1,7 @@
 #include "plugins/ambience-suite/ThemedController.h"
 
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Interaction.h>
 #include <sdk/Update.h>
 
@@ -32,34 +33,38 @@ View::~View() = default;
     }
 
 cdsdk::Settings defaults(Spec spec, Defaults presentation) {
+    const auto colorway = spec.kind == Kind::Plant ? cdsdk::WidgetColorway::Fern : cdsdk::WidgetColorway::Teal;
     if (spec.kind == Kind::Plant) {
-        return {{APPEARANCE(presentation.plantBackground && spec.rows > 1),
-                 MOTION,
-                 {"species",
-                  CD_SETTING_CHOICE,
-                  0,
-                  0,
-                  presentation.compactSucculent && spec.columns == 1 ? "succulent" : "pothos",
-                  0,
-                  0,
-                  {"pothos", "succulent", "daisy"}},
-                 {"mode", CD_SETTING_CHOICE, 0, 0, "ornamental", 0, 0, {"ornamental", "grow"}},
-                 {"garden", CD_SETTING_TOGGLE, spec.columns >= 4},
-                 {"show_info", CD_SETTING_TOGGLE, presentation.plantInfo && spec.rows > 1}}};
+        return cdsdk::modernSettings({{APPEARANCE(presentation.plantBackground && spec.rows > 1),
+                                       MOTION,
+                                       {"species",
+                                        CD_SETTING_CHOICE,
+                                        0,
+                                        0,
+                                        presentation.compactSucculent && spec.columns == 1 ? "succulent" : "pothos",
+                                        0,
+                                        0,
+                                        {"pothos", "succulent", "daisy"}},
+                                       {"mode", CD_SETTING_CHOICE, 0, 0, "ornamental", 0, 0, {"ornamental", "grow"}},
+                                       {"garden", CD_SETTING_TOGGLE, spec.columns >= 4},
+                                       {"show_info", CD_SETTING_TOGGLE, presentation.plantInfo && spec.rows > 1}}},
+                                     presentation.modern, colorway);
     }
-    return {{APPEARANCE(1),
-             MOTION,
-             {"primary", CD_SETTING_INTEGER, 0, 0, "", 0, 5},
-             {"preset", CD_SETTING_CHOICE, 0, 0, "rain", 0, 0, {"rain", "sea", "campfire", "custom"}},
-             {"link", CD_SETTING_CHOICE, 0, 0, "independent", 0, 0, {"independent", "rain", "fire", "stars"}},
-             {"master", CD_SETTING_INTEGER, 25, 0, "", 0, 100},
-             {"timer_minutes", CD_SETTING_INTEGER, 30, 0, "", 0, 240},
-             {"rain", CD_SETTING_INTEGER, 60, 0, "", 0, 100},
-             {"ocean", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
-             {"stream", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
-             {"forest", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
-             {"fire", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
-             {"wind", CD_SETTING_INTEGER, 0, 0, "", 0, 100}}};
+    return cdsdk::modernSettings(
+        {{APPEARANCE(1),
+          MOTION,
+          {"primary", CD_SETTING_INTEGER, 0, 0, "", 0, 5},
+          {"preset", CD_SETTING_CHOICE, 0, 0, "rain", 0, 0, {"rain", "sea", "campfire", "custom"}},
+          {"link", CD_SETTING_CHOICE, 0, 0, "independent", 0, 0, {"independent", "rain", "fire", "stars"}},
+          {"master", CD_SETTING_INTEGER, 25, 0, "", 0, 100},
+          {"timer_minutes", CD_SETTING_INTEGER, 30, 0, "", 0, 240},
+          {"rain", CD_SETTING_INTEGER, 60, 0, "", 0, 100},
+          {"ocean", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
+          {"stream", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
+          {"forest", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
+          {"fire", CD_SETTING_INTEGER, 0, 0, "", 0, 100},
+          {"wind", CD_SETTING_INTEGER, 0, 0, "", 0, 100}}},
+        presentation.modern, colorway);
 }
 
 #undef APPEARANCE
@@ -367,6 +372,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
             }
             self.audio = group;
         }
+        cdsdk::normalizeModernColors(next);
         self.settings = std::move(next);
         if (self.spec.kind == Kind::Plant) {
             self.renderer->cancelInput();

@@ -1,5 +1,10 @@
 #include "CyberCanvas/DataWidgets.h"
 
+#include <algorithm>
+#include <cmath>
+#include <stdexcept>
+#include <utility>
+
 namespace cybercanvas {
 auto ContentNotice::draw(Canvas& canvas, const WidgetTheme& theme) const -> void {
     cybercanvas::detail::layoutRect(bounds);

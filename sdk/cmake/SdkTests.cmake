@@ -1,3 +1,9 @@
+add_executable(cd_default_appearance_tests EXCLUDE_FROM_ALL tests/DefaultAppearanceTest.cpp)
+target_link_libraries(cd_default_appearance_tests PRIVATE cd_sdk_tool_support cd_sdk_rendering)
+target_compile_options(cd_default_appearance_tests PRIVATE /utf-8 /W4)
+set_target_properties(cd_default_appearance_tests PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
+    DISABLE_PRECOMPILE_HEADERS ON UNITY_BUILD OFF)
+
 add_executable(cd_sdk_background_tests EXCLUDE_FROM_ALL tests/BackgroundTest.cpp tests/BackgroundAbiTest.c)
 add_executable(cd_sdk_background_reference_tests EXCLUDE_FROM_ALL tests/BackgroundReferenceTest.cpp)
 target_link_libraries(cd_sdk_background_reference_tests PRIVATE CyberDesktopSDK::Core CyberDesktopSDK::BackgroundReference)

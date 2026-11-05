@@ -254,15 +254,15 @@ void lifecycleTests() {
         host.advance(1000);
         check(host.timers.begin()->second.interval > 33, "reduced motion continues time updates without animation");
         instance.render(frame);
-        const auto beforePalette = bytes;
-        CdSettingValue color{sizeof(CdSettingValue), CD_SETTING_CHOICE, "palette", 0, 0, "slate"};
-        check(instance.applySettings(&color, 1) == CD_OK && instance.render(frame) == CD_OK && bytes != beforePalette,
-              "palette changes invalidate the cached wall immediately");
-        CdSettingValue invalid[]{{sizeof(CdSettingValue), CD_SETTING_CHOICE, "palette", 0, 0, "sand"},
+        const auto beforeColor = bytes;
+        CdSettingValue color{sizeof(CdSettingValue), CD_SETTING_COLOR, "background", 0x204060FF};
+        check(instance.applySettings(&color, 1) == CD_OK && instance.render(frame) == CD_OK && bytes != beforeColor,
+              "background color changes invalidate the cached wall immediately");
+        CdSettingValue invalid[]{{sizeof(CdSettingValue), CD_SETTING_COLOR, "background", 0x80A060FF},
                                  {sizeof(CdSettingValue), CD_SETTING_INTEGER, "debris_count", 999}};
-        check(
-            instance.applySettings(invalid, 2) == CD_ERROR_ARGUMENT && instance.settings.at("palette").text == "slate",
-            "invalid multi-setting updates are rejected transactionally");
+        check(instance.applySettings(invalid, 2) == CD_ERROR_ARGUMENT &&
+                  instance.settings.at("background").integer == 0x204060FF,
+              "invalid multi-setting updates are rejected transactionally");
         auto invalidFrame = frame;
         invalidFrame.rgba = nullptr;
         check(instance.render(invalidFrame) == CD_ERROR_ARGUMENT, "invalid output buffers are rejected");

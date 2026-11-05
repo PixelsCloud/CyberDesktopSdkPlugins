@@ -1,11 +1,15 @@
 #include <sdk/Canvas.h>
 #include <sdk/Language.h>
 #include <sdk/RenderOutput.h>
+#include <sdk/WindowsFonts.h>
 
 #include <algorithm>
+#include <string>
 
 namespace cdsdk {
 struct Canvas::Impl {
+    std::unique_ptr<WindowsFonts> fonts;
+    std::string fontRequest;
     OutputBinding output_;
     CdRenderSession session_{};
     cybercanvas::CanvasStats before_{};
@@ -15,6 +19,21 @@ struct Canvas::Impl {
 Canvas::Canvas() : impl_(std::make_unique<Impl>()) {}
 
 Canvas::~Canvas() = default;
+
+void Canvas::selectFont(std::string_view family) {
+    if (!impl_->fonts) {
+        impl_->fonts = std::make_unique<WindowsFonts>(nativeTextFactory());
+    }
+    if (impl_->fontRequest != family) {
+        impl_->fontRequest.assign(family);
+        impl_->fonts->select(nativeTextFactory(), impl_->fontRequest);
+    }
+    fontCollection(impl_->fonts->collection());
+}
+
+const wchar_t* Canvas::selectedFont() const {
+    return impl_->fonts ? impl_->fonts->family() : L"Microsoft YaHei";
+}
 
 void Canvas::bindGpu(const CdCreateContext& context) {
     impl_->output_.bind(context);
@@ -58,7 +77,7 @@ void Canvas::image(const cybercanvas::ImageData& image, CdRect area, cybercanvas
 void Canvas::text(const std::wstring& source, double size, CdRect area, uint32_t rgba, bool center, bool bold) {
     cybercanvas::TextStyle style;
     style.size = size;
-    style.family = L"Microsoft YaHei";
+    style.family = selectedFont();
     style.locale = drawingLocale();
     style.align = center ? cybercanvas::TextAlign::Center : cybercanvas::TextAlign::Start;
     style.bold = bold;

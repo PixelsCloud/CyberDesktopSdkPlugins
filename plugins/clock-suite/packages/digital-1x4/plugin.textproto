@@ -4,7 +4,7 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 0
+content_padding: 6
 layouts {
     id: "1x4"
     name: "4×1（宽×高）"
@@ -219,68 +219,7 @@ settings_page {
             }
         }
     }
-    fields {
-        id: "theme_colors"
-        label: "文字跟随桌面主题"
-        type: TOGGLE
-        section: "外观"
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Use desktop theme colors" description: "Affects only this instance." section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "文字跟隨桌面主題" section: "外觀" }
-        }
-    }
-    fields {
-        id: "text_color"
-        label: "自定义文字 / 指针"
-        type: COLOR
-        description: "关闭跟随桌面主题后生效。"
-        section: "外观"
-        color_default: 724116735
-        localized {
-            key: "en"
-            value { label: "Text and hands" description: "Affects only this instance." section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "自定義文字 / 指標" description: "關閉跟隨桌面主題後生效。" section: "外觀" }
-        }
-    }
-    fields {
-        id: "secondary_color"
-        label: "自定义日期 / 星期"
-        type: COLOR
-        description: "关闭跟随桌面主题后生效。"
-        section: "外观"
-        color_default: 1986748671
-        localized {
-            key: "en"
-            value { label: "Date and weekday color" description: "Affects only this instance." section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "自定義日期 / 星期" description: "關閉跟隨桌面主題後生效。" section: "外觀" }
-        }
-    }
-    fields {
-        id: "seconds_color"
-        label: "秒数 / 秒针颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3379443711
-        localized {
-            key: "en"
-            value { label: "Seconds and second hand" description: "Affects only this instance." section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "秒數 / 秒針顏色" section: "外觀" }
-        }
-    }
+
     fields {
         id: "content_scale"
         label: "内容大小（%）"
@@ -299,48 +238,7 @@ settings_page {
             value { label: "內容大小（%）" section: "佈局" }
         }
     }
-    fields {
-        id: "relief_strength"
-        label: "立体阴影强度（%）"
-        type: NUMBER
-        description: "调节文字、刻度、指针的投影和细微高光；0 为平面绘制。"
-        section: "外观"
-        maximum: 100.0
-        step: 5.0
-        number_default: 65.0
-        localized {
-            key: "en"
-            value {
-                label: "Relief and shadow strength (%)"
-                description: "0 disables raised details."
-                section: "Appearance"
-            }
-        }
-        localized {
-            key: "zh-TW"
-            value {
-                label: "立體陰影強度（%）"
-                description: "調節文字、刻度、指標的投影和細微高光；0 為平面繪製。"
-                section: "外觀"
-            }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "外观"
-        max_length: 128
-        text_default: "@siyuan-heavy"
-        localized {
-            key: "en"
-            value { label: "Font" description: "Affects only this instance." section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "字型" section: "外觀" }
-        }
-    }
+
     fields {
         id: "language"
         label: "语言"
@@ -384,6 +282,147 @@ settings_page {
     localized {
         key: "zh-TW"
         value { title: "時鐘設定" description: "只調整當前時鐘例項。尺寸由桌面網格決定，內容自動適配實際寬高。" }
+    }
+
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3891720703
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        section: "外观"
+        text_default: "solid"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        localized {
+            key: "en"
+            value { label: "Background fill" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3891720703
+        localized {
+            key: "en"
+            value { label: "Gradient end color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        section: "外观"
+        integer_default: 90
+        minimum: 0
+        maximum: 360
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Gradient angle (°)" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 376334591
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "次要文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 1552515583
+        localized {
+            key: "en"
+            value { label: "Secondary text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "强调颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3817954047
+        localized {
+            key: "en"
+            value { label: "Accent color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        integer_default: 12
+        minimum: 0
+        maximum: 32
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" }
+        }
     }
 }
 preview: "preview.png"

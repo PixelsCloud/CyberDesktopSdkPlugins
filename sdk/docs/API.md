@@ -94,9 +94,13 @@ The extension supplies `valid_fields`, `cpu_temperature_celsius` and `sampled_at
 
 ## 必需的插件设置页
 
-插件描述可声明 `content_padding`（每边的逻辑像素留白，范围 0–24）；未声明时宿主默认 12。小格子插件可以用 `content_padding: 3`，扩大绘制区域。宿主布局和 GPU 内容抓取使用相同留白，插件继续按实际传入的画布宽高和安全区绘制。此属性不改变 C ABI。
+插件描述可声明 `content_padding`（每边的逻辑像素留白，范围 0–24）；未声明时宿主默认 12。默认组件使用 `content_padding: 6`，完整主体与运动范围距占格四边各至少 6px；跨格组件只约束整体外边界。宿主布局和 GPU 内容抓取使用相同安全区，插件按实际宽高与 DPI 重排内容，不拉伸整张卡片。
 
-带外层卡片背景的插件统一使用 `content_padding: 4`，与音乐频谱保持一致。卡片主体在安全画布中采用 `(left=1, top=1, right=width-3, bottom=height-4)`，右侧与下方的剩余空间用于紧凑阴影。文字、图表的内部留白单独计算，不要再次缩小整个外层背景；透明内容插件仍按自身布局声明留白。横排或竖排的多卡片组合也使用同一组外围边界。外层背景的 `background_corner_radius` 设置为 INTEGER，统一默认 5，范围 0–32 逻辑像素；0 表示直角，较小的卡片按半边长限制实际圆角。
+默认组件通过 `<sdk/Appearance.h>` 的 `modernDefaults()` 定义统一外观：`show_background`、RGBA `background`、`foreground`、`secondary`、`accent`、`font_family` 与 `background_corner_radius`。这些字段必须同时在描述文件中声明，由宿主按实例保存。主文字、次文字、控件与图表分别使用相应颜色；图片、照片、角色与图形字形保留内容原貌。`Canvas::selectFont()` 支持系统字体与 SDK 字体 ID，复用 DirectWrite 字体集合与布局缓存。
+
+`WidgetColorway` 提供 Sky、Teal、Iris、Coral、Honey、Rose、Fern 和 Plum 八组统一配色，组件按功能选择默认色，描述文件中的默认值须与原生设置一致。未点亮的点阵使用由底色混入少量前景色生成的 `track`，不能按宿主深浅模式写死深色。`normalizeModernColors()` 在组件成功应用设置时只识别上一版完整的四颜色黑白默认组合，并替换成该组件的新默认配色；部分修改过的颜色组合保持原样。
+
+`widgetBackground()` 在传入的安全画布内绘制圆角矩形，无椭圆底板；默认圆角 12，配置范围 0–32，并限制到短边的四分之一。关闭背景时不绘制底板或底板阴影，透明区域必须随局部重绘正确清除。功能表盘、字牌、唱片等结构保留自身形状。只显示核心数据、单位、内容与必要错误，不增加插件名、操作提示或就绪文案。
 
 每个插件必须在 `PluginDescriptor.settings_page` 声明非空设置页，并实现 C ABI 的 `get_setting`、`apply_settings`。支持 TOGGLE、INTEGER、NUMBER、TEXT、CHOICE、COLOR；定义标签、说明、分组、默认值和范围。宿主提供标准编辑控件、恢复默认、应用、保存、取消。无设置页或缺接口的插件直接拒绝，不保留旧接口兼容。
 

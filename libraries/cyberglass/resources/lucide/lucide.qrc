@@ -115,8 +115,28 @@
     <file alias="layers.svg">layers.svg</file>
     <file alias="archive.svg">archive.svg</file>
     <file alias="monitor-cog.svg">monitor-cog.svg</file>
-  </qresource>
+      <file alias="battery.svg">battery.svg</file>
+    <file alias="battery-charging.svg">battery-charging.svg</file>
+    <file alias="cloud.svg">cloud.svg</file>
+    <file alias="cloud-fog.svg">cloud-fog.svg</file>
+    <file alias="cloud-moon.svg">cloud-moon.svg</file>
+    <file alias="cloud-lightning.svg">cloud-lightning.svg</file>
+    <file alias="snowflake.svg">snowflake.svg</file>
+    <file alias="calendar-days.svg">calendar-days.svg</file>
+    <file alias="clipboard-list.svg">clipboard-list.svg</file>
+    <file alias="clipboard.svg">clipboard.svg</file>
+</qresource>
   <qresource prefix="/icons/brand">
     <file alias="cyber-desktop.svg">../brand/cyber-desktop.svg</file>
-  </qresource>
+      <file alias="battery.svg">battery.svg</file>
+    <file alias="battery-charging.svg">battery-charging.svg</file>
+    <file alias="cloud.svg">cloud.svg</file>
+    <file alias="cloud-fog.svg">cloud-fog.svg</file>
+    <file alias="cloud-moon.svg">cloud-moon.svg</file>
+    <file alias="cloud-lightning.svg">cloud-lightning.svg</file>
+    <file alias="snowflake.svg">snowflake.svg</file>
+    <file alias="calendar-days.svg">calendar-days.svg</file>
+    <file alias="clipboard-list.svg">clipboard-list.svg</file>
+    <file alias="clipboard.svg">clipboard.svg</file>
+</qresource>
 </RCC>

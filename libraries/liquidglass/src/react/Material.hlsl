@@ -7,7 +7,7 @@ cbuffer Settings : register(b0) {
     float4 Optics;  // displacement in pixels, saturation factor, aberration, mode
     float4 Pose;    // CSS scale XY, fractional body origin XY
     float4 Pointer;// mouseOffset percentages XY, hover/press glow opacity
-    float4 Glow;   // third radial opacity, overLight, adaptive light-background blend, unused
+    float4 Glow;   // third radial opacity, overLight, adaptive light-background blend, external contour
     float4 Frame;  // output dimensions, SVG blur padding XY
     float4 Mask;   // template body dimensions, padding, attached-top
     float4 Slice;  // nine-slice body caps XY, mask texture dimensions
@@ -199,6 +199,9 @@ float Gradient(float2 localPx, bool second) {
 
 float2 BorderPaint(float2 localPx, float outer, float inner, bool second) {
     float band = max(0.0, outer - inner);
+    // External paths are filled by the compositor. Do not put a second,
+    // rectangular outline underneath their actual contour.
+    band *= 1 - Glow.w;
     float alpha = Gradient(localPx, second) * outer;
     float premultiplied = alpha;
     float inset = .25 * (1 - InsetMask.SampleLevel(LinearClamp, MaskUv(localPx - float2(0, Panel.w)), 0).a) * outer;

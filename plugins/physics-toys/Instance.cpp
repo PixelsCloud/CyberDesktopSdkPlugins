@@ -1,3 +1,6 @@
+#include <sdk/Appearance.h>
+#include <sdk/WindowsFonts.h>
+
 #include <ctime>
 #include <numbers>
 
@@ -19,7 +22,16 @@ Instance::Instance(const CdCreateContext& context, Kind kind, bool mechanical)
                {"twelve_hour", CD_SETTING_TOGGLE, 0},
                {"palette", CD_SETTING_CHOICE, 0, 0, "pastel", 0, 0, {"pastel", "ocean"}}},
       model_(context, kind, mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".1x4"),
-             mechanical) {
+             mechanical,
+             ModelOptions{.separateEnclosure = !mechanical,
+                          .wallInset = mechanical ? -.05 : .16,
+                          .tallChime = !mechanical && kind == Kind::Chime && context.plugin_id &&
+                                       std::string_view(context.plugin_id).ends_with(".3x2")}) {
+    if (!mechanical) {
+        cdsdk::modernDefaults(settings,
+                              kind == Kind::Chime ? cdsdk::WidgetColorway::Honey : cdsdk::WidgetColorway::Teal);
+        selectedFont_ = cdsdk::fontWide(settings.at("font_family").text);
+    }
     compact_ = mechanical && context.plugin_id && std::string_view(context.plugin_id).ends_with(".1x4");
     canvas_.bindGpu(context);
     environment_.bind(context);
@@ -119,13 +131,17 @@ CdResult Instance::render(const CdFrame& frame) {
         origin_ = {safe.x + (safe.width - area.width * scale_) * .5,
                    safe.y + (safe.height - area.height * scale_) * .5};
         if (!mechanical_ && settings.at("show_background").integer) {
-            canvas.box(0, 0, safe.width, safe.height, 12, dark ? 0x24363be8 : 0xfaf6ede8);
+            cdsdk::widgetBackground(canvas, cdsdk::widgetAppearance(settings), {0, 0, safe.width, safe.height});
         }
         canvas.saved([&] {
             canvas.translate(origin_.x - safe.x, origin_.y - safe.y);
             canvas.scale(scale_, scale_);
-            const Appearance appearance{dark, false, settings.at("twelve_hour").integer != 0,
-                                        settings.at("palette").text};
+            Appearance appearance{dark, false, settings.at("twelve_hour").integer != 0, settings.at("palette").text};
+            appearance.modern = !mechanical_;
+            if (appearance.modern) {
+                appearance.style = cdsdk::widgetAppearance(settings);
+                appearance.fontFamily = selectedFont_;
+            }
             if (mechanical_) {
                 mechanical_->draw(canvas, model_, appearance, scale_);
             } else {
@@ -215,6 +231,10 @@ CdResult Instance::applySettings(const CdSettingValue* values, uint32_t count) {
         return result;
     }
     cancel();
+    if (!mechanical_ && next.at("font_family").text != settings.at("font_family").text) {
+        selectedFont_ = cdsdk::fontWide(next.at("font_family").text);
+    }
+    cdsdk::normalizeModernColors(next);
     settings = std::move(next);
     synchronizeTime();
     schedule();

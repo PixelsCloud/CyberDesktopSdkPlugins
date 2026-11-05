@@ -146,7 +146,7 @@ get_filename_component(CYBERCANVAS_YOGA_PREFIX "${yoga_DIR}/../.." ABSOLUTE)
 # The 3.2.1 vcpkg target also contains an undefined VCPKG_IMPORT_PREFIX path.
 set_property(TARGET yoga::yogacore PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${CYBERCANVAS_YOGA_PREFIX}/include")
 add_library(cybercanvas_layout STATIC src/Flex.cpp src/Scene.cpp src/List.cpp
-  src/Charts.cpp src/Components.cpp src/DataWidgets.cpp src/DesktopWidgets.cpp)
+  src/Charts.cpp src/Components.cpp src/DataWidgets.cpp src/DesktopWidgets.cpp src/DashboardGauge.cpp)
 add_library(CyberCanvas::Layout ALIAS cybercanvas_layout)
 set_target_properties(cybercanvas_layout PROPERTIES EXPORT_NAME Layout AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

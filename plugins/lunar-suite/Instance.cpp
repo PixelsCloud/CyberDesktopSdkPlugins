@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Environment.h>
 #include <sdk/Update.h>
 
@@ -13,17 +14,19 @@
 namespace lunarplugin {
 cdsdk::Settings defaults(bool mechanical) {
     if (mechanical) {
-        return {{{"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
-                 {"adjacent_days", CD_SETTING_TOGGLE, 0},
-                 {"reduced_motion", CD_SETTING_TOGGLE, 0},
-                 {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+        return cdsdk::modernSettings({{{"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
+                                       {"adjacent_days", CD_SETTING_TOGGLE, 0},
+                                       {"reduced_motion", CD_SETTING_TOGGLE, 0},
+                                       {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+                                     !mechanical, cdsdk::WidgetColorway::Coral);
     }
-    return {{{"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
-             {"show_background", CD_SETTING_TOGGLE, 1},
-             {"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
-             {"adjacent_days", CD_SETTING_TOGGLE, 1},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+    return cdsdk::modernSettings({{{"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
+                                   {"show_background", CD_SETTING_TOGGLE, 1},
+                                   {"week_start", CD_SETTING_CHOICE, 0, 0, "monday", 0, 0, {"monday", "sunday"}},
+                                   {"adjacent_days", CD_SETTING_TOGGLE, 1},
+                                   {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
+                                   {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+                                 !mechanical, cdsdk::WidgetColorway::Coral);
 }
 
 namespace {
@@ -232,6 +235,7 @@ CdResult CD_CALL apply(void* p, const CdSettingValue* values, uint32_t count) no
     auto& self = *static_cast<Instance*>(p);
     const auto result = self.settings.apply(values, count);
     if (result == CD_OK) {
+        cdsdk::normalizeModernColors(self.settings);
         if (self.spec.mechanical && self.settings.at("reduced_motion").integer) {
             self.finishAnimation();
         }

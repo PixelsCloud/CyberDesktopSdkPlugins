@@ -1,4 +1,4 @@
-#include <CyberCanvas/DataWidgets.h>
+#include <CyberCanvas/DashboardGauge.h>
 #include <CyberCanvas/Mechanical.h>
 #include <Windows.h>
 #include <d2d1.h>
@@ -13,8 +13,10 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
-#include <map>
+#include <memory>
 #include <stdexcept>
+#include <string>
+#include <utility>
 
 #include "plugins/mechanical-instruments/InstrumentPlates.h"
 #include "plugins/system-info-suite/Monitor.h"
@@ -33,25 +35,6 @@ D2D1_COLOR_F paint(CdColor color) {
     return D2D1::ColorF(color.r / 255.f, color.g / 255.f, color.b / 255.f, color.a / 255.f);
 }
 
-struct Palette {
-    CdColor ink, label, track, active, temperature;
-};
-
-Palette palette(const Options& options) {
-    const bool dark = options.palette == "dark" ||
-                      (options.palette == "theme" &&
-                       (.2126 * options.themeText.r + .7152 * options.themeText.g + .0722 * options.themeText.b) > 155);
-    return dark ? Palette{{227, 241, 245, 255},
-                          {130, 156, 168, 255},
-                          {61, 80, 91, 255},
-                          {83, 214, 223, 255},
-                          {228, 174, 115, 255}}
-                : Palette{{40, 60, 69, 255},
-                          {100, 122, 130, 255},
-                          {204, 214, 216, 255},
-                          {21, 139, 150, 255},
-                          {173, 120, 62, 255}};
-}
 }  // namespace
 
 struct Renderer::Impl {
@@ -64,7 +47,7 @@ struct Renderer::Impl {
     ComPtr<ID2D1RenderTarget>& target = canvas.target;
     ComPtr<ID2D1SolidColorBrush>& brush = canvas.brush;
 
-    std::unique_ptr<cybercanvas::MeterGauge> gauge = std::make_unique<cybercanvas::MeterGauge>();
+    std::array<cybercanvas::DashboardGauge, 4> gauges;
 
     void text(const std::wstring& source, bool number, float baseline, CdColor color) {
         const auto value = cdsdk::displayText(source);
@@ -81,6 +64,28 @@ struct Renderer::Impl {
         brush->SetColor(paint(color));
         target->DrawTextLayout(D2D1::Point2F((48 - metrics.width) * .5f, baseline - line.baseline), layout.Get(),
                                brush.Get());
+    }
+
+    void dial(int metric, double value, bool valid, const Options& options) {
+        const auto luminance = [](uint32_t rgba) {
+            return .2126 * ((rgba >> 24) & 255) + .7152 * ((rgba >> 16) & 255) + .0722 * ((rgba >> 8) & 255);
+        };
+        const bool dark =
+            options.palette == "dark" ||
+            (options.palette != "light" &&
+             (options.modern && options.appearance.background
+                  ? luminance(options.appearance.surface) < 128
+                  : .2126 * options.themeText.r + .7152 * options.themeText.g + .0722 * options.themeText.b > 155));
+        constexpr std::array<uint32_t, 4> darkAccents{0x51a2ffff, 0xb099e7ff, 0x49c2adff, 0xdb7957ff};
+        constexpr std::array<uint32_t, 4> lightAccents{0x174f8cff, 0x58437cff, 0x0f584cff, 0x74402eff};
+        auto theme = dark ? cybercanvas::WidgetTheme::dark() : cybercanvas::WidgetTheme::light();
+        theme.foreground = dark ? 0xf2f5f7ff : 0x172630ff;
+        theme.muted = dark ? 0xb8c7d3ff : 0x405260ff;
+        theme.accent = dark ? darkAccents[metric] : lightAccents[metric];
+        theme.font = cdsdk::textStyle(*fonts, 24);
+        const auto number = valid || metric == 3 ? std::to_wstring(int(std::lround(value))) : L"—";
+        gauges[metric].draw(canvas, {0, 0, 48, 48}, valid ? std::clamp(value / (metric == 3 ? 120. : 100.), 0., 1.) : 0,
+                            number, metric == 3 ? L"°C" : L"%", theme);
     }
 };
 
@@ -106,7 +111,9 @@ bool Renderer::render(Spec spec, const Options& options, Values values, const Cd
             return false;
         }
         const double width = frame.width / frame.device_pixel_ratio, height = frame.height / frame.device_pixel_ratio;
-        p.fonts->select(p.write.Get(), options.fontFamily);
+        p.fonts->select(p.write.Get(), options.fontFamily.empty() || options.fontFamily.front() == '@'
+                                           ? "Microsoft YaHei UI"
+                                           : options.fontFamily);
         p.canvas.fontCollection(p.fonts->collection());
         p.language = options.language;
         if (safe.width <= 0 || safe.height <= 0)
@@ -115,7 +122,6 @@ bool Renderer::render(Spec spec, const Options& options, Values values, const Cd
         safe.y = std::clamp(safe.y, 0.0, height);
         safe.width = std::clamp(safe.width, 0.0, width - safe.x);
         safe.height = std::clamp(safe.height, 0.0, height - safe.y);
-        const auto colors = palette(options);
         const double numbers[]{values.cpu, values.ram, values.gpu, values.temperature};
         const uint32_t bits[]{CD_SYSTEM_CPU_VALID, CD_SYSTEM_MEMORY_VALID, CD_SYSTEM_GPU_VALID,
                               CD_SYSTEM_CPU_TEMPERATURE_VALID};
@@ -155,30 +161,55 @@ bool Renderer::render(Spec spec, const Options& options, Values values, const Cd
             drawing.finish();
             return true;
         }
+
+        if (options.modern && !spec.mechanical) {
+            const auto& style = options.appearance;
+            cdsdk::widgetBackground(p.canvas, style, {0, 0, safe.width, safe.height});
+            const int columns = spec.rows == 1 ? 4 : 2;
+            const double cw = safe.width / columns, rh = safe.height / (4 / columns);
+            for (int metric = 0; metric < 4; ++metric) {
+                const double x = metric % columns * cw, y = metric / columns * rh;
+                const bool valid = (values.valid & bits[metric]) && std::isfinite(numbers[metric]);
+                const double value = valid ? numbers[metric] : 0;
+                const double diameter =
+                    std::floor(std::min(cw - 4, rh - 19) * frame.device_pixel_ratio) / frame.device_pixel_ratio;
+                if (diameter <= 0) {
+                    continue;
+                }
+                const auto snap = [&](double value) {
+                    return std::round(value * frame.device_pixel_ratio) / frame.device_pixel_ratio;
+                };
+                const double gx = snap(x + (cw - diameter) / 2), gy = snap(y + (rh - diameter - 18) / 2);
+                p.canvas.saved([&] {
+                    p.canvas.translate(gx, gy);
+                    p.canvas.scale(diameter / 48, diameter / 48);
+                    p.dial(metric, value, valid, options);
+                });
+                cdsdk::label(
+                    *p.fonts, names[metric], std::min(13., cw * .24),
+                    D2D1::RectF(float(x + 4), float(gy + diameter + 2), float(x + cw - 4), float(gy + diameter + 18)),
+                    style.foreground, true)
+                    .draw(p.canvas);
+            }
+            drawing.finish();
+            return true;
+        }
+
         for (const auto position : arrange(spec, safe.width, safe.height, options)) {
             if (position.scale <= 0)
                 continue;
             const int metric = position.metric;
-            const bool valid = (values.valid & bits[metric]) != 0;
+            const bool valid = (values.valid & bits[metric]) && std::isfinite(numbers[metric]);
             const double value = valid && std::isfinite(numbers[metric]) ? numbers[metric] : 0;
             p.target->SetTransform(
-                D2D1::Matrix3x2F::Scale(float(position.scale), float(position.scale)) *
-                D2D1::Matrix3x2F::Translation(float(safe.x + position.x), float(safe.y + position.y)));
-            const auto packed = [](CdColor color) {
-                return uint32_t(color.r) << 24 | uint32_t(color.g) << 16 | uint32_t(color.b) << 8 | color.a;
-            };
-            auto gaugeTheme = cybercanvas::WidgetTheme::dark();
-            gaugeTheme.track = packed(colors.track);
-            gaugeTheme.accent = packed(metric == 3 ? colors.temperature : colors.active);
-            p.gauge->draw(p.factory.Get(), p.target.Get(), p.brush.Get(), {0, 0, 48, 48},
-                          std::clamp(value, 0., 100.) / 100, gaugeTheme);
-            p.text(names[metric], false, 19, colors.label);
-            const std::wstring valueText = metric == 3 ? std::to_wstring(int(std::lround(value))) + L"°C"
-                                           : valid     ? std::to_wstring(int(std::lround(value))) + L"%"
-                                                       : L"—";
-            p.text(valueText, true, 33, colors.ink);
-            p.brush->SetColor(paint(colors.track));
-            p.target->DrawLine(D2D1::Point2F(20, 46), D2D1::Point2F(28, 46), p.brush.Get(), .8f);
+                D2D1::Matrix3x2F::Scale(
+                    float(std::round(48 * position.scale * frame.device_pixel_ratio) / frame.device_pixel_ratio / 48),
+                    float(std::round(48 * position.scale * frame.device_pixel_ratio) / frame.device_pixel_ratio / 48)) *
+                D2D1::Matrix3x2F::Translation(
+                    float(std::round((safe.x + position.x) * frame.device_pixel_ratio) / frame.device_pixel_ratio),
+                    float(std::round((safe.y + position.y) * frame.device_pixel_ratio) / frame.device_pixel_ratio)));
+            p.dial(metric, value, valid, options);
+            p.text(names[metric], false, 60, {130, 156, 168, 255});
         }
         drawing.finish();
         return true;

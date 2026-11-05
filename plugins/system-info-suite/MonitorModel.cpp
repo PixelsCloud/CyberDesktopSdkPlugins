@@ -38,11 +38,8 @@ Values decode(const CdSystemInfo& info) {
 std::vector<Position> arrange(Spec spec, double width, double height, const Options& options) {
     const int count = spec.rows == 2 ? 4 : spec.columns, columns = spec.rows == 2 ? 2 : count;
     const double areaWidth = width / columns, areaHeight = height / spec.rows;
-    // The grid fits the screen, so a nominal 72px cell can be ~70px.
-    // The 48px gauge includes transparent padding: its drawn diameter is 44.1px.
-    // Keep 14px typography through that small adjustment instead of scaling only
-    // 1x1.
-    const double scale = std::max(0.0, std::min({1.0, areaWidth / 46, areaHeight / 46}));
+    // Reserve a separate caption below the complete round dial.
+    const double scale = std::max(0.0, std::min({70. / 48, areaWidth / 50, areaHeight / 64}));
     int primary = options.primary == "ram"           ? 1
                   : options.primary == "gpu"         ? 2
                   : options.primary == "temperature" ? 3
@@ -50,7 +47,7 @@ std::vector<Position> arrange(Spec spec, double width, double height, const Opti
     std::vector<Position> positions;
     for (int i = 0; i < count; ++i)
         positions.push_back({(i % columns) * areaWidth + (areaWidth - 48 * scale) / 2,
-                             (i / columns) * areaHeight + (areaHeight - 48 * scale) / 2, scale,
+                             (i / columns) * areaHeight + (areaHeight - 64 * scale) / 2, scale,
                              count == 1 ? primary : i});
     return positions;
 }

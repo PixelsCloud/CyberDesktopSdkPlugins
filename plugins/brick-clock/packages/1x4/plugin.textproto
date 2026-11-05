@@ -19,31 +19,7 @@ footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
 settings_page {
     title: "砖刻时钟"
     description: "24 小时时分秒。数字变化时局部凿刻，砖屑落到下沿后淡出。隐藏时暂停，恢复时直接校准当前时间。"
-    fields {
-        id: "palette"
-        label: "砖墙配色"
-        type: CHOICE
-        text_default: "clay"
-        choices {
-            value: "clay"
-            label: "暖陶红"
-            localized_labels { key: "en" value: "Warm clay" }
-        }
-        choices {
-            value: "sand"
-            label: "浅砂岩"
-            localized_labels { key: "en" value: "Sandstone" }
-        }
-        choices {
-            value: "slate"
-            label: "深岩灰"
-            localized_labels { key: "en" value: "Slate" }
-        }
-        localized {
-            key: "en"
-            value { label: "Wall palette" }
-        }
-    }
+
     fields {
         id: "animate"
         label: "雕刻与碎屑动画"
@@ -84,8 +60,149 @@ settings_page {
             description: "A 24-hour carved brick clock. Only changed digits are carved. Box2D chips fall and settle on the ledge. Double-click to replay."
         }
     }
+
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4293978623
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        section: "外观"
+        text_default: "solid"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        localized {
+            key: "en"
+            value { label: "Background fill" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4293978623
+        localized {
+            key: "en"
+            value { label: "Gradient end color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        section: "外观"
+        integer_default: 90
+        minimum: 0
+        maximum: 360
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Gradient angle (°)" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3025487359
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "次要文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 2860216575
+        localized {
+            key: "en"
+            value { label: "Secondary text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "强调颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 849254143
+        localized {
+            key: "en"
+            value { label: "Accent color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        integer_default: 12
+        minimum: 0
+        maximum: 32
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" }
+        }
+    }
 }
-content_padding: 0
+content_padding: 6
 preview: "preview.png"
 tags: "简约"
 tags: "时钟"

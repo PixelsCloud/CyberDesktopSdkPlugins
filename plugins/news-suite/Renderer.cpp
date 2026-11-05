@@ -1,4 +1,5 @@
 #include <CyberCanvas/DataWidgets.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Icons.h>
 #include <sdk/Language.h>
@@ -23,7 +24,7 @@ cybercanvas::FlowParts tabsFor(Spec spec, double width, double dpr) {
     const bool github = spec.kind == Kind::Github;
     const double reserve = github && width >= 240 ? 70 : 0;
     auto result = cybercanvas::wrappingRow({12, 43, std::max(0., width - 24 - reserve), 125},
-                                           std::vector<cybercanvas::Size>(github ? 3 : 5, {48, 22}), 3, true, dpr);
+                                           std::vector<cybercanvas::Size>(github ? 3 : 5, {48, 26}), 3, true, dpr);
     if (cache.size() >= 16) {
         cache.clear();
     }
@@ -36,7 +37,7 @@ Geometry geometry(Spec spec, CdRect safe, double dpr) {
     const auto width = std::max(1., safe.width), height = std::max(1., safe.height);
     const double top = std::min(height, 43 + tabsFor(spec, width, dpr).height + 4);
     const double bottom = std::max(top, height - 25);
-    const int count = std::clamp(int((bottom - top) / (spec.rows == 2 ? 51 : 73)), 1, 8);
+    const int count = std::clamp(int((bottom - top) / (spec.rows == 2 ? 92 : 104)), 1, 8);
     return {width, height, top, bottom, (bottom - top) / count, count};
 }
 
@@ -77,7 +78,7 @@ cybercanvas::ChoiceGroup sourceChoices(Spec spec, const ControlLayout& layout, b
     for (size_t i = 0; i < layout.tabs.size(); ++i) {
         const auto area = layout.tabs[i];
         options.push_back({uint32_t(10 + i),
-                           {area.x, area.y, std::max(0., area.width - 3), 20},
+                           {area.x, area.y, std::max(0., area.width - 3), 24},
                            spec.kind == Kind::Github ? github[i] : reader[i]});
     }
     return cybercanvas::ChoiceGroup(std::move(options));
@@ -156,13 +157,14 @@ struct Renderer::Impl {
         });
     }
 
-    static cybercanvas::TextStyle textStyle(double size, bool bold = false, bool wrap = false) {
+    cybercanvas::TextStyle textStyle(double size, bool bold = false, bool wrap = false) {
         cybercanvas::TextStyle style;
-        style.size = size;
+        style.family = drawing.selectedFont();
+        style.size = std::max(12., size);
         style.weight = bold ? cybercanvas::FontWeight::SemiBold : cybercanvas::FontWeight::Normal;
         style.vertical = cybercanvas::VerticalAlign::Top;
-        style.lineHeight = size * 1.35;
-        style.baseline = size * 1.02;
+        style.lineHeight = style.size * 1.35;
+        style.baseline = style.size * 1.02;
         style.wrap = wrap;
         style.ellipsis = true;
         return style;
@@ -171,7 +173,9 @@ struct Renderer::Impl {
     void text(const std::string& value, double size, CdRect area, uint32_t color, bool bold = false,
               bool wrap = false) {
         if (!value.empty() && area.width > 0 && area.height > 0) {
-            drawing.text(wide(value), textStyle(size, bold, wrap), area, color);
+            const auto style = textStyle(size, bold, wrap);
+            area.height = std::max(area.height, style.size * 1.35);
+            drawing.text(wide(value), style, area, color);
         }
     }
 };
@@ -231,11 +235,7 @@ cdsdk::ListView& Renderer::listView(Spec spec, const cdsdk::Settings& settings, 
                    : model.loading        ? (zh ? L"正在获取最新内容" : L"Fetching the latest stories")
                    : !model.error.empty() ? (zh ? L"暂时无法更新" : L"Unable to update")
                                           : (zh ? L"这个来源暂时没有内容" : L"No stories in this source");
-    status.detail = model.savedOnly ? (zh ? L"点亮星标，留住值得读的内容" : L"Star a story to keep it here")
-                    : model.error == "no_feeds"
-                        ? (zh ? L"在设置中添加 RSS / Atom 地址" : L"Add RSS / Atom URLs in settings")
-                    : !model.error.empty() ? (zh ? L"请检查来源，或稍后重试" : L"Check the source or try again later")
-                                           : L"";
+    status.detail = L"";
     status.canRetry = !model.savedOnly && !model.loading && !model.error.empty() && model.error != "no_feeds";
     status.retry = zh ? L"重试" : L"Retry";
     p.list.status(std::move(status));
@@ -304,6 +304,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
     if (!d.valid(frame)) {
         return false;
     }
+    d.selectFont(s.at("font_family").text);
     auto painting = d.frame(frame, safe);
     safe = painting.area();
     const auto g = geometry(spec, safe, frame.device_pixel_ratio);
@@ -315,20 +316,17 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
     }
     const auto lightSetting = s.at("lighting").text;
     const bool light = lightSetting == "day" || (lightSetting == "theme" && m.light);
-    const uint32_t bg = light ? 0xF7F9FCFF : 0x151B26FF;
-    const uint32_t fg = light ? 0x202B3CFF : 0xECF1FAFF;
-    const uint32_t muted = light ? 0x708095FF : 0x91A0B7FF;
-    const uint32_t line = light ? 0xDDE5F0FF : 0x2B3545FF;
-    const uint32_t accent = github ? (light ? 0x7256B8FF : 0xB29CE7FF) : (light ? 0x237C85FF : 0x6DD4C7FF);
-    const uint32_t tint = github ? (light ? 0xECE7F6FF : 0x292339FF) : (light ? 0xE4F2F1FF : 0x193735FF);
-    const uint32_t hover = light ? 0xEAF0F8C0 : 0x283447C0;
+    const auto appearance = cdsdk::widgetAppearance(s);
+    const uint32_t bg = appearance.surface, fg = appearance.foreground, muted = appearance.secondary,
+                   line = appearance.track, accent = appearance.accent, tint = cdsdk::mixColor(bg, accent, .15),
+                   hover = cdsdk::mixColor(bg, fg, .06);
     auto theme = light ? cybercanvas::WidgetTheme::light() : cybercanvas::WidgetTheme::dark();
     theme.foreground = fg;
     theme.muted = muted;
     theme.accent = accent;
     theme.surface = hover;
-    theme.font.size = 10;
-    theme.padding = 4;
+    theme.font.size = 13;
+    theme.padding = 2;
     auto selectedTheme = theme;
     selectedTheme.accent = tint;
     selectedTheme.onAccent = accent;
@@ -338,9 +336,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
         button.selected = selected;
         button.draw(d, selected ? selectedTheme : theme, p.icons.painter(), m.widgets.visual(id));
     };
-    if (s.at("show_background").integer) {
-        d.box(0, 0, g.width, g.height, double(s.at("background_corner_radius").integer), bg);
-    }
+    cdsdk::widgetBackground(d, appearance, {0, 0, g.width, g.height});
     const auto& list = visible(m);
     const int pages = std::max(1, (int(list.size()) + g.capacity - 1) / g.capacity);
     const int page = std::clamp(m.page, 0, pages - 1);
@@ -354,7 +350,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
         d.line(22, headerY + 13, 27, headerY + 13, bg, 1.2);
         d.line(22, headerY + 16, 25, headerY + 16, bg, 1.2);
     }
-    p.text(github ? (zh ? "开源热榜" : "Open source") : (zh ? "资讯阅读" : "Daily reader"), 14,
+    p.text(github ? "GitHub" : query(spec.kind, s).source, 14,
            {layout.heading.x, headerY - 1, layout.heading.width, 22}, fg, true);
     std::string eyebrow;
     if (m.savedOnly) {
@@ -374,7 +370,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
             eyebrow = zh ? "自定义订阅" : "YOUR SUBSCRIPTIONS";
         }
     }
-    p.text(eyebrow, 8.2, {layout.heading.x, headerY + 19, layout.heading.width, 13}, muted);
+    p.text("", 8.2, {layout.heading.x, headerY + 19, layout.heading.width, 13}, muted);
     iconButton(1, layout.refresh, "refresh-cw", zh ? L"刷新" : L"Refresh");
     iconButton(2, layout.saved, "star", zh ? L"收藏" : L"Saved", m.savedOnly);
     const auto source = s.at("source").text;
@@ -425,9 +421,9 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
         article.background(d, theme, rowVisual);
         const double left = github ? 34 : 17;
         auto contentArea = cybercanvas::inset(rowArea, {left, 5, 38, 3});
-        const auto titleStyle = Impl::textStyle(github ? 12 : 12.2, true, !github);
-        const auto content = cybercanvas::textSections(d, contentArea, wide(item.title), titleStyle, github ? 18. : 34.,
-                                                       13, 3, d.devicePixelRatio());
+        const auto titleStyle = p.textStyle(github ? 15 : 16, true, !github);
+        const auto content = cybercanvas::textSections(d, contentArea, wide(item.title), titleStyle, github ? 22. : 44.,
+                                                       18, 4, d.devicePixelRatio());
         const auto titleArea = content.title;
         const auto metadata = content.footer;
         if (github) {
@@ -445,31 +441,30 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
             iconButton(200 + index, {rowWidth - 36, y + 3, 24, 24}, "star", zh ? L"收藏" : L"Save", saved);
         }
         auto description = content.body;
-        if (description.height >= 12 && !item.summary.empty()) {
-            description.height = std::min(29., description.height);
-            p.text(item.summary, github && rowHeight < 64 ? 9.1 : 10.2, pluginRect(description), muted, false,
-                   description.height >= 27);
+        if (description.height >= 18 && !item.summary.empty()) {
+            description.height = std::min(36., description.height);
+            p.text(item.summary, 13, pluginRect(description), muted, false, description.height >= 27);
         }
         const double metaY = metadata.y;
         if (github) {
             const std::string lang = item.language.empty() ? "—" : item.language;
             d.oval(left + 2, metaY + 6, 2.6, 2.6, languageColor(item.language));
-            p.text(lang, 8.5, {left + 9, metaY, 70, 13}, muted);
-            p.text(item.stars.empty() ? "" : "☆ " + item.stars, 8.5, {left + 81, metaY, 72, 13}, muted);
-            p.text(item.growth.empty() ? "" : "↗ " + item.growth, 8.5, {rowWidth - 77, metaY, 63, 13}, accent, true);
+            p.text(lang, 8.5, {left + 9, metaY, 70, 18}, muted);
+            p.text(item.stars.empty() ? "" : "☆ " + item.stars, 8.5, {left + 81, metaY, 72, 18}, muted);
+            p.text(item.growth.empty() ? "" : "↗ " + item.growth, 8.5, {rowWidth - 77, metaY, 63, 18}, accent, true);
         } else {
             const auto age = timeLabel(item.published, zh);
             std::string meta = item.source + (age.empty() ? "" : " · " + age);
             if (!item.discussion.empty()) {
                 meta = "▲ " + compactNumber(item.score) + " · " + age;
             }
-            p.text(meta, 8.5, {left, metaY, rowWidth - left - (item.discussion.empty() ? 18 : 92), 13}, muted);
+            p.text(meta, 8.5, {left, metaY, rowWidth - left - (item.discussion.empty() ? 18 : 92), 18}, muted);
             if (!item.discussion.empty()) {
                 cybercanvas::Button discussion(300 + index, {rowWidth - 91, y + rowHeight - 18, 55, 16},
                                                wide(std::to_string(item.comments) + (zh ? " 讨论" : " replies")));
                 auto discussionTheme = theme;
                 discussionTheme.foreground = accent;
-                discussionTheme.font.size = 8.3;
+                discussionTheme.font.size = 12;
                 discussion.draw(d, discussionTheme,
                                 scrolling ? p.list.visual(item.url, 2) : m.widgets.visual(discussion.id));
             }
@@ -507,12 +502,13 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& s, const Model& m, const
                                : m.savedOnly      ? std::to_string(list.size()) + (zh ? " 条收藏" : " saved")
                                : m.fetched        ? (zh ? "已更新 " : "Updated ") + timeLabel(m.fetched, zh)
                                                   : (zh ? "等待更新" : "Waiting for update");
-    p.text(status, 8.2, {23, footerY, g.width - (scrolling ? 125 : 180), 14}, muted);
+    p.text(status, 8.2, {23, footerY, g.width - (scrolling ? 125 : 180), 18}, muted);
     if (scrolling) {
-        p.text(std::to_string(list.size()) + (zh ? " 条" : " items"), 8.5, {g.width - 86, footerY, 48, 14}, muted);
+        p.text(std::to_string(list.size()) + (zh ? " 条" : " items"), 8.5, {g.width - 86, footerY - 2, 48, 18}, muted);
         iconButton(5, layout.next, "layout-grid", zh ? L"分页" : L"Pages");
     } else {
-        p.text(std::to_string(page + 1) + " / " + std::to_string(pages), 8.5, {g.width - 124, footerY, 36, 14}, muted);
+        p.text(std::to_string(page + 1) + " / " + std::to_string(pages), 8.5, {g.width - 124, footerY - 2, 36, 18},
+               muted);
         iconButton(5, {layout.previous.x - 27, layout.previous.y, 24, 23}, "list", zh ? L"滚动" : L"Scroll");
         iconButton(3, layout.previous, "chevron-left", zh ? L"上页" : L"Prev");
         iconButton(4, layout.next, "chevron-right", zh ? L"下页" : L"Next");

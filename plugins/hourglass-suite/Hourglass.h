@@ -1,10 +1,12 @@
 #pragma once
 
+#include <sdk/Appearance.h>
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
 #include <memory>
 #include <string>
+#include <string_view>
 #include <vector>
 
 namespace hourglassplugin {
@@ -12,6 +14,7 @@ inline constexpr const char* kPluginId = "com.cyberdesktop.hourglass.pixel.1x2";
 inline constexpr const char* kSquarePluginId = "com.cyberdesktop.hourglass.pixel.1x1";
 inline constexpr int kGridWidth = 19, kGridHeight = 29;
 inline constexpr double kFlipDuration = 1.0;
+inline constexpr double kGridDotFill = .83;
 
 struct Spec {
     const char* id = kPluginId;
@@ -59,6 +62,9 @@ struct Options {
     double glow = .35;
     std::string color = "amber";
     const PhysicalSand* physicalSand = nullptr;
+    bool modern = false;
+    cdsdk::WidgetAppearance style{};
+    std::string_view fontFamily = "Segoe UI";
 };
 
 CdRect glassArea(double width, double height, bool showTimer);

@@ -29,6 +29,7 @@ struct Defaults {
     uint32_t spectrumColor = 0xadd7efff;
     uint32_t spectrumTop = 0xf0d9adff;
     bool spectrumBackground = true;
+    bool modern = false;
 };
 
 struct PlayerPointer {

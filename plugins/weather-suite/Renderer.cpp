@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <d2d1.h>
 #include <dwrite.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Images.h>
 #include <sdk/Language.h>
@@ -13,9 +14,13 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <filesystem>
 #include <iomanip>
 #include <map>
+#include <memory>
+#include <optional>
 #include <sstream>
+#include <string>
 #include <thread>
 
 #include "plugins/mechanical-instruments/Artwork.h"
@@ -57,12 +62,14 @@ struct Renderer::Impl {
     cdsdk::Images images;
     std::map<std::string, std::pair<std::string, std::shared_ptr<const cybercanvas::ImageData>>> iconImages;
     mechanicalart::Artwork artwork;
+    bool modernStyle = false;
 
     explicit Impl(std::filesystem::path root) : assets(std::move(root)) {}
 
     void label(const std::wstring& source, float size, D2D1_RECT_F area, uint32_t rgba, bool center = false,
                bool relief = false) {
-        auto item = cdsdk::label(*fonts, source, size, area, rgba, center, true);
+        auto item =
+            cdsdk::label(*fonts, source, modernStyle ? std::max(12.f, size) : size, area, rgba, center, !modernStyle);
         if (relief) {
             item.shadowOffset = {.4, 1.3};
             item.shadow = dark ? 0x020B1640 : 0x49627424;
@@ -114,6 +121,109 @@ struct Renderer::Impl {
         }
         canvas.image(*image, {box.left, box.top, double(box.right) - box.left, double(box.bottom) - box.top},
                      {cybercanvas::ImageFit::Stretch});
+    }
+
+    void modern(Spec spec, const cdsdk::Settings& settings, const Snapshot& data, bool loading, float w, float h,
+                const std::wstring& city) {
+        const auto style = cdsdk::widgetAppearance(settings);
+        ink = style.foreground;
+        muted = style.secondary;
+        accent = style.accent;
+        cdsdk::widgetBackground(canvas, style, {0, 0, w, h});
+        const bool wide = spec.columns >= 4, large = spec.rows > 1;
+        const float main = large ? h * .46f : h;
+        const float currentWidth = wide && !large ? w * .46f : w;
+        const float heroHeight = large ? main - 8 : main - 34;
+        const float iconEdge = std::clamp(heroHeight * .65f, 24.f, 42.f);
+        const float legendWidth = large ? std::clamp(currentWidth * .25f, 54.f, 84.f) : 0;
+        const float legendGap = large ? 14.f : 0;
+        const auto current = temperature(data.temperature, data.valid);
+        const float requested = std::clamp(heroHeight * .75f, 28.f, 62.f);
+        const auto measuredWidth = [&](const std::wstring& value, float size) {
+            return float(canvas.measureText(value, cdsdk::textStyle(*fonts, size, false)).width);
+        };
+        const float available = std::max(20.f, currentWidth - 20 - iconEdge - 6 - legendWidth - legendGap);
+        const float naturalWidth = measuredWidth(current, requested);
+        const float numberSize = std::min(requested, requested * available / std::max(1.f, naturalWidth));
+        const float numberWidth = measuredWidth(current, numberSize) + 2;
+        const float groupWidth = numberWidth + 6 + iconEdge + legendGap + legendWidth;
+        const float groupLeft = std::max(6.f, (currentWidth - groupWidth) * .5f);
+        const float heroTop = large ? 4.f : 7.f;
+        auto temperatureLabel =
+            cdsdk::label(*fonts, current, numberSize,
+                         D2D1::RectF(groupLeft, heroTop, groupLeft + numberWidth, heroTop + heroHeight), ink, false);
+        temperatureLabel.draw(canvas);
+        const float iconLeft = groupLeft + numberWidth + 6;
+        const float iconTop = heroTop + (heroHeight - iconEdge) * .5f;
+        weatherIcon(data.valid ? data.code : -1, data.day,
+                    D2D1::RectF(iconLeft, iconTop, iconLeft + iconEdge, iconTop + iconEdge), false, "modern-current");
+        const auto cityText = data.valid || !settings.at("auto_location").integer ? city : L"";
+        const auto conditions = data.valid ? summary(data, loading) : L"";
+        if (large) {
+            const float left = iconLeft + iconEdge + legendGap, centerY = heroTop + heroHeight * .5f;
+            label(cityText, 15, D2D1::RectF(left, centerY - 21, currentWidth - 8, centerY - 1), ink);
+            label(conditions, 13, D2D1::RectF(left, centerY + 1, currentWidth - 8, centerY + 21), muted);
+        } else {
+            const std::wstring caption = cityText.empty()     ? conditions
+                                         : conditions.empty() ? cityText
+                                                              : cityText + L" · " + conditions;
+            label(caption, 13, D2D1::RectF(6, main - 25, currentWidth - 6, main - 5), ink, true);
+        }
+        if (wide || large) {
+            const float left = large ? 10 : currentWidth + 6, top = large ? h * .64f : 8;
+            const float bottom = large ? h - 10 : h - 8, cell = (w - left - 8) / 3;
+            for (int i = 0; i < 3; ++i) {
+                const auto index = size_t(i + 1);
+                const auto* day = index < data.days.size() ? &data.days[index] : nullptr;
+                const auto value = day ? temperature(day->high, true) : L"—";
+                const float center = left + (i + .5f) * cell;
+                const float fontSize = cell >= 72 ? 20.f : 18.f;
+                const float valueWidth = measuredWidth(value, fontSize) + 2;
+                const float preferredEdge = cell >= 72 ? 26.f : 24.f;
+                const bool horizontal = preferredEdge + 4 + valueWidth <= cell - 8;
+                const float edge =
+                    horizontal ? preferredEdge : std::min(preferredEdge, std::max(12.f, bottom - top - 44));
+                const float rowHeight = std::min(28.f, std::max(18.f, bottom - top - 21));
+                const float groupHeight = horizontal ? 18 + 3 + rowHeight : 18 + 2 + edge + 2 + 22;
+                const float groupTop = top + std::max(0.f, (bottom - top - groupHeight) * .5f);
+                label(day ? weekday(day->date, english) : L"—", 13,
+                      D2D1::RectF(center - cell * .5f, groupTop, center + cell * .5f, groupTop + 18), ink, true);
+                if (horizontal) {
+                    const float iconSize = std::min(edge, rowHeight);
+                    const float rowLeft = center - (iconSize + 4 + valueWidth) * .5f;
+                    const float rowTop = groupTop + 21;
+                    weatherIcon(day ? day->code : -1, true,
+                                D2D1::RectF(rowLeft, rowTop + (rowHeight - iconSize) * .5f, rowLeft + iconSize,
+                                            rowTop + (rowHeight + iconSize) * .5f),
+                                false, "modern-day-" + std::to_string(i));
+                    label(value, fontSize,
+                          D2D1::RectF(rowLeft + iconSize + 4, rowTop, rowLeft + iconSize + 4 + valueWidth,
+                                      rowTop + rowHeight),
+                          ink, true);
+                } else {
+                    weatherIcon(
+                        day ? day->code : -1, true,
+                        D2D1::RectF(center - edge * .5f, groupTop + 20, center + edge * .5f, groupTop + 20 + edge),
+                        false, "modern-day-" + std::to_string(i));
+                    label(value, fontSize,
+                          D2D1::RectF(center - cell * .5f, groupTop + 22 + edge, center + cell * .5f,
+                                      groupTop + 44 + edge),
+                          ink, true);
+                }
+            }
+            if (large) {
+                const std::wstring values[]{english ? L"Feels " : L"体感 ", english ? L"Humidity " : L"湿度 ",
+                                            english ? L"Wind " : L"风速 "};
+                const std::wstring amounts[]{temperature(data.feels, data.valid),
+                                             data.valid ? rounded(data.humidity) + L"%" : L"—",
+                                             data.valid ? rounded(data.wind) + L" km/h" : L"—"};
+                for (int i = 0; i < 3; ++i) {
+                    label(values[i] + amounts[i], 12,
+                          D2D1::RectF(10 + i * (w - 20) / 3, h * .49f, 10 + (i + 1) * (w - 20) / 3, h * .60f), muted,
+                          true);
+                }
+            }
+        }
     }
 
     void card(float w, float h, float requestedRadius) {
@@ -376,6 +486,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Snapshot
         p.english = english;
         p.imperial = settings.at("units").text == "imperial";
         p.dark = settings.at("palette").text == "dark";
+        p.modernStyle = !spec.mechanical && cdsdk::modernAppearance(settings);
         p.ink = p.dark ? 0xE7F3F8FF : 0x294859FF;
         p.muted = p.dark ? 0xADC5D3FF : 0x637E8EFF;
         p.accent = p.dark ? 0x69D8E5FF : 0x137E96FF;
@@ -402,13 +513,17 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Snapshot
             if (spec.mechanical) {
                 p.mechanical(spec, data, loading, width, height, city);
             } else {
-                p.card(width, height, float(settings.at("background_corner_radius").integer));
-                if (spec.rows > 1)
-                    p.dashboard(data, loading, width, height, city);
-                else if (spec.columns == 2)
-                    p.compact(data, loading, width, height, city);
-                else
-                    p.strip(data, loading, width, height, city);
+                if (cdsdk::modernAppearance(settings)) {
+                    p.modern(spec, settings, data, loading, width, height, city);
+                } else {
+                    p.card(width, height, float(settings.at("background_corner_radius").integer));
+                    if (spec.rows > 1)
+                        p.dashboard(data, loading, width, height, city);
+                    else if (spec.columns == 2)
+                        p.compact(data, loading, width, height, city);
+                    else
+                        p.strip(data, loading, width, height, city);
+                }
             }
         }
         drawing.finish();

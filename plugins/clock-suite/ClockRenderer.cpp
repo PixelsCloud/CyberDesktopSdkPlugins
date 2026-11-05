@@ -242,8 +242,11 @@ struct Renderer::Impl {
                        std::max(.55, d * (hour ? .0075 : .0035)), hour ? .96 : .55);
         }
         for (int n : {12, 3, 6, 9}) {
+            if (options.modern && d < 58) {
+                break;
+            }
             const double angle = n * pi / 6, rad = d * (relief > 0 ? .315 : .337),
-                         font = std::clamp(d * .100, 6.5, 25.0);
+                         font = std::clamp(d * .100, options.modern ? 12. : 6.5, 25.0);
             const double x = cx + std::sin(angle) * rad, y = cy - std::cos(angle) * rad;
             label(std::to_wstring(n), {x - font * 1.6, y - font * .7, font * 3.2, font * 1.4}, options.primary, font,
                   L"Segoe UI", DWRITE_FONT_WEIGHT_NORMAL);
@@ -291,8 +294,10 @@ void Renderer::drawElectronic(cybercanvas::Canvas& canvas, Spec spec, const Opti
     p.canvas.fontCollection(p.fonts->collection());
     p.locale = options.language == "en" ? L"en-US" : cdsdk::drawingLocale();
     p.canvas.drawIn(canvas, area, [&](auto&) {
+        auto embedded = options;
+        embedded.modern = false;
         p.ensureStroke();
-        p.electronic(spec, options, time, area.width, area.height);
+        p.electronic(spec, embedded, time, area.width, area.height);
     });
 }
 
@@ -322,6 +327,9 @@ bool Renderer::render(Spec spec, const Options& options, Time time, const CdFram
         safe.width = std::clamp(safe.width, 0.0, width - safe.x);
         safe.height = std::clamp(safe.height, 0.0, height - safe.y);
         auto painting = p.canvas.frame(frame, {safe.x, safe.y, safe.width, safe.height});
+        if (options.modern) {
+            cdsdk::widgetBackground(p.canvas, options.appearance, {0, 0, safe.width, safe.height});
+        }
         p.ensureStroke();
         if (spec.display != Display::Classic)
             p.electronic(spec, options, time, safe.width, safe.height);

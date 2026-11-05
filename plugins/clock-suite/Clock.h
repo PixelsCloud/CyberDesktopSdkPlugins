@@ -1,5 +1,6 @@
 #pragma once
 #include <CyberCanvas/Types.h>
+#include <sdk/Appearance.h>
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
@@ -33,6 +34,8 @@ struct Time {
 };
 
 struct Options {
+    cdsdk::WidgetAppearance appearance{};
+    bool modern = false;
     bool twelveHour = false, seconds = false, date = true, weekday = true, smooth = false, themeColors = true,
          adaptiveSeconds = true;
     std::string layout = "auto", dateFormat = "auto", timezone = "local";
@@ -50,6 +53,13 @@ struct Options {
 struct Rect {
     double x = 0, y = 0, width = 0, height = 0;
 };
+
+struct PixelGrid {
+    int columns = 0, rows = 0, glyphColumn = 0, glyphRow = 0;
+    double side = 0, pitchX = 0, pitchY = 0;
+};
+
+PixelGrid arrangePixelGrid(int glyphColumns, Rect box, double sizePercent);
 
 struct Geometry {
     Rect dial, time, seconds, date, weekday;

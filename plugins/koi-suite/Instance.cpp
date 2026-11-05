@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/RenderOutput.h>
 #include <sdk/Update.h>
 
@@ -11,22 +12,23 @@
 
 namespace koiplugin {
 cdsdk::Settings defaults(Spec spec) {
-    return {{{"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
-             {"fish_count", CD_SETTING_INTEGER, spec.fishCount, 0, "", 1, 12},
-             {"mouse_behavior", CD_SETTING_CHOICE, 0, 0, "flee", 0, 0, {"flee", "follow"}},
-             {"show_background", CD_SETTING_TOGGLE, 1},
-             {"blessings", CD_SETTING_TOGGLE, 1},
-             {"swim_speed", CD_SETTING_NUMBER, 0, 1, "", .3, 2},
-             {"motion_speed", CD_SETTING_NUMBER, 0, kDefaultMotionSpeed, "", .25, 4},
-             {"shimmer", CD_SETTING_INTEGER, 65, 0, "", 0, 100},
-             {"color", CD_SETTING_COLOR, 0xDE593CFF},
-             {"leaves", CD_SETTING_TOGGLE, 1},
-             {"flowers", CD_SETTING_TOGGLE, 1},
-             {"animation", CD_SETTING_TOGGLE, 1},
-             {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
-             {"seed", CD_SETTING_INTEGER, 7, 0, "", 1, 9999},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}};
+    return cdsdk::modernSettings({{{"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
+                                   {"fish_count", CD_SETTING_INTEGER, spec.fishCount, 0, "", 1, 12},
+                                   {"mouse_behavior", CD_SETTING_CHOICE, 0, 0, "flee", 0, 0, {"flee", "follow"}},
+                                   {"show_background", CD_SETTING_TOGGLE, 1},
+                                   {"blessings", CD_SETTING_TOGGLE, 1},
+                                   {"swim_speed", CD_SETTING_NUMBER, 0, 1, "", .3, 2},
+                                   {"motion_speed", CD_SETTING_NUMBER, 0, kDefaultMotionSpeed, "", .25, 4},
+                                   {"shimmer", CD_SETTING_INTEGER, 65, 0, "", 0, 100},
+                                   {"color", CD_SETTING_COLOR, 0xDE593CFF},
+                                   {"leaves", CD_SETTING_TOGGLE, 1},
+                                   {"flowers", CD_SETTING_TOGGLE, 1},
+                                   {"animation", CD_SETTING_TOGGLE, 1},
+                                   {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
+                                   {"seed", CD_SETTING_INTEGER, 7, 0, "", 1, 9999},
+                                   {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32},
+                                   {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}}}},
+                                 true, cdsdk::WidgetColorway::Teal);
 }
 
 namespace {
@@ -129,16 +131,19 @@ CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
             self.safe = {0, 0, frame->width / frame->device_pixel_ratio, frame->height / frame->device_pixel_ratio};
         }
         self.configure();
-        const Appearance appearance{self.night,
-                                    self.settings.at("shimmer").integer / 100.0,
-                                    float(self.settings.at("background_corner_radius").integer),
-                                    self.settings.at("leaves").integer != 0,
-                                    self.settings.at("flowers").integer != 0,
-                                    uint32_t(self.settings.at("color").integer),
-                                    self.settings.at("show_background").integer != 0,
-                                    self.settings.at("blessings").integer != 0,
-                                    self.motionTime,
-                                    self.pondDirty};
+        Appearance appearance{self.night,
+                              self.settings.at("shimmer").integer / 100.0,
+                              float(self.settings.at("background_corner_radius").integer),
+                              self.settings.at("leaves").integer != 0,
+                              self.settings.at("flowers").integer != 0,
+                              uint32_t(self.settings.at("color").integer),
+                              self.settings.at("show_background").integer != 0,
+                              self.settings.at("blessings").integer != 0,
+                              self.motionTime,
+                              self.pondDirty};
+        appearance.modern = true;
+        appearance.style = cdsdk::widgetAppearance(self.settings);
+        appearance.fontFamily = self.settings.at("font_family").text;
         if (!self.renderer.render(self.scene, appearance, *frame, self.safe)) {
             return CD_ERROR_INTERNAL;
         }
@@ -290,6 +295,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
             self.timer = std::move(replacement);
             self.lastTick = GetTickCount64();
         }
+        cdsdk::normalizeModernColors(next);
         self.settings = std::move(next);
         if (!self.settings.at("animation").integer || self.paused) {
             self.night = self.targetNight();

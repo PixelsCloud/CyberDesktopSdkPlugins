@@ -43,6 +43,8 @@ public:
     Effect();
     ~Effect();
     void initialize(void* d3dDevice, void* d2dContext);
+    // The caller fills its own contour with the resulting optical image.
+    void setExternalContour(bool enabled);
     void render(EffectTarget& target, void* sourceTexture, EffectGeometry geometry, Parameters parameters,
                 uint64_t contentRevision, bool exportShadow = true,
                 LightBackgroundBlend lightBlend = LightBackgroundBlend::React);

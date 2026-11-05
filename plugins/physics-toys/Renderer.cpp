@@ -69,7 +69,7 @@ void draw(cybercanvas::Canvas& c, const Model& model, const Appearance& appearan
     const auto area = model.size();
     const bool clock = model.kind() == Kind::Clock;
     const bool compact = clock && area.height < 150;
-    const auto ink = appearance.dark ? 0xd8e6dfff : 0x526e63ff;
+    const auto ink = appearance.modern ? appearance.style.secondary : appearance.dark ? 0xd8e6dfff : 0x526e63ff;
     const uint32_t pastel[]{0xf0cd83ff, 0xe5a89aff, 0xb0c9d8ff, 0xa9cbb2ff, 0xf0ddbbff, 0xb0d1c1ff};
     const uint32_t ocean[]{0x9bd8d3ff, 0x8fb7d0ff, 0xc8d9ebff, 0xabcdbfff, 0xd8ece5ff, 0x83b8c6ff};
     const auto* colors = appearance.palette == "ocean" ? ocean : pastel;
@@ -80,7 +80,10 @@ void draw(cybercanvas::Canvas& c, const Model& model, const Appearance& appearan
         c.oval(130, 12, 3.5, 3.5, 0xb4cabbff);
     }
     c.box(clock ? 22 : 38, railY + 4, clock ? 316 : 184, clock ? 9 : 12, 5, 0x152d2b18);
-    c.box(clock ? 22 : 38, railY, clock ? 316 : 184, clock ? 9 : 12, 5, appearance.dark ? 0x73988bff : 0xb8cdbbff);
+    c.box(clock ? 22 : 38, railY, clock ? 316 : 184, clock ? 9 : 12, 5,
+          appearance.modern ? appearance.style.foreground
+          : appearance.dark ? 0x73988bff
+                            : 0xb8cdbbff);
     c.line(clock ? 29 : 45, railY + 2, clock ? 331 : 215, railY + 2, 0xffffff58, 1);
     for (size_t i = 0; i < model.pieces().size(); ++i) {
         const auto& piece = model.pieces()[i];
@@ -106,25 +109,31 @@ void draw(cybercanvas::Canvas& c, const Model& model, const Appearance& appearan
             c.rotate(state.angle * 180 / std::numbers::pi);
             if (clock) {
                 const double hw = piece.half.width * 100, hh = piece.half.height * 100;
-                const uint32_t tint = colors[(i + 3) % 4];
+                const uint32_t tint = appearance.modern ? (i < 4 ? appearance.style.foreground : appearance.style.track)
+                                                        : colors[(i + 3) % 4];
                 c.box(-hw + 1, -hh + 5, hw * 2, hh * 2, 12, 0x172d3024);
                 c.box(-hw, -hh, hw * 2, hh * 2, 12, tint);
                 c.line(-hw + 10, -hh + 5, hw - 10, -hh + 5, 0xffffff70, 2);
                 c.oval(0, -hh + 1, 3, 3, 0xffffffb0);
                 cybercanvas::TextStyle text;
-                text.family = L"Segoe UI";
+                text.family = appearance.fontFamily;
                 text.size = hh * 1.55;
                 text.bold = true;
                 text.align = cybercanvas::TextAlign::Center;
                 text.vertical = cybercanvas::VerticalAlign::Center;
                 const auto digits = model.digits().empty() ? L"000000" : model.digits();
-                c.text(std::wstring(1, digits[i]), text, {-hw, -hh, hw * 2, hh * 2}, 0x365650ff);
+                c.text(
+                    std::wstring(1, digits[i]), text, {-hw, -hh, hw * 2, hh * 2},
+                    appearance.modern ? (i < 4 ? appearance.style.surface : appearance.style.foreground) : 0x365650ff);
             } else {
                 c.saved([&] {
                     c.translate(1, 3);
                     charm(c, piece.art, 0x193e391a, 0x193e391a);
                 });
-                charm(c, piece.art, colors[piece.art], 0x4b615aff);
+                charm(c, piece.art,
+                      appearance.modern ? (piece.art < 3 ? appearance.style.foreground : appearance.style.accent)
+                                        : colors[piece.art],
+                      appearance.modern ? appearance.style.surface : 0x4b615aff);
             }
         });
     }

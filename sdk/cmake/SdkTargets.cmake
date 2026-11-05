@@ -1,5 +1,5 @@
 configure_file(cmake/Version.h.in include/sdk/Version.h @ONLY)
-set(CD_SDK_HEADERS PluginApi.h PackageApi.h Settings.h WeatherPresentation.h WindowsFonts.h WindowsRendering.h Canvas.h RenderOutput.h Interaction.h Environment.h Diagnostics.h Scene.h Keyboard.h SceneList.h List.h Images.h Update.h Icons.h Typography.h Controls.h Language.h UiTranslations.h)
+set(CD_SDK_HEADERS PluginApi.h PackageApi.h Settings.h Appearance.h WeatherPresentation.h WindowsFonts.h WindowsRendering.h Canvas.h RenderOutput.h Interaction.h Environment.h Diagnostics.h Scene.h Keyboard.h SceneList.h List.h Images.h Update.h Icons.h Typography.h Controls.h Language.h UiTranslations.h)
 foreach(header IN LISTS CD_SDK_HEADERS)
     configure_file("${header}" "include/sdk/${header}" COPYONLY)
 endforeach()
@@ -28,7 +28,7 @@ target_link_libraries(cd_sdk_background_reference PUBLIC cd_sdk_abi)
 target_compile_features(cd_sdk_background_reference PUBLIC cxx_std_20)
 target_compile_options(cd_sdk_background_reference PRIVATE /utf-8)
 
-add_library(cd_sdk_rendering STATIC support/Canvas.cpp support/RenderOutput.cpp support/Language.cpp
+add_library(cd_sdk_rendering STATIC support/Canvas.cpp support/Appearance.cpp support/RenderOutput.cpp support/Language.cpp
     support/WindowsFonts.cpp support/WindowsRendering.cpp support/Update.cpp support/Interaction.cpp
     support/Icons.cpp support/Diagnostics.cpp)
 add_library(CyberDesktopSDK::Rendering ALIAS cd_sdk_rendering)

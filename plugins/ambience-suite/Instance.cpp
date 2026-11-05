@@ -6,7 +6,7 @@
 
 namespace atmosphere {
 namespace {
-constexpr atmosphere::themed::Defaults presentation{};
+constexpr atmosphere::themed::Defaults presentation{.modern = true};
 
 std::unique_ptr<atmosphere::themed::View> makeView(const CdCreateContext& context) {
     const auto directory = std::filesystem::path(std::u8string_view(reinterpret_cast<const char8_t*>(

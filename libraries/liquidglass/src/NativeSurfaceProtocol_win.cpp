@@ -1,5 +1,6 @@
 #include "libraries/liquidglass/src/NativeSurfaceProtocol_win.h"
 
+#include <algorithm>
 #include <atomic>
 #include <cmath>
 #include <cstddef>
@@ -96,15 +97,13 @@ bool validSurface(const SurfaceDescription& description, uint32_t process, uintp
         description.size != sizeof(SurfaceDescription) || description.process != process ||
         description.window != window || description.cookie != cookie || !description.revision ||
         description.attachedTop > 1 || description.optics.overLight > 1 || description.optics.mode > 3 ||
-        description.material > uint32_t(NativeMaterial::AeroGlass) || !std::isfinite(description.aero.blurSigma) ||
-        description.aero.blurSigma < 0 || description.aero.blurSigma > 64 ||
-        !std::isfinite(description.aero.colorBalance) || description.aero.colorBalance < 0 ||
-        description.aero.colorBalance > 1 || !std::isfinite(description.aero.afterglowBalance) ||
-        description.aero.afterglowBalance < 0 || description.aero.afterglowBalance > 1 ||
-        !std::isfinite(description.aero.blurBalance) || description.aero.blurBalance < 0 ||
-        description.aero.blurBalance > 1 || !std::isfinite(description.dpiScale) || description.dpiScale < .25f ||
-        description.dpiScale > 8.f || !std::isfinite(description.corner) || description.corner < 0 ||
-        description.corner > 16384) {
+        description.material != uint32_t(NativeMaterial::LiquidGlass) ||
+        std::any_of(description.reservedMaterial.begin(), description.reservedMaterial.end(),
+                    [](uint32_t value) {
+                        return value != 0;
+                    }) ||
+        !std::isfinite(description.dpiScale) || description.dpiScale < .25f || description.dpiScale > 8.f ||
+        !std::isfinite(description.corner) || description.corner < 0 || description.corner > 16384) {
         return false;
     }
     const auto parameters = decodeParameters(description.optics);

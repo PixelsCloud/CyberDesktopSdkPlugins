@@ -202,6 +202,7 @@ struct EffectTarget::Impl {
 };
 
 struct Effect::Impl {
+    bool externalContour = false;
     ComPtr<ID3D11Device> device;
     ComPtr<ID3D11DeviceContext> context;
     ComPtr<ID2D1DeviceContext> d2d;
@@ -304,6 +305,10 @@ void Effect::initialize(void* d3dDevice, void* d2dContext) {
     }
 }
 
+void Effect::setExternalContour(bool enabled) {
+    m_impl->externalContour = enabled;
+}
+
 void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry, Parameters p, uint64_t revision,
                     bool exportShadow, LightBackgroundBlend lightBlend) {
     auto& self = *m_impl;
@@ -352,7 +357,7 @@ void Effect::render(EffectTarget& target, void* texture, EffectGeometry geometry
                 {p.scaleX, p.scaleY, p.offsetX * dpi, p.offsetY * dpi},
                 {p.mouseOffsetX, p.mouseOffsetY, p.hoverGlowOpacity, p.pressGlowOpacity},
                 {p.interactionGlowOpacity, p.overLight ? 1.f : 0.f,
-                 lightBlend == LightBackgroundBlend::Adaptive ? 1.f : 0.f, 0},
+                 lightBlend == LightBackgroundBlend::Adaptive ? 1.f : 0.f, self.externalContour ? 1.f : 0.f},
                 {float(geometry.width), float(geometry.height), float(svgPadX), float(svgPadY)},
                 {float(templateWidth), float(templateHeight), float(pad), geometry.attachedTop ? 1.f : 0.f},
                 {float(std::min(cap, templateWidth / 2)), float(std::min(cap, templateHeight / 2)),

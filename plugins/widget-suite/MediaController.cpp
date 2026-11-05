@@ -2,6 +2,7 @@
 
 #include <CyberCanvas/Image.h>
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Environment.h>
 #include <sdk/Interaction.h>
 #include <sdk/Update.h>
@@ -439,6 +440,7 @@ CdResult Controller::Impl::applySettings(const CdSettingValue* values, uint32_t 
     if (result != CD_OK) {
         return result;
     }
+    cdsdk::normalizeModernColors(next);
     if (next.at("player").text != settings.at("player").text) {
         return subscribe(std::move(next), true);
     }

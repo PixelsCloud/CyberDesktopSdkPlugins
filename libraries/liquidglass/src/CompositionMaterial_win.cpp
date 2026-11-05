@@ -101,6 +101,7 @@ struct CompositionMaterial::Impl {
     DXGI_FORMAT sourceFormat = DXGI_FORMAT_UNKNOWN;
     uint64_t lastRevision = 0, materialRevision = 0;
     bool valid = false, metricsEnabled = false;
+    bool externalContour = false, lastExternalContour = false;
 };
 
 CompositionMaterial::CompositionMaterial() : m_impl(std::make_unique<Impl>()) {}
@@ -164,7 +165,8 @@ void CompositionMaterial::render(void* backgroundTexture, CompositionRegion surf
     const bool copy = !value.valid || resized || value.sourceBounds != bounds ||
                       value.backgroundIdentity.Get() != backgroundIdentity.Get() ||
                       value.lastRevision != backgroundRevision;
-    if (!copy && sameGeometry(value.lastGeometry, geometry) && value.lastParameters == parameters) {
+    if (!copy && sameGeometry(value.lastGeometry, geometry) && value.lastParameters == parameters &&
+        value.externalContour == value.lastExternalContour) {
         return;
     }
     value.valid = false;
@@ -214,6 +216,7 @@ void CompositionMaterial::render(void* backgroundTexture, CompositionRegion surf
         }
         ++value.materialRevision;
     }
+    value.effect->setExternalContour(value.externalContour);
     value.effect->render(*value.target, value.source.Get(), geometry, parameters, value.materialRevision, false,
                          react::LightBackgroundBlend::Adaptive);
     if (value.metricsEnabled) {
@@ -226,7 +229,12 @@ void CompositionMaterial::render(void* backgroundTexture, CompositionRegion surf
     value.lastRevision = backgroundRevision;
     value.lastGeometry = geometry;
     value.lastParameters = parameters;
+    value.lastExternalContour = value.externalContour;
     value.valid = true;
+}
+
+void CompositionMaterial::setExternalContour(bool enabled) {
+    m_impl->externalContour = enabled;
 }
 
 void CompositionMaterial::setMetricsEnabled(bool enabled) {

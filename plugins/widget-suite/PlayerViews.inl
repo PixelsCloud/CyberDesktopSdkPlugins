@@ -89,7 +89,7 @@ void player(const Spec& spec, const cdsdk::Settings& settings, const Media& medi
     Instruments instrument(canvas, cdsdk::textStyle(*fonts, 10), cdsdk::displayText);
     const auto accent = mechanical ? kBrass : uint32_t(settings.at("accent").integer);
     const auto foreground = mechanical ? kInk : uint32_t(settings.at("foreground").integer);
-    const auto muted = mechanical ? kMuted : (foreground & 0xFFFFFF00) | 0xA0;
+    const auto muted = modernStyle ? appearance.secondary : mechanical ? kMuted : (foreground & 0xFFFFFF00) | 0xA0;
     const float radius = float(settings.at("background_corner_radius").integer);
     if (settings.at("show_background").integer) {
         if (mechanical) {
@@ -108,10 +108,34 @@ void player(const Spec& spec, const cdsdk::Settings& settings, const Media& medi
             instrument.text(value, {area.left, area.top, area.right - area.left, area.bottom - area.top}, size, color,
                             center ? cybercanvas::TextAlign::Center : cybercanvas::TextAlign::Start);
         } else {
-            text(value, size, area, color, center);
+            if (modernStyle) {
+                cdsdk::label(*fonts, value, std::max(12.f, size), area, color, center, false).draw(canvas);
+            } else {
+                text(value, size, area, color, center);
+            }
         }
     };
     record(media, layout.cover, accent);
+    if (modernStyle) {
+        const auto& r = layout.cover;
+        const double radius = std::min(r.width, r.height) / 2;
+        const double cx = r.x + r.width / 2, cy = r.y + r.height / 2;
+        const cybercanvas::Point pivot{cx + radius * .89, cy - radius * .86};
+        const double progress = std::clamp(media.tonearmProgress, 0., 1.);
+        const double reach = radius * (.79 - .40 * progress);
+        const cybercanvas::Point contact = media.source.empty()
+                                               ? cybercanvas::Point{cx + radius * .94, cy + radius * .64}
+                                               : cybercanvas::Point{cx + reach * .68, cy + reach * .73};
+        canvas.line(pivot.x, pivot.y, contact.x, contact.y, appearance.foreground, std::max(2., radius * .055));
+        canvas.oval(pivot.x, pivot.y, radius * .10, radius * .10, appearance.secondary);
+        canvas.oval(pivot.x, pivot.y, radius * .035, radius * .035, appearance.surface);
+        canvas.saved([&] {
+            canvas.translate(contact.x, contact.y);
+            canvas.rotate(std::atan2(contact.y - pivot.y, contact.x - pivot.x) * 180 / 3.14159265358979323846 - 90);
+            canvas.box(-radius * .055, -radius * .025, radius * .11, radius * .20, 1.5, appearance.foreground);
+        });
+    }
+
     if (mechanical) {
         const auto& r = layout.cover;
         const double cx = r.x + r.width * .5, cy = r.y + r.height * .5, radius = std::min(r.width, r.height) * .5;
@@ -138,8 +162,7 @@ void player(const Spec& spec, const cdsdk::Settings& settings, const Media& medi
     }
     label(media.title.empty() ? (english ? L"No music playing" : L"暂无播放歌曲") : media.title, layout.titleSize,
           rect(layout.title), foreground, centered);
-    label(media.artist.empty() ? (english ? L"Open a music player" : L"请打开音乐播放器") : media.artist,
-          layout.detailSize, rect(layout.artist), muted, centered);
+    label(media.artist.empty() ? L"" : media.artist, layout.detailSize, rect(layout.artist), muted, centered);
     if (layout.album.width > 0)
         label(media.album, layout.detailSize, rect(layout.album), muted, false);
     if (layout.source.width > 0)

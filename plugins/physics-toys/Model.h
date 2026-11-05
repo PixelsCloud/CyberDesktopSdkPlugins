@@ -55,6 +55,7 @@ struct ModelOptions {
     bool separateEnclosure = false;
     double wallInset = -.05;
     Point dragMargin{.1, .1};
+    bool tallChime = false;
 };
 
 class Model {

@@ -58,7 +58,7 @@ void checkImageScheduling(const std::filesystem::path& assets, Snapshot sample) 
         std::vector<uint8_t> pixels(154 * 99 * 4);
         CdFrame frame{sizeof(CdFrame), 154, 99, 154 * 4, pixels.size(), pixels.data(), 1};
         const Spec spec{"async-images", 1, 2};
-        auto settings = defaults();
+        auto settings = defaults(true);
         require(renderer.renderReference(spec, settings, sample, false, frame, {}), "shared image resources settle");
         require(host.redraws > 0 && host.timers.empty(), "image completion redraws locally and stops polling");
         const auto retained = host.redraws;
@@ -79,6 +79,7 @@ void checkImageScheduling(const std::filesystem::path& assets, Snapshot sample) 
     }
     require(host.timers.empty(), "renderer destruction releases image timer ownership");
 }
+
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) {

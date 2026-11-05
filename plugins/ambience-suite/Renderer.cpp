@@ -1,4 +1,5 @@
 #include <CyberCanvas/EffectsDrawing.h>
+#include <sdk/Appearance.h>
 #include <sdk/Controls.h>
 #include <sdk/Icons.h>
 #include <sdk/Language.h>
@@ -102,12 +103,13 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Model& m
     try {
         auto painting = impl_->draw.frame(frame, safe);
         const auto area = painting.area();
+        impl_->draw.selectFont(settings.at("font_family").text);
         if (area.width > 20 && area.height > 20) {
             const auto mode = settings.at("lighting").text;
             const bool dark = mode == "night" || mode == "theme" && model.dark;
             if (settings.at("show_background").integer && spec.kind == Kind::Plant) {
-                impl_->draw.box(1, 1, area.width - 3, area.height - 4, settings.at("background_corner_radius").integer,
-                                dark ? 0x202D34FF : 0xFFFBF2FF);
+                cdsdk::widgetBackground(impl_->draw, cdsdk::widgetAppearance(settings),
+                                        {0, 0, area.width, area.height});
             }
             if (spec.kind == Kind::Plant) {
                 const bool info = spec.rows > 1 && settings.at("show_info").integer;

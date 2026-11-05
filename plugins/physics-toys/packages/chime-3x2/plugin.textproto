@@ -49,16 +49,7 @@ settings_page {
             value { label: "Breeze strength" }
         }
     }
-    fields {
-        id: "show_background"
-        label: "显示背景"
-        type: TOGGLE
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Show background" }
-        }
-    }
+
     fields {
         id: "running"
         label: "启用摆动"
@@ -79,26 +70,7 @@ settings_page {
             value { label: "Reduce motion" }
         }
     }
-    fields {
-        id: "palette"
-        label: "配色"
-        type: CHOICE
-        text_default: "pastel"
-        choices {
-            value: "pastel"
-            label: "柔和卡通"
-            localized_labels { key: "en" value: "Soft pastels" }
-        }
-        choices {
-            value: "ocean"
-            label: "海盐薄荷"
-            localized_labels { key: "en" value: "Ocean mint" }
-        }
-        localized {
-            key: "en"
-            value { label: "Palette" }
-        }
-    }
+
     localized {
         key: "en"
         value {
@@ -106,8 +78,149 @@ settings_page {
             description: "Drag and release. Double-click to pluck. Motion pauses while hidden."
         }
     }
+
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4294171135
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        section: "外观"
+        text_default: "solid"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        localized {
+            key: "en"
+            value { label: "Background fill" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4294171135
+        localized {
+            key: "en"
+            value { label: "Gradient end color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        section: "外观"
+        integer_default: 90
+        minimum: 0
+        maximum: 360
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Gradient angle (°)" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 2556502015
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "次要文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 2693027839
+        localized {
+            key: "en"
+            value { label: "Secondary text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "强调颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 849188351
+        localized {
+            key: "en"
+            value { label: "Accent color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        integer_default: 12
+        minimum: 0
+        maximum: 32
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" }
+        }
+    }
 }
-content_padding: 0
+content_padding: 6
 preview: "preview.png"
 tags: "卡通"
 tags: "物理"

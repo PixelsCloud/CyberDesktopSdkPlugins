@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include <d2d1.h>
 #include <dwrite.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Controls.h>
 #include <sdk/Language.h>
@@ -81,10 +82,18 @@ struct Canvas::Impl {
     }
 
     void text(const std::wstring& source, float size, D2D1_RECT_F area, uint32_t color, bool center = true) {
-        cdsdk::label(*fonts, source, size, area, color, center, true).draw(canvas);
+        cdsdk::label(*fonts, source, modernStyle ? std::max(12.f, size) : size, area, color, center, !modernStyle)
+            .draw(canvas);
     }
 
+    bool modernStyle = false;
+    cdsdk::WidgetAppearance appearance;
+
     void card(float w, float h, float radius, uint32_t color) {
+        if (modernStyle) {
+            cdsdk::widgetBackground(canvas, appearance, {0, 0, w, h});
+            return;
+        }
         radius = std::clamp(radius, 0.f, std::max(0.f, std::min(w - 4, h - 5) * .5f));
         ink(0x00000015);
         target->FillRoundedRectangle(D2D1::RoundedRect(D2D1::RectF(3, 5, w - 1, h - 1), radius, radius), brush.Get());
@@ -96,7 +105,43 @@ struct Canvas::Impl {
 
 #include "plugins/widget-suite/MatrixViews.inl"
 
+    void modernMusic(Spec spec, const cdsdk::Settings& settings, const Spectrum& spectrum, float w, float h) {
+        cdsdk::widgetBackground(canvas, appearance, {0, 0, w, h});
+        if (spec.kind == Kind::Radial) {
+            constexpr int count = 48;
+            constexpr double tau = 6.283185307179586;
+            const double radius = std::min(w, h) * .25, length = std::min(w, h) * .17, cx = w * .5, cy = h * .5;
+            for (int i = 0; i < count; ++i) {
+                const double angle = tau * i / count - tau / 4, dx = std::cos(angle), dy = std::sin(angle);
+                const double level = spectrum.sample(double(i) * (Spectrum::count - 1) / (count - 1));
+                canvas.line(cx + dx * radius, cy + dy * radius, cx + dx * (radius + 1 + length * level),
+                            cy + dy * (radius + 1 + length * level), appearance.foreground, 2);
+            }
+            controls.icons.paint(canvas, {cx - 12, cy - 12, 24, 24}, "music", appearance.secondary);
+            return;
+        }
+        constexpr int count = int(Spectrum::count);
+        const double bottom = h - 10, unit = (w - 18) / count, plotHeight = h - 20;
+        for (int i = 0; i < count; ++i) {
+            const double position = double(i) * (Spectrum::count - 1) / (count - 1);
+            const double level = spectrum.sample(position), peak = spectrum.sample(position, true);
+            const double x = 9 + i * unit, bw = std::max(.7, unit * .64), bar = std::max(1., plotHeight * level);
+            canvas.box(x, bottom - bar, bw, bar, .7, appearance.foreground);
+            if (settings.at("peaks").integer && peak > .02) {
+                canvas.box(x, std::max(7., bottom - plotHeight * peak - 4), bw, 1.4, .5, appearance.accent);
+            }
+        }
+    }
+
     void music(Spec spec, const cdsdk::Settings& settings, const Spectrum& spectrum, float w, float h) {
+        if (modernStyle) {
+            if (isMatrix(spec.kind)) {
+                matrix(spec, settings, spectrum, w, h);
+            } else {
+                modernMusic(spec, settings, spectrum, w, h);
+            }
+            return;
+        }
         if (spec.mechanical && (spec.kind == Kind::Radial || spec.kind == Kind::Bars)) {
             drawMechanicalSpectrum(canvas, artwork, spec, spectrum, settings.at("peaks").integer != 0, w, h);
             return;
@@ -228,6 +273,9 @@ struct Canvas::Impl {
                 theme.font = cdsdk::textStyle(*fonts, std::min(14.f, w * .052f));
                 theme.padding = 0;
                 theme.muted = 0xD6E2EAFF;
+                if (modernStyle) {
+                    return;
+                }
                 cybercanvas::ContentNotice{{12, h * .6, w - 26, h * .18},
                                            {},
                                            cdsdk::displayText(english ? L"No readable photos" : L"暂无可显示图片"),
@@ -237,7 +285,7 @@ struct Canvas::Impl {
             }
             if (photo.bitmap && settings.at("counter").integer) {
                 const auto caption = std::to_wstring(photo.index + 1) + L" / " + std::to_wstring(photo.count);
-                const float size = std::min(11.f, h * .08f);
+                const float size = modernStyle ? 13.f : std::min(11.f, h * .08f);
                 ink(0x10202C80);
                 target->FillRoundedRectangle(D2D1::RoundedRect(D2D1::RectF(w - 78, h - 30, w - 12, h - 10), 6, 6),
                                              brush.Get());
@@ -253,8 +301,15 @@ struct Canvas::Impl {
                    accent = uint32_t(settings.at("accent").integer);
         const auto rgb = paint(background);
         const bool dark = rgb.r * .2126f + rgb.g * .7152f + rgb.b * .0722f < .5f;
-        const uint32_t inkColor = dark ? 0xE2EDF3FF : 0x263039FF, muted = dark ? 0xA1B1BACC : 0x263039AA,
-                       weekend = dark ? 0xE7AD88FF : 0x995C3EFF;
+        const uint32_t inkColor = modernStyle ? appearance.foreground
+                                  : dark      ? 0xE2EDF3FF
+                                              : 0x263039FF,
+                       muted = modernStyle ? appearance.secondary
+                               : dark      ? 0xA1B1BACC
+                                           : 0x263039AA,
+                       weekend = modernStyle ? appearance.secondary
+                                 : dark      ? 0xE7AD88FF
+                                             : 0x995C3EFF;
         card(w, h, float(settings.at("background_corner_radius").integer), background);
         const float pad = std::max(8.f, w * .035f), header = std::clamp(h * .18f, 22.f, 40.f),
                     weekHeight = std::clamp(h * .13f, 15.f, 26.f), cell = (w - 2 * pad) / 7,
@@ -263,7 +318,8 @@ struct Canvas::Impl {
                                 L"July", L"August",  L"September", L"October", L"November", L"December"};
         const auto title = english ? std::wstring(months[date.month]) + L" " + std::to_wstring(date.year)
                                    : std::to_wstring(date.year) + L"年" + std::to_wstring(date.month) + L"月";
-        text(title, std::clamp(header * .53f, 11.f, 20.f), D2D1::RectF(pad, 4, w - 65, header), inkColor, false);
+        text(title, modernStyle ? std::clamp(header * .58f, 16.f, 22.f) : std::clamp(header * .53f, 11.f, 20.f),
+             D2D1::RectF(pad, 4, w - 65, header), inkColor, false);
         auto theme = cybercanvas::WidgetTheme::dark();
         theme.foreground = inkColor;
         theme.surface = 0;
@@ -277,12 +333,13 @@ struct Canvas::Impl {
         const wchar_t* en[]{L"Su", L"Mo", L"Tu", L"We", L"Th", L"Fr", L"Sa"};
         for (int i = 0; i < 7; ++i) {
             const int weekday = (i + (monday ? 1 : 0)) % 7;
-            text(english ? en[weekday] : zh[weekday], std::clamp(weekHeight * .56f, 8.f, 13.f),
+            text(english ? en[weekday] : zh[weekday], modernStyle ? 13.f : std::clamp(weekHeight * .56f, 8.f, 13.f),
                  D2D1::RectF(pad + i * cell, header, pad + (i + 1) * cell, header + weekHeight),
                  weekday == 0 || weekday == 6 ? weekend : muted);
         }
         const int start = monthStart(date, monday), days = monthDays(date);
-        const float size = std::clamp(std::min(row * .65f, cell * .42f), 8.f, 15.f),
+        const float size = modernStyle ? std::clamp(std::min(row * .72f, cell * .45f), 14.f, 19.f)
+                                       : std::clamp(std::min(row * .65f, cell * .42f), 8.f, 15.f),
                     radius = std::max(3.f, std::min(row, cell) * .40f);
         cybercanvas::CalendarGrid grid{{pad, header + weekHeight, w - 2 * pad, row * 6}, 6};
         for (int i = 0; i < 42; ++i) {
@@ -305,7 +362,7 @@ struct Canvas::Impl {
             cybercanvas::CalendarCell dateCell;
             dateCell.bounds = area;
             dateCell.day = cdsdk::label(*fonts, std::to_wstring(number), size, D2D1::RectF(x, y, x + cell, y + row),
-                                        color, true, true);
+                                        color, true, !modernStyle);
             dateCell.selected = active;
             dateCell.current = current;
             dateCell.highlight = {x + cell * .5 - radius, y + row * .5 - radius, radius * 2, radius * 2};
@@ -408,6 +465,8 @@ bool Canvas::render(Spec spec, const cdsdk::Settings& settings, const Spectrum& 
         if (!p.canvas.valid(frame)) {
             return false;
         }
+        p.modernStyle = !spec.mechanical && cdsdk::modernAppearance(settings);
+        p.appearance = cdsdk::widgetAppearance(settings);
         p.surface(frame);
         p.fonts->select(p.write.Get(), settings.at("font_family").text);
         p.canvas.fontCollection(p.fonts->collection());

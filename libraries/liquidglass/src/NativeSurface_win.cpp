@@ -116,8 +116,7 @@ void NativeSurface::attach(uintptr_t window) {
     }
 }
 
-void NativeSurface::update(Parameters parameters, float dpiScale, float corner, bool attachedTop,
-                           NativeMaterial material, AeroParameters aero) {
+void NativeSurface::update(Parameters parameters, float dpiScale, float corner, bool attachedTop) {
     auto& value = *m_impl;
     if (!value.view || !std::isfinite(dpiScale) || dpiScale < .25f || dpiScale > 8.f || !std::isfinite(corner) ||
         corner < 0 || corner > 16384) {
@@ -129,15 +128,12 @@ void NativeSurface::update(Parameters parameters, float dpiScale, float corner, 
     next.dpiScale = dpiScale;
     next.corner = corner;
     next.attachedTop = attachedTop ? 1u : 0u;
-    next.material = uint32_t(material);
-    next.aero = aero;
     if (!native::validSurface(next, next.process, uintptr_t(next.window), next.cookie)) {
         throw std::invalid_argument("Native composition material parameters are invalid");
     }
     if (parameters == native::decodeParameters(value.description.optics) &&
         next.dpiScale == value.description.dpiScale && next.corner == value.description.corner &&
-        next.attachedTop == value.description.attachedTop && next.material == value.description.material &&
-        next.aero == value.description.aero) {
+        next.attachedTop == value.description.attachedTop) {
         return;
     }
     ++next.revision;

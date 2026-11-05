@@ -35,6 +35,7 @@ public:
     void initialize(void* d3dDevice, void* d2dDevice);
     // Copy/render/readback counters are opt-in. Allocation sizes remain budget bookkeeping.
     void setMetricsEnabled(bool enabled);
+    void setExternalContour(bool enabled);
     void render(void* backgroundTexture, CompositionRegion surface, EffectGeometry geometry, Parameters parameters,
                 uint64_t backgroundRevision, std::span<const CompositionRegion> updatedBackground = {});
     // Borrowed D2D bitmap; valid until the next render or this object's destruction.

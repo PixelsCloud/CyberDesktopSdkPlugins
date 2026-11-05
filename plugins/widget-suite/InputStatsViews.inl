@@ -1,6 +1,7 @@
 void inputStats(const cdsdk::Settings& settings, const CdInputStats& stats, float w, float h) {
     const bool english = settings.at("language").text == "en";
-    const auto foreground = uint32_t(settings.at("foreground").integer), muted = (foreground & 0xFFFFFF00) | 0x99;
+    const auto foreground = uint32_t(settings.at("foreground").integer),
+               muted = modernStyle ? appearance.secondary : (foreground & 0xFFFFFF00) | 0x99;
     const float radius = float(settings.at("background_corner_radius").integer);
     if (settings.at("show_background").integer)
         card(w, h, radius, uint32_t(settings.at("background").integer));
@@ -22,18 +23,20 @@ void inputStats(const cdsdk::Settings& settings, const CdInputStats& stats, floa
         const float icon = std::clamp(h * .14f, 9.f, 17.f), y = h * .17f;
         controls.icons.paint(canvas, {left, y - icon * .5, icon, icon}, i ? "mouse" : "keyboard", color);
         cybercanvas::MetricItem metric;
-        metric.caption = cdsdk::label(*fonts, titles[i], std::clamp(h * .125f, 9.f, 13.f),
-                                      D2D1::RectF(left + icon + 5, h * .06f, right, h * .28f), foreground, false, true);
+        metric.caption =
+            cdsdk::label(*fonts, titles[i], modernStyle ? 14.f : std::clamp(h * .125f, 9.f, 13.f),
+                         D2D1::RectF(left + icon + 5, h * .06f, right, h * .28f), foreground, false, !modernStyle);
         const bool active = (stats.status & CD_INPUT_STATS_ACTIVE) != 0;
         metric.number = cdsdk::label(*fonts, active ? number(today[i]) : L"—", std::clamp(h * .32f, 18.f, 40.f),
-                                     D2D1::RectF(left, h * .30f, right, h * .65f), color, false, true);
+                                     D2D1::RectF(left, h * .30f, right, h * .65f), color, false, !modernStyle);
         const auto caption = active ? (english ? L"TODAY" : L"今日次数") : (english ? L"NOT RECORDING" : L"统计未运行");
-        metric.detail = cdsdk::label(*fonts, caption, std::clamp(h * .095f, 8.f, 11.f),
-                                     D2D1::RectF(left, h * .66f, right, h * .79f), muted, false, true);
+        metric.detail = cdsdk::label(*fonts, caption, modernStyle ? 12.f : std::clamp(h * .095f, 8.f, 11.f),
+                                     D2D1::RectF(left, h * .64f, right, h * .82f), muted, false, !modernStyle);
         metric.draw(canvas);
         if (settings.at("show_total").integer)
             text((english ? L"TOTAL  " : L"累计  ") + number(total[i]) +
                      ((stats.status & CD_INPUT_STATS_STORAGE_ERROR) ? (english ? L" · UNSAVED" : L" · 未保存") : L""),
-                 std::clamp(h * .105f, 8.f, 12.f), D2D1::RectF(left, h * .82f, right, h * .98f), muted, false);
+                 modernStyle ? 12.f : std::clamp(h * .105f, 8.f, 12.f), D2D1::RectF(left, h * .82f, right, h * .98f),
+                 muted, false);
     }
 }

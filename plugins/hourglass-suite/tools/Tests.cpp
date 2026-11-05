@@ -1,5 +1,6 @@
 #include <Windows.h>
 
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <filesystem>
@@ -8,6 +9,9 @@
 #include <limits>
 #include <map>
 #include <set>
+#include <stdexcept>
+#include <utility>
+#include <vector>
 
 #include "plugins/hourglass-suite/Hourglass.h"
 #include "plugins/hourglass-suite/PhysicalSand.h"
@@ -328,6 +332,50 @@ void square() {
           "Physical mode does not restart cleanly");
 }
 
+void symmetricPixels() {
+    using namespace hourglassplugin;
+    Renderer renderer;
+    Model model;
+    Options options;
+    options.modern = true;
+    options.glow = 0;
+    options.style = cdsdk::widgetPalette(cdsdk::WidgetColorway::Honey);
+    for (const int width : {144, 176, 208}) {
+        const double height = width * .625;
+        const auto glass = glassArea(width, height, true);
+        const double cell = glass.height / kGridHeight;
+        check(std::abs(glass.x * 2 + cell * (kGridWidth - 1 + kGridDotFill) - width * .38) < .0001 &&
+                  std::abs(glass.y * 2 + cell * (kGridHeight - 1 + kGridDotFill) - height) < .0001,
+              "Sand frame has unequal outer margins");
+        for (const double dpi : {1., 1.25, 1.5, 2.}) {
+            const auto w = uint32_t(width * dpi), h = uint32_t(height * dpi);
+            std::vector<uint8_t> pixels(size_t(w) * h * 4);
+            CdFrame frame{sizeof(frame), w, h, w * 4, pixels.size(), pixels.data(), dpi};
+            check(renderer.render(model, options, frame, {}), "Render centered hourglass digits");
+            int x0 = int(w), y0 = int(h), x1 = -1, y1 = -1;
+            const double x = width * .42, right = width - 10;
+            const auto color = options.style.foreground;
+            for (int py = int(std::ceil(height * .34 * dpi)); py < int(height * .64 * dpi); ++py) {
+                for (int px = int(std::ceil(x * dpi)); px < int(right * dpi); ++px) {
+                    const auto* pixel = &pixels[(size_t(py) * w + px) * 4];
+                    if (std::abs(int(pixel[0]) - int(color >> 24)) < 4 &&
+                        std::abs(int(pixel[1]) - int((color >> 16) & 255)) < 4 &&
+                        std::abs(int(pixel[2]) - int((color >> 8) & 255)) < 4) {
+                        x0 = std::min(x0, px);
+                        x1 = std::max(x1, px);
+                        y0 = std::min(y0, py);
+                        y1 = std::max(y1, py);
+                    }
+                }
+            }
+            check(x1 >= x0 && y1 >= y0 && std::abs(x0 + x1 + 1 - (x + right) * dpi) <= 2.01 &&
+                      std::abs(y0 + y1 + 1 - height * .98 * dpi) <= 2.01,
+                  "Hourglass numeral pixels have unequal margins");
+        }
+    }
+    std::cout << "PASS hourglass frame and digit symmetry at 12 size/DPI states\n";
+}
+
 void rendering() {
     using namespace hourglassplugin;
     Renderer renderer;
@@ -386,10 +434,14 @@ int wmain(int argc, wchar_t** argv) {
     }
     std::cout << "Execution mode: explicit owner-reference UI lifecycle fixture\n";
     try {
+        if (argc > 2 || (argc == 2 && std::filesystem::path(argv[1]).extension() != L".json")) {
+            throw std::runtime_error("Usage: cd_hourglass_tests [report.json]; reports must use the .json extension");
+        }
         simulation();
         physicalSimulation();
         lifecycle();
         square();
+        symmetricPixels();
         rendering();
         std::cout
             << "PASS: sand conservation, containment, completion, automatic flip, frame independence, input/drag, "
@@ -398,6 +450,7 @@ int wmain(int argc, wchar_t** argv) {
             const std::filesystem::path path(argv[1]);
             std::filesystem::create_directories(path.parent_path());
             std::ofstream output(path);
+            check(bool(output), "Open hourglass JSON test report");
             output << "{\"passed\":true,\"sandGrains\":105,\"sandConservation\":true,\"noWallLeaks\":true,"
                       "\"automaticFlip\":true,\"pauseClickResetAndDrag\":true,\"oneShotStopsTimer\":true,"
                       "\"transactionalSettings\":true,\"transparentBackground\":true,\"squareHasNoText\":true,"

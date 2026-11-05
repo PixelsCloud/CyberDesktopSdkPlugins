@@ -26,6 +26,9 @@ public:
 
     const Setting& at(const char* id) const;
 
+    // Define defaults before applying host settings; existing IDs retain their type.
+    void define(std::initializer_list<Setting> defaults);
+
     // Replace a runtime inventory without retaining a now unsupported selection.
     void setChoices(const char* id, std::vector<std::string> choices, const std::string& fallback);
 

@@ -26,6 +26,7 @@ struct Defaults {
     bool noiseAnimation = true;
     bool trackToggle = false;
     bool indicateMissingAudio = false;
+    bool modern = false;
 };
 
 class View {

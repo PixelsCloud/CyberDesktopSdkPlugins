@@ -3,8 +3,10 @@
 #include <QColor>
 #include <QFont>
 #include <QPainter>
+#include <QPainterPath>
 #include <QTextLayout>
 #include <QTextOption>
+#include <QTransform>
 #include <algorithm>
 #include <cmath>
 
@@ -117,15 +119,33 @@ void LyricLayout::paint(QPainter& painter, const QPointF& origin, double positio
                         const QColor& highlight, bool simulateLineProgress) const {
     const auto& self = *m_impl;
     painter.save();
+    // Text has its own antialiasing hint. Hard clip coverage assigns every
+    // device pixel to exactly one color, including fractional progress fronts.
+    painter.setRenderHint(QPainter::Antialiasing, false);
     painter.translate(origin);
     painter.setClipRect(QRectF(QPointF(), QSizeF(self.width, self.size.height())), Qt::IntersectClip);
-    painter.setPen(text);
-    self.layout.draw(&painter, {});
     if (text == highlight) {
+        painter.setPen(text);
+        self.layout.draw(&painter, {});
         painter.restore();
         return;
     }
-    painter.setPen(highlight);
+    QPainterPath highlighted;
+    highlighted.setFillRule(Qt::WindingFill);
+    const auto device = painter.deviceTransform();
+    bool invertible = false;
+    const auto logical = device.inverted(&invertible);
+    const auto includeHighlight = [&](QRectF clip) {
+        if (invertible && device.type() <= QTransform::TxScale) {
+            auto pixels = device.mapRect(clip);
+            pixels.setCoords(std::round(pixels.left()), std::round(pixels.top()), std::round(pixels.right()),
+                             std::round(pixels.bottom()));
+            clip = logical.mapRect(pixels);
+        }
+        if (!clip.isEmpty()) {
+            highlighted.addRect(clip);
+        }
+    };
     if (!self.words.isEmpty()) {
         for (const auto& segment : self.segments) {
             if (position <= segment.start) {
@@ -140,10 +160,7 @@ void LyricLayout::paint(QPainter& painter, const QPointF& origin, double positio
             if (segment.rightToLeft) {
                 clip.moveRight(segment.bounds.right());
             }
-            painter.save();
-            painter.setClipRect(clip, Qt::IntersectClip);
-            self.layout.draw(&painter, {});
-            painter.restore();
+            includeHighlight(clip);
         }
     } else if (simulateLineProgress && self.end > self.start) {
         const double progress = std::clamp((position - self.start) / (self.end - self.start), 0.0, 1.0);
@@ -157,12 +174,28 @@ void LyricLayout::paint(QPainter& painter, const QPointF& origin, double positio
             if (row.rightToLeft) {
                 clip.moveRight(row.bounds.right());
             }
-            painter.save();
-            painter.setClipRect(clip, Qt::IntersectClip);
-            self.layout.draw(&painter, {});
-            painter.restore();
+            includeHighlight(clip);
             remaining -= row.bounds.width();
         }
+    }
+    if (highlighted.isEmpty()) {
+        painter.setPen(text);
+        self.layout.draw(&painter, {});
+    } else {
+        // Complementary clips keep antialiased glyph edges single-covered.
+        // Painting the highlight over the base thickens their alpha and leaves a
+        // halo of the original color around every partially covered edge pixel.
+        QPainterPath remaining;
+        remaining.addRect(QRectF(QPointF(), QSizeF(self.width, self.size.height())));
+        remaining = remaining.subtracted(highlighted);
+        painter.save();
+        painter.setClipPath(remaining, Qt::IntersectClip);
+        painter.setPen(text);
+        self.layout.draw(&painter, {});
+        painter.restore();
+        painter.setClipPath(highlighted, Qt::IntersectClip);
+        painter.setPen(highlight);
+        self.layout.draw(&painter, {});
     }
     painter.restore();
 }

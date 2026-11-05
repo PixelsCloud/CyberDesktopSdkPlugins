@@ -9,14 +9,8 @@ namespace liquidglass {
 
 struct NativeBackendIdentity;
 
-enum class NativeMaterial : uint32_t { LiquidGlass, AeroGlass };
+enum class NativeMaterial : uint32_t { LiquidGlass };
 enum class NativeSurfaceEvent : uintptr_t { Frame = 1, BackendReady = 2, BackendUnavailable = 3 };
-
-struct AeroParameters {
-    float blurSigma = 12, colorBalance = .08f, afterglowBalance = .08f, blurBalance = .92f;
-    uint32_t color = 0xffa9b1bb;
-    bool operator==(const AeroParameters&) const = default;
-};
 
 // Own-window registration only. Background contributors are managed by DWM.
 // Calls must remain on the owning window's thread; destroy before its HWND.
@@ -25,8 +19,7 @@ public:
     NativeSurface();
     ~NativeSurface();
     void attach(uintptr_t window);
-    void update(Parameters parameters, float dpiScale, float corner, bool attachedTop,
-                NativeMaterial material = NativeMaterial::LiquidGlass, AeroParameters aero = {});
+    void update(Parameters parameters, float dpiScale, float corner, bool attachedTop);
     void detach();
     void refresh();
     bool active() const;

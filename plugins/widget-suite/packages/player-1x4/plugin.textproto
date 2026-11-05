@@ -4,7 +4,7 @@ version: "1.0.1"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 0
+content_padding: 6
 layouts {
     id: "1x4"
     name: "4×1（宽×高）"
@@ -91,98 +91,7 @@ settings_page {
             value { label: "顯示播放進度" section: "設定" }
         }
     }
-    fields {
-        id: "show_background"
-        label: "显示卡片背景"
-        type: TOGGLE
-        section: "设置"
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Show card background" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "顯示卡片背景" section: "設定" }
-        }
-    }
-    fields {
-        id: "background"
-        label: "背景颜色"
-        type: COLOR
-        section: "设置"
-        color_default: 388180991
-        localized {
-            key: "en"
-            value { label: "Background color" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景顏色" section: "設定" }
-        }
-    }
-    fields {
-        id: "foreground"
-        label: "文字颜色"
-        type: COLOR
-        section: "设置"
-        color_default: 3992385023
-        localized {
-            key: "en"
-            value { label: "Text color" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "文字顏色" section: "設定" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "按钮与进度颜色"
-        type: COLOR
-        section: "设置"
-        color_default: 1273213951
-        localized {
-            key: "en"
-            value { label: "Button and progress color" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "按鈕與進度顏色" section: "設定" }
-        }
-    }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角（px）"
-        type: INTEGER
-        section: "设置"
-        maximum: 32.0
-        step: 1.0
-        integer_default: 5
-        localized {
-            key: "en"
-            value { label: "Background corner radius (px)" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景圓角（px）" section: "設定" }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "设置"
-        text_default: "@siyuan-heavy"
-        localized {
-            key: "en"
-            value { label: "Font" section: "Settings" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "字型" section: "設定" }
-        }
-    }
+
     fields {
         id: "language"
         label: "语言"
@@ -224,6 +133,147 @@ settings_page {
     localized {
         key: "zh-TW"
         value { title: "音樂控制設定" description: "選擇正在執行的播放器；未開放的操作會自動禁用。每個例項獨立儲存。" }
+    }
+
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4109039615
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        section: "外观"
+        text_default: "solid"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        localized {
+            key: "en"
+            value { label: "Background fill" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 4109039615
+        localized {
+            key: "en"
+            value { label: "Gradient end color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        section: "外观"
+        integer_default: 90
+        minimum: 0
+        maximum: 360
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Gradient angle (°)" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 2186122751
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "次要文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 2642454783
+        localized {
+            key: "en"
+            value { label: "Secondary text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "强调颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3650770175
+        localized {
+            key: "en"
+            value { label: "Accent color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        integer_default: 12
+        minimum: 0
+        maximum: 32
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" }
+        }
     }
 }
 preview: "preview.png"

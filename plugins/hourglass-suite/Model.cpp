@@ -132,7 +132,7 @@ uint64_t Model::cycles() const {
 CdRect glassArea(double width, double height, bool showTimer) {
     const double boxWidth = showTimer ? width * .38 : width;
     const double pixel = std::max(.1, std::min((boxWidth - 12) / kGridWidth, (height - 16) / kGridHeight));
-    return {(boxWidth - pixel * kGridWidth) * .5, (height - pixel * kGridHeight) * .5 - 1, pixel * kGridWidth,
-            pixel * kGridHeight};
+    return {(boxWidth - pixel * (kGridWidth - 1 + kGridDotFill)) * .5,
+            (height - pixel * (kGridHeight - 1 + kGridDotFill)) * .5, pixel * kGridWidth, pixel * kGridHeight};
 }
 }  // namespace hourglassplugin

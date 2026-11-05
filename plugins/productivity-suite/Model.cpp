@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 
 #include <algorithm>
 #include <chrono>
@@ -195,38 +196,53 @@ bool restoreBytes(Data& data, Kind kind, const std::string& bytes) {
 #define MECHANICAL \
     { "reduced_motion", CD_SETTING_TOGGLE, 0 }
 
-cdsdk::Settings defaults(Kind kind, bool mechanical) {
+cdsdk::Settings defaults(Kind kind, bool mechanical, bool modern) {
+    const auto colorway = kind == Kind::Timer                       ? cdsdk::WidgetColorway::Coral
+                          : kind == Kind::Todo                      ? cdsdk::WidgetColorway::Iris
+                          : kind == Kind::Countdown                 ? cdsdk::WidgetColorway::Honey
+                          : kind == Kind::Disk || kind == Kind::Rss ? cdsdk::WidgetColorway::Teal
+                          : kind == Kind::Notes                     ? cdsdk::WidgetColorway::Rose
+                                                                    : cdsdk::WidgetColorway::Sky;
     switch (kind) {
         case Kind::Timer:
-            return {{{"mode", CD_SETTING_CHOICE, 0, 0, "focus", 0, 0, {"focus", "countdown"}},
-                     {"focus_minutes", CD_SETTING_INTEGER, 25, 0, "", 1, 180},
-                     {"break_minutes", CD_SETTING_INTEGER, 5, 0, "", 1, 60},
-                     {"auto_break", CD_SETTING_TOGGLE, 0},
-                     MECHANICAL,
-                     COMMON}};
+            return cdsdk::modernSettings({{{"mode", CD_SETTING_CHOICE, 0, 0, "focus", 0, 0, {"focus", "countdown"}},
+                                           {"focus_minutes", CD_SETTING_INTEGER, 25, 0, "", 1, 180},
+                                           {"break_minutes", CD_SETTING_INTEGER, 5, 0, "", 1, 60},
+                                           {"auto_break", CD_SETTING_TOGGLE, 0},
+                                           MECHANICAL,
+                                           COMMON}},
+                                         modern && !mechanical, colorway);
         case Kind::Todo:
-            return {{{"tasks", CD_SETTING_TEXT, 0, 0, "整理桌面\n完成今天的计划\n阅读十分钟", 0, 2048}, COMMON}};
+            return cdsdk::modernSettings(
+                {{{"tasks", CD_SETTING_TEXT, 0, 0, "整理桌面\n完成今天的计划\n阅读十分钟", 0, 2048}, COMMON}},
+                modern && !mechanical, colorway);
         case Kind::Countdown:
-            return {{{"title", CD_SETTING_TEXT, 0, 0, "下个假期", 0, 128},
-                     {"date", CD_SETTING_TEXT, 0, 0, "2027-01-01", 0, 10},
-                     {"annual", CD_SETTING_TOGGLE, 0},
-                     COMMON}};
+            return cdsdk::modernSettings({{{"title", CD_SETTING_TEXT, 0, 0, "下个假期", 0, 128},
+                                           {"date", CD_SETTING_TEXT, 0, 0, "2027-01-01", 0, 10},
+                                           {"annual", CD_SETTING_TOGGLE, 0},
+                                           COMMON}},
+                                         modern && !mechanical, colorway);
         case Kind::Network:
-            return {{{"history", CD_SETTING_TOGGLE, 1}, MECHANICAL, COMMON}};
+            return cdsdk::modernSettings({{{"history", CD_SETTING_TOGGLE, 1}, MECHANICAL, COMMON}},
+                                         modern && !mechanical, colorway);
         case Kind::Disk:
-            return {{{"drive", CD_SETTING_TEXT, 0, 0, "C:\\", 0, 3},
-                     {"refresh_seconds", CD_SETTING_INTEGER, 30, 0, "", 10, 300},
-                     MECHANICAL,
-                     COMMON}};
+            return cdsdk::modernSettings({{{"drive", CD_SETTING_TEXT, 0, 0, "C:\\", 0, 3},
+                                           {"refresh_seconds", CD_SETTING_INTEGER, 30, 0, "", 10, 300},
+                                           MECHANICAL,
+                                           COMMON}},
+                                         modern && !mechanical, colorway);
         case Kind::Notes:
-            return {{{"text", CD_SETTING_TEXT, 0, 0, "记录灵感，保持专注\n今天也要把事情做好", 0, 2048},
-                     {"copy_all", CD_SETTING_TOGGLE, 1},
-                     COMMON}};
+            return cdsdk::modernSettings(
+                {{{"text", CD_SETTING_TEXT, 0, 0, "记录灵感，保持专注\n今天也要把事情做好", 0, 2048},
+                  {"copy_all", CD_SETTING_TOGGLE, 1},
+                  COMMON}},
+                modern && !mechanical, colorway);
         case Kind::Rss:
-            return {{{"url", CD_SETTING_TEXT, 0, 0, "https://www.qt.io/blog/rss.xml", 0, 2048},
-                     {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
-                     {"rotation_seconds", CD_SETTING_INTEGER, 10, 0, "", 5, 60},
-                     COMMON}};
+            return cdsdk::modernSettings({{{"url", CD_SETTING_TEXT, 0, 0, "https://www.qt.io/blog/rss.xml", 0, 2048},
+                                           {"refresh_minutes", CD_SETTING_INTEGER, 15, 0, "", 5, 180},
+                                           {"rotation_seconds", CD_SETTING_INTEGER, 10, 0, "", 5, 60},
+                                           COMMON}},
+                                         modern && !mechanical, colorway);
     }
     throw std::runtime_error("Unknown kind");
 }
@@ -256,6 +272,27 @@ std::vector<Hit> hitRegions(Spec spec, const Data& data, const cdsdk::Settings& 
             add(10, h - 34, (w - 26) * .65, 24, 1);
             add(10 + (w - 26) * .65, h - 34, (w - 26) * .35, 24, 2);
         }
+    }
+
+    if (!spec.mechanical && cdsdk::modernAppearance(settings) &&
+        (spec.kind == Kind::Todo || spec.kind == Kind::Notes || spec.kind == Kind::Rss)) {
+        const int count = spec.kind == Kind::Todo    ? int(data.tasks.size())
+                          : spec.kind == Kind::Notes ? int(lines(settings.at("text").text).size())
+                                                     : int(data.articles.size());
+        const bool horizontal = spec.kind == Kind::Todo && spec.columns >= 4 && spec.rows == 1;
+        const double top = spec.kind == Kind::Rss ? 32. : 10., bottom = h - 25.;
+        const int visible =
+            horizontal ? 2 : std::clamp(int((bottom - top) / (spec.kind == Kind::Rss ? 74. : 30.)), 1, 12);
+        const double row = (bottom - top) / visible;
+        for (int i = 0; i < visible && data.scroll + i < count; ++i) {
+            add(horizontal ? 10 + i * (w - 20) / 2 : 10, horizontal ? 12 : top + i * row,
+                horizontal ? (w - 24) / 2 : w - 20, horizontal ? h - 39 : row, 100 + data.scroll + i);
+        }
+        if (count > visible) {
+            add(w - 55, h - 23, 20, 18, 3);
+            add(w - 30, h - 23, 20, 18, 4);
+        }
+        return result;
     }
     if (spec.kind == Kind::Todo || spec.kind == Kind::Notes || spec.kind == Kind::Rss) {
         const int count = spec.kind == Kind::Todo    ? int(data.tasks.size())

@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/RenderOutput.h>
 
 #include <algorithm>
@@ -14,28 +15,30 @@
 namespace hourglassplugin {
 cdsdk::Settings defaults(Spec spec) {
     if (!spec.showTimer) {
-        return {{{"duration", CD_SETTING_INTEGER, 30, 0, "", 5, 3600},
-                 {"physics", CD_SETTING_TOGGLE, 1},
-                 {"repeat", CD_SETTING_TOGGLE, 1},
-                 {"running", CD_SETTING_TOGGLE, 1},
-                 {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
-                 {"color", CD_SETTING_CHOICE, 0, 0, "amber", 0, 0, {"amber", "mint", "cyan"}},
-                 {"show_background", CD_SETTING_TOGGLE, 1},
-                 {"glow", CD_SETTING_INTEGER, 35, 0, "", 0, 100},
-                 {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
-                 {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}};
+        return cdsdk::modernSettings({{{"duration", CD_SETTING_INTEGER, 30, 0, "", 5, 3600},
+                                       {"physics", CD_SETTING_TOGGLE, 1},
+                                       {"repeat", CD_SETTING_TOGGLE, 1},
+                                       {"running", CD_SETTING_TOGGLE, 1},
+                                       {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
+                                       {"color", CD_SETTING_CHOICE, 0, 0, "amber", 0, 0, {"amber", "mint", "cyan"}},
+                                       {"show_background", CD_SETTING_TOGGLE, 1},
+                                       {"glow", CD_SETTING_INTEGER, 35, 0, "", 0, 100},
+                                       {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
+                                       {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}},
+                                     spec.showTimer, cdsdk::WidgetColorway::Honey);
     }
-    return {{{"duration", CD_SETTING_INTEGER, 30, 0, "", 5, 3600},
-             {"physics", CD_SETTING_TOGGLE, 1},
-             {"repeat", CD_SETTING_TOGGLE, 1},
-             {"running", CD_SETTING_TOGGLE, 1},
-             {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
-             {"color", CD_SETTING_CHOICE, 0, 0, "amber", 0, 0, {"amber", "mint", "cyan"}},
-             {"show_background", CD_SETTING_TOGGLE, 1},
-             {"show_timer", CD_SETTING_TOGGLE, 1},
-             {"glow", CD_SETTING_INTEGER, 35, 0, "", 0, 100},
-             {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}};
+    return cdsdk::modernSettings({{{"duration", CD_SETTING_INTEGER, 30, 0, "", 5, 3600},
+                                   {"physics", CD_SETTING_TOGGLE, 1},
+                                   {"repeat", CD_SETTING_TOGGLE, 1},
+                                   {"running", CD_SETTING_TOGGLE, 1},
+                                   {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
+                                   {"color", CD_SETTING_CHOICE, 0, 0, "amber", 0, 0, {"amber", "mint", "cyan"}},
+                                   {"show_background", CD_SETTING_TOGGLE, 1},
+                                   {"show_timer", CD_SETTING_TOGGLE, 1},
+                                   {"glow", CD_SETTING_INTEGER, 35, 0, "", 0, 100},
+                                   {"frame_rate", CD_SETTING_CHOICE, 0, 0, "20", 0, 0, {"15", "20", "30"}},
+                                   {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}},
+                                 spec.showTimer, cdsdk::WidgetColorway::Honey);
 }
 
 namespace {
@@ -118,14 +121,20 @@ CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
         auto& self = *static_cast<Instance*>(pointer);
         self.sand.consumeBackground();
         const auto& lighting = self.settings.at("lighting").text;
-        const Options options{lighting == "night" || lighting == "theme" && self.dark,
-                              self.settings.at("running").integer != 0,
-                              self.settings.at("show_background").integer != 0,
-                              self.spec.showTimer && self.settings.at("show_timer").integer != 0,
-                              float(self.settings.at("background_corner_radius").integer),
-                              self.settings.at("glow").integer / 100.0,
-                              self.settings.at("color").text,
-                              self.settings.at("physics").integer ? &self.sand : nullptr};
+        Options options{lighting == "night" || lighting == "theme" && self.dark,
+                        self.settings.at("running").integer != 0,
+                        self.settings.at("show_background").integer != 0,
+                        self.spec.showTimer && self.settings.at("show_timer").integer != 0,
+                        float(self.settings.at("background_corner_radius").integer),
+                        self.settings.at("glow").integer / 100.0,
+                        self.settings.at("color").text,
+                        self.settings.at("physics").integer ? &self.sand : nullptr};
+        options.modern = cdsdk::modernAppearance(self.settings);
+        if (options.modern) {
+            options.style = cdsdk::widgetAppearance(self.settings);
+            options.fontFamily = self.settings.at("font_family").text;
+            options.glow = 0;
+        }
         return self.renderer.render(self.model, options, *frame, self.safe) ? CD_OK : CD_ERROR_INTERNAL;
     } catch (...) {
         return CD_ERROR_INTERNAL;
@@ -185,6 +194,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
             self.timer = std::move(replacement);
             self.lastTick = self.environment.snapshot().monotonic_ms;
         }
+        cdsdk::normalizeModernColors(next);
         self.settings = std::move(next);
         if (restarting) {
             self.model.reset(double(self.settings.at("duration").integer));
@@ -213,6 +223,7 @@ void restart(Instance& self) {
     self.stop();
     self.timer = std::move(replacement);
     self.lastTick = self.environment.snapshot().monotonic_ms;
+    cdsdk::normalizeModernColors(next);
     self.settings = std::move(next);
     self.model.reset(double(self.settings.at("duration").integer));
     self.sand.reset();

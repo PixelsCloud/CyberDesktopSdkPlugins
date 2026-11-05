@@ -1,5 +1,10 @@
+#include <sdk/Appearance.h>
 #include <sdk/Controls.h>
 #include <sdk/Language.h>
+
+#include <algorithm>
+#include <cmath>
+#include <string>
 
 #include "plugins/living-common/Drawing.h"
 #include "plugins/lunar-suite/Lunar.h"
@@ -8,15 +13,16 @@
 namespace lunarplugin {
 struct Renderer::Impl {
     living::Drawing draw;
+    bool modernStyle = false;
     cdsdk::Controls controls;
     mechanicalart::Artwork artwork;
 
     cybercanvas::Label label(std::wstring value, double size, cybercanvas::Rect bounds, uint32_t color,
                              bool bold = false) {
         cybercanvas::TextStyle font;
-        font.family = L"Microsoft YaHei";
+        font.family = draw.selectedFont();
         font.locale = cdsdk::drawingLocale();
-        font.size = size;
+        font.size = modernStyle ? std::max(12., size) : size;
         font.bold = bold;
         font.align = cybercanvas::TextAlign::Center;
         return {bounds, cdsdk::displayText(value), font, color};
@@ -36,12 +42,17 @@ struct Renderer::Impl {
     }
 
     void paint(Spec spec, const cdsdk::Settings& settings, View view, double w, double h) {
+        modernStyle = cdsdk::modernAppearance(settings);
         const auto mode = settings.at("lighting").text;
         const bool dark = mode == "night" || mode == "theme" && view.dark;
-        const uint32_t bg = dark ? 0x202C33FF : 0xFFFBF2FF, fg = dark ? 0xF3E7CBFF : 0x293A35FF,
-                       muted = dark ? 0xA6B8B7FF : 0x7B8276FF, red = dark ? 0xE9BD94FF : 0xAD4134FF;
+        const auto appearance = cdsdk::widgetAppearance(settings);
+        const uint32_t bg = appearance.surface, fg = appearance.foreground, muted = appearance.secondary,
+                       red = appearance.accent;
+        draw.selectFont(settings.at("font_family").text);
         const double r = settings.at("background_corner_radius").integer;
-        if (settings.at("show_background").integer) {
+        if (modernStyle) {
+            cdsdk::widgetBackground(draw, appearance, {1, 1, w - 3, h - 4});
+        } else if (settings.at("show_background").integer) {
             draw.box(1, 1, w - 3, h - 4, r, bg);
         }
         const bool english = settings.at("language").text == "en";
@@ -61,27 +72,27 @@ struct Renderer::Impl {
             const double flowerWidth = std::min(w * .2, h * .50);
             blossom(flowerWidth * .55 + 4, h * .53, flowerWidth * .57, dark);
             const double left = flowerWidth + 6, width = w - left - 7;
-            draw.text(lunarDate(value), std::clamp(h * .27, 10., 18.), {left, h * .10, width, h * .47}, red, true,
-                      true);
+            draw.text(lunarDate(value), modernStyle ? 20. : std::clamp(h * .27, 10., 18.),
+                      {left, h * .10, width, h * .47}, red, true, true);
             draw.text(special.empty() ? std::to_wstring(view.selected.month) + (english ? L"/" : L"月") +
                                             std::to_wstring(view.selected.day) + (english ? L"" : L"日")
                                       : special,
-                      std::clamp(h * .16, 8., 11.), {left, h * .57, width, h * .28}, muted);
+                      modernStyle ? 13. : std::clamp(h * .16, 8., 11.), {left, h * .57, width, h * .28}, muted);
             return;
         }
         const bool monthly = spec.rows >= 4;
         const double top = std::clamp(h * .09, 12., 24.);
         if (settings.at("show_background").integer) {
-            draw.box(1, 1, w - 3, top + 4, r, dark ? 0x273A40FF : 0xAD4134FF);
-            draw.box(1, top - r, w - 3, r * 2 + 1, 0, dark ? 0x273A40FF : 0xAD4134FF);
+            draw.box(1, 1, w - 3, top + 4, r, cdsdk::mixColor(bg, red, .10));
+            draw.box(1, top - r, w - 3, r * 2 + 1, 0, cdsdk::mixColor(bg, red, .10));
         }
         for (double x : {w * .17, w * .82}) {
-            draw.box(x, 0, std::max(2., w * .012), top * .8, 2, dark ? 0xB3A07AFF : 0xD5BC83FF);
+            draw.box(x, 0, std::max(2., w * .012), top * .8, 2, muted);
         }
         const double headerY = top + 4, headerH = std::clamp(h * .13, 19., 36.);
         const auto title = std::to_wstring(view.selected.year) + (english ? L"-" : L"年") +
                            std::to_wstring(view.selected.month) + (english ? L"" : L"月");
-        draw.text(title, std::clamp(w * .052, 10., 17.), {24, headerY, w - 50, headerH}, red);
+        draw.text(title, modernStyle ? 18. : std::clamp(w * .052, 10., 17.), {24, headerY, w - 50, headerH}, red);
         auto theme = dark ? cybercanvas::WidgetTheme::dark() : cybercanvas::WidgetTheme::light();
         theme.surface = 0;
         theme.foreground = red;
@@ -101,11 +112,11 @@ struct Renderer::Impl {
             constexpr const wchar_t* zh[]{L"星期日", L"星期一", L"星期二", L"星期三", L"星期四", L"星期五", L"星期六"};
             constexpr const wchar_t* en[]{L"Sunday",   L"Monday", L"Tuesday", L"Wednesday",
                                           L"Thursday", L"Friday", L"Saturday"};
-            const double detail = std::clamp(h * .057, 8., 12.);
+            const double detail = modernStyle ? 13. : std::clamp(h * .057, 8., 12.);
             draw.text(english ? en[wd] : zh[wd], detail, {8, bottom - 1, w - 18, detail * 1.6}, muted);
             draw.line(w * .16, bottom + detail * 1.75, w * .84, bottom + detail * 1.75, dark ? 0xE9BD9440 : 0xAD413440,
                       .6);
-            draw.text(lunarDate(value), std::clamp(w * .085, 10., 17.),
+            draw.text(lunarDate(value), modernStyle ? 16. : std::clamp(w * .085, 10., 17.),
                       {8, bottom + detail * 1.9, w - 18, detail * 1.8}, red);
             if (!special.empty() && h > 115) {
                 draw.text(special, detail, {w * .20, bottom + detail * 3.9 + 2, w * .6, detail * 1.4}, fg);
@@ -124,7 +135,7 @@ struct Renderer::Impl {
         constexpr const wchar_t* enDays[]{L"Su", L"Mo", L"Tu", L"We", L"Th", L"Fr", L"Sa"};
         for (int i = 0; i < 7; ++i) {
             const int wd = (i + (monday ? 1 : 0)) % 7;
-            draw.text(english ? enDays[wd] : zhDays[wd], std::clamp(cell * .25, 8., 13.),
+            draw.text(english ? enDays[wd] : zhDays[wd], modernStyle ? 13. : std::clamp(cell * .25, 8., 13.),
                       {left + i * cell, weekY, cell, weekH}, wd == 0 || wd == 6 ? red : muted);
         }
         const cybercanvas::CalendarGrid geometry{{left, startY, w - 20, rowH * grid.rows}, size_t(grid.rows)};
@@ -165,7 +176,7 @@ struct Renderer::Impl {
         }
         draw.line(12, h - footer - 2, w - 15, h - footer - 2, dark ? 0xD6C6A733 : 0xAD413433, .6);
         draw.text(lunarDate(value) + (special.empty() ? L"" : L" · " + cdsdk::displayText(special)),
-                  std::clamp(w * .042, 10., 15.), {8, h - footer, w - 18, footer - 5}, red);
+                  modernStyle ? 15. : std::clamp(w * .042, 10., 15.), {8, h - footer, w - 18, footer - 5}, red);
     }
 };
 

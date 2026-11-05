@@ -1,6 +1,7 @@
 #include "plugins/clock-suite/Clock.h"
 
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/RenderOutput.h>
 
 #include <algorithm>
@@ -8,6 +9,7 @@
 #include <cmath>
 #include <cstring>
 #include <memory>
+#include <string_view>
 #include <tuple>
 
 #include "plugins/clock-suite/FlipClock.h"
@@ -15,41 +17,69 @@
 #include "sdk/Update.h"
 
 namespace clockplugin {
+PixelGrid arrangePixelGrid(int glyphColumns, Rect box, double sizePercent) {
+    PixelGrid grid;
+    if (glyphColumns <= 0 || box.width <= 0 || box.height <= 0) {
+        return grid;
+    }
+    const double cell =
+        std::min(box.width / (glyphColumns + 2), box.height / 9) * std::clamp(sizePercent, 70., 100.) / 100.;
+    grid.columns = std::max(glyphColumns + 2, int(std::floor(box.width / cell)));
+    grid.rows = std::max(9, int(std::floor(box.height / cell)));
+    // A whole-cell inset on both sides requires matching parity. Never put
+    // the unmatched row or column entirely below or to the right of the glyphs.
+    grid.columns -= (grid.columns - glyphColumns) % 2;
+    grid.rows -= (grid.rows - 7) % 2;
+    grid.glyphColumn = (grid.columns - glyphColumns) / 2;
+    grid.glyphRow = (grid.rows - 7) / 2;
+    grid.side = cell * .8;
+    grid.pitchX = (box.width - grid.side) / (grid.columns - 1);
+    grid.pitchY = (box.height - grid.side) / (grid.rows - 1);
+    return grid;
+}
+
 cdsdk::Settings defaults(Spec spec) {
-    return {{{"format", CD_SETTING_CHOICE, 0, 0, spec.flip ? "12" : "24", 0, 0, {"24", "12"}},
-             {"timezone", CD_SETTING_CHOICE, 0, 0, "local", 0, 0, {"local", "utc", "offset"}},
-             {"utc_offset", CD_SETTING_INTEGER, 480, 0, "", -720, 840},
-             {"seconds", CD_SETTING_TOGGLE,
-              (spec.display == Display::Lcd || spec.analog || spec.rows == 2 || spec.columns == 4 || spec.columns == 1)
-                  ? 1
-                  : 0},
-             {"seconds_visibility", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "always"}},
-             {"seconds_motion", CD_SETTING_CHOICE, 0, 0, "tick", 0, 0, {"tick", "smooth"}},
-             {"date", CD_SETTING_TOGGLE, isPixel(spec.display) ? 0 : 1},
-             {"weekday", CD_SETTING_TOGGLE, isPixel(spec.display) ? 0 : 1},
-             {"date_format", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "short", "long"}},
-             {"time_layout", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "horizontal", "stacked"}},
-             {"theme_colors", CD_SETTING_TOGGLE, spec.display == Display::Classic ? 1 : 0},
-             {"text_color", CD_SETTING_COLOR,
-              isPixel(spec.display)          ? 0x05DC43FF
-              : spec.display == Display::Lcd ? 0x17231BFF
-                                             : 0x2B2924FF},
-             {"secondary_color", CD_SETTING_COLOR, 0x766B60FF},
-             {"seconds_color", CD_SETTING_COLOR,
-              isPixel(spec.display)          ? 0x05DC43FF
-              : spec.display == Display::Lcd ? 0x82D8ADFF
-                                             : 0xC96E37FF},
-             {"content_scale", CD_SETTING_NUMBER, 0, 100, "", 70, 100},
-             {"relief_strength", CD_SETTING_NUMBER, 0, 65, "", 0, 100},
-             {"font_family", CD_SETTING_FONT, 0, 0, spec.flip ? "@zqk-free" : "@siyuan-heavy"},
-             {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}},
-             {"flip_duration", CD_SETTING_NUMBER, 0, 500, "", 200, 900},
-             {"card_color", CD_SETTING_COLOR,
-              isPixel(spec.display)          ? 0x171219FF
-              : spec.display == Display::Lcd ? 0xD7DDD0FF
-                                             : 0xF8F8F8FF},
-             {"glow_strength", CD_SETTING_NUMBER, 0, 70, "", 0, 100},
-             {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}};
+    const auto colorway = spec.flip                             ? cdsdk::WidgetColorway::Iris
+                          : spec.display == Display::Lcd        ? cdsdk::WidgetColorway::Honey
+                          : spec.display == Display::PixelRound ? cdsdk::WidgetColorway::Rose
+                          : spec.analog                         ? cdsdk::WidgetColorway::Sky
+                                                                : cdsdk::WidgetColorway::Teal;
+    return cdsdk::modernSettings(
+        {{{"format", CD_SETTING_CHOICE, 0, 0, spec.flip ? "12" : "24", 0, 0, {"24", "12"}},
+          {"timezone", CD_SETTING_CHOICE, 0, 0, "local", 0, 0, {"local", "utc", "offset"}},
+          {"utc_offset", CD_SETTING_INTEGER, 480, 0, "", -720, 840},
+          {"seconds", CD_SETTING_TOGGLE,
+           (spec.display == Display::Lcd || spec.analog || spec.rows == 2 || spec.columns == 4 || spec.columns == 1)
+               ? 1
+               : 0},
+          {"seconds_visibility", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "always"}},
+          {"seconds_motion", CD_SETTING_CHOICE, 0, 0, "tick", 0, 0, {"tick", "smooth"}},
+          {"date", CD_SETTING_TOGGLE, isPixel(spec.display) ? 0 : 1},
+          {"weekday", CD_SETTING_TOGGLE, isPixel(spec.display) ? 0 : 1},
+          {"date_format", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "short", "long"}},
+          {"time_layout", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "horizontal", "stacked"}},
+          {"theme_colors", CD_SETTING_TOGGLE, spec.display == Display::Classic ? 1 : 0},
+          {"text_color", CD_SETTING_COLOR,
+           isPixel(spec.display)          ? 0x05DC43FF
+           : spec.display == Display::Lcd ? 0x17231BFF
+                                          : 0x2B2924FF},
+          {"secondary_color", CD_SETTING_COLOR, 0x766B60FF},
+          {"seconds_color", CD_SETTING_COLOR,
+           isPixel(spec.display)          ? 0x05DC43FF
+           : spec.display == Display::Lcd ? 0x82D8ADFF
+                                          : 0xC96E37FF},
+          {"content_scale", CD_SETTING_NUMBER, 0, 100, "", 70, 100},
+          {"relief_strength", CD_SETTING_NUMBER, 0, 65, "", 0, 100},
+          {"font_family", CD_SETTING_FONT, 0, 0, spec.flip ? "@zqk-free" : "@siyuan-heavy"},
+          {"language", CD_SETTING_CHOICE, 0, 0, "zh-CN", 0, 0, {"zh-CN", "en"}},
+          {"flip_duration", CD_SETTING_NUMBER, 0, 500, "", 200, 900},
+          {"card_color", CD_SETTING_COLOR,
+           isPixel(spec.display)          ? 0x171219FF
+           : spec.display == Display::Lcd ? 0xD7DDD0FF
+                                          : 0xF8F8F8FF},
+          {"glow_strength", CD_SETTING_NUMBER, 0, 70, "", 0, 100},
+          {"background_corner_radius", CD_SETTING_INTEGER, 5, 0, "", 0, 32}}},
+        spec.id && std::string_view(spec.id).starts_with("com.cyberdesktop.clock."), colorway);
 }
 
 Options options(const cdsdk::Settings& values, CdColor themeText) {
@@ -89,6 +119,17 @@ Options options(const cdsdk::Settings& values, CdColor themeText) {
         result.secondary = color(values.at("secondary_color").integer);
     result.accent = color(values.at("seconds_color").integer);
     result.cardColor = color(values.at("card_color").integer);
+    if (cdsdk::modernAppearance(values)) {
+        result.modern = true;
+        result.appearance = cdsdk::widgetAppearance(values);
+        result.primary = color(result.appearance.foreground);
+        result.secondary = color(result.appearance.secondary);
+        result.accent = color(result.appearance.accent);
+        result.cardColor = color(result.appearance.surface);
+        result.themeColors = false;
+        result.reliefPercent = 0;
+        result.glowPercent = 0;
+    }
     return result;
 }
 
@@ -111,7 +152,7 @@ Geometry arrange(Spec spec, double width, double height, const Options& options)
         return g;
     const double pad = std::clamp(std::min(width, height) * .025, 1.0, 5.0);
     const double w = std::max(0.0, width - pad * 2), h = std::max(0.0, height - pad * 2);
-    const double captionSize = std::clamp(std::min(w, h) * .125, 8.0, 20.0),
+    const double captionSize = std::clamp(std::min(w, h) * .125, options.modern ? 13. : 8., 20.0),
                  gap = std::clamp(captionSize * .38, 2.0, 7.0);
     const bool one = spec.rows == 1 && spec.columns == 1;
     if (one) {
@@ -371,6 +412,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
         const auto applied = self.settings.apply(values, count);
         if (applied != CD_OK)
             return applied;
+        cdsdk::normalizeModernColors(self.settings);
         const auto desired = self.desiredInterval();
         if (!self.paused && (!self.token || desired != self.interval)) {
             cdsdk::Timer token;

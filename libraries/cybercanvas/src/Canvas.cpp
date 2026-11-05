@@ -1111,6 +1111,12 @@ ComPtr<IDWriteTextLayout> Canvas::textLayout(const std::wstring& value, const Te
         ComPtr<IDWriteTextLayout> layout;
         require(impl_->write_->CreateTextLayout(value.data(), UINT32(value.size()), format.Get(), 2000, 1000,
                                                 layout.GetAddressOf()));
+        // Percentage units use one smaller type step while sharing the number's
+        // baseline. Apply before measurement and cache with the complete layout.
+        for (size_t position = value.find_first_of(L"%％"); position != std::wstring::npos;
+             position = value.find_first_of(L"%％", position + 1)) {
+            require(layout->SetFontSize(float(std::max(1., style.size - 2.)), {UINT32(position), 1}));
+        }
         if (style.characterSpacing != 0) {
             ComPtr<IDWriteTextLayout1> spacing;
             require(layout.As(&spacing));

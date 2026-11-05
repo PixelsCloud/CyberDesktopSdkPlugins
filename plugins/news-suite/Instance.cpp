@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Interaction.h>
 #include <sdk/Update.h>
 
@@ -335,6 +336,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
         query(Kind::Reader, validate);
         const bool intervalChanged = next.at("refresh_minutes").integer != self.settings.at("refresh_minutes").integer;
         const bool modeChanged = next.at("list_mode").text != self.settings.at("list_mode").text;
+        cdsdk::normalizeModernColors(next);
         self.settings = std::move(next);
         self.resetInput();
         if (modeChanged) {

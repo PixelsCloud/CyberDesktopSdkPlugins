@@ -59,7 +59,7 @@ void advanceTimer(Data&, const cdsdk::Settings&, int64_t now);
 std::string stateBytes(const Data&, Kind);
 bool restoreBytes(Data&, Kind, const std::string&);
 
-cdsdk::Settings defaults(Kind, bool mechanical = false);
+cdsdk::Settings defaults(Kind, bool mechanical = false, bool modern = true);
 
 // Hit regions are shared by rendering and input; zero means no action.
 struct Hit {

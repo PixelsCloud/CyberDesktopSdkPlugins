@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 
 #include <algorithm>
 #include <chrono>
@@ -80,33 +81,36 @@ bool chinese(const cdsdk::Settings& s) {
 }
 
 cdsdk::Settings defaults(Kind kind) {
-    return {{{"source",
-              CD_SETTING_CHOICE,
-              0,
-              0,
-              "bbc",
-              0,
-              0,
-              {"bbc", "guardian", "verge", "ars", "dw", "nhk", "ithome", "solidot", "sspai", "chinanews", "ruanyifeng",
-               "hn", "custom"}},
-             {"feeds", CD_SETTING_TEXT, 0, 0, "", 0, 4096},
-             {"hn_order", CD_SETTING_CHOICE, 0, 0, "top", 0, 0, {"top", "new", "best"}},
-             {"period", CD_SETTING_CHOICE, 0, 0, "daily", 0, 0, {"daily", "weekly", "monthly"}},
-             {"code_language",
-              CD_SETTING_CHOICE,
-              0,
-              0,
-              "all",
-              0,
-              0,
-              {"all", "python", "typescript", "javascript", "c++", "c", "rust", "go", "java", "c#", "swift", "kotlin",
-               "ruby", "php", "shell"}},
-             {"refresh_minutes", CD_SETTING_INTEGER, kind == Kind::Github ? 30 : 20, 0, "", 5, 180},
-             {"list_mode", CD_SETTING_CHOICE, 0, 0, "scroll", 0, 0, {"scroll", "pages"}},
-             {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
-             {"show_background", CD_SETTING_TOGGLE, 1},
-             {"background_corner_radius", CD_SETTING_INTEGER, 8, 0, "", 0, 32},
-             {"language", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "zh-CN", "en"}}}};
+    const auto colorway = kind == Kind::Github ? cdsdk::WidgetColorway::Iris : cdsdk::WidgetColorway::Sky;
+    return cdsdk::modernSettings(
+        {{{"source",
+           CD_SETTING_CHOICE,
+           0,
+           0,
+           "bbc",
+           0,
+           0,
+           {"bbc", "guardian", "verge", "ars", "dw", "nhk", "ithome", "solidot", "sspai", "chinanews", "ruanyifeng",
+            "hn", "custom"}},
+          {"feeds", CD_SETTING_TEXT, 0, 0, "", 0, 4096},
+          {"hn_order", CD_SETTING_CHOICE, 0, 0, "top", 0, 0, {"top", "new", "best"}},
+          {"period", CD_SETTING_CHOICE, 0, 0, "daily", 0, 0, {"daily", "weekly", "monthly"}},
+          {"code_language",
+           CD_SETTING_CHOICE,
+           0,
+           0,
+           "all",
+           0,
+           0,
+           {"all", "python", "typescript", "javascript", "c++", "c", "rust", "go", "java", "c#", "swift", "kotlin",
+            "ruby", "php", "shell"}},
+          {"refresh_minutes", CD_SETTING_INTEGER, kind == Kind::Github ? 30 : 20, 0, "", 5, 180},
+          {"list_mode", CD_SETTING_CHOICE, 0, 0, "scroll", 0, 0, {"scroll", "pages"}},
+          {"lighting", CD_SETTING_CHOICE, 0, 0, "theme", 0, 0, {"theme", "day", "night"}},
+          {"show_background", CD_SETTING_TOGGLE, 1},
+          {"background_corner_radius", CD_SETTING_INTEGER, 8, 0, "", 0, 32},
+          {"language", CD_SETTING_CHOICE, 0, 0, "auto", 0, 0, {"auto", "zh-CN", "en"}}}},
+        true, colorway);
 }
 
 Query query(Kind kind, const cdsdk::Settings& s) {

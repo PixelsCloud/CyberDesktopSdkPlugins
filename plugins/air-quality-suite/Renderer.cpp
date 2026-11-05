@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <d2d1.h>
 #include <dwrite.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Images.h>
 #include <sdk/Language.h>
@@ -58,9 +59,12 @@ struct Renderer::Impl {
 
     explicit Impl(std::filesystem::path root) : assets(std::move(root)) {}
 
+    bool modernStyle = false;
+
     void label(const std::wstring& source, float size, D2D1_RECT_F area, uint32_t rgba, bool center = false,
                bool relief = false) {
-        auto item = cdsdk::label(*fonts, source, size, area, rgba, center, true);
+        auto item =
+            cdsdk::label(*fonts, source, modernStyle ? std::max(12.f, size) : size, area, rgba, center, !modernStyle);
         if (relief) {
             item.shadowOffset = {.4, 1.3};
             item.shadow = dark ? 0x020B1640 : 0x49627424;
@@ -91,6 +95,43 @@ struct Renderer::Impl {
                 D2D1::RectF(cx - radius * .57f, cy - radius * .57f, cx + radius * .57f, cy + radius * .57f);
             canvas.image(*glyph, {area.left, area.top, double(area.right) - area.left, double(area.bottom) - area.top},
                          {cybercanvas::ImageFit::Stretch});
+        }
+    }
+
+    void modern(Spec spec, const cdsdk::Settings& settings, const Snapshot& data, bool loading, float w, float h) {
+        const auto style = cdsdk::widgetAppearance(settings);
+        ink = style.foreground;
+        muted = style.secondary;
+        cdsdk::widgetBackground(canvas, style, {0, 0, w, h});
+        const bool large = spec.rows > 1, wide = spec.columns >= 4;
+        const float readout = large ? h * .49f : h, primaryWidth = wide && !large ? w * .27f : w;
+        label(L"AQI", 13, D2D1::RectF(10, 7, 45, 28), ink);
+        label(data.valid ? rounded(data.aqi) : L"—",
+              std::clamp(std::min(readout * .49f, (primaryWidth - 18) * .52f), 26.f, 50.f),
+              D2D1::RectF(10, 23, primaryWidth - 7, readout - 5), ink);
+        label(data.valid ? status(data, loading) : L"", 13, D2D1::RectF(primaryWidth * .5f, 7, primaryWidth - 8, 28),
+              ink, true);
+        if (!wide && !large)
+            return;
+        const wchar_t* names[]{L"PM2.5", L"PM10", L"O₃", L"NO₂", L"SO₂", L"CO"};
+        const int columns = large || w < 320 ? 3 : 6, rows = 6 / columns;
+        const float left = large ? 10 : primaryWidth, top = large ? h * .47f : 13;
+        const float cw = (w - left - 9) / columns, rh = (h - top - 9) / rows;
+        for (int i = 0; i < 6; ++i) {
+            const float x = left + (i % columns) * cw, y = top + (i / columns) * rh;
+            if (!large && rows == 2) {
+                label(names[i], 12, D2D1::RectF(x, y, x + cw * .55f, y + rh), ink);
+                label(data.valid && data.pollutants[size_t(i)] >= 0 ? rounded(data.pollutants[size_t(i)]) : L"—", 17,
+                      D2D1::RectF(x + cw * .55f, y, x + cw - 2, y + rh), ink, true);
+                continue;
+            }
+            label(names[i], 12, D2D1::RectF(x + 1, y, x + cw - 1, y + 18), ink, true);
+            label(data.valid && data.pollutants[size_t(i)] >= 0 ? rounded(data.pollutants[size_t(i)]) : L"—",
+                  std::min(24.f, (rh - 23) * .85f), D2D1::RectF(x + 1, y + 18, x + cw - 1, y + rh - 5), ink, true);
+            canvas.box(x + 4, y + rh - 4, cw - 8, 2, 1, style.track);
+            if (data.valid && data.pollutants[size_t(i)] >= 0)
+                canvas.box(x + 4, y + rh - 4, (cw - 8) * std::clamp(data.pollutants[size_t(i)] / 150., 0., 1.), 2, 1,
+                           style.accent);
         }
     }
 
@@ -290,6 +331,7 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Snapshot
     const cdsdk::LanguageScope languageScope(settings.at("language").text);
     try {
         auto& p = *impl;
+        p.modernStyle = !spec.mechanical && cdsdk::modernAppearance(settings);
         if (!p.canvas.valid(frame)) {
             return false;
         }
@@ -313,6 +355,11 @@ bool Renderer::render(Spec spec, const cdsdk::Settings& settings, const Snapshot
         auto drawing = p.canvas.frame(frame, safe);
         if (safe.width > 48 && safe.height > 40) {
             const float width = float(safe.width), height = float(safe.height);
+            if (!spec.mechanical && cdsdk::modernAppearance(settings)) {
+                p.modern(spec, settings, data, loading, width, height);
+                drawing.finish();
+                return true;
+            }
             if (!spec.mechanical) {
                 p.card(width, height, float(settings.at("background_corner_radius").integer));
             }

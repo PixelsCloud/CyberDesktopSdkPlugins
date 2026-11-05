@@ -284,6 +284,9 @@ bool FlipRenderer::render(Spec spec, const Options& options, Time time, const Fl
         const auto foreground = ink(options);
 
         auto painting = p.canvas.frame(frame, {safe.x, safe.y, safe.width, safe.height});
+        if (options.modern) {
+            cdsdk::widgetBackground(p.canvas, options.appearance, {0, 0, safe.width, safe.height});
+        }
         if (p.faceOwner != p.target) {
             p.faces.clear();
             p.faceOwner = p.target;
@@ -310,10 +313,12 @@ bool FlipRenderer::render(Spec spec, const Options& options, Time time, const Fl
         if (options.twelveHour) {
             const auto period =
                 options.language == "en" ? (time.hour < 12 ? L"AM" : L"PM") : (time.hour < 12 ? L"上午" : L"下午");
-            p.label(
-                p.target.Get(), p.brush.Get(), period,
-                {geometry.hours.x + 5, geometry.hours.y + 2, geometry.hours.width * .30, geometry.hours.height * .18},
-                std::clamp(geometry.hours.height * .12, 6.0, 15.0), foreground, options, false);
+            p.label(p.target.Get(), p.brush.Get(), period,
+                    {geometry.hours.x + 5, geometry.hours.y + 2,
+                     options.modern ? std::max(32., geometry.hours.width * .30) : geometry.hours.width * .30,
+                     options.modern ? std::max(18., geometry.hours.height * .18) : geometry.hours.height * .18},
+                    std::clamp(geometry.hours.height * .12, options.modern ? 12. : 6., 15.0), foreground, options,
+                    false);
         }
         if (options.seconds) {
             auto seconds = geometry.seconds;

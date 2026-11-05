@@ -4,7 +4,7 @@ version: "1.1.7"
 author: "CyberDesktop / argonaut (procedural fish)"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 0
+content_padding: 6
 layouts {
     id: "4x4"
     name: "4×4（宽×高）"
@@ -125,30 +125,7 @@ settings_page {
             }
         }
     }
-    fields {
-        id: "show_background"
-        label: "显示背景"
-        type: TOGGLE
-        description: "关闭池水底色、水底石子与边框，保留锦鲤、水面波光、荷叶和荷花。"
-        section: "池塘"
-        bool_default: true
-        localized {
-            key: "en"
-            value {
-                label: "Show background"
-                description: "Hide the water fill, submerged stones and border; retain fish, shimmer, lily pads and lotus blossoms."
-                section: "Pond"
-            }
-        }
-        localized {
-            key: "zh-TW"
-            value {
-                label: "顯示背景"
-                description: "關閉池水底色、水底石子與邊框，保留錦鯉、水面波光、荷葉和荷花。"
-                section: "池塘"
-            }
-        }
-    }
+
     fields {
         id: "blessings"
         label: "显示祝福"
@@ -374,23 +351,7 @@ settings_page {
             }
         }
     }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角"
-        type: INTEGER
-        section: "池塘"
-        maximum: 32.0
-        step: 1.0
-        integer_default: 5
-        localized {
-            key: "en"
-            value { label: "Corner radius" section: "Pond" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景圓角" section: "池塘" }
-        }
-    }
+
     fields {
         id: "language"
         label: "设置语言"
@@ -436,6 +397,147 @@ settings_page {
         value {
             title: "錦鯉池 4×4設定"
             description: "每個池塘獨立儲存。可調整魚數量、點選嚇跑或遊向滑鼠，並可關閉背景。"
+        }
+    }
+
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value { label: "Show background" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3891720703
+        localized {
+            key: "en"
+            value { label: "Background color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        section: "外观"
+        text_default: "solid"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        localized {
+            key: "en"
+            value { label: "Background fill" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3891720703
+        localized {
+            key: "en"
+            value { label: "Gradient end color" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        section: "外观"
+        integer_default: 90
+        minimum: 0
+        maximum: 360
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Gradient angle (°)" section: "Appearance" }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 376334591
+        localized {
+            key: "en"
+            value { label: "Text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "次要文字颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 1552515583
+        localized {
+            key: "en"
+            value { label: "Secondary text color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "强调颜色"
+        type: COLOR
+        section: "外观"
+        color_default: 3817954047
+        localized {
+            key: "en"
+            value { label: "Accent color" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        section: "外观"
+        integer_default: 12
+        minimum: 0
+        maximum: 32
+        step: 1
+        localized {
+            key: "en"
+            value { label: "Corner radius" section: "Appearance" }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "字体"
+        type: FONT
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value { label: "Font" section: "Appearance" }
         }
     }
 }

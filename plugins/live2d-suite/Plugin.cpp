@@ -1,7 +1,9 @@
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Settings.h>
 #include <sdk/WindowsFonts.h>
 #include <sdk/cpp/Plugin.h>
+#include <sdk/services/Composition.h>
 #include <sdk/services/Interaction.h>
 #include <sdk/services/Live2D.h>
 
@@ -27,11 +29,13 @@ public:
 
     explicit Live2DPlugin(const CdCreateContext& context)
         : context_(context.host_context), pluginDirectory_(std::filesystem::u8path(context.plugin_directory)) {
+        cdsdk::modernDefaults(settings, cdsdk::WidgetColorway::Iris);
         canvas_.bindGpu(context);
         if (context.host && context.host->struct_size >= sizeof(CdServiceHostApi)) {
             const auto* host = reinterpret_cast<const CdServiceHostApi*>(context.host);
             if (host->query_service) {
                 host->query_service(context_, CD_SERVICE_LIVE2D, 1, &api_, sizeof(api_));
+                host->query_service(context_, CD_SERVICE_COMPOSITION, 1, &composition_, sizeof(composition_));
                 CdInteractionApi interaction{};
                 if (host->query_service(context_, CD_SERVICE_INTERACTION, 1, &interaction, sizeof(interaction)) ==
                     CD_OK) {
@@ -55,7 +59,15 @@ public:
                 return CD_ERROR_ARGUMENT;
             }
         }
-        if (api_.configure) {
+        bool modelChanged = !configured_;
+        for (const auto key :
+             {"model", "directory", "motion", "expression", "fps", "scale", "x", "y", "paused", "physics", "follow"}) {
+            const auto& previous = settings.at(key);
+            const auto& value = next.at(key);
+            modelChanged |=
+                previous.integer != value.integer || previous.number != value.number || previous.text != value.text;
+        }
+        if (api_.configure && modelChanged) {
             auto directory = next.at("directory").text;
             if (directory.empty()) {
                 const auto path = (pluginDirectory_ / "models" / next.at("model").text).u8string();
@@ -78,15 +90,22 @@ public:
                 return configured;
             }
         }
+        configured_ = true;
+        cdsdk::normalizeModernColors(next);
         settings = std::move(next);
+        if (composition_.invalidate) {
+            composition_.invalidate(context_, CD_COMPOSITION_BACKGROUND | CD_COMPOSITION_FOREGROUND);
+        }
         return CD_OK;
     }
 
     void layoutChanged(const CdLayout& layout) {
         width_ = std::max(1., layout.logical_width);
         height_ = std::max(1., layout.logical_height);
-        textColor_ = (uint32_t(layout.text_color.r) << 24) | (uint32_t(layout.text_color.g) << 16) |
-                     (uint32_t(layout.text_color.b) << 8) | layout.text_color.a;
+        modelBounds_ = {6, 6, std::max(1., width_ - 12), std::max(1., height_ - 12)};
+        if (composition_.configure) {
+            composition_.configure(context_, &modelBounds_, 1);
+        }
     }
 
     void input(const CdInput& event) {
@@ -97,7 +116,8 @@ public:
             } else if (event.kind == CD_INPUT_PRESS) {
                 pressed_ = (event.buttons & CD_BUTTON_LEFT) != 0;
             } else if (event.kind == CD_INPUT_MOVE || event.kind == CD_INPUT_RELEASE) {
-                api_.pointer(context_, event.x / width_ * 2 - 1, 1 - event.y / height_ * 2,
+                api_.pointer(context_, (event.x - modelBounds_.x) / modelBounds_.width * 2 - 1,
+                             1 - (event.y - modelBounds_.y) / modelBounds_.height * 2,
                              event.kind == CD_INPUT_RELEASE && pressed_ ? 1u : 0u);
                 if (event.kind == CD_INPUT_RELEASE) {
                     pressed_ = false;
@@ -115,6 +135,7 @@ public:
         if (api_.snapshot) {
             api_.snapshot(context_, &status);
         }
+        canvas_.selectFont(settings.at("font_family").text);
         std::wstring text = L"Live2D\n正在准备角色…";
         if (!api_.configure) {
             text = L"Live2D 需要支持独立模型进程的 Desktop 版本";
@@ -127,18 +148,30 @@ public:
             frame,
             {0, 0, double(frame.width) / frame.device_pixel_ratio, double(frame.height) / frame.device_pixel_ratio},
             [&](auto& draw, auto area) {
+                const auto appearance = cdsdk::widgetAppearance(settings);
+                const auto pass = composition_.current_pass ? composition_.current_pass(context_) : CD_COMPOSITION_ALL;
+                if (pass != CD_COMPOSITION_FOREGROUND) {
+                    cdsdk::widgetBackground(draw, appearance,
+                                            {6, 6, std::max(0., area.width - 12), std::max(0., area.height - 12)});
+                }
+                if (pass == CD_COMPOSITION_BACKGROUND) {
+                    return;
+                }
+                if (api_.configure && status.state != 3) {
+                    return;
+                }
                 if (api_.configure && status.state == 3) {
                     live2dplugin::drawFailure(draw, {area.x, area.y, area.width, area.height}, status.message,
-                                              textColor_);
+                                              appearance.foreground, draw.selectedFont());
                     return;
                 }
                 cybercanvas::TextStyle font;
-                font.family = L"Segoe UI";
+                font.family = cdsdk::fontWide(settings.at("font_family").text);
                 font.size = 13;
                 font.align = cybercanvas::TextAlign::Center;
                 font.wrap = true;
                 draw.text(text, font, {10, area.height * .3, std::max(1., area.width - 20), area.height * .6},
-                          textColor_);
+                          appearance.foreground);
             });
         return CD_OK;
     }
@@ -146,11 +179,12 @@ public:
 private:
     cdsdk::Canvas canvas_;
     CdLive2DApi api_{};
+    CdCompositionApi composition_{};
+    CdRect modelBounds_{6, 6, 1, 1};
     void* context_ = nullptr;
     std::filesystem::path pluginDirectory_;
     double width_ = 1, height_ = 1;
-    bool pressed_ = false;
-    uint32_t textColor_ = 0xA9BBD4FF;
+    bool pressed_ = false, configured_ = false;
 };
 }  // namespace
 

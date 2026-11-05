@@ -25,6 +25,21 @@ auto Settings::at(const char* id) const -> const Setting& {
     throw std::runtime_error("Unknown setting");
 }
 
+void Settings::define(std::initializer_list<Setting> defaults) {
+    for (const auto& setting : defaults) {
+        auto found = std::find_if(values.begin(), values.end(), [&](const Setting& value) {
+            return value.id == setting.id;
+        });
+        if (found == values.end()) {
+            values.push_back(setting);
+        } else if (found->type == setting.type) {
+            *found = setting;
+        } else {
+            throw std::runtime_error("Setting default type mismatch");
+        }
+    }
+}
+
 auto Settings::setChoices(const char* id, std::vector<std::string> choices, const std::string& fallback) -> void {
     if (choices.empty() || choices.size() > 257 ||
         std::set<std::string>(choices.begin(), choices.end()).size() != choices.size() ||

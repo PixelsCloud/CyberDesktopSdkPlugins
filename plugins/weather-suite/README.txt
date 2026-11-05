@@ -26,7 +26,7 @@ requested. Requests begin after saved settings are restored, not in the plugin c
 The host owns provider configuration and cache storage. The plugin consumes typed SDK callbacks.
 Offline cached data and missing values are distinguished by the host service status.
 
-Icons: Meteocons @meteocons/svg-static 0.1.0, fill style, by Bas Milius (MIT).
+Icons: Meteocons @meteocons/svg-static 0.1.0, flat style, by Bas Milius (MIT).
 18 original SVGs retained with pinned package integrity and transparent PNG derivatives in assets/.
 https://github.com/basmilius/meteocons
 HTTP client: CPR 1.14.2 (MIT) + libcurl 8.20.0 (curl license), statically linked from vcpkg.

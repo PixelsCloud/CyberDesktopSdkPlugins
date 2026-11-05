@@ -24,7 +24,7 @@ struct Renderer::Impl {
 
     void label(const std::wstring& text, float size, CdRect area, uint32_t fill) {
         cybercanvas::TextStyle style;
-        style.family = L"Microsoft YaHei";
+        style.family = canvas.selectedFont();
         style.locale = L"zh-CN";
         style.size = size;
         // Keep the original natural-height baseline while sharing the engine cache.
@@ -49,8 +49,12 @@ struct Renderer::Impl {
                                          {7, 5, 5, 7, 1, 1, 7}};
         const double pitch = std::max(.1, std::min(area.width / 18, area.height / 7));
         const double side = pitch * .76;
-        double x = area.x;
-        const double y = area.y + (area.height - pitch * 7) * .5;
+        int columns = -1;
+        for (const auto character : text) {
+            columns += character == L':' ? 2 : 4;
+        }
+        double x = area.x + (area.width - ((columns - 1) * pitch + side)) * .5;
+        const double y = area.y + (area.height - (pitch * 6 + side)) * .5;
         for (wchar_t character : text) {
             const bool colon = character == L':';
             for (int row = 0; row < 7; ++row) {
@@ -66,20 +70,23 @@ struct Renderer::Impl {
     }
 
     void content(const Model& model, const Options& options, double w, double h) {
-        const uint32_t ink = options.color == "mint"   ? (options.dark ? 0x9AE7BCFF : 0x2F8967FF)
+        const uint32_t ink = options.modern            ? options.style.foreground
+                             : options.color == "mint" ? (options.dark ? 0x9AE7BCFF : 0x2F8967FF)
                              : options.color == "cyan" ? (options.dark ? 0x83DAF2FF : 0x247FA0FF)
                                                        : (options.dark ? 0xF0C57AFF : 0xAA6C2FFF);
-        const uint32_t bright = options.color == "mint"   ? 0xDCFCE6FF
+        const uint32_t bright = options.modern            ? options.style.accent
+                                : options.color == "mint" ? 0xDCFCE6FF
                                 : options.color == "cyan" ? 0xD7F8FFFF
                                                           : 0xFFF2CCFF;
-        const uint32_t frame = options.dark ? 0x739495FF : 0x708582FF;
-        const uint32_t ghost = options.dark ? 0x26383BFF : 0xD4DCD4FF;
-        const uint32_t muted = options.dark ? 0x8EA9A8FF : 0x607774FF;
+        const uint32_t frame = options.modern ? options.style.accent : options.dark ? 0x739495FF : 0x708582FF;
+        const uint32_t ghost = options.modern ? options.style.track : options.dark ? 0x26383BFF : 0xD4DCD4FF;
+        const uint32_t muted = options.modern ? options.style.secondary : options.dark ? 0x8EA9A8FF : 0x607774FF;
         const auto glass = glassArea(w, h, options.showTimer);
         const double pixel = glass.height / kGridHeight;
-        const double side = pixel * .83;
+        const double side = pixel * kGridDotFill;
         canvas.saved([&] {
-            const cybercanvas::Point center{glass.x + glass.width * .5, glass.y + glass.height * .5};
+            const cybercanvas::Point center{glass.x + (glass.width - pixel + side) * .5,
+                                            glass.y + (glass.height - pixel + side) * .5};
             const double radians = model.angle() * 3.14159265358979323846 / 180;
             const double rotatedWidth =
                 glass.width * std::abs(std::cos(radians)) + glass.height * std::abs(std::sin(radians));
@@ -101,7 +108,7 @@ struct Renderer::Impl {
             }
             for (int y : {0, 1, 27, 28}) {
                 for (int x = y == 0 || y == 28 ? 0 : 2; x <= (y == 0 || y == 28 ? 18 : 16); ++x) {
-                    dot(glass.x + x * pixel, glass.y + y * pixel, side, y == 0 || y == 27 ? frame : ghost, 0);
+                    dot(glass.x + x * pixel, glass.y + y * pixel, side, y == 0 || y == 28 ? frame : ghost, 0);
                 }
             }
             const auto sand = model.sample();
@@ -131,20 +138,23 @@ struct Renderer::Impl {
         }
         const double x = w * .42, right = w - 10, areaWidth = std::max(1.0, right - x);
         const double textSize = std::clamp(h * .11, 6.0, 11.0);
-        label(L"像素沙漏", float(textSize), {x, h * .14, areaWidth, h * .16}, muted);
-        digits(remainingText(model.remaining()), {x, h * .34, areaWidth, h * .30}, ink, ghost, options.glow);
+        if (!options.modern)
+            label(L"像素沙漏", float(textSize), {x, h * .14, areaWidth, h * .16}, muted);
+        const auto inactiveDigit = options.modern && !options.style.background ? (ghost & 0xFFFFFF00) | 24 : ghost;
+        digits(remainingText(model.remaining()), {x, h * .34, areaWidth, h * .30}, ink, inactiveDigit, options.glow);
         const double barY = h * .72, barWidth = areaWidth;
         const int segments = std::max(4, int(barWidth / 5));
         const double pitch = barWidth / segments;
         for (int i = 0; i < segments; ++i) {
             const bool lit = double(i + 1) / segments <= model.progress() + .000001;
-            rect(x + i * pitch, barY, pitch * .70, std::max(1.0, h * .026), lit ? ink : ghost);
+            rect(x + (i + .15) * pitch, barY, pitch * .70, std::max(1.0, h * .026), lit ? ink : ghost);
         }
         const std::wstring status = !options.running                   ? L"已暂停"
                                     : model.phase() == Phase::Turning  ? L"翻转中"
                                     : model.phase() == Phase::Finished ? L"已结束"
                                                                        : L"流动中";
-        label(status, float(std::clamp(h * .09, 6.0, 9.5)), {x, h * .80, areaWidth, h * .12}, muted);
+        if (!options.modern)
+            label(status, float(std::clamp(h * .09, 6.0, 9.5)), {x, h * .80, areaWidth, h * .12}, muted);
         const double mark = std::max(1.0, pixel * .5);
         if (options.running && model.phase() != Phase::Finished) {
             for (int i = 0; i < 3; ++i) {
@@ -181,7 +191,11 @@ bool Renderer::render(const Model& model, const Options& options, const CdFrame&
         safe.height = std::clamp(safe.height, 0.0, h - safe.y);
         auto painting = p.canvas.frame(frame, safe);
         if (safe.width > 24 && safe.height > 24) {
-            if (options.background) {
+            if (options.modern) {
+                p.canvas.selectFont(options.fontFamily);
+                cdsdk::widgetBackground(p.canvas, options.style, {0, 0, safe.width, safe.height});
+            }
+            if (options.background && !options.modern) {
                 const float radius =
                     std::clamp(options.radius, 0.f, float(std::min(safe.width - 4, safe.height - 5) * .5));
                 const cybercanvas::Rect face{1, 1, safe.width - 4, safe.height - 5};

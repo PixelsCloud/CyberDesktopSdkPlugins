@@ -1,6 +1,7 @@
 #include <CharacterChat/Protocol.h>
 #include <CyberCanvas/List.h>
 #include <CyberCanvas/Text.h>
+#include <sdk/Appearance.h>
 #include <sdk/Canvas.h>
 #include <sdk/Interaction.h>
 #include <sdk/Settings.h>
@@ -43,6 +44,7 @@ public:
                              {"model_directory", CD_SETTING_TEXT, 0, 0, "", 0, 4096}};
 
     explicit CharacterChatPlugin(const CdCreateContext& create) : host_(*create.host), context_(create.host_context) {
+        cdsdk::modernDefaults(settings, cdsdk::WidgetColorway::Rose);
         canvas_.bindGpu(create);
         directory_ = std::filesystem::path(cdsdk::fontWide(create.plugin_directory));
         if (create.host->struct_size >= sizeof(CdServiceHostApi)) {
@@ -91,21 +93,28 @@ public:
         width_ = std::max(160., layout.logical_width);
         height_ = std::max(160., layout.logical_height);
         dpr_ = layout.device_pixel_ratio;
+        int columns = 0;
+        for (uint32_t i = 0; layout.cells && i < layout.cell_count; ++i) {
+            columns = std::max(columns, layout.cells[i].a + 1);
+        }
+        sideBySide_ = columns ? columns >= 6 : width_ > height_ * 1.1;
         dialogueInteraction_.cancel();
         dialogueScroll_.cancel();
-        editor_ = {12, height_ - 60, std::max(24., width_ - 76), 40};
-        send_ = {width_ - 56, height_ - 60, 44, 40};
+        const double dialogueLeft = wideLayout() ? width_ * .46 : 12;
+        editor_ = {dialogueLeft, height_ - 52, std::max(24., width_ - dialogueLeft - 60), 34};
+        send_ = {width_ - 48, height_ - 52, 34, 34};
         role_ = {12, 10, std::max(70., std::min(150., width_ - 178)), 30};
         mode_ = {width_ - 152, 10, 100, 30};
         connection_ = {width_ - 44, 10, 32, 30};
-        model_ = {width_ * .35, 34, width_ * .65 - 8, std::max(24., stageHeight() - 34)};
-        action1_ = {14, stageHeight() - 58, 76, 28};
-        action2_ = {98, stageHeight() - 58, 76, 28};
+        model_ = wideLayout() ? CdRect{8, 46, width_ * .43 - 8, height_ - 58}
+                              : CdRect{12, 46, width_ - 24, std::max(24., stageHeight() - 46)};
+        action1_ = wideLayout() ? CdRect{12, height_ - 38, 54, 24} : CdRect{14, stageHeight() - 34, 64, 24};
+        action2_ = wideLayout() ? CdRect{72, height_ - 38, 54, 24} : CdRect{86, stageHeight() - 34, 64, 24};
         if (composition_.configure) {
             composition_.configure(context_, &model_, liveMode());
         }
         if (input_.configure) {
-            constexpr char hint[] = "输入消息… Enter 发送";
+            constexpr char hint[] = "";
             input_.configure(context_, &editor_, hint, sizeof(hint) - 1);
         }
         iconCache_.clear();
@@ -134,6 +143,7 @@ public:
         if (modelChanged) {
             rememberPreview();
         }
+        cdsdk::normalizeModernColors(next);
         settings = std::move(next);
         if (presentationChanged) {
             if (modelChanged) {
@@ -145,6 +155,8 @@ public:
             }
             configureModel(modelChanged);
         }
+        iconCache_.clear();
+        measuredDialogue_.clear();
         syncPresentation();
         rememberPresentation();
         if (liveMode() && !modelChanged && actions_.perform && settings.at("pose").text != "auto") {
@@ -377,24 +389,32 @@ public:
         if (!canvas_.valid(frame)) {
             return CD_ERROR_ARGUMENT;
         }
+        canvas_.selectFont(settings.at("font_family").text);
         canvas_.render(frame, {0, 0, width_, height_}, [&](auto& draw, auto area) {
+            const auto appearance = cdsdk::widgetAppearance(settings);
+            const CdRect sceneArea = wideLayout() ? CdRect{6, 44, area.width * .44 - 10, area.height - 50}
+                                                  : CdRect{6, 44, area.width - 12, this->stageHeight() - 44};
             const auto pass = composition_.current_pass ? composition_.current_pass(context_) : CD_COMPOSITION_ALL;
             const double stageHeight = this->stageHeight();
             if (pass != CD_COMPOSITION_FOREGROUND) {
-                draw.box(0, 0, area.width, area.height, 10, 0x101C2AFF);
-                draw.clipped({0, 0, area.width, stageHeight}, [&] {
-                    asset(visual_.value("scenes", Json::object()).value(scene_, "scene_" + scene_),
-                          {0, 0, area.width, stageHeight}, true);
-                    const double portraitWidth = std::min(area.width * .70, stageHeight * .95);
+                cdsdk::widgetBackground(draw, appearance, {6, 6, area.width - 12, area.height - 12});
+                draw.clipped(sceneArea, [&] {
+                    asset(visual_.value("scenes", Json::object()).value(scene_, "scene_" + scene_), sceneArea, true);
+                    const double portraitWidth = std::min(sceneArea.width, sceneArea.height * .72);
                     if (!liveMode()) {
-                        drawPortrait({area.width - portraitWidth - 4, 30, portraitWidth, stageHeight * 1.25});
+                        drawPortrait({sceneArea.x + (sceneArea.width - portraitWidth) / 2, sceneArea.y, portraitWidth,
+                                      sceneArea.height});
                     }
                 });
             }
             if (pass == CD_COMPOSITION_BACKGROUND) {
                 return;
             }
-            draw.box(0, stageHeight, area.width, area.height - stageHeight, 0, 0x101C2AFF);
+            if (!wideLayout() && appearance.background) {
+                draw.clipped({6, stageHeight, area.width - 12, area.height - stageHeight - 6}, [&] {
+                    cdsdk::widgetBackground(draw, appearance, {6, 6, area.width - 12, area.height - 12});
+                });
+            }
             if (liveMode()) {
                 CdLive2DStatus status{};
                 status.struct_size = sizeof(status);
@@ -403,9 +423,7 @@ public:
                 }
                 if (status.state == 3) {
                     live2dplugin::drawFailure(draw, {model_.x, model_.y, model_.width, model_.height}, status.message,
-                                              0xE9F2FFFF);
-                } else if (status.state != 2) {
-                    draw.text(L"正在加载 Live2D…", 12, {14, 50, area.width - 28, 70}, 0xEDB9A9FF);
+                                              appearance.foreground, draw.selectedFont());
                 }
             }
             for (unsigned index = 0; index < 2; ++index) {
@@ -413,25 +431,27 @@ public:
                     continue;
                 }
                 const auto button = index ? action2_ : action1_;
-                draw.box(button.x, button.y, button.width, button.height, 6, 0x122436D8);
+                draw.box(button.x, button.y, button.width, button.height, 6, appearance.track);
                 icon("play", {button.x + 2, button.y, 24, button.height});
                 const auto action = availableActions().at(index);
                 const auto label = action == "wave" ? "挥手" : action == "folded" ? "抱臂" : action;
-                draw.text(cdsdk::fontWide(label), 11, {button.x + 26, button.y, button.width - 28, button.height},
-                          0xE7F0F5FF);
+                draw.text(cdsdk::fontWide(label), 13, {button.x + 26, button.y, button.width - 28, button.height},
+                          appearance.foreground);
             }
-            const double textY = stageHeight + 10;
-            draw.text(cdsdk::fontWide(name_), 14, {14, textY, area.width - 28, 24}, 0xA5DBD3FF, false, true);
+            const double textLeft = wideLayout() ? area.width * .46 : 14;
+            const double textY = wideLayout() ? 49 : stageHeight + 8;
+            draw.text(cdsdk::fontWide(name_), 16, {textLeft, textY, area.width - textLeft - 14, 24}, appearance.accent,
+                      false, true);
             cybercanvas::TextStyle style;
-            style.family = L"Microsoft YaHei";
-            style.size = area.width < 350 ? 12 : 14;
+            style.family = draw.selectedFont();
+            style.size = area.width < 350 ? 14 : 16;
             style.align = cybercanvas::TextAlign::Start;
             style.vertical = cybercanvas::VerticalAlign::Top;
             style.wrap = true;
             attachmentRects_.clear();
             const double thumbnailWidth = attachments_.empty() ? 0 : std::min(170., area.width * .4);
             const double dialogueBottom = choiceTexts_.empty() ? editor_.y - 10 : height_ - 108;
-            const CdRect dialogueRect{14, textY + 28, std::max(80., area.width - 28 - thumbnailWidth),
+            const CdRect dialogueRect{textLeft, textY + 28, std::max(40., area.width - textLeft - 14 - thumbnailWidth),
                                       std::max(24., dialogueBottom - textY - 28)};
             drawDialogue(style, dialogueRect);
             for (size_t i = 0; i < attachments_.size(); ++i) {
@@ -454,14 +474,14 @@ public:
             if (!choiceTexts_.empty() && status_ != "generating") {
                 CdRect button{14, height_ - 100, area.width - 28, 28};
                 draw.box(button.x, button.y, button.width, button.height, 6, 0x294052FF);
-                draw.text(L"选择接下来的剧情…", 11, button, 0xD9EAF2FF);
+                draw.text(L"剧情分支", 11, button, 0xD9EAF2FF);
                 choices_.push_back({button, {}});
             }
-            draw.box(editor_.x, editor_.y, editor_.width, editor_.height, 7, 0x1A2B3DFF);
-            draw.text(cdsdk::fontWide(draft_.empty() ? "输入消息… Enter 发送" : draft_), 12,
-                      {editor_.x + 9, editor_.y + 8, editor_.width - 18, editor_.height - 16},
-                      draft_.empty() ? 0x7E95ADFF : 0xDBE6F2FF, false);
-            draw.box(send_.x, send_.y, send_.width, send_.height, 7, 0x327F85FF);
+            draw.box(editor_.x, editor_.y, editor_.width, editor_.height, 7, appearance.track);
+            draw.text(cdsdk::fontWide(draft_), 12,
+                      {editor_.x + 9, editor_.y + 8, editor_.width - 18, editor_.height - 16}, appearance.foreground,
+                      false);
+            draw.box(send_.x, send_.y, send_.width, send_.height, 7, appearance.track);
             icon(status_ == "generating" ? "square" : "arrow-up", send_);
             if (!chat_.connect || !input_.connect) {
                 draw.text(L"请更新 Desktop 以启用聊天和中文输入", 12, {10, 45, area.width - 20, 50}, 0xFFCC99FF);
@@ -700,6 +720,10 @@ private:
         return availableActions().size() > index;
     }
 
+    bool wideLayout() const {
+        return sideBySide_;
+    }
+
     double stageHeight() const {
         return std::max(60., std::min(height_ * .54, height_ - 190));
     }
@@ -724,7 +748,7 @@ private:
         canvas_.clipped(area, [&] {
             canvas_.text(wide, style,
                          {area.x, area.y - dialogueScroll_.offset(), textWidth, std::max(area.height, dialogueHeight_)},
-                         error_.empty() ? 0xE2EAF4FF : 0xF1AE9FFF);
+                         error_.empty() ? cdsdk::widgetAppearance(settings).foreground : 0xB55335FF);
         });
         dialogueScroll_.draw(canvas_, cybercanvas::WidgetTheme::dark());
     }
@@ -1335,7 +1359,7 @@ private:
         if (!image) {
             std::vector<uint8_t> pixels(size * size * 4);
             CdFrame buffer{sizeof(buffer), size, size, size * 4, pixels.size(), pixels.data(), dpr_};
-            if (icons_.raster(context_, name.c_str(), 0xF2FBFFFF, &buffer) != CD_OK) {
+            if (icons_.raster(context_, name.c_str(), cdsdk::widgetAppearance(settings).foreground, &buffer) != CD_OK) {
                 return;
             }
             for (size_t index = 0; index < pixels.size(); index += 4) {
@@ -1347,6 +1371,7 @@ private:
     }
 
     cdsdk::Canvas canvas_;
+    bool sideBySide_ = false;
     CdHostApi host_{};
     void* context_;
     CdCharacterChatApi chat_{};

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <sdk/Appearance.h>
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
@@ -186,6 +186,9 @@ struct Appearance {
     bool blessings = true;
     double motionTime = -1;
     bool redrawPond = true;
+    bool modern = false;
+    cdsdk::WidgetAppearance style{};
+    std::string_view fontFamily = "Segoe UI";
 };
 
 class Renderer {

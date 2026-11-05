@@ -2,6 +2,7 @@
 
 #include <CyberCanvas/InstrumentMotion.h>
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/Update.h>
 #include <sdk/cpp/Services.h>
 #include <sdk/services/Storage.h>
@@ -13,6 +14,7 @@
 #include <cstring>
 #include <memory>
 #include <string>
+#include <string_view>
 #include <utility>
 
 #include "plugins/productivity-suite/Feed.h"
@@ -24,6 +26,18 @@ namespace productivity::themed {
 View::~View() = default;
 
 namespace {
+bool defaultAppearance(const Spec& spec) {
+    const std::string_view id = spec.id ? spec.id : "";
+    for (const auto prefix :
+         {"com.cyberdesktop.timer.", "com.cyberdesktop.todo.", "com.cyberdesktop.countdown.",
+          "com.cyberdesktop.network.", "com.cyberdesktop.disk.", "com.cyberdesktop.notes.", "com.cyberdesktop.rss."}) {
+        if (id.starts_with(prefix)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 struct Instance;
 void stop(Instance&);
 
@@ -47,7 +61,7 @@ struct Instance {
 
     Instance(Spec s, const CdCreateContext& creation, std::unique_ptr<View> view, const char* defaultFont)
         : spec(s),
-          settings(defaults(s.kind, s.mechanical)),
+          settings(defaults(s.kind, s.mechanical, defaultAppearance(s))),
           renderer(std::move(view)),
           services(creation.host, creation.host_context) {
         if (defaultFont) {
@@ -468,6 +482,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
         if (notesChanged) {
             data.scroll = 0;
         }
+        cdsdk::normalizeModernColors(settings);
         self.settings = std::move(settings);
         self.data = std::move(data);
         self.motionTimer.stop();

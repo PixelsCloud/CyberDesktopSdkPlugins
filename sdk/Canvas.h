@@ -3,6 +3,10 @@
 #include <CyberCanvas/Canvas.h>
 #include <sdk/PluginApi.h>
 
+#include <memory>
+#include <string>
+#include <string_view>
+
 namespace cdsdk {
 using cybercanvas::color;
 using cybercanvas::require;
@@ -16,6 +20,9 @@ public:
     ~Canvas();
 
     void bindGpu(const CdCreateContext& context);
+
+    void selectFont(std::string_view family);
+    const wchar_t* selectedFont() const;
 
     class Frame {
     public:

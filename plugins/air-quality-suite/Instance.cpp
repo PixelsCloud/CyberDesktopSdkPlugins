@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <sdk/Appearance.h>
 #include <sdk/cpp/Services.h>
 
 #include <algorithm>
@@ -211,6 +212,7 @@ CdResult CD_CALL apply(void* pointer, const CdSettingValue* values, uint32_t cou
         const bool locationChanged = numerical != previous;
         const bool intervalChanged =
             changed.at("refresh_minutes").integer != self.settings.at("refresh_minutes").integer;
+        cdsdk::normalizeModernColors(changed);
         self.settings = std::move(changed);
         if (locationChanged) {
             self.snapshot = {};

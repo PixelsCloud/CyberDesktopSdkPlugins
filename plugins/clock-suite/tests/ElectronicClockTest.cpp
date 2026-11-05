@@ -1,6 +1,7 @@
 #include <Windows.h>
 
 #include <algorithm>
+#include <cmath>
 #include <filesystem>
 #include <iostream>
 
@@ -54,6 +55,86 @@ void equalMatrixMargins(Renderer& renderer, Spec spec, Options options, Time tim
               1.01,
           "matrix has equal background margins on all four sides");
 }
+
+void modernSymmetry(Renderer& renderer, const std::filesystem::path& out) {
+    const Time time{2026, 11, 4, 3, 23, 1, 38, 0};
+    int states = 0;
+    for (const auto display : {Display::Pixel, Display::PixelRound}) {
+        for (const int columns : {2, 4}) {
+            Spec spec{"com.cyberdesktop.clock.pixel.test", false, 1, columns, false, display};
+            auto appearance = options(defaults(spec), {});
+            for (const int unit : {72, 88, 104}) {
+                const int width = columns * unit, height = unit * 5 / 4;
+                for (const double scale : {70., 85., 100.}) {
+                    for (const bool seconds : {false, true}) {
+                        for (const int captions : {0, 1, 2, 3}) {
+                            appearance.sizePercent = scale;
+                            appearance.seconds = seconds;
+                            appearance.date = (captions & 1) != 0;
+                            appearance.weekday = (captions & 2) != 0;
+                            const bool footer = captions || seconds && columns == 2;
+                            const double bottom = footer ? std::clamp(height * .18, 12., 22.) : 0;
+                            const Rect box{6, 6, width - 12., height - 12. - bottom - (footer ? 6 : 0)};
+                            const int glyphColumns = seconds && columns == 4 ? 25 : 17;
+                            const auto grid = arrangePixelGrid(glyphColumns, box, scale);
+                            check(grid.glyphRow == grid.rows - grid.glyphRow - 7,
+                                  "same number of inactive rows above and below digits");
+                            check(grid.glyphColumn == grid.columns - grid.glyphColumn - glyphColumns,
+                                  "same number of inactive columns left and right of digits");
+                            const double top = grid.glyphRow * grid.pitchY;
+                            const double bottomGap = box.height - ((grid.glyphRow + 6) * grid.pitchY + grid.side);
+                            const double left = grid.glyphColumn * grid.pitchX;
+                            const double rightGap =
+                                box.width - ((grid.glyphColumn + glyphColumns - 1) * grid.pitchX + grid.side);
+                            check(std::abs(top - bottomGap) < .0001 && std::abs(left - rightGap) < .0001,
+                                  "glyph and full dot envelope share a center");
+                            for (const double dpi : {1., 1.25, 1.5, 2.}) {
+                                auto pixels = draw(renderer, spec, appearance, time, width, height, dpi);
+                                const int w = int(width * dpi), h = int(height * dpi);
+                                for (const bool active : {false, true}) {
+                                    int x0 = w, y0 = h, x1 = -1, y1 = -1;
+                                    const auto color =
+                                        active ? appearance.appearance.foreground : appearance.appearance.track;
+                                    for (int y = int(std::ceil(box.y * dpi)); y < int((box.y + box.height) * dpi);
+                                         ++y) {
+                                        for (int x = int(std::ceil(box.x * dpi)); x < int((box.x + box.width) * dpi);
+                                             ++x) {
+                                            const auto* pixel = &pixels[(size_t(y) * w + x) * 4];
+                                            if (std::abs(int(pixel[0]) - int(color >> 24)) < 4 &&
+                                                std::abs(int(pixel[1]) - int((color >> 16) & 255)) < 4 &&
+                                                std::abs(int(pixel[2]) - int((color >> 8) & 255)) < 4) {
+                                                x0 = std::min(x0, x);
+                                                x1 = std::max(x1, x);
+                                                y0 = std::min(y0, y);
+                                                y1 = std::max(y1, y);
+                                            }
+                                        }
+                                    }
+                                    check(x1 >= x0 && y1 >= y0, "visible active and inactive pixel envelopes");
+                                    check(std::abs((x0 + x1 + 1) - (box.x * 2 + box.width) * dpi) <= 2.01 &&
+                                              std::abs((y0 + y1 + 1) - (box.y * 2 + box.height) * dpi) <= 2.01,
+                                          "rasterized digits and grid centered to a physical pixel");
+                                }
+                                ++states;
+                                if (unit == 88 && columns == 2 && scale == 100 && !seconds && !captions && dpi == 2) {
+                                    CdFrame frame{sizeof(frame), uint32_t(w),   uint32_t(h), uint32_t(w * 4),
+                                                  pixels.size(), pixels.data(), dpi};
+                                    check(renderer.savePng(
+                                              (out / (display == Display::Pixel ? L"modern-pixel-symmetric.png"
+                                                                                : L"modern-round-symmetric.png"))
+                                                  .wstring(),
+                                              frame, {}),
+                                          "save modern symmetric 23:01 sample");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    std::cout << "PASS " << states << " modern pixel size/scale/footer/DPI states\n";
+}
 }  // namespace
 
 int wmain(int argc, wchar_t** argv) {
@@ -61,6 +142,7 @@ int wmain(int argc, wchar_t** argv) {
         const std::filesystem::path out = argc > 1 ? argv[1] : L".electronic-previews";
         std::filesystem::create_directories(out);
         Renderer renderer;
+        modernSymmetry(renderer, out);
         Time time{2026, 10, 13, 2, 22, 58, 30, 0};
         for (const auto display : {Display::Lcd, Display::Pixel, Display::PixelRound})
             for (int columns : {2, 4}) {

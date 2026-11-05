@@ -1,5 +1,6 @@
 #pragma once
 
+#include <sdk/Appearance.h>
 #include <sdk/PluginApi.h>
 #include <sdk/Settings.h>
 
@@ -24,6 +25,8 @@ struct Values {
 };
 
 struct Options {
+    cdsdk::WidgetAppearance appearance{};
+    bool modern = false;
     std::string palette = "theme", primary = "cpu", fontFamily = "@siyuan-heavy", language = "zh-CN";
     CdColor themeText{227, 241, 245, 255};
     Values needles{};
