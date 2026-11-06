@@ -1,6 +1,12 @@
 #include "CyberCanvas/Image.h"
 
+#include "CyberCanvas/ImageTracing.h"
+
 namespace cybercanvas {
+ImageData::ImageData() = default;
+
+ImageData::~ImageData() = default;
+
 auto ImageData::fromPremultipliedBgra(uint32_t width, uint32_t height, std::vector<uint8_t> pixels)
     -> std::shared_ptr<const ImageData> {
     if (!width || !height || width > 4096 || height > 4096 || uint64_t(width) * height * 4 != pixels.size()) {
@@ -10,6 +16,8 @@ auto ImageData::fromPremultipliedBgra(uint32_t width, uint32_t height, std::vect
     image->width_ = width;
     image->height_ = height;
     image->pixels_ = std::move(pixels);
+    image->trace_ = traceImage(image->pixels_.data(), image->pixels_.capacity(), width, height, width * 4,
+                               "SDK adopted BGRA pixels");
     return image;
 }
 

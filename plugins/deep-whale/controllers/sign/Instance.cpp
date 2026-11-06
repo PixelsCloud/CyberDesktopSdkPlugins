@@ -13,7 +13,7 @@ Instance::Instance(const CdCreateContext& context)
                {"reduced_motion", CD_SETTING_TOGGLE, 0},
                {"background", CD_SETTING_TOGGLE, 1}},
       renderer_(context) {
-    canvas_.bindGpu(context);
+    canvas_.bindGpu(context, true);
     environment_.bind(context);
     interaction_.bind(context);
     redraw_.bind(context);

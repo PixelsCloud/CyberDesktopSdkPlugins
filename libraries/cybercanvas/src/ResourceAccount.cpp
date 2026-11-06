@@ -1,3 +1,4 @@
+#include <CyberCanvas/ImageTracing.h>
 #include <CyberCanvas/ResourceAccount.h>
 #include <d2d1_1.h>
 #include <d3d11.h>
@@ -37,6 +38,7 @@ ComPtr<IUnknown> ResourceAccount::acquire(uint64_t bytes) const {
 }
 
 void retainTextureLease(ID2D1Bitmap* bitmap, IUnknown* lease) {
+    traceImage(bitmap, "SDK bitmap upload/cache");
     if (!bitmap || !lease) {
         return;
     }

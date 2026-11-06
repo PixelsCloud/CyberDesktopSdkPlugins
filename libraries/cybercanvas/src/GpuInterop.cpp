@@ -1,4 +1,5 @@
 #include <CyberCanvas/GpuInterop.h>
+#include <CyberCanvas/ImageTracing.h>
 #include <CyberCanvas/MemoryBudget.h>
 #include <CyberCanvas/Native.h>
 #include <CyberCanvas/ResourceAccount.h>
@@ -7,6 +8,7 @@
 #include <dxgi.h>
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <map>
 #include <memory>
@@ -23,12 +25,16 @@ struct DrawingDevice {
     ComPtr<ID3DDeviceContextState> drawState, previous;
     bool drawing = false;
     MemoryBudget outputs{512ULL * 1024 * 1024};
+    std::chrono::steady_clock::time_point lastUse;
 
     ~DrawingDevice() {
         finish();
     }
 
     ID2D1DeviceContext* begin(ID2D1Bitmap1* target, ID3D11DeviceContext* context) {
+        if (!commands) {
+            require(d2d->CreateDeviceContext(D2D1_DEVICE_CONTEXT_OPTIONS_NONE, &commands));
+        }
         if (!immediate) {
             require(context->QueryInterface(IID_PPV_ARGS(&immediate)));
             ComPtr<ID3D11Device1> device1;
@@ -57,7 +63,23 @@ struct DrawingDevice {
         immediate->SwapDeviceContextState(previous.Get(), nullptr);
         previous.Reset();
         drawing = false;
+        lastUse = std::chrono::steady_clock::now();
         return SUCCEEDED(status);
+    }
+
+    bool retire(uint32_t milliseconds) {
+        if (drawing || std::chrono::steady_clock::now() - lastUse < std::chrono::milliseconds(milliseconds)) {
+            return false;
+        }
+        // A saved D3D state owns its bound textures even after bitmap caches
+        // release them. Recreate both command context and state on the next draw
+        // instead of modifying a live Direct2D context behind its state cache.
+        commands.Reset();
+        drawState.Reset();
+        previous.Reset();
+        immediate.Reset();
+        d2d->ClearResources(milliseconds);
+        return true;
     }
 };
 
@@ -172,6 +194,7 @@ public:
                 description.Usage = D3D11_USAGE_DEFAULT;
                 description.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
                 require(device->CreateTexture2D(&description, nullptr, &texture_));
+                traceImage(texture_.Get(), "SDK retained widget surface");
                 require(device->CreateShaderResourceView(texture_.Get(), nullptr, &view_));
                 ComPtr<IDXGISurface> surface;
                 require(texture_.As(&surface));
@@ -205,12 +228,19 @@ public:
     }
 
     void reset() {
+        if (domain_) {
+            domain_->retire(0);
+        }
         target_.Reset();
         view_.Reset();
         texture_.Reset();
         lease_.reset();
         domain_.reset();
         width_ = height_ = 0;
+    }
+
+    bool retireIdleResources(uint32_t milliseconds) {
+        return !domain_ || domain_->retire(milliseconds);
     }
 
 private:
@@ -247,7 +277,13 @@ void GpuSurface::reset() {
     return impl_->reset();
 }
 
+bool GpuSurface::retireIdleResources(uint32_t milliseconds) {
+    return impl_->retireIdleResources(milliseconds);
+}
+
 GpuSurface::GpuSurface() : impl_(std::make_unique<Impl>()) {}
 
-GpuSurface::~GpuSurface() = default;
+GpuSurface::~GpuSurface() {
+    impl_->reset();
+}
 }  // namespace cybercanvas

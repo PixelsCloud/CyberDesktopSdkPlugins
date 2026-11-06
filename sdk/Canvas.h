@@ -19,7 +19,9 @@ public:
     Canvas();
     ~Canvas();
 
-    void bindGpu(const CdCreateContext& context);
+    // Opt in only when the producer validates frames through this Canvas and
+    // never reads/writes main-frame pixels outside the CPU fallback.
+    void bindGpu(const CdCreateContext& context, bool gpuOnly = false);
 
     void selectFont(std::string_view family);
     const wchar_t* selectedFont() const;

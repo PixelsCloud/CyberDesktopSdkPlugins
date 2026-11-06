@@ -397,6 +397,18 @@
             "test": "service-lifetime/data/volume/content/library",
             "ownership": "See the linked C ABI header; callbacks borrow their payload for the call only",
             "cancellation": "See linked C ABI header; non-subscription services have no cancellation operation"
+        },
+        {
+            "id": "diagnostics.images",
+            "version": 1,
+            "header": "sdk/services/ImageTrace.h",
+            "capability": null,
+            "thread": "Any thread; finite opt-in capture only",
+            "previewProfile": "none",
+            "preview": "Optional; absent in ordinary and preview hosts",
+            "test": "Desktop ImageTraceTest: shared pixels, cleanup and COM texture lifetime",
+            "ownership": "Descriptor and strings borrowed during observe; AddRef'd IUnknown lease owns no image or texture; process-lifetime callback",
+            "cancellation": "Release lease with the allocation; capture stop drops metadata, retained leases use weak session references"
         }
     ]
 }

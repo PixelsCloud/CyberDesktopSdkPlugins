@@ -20,7 +20,7 @@ SpringInstance::SpringInstance(const CdCreateContext& context)
     renderer_.onChange([this] {
         invalidate();
     });
-    canvas_.bindGpu(context);
+    canvas_.bindGpu(context, true);
     environment_.bind(context);
     interaction_.bind(context);
     redraw_.bind(context);

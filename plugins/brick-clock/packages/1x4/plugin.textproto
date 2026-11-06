@@ -4,22 +4,22 @@ version: "1.0.1"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-description: "扁平砖墙上的凹雕时分秒。只重刻变化的数字，Box2D 砖屑随重力下落、碰撞和堆积。双击重播雕刻。"
 layouts {
     id: "1x4"
     name: "4×1（宽×高）"
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
     allowed_rotations: 0
     is_default: true
 }
 footprint_rules { min_cells: 4 max_cells: 4 max_columns: 4 max_rows: 1 }
+capabilities: BACKGROUND_COMPUTE
+description: "扁平砖墙上的凹雕时分秒。只重刻变化的数字，Box2D 砖屑随重力下落、碰撞和堆积。双击重播雕刻。"
 settings_page {
     title: "砖刻时钟"
     description: "24 小时时分秒。数字变化时局部凿刻，砖屑落到下沿后淡出。隐藏时暂停，恢复时直接校准当前时间。"
-
     fields {
         id: "animate"
         label: "雕刻与碎屑动画"
@@ -34,7 +34,6 @@ settings_page {
         id: "reduced_motion"
         label: "减少动态"
         type: TOGGLE
-        bool_default: false
         localized {
             key: "en"
             value { label: "Reduce motion" }
@@ -44,51 +43,53 @@ settings_page {
         id: "debris_count"
         label: "每个数字的碎屑数量"
         type: INTEGER
-        minimum: 8
-        maximum: 20
-        step: 1
+        minimum: 8.0
+        maximum: 20.0
+        step: 1.0
         integer_default: 12
         localized {
             key: "en"
             value { label: "Chips per changed digit" }
         }
     }
-    localized {
-        key: "en"
-        value {
-            title: "Brick-carved Clock"
-            description: "A 24-hour carved brick clock. Only changed digits are carved. Box2D chips fall and settle on the ledge. Double-click to replay."
-        }
-    }
-
     fields {
         id: "show_background"
         label: "显示背景"
         type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
         section: "外观"
         bool_default: true
         localized {
             key: "en"
-            value { label: "Show background" section: "Appearance" }
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background"
-        label: "背景颜色"
+        label: "砖墙颜色"
         type: COLOR
+        description: "砖墙的主体颜色，渐变模式下作为起点颜色。"
         section: "外观"
         color_default: 4293978623
         localized {
             key: "en"
-            value { label: "Background color" section: "Appearance" }
+            value {
+                label: "Brick wall color"
+                description: "Base brick-wall color, or the start of its gradient."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_fill"
         label: "背景填充"
         type: CHOICE
+        description: "选择纯色或线性渐变背景。"
         section: "外观"
-        text_default: "solid"
         choices {
             value: "solid"
             label: "纯色"
@@ -101,9 +102,14 @@ settings_page {
             localized_labels { key: "en" value: "Linear gradient" }
             localized_labels { key: "zh-TW" value: "線性漸層" }
         }
+        text_default: "solid"
         localized {
             key: "en"
-            value { label: "Background fill" section: "Appearance" }
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -114,11 +120,16 @@ settings_page {
         id: "background_gradient_end"
         label: "渐变终点颜色"
         type: COLOR
+        description: "仅在线性渐变背景下生效。"
         section: "外观"
         color_default: 4293978623
         localized {
             key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -129,14 +140,18 @@ settings_page {
         id: "background_gradient_angle"
         label: "渐变角度（°）"
         type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
         section: "外观"
+        maximum: 360.0
+        step: 1.0
         integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
         localized {
             key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -145,67 +160,30 @@ settings_page {
     }
     fields {
         id: "foreground"
-        label: "文字颜色"
+        label: "数字切口与砖缝颜色"
         type: COLOR
+        description: "砖块数字的切口、碎屑与砖缝明暗由此颜色派生。"
         section: "外观"
         color_default: 3025487359
         localized {
             key: "en"
-            value { label: "Text color" section: "Appearance" }
+            value {
+                label: "Digit cuts and mortar color"
+                description: "Digit cuts, chips and mortar shading are derived from this color."
+                section: "Appearance"
+            }
         }
     }
-    fields {
-        id: "secondary"
-        label: "次要文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 2860216575
-        localized {
-            key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "强调颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 849254143
-        localized {
-            key: "en"
-            value { label: "Accent color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角"
-        type: INTEGER
-        section: "外观"
-        integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Corner radius" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "外观"
-        text_default: "Segoe UI"
-        localized {
-            key: "en"
-            value { label: "Font" section: "Appearance" }
+    localized {
+        key: "en"
+        value {
+            title: "Brick-carved Clock"
+            description: "A 24-hour carved brick clock. Only changed digits are carved. Box2D chips fall and settle on the ledge. Double-click to replay."
         }
     }
 }
-content_padding: 6
+content_padding: 6.0
 preview: "preview.png"
+required_services { id: "host.background" version: 1 }
 tags: "简约"
 tags: "时钟"
-
-capabilities: BACKGROUND_COMPUTE
-required_services { id: "host.background" version: 1 }

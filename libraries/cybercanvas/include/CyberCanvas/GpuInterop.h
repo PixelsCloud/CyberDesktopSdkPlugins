@@ -47,6 +47,9 @@ public:
     }
 
     void reset();
+    // Keeps output pixels. Retires the shared command context/state only after
+    // the device's last drawing activity, so other active widgets stay warm.
+    bool retireIdleResources(uint32_t milliseconds = 3000);
 
     GpuSurface(const GpuSurface&) = delete;
 

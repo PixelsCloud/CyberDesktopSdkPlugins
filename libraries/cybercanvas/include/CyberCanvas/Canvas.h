@@ -197,6 +197,9 @@ private:
 
 public:
     bool valid(const FrameBuffer& f) const;
+    // Owner-thread idle retirement; keeps factories and the current GPU output.
+    // Returns false while a frame is active and never invalidates its pixels.
+    bool trimCaches() noexcept;
 
     // Optional host-owned GPU target on the same render thread. Switching the
     // resource domain releases target-bound caches; steady frames retain them.

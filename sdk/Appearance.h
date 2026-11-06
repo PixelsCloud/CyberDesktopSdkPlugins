@@ -28,6 +28,8 @@ struct WidgetAppearance {
 };
 
 WidgetAppearance widgetPalette(WidgetColorway colorway);
+// These are rendering defaults, not a settings-page schema. Expose only fields
+// the plugin uses, with role-specific labels; see docs/APPEARANCE_SETTINGS.md.
 void modernDefaults(Settings& settings, WidgetColorway colorway = WidgetColorway::Sky);
 Settings modernSettings(Settings settings, bool enabled = true, WidgetColorway colorway = WidgetColorway::Sky);
 void normalizeModernColors(Settings& settings);

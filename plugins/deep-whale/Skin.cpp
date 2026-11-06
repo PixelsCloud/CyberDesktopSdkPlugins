@@ -303,10 +303,10 @@ Skin::Skin(const std::filesystem::path& assets) : impl_(std::make_unique<Impl>()
 
 Skin::~Skin() = default;
 
-void Skin::bind(const CdCreateContext& context, std::function<void(uint32_t)> action) {
+void Skin::bind(const CdCreateContext& context, std::function<void(uint32_t)> action, bool gpuOnly) {
     impl_->load(std::filesystem::path(std::u8string_view(reinterpret_cast<const char8_t*>(context.plugin_directory))) /
                 "assets");
-    impl_->canvas.bindGpu(context);
+    impl_->canvas.bindGpu(context, gpuOnly);
     impl_->images.bind(context);
     impl_->icons.bind(context);
     impl_->controls.bind(context, std::move(action));

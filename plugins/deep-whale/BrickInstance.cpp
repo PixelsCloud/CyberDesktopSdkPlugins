@@ -17,7 +17,7 @@ Instance::Instance(const CdCreateContext& context)
                {"debris_count", CD_SETTING_INTEGER, 12, 0, {}, 8, 20}},
       model_(context),
       renderer_(context) {
-    canvas_.bindGpu(context);
+    canvas_.bindGpu(context, true);
     environment_.bind(context);
     redraw_.bind(context);
     updates_.bind(context);

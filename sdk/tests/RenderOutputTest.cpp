@@ -1,5 +1,7 @@
 #include <CyberCanvas/GpuInterop.h>
+#include <CyberCanvas/Image.h>
 #include <CyberCanvas/Sprites.h>
+#include <Windows.h>
 #include <d3d11_1.h>
 #include <sdk/Canvas.h>
 #include <sdk/Images.h>
@@ -8,10 +10,12 @@
 #include <sdk/services/RenderImages.h>
 #include <sdk/services/RenderMemory.h>
 
+#include <algorithm>
 #include <array>
 #include <cstring>
 #include <filesystem>
 #include <iostream>
+#include <map>
 #include <thread>
 
 namespace {
@@ -27,12 +31,40 @@ struct Host {
     void* target = nullptr;
     uint64_t epoch = 1, painted = 0, unchanged = 0, copied = 0;
     cybercanvas::MemoryBudget budget{1024 * 1024};
-    bool legacy = false;
+    bool legacy = false, prefixOnly = false, gpuOnly = false;
+
+    struct Scheduled {
+        CdTimerCallback callback = nullptr;
+        void* user = nullptr;
+    };
+
+    std::map<uint64_t, Scheduled> timers;
+    std::map<uint64_t, std::pair<CdRenderIdle, void*>> idleSources;
+    uint64_t nextTimer = 1;
 
     explicit Host(uint64_t bytes = 1024 * 1024) : budget(bytes) {
         api.input.media.base.struct_size = sizeof(api);
         api.input.media.base.abi_version = CD_PLUGIN_ABI_VERSION;
         api.query_service = query;
+        api.input.media.base.subscribe_timer = [](void* context, uint32_t, CdTimerCallback callback, void* user,
+                                                  uint64_t* token) -> CdResult {
+            auto& self = *static_cast<Host*>(context);
+            *token = self.nextTimer++;
+            self.timers.emplace(*token, Scheduled{callback, user});
+            return CD_OK;
+        };
+        api.input.media.base.unsubscribe = [](void* context, uint64_t token) {
+            static_cast<Host*>(context)->timers.erase(token);
+        };
+    }
+
+    void expire() {
+        const auto pending = timers;
+        for (const auto& [token, timer] : pending) {
+            if (timers.contains(token)) {
+                timer.callback(timer.user, GetTickCount64() + 4000);
+            }
+        }
     }
 
     CdCreateContext create() {
@@ -57,7 +89,15 @@ struct Host {
                         return nullptr;
                     }
                 },
-                context};
+                context,
+                [](void* context, uint64_t source, CdRenderIdle callback, void* user) {
+                    auto& sources = static_cast<Host*>(context)->idleSources;
+                    if (callback) {
+                        sources[source] = {callback, user};
+                    } else {
+                        sources.erase(source);
+                    }
+                }};
             return CD_OK;
         }
         if (!std::strcmp(id, CD_SERVICE_CANVAS_GPU)) {
@@ -76,36 +116,45 @@ struct Host {
                                                      }};
             return CD_OK;
         }
-        if (std::strcmp(id, CD_SERVICE_RENDER_OUTPUT) || capacity < sizeof(CdRenderOutputApi)) {
+        if (std::strcmp(id, CD_SERVICE_RENDER_OUTPUT) || capacity < CD_RENDER_OUTPUT_BASE_SIZE) {
             return CD_ERROR_VERSION;
         }
-        *static_cast<CdRenderOutputApi*>(output) = {
-            sizeof(CdRenderOutputApi), 1,
-            [](void* context) -> CdResult {
-                return static_cast<Host*>(context)->legacy ? CD_ERROR_VERSION : CD_OK;
-            },
-            [](void* context, const CdFrame* frame, CdRenderSession* output) -> CdResult {
-                auto& host = *static_cast<Host*>(context);
-                *output = {sizeof(CdRenderSession), 1};
-                if (host.main && frame->rgba == host.main->rgba && frame->width == host.main->width &&
-                    frame->height == host.main->height) {
-                    output->backend = host.target ? CD_OUTPUT_GPU : CD_OUTPUT_CPU;
-                    output->target = host.target;
-                    output->host_draw_scope = host.target != nullptr;
-                    output->output_epoch = host.epoch * 2 + (host.target ? 1 : 0);
-                }
-                return CD_OK;
-            },
-            [](void* context, const CdRenderReport* report) -> CdResult {
-                auto& host = *static_cast<Host*>(context);
-                if (!report->output_epoch) {
-                    return CD_ERROR_ARGUMENT;
-                }
-                host.painted += report->result == CD_OUTPUT_PAINTED;
-                host.unchanged += report->result == CD_OUTPUT_UNCHANGED;
-                host.copied += report->pixel_copy_bytes;
-                return CD_OK;
-            }};
+        const auto& host = *static_cast<Host*>(context);
+        CdRenderOutputApi table{sizeof(CdRenderOutputApi),
+                                1,
+                                [](void* context) -> CdResult {
+                                    return static_cast<Host*>(context)->legacy ? CD_ERROR_VERSION : CD_OK;
+                                },
+                                [](void* context, const CdFrame* frame, CdRenderSession* output) -> CdResult {
+                                    auto& host = *static_cast<Host*>(context);
+                                    *output = {sizeof(CdRenderSession), 1};
+                                    if (host.main && frame->rgba == host.main->rgba &&
+                                        frame->width == host.main->width && frame->height == host.main->height) {
+                                        output->backend = host.target ? CD_OUTPUT_GPU : CD_OUTPUT_CPU;
+                                        output->target = host.target;
+                                        output->host_draw_scope = host.target != nullptr;
+                                        output->output_epoch = host.epoch * 2 + (host.target ? 1 : 0);
+                                    }
+                                    return CD_OK;
+                                },
+                                [](void* context, const CdRenderReport* report) -> CdResult {
+                                    auto& host = *static_cast<Host*>(context);
+                                    if (!report->output_epoch) {
+                                        return CD_ERROR_ARGUMENT;
+                                    }
+                                    host.painted += report->result == CD_OUTPUT_PAINTED;
+                                    host.unchanged += report->result == CD_OUTPUT_UNCHANGED;
+                                    host.copied += report->pixel_copy_bytes;
+                                    return CD_OK;
+                                },
+                                [](void* context) -> CdResult {
+                                    static_cast<Host*>(context)->gpuOnly = true;
+                                    return CD_OK;
+                                }};
+        if (host.prefixOnly || capacity < sizeof(table)) {
+            table.struct_size = CD_RENDER_OUTPUT_BASE_SIZE;
+        }
+        std::memcpy(output, &table, std::min<size_t>(table.struct_size, capacity));
         return CD_OK;
     }
 };
@@ -282,6 +331,75 @@ void run(D3D_DRIVER_TYPE driver) {
               << " output sessions, nested drawing, cache versions, capture and D3D state\n";
 }
 
+void gpuOnlyOutput() {
+    cybercanvas::ComPtr<ID3D11Device> device;
+    cybercanvas::ComPtr<ID3D11DeviceContext> immediate;
+    cybercanvas::require(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, D3D11_CREATE_DEVICE_BGRA_SUPPORT,
+                                           nullptr, 0, D3D11_SDK_VERSION, &device, nullptr, &immediate));
+    Host host;
+    cdsdk::Canvas canvas;
+    canvas.bindGpu(host.create(), true);
+    check(host.gpuOnly, "GPU-only output requires an explicit producer opt-in");
+    CdFrame frame{sizeof(CdFrame), 64, 64, 256, 0, nullptr, 1};
+    host.main = &frame;
+    check(!canvas.valid(frame), "A pixel-free frame is invalid outside its matching GPU callback");
+    cybercanvas::GpuSurface surface;
+    const auto image = cybercanvas::ImageData::fromPremultipliedBgra(16, 16, std::vector<uint8_t>(16 * 16 * 4, 255));
+    auto* output = surface.render(device.Get(), immediate.Get(), 64, 64, 1, [&](void* target, bool) {
+        host.target = target;
+        check(canvas.valid(frame), "The negotiated GPU frame needs no CPU allocation");
+        canvas.render(frame, {}, [&](auto& drawing, auto) {
+            drawing.box(0, 0, 64, 64, 0, 0x2266aaff);
+            drawing.image(*image, {20, 20, 16, 16});
+        });
+        host.target = nullptr;
+        return true;
+    });
+    check(output != nullptr, "GPU-only render produces a real output texture");
+    const auto pixels = capture(device.Get(), immediate.Get(), output);
+    check(pixels[0] == 0xaa && pixels[1] == 0x66 && pixels[2] == 0x22 && pixels[3] == 255 && !host.copied,
+          "GPU-only output preserves pixels and reports zero CPU copy bytes");
+    check(canvas.stats().resourceBytes == 1024 && host.budget.used() == 1024,
+          "The uploaded image has one real GPU resource lease");
+    for (const auto& [source, entry] : host.idleSources) {
+        entry.first(entry.second);
+    }
+    check(surface.retireIdleResources(0), "Retire the idle drawing state that retains the last shader resource");
+    std::cout << "idle canvas resourceBytes=" << canvas.stats().resourceBytes << " leaseBytes=" << host.budget.used()
+              << " timers=" << host.timers.size()
+              << " pixelsUnchanged=" << (capture(device.Get(), immediate.Get(), output) == pixels) << '\n';
+    check(!canvas.stats().resourceBytes && !host.budget.used() && host.timers.empty() &&
+              capture(device.Get(), immediate.Get(), output) == pixels,
+          "Host suspension releases real caches and stops timers without running animation subscriptions");
+    std::vector<uint8_t> cpu(64 * 64 * 4);
+    frame.rgba = cpu.data();
+    frame.capacity = cpu.size();
+    canvas.render(frame, {}, [](auto& drawing, auto) {
+        drawing.box(0, 0, 64, 64, 0, 0x2266aaff);
+    });
+    check(cpu[0] == 0x22 && cpu[3] == 255, "CPU fallback still receives and paints real RGBA storage");
+    host.expire();
+    check(!canvas.stats().surfaceBytes && !host.budget.used() && host.timers.empty(),
+          "Idle CPU surfaces release their WIC allocation without blocking a later frame");
+    canvas.render(frame, {}, [](auto& drawing, auto) {
+        drawing.box(0, 0, 64, 64, 0, 0x2266aaff);
+    });
+    check(cpu[0] == 0x22 && cpu[3] == 255, "CPU rendering recovers after idle surface retirement");
+    {
+        cdsdk::Canvas temporary;
+        temporary.bindGpu(host.create());
+        check(host.idleSources.size() == 2, "Each producer registers one idle callback");
+    }
+    check(host.idleSources.size() == 1, "Producer destruction unregisters its borrowed callback");
+    Host prefix;
+    prefix.prefixOnly = true;
+    cdsdk::OutputBinding binding;
+    binding.bind(prefix.create(), true);
+    check(!prefix.gpuOnly && !binding.supportsGpuOnly(),
+          "A legacy service prefix keeps compatibility scratch and cannot opt in accidentally");
+    std::cout << "PASS negotiated GPU-only output, CPU fallback and legacy service prefix\n";
+}
+
 void imageRecovery() {
     const auto directory = std::filesystem::temp_directory_path() / "cybercanvas-render-output-contract";
     std::filesystem::create_directories(directory);
@@ -335,6 +453,7 @@ void imageRecovery() {
 int main() try {
     run(D3D_DRIVER_TYPE_HARDWARE);
     run(D3D_DRIVER_TYPE_WARP);
+    gpuOnlyOutput();
     imageRecovery();
     return 0;
 } catch (const std::exception& error) {

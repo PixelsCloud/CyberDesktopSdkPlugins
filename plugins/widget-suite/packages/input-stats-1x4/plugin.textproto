@@ -4,7 +4,6 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
 layouts {
     id: "1x4"
     name: "4×1（宽×高）"
@@ -36,7 +35,6 @@ settings_page {
             value { label: "顯示累計次數" section: "設定" }
         }
     }
-
     fields {
         id: "keyboard_color"
         label: "键盘数字颜色"
@@ -67,7 +65,6 @@ settings_page {
             value { label: "滑鼠數字顏色" section: "設定" }
         }
     }
-
     fields {
         id: "language"
         label: "语言"
@@ -99,6 +96,178 @@ settings_page {
             value { label: "語言" section: "設定" }
         }
     }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
+        section: "外观"
+        color_default: 3941924863
+        localized {
+            key: "en"
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        description: "选择纯色或线性渐变背景。"
+        section: "外观"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        text_default: "solid"
+        localized {
+            key: "en"
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        description: "仅在线性渐变背景下生效。"
+        section: "外观"
+        color_default: 3941924863
+        localized {
+            key: "en"
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
+        section: "外观"
+        maximum: 360.0
+        step: 1.0
+        integer_default: 90
+        localized {
+            key: "en"
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "键鼠标题颜色"
+        type: COLOR
+        description: "键盘、鼠标栏目标题与中间分隔线；计数分别使用键盘和鼠标颜色。"
+        section: "外观"
+        color_default: 542869759
+        localized {
+            key: "en"
+            value {
+                label: "Keyboard and mouse heading color"
+                description: "Keyboard/mouse headings and divider; counters use their dedicated keyboard and mouse colors."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "统计说明颜色"
+        type: COLOR
+        description: "今日次数、累计次数及统计状态文字。"
+        section: "外观"
+        color_default: 1652529663
+        localized {
+            key: "en"
+            value {
+                label: "Counter caption color"
+                description: "Today/total captions and recording-status text."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
+        section: "外观"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 12
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "文字字体"
+        type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
+        }
+    }
     localized {
         key: "en"
         value {
@@ -113,147 +282,7 @@ settings_page {
             description: "只儲存計數。長按不重複計數，雙擊計兩次，滑鼠移動和滾輪不計入點選；本體關閉期間無法統計。今日按本地日期歸零，累計次數保留。"
         }
     }
-
-    fields {
-        id: "show_background"
-        label: "显示背景"
-        type: TOGGLE
-        section: "外观"
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Show background" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background"
-        label: "背景颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3941924863
-        localized {
-            key: "en"
-            value { label: "Background color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_fill"
-        label: "背景填充"
-        type: CHOICE
-        section: "外观"
-        text_default: "solid"
-        choices {
-            value: "solid"
-            label: "纯色"
-            localized_labels { key: "en" value: "Solid" }
-            localized_labels { key: "zh-TW" value: "純色" }
-        }
-        choices {
-            value: "linear"
-            label: "线性渐变"
-            localized_labels { key: "en" value: "Linear gradient" }
-            localized_labels { key: "zh-TW" value: "線性漸層" }
-        }
-        localized {
-            key: "en"
-            value { label: "Background fill" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景填滿" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_end"
-        label: "渐变终点颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3941924863
-        localized {
-            key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層終點顏色" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_angle"
-        label: "渐变角度（°）"
-        type: INTEGER
-        section: "外观"
-        integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層角度（°）" section: "外觀" }
-        }
-    }
-    fields {
-        id: "foreground"
-        label: "文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 542869759
-        localized {
-            key: "en"
-            value { label: "Text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "secondary"
-        label: "次要文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 1652529663
-        localized {
-            key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "强调颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3868870143
-        localized {
-            key: "en"
-            value { label: "Accent color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角"
-        type: INTEGER
-        section: "外观"
-        integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Corner radius" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "外观"
-        text_default: "Segoe UI"
-        localized {
-            key: "en"
-            value { label: "Font" section: "Appearance" }
-        }
-    }
 }
+content_padding: 6.0
 preview: "preview.png"
 tags: "简约"

@@ -4,6 +4,7 @@
 #include <memory>
 #include <utility>
 
+#include "sdk/services/RenderMemory.h"
 #include "sdk/services/RenderOutput.h"
 
 namespace cdsdk {
@@ -21,7 +22,7 @@ public:
 
     ~OutputBinding();
 
-    void bind(const CdCreateContext& context);
+    void bind(const CdCreateContext& context, bool gpuOnly = false);
 
     CdRenderSession session(const CdFrame& frame) const;
 
@@ -29,6 +30,8 @@ public:
                   uint64_t instances = 0) const;
 
     cybercanvas::ResourceAccount account();
+    bool supportsGpuOnly() const;
+    void idleSource(CdRenderIdle callback, void* context);
 
     OutputBinding(const OutputBinding&) = delete;
 

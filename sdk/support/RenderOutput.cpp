@@ -13,9 +13,11 @@
 namespace cdsdk {
 class OutputBinding::Impl {
 public:
-    void bind(const CdCreateContext& context) {
+    void bind(const CdCreateContext& context, bool gpuOnly) {
+        idleSource(nullptr, nullptr);
         context_ = context.host_context;
         api_ = {};
+        gpuOnly_ = false;
         memory_ = {};
         if (!context.host || context.host->struct_size < sizeof(CdServiceHostApi)) {
             return;
@@ -25,12 +27,15 @@ public:
             return;
         }
         if (host->query_service(context_, CD_SERVICE_RENDER_MEMORY, 1, &memory_, sizeof(memory_)) != CD_OK ||
-            memory_.struct_size < sizeof(memory_) || memory_.version != 1 || !memory_.reserve) {
+            memory_.struct_size < CD_RENDER_MEMORY_BASE_SIZE || memory_.version != 1 || !memory_.reserve) {
             memory_ = {};
         }
         if (host->query_service(context_, CD_SERVICE_RENDER_OUTPUT, 1, &api_, sizeof(api_)) == CD_OK &&
-            api_.struct_size >= sizeof(api_) && api_.version == 1 && api_.configure && api_.session && api_.complete &&
-            api_.configure(context_) == CD_OK) {
+            api_.struct_size >= CD_RENDER_OUTPUT_BASE_SIZE && api_.version == 1 && api_.configure && api_.session &&
+            api_.complete && api_.configure(context_) == CD_OK) {
+            if (gpuOnly && api_.struct_size >= sizeof(api_) && api_.configure_gpu_only) {
+                gpuOnly_ = api_.configure_gpu_only(context_) == CD_OK;
+            }
             return;
         }
         api_ = {};
@@ -62,14 +67,29 @@ public:
         return {memory_.resource_context, memory_.reserve};
     }
 
+    bool supportsGpuOnly() const {
+        return gpuOnly_;
+    }
+
+    void idleSource(CdRenderIdle callback, void* context) {
+        if (memory_.struct_size >= sizeof(memory_) && memory_.idle_source) {
+            memory_.idle_source(context_, reinterpret_cast<uint64_t>(this), callback, context);
+        }
+    }
+
+    ~Impl() {
+        idleSource(nullptr, nullptr);
+    }
+
 private:
     CdRenderOutputApi api_{};
     CdRenderMemoryApi memory_{};
     void* context_ = nullptr;
+    bool gpuOnly_ = false;
 };
 
-void OutputBinding::bind(const CdCreateContext& context) {
-    return impl_->bind(context);
+void OutputBinding::bind(const CdCreateContext& context, bool gpuOnly) {
+    return impl_->bind(context, gpuOnly);
 }
 
 CdRenderSession OutputBinding::session(const CdFrame& frame) const {
@@ -85,6 +105,14 @@ cybercanvas::ResourceAccount OutputBinding::account() {
     return impl_->account();
 }
 
+bool OutputBinding::supportsGpuOnly() const {
+    return impl_->supportsGpuOnly();
+}
+
+void OutputBinding::idleSource(CdRenderIdle callback, void* context) {
+    impl_->idleSource(callback, context);
+}
+
 OutputBinding::OutputBinding() : impl_(std::make_unique<Impl>()) {}
 
 OutputBinding::~OutputBinding() = default;
@@ -93,6 +121,14 @@ class FrameCache::Impl {
 public:
     void bind(const CdCreateContext& context) {
         output_.bind(context);
+        output_.idleSource(
+            [](void* context) noexcept {
+                auto& self = *static_cast<Impl*>(context);
+                std::vector<uint8_t>().swap(self.pixels_);
+                self.lease_.Reset();
+                self.cpuValid_ = false;
+            },
+            this);
     }
 
     template <typename Paint>

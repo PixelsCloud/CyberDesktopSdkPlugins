@@ -1,6 +1,9 @@
+#include <Windows.h>
 #include <sdk/Canvas.h>
+#include <sdk/ImageTracing.h>
 #include <sdk/Language.h>
 #include <sdk/RenderOutput.h>
+#include <sdk/Update.h>
 #include <sdk/WindowsFonts.h>
 
 #include <algorithm>
@@ -14,6 +17,8 @@ struct Canvas::Impl {
     CdRenderSession session_{};
     cybercanvas::CanvasStats before_{};
     uint64_t frameBytes_ = 0;
+    uint64_t lastFrame_ = 0;
+    Timer retirement_;
 };
 
 Canvas::Canvas() : impl_(std::make_unique<Impl>()) {}
@@ -35,12 +40,27 @@ const wchar_t* Canvas::selectedFont() const {
     return impl_->fonts ? impl_->fonts->family() : L"Microsoft YaHei";
 }
 
-void Canvas::bindGpu(const CdCreateContext& context) {
-    impl_->output_.bind(context);
+void Canvas::bindGpu(const CdCreateContext& context, bool gpuOnly) {
+    bindImageTracing(context);
+    impl_->output_.bind(context, gpuOnly);
+    impl_->retirement_.bind(context);
+    impl_->output_.idleSource(
+        [](void* context) noexcept {
+            auto& self = *static_cast<Canvas*>(context);
+            if (self.trimCaches()) {
+                self.impl_->retirement_.stop();
+            }
+        },
+        this);
     Engine::resourceAccount(impl_->output_.account());
 }
 
 bool Canvas::valid(const CdFrame& frame) const {
+    if (frame.struct_size >= sizeof(CdFrame) && impl_->output_.supportsGpuOnly() && !frame.rgba && !frame.capacity &&
+        cybercanvas::validFrameGeometry(buffer(frame))) {
+        const auto session = impl_->output_.session(frame);
+        return session.backend == CD_OUTPUT_GPU && session.target;
+    }
     return frame.struct_size >= sizeof(CdFrame) && Engine::valid(buffer(frame));
 }
 
@@ -89,7 +109,7 @@ void Canvas::text(const std::wstring& value, const cybercanvas::TextStyle& style
 }
 
 bool Canvas::save(const std::wstring& filename, const CdFrame& output, CdColor background) try {
-    if (!valid(output)) {
+    if (!output.rgba || !valid(output)) {
         return false;
     }
     if (!background.a) {
@@ -130,6 +150,16 @@ void Canvas::report() {
             impl_->session_, CD_OUTPUT_PAINTED, impl_->session_.backend == CD_OUTPUT_GPU ? 0 : impl_->frameBytes_,
             after.spriteBatches - impl_->before_.spriteBatches, after.spriteInstances - impl_->before_.spriteInstances);
     }
+    impl_->lastFrame_ = GetTickCount64();
+    impl_->retirement_.replace(
+        3000,
+        [](void* context, uint64_t now) noexcept {
+            auto& self = *static_cast<Canvas*>(context);
+            if (now >= self.impl_->lastFrame_ && now - self.impl_->lastFrame_ >= 3000 && self.trimCaches()) {
+                self.impl_->retirement_.stop();
+            }
+        },
+        this);
 }
 
 cybercanvas::Rect Canvas::rect(CdRect value) {

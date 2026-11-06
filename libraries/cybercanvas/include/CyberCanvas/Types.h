@@ -53,6 +53,9 @@ struct FrameBuffer {
     double device_pixel_ratio = 1;
 };
 
+// Dimensions/DPI only. This never authorizes reading or writing pixel storage.
+bool validFrameGeometry(const FrameBuffer& frame);
+
 enum class TextAlign { Start, Center, End };
 enum class VerticalAlign { Top, Center, Bottom };
 enum class TextDirection { Auto, LeftToRight, RightToLeft };

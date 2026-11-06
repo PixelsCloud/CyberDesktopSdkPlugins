@@ -23,7 +23,7 @@ Instance::Instance(const CdCreateContext& context)
                                  std::u8string_view(reinterpret_cast<const char8_t*>(context.plugin_directory))) /
                                  "assets"
                            : std::filesystem::path{}) {
-    canvas_.bindGpu(context);
+    canvas_.bindGpu(context, true);
     environment_.bind(context);
     timer_.bind(context);
     redraw_.bind(context);

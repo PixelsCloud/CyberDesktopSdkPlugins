@@ -2,8 +2,10 @@
 #include <CyberCanvas/Scene.h>
 
 #include <chrono>
+#include <condition_variable>
 #include <fstream>
 #include <iostream>
+#include <mutex>
 #include <set>
 #include <thread>
 
@@ -27,6 +29,77 @@ cybercanvas::ImageSnapshot wait(const cybercanvas::ImageHandle& handle) {
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
+}
+
+void resourceLifetime(const std::filesystem::path& path) {
+    using namespace cybercanvas;
+    ImageStore store({64 * 1024 * 1024, 64 * 1024 * 1024, 128, 80});
+    auto active = store.request(path);
+    auto image = wait(active);
+    std::weak_ptr<const ImageData> pixels = image.image;
+    const auto bytes = image.image->pixels().size();
+    check(store.stats().activeBytes == bytes && !store.stats().coldBytes,
+          "active image memory is counted once for its cache identity");
+    const auto identity = image.image->id();
+    image = {};
+    active.cancel();
+    auto reused = store.request(path);
+    check(wait(reused).image->id() == identity && store.stats().decodes == 1,
+          "frequent requests reuse the short-lived cold cache");
+    reused.cancel();
+    const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+    while (!pixels.expired() && std::chrono::steady_clock::now() < deadline) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    }
+    check(pixels.expired() && !store.stats().decodedBytes && !store.stats().entries,
+          "idle images release actual pixel ownership without another request or trim");
+    auto held = store.request(path);
+    image = wait(held);
+    held.cancel();
+    std::this_thread::sleep_for(std::chrono::milliseconds(120));
+    check(!store.stats().entries && store.stats().decodedBytes == bytes && image.image->pixels().size() == bytes,
+          "external snapshots survive cache expiry and remain accounted until released");
+    image = {};
+    check(!store.stats().decodedBytes, "last external snapshot releases its memory lease");
+
+    struct Gate {
+        std::mutex mutex;
+        std::condition_variable changed;
+        bool entered = false, proceed = false;
+    } gate;
+
+    ImageStore interrupted;
+    interrupted.resourceAccount({&gate, [](void* context, uint64_t) -> void* {
+                                     auto& gate = *static_cast<Gate*>(context);
+                                     std::unique_lock lock(gate.mutex);
+                                     gate.entered = true;
+                                     gate.changed.notify_one();
+                                     gate.changed.wait(lock, [&] {
+                                         return gate.proceed;
+                                     });
+                                     return makeMemoryLease(std::make_shared<int>(0)).Detach();
+                                 }});
+    auto abandoned = interrupted.request(path);
+    {
+        std::unique_lock lock(gate.mutex);
+        const bool entered = gate.changed.wait_for(lock, std::chrono::seconds(2), [&] {
+            return gate.entered;
+        });
+        // Always unblock the decoder, including the failing assertion path.
+        abandoned.cancel();
+        gate.proceed = true;
+        gate.changed.notify_one();
+        check(entered, "cancel a request while its decoder owns the in-flight allocation");
+    }
+    const auto finished = std::chrono::steady_clock::now() + std::chrono::seconds(2);
+    while ((!interrupted.stats().decodes || interrupted.stats().decodedBytes) &&
+           std::chrono::steady_clock::now() < finished) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+    check(interrupted.stats().decodes == 1 && !interrupted.stats().decodedBytes,
+          "a cancelled in-flight decode discards its completed pixels immediately");
+    auto renewed = interrupted.request(path);
+    check(wait(renewed).state == ImageState::Ready, "cancelled in-flight requests can be renewed safely");
 }
 
 void importedImages(cybercanvas::Canvas& canvas, uint64_t decodedId) {
@@ -164,6 +237,7 @@ int main() {
         }
         const FrameBuffer fixture{64, 32, 256, source.size(), source.data(), 1};
         check(canvas.save(path.wstring(), fixture), "create transparent Unicode fixture");
+        resourceLifetime(path);
         ImageStore store;
         auto first = store.request(path);
         auto second = store.request(directory / L"." / path.filename());

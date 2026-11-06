@@ -4,7 +4,6 @@ version: "1.2.1"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
 layouts {
     id: "1x2"
     name: "2×1（宽×高）"
@@ -14,14 +13,17 @@ layouts {
     is_default: true
 }
 footprint_rules { min_cells: 2 max_cells: 2 max_columns: 2 max_rows: 1 }
+capabilities: BACKGROUND_COMPUTE
 description: "像素沙粒流动与堆积，电子倒计时，自动翻转循环，支持昼夜主题与透明背景。"
 settings_page {
+    title: "电子像素沙漏设置"
+    description: "点击左侧沙漏重置，点击右侧计时区暂停或继续。拖动卡片不触发点击。"
     fields {
         id: "physics"
         label: "物理沙粒"
         type: TOGGLE
-        bool_default: true
         description: "真实碰撞和堆积，倒计时控制出砂量。切换后重新开始；关闭使用经典像素动画。"
+        bool_default: true
         localized {
             key: "en"
             value {
@@ -34,8 +36,6 @@ settings_page {
             value { label: "物理沙粒" description: "真實碰撞與堆積，倒數計時控制出砂量。切換後重新開始。" }
         }
     }
-    title: "电子像素沙漏设置"
-    description: "点击左侧沙漏重置，点击右侧计时区暂停或继续。拖动卡片不触发点击。"
     fields {
         id: "duration"
         label: "每轮时长（秒）"
@@ -129,37 +129,6 @@ settings_page {
         }
     }
     fields {
-        id: "color"
-        label: "沙粒配色"
-        type: CHOICE
-        section: "外观"
-        choices {
-            value: "amber"
-            label: "暖金琥珀"
-            localized_labels { key: "zh-TW" value: "暖金琥珀" }
-        }
-        choices {
-            value: "mint"
-            label: "薄荷绿"
-            localized_labels { key: "zh-TW" value: "薄荷綠" }
-        }
-        choices {
-            value: "cyan"
-            label: "冰蓝"
-            localized_labels { key: "zh-TW" value: "冰藍" }
-        }
-        text_default: "amber"
-        localized {
-            key: "en"
-            value { label: "Sand color" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "沙粒配色" section: "外觀" }
-        }
-    }
-
-    fields {
         id: "show_timer"
         label: "显示倒计时"
         type: TOGGLE
@@ -200,7 +169,6 @@ settings_page {
             value { label: "畫素發光強度" section: "外觀" }
         }
     }
-
     fields {
         id: "frame_rate"
         label: "动画帧率"
@@ -240,6 +208,190 @@ settings_page {
             }
         }
     }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
+        section: "外观"
+        color_default: 4294171135
+        localized {
+            key: "en"
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        description: "选择纯色或线性渐变背景。"
+        section: "外观"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        text_default: "solid"
+        localized {
+            key: "en"
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        description: "仅在线性渐变背景下生效。"
+        section: "外观"
+        color_default: 4294171135
+        localized {
+            key: "en"
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
+        section: "外观"
+        maximum: 360.0
+        step: 1.0
+        integer_default: 90
+        localized {
+            key: "en"
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "沙粒与倒计时颜色"
+        type: COLOR
+        description: "主要沙粒和倒计时点阵数字。"
+        section: "外观"
+        color_default: 2556502015
+        localized {
+            key: "en"
+            value {
+                label: "Sand and timer color"
+                description: "Primary sand grains and pixel timer digits."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "计时说明颜色"
+        type: COLOR
+        description: "计时说明和相关操作文字。"
+        section: "外观"
+        color_default: 2693027839
+        localized {
+            key: "en"
+            value { label: "Timer caption color" description: "Timer captions and action text." section: "Appearance" }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "沙粒高光与框架颜色"
+        type: COLOR
+        description: "下落沙粒、高光沙粒与沙漏边框。"
+        section: "外观"
+        color_default: 849188351
+        localized {
+            key: "en"
+            value {
+                label: "Sand highlight and frame color"
+                description: "Falling/highlighted grains and the hourglass frame."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
+        section: "外观"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 12
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "文字字体"
+        type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
+        }
+    }
     localized {
         key: "en"
         value {
@@ -254,151 +406,9 @@ settings_page {
             description: "點選左側沙漏重置，點選右側計時區暫停或繼續。拖動卡片不觸發點選。"
         }
     }
-
-    fields {
-        id: "show_background"
-        label: "显示背景"
-        type: TOGGLE
-        section: "外观"
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Show background" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background"
-        label: "背景颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 4294171135
-        localized {
-            key: "en"
-            value { label: "Background color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_fill"
-        label: "背景填充"
-        type: CHOICE
-        section: "外观"
-        text_default: "solid"
-        choices {
-            value: "solid"
-            label: "纯色"
-            localized_labels { key: "en" value: "Solid" }
-            localized_labels { key: "zh-TW" value: "純色" }
-        }
-        choices {
-            value: "linear"
-            label: "线性渐变"
-            localized_labels { key: "en" value: "Linear gradient" }
-            localized_labels { key: "zh-TW" value: "線性漸層" }
-        }
-        localized {
-            key: "en"
-            value { label: "Background fill" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景填滿" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_end"
-        label: "渐变终点颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 4294171135
-        localized {
-            key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層終點顏色" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_angle"
-        label: "渐变角度（°）"
-        type: INTEGER
-        section: "外观"
-        integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層角度（°）" section: "外觀" }
-        }
-    }
-    fields {
-        id: "foreground"
-        label: "文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 2556502015
-        localized {
-            key: "en"
-            value { label: "Text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "secondary"
-        label: "次要文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 2693027839
-        localized {
-            key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "强调颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 849188351
-        localized {
-            key: "en"
-            value { label: "Accent color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角"
-        type: INTEGER
-        section: "外观"
-        integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Corner radius" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "外观"
-        text_default: "Segoe UI"
-        localized {
-            key: "en"
-            value { label: "Font" section: "Appearance" }
-        }
-    }
 }
+content_padding: 6.0
 preview: "preview.png"
+required_services { id: "host.background" version: 1 }
 tags: "物理"
 tags: "计时"
-
-capabilities: BACKGROUND_COMPUTE
-required_services { id: "host.background" version: 1 }

@@ -9,6 +9,7 @@
 #include <vector>
 
 namespace cybercanvas {
+class ImageTraceLease;
 enum class ImageState { Empty, Loading, Ready, Failed, Cancelled };
 enum class ImageFit { Contain, Cover, Stretch };
 enum class ImageSampling { Smooth, Nearest };
@@ -23,6 +24,7 @@ public:
 
     ImageData(const ImageData&) = delete;
     ImageData& operator=(const ImageData&) = delete;
+    ~ImageData();
 
     uint64_t id() const;
 
@@ -36,11 +38,12 @@ public:
 
 private:
     friend class ImageStore;
-    ImageData() = default;
+    ImageData();
     inline static std::atomic<uint64_t> nextId_{1};
     uint64_t id_ = nextId_.fetch_add(1, std::memory_order_relaxed);
     uint32_t width_ = 0, height_ = 0;
     std::vector<uint8_t> pixels_;
+    std::unique_ptr<ImageTraceLease> trace_;
 };
 
 struct ImageSnapshot {

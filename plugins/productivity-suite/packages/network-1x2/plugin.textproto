@@ -4,7 +4,6 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
 layouts {
     id: "1x2"
     name: "2×1（宽×高）"
@@ -35,7 +34,6 @@ settings_page {
             value { label: "顯示最近 60 秒曲線" section: "內容" }
         }
     }
-
     fields {
         id: "language"
         label: "语言"
@@ -69,46 +67,44 @@ settings_page {
             value { label: "語言" section: "內容" }
         }
     }
-    localized {
-        key: "en"
-        value {
-            title: "Network settings"
-            description: "Click controls to interact. Dragging does not activate a click. Settings are saved per instance."
-        }
-    }
-    localized {
-        key: "zh-TW"
-        value { title: "網速儀表設定" description: "單擊控制元件操作；拖動移位不觸發點選。每塊磚獨立儲存配置。" }
-    }
-
     fields {
         id: "show_background"
         label: "显示背景"
         type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
         section: "外观"
         bool_default: true
         localized {
             key: "en"
-            value { label: "Show background" section: "Appearance" }
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background"
         label: "背景颜色"
         type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
         section: "外观"
         color_default: 3941924863
         localized {
             key: "en"
-            value { label: "Background color" section: "Appearance" }
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_fill"
         label: "背景填充"
         type: CHOICE
+        description: "选择纯色或线性渐变背景。"
         section: "外观"
-        text_default: "solid"
         choices {
             value: "solid"
             label: "纯色"
@@ -121,9 +117,14 @@ settings_page {
             localized_labels { key: "en" value: "Linear gradient" }
             localized_labels { key: "zh-TW" value: "線性漸層" }
         }
+        text_default: "solid"
         localized {
             key: "en"
-            value { label: "Background fill" section: "Appearance" }
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -134,11 +135,16 @@ settings_page {
         id: "background_gradient_end"
         label: "渐变终点颜色"
         type: COLOR
+        description: "仅在线性渐变背景下生效。"
         section: "外观"
         color_default: 3941924863
         localized {
             key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -149,14 +155,18 @@ settings_page {
         id: "background_gradient_angle"
         label: "渐变角度（°）"
         type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
         section: "外观"
+        maximum: 360.0
+        step: 1.0
         integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
         localized {
             key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -165,63 +175,99 @@ settings_page {
     }
     fields {
         id: "foreground"
-        label: "文字颜色"
+        label: "网速数值颜色"
         type: COLOR
+        description: "仅控制此处标明的内容；不改变背景。"
         section: "外观"
         color_default: 542869759
         localized {
             key: "en"
-            value { label: "Text color" section: "Appearance" }
+            value {
+                label: "Network speed color"
+                description: "Applies to the named content only; background is unchanged."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "secondary"
-        label: "次要文字颜色"
+        label: "上传箭头与曲线颜色"
         type: COLOR
+        description: "仅控制此处标明的内容；不改变背景。"
         section: "外观"
         color_default: 1652529663
         localized {
             key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
+            value {
+                label: "Upload arrow and chart color"
+                description: "Applies to the named content only; background is unchanged."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "accent"
-        label: "强调颜色"
+        label: "下载箭头与曲线颜色"
         type: COLOR
+        description: "仅控制此处标明的内容；不改变背景。"
         section: "外观"
         color_default: 3868870143
         localized {
             key: "en"
-            value { label: "Accent color" section: "Appearance" }
+            value {
+                label: "Download arrow and chart color"
+                description: "Applies to the named content only; background is unchanged."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_corner_radius"
         label: "背景圆角"
         type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
         section: "外观"
+        maximum: 32.0
+        step: 1.0
         integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
         localized {
             key: "en"
-            value { label: "Corner radius" section: "Appearance" }
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "font_family"
-        label: "字体"
+        label: "文字字体"
         type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
         section: "外观"
         text_default: "Segoe UI"
         localized {
             key: "en"
-            value { label: "Font" section: "Appearance" }
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
         }
     }
+    localized {
+        key: "en"
+        value {
+            title: "Network settings"
+            description: "Click controls to interact. Dragging does not activate a click. Settings are saved per instance."
+        }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "網速儀表設定" description: "單擊控制元件操作；拖動移位不觸發點選。每塊磚獨立儲存配置。" }
+    }
 }
+content_padding: 6.0
 preview: "preview.png"
 tags: "科技"
 tags: "系统"

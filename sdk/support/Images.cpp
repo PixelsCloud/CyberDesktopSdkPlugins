@@ -1,5 +1,6 @@
 #include <CyberCanvas/Images.h>
 #include <Windows.h>
+#include <sdk/ImageTracing.h>
 #include <sdk/Images.h>
 #include <sdk/PluginApi.h>
 #include <sdk/Update.h>
@@ -27,6 +28,7 @@ public:
     explicit Impl(std::shared_ptr<cybercanvas::ImageStore> store = {}) : store_(std::move(store)) {}
 
     ~Impl() {
+        unregisterMemorySource();
         if (skinToken_ && skins_.unsubscribe) {
             skins_.unsubscribe(context_, skinToken_);
         }
@@ -40,6 +42,8 @@ public:
     Impl& operator=(const Impl&) = delete;
 
     void bind(const CdCreateContext& context) {
+        bindImageTracing(context);
+        unregisterMemorySource();
         if (skinToken_ && skins_.unsubscribe) {
             skins_.unsubscribe(context_, skinToken_);
         }
@@ -69,8 +73,11 @@ public:
             if (!serviceHost->query_service ||
                 serviceHost->query_service(context_, CD_SERVICE_RENDER_IMAGES, 1, &telemetry_, sizeof(telemetry_)) !=
                     CD_OK ||
-                telemetry_.struct_size < sizeof(telemetry_) || telemetry_.version != 1 || !telemetry_.update) {
+                telemetry_.struct_size < CD_RENDER_IMAGES_BASE_SIZE || telemetry_.version != 1 || !telemetry_.update) {
                 telemetry_ = {};
+            }
+            if (telemetry_.struct_size >= sizeof(telemetry_) && telemetry_.memory_source) {
+                telemetry_.memory_source(context_, uint64_t(reinterpret_cast<uintptr_t>(this)), readMemory, this);
             }
             if (serviceHost->query_service &&
                 serviceHost->query_service(context_, CD_SERVICE_RENDER_MEMORY, 1, &memory, sizeof(memory)) == CD_OK &&
@@ -316,6 +323,35 @@ public:
     }
 
 private:
+    void unregisterMemorySource() {
+        if (telemetry_.struct_size >= sizeof(telemetry_) && telemetry_.memory_source) {
+            telemetry_.memory_source(context_, uint64_t(reinterpret_cast<uintptr_t>(this)), nullptr, nullptr);
+        }
+    }
+
+    static void CD_CALL readMemory(void* source, CdImageStoreMemory* output) noexcept {
+        if (!output || output->struct_size < sizeof(CdImageStoreMemory)) {
+            return;
+        }
+        const auto& self = *static_cast<Impl*>(source);
+        *output = {};
+        try {
+            const auto stats = self.sharedStoreStats();
+            *output = {sizeof(CdImageStoreMemory),
+                       1,
+                       uint64_t(reinterpret_cast<uintptr_t>(self.store_.get())),
+                       stats.decodedBytes,
+                       stats.activeBytes,
+                       stats.coldBytes,
+                       uint64_t(stats.entries),
+                       uint64_t(stats.pending),
+                       stats.decodes,
+                       stats.cacheHits,
+                       stats.evictions};
+        } catch (...) {
+        }
+    }
+
     struct Slot {
         std::filesystem::path path;
         uint64_t revision = 0;

@@ -37,7 +37,7 @@ struct Renderer::Impl {
     uint64_t builds = 0;
 
     Impl(const CdCreateContext& context, const Spec& value) : spec(value) {
-        canvas.bindGpu(context);
+        canvas.bindGpu(context, true);
         images.bind(context);
         if (context.host && context.host->log) {
             const auto log = context.host->log;

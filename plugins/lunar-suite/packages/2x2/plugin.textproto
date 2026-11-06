@@ -4,7 +4,6 @@ version: "1.0.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
 layouts {
     id: "2x2"
     name: "2×2（宽×高）"
@@ -50,7 +49,6 @@ settings_page {
             value { label: "晝夜模式" section: "外觀" }
         }
     }
-
     fields {
         id: "week_start"
         label: "每周开始"
@@ -91,7 +89,6 @@ settings_page {
             value { label: "顯示相鄰月份" section: "日曆" }
         }
     }
-
     fields {
         id: "language"
         label: "设置语言"
@@ -123,6 +120,194 @@ settings_page {
             value { label: "設定語言" section: "外觀" }
         }
     }
+    fields {
+        id: "show_background"
+        label: "显示背景"
+        type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
+        section: "外观"
+        bool_default: true
+        localized {
+            key: "en"
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background"
+        label: "背景颜色"
+        type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
+        section: "外观"
+        color_default: 4293978623
+        localized {
+            key: "en"
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_fill"
+        label: "背景填充"
+        type: CHOICE
+        description: "选择纯色或线性渐变背景。"
+        section: "外观"
+        choices {
+            value: "solid"
+            label: "纯色"
+            localized_labels { key: "en" value: "Solid" }
+            localized_labels { key: "zh-TW" value: "純色" }
+        }
+        choices {
+            value: "linear"
+            label: "线性渐变"
+            localized_labels { key: "en" value: "Linear gradient" }
+            localized_labels { key: "zh-TW" value: "線性漸層" }
+        }
+        text_default: "solid"
+        localized {
+            key: "en"
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "背景填滿" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_end"
+        label: "渐变终点颜色"
+        type: COLOR
+        description: "仅在线性渐变背景下生效。"
+        section: "外观"
+        color_default: 4293978623
+        localized {
+            key: "en"
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層終點顏色" section: "外觀" }
+        }
+    }
+    fields {
+        id: "background_gradient_angle"
+        label: "渐变角度（°）"
+        type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
+        section: "外观"
+        maximum: 360.0
+        step: 1.0
+        integer_default: 90
+        localized {
+            key: "en"
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
+        }
+        localized {
+            key: "zh-TW"
+            value { label: "漸層角度（°）" section: "外觀" }
+        }
+    }
+    fields {
+        id: "foreground"
+        label: "农历日期颜色"
+        type: COLOR
+        description: "农历日期与主要日历文字。"
+        section: "外观"
+        color_default: 3025487359
+        localized {
+            key: "en"
+            value {
+                label: "Lunar date color"
+                description: "Lunar date and primary calendar text."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "secondary"
+        label: "宜忌与说明颜色"
+        type: COLOR
+        description: "宜忌、节气和辅助说明。"
+        section: "外观"
+        color_default: 2860216575
+        localized {
+            key: "en"
+            value {
+                label: "Almanac caption color"
+                description: "Almanac details, solar terms and supporting captions."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "accent"
+        label: "节日与日期标记颜色"
+        type: COLOR
+        description: "节日、重要日期和日历操作标记。"
+        section: "外观"
+        color_default: 849254143
+        localized {
+            key: "en"
+            value {
+                label: "Holiday and date marker color"
+                description: "Holidays, significant dates and calendar controls."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "background_corner_radius"
+        label: "背景圆角"
+        type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
+        section: "外观"
+        maximum: 32.0
+        step: 1.0
+        integer_default: 12
+        localized {
+            key: "en"
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
+        }
+    }
+    fields {
+        id: "font_family"
+        label: "文字字体"
+        type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
+        section: "外观"
+        text_default: "Segoe UI"
+        localized {
+            key: "en"
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
+        }
+    }
     localized {
         key: "en"
         value {
@@ -137,148 +322,8 @@ settings_page {
             description: "支援 1900—2100 年。點選月份標題返回今天，箭頭切月份，雙擊任意處回到今天；月曆可點選日期。"
         }
     }
-
-    fields {
-        id: "show_background"
-        label: "显示背景"
-        type: TOGGLE
-        section: "外观"
-        bool_default: true
-        localized {
-            key: "en"
-            value { label: "Show background" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background"
-        label: "背景颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 4293978623
-        localized {
-            key: "en"
-            value { label: "Background color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_fill"
-        label: "背景填充"
-        type: CHOICE
-        section: "外观"
-        text_default: "solid"
-        choices {
-            value: "solid"
-            label: "纯色"
-            localized_labels { key: "en" value: "Solid" }
-            localized_labels { key: "zh-TW" value: "純色" }
-        }
-        choices {
-            value: "linear"
-            label: "线性渐变"
-            localized_labels { key: "en" value: "Linear gradient" }
-            localized_labels { key: "zh-TW" value: "線性漸層" }
-        }
-        localized {
-            key: "en"
-            value { label: "Background fill" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "背景填滿" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_end"
-        label: "渐变终点颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 4293978623
-        localized {
-            key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層終點顏色" section: "外觀" }
-        }
-    }
-    fields {
-        id: "background_gradient_angle"
-        label: "渐变角度（°）"
-        type: INTEGER
-        section: "外观"
-        integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
-        }
-        localized {
-            key: "zh-TW"
-            value { label: "漸層角度（°）" section: "外觀" }
-        }
-    }
-    fields {
-        id: "foreground"
-        label: "文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3025487359
-        localized {
-            key: "en"
-            value { label: "Text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "secondary"
-        label: "次要文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 2860216575
-        localized {
-            key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "强调颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 849254143
-        localized {
-            key: "en"
-            value { label: "Accent color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "background_corner_radius"
-        label: "背景圆角"
-        type: INTEGER
-        section: "外观"
-        integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
-        localized {
-            key: "en"
-            value { label: "Corner radius" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "font_family"
-        label: "字体"
-        type: FONT
-        section: "外观"
-        text_default: "Segoe UI"
-        localized {
-            key: "en"
-            value { label: "Font" section: "Appearance" }
-        }
-    }
 }
+content_padding: 6.0
 preview: "preview.png"
 tags: "简约"
 tags: "日历"

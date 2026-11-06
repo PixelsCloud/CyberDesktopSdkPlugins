@@ -172,7 +172,7 @@ void CD_CALL layout(void* pointer, const CdLayout* value) noexcept {
 }
 
 CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
-    if (!pointer || !frame || frame->struct_size < sizeof(*frame) || !frame->rgba) {
+    if (!pointer || !frame || frame->struct_size < sizeof(*frame) || (!frame->rgba && frame->capacity)) {
         return CD_ERROR_ARGUMENT;
     }
     auto& self = *static_cast<Instance*>(pointer);

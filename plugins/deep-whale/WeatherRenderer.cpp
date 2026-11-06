@@ -20,7 +20,7 @@ Renderer::Renderer(std::filesystem::path assets) : skin_(std::make_unique<Skin>(
 Renderer::~Renderer() = default;
 
 void Renderer::bind(const CdCreateContext& context) {
-    skin_->bind(context);
+    skin_->bind(context, {}, true);
 }
 
 void Renderer::pause(bool value) {

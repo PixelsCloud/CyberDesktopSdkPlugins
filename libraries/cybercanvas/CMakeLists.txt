@@ -63,7 +63,7 @@ if(CYBERCANVAS_BUILD_PHYSICS)
 endif()
 add_library(cybercanvas STATIC src/Canvas.cpp src/Surface.cpp src/Gradients.cpp src/Sprites.cpp src/Path.cpp
   src/GpuInterop.cpp src/ResourceAccount.cpp src/MemoryBudget.cpp src/Animation.cpp src/InstrumentMotion.cpp src/Diagnostics.cpp
-  src/FrameSlices.cpp src/Image.cpp src/Interaction.cpp src/Layout.cpp src/Mechanical.cpp src/Motion.cpp
+  src/FrameSlices.cpp src/Image.cpp src/ImageTracing.cpp src/Interaction.cpp src/Layout.cpp src/Mechanical.cpp src/Motion.cpp
   src/PanelDrawing.cpp src/PanelLayout.cpp src/Particles.cpp src/ReadableSurface.cpp src/Widgets.cpp)
 set_target_properties(cybercanvas PROPERTIES AUTOMOC OFF AUTOUIC OFF AUTORCC OFF
   MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

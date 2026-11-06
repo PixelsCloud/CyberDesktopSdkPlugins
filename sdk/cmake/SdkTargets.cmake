@@ -1,5 +1,5 @@
 configure_file(cmake/Version.h.in include/sdk/Version.h @ONLY)
-set(CD_SDK_HEADERS PluginApi.h PackageApi.h Settings.h Appearance.h WeatherPresentation.h WindowsFonts.h WindowsRendering.h Canvas.h RenderOutput.h Interaction.h Environment.h Diagnostics.h Scene.h Keyboard.h SceneList.h List.h Images.h Update.h Icons.h Typography.h Controls.h Language.h UiTranslations.h)
+set(CD_SDK_HEADERS PluginApi.h PackageApi.h Settings.h Appearance.h WeatherPresentation.h WindowsFonts.h WindowsRendering.h Canvas.h RenderOutput.h Interaction.h Environment.h Diagnostics.h Scene.h Keyboard.h SceneList.h List.h Images.h ImageTracing.h Update.h Icons.h Typography.h Controls.h Language.h UiTranslations.h)
 foreach(header IN LISTS CD_SDK_HEADERS)
     configure_file("${header}" "include/sdk/${header}" COPYONLY)
 endforeach()
@@ -28,18 +28,25 @@ target_link_libraries(cd_sdk_background_reference PUBLIC cd_sdk_abi)
 target_compile_features(cd_sdk_background_reference PUBLIC cxx_std_20)
 target_compile_options(cd_sdk_background_reference PRIVATE /utf-8)
 
+add_library(cd_sdk_image_trace STATIC support/ImageTracing.cpp)
+set_target_properties(cd_sdk_image_trace PROPERTIES EXPORT_NAME ImageTrace)
+target_link_libraries(cd_sdk_image_trace PUBLIC cd_sdk_abi PRIVATE CyberCanvas::CyberCanvas)
+target_compile_options(cd_sdk_image_trace PRIVATE /utf-8)
+
 add_library(cd_sdk_rendering STATIC support/Canvas.cpp support/Appearance.cpp support/RenderOutput.cpp support/Language.cpp
     support/WindowsFonts.cpp support/WindowsRendering.cpp support/Update.cpp support/Interaction.cpp
     support/Icons.cpp support/Diagnostics.cpp)
 add_library(CyberDesktopSDK::Rendering ALIAS cd_sdk_rendering)
 set_target_properties(cd_sdk_rendering PROPERTIES EXPORT_NAME Rendering)
 target_link_libraries(cd_sdk_rendering PUBLIC cd_sdk_core CyberCanvas::CyberCanvas)
+target_link_libraries(cd_sdk_rendering PRIVATE cd_sdk_image_trace)
 target_compile_options(cd_sdk_rendering PRIVATE /utf-8)
 
 add_library(cd_sdk_images STATIC support/Images.cpp)
 add_library(CyberDesktopSDK::Images ALIAS cd_sdk_images)
 set_target_properties(cd_sdk_images PROPERTIES EXPORT_NAME Images)
 target_link_libraries(cd_sdk_images PUBLIC cd_sdk_abi CyberCanvas::Resources)
+target_link_libraries(cd_sdk_images PRIVATE cd_sdk_image_trace)
 target_compile_options(cd_sdk_images PRIVATE /utf-8)
 add_library(cd_sdk_layout STATIC support/Controls.cpp support/Typography.cpp support/Keyboard.cpp support/List.cpp
     support/Scene.cpp support/SceneList.cpp)

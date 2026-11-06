@@ -182,7 +182,7 @@ Renderer::Renderer() : skin_(std::make_unique<Skin>()) {}
 Renderer::~Renderer() = default;
 
 void Renderer::bind(const CdCreateContext& context, std::function<void(uint32_t)> action) {
-    skin_->bind(context, std::move(action));
+    skin_->bind(context, std::move(action), true);
 }
 
 void Renderer::pause(bool value) {

@@ -1,6 +1,6 @@
 install(TARGETS cd_sdk_abi cd_sdk_core cd_sdk_runtime cd_sdk_background_reference EXPORT CyberDesktopSDKTargets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(TARGETS cd_public_sdk cd_sdk_rendering cd_sdk_images cd_sdk_layout EXPORT CyberDesktopSDKRenderingTargets
+install(TARGETS cd_public_sdk cd_sdk_rendering cd_sdk_images cd_sdk_layout cd_sdk_image_trace EXPORT CyberDesktopSDKRenderingTargets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES ${CD_SDK_HEADERS} "${CMAKE_CURRENT_BINARY_DIR}/include/sdk/Version.h"
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sdk)

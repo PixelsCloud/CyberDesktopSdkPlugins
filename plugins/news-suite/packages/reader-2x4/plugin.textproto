@@ -4,7 +4,6 @@ version: "1.0.6"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
 layouts {
     id: "2x4"
     name: "4×2（宽×高）"
@@ -20,6 +19,7 @@ layouts {
     is_default: true
 }
 footprint_rules { min_cells: 8 max_cells: 8 max_columns: 4 max_rows: 2 }
+capabilities: CONTENT
 description: "全球及中文 RSS / Atom，Hacker News，无需 API Key，收藏与离线缓存。"
 settings_page {
     title: "资讯阅读 / Daily reader"
@@ -240,7 +240,6 @@ settings_page {
             value { label: "晝夜模式" section: "外觀" }
         }
     }
-
     fields {
         id: "language"
         label: "界面语言"
@@ -283,43 +282,44 @@ settings_page {
             value { label: "介面語言" description: "新聞保留來源原文，不自動翻譯。" section: "外觀" }
         }
     }
-    localized {
-        key: "en"
-        value { title: "Daily reader settings" }
-    }
-    localized {
-        key: "zh-TW"
-        value { title: "資訊閱讀 / Daily reader" }
-    }
-
     fields {
         id: "show_background"
         label: "显示背景"
         type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
         section: "外观"
         bool_default: true
         localized {
             key: "en"
-            value { label: "Show background" section: "Appearance" }
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background"
         label: "背景颜色"
         type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
         section: "外观"
         color_default: 3941924863
         localized {
             key: "en"
-            value { label: "Background color" section: "Appearance" }
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_fill"
         label: "背景填充"
         type: CHOICE
+        description: "选择纯色或线性渐变背景。"
         section: "外观"
-        text_default: "solid"
         choices {
             value: "solid"
             label: "纯色"
@@ -332,9 +332,14 @@ settings_page {
             localized_labels { key: "en" value: "Linear gradient" }
             localized_labels { key: "zh-TW" value: "線性漸層" }
         }
+        text_default: "solid"
         localized {
             key: "en"
-            value { label: "Background fill" section: "Appearance" }
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -345,11 +350,16 @@ settings_page {
         id: "background_gradient_end"
         label: "渐变终点颜色"
         type: COLOR
+        description: "仅在线性渐变背景下生效。"
         section: "外观"
         color_default: 3941924863
         localized {
             key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -360,14 +370,18 @@ settings_page {
         id: "background_gradient_angle"
         label: "渐变角度（°）"
         type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
         section: "外观"
+        maximum: 360.0
+        step: 1.0
         integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
         localized {
             key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -376,66 +390,97 @@ settings_page {
     }
     fields {
         id: "foreground"
-        label: "文字颜色"
+        label: "新闻标题颜色"
         type: COLOR
+        description: "新闻标题和正文主要文字。"
         section: "外观"
         color_default: 542869759
         localized {
             key: "en"
-            value { label: "Text color" section: "Appearance" }
+            value {
+                label: "News headline color"
+                description: "Headlines and primary article text."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "secondary"
-        label: "次要文字颜色"
+        label: "来源与时间颜色"
         type: COLOR
+        description: "新闻来源、时间和辅助信息。"
         section: "外观"
         color_default: 1652529663
         localized {
             key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
+            value {
+                label: "Source and time color"
+                description: "News source, timestamp and supporting information."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "accent"
-        label: "强调颜色"
+        label: "选中频道与标签颜色"
         type: COLOR
+        description: "频道选中状态、标签和操作控件。"
         section: "外观"
         color_default: 3868870143
         localized {
             key: "en"
-            value { label: "Accent color" section: "Appearance" }
+            value {
+                label: "Selected channel and tag color"
+                description: "Selected channels, tags and action controls."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_corner_radius"
         label: "背景圆角"
         type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
         section: "外观"
+        maximum: 32.0
+        step: 1.0
         integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
         localized {
             key: "en"
-            value { label: "Corner radius" section: "Appearance" }
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "font_family"
-        label: "字体"
+        label: "文字字体"
         type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
         section: "外观"
         text_default: "Segoe UI"
         localized {
             key: "en"
-            value { label: "Font" section: "Appearance" }
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
         }
     }
+    localized {
+        key: "en"
+        value { title: "Daily reader settings" }
+    }
+    localized {
+        key: "zh-TW"
+        value { title: "資訊閱讀 / Daily reader" }
+    }
 }
+content_padding: 6.0
 preview: "preview.png"
+required_services { id: "content.feeds" version: 1 }
 tags: "简约"
 tags: "资讯"
-
-capabilities: CONTENT
-required_services { id: "content.feeds" version: 1 }

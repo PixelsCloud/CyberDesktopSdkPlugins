@@ -4,260 +4,248 @@ version: "1.3.0"
 author: "CyberDesktop"
 abi_version: 1
 entry: "plugin.dll"
-content_padding: 6
-description: "内置 Mao、Haru、Hiyori、Wanko 和鲸鱼娘，鼠标跟随、点击切换动作、自动轮播待机，支持自定义模型。"
-required_services { id: "render.live2d" version: 1 }
-required_services { id: "render.composition" version: 1 }
-footprint_rules { topology: RECT min_cells: 4 max_cells: 42 max_columns: 6 max_rows: 7 }
 layouts {
     id: "2x2"
     name: "2×2（宽×高）"
-    topology: RECT
+    cells {}
+    cells { a: 1 }
+    cells { b: 1 }
+    cells { a: 1 b: 1 }
     allowed_rotations: 0
     is_default: true
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 0 b: 1 }
-    cells { a: 1 b: 1 }
 }
 layouts {
     id: "3x3"
     name: "3×3（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
+    allowed_rotations: 0
 }
 layouts {
     id: "3x4"
     name: "3×4（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
+    allowed_rotations: 0
 }
 layouts {
     id: "4x4"
     name: "4×4（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
+    allowed_rotations: 0
 }
 layouts {
     id: "4x5"
     name: "4×5（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
-    cells { a: 0 b: 4 }
+    cells { b: 4 }
     cells { a: 1 b: 4 }
     cells { a: 2 b: 4 }
     cells { a: 3 b: 4 }
+    allowed_rotations: 0
 }
 layouts {
     id: "5x5"
     name: "5×5（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 4 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
     cells { a: 4 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
     cells { a: 4 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
     cells { a: 4 b: 3 }
-    cells { a: 0 b: 4 }
+    cells { b: 4 }
     cells { a: 1 b: 4 }
     cells { a: 2 b: 4 }
     cells { a: 3 b: 4 }
     cells { a: 4 b: 4 }
+    allowed_rotations: 0
 }
 layouts {
     id: "5x6"
     name: "5×6（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 4 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
     cells { a: 4 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
     cells { a: 4 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
     cells { a: 4 b: 3 }
-    cells { a: 0 b: 4 }
+    cells { b: 4 }
     cells { a: 1 b: 4 }
     cells { a: 2 b: 4 }
     cells { a: 3 b: 4 }
     cells { a: 4 b: 4 }
-    cells { a: 0 b: 5 }
+    cells { b: 5 }
     cells { a: 1 b: 5 }
     cells { a: 2 b: 5 }
     cells { a: 3 b: 5 }
     cells { a: 4 b: 5 }
+    allowed_rotations: 0
 }
 layouts {
     id: "6x6"
     name: "6×6（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 4 b: 0 }
-    cells { a: 5 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { a: 5 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
     cells { a: 4 b: 1 }
     cells { a: 5 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
     cells { a: 4 b: 2 }
     cells { a: 5 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
     cells { a: 4 b: 3 }
     cells { a: 5 b: 3 }
-    cells { a: 0 b: 4 }
+    cells { b: 4 }
     cells { a: 1 b: 4 }
     cells { a: 2 b: 4 }
     cells { a: 3 b: 4 }
     cells { a: 4 b: 4 }
     cells { a: 5 b: 4 }
-    cells { a: 0 b: 5 }
+    cells { b: 5 }
     cells { a: 1 b: 5 }
     cells { a: 2 b: 5 }
     cells { a: 3 b: 5 }
     cells { a: 4 b: 5 }
     cells { a: 5 b: 5 }
+    allowed_rotations: 0
 }
 layouts {
     id: "6x7"
     name: "6×7（宽×高）"
-    topology: RECT
-    allowed_rotations: 0
-    cells { a: 0 b: 0 }
-    cells { a: 1 b: 0 }
-    cells { a: 2 b: 0 }
-    cells { a: 3 b: 0 }
-    cells { a: 4 b: 0 }
-    cells { a: 5 b: 0 }
-    cells { a: 0 b: 1 }
+    cells {}
+    cells { a: 1 }
+    cells { a: 2 }
+    cells { a: 3 }
+    cells { a: 4 }
+    cells { a: 5 }
+    cells { b: 1 }
     cells { a: 1 b: 1 }
     cells { a: 2 b: 1 }
     cells { a: 3 b: 1 }
     cells { a: 4 b: 1 }
     cells { a: 5 b: 1 }
-    cells { a: 0 b: 2 }
+    cells { b: 2 }
     cells { a: 1 b: 2 }
     cells { a: 2 b: 2 }
     cells { a: 3 b: 2 }
     cells { a: 4 b: 2 }
     cells { a: 5 b: 2 }
-    cells { a: 0 b: 3 }
+    cells { b: 3 }
     cells { a: 1 b: 3 }
     cells { a: 2 b: 3 }
     cells { a: 3 b: 3 }
     cells { a: 4 b: 3 }
     cells { a: 5 b: 3 }
-    cells { a: 0 b: 4 }
+    cells { b: 4 }
     cells { a: 1 b: 4 }
     cells { a: 2 b: 4 }
     cells { a: 3 b: 4 }
     cells { a: 4 b: 4 }
     cells { a: 5 b: 4 }
-    cells { a: 0 b: 5 }
+    cells { b: 5 }
     cells { a: 1 b: 5 }
     cells { a: 2 b: 5 }
     cells { a: 3 b: 5 }
     cells { a: 4 b: 5 }
     cells { a: 5 b: 5 }
-    cells { a: 0 b: 6 }
+    cells { b: 6 }
     cells { a: 1 b: 6 }
     cells { a: 2 b: 6 }
     cells { a: 3 b: 6 }
     cells { a: 4 b: 6 }
     cells { a: 5 b: 6 }
+    allowed_rotations: 0
 }
+footprint_rules { min_cells: 4 max_cells: 42 max_columns: 6 max_rows: 7 }
+description: "内置 Mao、Haru、Hiyori、Wanko 和鲸鱼娘，鼠标跟随、点击切换动作、自动轮播待机，支持自定义模型。"
 settings_page {
     title: "Live2D 角色"
     description: "默认显示内置角色。填写自定义模型目录后优先使用该目录，清空即可恢复内置角色。"
@@ -265,66 +253,75 @@ settings_page {
         id: "model"
         label: "内置角色"
         type: CHOICE
-        text_default: "mao"
         choices { value: "mao" label: "Mao · 魔女少女" }
         choices { value: "haru" label: "Haru · 春" }
         choices { value: "hiyori" label: "Hiyori · 桃濑日和" }
         choices { value: "wanko" label: "Wanko · 麻薯犬" }
         choices { value: "whale-girl" label: "DS 鲸鱼娘" }
+        text_default: "mao"
     }
-    fields { id: "directory" label: "自定义模型目录（可留空）" type: TEXT text_editor: DIRECTORY max_length: 4096 }
+    fields { id: "directory" label: "自定义模型目录（可留空）" type: TEXT max_length: 4096 text_editor: DIRECTORY }
     fields {
         id: "motion"
         label: "待机动作"
-        description: "auto 自动轮播；也可填写 Idle/0 等动作名称。点击角色可依次播放互动动作。"
         type: TEXT
-        text_default: "auto"
+        description: "auto 自动轮播；也可填写 Idle/0 等动作名称。点击角色可依次播放互动动作。"
         max_length: 256
+        text_default: "auto"
     }
     fields { id: "expression" label: "表情名称" type: TEXT max_length: 256 }
     fields {
         id: "fps"
         label: "帧率"
         type: CHOICE
-        text_default: "30"
         choices { value: "30" label: "30 FPS" }
         choices { value: "60" label: "60 FPS" }
+        text_default: "30"
     }
-    fields { id: "scale" label: "缩放" type: NUMBER minimum: 0.1 maximum: 4 step: 0.1 number_default: 1 }
-    fields { id: "x" label: "水平位置" type: NUMBER minimum: -2 maximum: 2 step: 0.05 }
-    fields { id: "y" label: "垂直位置" type: NUMBER minimum: -2 maximum: 2 step: 0.05 }
+    fields { id: "scale" label: "缩放" type: NUMBER minimum: 0.1 maximum: 4.0 step: 0.1 number_default: 1.0 }
+    fields { id: "x" label: "水平位置" type: NUMBER minimum: -2.0 maximum: 2.0 step: 0.05 }
+    fields { id: "y" label: "垂直位置" type: NUMBER minimum: -2.0 maximum: 2.0 step: 0.05 }
     fields { id: "paused" label: "暂停动画" type: TOGGLE }
     fields { id: "physics" label: "物理效果" type: TOGGLE bool_default: true }
     fields { id: "follow" label: "视线跟随" type: TOGGLE bool_default: true }
-
     fields {
         id: "show_background"
         label: "显示背景"
         type: TOGGLE
+        description: "显示本插件绘制的背景，不改变桌面材质。"
         section: "外观"
         bool_default: true
         localized {
             key: "en"
-            value { label: "Show background" section: "Appearance" }
+            value {
+                label: "Show background"
+                description: "Show the background drawn by this plugin; desktop materials are unaffected."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background"
         label: "背景颜色"
         type: COLOR
+        description: "纯色背景颜色；线性渐变时作为起点颜色。"
         section: "外观"
         color_default: 4042128639
         localized {
             key: "en"
-            value { label: "Background color" section: "Appearance" }
+            value {
+                label: "Background color"
+                description: "Solid background color, or the start color of a linear gradient."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_fill"
         label: "背景填充"
         type: CHOICE
+        description: "选择纯色或线性渐变背景。"
         section: "外观"
-        text_default: "solid"
         choices {
             value: "solid"
             label: "纯色"
@@ -337,9 +334,14 @@ settings_page {
             localized_labels { key: "en" value: "Linear gradient" }
             localized_labels { key: "zh-TW" value: "線性漸層" }
         }
+        text_default: "solid"
         localized {
             key: "en"
-            value { label: "Background fill" section: "Appearance" }
+            value {
+                label: "Background fill"
+                description: "Choose a solid fill or a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -350,11 +352,16 @@ settings_page {
         id: "background_gradient_end"
         label: "渐变终点颜色"
         type: COLOR
+        description: "仅在线性渐变背景下生效。"
         section: "外观"
         color_default: 4042128639
         localized {
             key: "en"
-            value { label: "Gradient end color" section: "Appearance" }
+            value {
+                label: "Gradient end color"
+                description: "Used only when the background fill is a linear gradient."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -365,14 +372,18 @@ settings_page {
         id: "background_gradient_angle"
         label: "渐变角度（°）"
         type: INTEGER
+        description: "仅控制线性渐变方向，不旋转插件内容。"
         section: "外观"
+        maximum: 360.0
+        step: 1.0
         integer_default: 90
-        minimum: 0
-        maximum: 360
-        step: 1
         localized {
             key: "en"
-            value { label: "Gradient angle (°)" section: "Appearance" }
+            value {
+                label: "Gradient angle (°)"
+                description: "Direction of the linear gradient; does not rotate the content."
+                section: "Appearance"
+            }
         }
         localized {
             key: "zh-TW"
@@ -381,62 +392,57 @@ settings_page {
     }
     fields {
         id: "foreground"
-        label: "文字颜色"
+        label: "模型状态文字颜色"
         type: COLOR
+        description: "模型加载、错误和无模型时的状态说明，不改变模型颜色。"
         section: "外观"
         color_default: 1716559615
         localized {
             key: "en"
-            value { label: "Text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "secondary"
-        label: "次要文字颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 2323425279
-        localized {
-            key: "en"
-            value { label: "Secondary text color" section: "Appearance" }
-        }
-    }
-    fields {
-        id: "accent"
-        label: "强调颜色"
-        type: COLOR
-        section: "外观"
-        color_default: 3751377151
-        localized {
-            key: "en"
-            value { label: "Accent color" section: "Appearance" }
+            value {
+                label: "Model status text color"
+                description: "Loading, error and empty-model status text; does not recolor the model."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "background_corner_radius"
         label: "背景圆角"
         type: INTEGER
+        description: "插件背景的圆角，不改变内容或桌面砖块轮廓。"
         section: "外观"
+        maximum: 32.0
+        step: 1.0
         integer_default: 12
-        minimum: 0
-        maximum: 32
-        step: 1
         localized {
             key: "en"
-            value { label: "Corner radius" section: "Appearance" }
+            value {
+                label: "Background corner radius"
+                description: "Corner radius of the plugin background, not its content or desktop tile."
+                section: "Appearance"
+            }
         }
     }
     fields {
         id: "font_family"
-        label: "字体"
+        label: "文字字体"
         type: FONT
+        description: "用于本插件绘制的文字，不改变图标、图片及点阵结构。"
         section: "外观"
         text_default: "Segoe UI"
         localized {
             key: "en"
-            value { label: "Font" section: "Appearance" }
+            value {
+                label: "Text font"
+                description: "Font for text drawn by this plugin; icons, images and pixel structures are unchanged."
+                section: "Appearance"
+            }
         }
     }
 }
+content_padding: 6.0
+required_services { id: "render.live2d" version: 1 }
+required_services { id: "render.composition" version: 1 }
 tags: "二次元"
 tags: "互动"

@@ -19,6 +19,7 @@ struct WindowsFonts::Impl {
     };
 
     ExternalFont bundled, zqk, external;
+    ComPtr<IDWriteFactory> factory;
     std::filesystem::path externalPath;
     std::wstring currentFamily = L"Segoe UI";
     std::string selected;
@@ -158,8 +159,10 @@ WindowsFonts& WindowsFonts::operator=(const WindowsFonts& other) {
 }
 
 WindowsFonts::WindowsFonts(IDWriteFactory* factory) : impl_(std::make_unique<Impl>()) {
-    Impl::load(factory, bundledFontPath(), impl_->bundled);
-    Impl::load(factory, bundledFontPath(L"assets/fonts/ZQKFreeFont/ZQKfreefont-2.ttf"), impl_->zqk);
+    if (!factory) {
+        throw std::invalid_argument("Missing DirectWrite factory");
+    }
+    impl_->factory = factory;
 }
 
 WindowsFonts::WindowsFonts(IDWriteFactory* factory, const std::filesystem::path& path)
@@ -168,6 +171,10 @@ WindowsFonts::WindowsFonts(IDWriteFactory* factory, const std::filesystem::path&
 }
 
 auto WindowsFonts::selectFile(IDWriteFactory* factory, const std::filesystem::path& path) -> bool {
+    if (!factory) {
+        throw std::invalid_argument("Missing DirectWrite factory");
+    }
+    impl_->factory = factory;
     if (path == impl_->externalPath && impl_->custom == Impl::Selected::External) {
         return false;
     }
@@ -177,6 +184,8 @@ auto WindowsFonts::selectFile(IDWriteFactory* factory, const std::filesystem::pa
     Impl::ExternalFont next;
     Impl::load(factory, path, next);
     impl_->external = std::move(next);
+    impl_->bundled = {};
+    impl_->zqk = {};
     impl_->externalPath = path;
     impl_->custom = Impl::Selected::External;
     impl_->currentFamily = impl_->external.family;
@@ -189,14 +198,27 @@ auto WindowsFonts::select(IDWriteFactory* factory, const std::string& value) -> 
         return false;
     impl_->selected = value;
     impl_->custom = Impl::Selected::None;
+    impl_->factory = factory;
+    impl_->external = {};
+    impl_->externalPath.clear();
     if (value == "@siyuan-heavy" || value == "@zqk-free") {
-        const auto& font = value == "@zqk-free" ? impl_->zqk : impl_->bundled;
+        auto& font = value == "@zqk-free" ? impl_->zqk : impl_->bundled;
+        if (!font.collection) {
+            Impl::load(
+                factory,
+                bundledFontPath(value == "@zqk-free" ? L"assets/fonts/ZQKFreeFont/ZQKfreefont-2.ttf"
+                                                     : L"assets/fonts/SiYuanZhenHei-Heavy/GenShinGothic-Heavy-2.ttf"),
+                font);
+        }
+        (value == "@zqk-free" ? impl_->bundled : impl_->zqk) = {};
         if (font.collection) {
             impl_->currentFamily = font.family;
             impl_->custom = value == "@zqk-free" ? Impl::Selected::Zqk : Impl::Selected::Bundled;
         } else
             impl_->currentFamily = L"Segoe UI";
     } else {
+        impl_->bundled = {};
+        impl_->zqk = {};
         impl_->currentFamily = fontWide(value);
         Impl::ComPtr<IDWriteFontCollection> system;
         Impl::check(factory->GetSystemFontCollection(system.GetAddressOf()));
@@ -204,6 +226,7 @@ auto WindowsFonts::select(IDWriteFactory* factory, const std::string& value) -> 
         BOOL exists = FALSE;
         Impl::check(system->FindFamilyName(impl_->currentFamily.c_str(), &index, &exists));
         if (!exists) {
+            Impl::load(factory, bundledFontPath(), impl_->bundled);
             impl_->currentFamily = impl_->bundled.family.empty() ? L"Segoe UI" : impl_->bundled.family;
             if (impl_->bundled.collection)
                 impl_->custom = Impl::Selected::Bundled;
@@ -227,6 +250,16 @@ auto WindowsFonts::weight() const -> DWRITE_FONT_WEIGHT {
 }
 
 auto WindowsFonts::bundledAvailable(const std::string& id) const -> bool {
-    return id == "@zqk-free" ? bool(impl_->zqk.collection) : bool(impl_->bundled.collection);
+    if (id != "@zqk-free" && id != "@siyuan-heavy") {
+        return false;
+    }
+    auto& font = id == "@zqk-free" ? impl_->zqk : impl_->bundled;
+    if (!font.collection) {
+        Impl::load(impl_->factory.Get(),
+                   bundledFontPath(id == "@zqk-free" ? L"assets/fonts/ZQKFreeFont/ZQKfreefont-2.ttf"
+                                                     : L"assets/fonts/SiYuanZhenHei-Heavy/GenShinGothic-Heavy-2.ttf"),
+                   font);
+    }
+    return bool(font.collection);
 }
 }  // namespace cdsdk

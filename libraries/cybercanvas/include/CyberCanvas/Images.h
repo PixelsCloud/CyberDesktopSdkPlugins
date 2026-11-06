@@ -19,6 +19,8 @@ struct ImageLimits {
     uint64_t decodedBytes = 64 * 1024 * 1024;
     uint64_t fileBytes = 64 * 1024 * 1024;
     size_t entries = 128;
+    uint32_t idleMilliseconds = 3000;
+    uint64_t coldBytes = 8 * 1024 * 1024;
 };
 
 struct ImageStats {
@@ -26,6 +28,7 @@ struct ImageStats {
     uint64_t decodes = 0, cacheHits = 0, failures = 0;
     size_t entries = 0, pending = 0;
     uint64_t decodeNanoseconds = 0;
+    uint64_t activeBytes = 0, coldBytes = 0, evictions = 0;
 };
 
 struct ImageRequestStats {

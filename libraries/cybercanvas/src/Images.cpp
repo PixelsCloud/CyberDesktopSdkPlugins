@@ -1,9 +1,11 @@
 #include <CyberCanvas/Diagnostics.h>
+#include <CyberCanvas/ImageTracing.h>
 #include <CyberCanvas/Images.h>
 #include <CyberCanvas/Native.h>
 
 #include <algorithm>
 #include <atomic>
+#include <chrono>
 #include <cmath>
 #include <condition_variable>
 #include <deque>
@@ -18,6 +20,20 @@ struct Budget {
     std::atomic<uint64_t> bytes = 0, peak = 0;
 };
 
+struct Wake {
+    std::mutex mutex;
+    std::condition_variable changed;
+    uint64_t generation = 0;
+
+    void notify() {
+        {
+            std::lock_guard lock(mutex);
+            ++generation;
+        }
+        changed.notify_one();
+    }
+};
+
 struct Record {
     std::mutex mutex;
     ImageSnapshot result{ImageState::Loading};
@@ -30,6 +46,8 @@ struct Record {
     ImageSampling sampling = ImageSampling::Smooth;
     bool oriented = false;
     uint64_t age = 0, decodeNanoseconds = 0;
+    std::chrono::steady_clock::time_point released;
+    std::weak_ptr<Wake> wake;
 };
 }  // namespace
 
@@ -38,11 +56,24 @@ struct ImageHandle::Interest {
     bool reused = false;
 
     explicit Interest(std::shared_ptr<Record> value) : record(std::move(value)) {
+        std::lock_guard lock(record->mutex);
         ++record->users;
     }
 
     ~Interest() {
-        --record->users;
+        bool idle = false;
+        {
+            std::lock_guard lock(record->mutex);
+            idle = --record->users == 0;
+            if (idle) {
+                record->released = std::chrono::steady_clock::now();
+            }
+        }
+        if (idle) {
+            if (auto signal = record->wake.lock()) {
+                signal->notify();
+            }
+        }
     }
 };
 
@@ -77,10 +108,10 @@ struct ImageStore::Impl {
     std::shared_ptr<MemoryBudget> sharedBudget;
     ResourceAccount externalAccount;
     mutable std::mutex mutex;
-    std::condition_variable wake;
+    std::shared_ptr<Wake> wake = std::make_shared<Wake>();
     std::map<Key, std::shared_ptr<Record>> cache;
     std::deque<std::shared_ptr<Record>> queue;
-    uint64_t clock = 0, decodes = 0, hits = 0, failures = 0, decodeNanoseconds = 0;
+    uint64_t clock = 0, decodes = 0, hits = 0, failures = 0, decodeNanoseconds = 0, evictions = 0;
     bool stopping = false;
     // Declared last so the worker joins before any state is destroyed.
     std::jthread worker;
@@ -102,7 +133,7 @@ struct ImageStore::Impl {
             stopping = true;
             queue.clear();
         }
-        wake.notify_all();
+        wake->notify();
         worker.join();
         for (auto& [key, record] : cache) {
             std::lock_guard lock(record->mutex);
@@ -127,10 +158,49 @@ struct ImageStore::Impl {
             return false;
         }
         cache.erase(oldest);
+        ++evictions;
         return true;
     }
 
-    std::shared_ptr<ImageData> allocate(uint32_t width, uint32_t height) {
+    // Only the worker removes expired entries. A released handle wakes it;
+    // active-only stores sleep indefinitely instead of polling for expiry.
+    std::chrono::steady_clock::time_point expireCold() {
+        const auto now = std::chrono::steady_clock::now();
+        auto deadline = std::chrono::steady_clock::time_point::max();
+        uint64_t cold = 0;
+        for (auto it = cache.begin(); it != cache.end();) {
+            const auto& record = it->second;
+            bool expired = false;
+            {
+                std::lock_guard lock(record->mutex);
+                if (!record->users) {
+                    const auto expires = record->released + std::chrono::milliseconds(limits.idleMilliseconds);
+                    expired = expires <= now;
+                    if (!expired) {
+                        deadline = std::min(deadline, expires);
+                        cold += record->result.image ? record->result.image->pixels().size() : 0;
+                    }
+                }
+            }
+            if (expired) {
+                it = cache.erase(it);
+                ++evictions;
+            } else {
+                ++it;
+            }
+        }
+        while (cold > limits.coldBytes) {
+            const auto before = budget->bytes.load();
+            if (!evict()) {
+                break;
+            }
+            const auto reclaimed = before - budget->bytes.load();
+            cold -= std::min(cold, reclaimed);
+        }
+        return deadline;
+    }
+
+    std::shared_ptr<ImageData> allocate(uint32_t width, uint32_t height, const std::filesystem::path& source) {
         const uint64_t bytes = uint64_t(width) * height * 4;
         auto lease = sharedBudget ? sharedBudget->reserve(bytes) : std::shared_ptr<MemoryBudget::Lease>{};
         auto allocation = std::unique_ptr<ImageData>(new ImageData);
@@ -163,6 +233,11 @@ struct ImageStore::Impl {
         image->width_ = width;
         image->height_ = height;
         image->pixels_.resize(size_t(bytes));
+        if (imageTracingEnabled()) {
+            const auto label = source.u8string();
+            image->trace_ = traceImage(image->pixels_.data(), image->pixels_.capacity(), width, height, width * 4,
+                                       reinterpret_cast<const char*>(label.c_str()));
+        }
         return image;
     }
 
@@ -233,7 +308,7 @@ struct ImageStore::Impl {
         const double scale = std::min(1., double(record.edge) / std::max(width, height));
         width = std::max(1u, UINT(std::lround(width * scale)));
         height = std::max(1u, UINT(std::lround(height * scale)));
-        auto result = allocate(width, height);
+        auto result = allocate(width, height, record.path);
         ComPtr<IWICBitmapScaler> scaler;
         require(factory->CreateBitmapScaler(scaler.GetAddressOf()));
         require(scaler->Initialize(source.Get(), width, height,
@@ -268,22 +343,35 @@ struct ImageStore::Impl {
                                                     IID_PPV_ARGS(factory.GetAddressOf()))
                                  : initialized;
         for (;;) {
+            uint64_t generation;
+            {
+                std::lock_guard lock(wake->mutex);
+                generation = wake->generation;
+            }
             std::shared_ptr<Record> record;
+            auto deadline = std::chrono::steady_clock::time_point::max();
             {
                 std::unique_lock lock(mutex);
-                wake.wait(lock, [&] {
-                    return stopping || !queue.empty();
-                });
                 if (stopping) {
                     break;
                 }
-                record = std::move(queue.front());
-                queue.pop_front();
-                if (!record->users) {
+                deadline = expireCold();
+                if (!queue.empty()) {
+                    record = std::move(queue.front());
+                    queue.pop_front();
                     std::lock_guard recordLock(record->mutex);
-                    record->result = {ImageState::Cancelled};
-                    continue;
+                    if (!record->users) {
+                        record->result = {ImageState::Cancelled};
+                        continue;
+                    }
                 }
+            }
+            if (!record) {
+                std::unique_lock lock(wake->mutex);
+                wake->changed.wait_until(lock, deadline, [&] {
+                    return wake->generation != generation;
+                });
+                continue;
             }
             ImageSnapshot result;
             result.source = record->source;
@@ -306,7 +394,7 @@ struct ImageStore::Impl {
                 decodeNanoseconds += elapsed;
                 decodes += result.state != ImageState::Cancelled;
                 failures += result.state == ImageState::Failed;
-                record->result = stopping ? ImageSnapshot{ImageState::Cancelled} : std::move(result);
+                record->result = stopping || !record->users ? ImageSnapshot{ImageState::Cancelled} : std::move(result);
             }
         }
         factory.Reset();
@@ -395,6 +483,7 @@ ImageHandle ImageStore::requestInternal(const std::filesystem::path& path, uint6
         while (impl_->cache.size() >= impl_->limits.entries && impl_->evict()) {
         }
         record = std::make_shared<Record>();
+        record->wake = impl_->wake;
         record->path = absolute;
         record->edge = maximumEdge;
         record->region = region;
@@ -415,7 +504,7 @@ ImageHandle ImageStore::requestInternal(const std::filesystem::path& path, uint6
     ImageHandle handle;
     handle.interest_ = std::make_shared<ImageHandle::Interest>(record);
     handle.interest_->reused = found != impl_->cache.end();
-    impl_->wake.notify_one();
+    impl_->wake->notify();
     return handle;
 }
 
@@ -452,16 +541,19 @@ bool ImageStore::retry(const ImageHandle& handle) {
     record->result = {ImageState::Loading};
     record->result.source = record->source;
     impl_->queue.push_back(record);
-    impl_->wake.notify_one();
+    impl_->wake->notify();
     return true;
 }
 
 ImageStats ImageStore::stats() const {
     std::lock_guard lock(impl_->mutex);
     size_t pending = 0;
+    uint64_t active = 0, cold = 0;
     for (const auto& [key, record] : impl_->cache) {
         std::lock_guard recordLock(record->mutex);
         pending += record->result.state == ImageState::Loading;
+        const auto bytes = record->result.image ? record->result.image->pixels().size() : 0;
+        (record->users ? active : cold) += bytes;
     }
     return {impl_->budget->bytes.load(),
             impl_->budget->peak.load(),
@@ -470,7 +562,10 @@ ImageStats ImageStore::stats() const {
             impl_->failures,
             impl_->cache.size(),
             pending,
-            impl_->decodeNanoseconds};
+            impl_->decodeNanoseconds,
+            active,
+            cold,
+            impl_->evictions};
 }
 
 std::shared_ptr<ImageStore> ImageStore::shared() {

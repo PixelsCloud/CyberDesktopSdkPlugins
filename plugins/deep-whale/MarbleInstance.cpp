@@ -12,7 +12,7 @@ MarbleInstance::MarbleInstance(const CdCreateContext& context)
     : settings(marbleDefaults()),
       model_(context, marbleSpec(context.plugin_id).compact),
       renderer_(context, marbleSpec(context.plugin_id)) {
-    canvas_.bindGpu(context);
+    canvas_.bindGpu(context, true);
     environment_.bind(context);
     interaction_.bind(context);
     redraw_.bind(context);

@@ -29,7 +29,7 @@ class Skin {
 public:
     explicit Skin(const std::filesystem::path& assets = {});
     ~Skin();
-    void bind(const CdCreateContext& context, std::function<void(uint32_t)> action = {});
+    void bind(const CdCreateContext& context, std::function<void(uint32_t)> action = {}, bool gpuOnly = false);
     void onChange(std::function<void()> callback);
     void appearance(const cdsdk::Settings& settings);
     void font(std::string name);

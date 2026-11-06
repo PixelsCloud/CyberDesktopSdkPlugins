@@ -420,11 +420,46 @@ void Canvas::releaseResources() noexcept {
     impl_->wic_.Reset();
 }
 
-bool Canvas::valid(const FrameBuffer& f) const {
-    return f.rgba && f.width && f.height && f.width <= 4096 && f.height <= 4096 && f.stride >= uint64_t(f.width) * 4 &&
-           f.capacity >= uint64_t(f.stride) * f.height &&
+bool validFrameGeometry(const FrameBuffer& f) {
+    return f.width && f.height && f.width <= 4096 && f.height <= 4096 && f.stride >= uint64_t(f.width) * 4 &&
            uint64_t(f.stride) * f.height <= std::numeric_limits<UINT>::max() && std::isfinite(f.device_pixel_ratio) &&
            f.device_pixel_ratio >= .5 && f.device_pixel_ratio <= 4;
+}
+
+bool Canvas::valid(const FrameBuffer& f) const {
+    const bool cpu = f.rgba && f.capacity >= uint64_t(f.stride) * f.height;
+    const bool gpu = !f.rgba && !f.capacity && impl_->external_ && target && impl_->width_ == f.width &&
+                     impl_->height_ == f.height && impl_->dpi_ == f.device_pixel_ratio;
+    return validFrameGeometry(f) && (cpu || gpu);
+}
+
+bool Canvas::trimCaches() noexcept {
+    if (impl_->drawing_) {
+        return false;
+    }
+    clearImageUploads();
+    impl_->labels_.clear();
+    impl_->images_.clear();
+    impl_->sources_.clear();
+    impl_->sourceLeases_.clear();
+    impl_->pixels_.clear();
+    impl_->gradients_.clear();
+    impl_->masks_.reset();
+    impl_->layers_.clear();
+    impl_->states_.clear();
+    impl_->strokes_.clear();
+    impl_->layerCanvases_.clear();
+    impl_->stats_.pixelBytes = impl_->stats_.legacyBitmapBytes = impl_->stats_.legacySourceBytes = 0;
+    target.Reset();
+    brush.Reset();
+    impl_->bitmap_.Reset();
+    impl_->bitmapLease_.Reset();
+    impl_->stats_.surfaceBytes = 0;
+    impl_->width_ = impl_->height_ = 0;
+    impl_->external_ = false;
+    factory = impl_->cpuFactory_;
+    trackMemory();
+    return true;
 }
 
 void Canvas::targetForFrame(ID2D1RenderTarget* external, const FrameBuffer& frame, bool hostDrawScope) {
@@ -766,7 +801,7 @@ double Canvas::devicePixelRatio() const {
 void Canvas::blit(const FrameBuffer& source, Rect area) {
     active();
     detail::layoutRect(area);
-    if (!valid(source) || area.width <= 0 || area.height <= 0) {
+    if (!source.rgba || !valid(source) || area.width <= 0 || area.height <= 0) {
         throw std::invalid_argument("Invalid frame blit");
     }
     const uint64_t bytes = uint64_t(source.width) * source.height * 4;
@@ -793,9 +828,9 @@ void Canvas::blit(const FrameBuffer& source, Rect area) {
 
 void Canvas::pixels(const std::wstring& key, const FrameBuffer& source, Rect area) {
     active();
-    if (key.empty() || !valid(source) || source.width > 1024 || source.height > 1024 || !std::isfinite(area.x) ||
-        !std::isfinite(area.y) || !std::isfinite(area.width) || !std::isfinite(area.height) || area.width <= 0 ||
-        area.height <= 0) {
+    if (key.empty() || !source.rgba || !valid(source) || source.width > 1024 || source.height > 1024 ||
+        !std::isfinite(area.x) || !std::isfinite(area.y) || !std::isfinite(area.width) || !std::isfinite(area.height) ||
+        area.width <= 0 || area.height <= 0) {
         throw std::invalid_argument("Invalid pixel image");
     }
     auto cached = impl_->pixels_.find(key);
@@ -1259,7 +1294,7 @@ void Canvas::shape(const std::vector<D2D1_POINT_2F>& points, uint32_t fill, uint
 
 bool Canvas::save(const std::wstring& filename, const FrameBuffer& f) {
     try {
-        if (!valid(f)) {
+        if (!f.rgba || !valid(f)) {
             return false;
         }
         ComPtr<IWICBitmap> source;

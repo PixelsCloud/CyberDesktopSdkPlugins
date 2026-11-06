@@ -310,10 +310,11 @@ CdResult CD_CALL restore(void* pointer, const uint8_t* bytes, uint64_t size) noe
 
 CdResult CD_CALL render(void* pointer, const CdFrame* frame) noexcept {
     try {
-        if (!pointer || !frame || frame->struct_size < sizeof(CdFrame) || !frame->rgba || !frame->width ||
-            !frame->height || frame->width > 4096 || frame->height > 4096 || frame->stride < frame->width * 4 ||
-            frame->capacity < uint64_t(frame->stride) * frame->height || !std::isfinite(frame->device_pixel_ratio) ||
-            frame->device_pixel_ratio <= 0 || frame->device_pixel_ratio > 8) {
+        if (!pointer || !frame || frame->struct_size < sizeof(CdFrame) || !frame->width || !frame->height ||
+            frame->width > 4096 || frame->height > 4096 || frame->stride < frame->width * 4 ||
+            (frame->rgba ? frame->capacity < uint64_t(frame->stride) * frame->height : frame->capacity != 0) ||
+            !std::isfinite(frame->device_pixel_ratio) || frame->device_pixel_ratio <= 0 ||
+            frame->device_pixel_ratio > 8) {
             return CD_ERROR_ARGUMENT;
         }
         auto& self = *static_cast<Instance*>(pointer);

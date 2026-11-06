@@ -1,5 +1,7 @@
 #ifndef CYBERDESKTOP_RENDER_OUTPUT_SERVICE_H
 #define CYBERDESKTOP_RENDER_OUTPUT_SERVICE_H
+#include <stddef.h>
+
 #include "sdk/PluginApi.h"
 
 #define CD_SERVICE_RENDER_OUTPUT "render.output"
@@ -36,7 +38,13 @@ typedef struct CdRenderOutputApi {
     CdResult(CD_CALL* configure)(void* context);
     CdResult(CD_CALL* session)(void* context, const CdFrame* frame, CdRenderSession* output);
     CdResult(CD_CALL* complete)(void* context, const CdRenderReport* report);
+    /* Optional v1 tail. A successful opt-in permits GPU main frames with
+       rgba=null and capacity=0. CPU previews/fallback still receive real pixels.
+       Older hosts/clients use the original prefix and compatibility scratch. */
+    CdResult(CD_CALL* configure_gpu_only)(void* context);
 } CdRenderOutputApi;
+
+#define CD_RENDER_OUTPUT_BASE_SIZE ((uint32_t)offsetof(CdRenderOutputApi, configure_gpu_only))
 #ifdef __cplusplus
 }
 #endif
