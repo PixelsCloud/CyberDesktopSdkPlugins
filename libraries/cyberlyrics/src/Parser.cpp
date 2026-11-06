@@ -5,9 +5,13 @@
 #endif
 
 #include <QByteArray>
+#include <QCoreApplication>
+#include <QDir>
 #include <QFile>
+#include <QLibrary>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QScopeGuard>
 #include <QStringDecoder>
 #include <QTemporaryFile>
 #include <QXmlStreamReader>
@@ -66,8 +70,20 @@ Document parseLrc(const QByteArray& utf8, const Track& track) {
     normalized.close();
     Document result;
     result.track = track;
+    QLibrary runtime(QDir(QCoreApplication::applicationDirPath()).filePath(QStringLiteral("cyberlyrics_runtime")));
+    runtime.setLoadHints(QLibrary::ResolveAllSymbolsHint);
+    if (!runtime.load()) {
+        return failed(track, runtime.errorString());
+    }
+    const auto releaseRuntime = qScopeGuard([&runtime] {
+        runtime.unload();
+    });
+    const auto readLrc = reinterpret_cast<decltype(&cyberlyrics_read_lrc)>(runtime.resolve("cyberlyrics_read_lrc"));
+    if (!readLrc) {
+        return failed(track, runtime.errorString());
+    }
     char error[256]{};
-    const auto count = cyberlyrics_read_lrc(
+    const auto count = readLrc(
         normalized.fileName().toUtf8().constData(),
         [](void* context, double seconds, const char* data, int length) {
             auto& document = *static_cast<Document*>(context);
