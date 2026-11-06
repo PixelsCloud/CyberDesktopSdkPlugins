@@ -76,6 +76,8 @@ void traceImage(ID3D11Texture2D* texture, const char* source, std::source_locati
             pixelBytes = 1;
             break;
         case DXGI_FORMAT_R16_FLOAT:
+        case DXGI_FORMAT_R16_TYPELESS:
+        case DXGI_FORMAT_D16_UNORM:
         case DXGI_FORMAT_R16_UNORM:
         case DXGI_FORMAT_R8G8_UNORM:
             pixelBytes = 2;
