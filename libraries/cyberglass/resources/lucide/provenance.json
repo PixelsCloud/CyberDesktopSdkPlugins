@@ -422,6 +422,174 @@
     {
       "name": "pencil",
       "sha256": "7d119b693843a895ee560bdce6d017b68cd60f0efb638b42781524584a2a7aff"
+    },
+    {
+      "name": "globe",
+      "sha256": "33fe8fb49fa8a92b1c86f72ffe59cd60e435d1d4328f9955639a5d49bfd99aeb"
+    },
+    {
+      "name": "case-sensitive",
+      "sha256": "f732099fb7edcd6175a264b36e782230d70bc735cf8ee76506495ebbdd4294a0"
+    },
+    {
+      "name": "file-text",
+      "sha256": "ba076ed7f26b1ab3e492771803dcb5ed61c3e32cf7dca8426392a4b71c4f3f4a"
+    },
+    {
+      "name": "tag",
+      "sha256": "04435947de07534aa404a591d3d5ad23a75731d6b4840e1ac6fbcf7d7ff29cbd"
+    },
+    {
+      "name": "type",
+      "sha256": "e9c39d3c87310d7d334da88fa2d97fd621b826198a3931d81d82191bc9ce4e7c"
+    },
+    {
+      "name": "folder-plus",
+      "sha256": "8d98bc9c337d2868f6216ffd37a482fbd7a96867f1512e0aca3755aaec52b0f8"
+    },
+    {
+      "name": "app-window",
+      "sha256": "c463d92a33024bfb44e711dfc4ad752b4cbdaf4a2a47cf7acbf808a3e984b96e"
+    },
+    {
+      "name": "arrow-left-right",
+      "sha256": "2f68635a018b4a11b0b4d113a43ad006a968853386b8252a2ba32d99f527a8cc"
+    },
+    {
+      "name": "arrow-up-right",
+      "sha256": "c05c6b0f86ef0fe4d6ac58c33f5c70bad3aa2a82f5d4f20b6d256611a3cf8955"
+    },
+    {
+      "name": "at-sign",
+      "sha256": "8e2922652bb47a82b50c05bfd5b2413cbe9dd7ea4355f2a2fe360274026942f1"
+    },
+    {
+      "name": "ban",
+      "sha256": "09300017571f091e2becc749400ce7ecafe28fddb290c960f456d481cddfba60"
+    },
+    {
+      "name": "camera",
+      "sha256": "5014b41d1d2b8c7a5f3cf6e90819bdef218cc321197a2015b2dbdec572bb45cc"
+    },
+    {
+      "name": "chart-pie",
+      "sha256": "c91284eb2453617a5ee01840f8d7b438875f17d956b4d3275210dd4eed86533d"
+    },
+    {
+      "name": "chevrons-right",
+      "sha256": "d53f7612a6a148241b741f5afdee7b4d00b2e7daef2336317f615860dc3f77b7"
+    },
+    {
+      "name": "circle-alert",
+      "sha256": "68387f1335ba43660b8724f8d09221402a18af9b5c2dc173177b2da6d3ee91c5"
+    },
+    {
+      "name": "columns-2",
+      "sha256": "e636f53f66daf58dab6fc7d0328e8daa4de160f89fb1c6510218a77d22cfe9ef"
+    },
+    {
+      "name": "columns-3",
+      "sha256": "fa44e3d0f2293a4f4df15d2ec208b5b34880895dcf30c2a2fdc77b25c9c419b0"
+    },
+    {
+      "name": "eject",
+      "sha256": "73ee2c8b7d4b485a5fbdd0207bab07c4cd97cc20a16a567088ad4aad98cfbbe1"
+    },
+    {
+      "name": "files",
+      "sha256": "468e0c7142718d1cc1249bddaa8410c7c06a10c52ef578af7465eb917a6367f1"
+    },
+    {
+      "name": "folder-input",
+      "sha256": "099cdfbd5bcce82af0fbfdbbeaa8bdd3b7438b67985f78a23caefd53f3960708"
+    },
+    {
+      "name": "git-branch",
+      "sha256": "e11c45181bed195ecf7762275901445d58d82e3aedeaae9d6c864a965838961f"
+    },
+    {
+      "name": "git-merge",
+      "sha256": "b51201cf388597dd567d0a2737b47bad9ffae979c529ed9e444631ad54a33f9d"
+    },
+    {
+      "name": "key-round",
+      "sha256": "dfbccdc9cfc45f66a8cad827d7e2b928c364bca469dc75283897a6a2c4bebea3"
+    },
+    {
+      "name": "list-checks",
+      "sha256": "805d001cbdf425bd8d0833054e35d4d25b2f562fe1941ed149f99f167c58b63a"
+    },
+    {
+      "name": "list",
+      "sha256": "1f3c1d9a31bcb2ec8a9d2551e8ceef83eb91e25d70055bfede4da625d88bf0e1"
+    },
+    {
+      "name": "package-open",
+      "sha256": "91f73330a6aff380c67e5871a7bbb705fbda4228c5c7de146711dd14e4ef5fc6"
+    },
+    {
+      "name": "palette",
+      "sha256": "20e83bb2173c3016064a59f015f0dc131c8b14f05390d6de71533099875aed1e"
+    },
+    {
+      "name": "panel-bottom-close",
+      "sha256": "f6f5fe8b89458174c8bd7a800a2280d78e8e4d54ec7a83dccd14d8ec40475e89"
+    },
+    {
+      "name": "panel-bottom",
+      "sha256": "0ce1b142c192884e0f75ce705126cbaced5f2eb8126f4da7db170aaeef4c8445"
+    },
+    {
+      "name": "panel-left",
+      "sha256": "91243385edbd19aee7edb113ea6f602b55f2a740d1e03404e142d27356c1d758"
+    },
+    {
+      "name": "panel-top",
+      "sha256": "8325facd1679e942c9654ea47fc3ddcfae032728b4f0832fa153f3f953ae1397"
+    },
+    {
+      "name": "picture-in-picture-2",
+      "sha256": "e082bc297f5923cc7eb3b25ce9eb331b23a2cf1b9b34451ee3d4ee2506512493"
+    },
+    {
+      "name": "rocket",
+      "sha256": "be07cd5f2dc6e3eabf189d0b5d386fda984c2f5eea37f10d79ec87be7be28557"
+    },
+    {
+      "name": "server",
+      "sha256": "f05702fe9ad28d8c6326c973673731386f5d0f4b75bc53e2f9291366078e1dde"
+    },
+    {
+      "name": "shield-check",
+      "sha256": "87de9d464170ad70df85fcc35efecef6c9fbce850d9ce1c7c9a0d75e4dc7b08f"
+    },
+    {
+      "name": "sparkles",
+      "sha256": "e3395ef58e7f9a709d5c52b80e16eb6fe7fa1449cca2934cce7fb0311f3d462d"
+    },
+    {
+      "name": "text-cursor-input",
+      "sha256": "2fd7a42423f17213fa7252ce7faf545256133e86bbfd9d1e7640fbaa2c2e5b1b"
+    },
+    {
+      "name": "thumbs-up",
+      "sha256": "c1ffaa1658f5648f26b15fc25feac83d5e92b8733ed7c6e396a279674758fa79"
+    },
+    {
+      "name": "undo-2",
+      "sha256": "8b5c3cb5427c8273276274a7e83313009238de05f3a0ef6d199baa187cc647e2"
+    },
+    {
+      "name": "video",
+      "sha256": "958bbb52101b7eba130eb7c9286cb5e3a97ae297eafa828958d78b19400854a1"
+    },
+    {
+      "name": "wallet",
+      "sha256": "9e9dc98123246a4f82601b1e04e3948e9657dd1a6250c6f17dc1f4c9960afce4"
+    },
+    {
+      "name": "wifi-off",
+      "sha256": "59a1fbc5b432e19c4a626670cbf048020d5ceb3ee9d581d91789ab4241cc81e8"
     }
   ]
 }
